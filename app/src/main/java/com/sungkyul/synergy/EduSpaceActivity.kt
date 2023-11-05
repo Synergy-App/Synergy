@@ -1,0 +1,17 @@
+package com.sungkyul.synergy
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import com.sungkyul.synergy.databinding.ActivityEduSpaceBinding
+
+/** 교육 공간 메뉴 화면 */
+private lateinit var binding: ActivityEduSpaceBinding
+class EduSpaceActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityEduSpaceBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+    }
+}
