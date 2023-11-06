@@ -11,13 +11,6 @@ import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
 
 /*
-    [Requirements]
-    1. 'build.gradle.kts'에 추가
-        implementation("com.aallam.openai:openai-client:3.5.0")
-        implementation("io.ktor:ktor-client-android:2.3.5")
-    2. 'AndroidManifest.xml'에 추가
-        <uses-permission android:name="android.permission.INTERNET" />
-
     [References]
     - https://github.com/Aallam/openai-kotlin
 */
