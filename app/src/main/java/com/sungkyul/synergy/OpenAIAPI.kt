@@ -10,6 +10,7 @@ import com.aallam.openai.api.model.ModelId
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
 
+/** chatGPT API 셋팅 */
 /*
     [References]
     - https://github.com/Aallam/openai-kotlin

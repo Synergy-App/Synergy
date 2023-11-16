@@ -1,5 +1,6 @@
 package com.sungkyul.synergy
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -12,6 +13,11 @@ class EduSpaceActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityEduSpaceBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.iconEduBtn.setOnClickListener{
+            val intent= Intent(this,IconEduActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 }
