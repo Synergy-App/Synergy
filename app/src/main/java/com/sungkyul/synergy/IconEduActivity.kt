@@ -36,7 +36,7 @@ class IconEduActivity : AppCompatActivity() {
             Icon(R.drawable.sound, "화면 녹화"),
             Icon(R.drawable.sound, "다크모드"),
             Icon(R.drawable.sound, "빅스비 루틴"),
-            // 다른 아이템들도 추가해야 합니다.
+            // 예시임. 변경해야됨.
         )
         // RecyclerView Adapter 생성 및 연결
         iconAdapter = IconEduAdapter(iconList) // 여기에 생성한 아이템 리스트를 넣어줍니다.

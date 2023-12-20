@@ -18,6 +18,10 @@ class EduSpaceActivity : AppCompatActivity() {
             val intent= Intent(this,IconEduActivity::class.java)
             startActivity(intent)
         }
+        binding.screenEduBtn.setOnClickListener{
+            val intent= Intent(this,ScreenEduActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 }
