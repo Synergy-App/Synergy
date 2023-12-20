@@ -26,6 +26,7 @@
                 android:layout_marginRight="20dp"/>
 
             <Button
+                android:id="@+id/screenEdu_btn"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
                 android:layout_weight="1"
