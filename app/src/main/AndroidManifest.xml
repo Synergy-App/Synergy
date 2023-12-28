@@ -15,6 +15,12 @@
         android:theme="@style/Theme.Synergy"
         tools:targetApi="31">
         <activity
+            android:name=".kakaotalk.KakaotalkLoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".ScreenEduActivity"
             android:exported="false" />
         <activity
@@ -24,7 +30,7 @@
             android:name=".EduSpaceActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".kakaotalk.KakaoMainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
