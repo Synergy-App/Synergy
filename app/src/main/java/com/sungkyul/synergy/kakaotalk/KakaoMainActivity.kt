@@ -26,7 +26,7 @@ class KakaoMainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.friendsFragment -> setFragment(TAG_FRIENDS, FriendsFragment())
                 R.id.chatFragment -> setFragment(TAG_CHAT, ChatFragment())
-              //  R.id.openChatFragment -> setFragment(TAG_OPENCHAT, OpenchatFragment())
+                //  R.id.openChatFragment -> setFragment(TAG_OPENCHAT, OpenchatFragment())
             }
             true
         }
@@ -37,12 +37,11 @@ class KakaoMainActivity : AppCompatActivity() {
         val fragTransaction = manager.beginTransaction()
 
         if (manager.findFragmentByTag(tag) == null) {
-            fragTransaction.add(R.id.friendsFragment, fragment, tag)
+            fragTransaction.add(R.id.kakaoMainFrameLayout, fragment, tag) // 수정된 부분
         }
 
         val friends = manager.findFragmentByTag(TAG_FRIENDS)
         val chat = manager.findFragmentByTag(TAG_CHAT)
-        //val myPage = manager.findFragmentByTag(TAG_MY_PAGE)
 
         if (friends != null) {
             fragTransaction.hide(friends)
@@ -51,24 +50,6 @@ class KakaoMainActivity : AppCompatActivity() {
         if (chat != null) {
             fragTransaction.hide(chat)
         }
-
-        //if (myPage != null) {
-        //    fragTransaction.hide(myPage)
-        //}
-
-//        if (tag == TAG_CALENDER) {
-//            if (calender != null) {
-//                fragTransaction.show(calender)
-//            }
-//        } else if (tag == TAG_HOME) {
-//            if (home != null) {
-//                fragTransaction.show(home)
-//            }
-//        } else if (tag == TAG_MY_PAGE) {
-//            if (myPage != null) {
-//                fragTransaction.show(myPage)
-//            }
-//        }
 
         fragTransaction.commitAllowingStateLoss()
     }

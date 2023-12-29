@@ -10,7 +10,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sungkyul.synergy.R
-import com.sungkyul.settingedu.SettingDetailActivity
 import com.sungkyul.synergy.data.SettingData
 
 /** 교육공간 속 환경설정교육 리사이클러뷰 어댑터 */
@@ -39,11 +38,12 @@ class SettingEduAdapter(private val context: Context) : RecyclerView.Adapter<Set
             txtExplain.text = item.explain
             Glide.with(itemView).load(item.img).into(imgSetting)
 
-            itemView.setOnClickListener {
-                val intent = Intent(context, com.sungkyul.settingedu.SettingDetailActivity::class.java)
-                intent.putExtra("data", item)
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                context.startActivity(intent)
-            }
+//            itemView.setOnClickListener {
+//                val intent = Intent(context, com.sungkyul.settingedu.SettingDetailActivity::class.java)
+//                intent.putExtra("data", item)
+//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+//                context.startActivity(intent)
+//            }
+            // 연우야 오류나 우선 주석처리할게
         }
     }}
