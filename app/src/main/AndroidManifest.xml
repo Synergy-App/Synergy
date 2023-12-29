@@ -15,6 +15,12 @@
         android:theme="@style/Theme.Synergy"
         tools:targetApi="31">
         <activity
+            android:name="com.sungkyul.synergy.settingedu.SettingDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".ScreenEduActivity"
             android:exported="false" />
         <activity
@@ -24,7 +30,7 @@
             android:name=".EduSpaceActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.sungkyul.settingedu.SettingEduActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
