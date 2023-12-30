@@ -49,8 +49,8 @@
                     android:src="@drawable/baseline_search_24" />
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_margin="5dp"
                     android:src="@drawable/baseline_person_add_alt_1_24" />
 
@@ -99,10 +99,11 @@
                 android:textSize="18dp"
                 android:textStyle="bold" />
         </LinearLayout>
+
         <View
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="0.2dp"
+            android:layout_marginTop="10dp"
             android:background="#939393" />
 
         <LinearLayout
@@ -115,9 +116,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="5dp"
-                android:textSize="15dp"
                 android:layout_marginBottom="5dp"
-                android:text="친구 150" />
+                android:text="친구 150"
+                android:textSize="15dp" />
 
             <View
                 android:layout_width="0dp"
@@ -141,12 +142,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/kakao_friends_rv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
-        </LinearLayout>
+    </LinearLayout>
 
 </FrameLayout>
