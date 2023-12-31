@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
     android:layout_marginBottom="5dp"
+    android:id="@+id/friend_detail_LL"
     android:background="@android:color/white">
     <LinearLayout
         android:id="@+id/kakao_list"

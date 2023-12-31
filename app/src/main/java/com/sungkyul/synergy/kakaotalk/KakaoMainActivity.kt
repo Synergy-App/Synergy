@@ -37,18 +37,26 @@ class KakaoMainActivity : AppCompatActivity() {
         val fragTransaction = manager.beginTransaction()
 
         if (manager.findFragmentByTag(tag) == null) {
-            fragTransaction.add(R.id.kakaoMainFrameLayout, fragment, tag) // 수정된 부분
+            fragTransaction.add(R.id.kakaoMainFrameLayout, fragment, tag)
         }
 
         val friends = manager.findFragmentByTag(TAG_FRIENDS)
         val chat = manager.findFragmentByTag(TAG_CHAT)
 
         if (friends != null) {
-            fragTransaction.hide(friends)
+            if (tag == TAG_FRIENDS) {
+                fragTransaction.show(friends)
+            } else {
+                fragTransaction.hide(friends)
+            }
         }
 
         if (chat != null) {
-            fragTransaction.hide(chat)
+            if (tag == TAG_CHAT) {
+                fragTransaction.show(chat)
+            } else {
+                fragTransaction.hide(chat)
+            }
         }
 
         fragTransaction.commitAllowingStateLoss()

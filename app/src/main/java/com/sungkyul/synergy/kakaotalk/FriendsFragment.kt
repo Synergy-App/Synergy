@@ -21,6 +21,7 @@ class FriendsFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_friends, container, false)
 
+
         // RecyclerView 초기화
         recyclerView = view.findViewById(R.id.kakao_friends_rv)
         adapter = ProfileAdapter(requireContext()) // ProfileAdapter 초기화
@@ -43,7 +44,8 @@ class FriendsFragment : Fragment() {
 
 
         adapter.datas = profileItems // Adapter에 데이터 설정
-
         return view
+
+
     }
 }

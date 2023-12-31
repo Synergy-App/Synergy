@@ -1,10 +1,12 @@
 package com.sungkyul.synergy.kakaotalk
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -30,6 +32,18 @@ class ProfileAdapter(private val context: Context) :
         private val profile_name: TextView = itemView.findViewById(R.id.profile_name)
         private val profile_message: TextView = itemView.findViewById(R.id.profile_message)
         private val profile_iv: ImageView = itemView.findViewById(R.id.profile_iv)
+        private val friend_detail_LL: LinearLayout = itemView.findViewById(R.id.friend_detail_LL)
+
+        init {
+            friend_detail_LL.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val intent = Intent(context, ProfileDetailActivity::class.java)
+                    intent.putExtra("profile_detail", datas[position]) // 데이터를 전달합니다. profileItem이 Parcelable이어야 합니다.
+                    context.startActivity(intent)
+                }
+            }
+        }
 
         fun bind(item: profileItem) {
             profile_name.text = item.name
@@ -38,4 +52,5 @@ class ProfileAdapter(private val context: Context) :
 
         }
     }
+
 }

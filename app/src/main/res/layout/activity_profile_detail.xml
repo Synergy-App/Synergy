@@ -15,6 +15,7 @@
         android:padding="20dp">
 
         <ImageView
+            android:id="@+id/profile_back_iv"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/baseline_cancel_24" />
@@ -52,13 +53,22 @@
             </androidx.cardview.widget.CardView>
 
             <TextView
+                android:id="@+id/profileDetail_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이경희"
+                android:textColor="@color/white"
+                android:layout_marginBottom="3dp"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/profileDetail_message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="50dp"
-                android:text="이경희"
+                android:text="수진이가짱"
                 android:textColor="@color/white"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textSize="12sp" />
 
             <View
                 android:layout_width="match_parent"
@@ -73,13 +83,13 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/startChatting_LL"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <!-- 첫 번째 영역 -->
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
@@ -95,12 +105,12 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/startCalling_LL"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <!-- 두 번째 영역 -->
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
@@ -116,12 +126,12 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/startFacetalk_LL"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <!-- 세 번째 영역 -->
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
