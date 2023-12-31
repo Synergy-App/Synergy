@@ -21,7 +21,7 @@
             android:name=".kakaotalk.ChattingActivity"
             android:exported="false" />
         <activity
-            android:name=".kakaotalk.KakaoMainActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,7 +36,7 @@
             android:name=".kakaotalk.KakaotalkLoginActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".kakaotalk.KakaoMainActivity"
             android:exported="false" />
         <activity
             android:name=".ScreenEduActivity"

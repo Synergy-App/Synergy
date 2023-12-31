@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
 
+/** 카카오톡 친구 리스트뷰 화면 Fragment */
 class FriendsFragment : Fragment() {
     // RecyclerView 및 관련 변수 선언
     private lateinit var recyclerView: RecyclerView

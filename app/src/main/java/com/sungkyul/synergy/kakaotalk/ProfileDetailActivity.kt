@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
 import com.sungkyul.synergy.R
-
+/** 카카오톡 프로필 디테일 액티비티 */
 class ProfileDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -7,6 +7,8 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityKakaoMainBinding
 import androidx.fragment.app.Fragment
 
+/** 카카오톡 메인화면 하단 네비게이션바 + fragment */
+
 private lateinit var binding: ActivityKakaoMainBinding
 private const val TAG_FRIENDS = "friends_fragment"
 private const val TAG_CHAT = "chat_fragment"

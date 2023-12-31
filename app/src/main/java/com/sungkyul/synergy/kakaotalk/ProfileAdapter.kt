@@ -11,7 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sungkyul.synergy.R
-
+/** 카카오톡 프로필 어뎁터와 뷰홀더 */
 class ProfileAdapter(private val context: Context) :
     RecyclerView.Adapter<ProfileAdapter.ViewHolder>() {
 
