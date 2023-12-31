@@ -15,6 +15,12 @@
         android:theme="@style/Theme.Synergy"
         tools:targetApi="31">
         <activity
+            android:name=".kakaotalk.ProfileDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".kakaotalk.ChattingActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -24,7 +30,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.sungkyul.synergy.settingedu.SettingDetailActivity"
+            android:name=".settingedu.SettingDetailActivity"
             android:exported="false" />
         <activity
             android:name=".kakaotalk.KakaotalkLoginActivity"
@@ -32,7 +38,6 @@
         <activity
             android:name=".kakaotalk.KakaoMainActivity"
             android:exported="false" />
-
         <activity
             android:name=".ScreenEduActivity"
             android:exported="false" />

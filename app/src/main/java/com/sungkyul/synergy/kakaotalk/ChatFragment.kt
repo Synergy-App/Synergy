@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.sungkyul.synergy.R
 
+/** 카카오톡 채팅 리스트뷰 화면 Fragment */
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"

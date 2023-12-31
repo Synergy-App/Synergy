@@ -7,6 +7,8 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityKakaoMainBinding
 import androidx.fragment.app.Fragment
 
+/** 카카오톡 메인화면 하단 네비게이션바 + fragment */
+
 private lateinit var binding: ActivityKakaoMainBinding
 private const val TAG_FRIENDS = "friends_fragment"
 private const val TAG_CHAT = "chat_fragment"
@@ -37,18 +39,26 @@ class KakaoMainActivity : AppCompatActivity() {
         val fragTransaction = manager.beginTransaction()
 
         if (manager.findFragmentByTag(tag) == null) {
-            fragTransaction.add(R.id.kakaoMainFrameLayout, fragment, tag) // 수정된 부분
+            fragTransaction.add(R.id.kakaoMainFrameLayout, fragment, tag)
         }
 
         val friends = manager.findFragmentByTag(TAG_FRIENDS)
         val chat = manager.findFragmentByTag(TAG_CHAT)
 
         if (friends != null) {
-            fragTransaction.hide(friends)
+            if (tag == TAG_FRIENDS) {
+                fragTransaction.show(friends)
+            } else {
+                fragTransaction.hide(friends)
+            }
         }
 
         if (chat != null) {
-            fragTransaction.hide(chat)
+            if (tag == TAG_CHAT) {
+                fragTransaction.show(chat)
+            } else {
+                fragTransaction.hide(chat)
+            }
         }
 
         fragTransaction.commitAllowingStateLoss()

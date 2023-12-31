@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
 
+/** 카카오톡 친구 리스트뷰 화면 Fragment */
 class FriendsFragment : Fragment() {
     // RecyclerView 및 관련 변수 선언
     private lateinit var recyclerView: RecyclerView
@@ -20,6 +21,7 @@ class FriendsFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         val view = inflater.inflate(R.layout.fragment_friends, container, false)
+
 
         // RecyclerView 초기화
         recyclerView = view.findViewById(R.id.kakao_friends_rv)
@@ -43,7 +45,8 @@ class FriendsFragment : Fragment() {
 
 
         adapter.datas = profileItems // Adapter에 데이터 설정
-
         return view
+
+
     }
 }
