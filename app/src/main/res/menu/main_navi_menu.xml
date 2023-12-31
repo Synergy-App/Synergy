@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/learingFragment"
+        android:title="학습하기"
+        android:icon="@drawable/bookopentext"/>
+
+    <item
+        android:id="@+id/solvingFragment"
+        android:title="문제풀기"
+        android:icon="@drawable/binoculars"/>
+
+
+    <item
+        android:id="@+id/reviewFragment"
+        android:title="복습하기"
+        android:icon="@drawable/trophy"/>
+
+    <item
+        android:id="@+id/myProfileFrangment"
+        android:title="내 프로필"
+        android:icon="@drawable/usercircle"/>
+
+</menu>

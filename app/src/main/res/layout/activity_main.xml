@@ -1,64 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/white"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/mainNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="50dp"
-        android:gravity="center">
+        app:itemBackground="@color/white"
+        app:itemIconTint="@drawable/menu_click_color"
+        app:itemTextColor="@drawable/menu_click_color"
+        app:menu="@menu/main_navi_menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints" />
 
-    </LinearLayout>
+    <FrameLayout
+        android:id="@+id/mainMainFrameLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/mainNavigationView" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="10dp"
-        android:padding="24dp">
-
-        <Button
-            android:id="@+id/eduMenu_btn"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:text="교육공간"
-            android:background="@drawable/solid"
-            android:textColor="@color/black"
-            android:layout_marginBottom="16dp"/>
-
-        <Button
-            android:id="@+id/practiceMenu_btn"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:text="실습공간"
-            android:background="@drawable/solid"
-            android:textColor="@color/black"
-            android:layout_marginBottom="16dp"/>
-
-        <Button
-            android:id="@+id/myspaceMenu_btn"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:text="내 공간"
-            android:background="@drawable/solid"
-            android:textColor="@color/black"
-            android:layout_marginBottom="16dp"/>
-
-        <Button
-            android:id="@+id/settingMenu_btn"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:text="환경설정"
-            android:background="@drawable/solid"
-            android:textColor="@color/black"/>
-    </LinearLayout>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
