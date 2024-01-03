@@ -38,7 +38,7 @@ class SettingEduAdapter(private val context: Context) : RecyclerView.Adapter<Set
             txtName.text = item.name
             txtExplain.text = item.explain
             Glide.with(itemView).load(item.img).into(imgSetting)
-
+            
             itemView.setOnClickListener {
                 val intent = Intent(context, com.sungkyul.synergy.settingedu.SettingDetailActivity::class.java)
                 intent.putExtra("data", item)
