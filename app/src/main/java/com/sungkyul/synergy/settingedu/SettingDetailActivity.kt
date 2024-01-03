@@ -29,20 +29,27 @@ class SettingDetailActivity : AppCompatActivity() {
         // XML에서 정의한 버튼을 가져오는 코드
         val displayButton = findViewById<Button>(R.id.btn_setting_display)
 
-        // 만약 데이터의 이름이 "디스플레이"인 경우에만 버튼을 보여줌
+        // 디스플레이를 클릭한 경우에만 추가적인 내용을 보여줌
         if (datas.name == "디스플레이") {
-            // 클릭 이벤트 처리
-            displayButton.setOnClickListener {
+            // 이미지와 텍스트 감추기
+            binding.imgSetting.visibility = View.GONE
+            binding.tvName.visibility = View.GONE
+
+            // 버튼 보이기
+            binding.btnSettingDisplay.visibility = View.VISIBLE
+
+            // 버튼 클릭 시 동작 추가
+            binding.btnSettingDisplay.setOnClickListener {
                 // 디스플레이 설정을 보여주는 새로운 화면으로 이동하는 코드 추가
                 // 예: startActivity(Intent(this, DisplaySettingsActivity::class.java))
             }
-
-            // 버튼을 보이도록 설정
-            displayButton.visibility = View.VISIBLE
         } else {
-            // "디스플레이"가 아닌 경우 버튼을 숨김
-            displayButton.visibility = View.GONE
+            // 디스플레이가 아닌 경우 이미지와 텍스트 보이기, 버튼 감추기
+            Glide.with(this).load(datas.img).into(binding.imgSetting)
+            binding.tvName.text = datas.name
+            binding.imgSetting.visibility = View.VISIBLE
+            binding.tvName.visibility = View.VISIBLE
+            binding.btnSettingDisplay.visibility = View.GONE
         }
-
     }
 }

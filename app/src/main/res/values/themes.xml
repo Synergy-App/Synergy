@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Synergy" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Base.Theme.Synergy" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="android:windowActionBarOverlay">true</item> <!-- 여기서 상단바를 오버레이로 설정 -->
 
         <!-- Customize your light theme here. -->

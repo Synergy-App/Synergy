@@ -30,7 +30,7 @@
             android:name=".EduSpaceActivity"
             android:exported="false" />
         <activity
-            android:name="com.sungkyul.settingedu.SettingEduActivity"
+            android:name="com.sungkyul.synergy.settingedu.SettingEduActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
