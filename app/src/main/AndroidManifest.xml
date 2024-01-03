@@ -47,6 +47,15 @@
         <activity
             android:name=".EduSpaceActivity"
             android:exported="false" />
+      <activity
+            android:name="com.sungkyul.synergy.settingedu.SettingEduActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
