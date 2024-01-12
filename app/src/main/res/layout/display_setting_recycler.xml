@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingHorizontal="20dp"
+    android:paddingVertical="10dp"
+    android:background="#7A7878"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/tv_rv_dname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="기능이름2"
+        android:textStyle="bold"
+        android:layout_marginLeft="0dp"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_rv_dexplain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="기능설명2"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="0dp"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_rv_dname"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
