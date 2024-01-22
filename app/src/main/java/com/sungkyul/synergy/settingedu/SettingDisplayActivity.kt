@@ -4,6 +4,8 @@ import android.graphics.Rect
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.SeekBar
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
@@ -50,7 +52,43 @@ class SettingDisplayActivity : AppCompatActivity() {
         setContentView(R.layout.activity_setting_display)
         // RecyclerView 초기화 함수 호출
         initRecycler()
+
+        // SeekBar 초기화 및 리스너 등록
+        val seekBar: SeekBar = findViewById(R.id.sb_Brightness)
+        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                // SeekBar의 값이 변경될 때 호출되는 콜백
+                // 여기에서 밝기를 조절하도록 설정
+
+                // 밝기 값이 0.0부터 1.0까지의 범위로 정규화되어야 합니다.
+                val normalizedBrightness = progress / 100.0f
+
+                // 앱의 Window 속성 가져오기
+                val window = window
+                val layoutParams = window.attributes
+
+                // 밝기 설정
+                layoutParams.screenBrightness = normalizedBrightness
+
+                // 앱의 화면 속성 업데이트
+                window.attributes = layoutParams
+
+                // 예제로 밝기 값에 따라 텍스트뷰에 표시하는 코드
+                val brightnessTextView: TextView = findViewById(R.id.tv_Brightness)
+                brightnessTextView.text = "밝기: $progress"
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                // 사용자가 SeekBar 터치를 시작할 때 호출되는 콜백
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                // 사용자가 SeekBar 터치를 끝낼 때 호출되는 콜백
+            }
+        })
     }
+
+
 
     // RecyclerView를 초기화하고 설정하는 함수
     private fun initRecycler() {
