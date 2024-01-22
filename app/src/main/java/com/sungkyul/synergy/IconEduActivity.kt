@@ -2,6 +2,7 @@ package com.sungkyul.synergy
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.adapter.IconEduAdapter
@@ -24,7 +25,8 @@ class IconEduActivity : AppCompatActivity() {
         // RecyclerView에 레이아웃 매니저 설정
         recyclerView.layoutManager = LinearLayoutManager(this) // LinearLayoutManager 또는 필요한 레이아웃 매니저를 사용합니다.
 
-        // 데이터를 생성하거나 가져와서 리스트를 만듭니다. 여기서는 예시로 더미 데이터를 만듭니다.
+
+            // 데이터를 생성하거나 가져와서 리스트를 만듭니다. 여기서는 예시로 더미 데이터를 만듭니다.
         val iconList = arrayListOf(
             Icon(R.drawable.sound, "음량 조절"),
             Icon(R.drawable.sound, "와이파이"),
@@ -39,7 +41,7 @@ class IconEduActivity : AppCompatActivity() {
             // 예시임. 변경해야됨.
         )
         // RecyclerView Adapter 생성 및 연결
-        iconAdapter = IconEduAdapter(iconList) // 여기에 생성한 아이템 리스트를 넣어줍니다.
+        iconAdapter = IconEduAdapter(this, iconList) // 여기에 생성한 아이템 리스트를 넣어줍니다.
         recyclerView.adapter = iconAdapter
     }
 }
