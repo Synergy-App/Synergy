@@ -8,6 +8,7 @@
     android:background="#7A7878"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
     <TextView
         android:id="@+id/tv_rv_dname"
         android:layout_width="wrap_content"
