@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/screenEdu_home_btn"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                android:textSize="25sp"
+                android:text="홈화면"
+                android:layout_marginRight="20dp"/>
+
+            <Button
+                android:id="@+id/screenEdu_main_btn"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                android:text="메인화면"
+                android:textSize="25sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/screenEdu_Toolbar_btn"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                android:layout_marginRight="20dp"
+                android:text="상단바\n교육"
+                android:textSize="25sp"/>
+
+            <Button
+                android:id="@+id/screenEdu_bottom_btn"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                android:text="하단바\n교육"
+                android:textSize="25sp"/>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+</ScrollView>

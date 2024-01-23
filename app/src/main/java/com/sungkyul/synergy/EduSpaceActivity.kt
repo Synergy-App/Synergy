@@ -3,8 +3,8 @@ package com.sungkyul.synergy
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import com.sungkyul.synergy.databinding.ActivityEduSpaceBinding
+import com.sungkyul.synergy.screenEdu.ScreenEduActivity
 
 /** 교육 공간 메뉴 화면 */
 private lateinit var binding: ActivityEduSpaceBinding
@@ -19,7 +19,7 @@ class EduSpaceActivity : AppCompatActivity() {
             startActivity(intent)
         }
         binding.screenEduBtn.setOnClickListener{
-            val intent= Intent(this,ScreenEduActivity::class.java)
+            val intent= Intent(this, ScreenEduActivity::class.java)
             startActivity(intent)
         }
 

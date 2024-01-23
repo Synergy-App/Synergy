@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/layout/bottom_bar.xml -->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:background="#80000000"
+    android:layout_gravity="bottom">
+
+    <!-- 왼쪽 세로 선 3개 (네비게이션 아이콘) -->
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/baseline_menu_24" />
+
+    <!-- 가운데 공간 (추가 기능이나 앱 아이콘) -->
+    <ImageView
+        android:id="@+id/homeIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/background_round" />
+
+    <!-- 오른쪽 화살표 또는 뒤로 가기 버튼 -->
+    <ImageView
+        android:id="@+id/backIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="140dp"
+        android:layout_marginEnd="28dp"
+        android:layout_toEndOf="@+id/homeIcon"
+        android:src="@drawable/baseline_back" />
+
+</RelativeLayout>
