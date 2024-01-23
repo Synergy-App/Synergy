@@ -11,7 +11,9 @@
 
     <!--상단바-->
     <include layout="@layout/toolbar"
-        android:background="@drawable/transparent_black_box"/>
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/green_border" />
 
     <!--손-->
     <ImageView
@@ -21,29 +23,26 @@
         android:src="@drawable/hand"
         android:visibility="gone" />
 
-    <!--초록색 선-->
-
+    <!--초록색 구분선-->
     <LinearLayout
         android:layout_width="366dp"
         android:layout_height="644dp"
         android:layout_weight="1"
-
         android:gravity="center"
         android:orientation="vertical">
 
-
-    <!--텍스트부분-->
+        <!--text부분-->
         <TextView
             android:id="@+id/change_tv"
-            android:layout_width="199dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="홈 화면 설명을 시작하겠습니다"
+            android:text="이 부분은 상단바입니다"
             android:textSize="30dp" />
 
 
     </LinearLayout>
 
-    <!-- 다음 버튼-->
+    <!--다음 버튼-->
     <Button
         android:id="@+id/next_btn"
         android:layout_width="wrap_content"

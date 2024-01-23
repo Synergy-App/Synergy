@@ -34,23 +34,48 @@
         <activity
             android:name=".kakaotalk.KakaoMainActivity"
             android:exported="false" />
+
+        <!-- 화면구성 교육-->
         <activity
-            android:name=".ScreenEduActivity"
+            android:name=".screenEdu.ScreenEduActivity"
             android:exported="false" />
+            <!--화면 구성: 1.메인 화면-->
+        <activity
+            android:name=".screenEdu.ScreenEduMainActivity"
+            android:exported="false" />
+        <!--화면 구성: 2.상단바-->
+        <activity
+            android:name=".screenEdu.ScreenEduToolActivity"
+            android:exported="false" />
+            <!--화면 구성: 3.하단바-->
+        <activity
+            android:name=".screenEdu.ScreenEduBottomActivity"
+            android:exported="false" />
+
+            <!-- 화면 구성: -->
+        <activity
+            android:name=".screenEdu.ScreenEdu_select_Activity"
+            android:exported="false" />
+            <!-- 화면 구성: 상단바 교육 화면-->
+        <activity
+            android:name=".screenEdu.ScreenEdu_ToolBar_Navigation_Activity"
+            android:exported="false" />
+        <!--아이콘 교육-->
         <activity
             android:name=".IconEduActivity"
-            android:exported="true">
+            android:exported="false" />
+        <activity
+            android:name=".settingedu.IconDetailActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".EduSpaceActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".settingedu.IconDetailActivity"
-            android:exported="true" />
-        <activity
-            android:name=".EduSpaceActivity"
-            android:exported="false" />
         <activity
             android:name=".settingedu.SettingDisplayActivity"
             android:exported="false" />
