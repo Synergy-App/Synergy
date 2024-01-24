@@ -65,7 +65,7 @@
             android:name=".IconEduActivity"
             android:exported="false" />
         <activity
-            android:name=".settingedu.IconDetailActivity"
+            android:name=".IconEdu.IconDetailActivity"
             android:exported="true" />
 
         <activity

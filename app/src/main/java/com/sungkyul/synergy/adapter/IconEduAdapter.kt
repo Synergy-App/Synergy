@@ -4,13 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.data.Icon
 import com.sungkyul.synergy.data.IconInfo
 import com.sungkyul.synergy.databinding.IconListBinding
-import com.sungkyul.synergy.settingedu.IconDetailActivity
+import com.sungkyul.synergy.IconEdu.IconDetailActivity
 
 /**교육공간 속 아이콘 리사이클러뷰 어뎁터 */
 class IconEduAdapter(val context: Context,  val iconList:ArrayList<Icon>):RecyclerView.Adapter<IconEduAdapter.CustomViewHolder>() {
