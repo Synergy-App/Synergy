@@ -8,6 +8,7 @@ import com.sungkyul.synergy.screenEdu.ScreenEduActivity
 
 /** 교육 공간 메뉴 화면 */
 private lateinit var binding: ActivityEduSpaceBinding
+
 class EduSpaceActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,10 +19,10 @@ class EduSpaceActivity : AppCompatActivity() {
             val intent= Intent(this,IconEduActivity::class.java)
             startActivity(intent)
         }
+
         binding.screenEduBtn.setOnClickListener{
             val intent= Intent(this, ScreenEduActivity::class.java)
             startActivity(intent)
         }
-
     }
 }
