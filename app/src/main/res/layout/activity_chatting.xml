@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#AFC0CF"
     android:orientation="vertical"
-    tools:context=".kakaotalk.ChattingActivity">
+    tools:context=".edu_space.kakaotalk.activity.ChattingActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

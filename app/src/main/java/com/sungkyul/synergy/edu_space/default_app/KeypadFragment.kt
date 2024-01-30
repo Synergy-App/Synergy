@@ -1,13 +1,10 @@
-package com.sungkyul.synergy.defaultApp
+package com.sungkyul.synergy.edu_space.default_app
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageButton
 import com.sungkyul.synergy.databinding.FragmentKeypadBinding
 import com.sungkyul.synergy.util.Animation
 

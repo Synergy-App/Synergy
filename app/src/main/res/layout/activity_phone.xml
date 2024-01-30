@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/phoneBgColor"
-    tools:context=".defaultApp.PhoneActivity">
+    tools:context=".edu_space.default_app.PhoneActivity">
 
     <!-- 상단 바 -->
     <LinearLayout

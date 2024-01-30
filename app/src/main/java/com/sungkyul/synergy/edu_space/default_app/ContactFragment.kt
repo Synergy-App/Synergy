@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.defaultApp
+package com.sungkyul.synergy.edu_space.default_app
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,15 +10,14 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityPhoneBinding
 import com.sungkyul.synergy.databinding.FragmentContactBinding
 import com.sungkyul.synergy.databinding.FragmentKeypadBinding
-import com.sungkyul.synergy.databinding.FragmentRecentHistoryBinding
 import com.sungkyul.synergy.util.Animation
 
-private lateinit var binding: FragmentRecentHistoryBinding
+private lateinit var binding: FragmentContactBinding
 
-class RecentHistoryFragment : Fragment() {
+class ContactFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = FragmentRecentHistoryBinding.inflate(layoutInflater)
+        binding = FragmentContactBinding.inflate(layoutInflater)
     }
 
     override fun onCreateView(
@@ -27,6 +26,6 @@ class RecentHistoryFragment : Fragment() {
     ): View? {
 
         // Inflate the layout for this fragment.
-        return inflater.inflate(R.layout.fragment_recent_history, container, false)
+        return inflater.inflate(R.layout.fragment_contact, container, false)
     }
 }

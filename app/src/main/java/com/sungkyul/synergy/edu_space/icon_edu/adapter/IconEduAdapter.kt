@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.adapter
+package com.sungkyul.synergy.edu_space.icon_edu.adapter
 
 import android.content.Context
 import android.content.Intent
@@ -9,7 +9,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.data.Icon
 import com.sungkyul.synergy.data.IconInfo
 import com.sungkyul.synergy.databinding.IconListBinding
-import com.sungkyul.synergy.IconEdu.IconDetailActivity
+import com.sungkyul.synergy.edu_space.icon_edu.activity.IconDetailActivity
 
 /**교육공간 속 아이콘 리사이클러뷰 어뎁터 */
 class IconEduAdapter(val context: Context,  val iconList:ArrayList<Icon>):RecyclerView.Adapter<IconEduAdapter.CustomViewHolder>() {
@@ -18,14 +18,14 @@ class IconEduAdapter(val context: Context,  val iconList:ArrayList<Icon>):Recycl
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
-    ): IconEduAdapter.CustomViewHolder {
+    ): CustomViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = IconListBinding.inflate(inflater, parent, false)
         return CustomViewHolder(binding)
     }
 
     //생성된 Holder에서 보관중인 뷰(iconText)들을 데이터인 iconList 와 연결
-    override fun onBindViewHolder(holder: IconEduAdapter.CustomViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         val currentItem = iconList[position]
         holder.bind(currentItem)
     }
