@@ -11,6 +11,20 @@
     <color name="screenLearning">#C4BAE0</color>
     <color name="naverLearning">#DFE0BA</color>
     <color name="kakaotalkLearning">#E0BAC8</color>
+    
+    <!-- 배경 -->
+    <color name="bgColor1">#EFEDE7</color>
+    <color name="bgColor2">#EDE3E1</color>
+    <color name="bgColor3">#F6F5FA</color>
+    <!-- 교육 -->
+    <color name="eduColor1">#52A669</color>
+    <color name="eduColor2">#7EAA64</color>
+    <!-- 실습 -->
+    <color name="practiceColor1">#D25A5A</color>
+    <!-- 내 -->
+    <color name="myColor1">#7272BA</color>
 
-
+    <!-- 전화 -->
+    <color name="phone_green">#15B76D</color>
+    <color name="phone_grey">#858585</color>
 </resources>
