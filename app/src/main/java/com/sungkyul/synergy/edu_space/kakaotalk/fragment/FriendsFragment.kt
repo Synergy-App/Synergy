@@ -44,6 +44,7 @@ class FriendsFragment : Fragment() {
         profileItems.add(profileItem(R.drawable.kakao_profile, "심춘희", "그대와 나"))
         profileItems.add(profileItem(R.drawable.kakao_profile, "박박박", "유아쏘뷰티풀"))
         profileItems.add(profileItem(R.drawable.kakao_profile, "황진닝", ""))
+        profileItems.add(profileItem(R.drawable.kakao_profile, "허수진", "대장님"))
 
 
         adapter.datas = profileItems // Adapter에 데이터 설정

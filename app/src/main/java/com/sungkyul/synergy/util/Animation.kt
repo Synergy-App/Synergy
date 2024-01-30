@@ -11,19 +11,19 @@ class Animation {
             뷰 배경의 알파 값이 터치 여부에 따라 바뀌는 함수.
 
             [설명]
-            뷰를 누르면, 버튼 배경의 알파 값이 (duration)ms 동안 touchUpAlpha에서 touchDownAlpha로 바뀐다.
-            뷰를 떼면, 버튼 배경의 알파 값이 (duration)ms 동안 touchDownAlpha에서 touchUpAlpha로 바뀐다.
+            뷰를 누르면, 배경의 알파 값이 (duration)ms 동안 touchUpAlpha에서 touchDownAlpha로 바뀐다.
+            뷰를 떼면, 배경의 알파 값이 (duration)ms 동안 touchDownAlpha에서 touchUpAlpha로 바뀐다.
 
             [파라미터]
             - view: 뷰
             - initAlpha: 초기 알파 값 (값은 0 ~ 255 사이)
-            - touchUpAlpha: 버튼을 떼고 있을 때의 알파 값 (값은 0 ~ 255 사이)
-            - touchDownAlpha: 버튼을 누르고 있을 때의 알파 값 (값은 0 ~ 255 사이)
+            - touchUpAlpha: 뷰를 떼고 있을 때의 알파 값 (값은 0 ~ 255 사이)
+            - touchDownAlpha: 뷰를 누르고 있을 때의 알파 값 (값은 0 ~ 255 사이)
             - duration: 애니메이션 진행 시간 (ms)
 
             [예시]
             // button을 누르면 버튼 배경이 서서히 나타나고, 떼면 서서히 사라진다.
-            Animation.setButtonBgAlphaAnimationOnTouch(button, 0, 0, 255, 100)
+            Animation.setViewBgAlphaAnimationOnTouch(button, 0, 0, 255, 100)
         */
         fun setViewBgAlphaAnimationOnTouch(
             view: View,
