@@ -1,6 +1,6 @@
 // IconDetailActivity.kt
 
-package com.sungkyul.synergy.IconEdu
+package com.sungkyul.synergy.edu_space.icon_edu.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

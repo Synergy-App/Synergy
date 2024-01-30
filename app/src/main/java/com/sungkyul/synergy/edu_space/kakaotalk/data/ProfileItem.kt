@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.kakaotalk
+package com.sungkyul.synergy.edu_space.kakaotalk.data
 
 
 import java.io.Serializable
