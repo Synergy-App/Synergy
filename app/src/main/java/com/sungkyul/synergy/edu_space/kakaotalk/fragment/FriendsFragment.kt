@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.kakaotalk
+package com.sungkyul.synergy.edu_space.kakaotalk.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.edu_space.kakaotalk.adapter.ProfileAdapter
+import com.sungkyul.synergy.edu_space.kakaotalk.data.profileItem
 
 /** 카카오톡 친구 리스트뷰 화면 Fragment */
 class FriendsFragment : Fragment() {

@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.defaultApp
+package com.sungkyul.synergy.edu_space.defaultapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.kakaotalk
+package com.sungkyul.synergy.edu_space.kakaotalk.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

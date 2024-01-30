@@ -3,9 +3,6 @@ package com.sungkyul.synergy.screenEdu
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.sungkyul.synergy.IconEduActivity
-import com.sungkyul.synergy.R
-import com.sungkyul.synergy.screenEdu.ScreenEduActivity
 import com.sungkyul.synergy.databinding.ActivityScreenEduSpaceBinding
 
 class ScreenEdu_select_Activity : AppCompatActivity() {
