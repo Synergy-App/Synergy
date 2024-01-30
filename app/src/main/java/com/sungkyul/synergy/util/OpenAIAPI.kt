@@ -1,4 +1,4 @@
-package com.sungkyul.synergy
+package com.sungkyul.synergy.util
 
 import com.aallam.openai.api.chat.ChatCompletion
 import com.aallam.openai.api.chat.ChatCompletionRequest

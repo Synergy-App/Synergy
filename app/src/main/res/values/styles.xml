@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 전화 앱의 BottomNavigationView 스타일 정의 -->
+    <style name="PhoneBottomNavView" parent="Widget.Design.BottomNavigationView">
+        <item name="android:background">@color/phoneBgColor</item>
+        <item name="itemTextAppearanceActive">@style/PhoneBottomNav.Active</item> <!-- 메뉴 아이템을 터치 다운 했을 때 -->
+        <item name="itemTextAppearanceInactive">@style/PhoneBottomNav.Inactive</item> <!-- 메뉴 아이템을 터치 업 했을 때 -->
+    </style>
+
+    <style name="PhoneBottomNav.Active" parent="Widget.Design.BottomNavigationView">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/phoneGreen</item>
+    </style>
+
+    <style name="PhoneBottomNav.Inactive" parent="Widget.Design.BottomNavigationView">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/phoneGrey</item>
+    </style>
+</resources>
