@@ -3,12 +3,11 @@ package com.sungkyul.synergy.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.data.EduButtonItem
+import com.sungkyul.synergy.edu_space.icon_edu.data.EduButtonItem
 
 class EduButtonAdapter(private val buttonList: List<EduButtonItem>) :
     RecyclerView.Adapter<EduButtonAdapter.ButtonViewHolder>() {

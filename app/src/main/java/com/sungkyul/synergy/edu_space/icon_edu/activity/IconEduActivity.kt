@@ -1,11 +1,12 @@
-package com.sungkyul.synergy
+package com.sungkyul.synergy.edu_space.icon_edu.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.sungkyul.synergy.R
 import com.sungkyul.synergy.adapter.IconEduAdapter
-import com.sungkyul.synergy.data.Icon
+import com.sungkyul.synergy.edu_space.icon_edu.data.Icon
 import com.sungkyul.synergy.databinding.ActivityIconEduBinding
 
 /**교육공간 속 아이콘 설명 액티비티*/

@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.sungkyul.synergy.data.Icon
+import com.sungkyul.synergy.edu_space.icon_edu.data.Icon
 import com.sungkyul.synergy.databinding.IconListBinding
 
 /**교육공간 속 아이콘 리사이클러뷰 어뎁터 */

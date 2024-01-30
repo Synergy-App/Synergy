@@ -13,7 +13,7 @@ import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.sungkyul.synergy.adapter.EduButtonAdapter
-import com.sungkyul.synergy.data.EduButtonItem
+import com.sungkyul.synergy.edu_space.icon_edu.data.EduButtonItem
 
 /** 학습하기 (교육공간) fragment
  * MPAndroidChart라이브러리 나중에 분리해야할듯 */

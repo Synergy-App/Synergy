@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.kakaotalk
+package com.sungkyul.synergy.edu_space.kakaotalk.adapter
 
 import android.content.Context
 import android.content.Intent
@@ -9,8 +9,10 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.edu_space.kakaotalk.activity.ProfileDetailActivity
+import com.sungkyul.synergy.edu_space.kakaotalk.data.profileItem
+
 /** 카카오톡 프로필 어뎁터와 뷰홀더 */
 class ProfileAdapter(private val context: Context) :
     RecyclerView.Adapter<ProfileAdapter.ViewHolder>() {
