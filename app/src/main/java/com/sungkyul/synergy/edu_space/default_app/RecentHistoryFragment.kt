@@ -5,13 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.databinding.ActivityPhoneBinding
-import com.sungkyul.synergy.databinding.FragmentContactBinding
-import com.sungkyul.synergy.databinding.FragmentKeypadBinding
 import com.sungkyul.synergy.databinding.FragmentRecentHistoryBinding
-import com.sungkyul.synergy.util.Animation
 
 private lateinit var binding: FragmentRecentHistoryBinding
 
