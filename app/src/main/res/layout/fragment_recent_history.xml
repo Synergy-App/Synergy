@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".defaultApp.RecentHistoryFragment">
+    tools:context=".edu_space.default_app.RecentHistoryFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

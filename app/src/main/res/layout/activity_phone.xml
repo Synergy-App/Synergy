@@ -22,7 +22,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="@string/phone"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:layout_marginLeft="10dp"/>
 
         <LinearLayout
