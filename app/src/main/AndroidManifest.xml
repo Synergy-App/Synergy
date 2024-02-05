@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -15,69 +14,62 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Synergy"
         tools:targetApi="31">
-
         <activity
-            android:name=".kakaotalk.ProfileDetailActivity"
+            android:name=".edu_space.default_app.GalleryViewActivity"
             android:exported="false" />
-
         <activity
-            android:name=".kakaotalk.ChattingActivity"
-            android:exported="false" />
+            android:name=".edu_space.default_app.CameraActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".edu_space.default_app.PhoneActivity"
+            android:exported="false"></activity>
+        <activity
+            android:name=".edu_space.kakaotalk.activity.ProfileDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".edu_space.kakaotalk.activity.ChattingActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false">
         </activity>
 
-
-
         <activity
-            android:name=".kakaotalk.KakaotalkLoginActivity"
+            android:name=".edu_space.kakaotalk.activity.KakaotalkLoginActivity"
             android:exported="false" />
-
         <activity
-            android:name=".kakaotalk.KakaoMainActivity"
-            android:exported="false" />
-
-        <!-- 화면구성 교육 -->
+            android:name=".edu_space.kakaotalk.activity.KakaoMainActivity"
+            android:exported="false" /> <!-- 화면구성 교육 -->
         <activity
             android:name=".screenEdu.ScreenEduActivity"
-            android:exported="false" />
-
-        <!-- 화면 구성: 1.메인 화면 -->
+            android:exported="false" /> <!-- 화면 구성: 1.메인 화면 -->
         <activity
             android:name=".screenEdu.ScreenEduMainActivity"
-            android:exported="false" />
-
-        <!-- 화면 구성: 2.상단바 -->
+            android:exported="false" /> <!-- 화면 구성: 2.상단바 -->
         <activity
             android:name=".screenEdu.ScreenEduToolActivity"
-            android:exported="false" />
-
-        <!-- 화면 구성: 3.하단바 -->
+            android:exported="false" /> <!-- 화면 구성: 3.하단바 -->
         <activity
             android:name=".screenEdu.ScreenEduBottomActivity"
-            android:exported="false" />
-
-        <!-- 화면 구성: -->
+            android:exported="false" /> <!-- 화면 구성: -->
         <activity
             android:name=".screenEdu.ScreenEdu_select_Activity"
-            android:exported="false" />
-
-        <!-- 화면 구성: 상단바 교육 화면 -->
+            android:exported="false" /> <!-- 화면 구성: 상단바 교육 화면 -->
         <activity
             android:name=".screenEdu.ScreenEdu_ToolBar_Navigation_Activity"
-            android:exported="false" />
-
-        <!-- 아이콘 교육 -->
+            android:exported="false" /> <!-- 아이콘 교육 -->
         <activity
-            android:name=".IconEduActivity"
+            android:name=".edu_space.icon_edu.activity.IconEduActivity"
             android:exported="false" />
-
         <activity
-            android:name=".IconEdu.IconDetailActivity"
+            android:name=".edu_space.icon_edu.activity.IconDetailActivity"
             android:exported="false" />
-
         <activity
             android:name=".EduSpaceActivity"
             android:exported="false" >
@@ -85,10 +77,10 @@
 
         </activity>
         <!-- 환경설정 교육 -->
+            android:exported="false" />
         <activity
             android:name=".settingedu.SettingDisplayActivity"
             android:exported="false" />
-
         <activity
             android:name="com.sungkyul.synergy.settingedu.SettingEduActivity"
             android:exported="true">

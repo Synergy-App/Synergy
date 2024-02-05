@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".kakaotalk.KakaotalkLoginActivity">
+    tools:context=".edu_space.kakaotalk.activity.KakaotalkLoginActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

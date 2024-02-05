@@ -2,6 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFF</color>
+    <color name="transparency">#00000000</color>
 
     <color name="learnChatColor">#FF5106</color>
     <color name="chatColor">#95F4F3FD</color>
@@ -25,6 +26,7 @@
     <color name="myColor1">#7272BA</color>
 
     <!-- 전화 -->
-    <color name="phone_green">#15B76D</color>
-    <color name="phone_grey">#858585</color>
+    <color name="phoneGreen">#15B76D</color>
+    <color name="phoneGrey">#858585</color>
+    <color name="phoneBgColor">#FCFCFC</color>
 </resources>

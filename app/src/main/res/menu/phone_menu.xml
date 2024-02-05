@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/phone_keypad_nav"
+        android:title="@string/keypad"/>
+
+    <item
+        android:id="@+id/phone_recent_history_nav"
+        android:title="@string/recent_history"/>
+
+    <item
+        android:id="@+id/phone_contact_nav"
+        android:title="@string/contact"/>
+</menu>
