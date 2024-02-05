@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".edu_space.default_app.GalleryViewActivity"
+    android:background="@color/black">
+
+    <LinearLayout
+        android:id="@+id/top_menu_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="12dp"
+        android:layout_alignParentTop="true">
+
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:src="@drawable/camera_grey_circle"
+            android:background="@drawable/white_circle"
+            android:padding="12dp"
+            android:scaleType="centerInside"
+            android:contentDescription="@string/back"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="end">
+
+            <ImageButton
+                android:id="@+id/bixby_vision_button"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:src="@drawable/camera_grey_circle"
+                android:background="@drawable/white_circle"
+                android:padding="12dp"
+                android:scaleType="centerInside"
+                android:contentDescription="@string/bixby_vision"/>
+
+            <ImageButton
+                android:id="@+id/more_button"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:src="@drawable/camera_grey_circle"
+                android:background="@drawable/white_circle"
+                android:padding="12dp"
+                android:scaleType="centerInside"
+                android:contentDescription="@string/more"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/gallery_screen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="32dp"
+        android:src="@drawable/sample_screenshot1"
+        android:layout_below="@+id/top_menu_layout"
+        android:layout_above="@+id/bottom_menu_layout"
+        android:contentDescription="@string/gallery_screen"/>
+
+    <LinearLayout
+        android:id="@+id/bottom_menu_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="16dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_alignParentBottom="true">
+
+        <ImageButton
+            android:id="@+id/favorite_button"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:src="@drawable/camera_grey_circle"
+            android:background="@drawable/white_circle"
+            android:padding="12dp"
+            android:scaleType="centerInside"
+            android:contentDescription="@string/favorite"/>
+
+        <ImageButton
+            android:id="@+id/edit_button"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="24dp"
+            android:src="@drawable/camera_grey_circle"
+            android:background="@drawable/white_circle"
+            android:padding="12dp"
+            android:scaleType="centerInside"
+            android:contentDescription="@string/edit"/>
+
+        <ImageButton
+            android:id="@+id/share_button"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="24dp"
+            android:src="@drawable/camera_grey_circle"
+            android:background="@drawable/white_circle"
+            android:padding="12dp"
+            android:scaleType="centerInside"
+            android:contentDescription="@string/share"/>
+
+        <ImageButton
+            android:id="@+id/delete_button"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="24dp"
+            android:src="@drawable/camera_grey_circle"
+            android:background="@drawable/white_circle"
+            android:padding="12dp"
+            android:scaleType="centerInside"
+            android:contentDescription="@string/delete"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

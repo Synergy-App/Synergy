@@ -1,5 +1,6 @@
 package com.sungkyul.synergy.edu_space.default_app
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
@@ -131,6 +132,11 @@ class CameraActivity : AppCompatActivity() {
             }
             MotionEvent.ACTION_UP -> {
                 AnimationUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
+
+                // 갤러리 뷰로 이동
+                val intent = Intent(this, GalleryViewActivity::class.java)
+                startActivity(intent)
+
                 view.performClick()
             }
         }
@@ -145,6 +151,10 @@ class CameraActivity : AppCompatActivity() {
             }
             MotionEvent.ACTION_UP -> {
                 view.background = ContextCompat.getDrawable(applicationContext, R.drawable.white_circle)
+
+                // 찰칵하는 애니메이션
+                AnimationUtil.startAlphaAnimation2(binding.cameraScreen.drawable, 25, 255, 0)
+
                 view.performClick()
             }
         }

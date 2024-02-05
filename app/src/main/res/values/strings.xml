@@ -43,4 +43,12 @@
     <string name="ratio">비율</string>
     <string name="motion_photo">모션 포토</string>
     <string name="filter">필터</string>
+
+    <!-- Gallery View Activity -->
+    <string name="back">이전</string>
+    <string name="bixby_vision">빅스비 비전</string>
+    <string name="gallery_screen">갤러리 화면</string>
+    <string name="favorite">즐겨찾기</string>
+    <string name="edit">편집</string>
+    <string name="share">공유</string>
 </resources>
