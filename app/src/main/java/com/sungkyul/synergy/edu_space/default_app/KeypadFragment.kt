@@ -1,6 +1,7 @@
 package com.sungkyul.synergy.edu_space.default_app
 
 import android.app.AlertDialog
+import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -11,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.FragmentKeypadBinding
 import com.sungkyul.synergy.util.AnimationUtil
 import com.sungkyul.synergy.util.TextUtil
