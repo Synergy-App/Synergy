@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Synergy"
         tools:targetApi="31">
         <activity
+            android:name=".edu_space.default_app.GalleryViewActivity"
+            android:exported="false" />
+        <activity
             android:name=".edu_space.default_app.CameraActivity"
             android:exported="true">
             <intent-filter>
@@ -25,8 +28,7 @@
         </activity>
         <activity
             android:name=".edu_space.default_app.PhoneActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".edu_space.kakaotalk.activity.ProfileDetailActivity"
             android:exported="false" />
@@ -44,7 +46,7 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.kakaotalk.activity.KakaoMainActivity"
-            android:exported="false"></activity> <!-- 화면구성 교육 -->
+            android:exported="false" /> <!-- 화면구성 교육 -->
         <activity
             android:name=".screenEdu.ScreenEduActivity"
             android:exported="false" /> <!-- 화면 구성: 1.메인 화면 -->
