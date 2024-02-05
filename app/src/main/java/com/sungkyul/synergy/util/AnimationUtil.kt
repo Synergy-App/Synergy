@@ -2,11 +2,15 @@ package com.sungkyul.synergy.util
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.graphics.drawable.Drawable
 import android.view.View
+import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.ScaleAnimation
+import android.widget.Toast
+import androidx.core.view.updateLayoutParams
 
 class AnimationUtil {
     companion object {
@@ -68,15 +72,39 @@ class AnimationUtil {
             // Ease-Out
             val interpolator = DecelerateInterpolator()
 
-            val scaleAnimation = ScaleAnimation(
+            val animation = ScaleAnimation(
                 startScale, endScale,
                 startScale, endScale,
                 Animation.RELATIVE_TO_SELF, 0.5f, // 중심점 X
                 Animation.RELATIVE_TO_SELF, 0.5f // 중심점 Y
             )
-            scaleAnimation.duration = duration
-            scaleAnimation.interpolator = interpolator
-            view.startAnimation(scaleAnimation)
+            animation.duration = duration
+            animation.interpolator = interpolator
+            //animation.fillAfter = true // 애니메이션 종료 후에도 유지시킨다. (주의: View.GONE을 해도 안 사라지는 문제점이 있다.)
+            view.startAnimation(animation)
+        }
+
+        // (duration)ms 동안 view의 layout_height가 startHeight에서 endHeight로 바뀌는 함수
+        // startScale, endScale의 범위는 [0.0f, 1.0f]이다.
+        fun startHeightAnimation(
+            view: View,
+            duration: Long,
+            startHeight: Int,
+            endHeight: Int
+        ) {
+            // Ease-Out
+            val interpolator = DecelerateInterpolator()
+
+            val animator = ValueAnimator.ofInt(startHeight, endHeight)
+            animator.addUpdateListener {
+                view.updateLayoutParams {
+                    height = it.animatedValue as Int
+                }
+            }
+
+            animator.duration = duration
+            animator.interpolator = interpolator
+            animator.start()
         }
     }
 }

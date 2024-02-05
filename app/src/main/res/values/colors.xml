@@ -3,6 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFF</color>
     <color name="transparency">#00000000</color>
+    <color name="todo">#0096FF</color>
 
     <color name="learnChatColor">#FF5106</color>
     <color name="chatColor">#95F4F3FD</color>
@@ -29,4 +30,6 @@
     <color name="phoneGreen">#15B76D</color>
     <color name="phoneGrey">#858585</color>
     <color name="phoneBgColor">#FCFCFC</color>
+    <color name="phoneDeepBgColor">#F2F2F2</color>
+    <color name="phoneRed">#E96056</color>
 </resources>

@@ -1,27 +1,33 @@
 package com.sungkyul.synergy.edu_space.default_app
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.FragmentContactBinding
 
-private lateinit var binding: FragmentContactBinding
-
 class ContactFragment : Fragment() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = FragmentContactBinding.inflate(layoutInflater)
-    }
+    private lateinit var binding: FragmentContactBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        binding = FragmentContactBinding.inflate(inflater, container, false)
 
-        // Inflate the layout for this fragment.
-        return inflater.inflate(R.layout.fragment_contact, container, false)
+        val contactArray = ArrayList<ContactData>()
+        contactArray.add(ContactData(R.drawable.baseline_person_24, "대장님"))
+        contactArray.add(ContactData(R.drawable.baseline_person_24, "UX/UI 디자이너"))
+        contactArray.add(ContactData(R.drawable.baseline_person_24, "기획자"))
+        contactArray.add(ContactData(R.drawable.baseline_person_24, ":fearful:"))
+
+        val contactList = binding.contactList
+        contactList.layoutManager = LinearLayoutManager(binding.root.context)
+        contactList.adapter = ContactAdapter(contactArray)
+        
+        return binding.root
     }
 }

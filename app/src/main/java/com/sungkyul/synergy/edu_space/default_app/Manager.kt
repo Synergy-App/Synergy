@@ -8,5 +8,7 @@ const val TOUCH_DURATION_SCALE = 250L
 const val TOUCH_UP_SCALE = 0.75f
 const val TOUCH_DOWN_SCALE = 1.0f
 
+const val CALL_ENDED_DELAY = 4000L
+
 class Manager {
 }

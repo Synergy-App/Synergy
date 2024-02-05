@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityPhoneBinding
@@ -34,12 +35,24 @@ class PhoneActivity : AppCompatActivity() {
         binding.magnifyingGlassButton.setOnTouchListener(onTouchMagnifyingGlassListener)
         binding.moreButton.setOnTouchListener(onTouchMoreListener)
 
-        // 하단 내비게이션 뷰에서 메뉴 아이템을 선택하면, 해당하는 프래그먼트로 교체한다.
+        // 초기 메인 레이아웃 배경 설정
+        updateMainBgColor(R.color.phoneBgColor)
+
+        // 하단 내비게이션 뷰에서 메뉴 아이템을 선택하면, 메인 레이아웃 배경을 변경하고 해당하는 프래그먼트로 교체한다.
         binding.phoneBottomNav.setOnItemSelectedListener { item ->
             when(item.itemId) {
-                R.id.phone_keypad_nav -> replaceFragment(keypadFragment)
-                R.id.phone_recent_history_nav -> replaceFragment(recentHistoryFragment)
-                R.id.phone_contact_nav -> replaceFragment(contactFragment)
+                R.id.phone_keypad_nav -> {
+                    updateMainBgColor(R.color.phoneBgColor)
+                    replaceFragment(keypadFragment)
+                }
+                R.id.phone_recent_history_nav -> {
+                    updateMainBgColor(R.color.phoneDeepBgColor)
+                    replaceFragment(recentHistoryFragment)
+                }
+                R.id.phone_contact_nav -> {
+                    updateMainBgColor(R.color.phoneDeepBgColor)
+                    replaceFragment(contactFragment)
+                }
             }
             true
         }
@@ -79,6 +92,12 @@ class PhoneActivity : AppCompatActivity() {
             }
         }
         true
+    }
+
+    private fun updateMainBgColor(color: Int) {
+        val drawable = ContextCompat.getDrawable(applicationContext, color)
+        binding.phoneBottomNav.background = drawable
+        binding.mainLayout.background = drawable
     }
 
     private fun replaceFragment(fragment: Fragment) {
