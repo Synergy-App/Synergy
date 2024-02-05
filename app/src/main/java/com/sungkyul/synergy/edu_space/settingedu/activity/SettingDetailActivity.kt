@@ -1,13 +1,11 @@
-package com.sungkyul.synergy.settingedu
+package com.sungkyul.synergy.edu_space.settingedu.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.bumptech.glide.Glide
-import com.sungkyul.synergy.data.SettingData
+import com.sungkyul.synergy.edu_space.settingedu.data.SettingData
 import com.sungkyul.synergy.databinding.ActivitySettingDetailBinding
-import android.widget.Button
-import com.sungkyul.synergy.R
 
 /** 교육공간 속 환경설정교육 속 상세분야 액티비티 (환경설정 리사이클러뷰 아이템 누르면 나오는 액티비티) */
 class SettingDetailActivity : AppCompatActivity() {
