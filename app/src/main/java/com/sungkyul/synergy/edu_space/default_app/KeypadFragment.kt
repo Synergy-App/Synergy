@@ -2,6 +2,7 @@ package com.sungkyul.synergy.edu_space.default_app
 
 import android.app.AlertDialog
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -139,6 +140,14 @@ class KeypadFragment : Fragment() {
             }
             MotionEvent.ACTION_UP -> {
                 AnimationUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
+
+                if(binding.phoneNumText.text.toString().isNotEmpty()) {
+                    // 전화 화면으로 이동
+                    val intent = Intent(requireContext(), CallActivity::class.java)
+                    intent.putExtra("phone_num", binding.phoneNumText.text.toString())
+                    startActivity(intent)
+                }
+
                 view.performClick()
             }
         }

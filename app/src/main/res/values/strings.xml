@@ -2,6 +2,7 @@
     <string name="app_name">synergy</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="synergy">시너지</string>
 
     <!-- Phone Activity -->
     <string name="phone">전화</string>
@@ -27,6 +28,7 @@
     <string name="star">*</string>
     <string name="sharp">#</string>
     <string name="init_phone_num">010-1234-5678</string>
+    <string name="on_a_call">전화를 거는 중...</string>
 
     <!-- Camera Activity -->
     <string name="camera_toggle">카메라 토글</string>

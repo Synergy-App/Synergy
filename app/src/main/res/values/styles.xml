@@ -2,7 +2,7 @@
 <resources>
     <!-- 전화 앱의 BottomNavigationView 스타일 정의 -->
     <style name="PhoneBottomNavView" parent="Widget.Design.BottomNavigationView">
-        <item name="android:background">@color/phoneBgColor</item>
+        <item name="android:background">@color/phoneDeepBgColor</item>
         <item name="itemTextAppearanceActive">@style/PhoneBottomNav.Active</item> <!-- 메뉴 아이템을 터치 다운 했을 때 -->
         <item name="itemTextAppearanceInactive">@style/PhoneBottomNav.Inactive</item> <!-- 메뉴 아이템을 터치 업 했을 때 -->
     </style>
