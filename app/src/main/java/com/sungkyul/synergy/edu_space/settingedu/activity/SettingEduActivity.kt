@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.settingedu
+package com.sungkyul.synergy.edu_space.settingedu.activity
 
 import android.graphics.Rect
 import android.view.View
@@ -7,8 +7,8 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.adapter.SettingEduAdapter
-import com.sungkyul.synergy.data.SettingData
+import com.sungkyul.synergy.edu_space.settingedu.adapter.SettingEduAdapter
+import com.sungkyul.synergy.edu_space.settingedu.data.SettingData
 
 /** 교육공간 속 환경설정교육 액티비티 */
 

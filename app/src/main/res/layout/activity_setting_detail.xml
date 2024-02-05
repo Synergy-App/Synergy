@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sungkyul.synergy.settingedu.SettingDetailActivity">
+    tools:context="com.sungkyul.synergy.edu_space.settingedu.activity.SettingDetailActivity">
 
     <ImageView
         android:id="@+id/img_setting"
