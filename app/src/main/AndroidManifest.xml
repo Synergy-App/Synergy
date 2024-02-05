@@ -29,9 +29,7 @@
             android:exported="false">
         </activity>
 
-        <activity
-            android:name=".settingedu.SettingDetailActivity"
-            android:exported="false" />
+
 
         <activity
             android:name=".kakaotalk.KakaotalkLoginActivity"
@@ -82,8 +80,18 @@
 
         <activity
             android:name=".EduSpaceActivity"
-            android:exported="true" >
+            android:exported="false" >
 
+
+        </activity>
+        <!-- 환경설정 교육 -->
+        <activity
+            android:name=".settingedu.SettingDisplayActivity"
+            android:exported="false" />
+
+        <activity
+            android:name="com.sungkyul.synergy.settingedu.SettingEduActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -91,12 +99,14 @@
         </activity>
 
         <activity
-            android:name=".settingedu.SettingDisplayActivity"
+            android:name="com.sungkyul.synergy.settingedu.SettingFontSizeActivity"
+            android:exported="false">
+
+        </activity>
+        <activity
+            android:name=".settingedu.SettingDetailActivity"
             android:exported="false" />
 
-        <activity
-            android:name="com.sungkyul.synergy.settingedu.SettingEduActivity"
-            android:exported="false">
-        </activity>
+
     </application>
 </manifest>

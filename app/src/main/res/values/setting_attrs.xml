@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 환경설정-글자크기및스타일관련 임의파일-->
+
+<resources>
+    <attr name="mainTextSize" format="reference"/>
+</resources>
