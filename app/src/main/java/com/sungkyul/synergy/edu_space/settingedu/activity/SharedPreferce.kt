@@ -13,7 +13,7 @@ class DefaultPreferenceManager(private val context: Context) {
 
     fun setTextSize(size: Int) {
         // 기본값이 움직이지 않도록 수정
-        val adjustedSize = if (size in 0..6) size else 3
+        val adjustedSize = if (size in 0..7) size else 3
         editor.putInt(WORD_TEXT_SIZE, adjustedSize).apply()
     }
 
