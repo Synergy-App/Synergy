@@ -1,6 +1,7 @@
 package com.sungkyul.synergy.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.data.DisplayData
+import com.sungkyul.synergy.settingedu.SettingFontSizeActivity
 
 class SettingDisplayAdapter(private val context: Context) : RecyclerView.Adapter<SettingDisplayAdapter.ViewHolder>() {
 
@@ -23,6 +25,11 @@ class SettingDisplayAdapter(private val context: Context) : RecyclerView.Adapter
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(datas[position])
+        holder.itemView.setOnClickListener {
+            // "글자 크기와 스타일" 아이템 클릭 시 SettingFontSizeActivity로 이동
+            val intent = Intent(context, SettingFontSizeActivity::class.java)
+            context.startActivity(intent)
+        }
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
