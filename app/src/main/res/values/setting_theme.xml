@@ -1,0 +1,36 @@
+<!-- themes.xml -->
+<resources>
+
+    <style name="Theme.App_0" parent="AppTheme">
+        <item name="mainTextSize">@dimen/main_text_size_0</item>
+    </style>
+    <style name="Theme.App_1" parent="AppTheme">
+        <item name="mainTextSize">@dimen/main_text_size_1</item>
+    </style>
+    <style name="Theme.App_2" parent="AppTheme">
+        <item name="mainTextSize">@dimen/main_text_size_2</item>
+    </style>
+
+    <style name="Theme.App_3" parent="AppTheme">
+        <item name="mainTextSize">@dimen/main_text_size_3</item>
+    </style>
+
+    <style name="Theme.App_4" parent="AppTheme">
+        <item name="mainTextSize">@dimen/main_text_size_4</item>
+    </style>
+
+    <style name="Theme.App_5" parent="AppTheme">
+        <item name="mainTextSize">@dimen/main_text_size_5</item>
+    </style>
+    <style name="Theme.App_6" parent="AppTheme">
+        <item name="mainTextSize">@dimen/main_text_size_6</item>
+    </style>
+    <style name="Theme.App_7" parent="AppTheme">
+        <item name="mainTextSize">@dimen/main_text_size_7</item>
+    </style>
+
+
+
+    <!-- 나머지 숫자에 따른 스타일 리소스 추가 -->
+</resources>
+

@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.adapter
+package com.sungkyul.synergy.edu_space.settingedu.adapter
 
 import android.content.Context
 import android.content.Intent
@@ -10,9 +10,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.settingedu.SettingDetailActivity
-import com.sungkyul.synergy.data.SettingData
-import com.sungkyul.synergy.settingedu.SettingDisplayActivity
+import com.sungkyul.synergy.edu_space.settingedu.activity.SettingDetailActivity
+import com.sungkyul.synergy.edu_space.settingedu.data.SettingData
+import com.sungkyul.synergy.edu_space.settingedu.activity.SettingDisplayActivity
 
 /** 교육공간 속 환경설정교육 리사이클러뷰 어댑터 */
 class SettingEduAdapter(private val context: Context) : RecyclerView.Adapter<SettingEduAdapter.ViewHolder>() { // 뷰 객체를 그려주는 ViewHolder와 Data와 View를 연결해주는 Adapte
@@ -44,7 +44,7 @@ class SettingEduAdapter(private val context: Context) : RecyclerView.Adapter<Set
                 if (item.name == "디스플레이") {
                     // 디스플레이를 클릭한 경우 SettingDisplayActivity 시작
                     //val intent = Intent(context, SettingDisplayActivity::class.java)
-                    val intent = Intent(context, com.sungkyul.synergy.settingedu.SettingDisplayActivity::class.java)
+                    val intent = Intent(context, SettingDisplayActivity::class.java)
                     context.startActivity(intent)
                 } else {
                     // 다른 경우 SettingDetailActivity 시작
