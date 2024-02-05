@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">synergy</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- Phone Activity -->
@@ -28,4 +27,20 @@
     <string name="star">*</string>
     <string name="sharp">#</string>
     <string name="init_phone_num">010-1234-5678</string>
+
+    <!-- Camera Activity -->
+    <string name="camera_toggle">카메라 토글</string>
+    <string name="camera_screen">카메라 화면</string>
+    <string name="shooting">촬영</string>
+    <string name="gallery">갤러리</string>
+    <string name="singletake">싱글테이크</string>
+    <string name="photo">사진</string>
+    <string name="video">비디오</string>
+    <string name="more">더보기</string>
+    <string name="settings">설정</string>
+    <string name="flash">플래시</string>
+    <string name="timer">타이머</string>
+    <string name="ratio">비율</string>
+    <string name="motion_photo">모션 포토</string>
+    <string name="filter">필터</string>
 </resources>

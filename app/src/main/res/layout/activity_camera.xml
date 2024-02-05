@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".edu_space.default_app.CameraActivity"
+    android:background="@color/black">
+
+    <LinearLayout
+        android:id="@+id/top_menu_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_alignParentTop="true">
+
+        <ImageButton
+            android:id="@+id/settings_button"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:src="@drawable/camera_grey_circle"
+            android:background="@drawable/white_circle"
+            android:padding="12dp"
+            android:scaleType="centerInside"
+            android:contentDescription="@string/settings"/>
+
+        <ImageButton
+            android:id="@+id/flash_button"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/camera_grey_circle"
+            android:background="@drawable/white_circle"
+            android:padding="12dp"
+            android:scaleType="centerInside"
+            android:contentDescription="@string/flash"/>
+
+        <ImageButton
+            android:id="@+id/timer_button"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/camera_grey_circle"
+            android:background="@drawable/white_circle"
+            android:padding="12dp"
+            android:scaleType="centerInside"
+            android:contentDescription="@string/timer"/>
+
+        <ImageButton
+            android:id="@+id/ratio_button"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/camera_grey_circle"
+            android:background="@drawable/white_circle"
+            android:padding="12dp"
+            android:scaleType="centerInside"
+            android:contentDescription="@string/ratio"/>
+
+        <ImageButton
+            android:id="@+id/motion_photo_button"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/camera_grey_circle"
+            android:background="@drawable/white_circle"
+            android:padding="12dp"
+            android:scaleType="centerInside"
+            android:contentDescription="@string/motion_photo"/>
+
+        <ImageButton
+            android:id="@+id/filter_button"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/camera_grey_circle"
+            android:background="@drawable/white_circle"
+            android:padding="12dp"
+            android:scaleType="centerInside"
+            android:contentDescription="@string/filter"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/camera_screen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/sample_screenshot1"
+        android:layout_below="@+id/top_menu_layout"
+        android:layout_above="@+id/bottom_menu_layout"
+        android:contentDescription="@string/camera_screen"/>
+
+    <LinearLayout
+        android:id="@+id/bottom_menu_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="16dp"
+        android:paddingHorizontal="16dp"
+        android:gravity="center"
+        android:layout_above="@+id/shooting_layout">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/singletake"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            style="?android:attr/buttonBarButtonStyle"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/photo"
+            android:textSize="16sp"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/white"
+            style="?android:attr/buttonBarButtonStyle"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/video"
+            android:textSize="16sp"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/white"
+            style="?android:attr/buttonBarButtonStyle"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/more"
+            android:textSize="16sp"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/white"
+            style="?android:attr/buttonBarButtonStyle"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/shooting_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+        <ImageButton
+            android:id="@+id/gallery_button"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/camera_grey_circle"
+            android:scaleType="centerInside"
+            android:padding="8dp"
+            android:background="@drawable/white_circle"
+            android:contentDescription="@string/gallery"/>
+
+        <ImageButton
+            android:id="@+id/shooting_button"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="32dp"
+            android:scaleType="centerInside"
+            android:background="@drawable/white_circle"
+            android:contentDescription="@string/shooting"/>
+
+        <ImageButton
+            android:id="@+id/camera_toggle_button"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="32dp"
+            android:src="@drawable/camera_grey_circle"
+            android:scaleType="centerInside"
+            android:padding="8dp"
+            android:background="@drawable/white_circle"
+            android:contentDescription="@string/camera_toggle"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,5 +1,6 @@
 package com.sungkyul.synergy.edu_space.default_app
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityPhoneBinding
 import com.sungkyul.synergy.util.AnimationUtil
+import com.sungkyul.synergy.util.EduUtil
 
 class PhoneActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPhoneBinding
@@ -43,6 +45,12 @@ class PhoneActivity : AppCompatActivity() {
         }
 
         replaceFragment(keypadFragment)
+
+        // TODO: TEST
+        /*binding.eduScreen.bringToFront()
+        binding.phoneBottomNav.visibility = View.INVISIBLE
+        EduUtil.setAllViewsEnabled(binding.mainLayout, false)
+        EduUtil.test(supportFragmentManager, binding.eduScreen.id)*/
     }
 
     // 돋보기 버튼의 터치 이벤트 리스너
