@@ -48,33 +48,20 @@
 
         <!-- 화면구성 교육 -->
         <activity
-            android:name=".screenEdu.ScreenEduActivity"
-            android:exported="false" />
+            android:name=".edu_space.screenEdu.activity.ScreenEduMainActivity"
+            android:exported="true" > <!-- 화면 구성: 1.메인 -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <!-- 화면 구성: 1.메인 화면 -->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
-            android:name=".screenEdu.ScreenEduMainActivity"
-            android:exported="false" />
-
-        <!-- 화면 구성: 2.상단바 -->
+            android:name=".edu_space.screenEdu.activity.ScreenEduToolActivity"
+            android:exported="false" /> <!--상단바-->
         <activity
-            android:name=".screenEdu.ScreenEduToolActivity"
-            android:exported="false" />
-
-        <!-- 화면 구성: 3.하단바 -->
-        <activity
-            android:name=".screenEdu.ScreenEduBottomActivity"
-            android:exported="false" />
-
-        <!-- 화면 구성: -->
-        <activity
-            android:name=".screenEdu.ScreenEdu_select_Activity"
-            android:exported="false" />
-
-        <!-- 화면 구성: 상단바 교육 화면 -->
-        <activity
-            android:name=".screenEdu.ScreenEdu_ToolBar_Navigation_Activity"
-            android:exported="false" />
+            android:name=".edu_space.screenEdu.activity.ScreenEduBottomActivity"
+            android:exported="false" /> <!--하단바-->
 
         <!-- 아이콘 교육 -->
         <activity

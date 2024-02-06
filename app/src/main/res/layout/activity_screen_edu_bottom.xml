@@ -1,88 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#aabbcc"
-    android:gravity="center"
-    android:orientation="vertical"
-    tools:context=".screenEdu.ScreenEduActivity" >
+    android:background="@drawable/screenedu_background"
+    android:gravity="center|fill_vertical">
 
-    <!--상단바-->
-    <include layout="@layout/toolbar"
-        android:background="@drawable/transparent_black_box"/>
+    <!-- 상단바-->
+    <include
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:layout_marginBottom="670dp" />
 
-    <!--손-->
     <ImageView
-        android:id="@+id/hand_iv"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/hand"
-        android:visibility="gone" />
+        android:layout_width="399dp"
+        android:layout_height="703dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="-6dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/screenedu_blackground" />
 
-    <!--초록색 구분선-->
+    <!-- 하단바 -->
     <LinearLayout
-        android:layout_width="366dp"
-        android:layout_height="644dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="vertical">
 
-        <!--text부분-->
-        <TextView
-            android:id="@+id/change_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="이 부분은 하단바 입니다"
-            android:textSize="30dp" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="800dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/green_bar">
 
+        <include layout="@layout/nevigationbar" />
 
     </LinearLayout>
 
-    <!--다음 버튼-->
-    <Button
-        android:id="@+id/next_btn"
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="302dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/explanation_whitebox" />
+
+    <ImageView
+        android:layout_width="190dp"
+        android:layout_height="0dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="299dp"
+        android:layout_marginTop="523dp"
+        android:background="@drawable/arrowdown_white" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="260dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="30dp"
+        android:background="@android:color/black" />
+
+    <TextView
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="다음" />
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="207dp"
+        android:fontFamily="@font/pretendard_extrabold"
+        android:text="하단바"
+        android:textColor="#000000"
+        android:textSize="30sp" />
 
-    <!-- Bottom Bar -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@drawable/green_border"
-        android:layout_gravity="bottom">
+    <TextView
+        android:id="@+id/description_text"
+        android:layout_width="302dp"
+        android:layout_height="133dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="270dp"
+        android:fontFamily="@font/pretendard_semibold"
+        android:text="이 부분은\n하단바(네비게이션바)\n입니다."
+        android:textColor="#000000"
+        android:textSize="32sp" />
 
-        <!-- 왼쪽 세로 선 3개 (네비게이션 아이콘) -->
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="16dp"
-            android:layout_centerVertical="true"
-            android:src="@drawable/baseline_menu_24" />
+    <ImageView
+        android:id="@+id/screenedu_nextbtn"
+        android:layout_width="115dp"
+        android:layout_height="52dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="420dp"
+        android:background="@drawable/screenedu_nextbtn" />
 
-        <!-- 가운데 공간 (추가 기능이나 앱 아이콘) -->
-        <ImageView
-            android:id="@+id/homeIcon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_centerInParent="true"
-            android:src="@drawable/background_round"
-            />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="231dp"
+        android:layout_marginTop="425dp"
+        android:fontFamily="@font/pretendard_semibold"
+        android:text="다음"
+        android:textColor="#000000"
+        android:textSize="28sp" />
 
-        <!-- 오른쪽 화살표 또는 뒤로 가기 버튼 -->
-        <ImageView
-            android:id="@+id/backIcon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="140dp"
-            android:layout_marginEnd="28dp"
-            android:layout_toEndOf="@+id/homeIcon"
-            android:src="@drawable/baseline_back" />
 
-    </RelativeLayout>
+    <ImageView
+        android:id="@+id/screenedu_backbtn"
+        android:layout_width="115dp"
+        android:layout_height="52dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="420dp"
+        android:background="@drawable/screenedu_backbtn" />
 
-</LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="81dp"
+        android:layout_marginTop="425dp"
+        android:fontFamily="@font/pretendard_semibold"
+        android:text="이전"
+        android:textColor="#000000"
+        android:textSize="28sp" />
+
+</RelativeLayout>
