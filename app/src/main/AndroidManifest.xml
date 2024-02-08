@@ -42,13 +42,9 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.kakaotalk.activity.KakaoMainActivity"
-            android:exported="true" >
-        <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
+            android:exported="false" >
 
-        <category android:name="android.intent.category.LAUNCHER" />
-    </intent-filter>
-</activity>
+        </activity>
 
         <!-- 화면구성 교육 -->
         <activity
@@ -87,5 +83,21 @@
         <activity
             android:name=".edu_space.settingedu.activity.SettingDetailActivity"
             android:exported="false" />
+
+        <!-- 계정생성 교육 -->
+        <activity
+            android:name="com.sungkyul.synergy.edu_space.accountedu.GoogleMainActivity"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.sungkyul.synergy.edu_space.accountedu.GoogleLoginActivity"
+            android:exported="false" />
+
     </application>
 </manifest>
