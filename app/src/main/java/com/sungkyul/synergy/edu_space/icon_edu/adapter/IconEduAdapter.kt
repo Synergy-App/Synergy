@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.data.Icon
-import com.sungkyul.synergy.data.IconInfo
+import com.sungkyul.synergy.edu_space.icon_edu.data.Icon
+import com.sungkyul.synergy.edu_space.icon_edu.data.IconInfo
 import com.sungkyul.synergy.databinding.IconListBinding
 import com.sungkyul.synergy.edu_space.icon_edu.activity.IconDetailActivity
 
@@ -44,7 +44,7 @@ class IconEduAdapter(val context: Context,  val iconList:ArrayList<Icon>):Recycl
                 iconTv.text = icon.iconText // 텍스트 설정
 
                 root.setOnClickListener {
-                    val iconInfo = when (icon.iconText) {
+                    val iconInfo = when (icon.iconText)  {
                         "음량 조절" -> IconInfo(R.drawable.sound, "음량 조절", "음량을 조절합니다.")
                         "와이파이" -> IconInfo(R.drawable.sound, "와이파이", "와이파이를 설정합니다.")
                         "손전등" -> IconInfo(R.drawable.sound, "손전등", "손전등을 켭니다.")

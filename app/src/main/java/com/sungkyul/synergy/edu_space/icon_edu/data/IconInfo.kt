@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.data
+package com.sungkyul.synergy.edu_space.icon_edu.data
 
 import java.io.Serializable
 

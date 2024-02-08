@@ -19,10 +19,10 @@ class ContactFragment : Fragment() {
         binding = FragmentContactBinding.inflate(inflater, container, false)
 
         val contactArray = ArrayList<ContactData>()
-        contactArray.add(ContactData(R.drawable.baseline_person_24, "대장님"))
-        contactArray.add(ContactData(R.drawable.baseline_person_24, "UX/UI 디자이너"))
-        contactArray.add(ContactData(R.drawable.baseline_person_24, "기획자"))
-        contactArray.add(ContactData(R.drawable.baseline_person_24, ":fearful:"))
+        contactArray.add(ContactData(R.drawable.ic_person_black_24dp, "대장님"))
+        contactArray.add(ContactData(R.drawable.ic_person_black_24dp, "UX/UI 디자이너"))
+        contactArray.add(ContactData(R.drawable.ic_person_black_24dp, "기획자"))
+        contactArray.add(ContactData(R.drawable.ic_person_black_24dp, ":fearful:"))
 
         val contactList = binding.contactList
         contactList.layoutManager = LinearLayoutManager(binding.root.context)

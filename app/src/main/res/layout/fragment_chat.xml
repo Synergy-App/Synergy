@@ -46,7 +46,7 @@
                     android:layout_height="30dp"
                     android:layout_margin="5dp"
 
-                    android:src="@drawable/baseline_search_24" />
+                    android:src="@drawable/ic_search_black_24dp" />
 
                 <ImageView
                     android:layout_width="30dp"
@@ -59,7 +59,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_margin="5dp"
-                    android:src="@drawable/baseline_settings_24" />
+                    android:src="@drawable/ic_kakao_setting_24dp" />
             </LinearLayout>
         </LinearLayout>
 

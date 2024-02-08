@@ -21,7 +21,7 @@
         android:layout_marginTop="0dp"
         android:layout_marginRight="24dp"
         android:layout_marginBottom="0dp"
-        android:background="@drawable/green_box"></RelativeLayout>
+        android:background="@drawable/ic_edu_explane_greenbox"></RelativeLayout>
 
     <!--하단바-->
     <include layout="@layout/nevigationbar" />

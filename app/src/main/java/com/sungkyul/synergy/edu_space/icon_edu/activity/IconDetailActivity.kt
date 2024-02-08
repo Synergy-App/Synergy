@@ -3,26 +3,34 @@
 package com.sungkyul.synergy.edu_space.icon_edu.activity
 
 import android.os.Bundle
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
-import com.sungkyul.synergy.data.IconInfo
+import com.sungkyul.synergy.R
+import com.sungkyul.synergy.edu_space.icon_edu.data.IconInfo
+import com.sungkyul.synergy.edu_space.icon_edu.data.Icon
 import com.sungkyul.synergy.databinding.ActivityIconDetailBinding
+import com.sungkyul.synergy.databinding.IconDetailEduBinding
 
 class IconDetailActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityIconDetailBinding
+    private lateinit var activityBinding: ActivityIconDetailBinding
+    private lateinit var iconDetailBinding: IconDetailEduBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityIconDetailBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        activityBinding = ActivityIconDetailBinding.inflate(layoutInflater)
+        setContentView(activityBinding.root)
+
+        // icon_detail_edu.xml에 대한 바인딩 설정
+        iconDetailBinding = IconDetailEduBinding.inflate(layoutInflater)
 
         val iconInfo = intent.getSerializableExtra("iconInfo") as IconInfo
 
+        // 가져온 정보를 화면에 표시합니다.
+        iconDetailBinding.iconTv2.text = iconInfo.iconText
+        iconDetailBinding.iconDetailIv.setImageResource(iconInfo.iconImageResId)
+        iconDetailBinding.anotherIconIv.text = iconInfo.iconDescription
 
-        // 받아온 아이콘 정보로 레이아웃 업데이트
-        iconInfo?.let {
-            binding.iconImageView.setImageResource(it.iconImageResId)
-            binding.iconTextView.text = it.iconText
-            binding.iconDescriptionView.text = it.iconDescription
-        }
     }
 }
+
+

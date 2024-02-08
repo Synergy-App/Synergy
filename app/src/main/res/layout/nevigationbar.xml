@@ -6,8 +6,6 @@
     android:layout_height="42dp"
     android:layout_alignParentLeft="true"
     android:layout_alignParentTop="true"
-    android:layout_marginBottom="0dp"
-
     android:clipToOutline="true">
 
     <!--최근 목록 아이콘-->
@@ -21,7 +19,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="178dp"
         android:layout_marginTop="20dp"
-        android:src="@drawable/screendedu_home" />
+        android:src="@drawable/ic_screen_home_black" />
 
     <ImageView
         android:layout_width="15dp"
