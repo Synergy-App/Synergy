@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/icon_green"
+        android:layout_width="match_parent"
+        android:layout_height="167dp"
+        android:background="@color/eduColor1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/iconedu_tool"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/pretendard_semibold"
+        android:text="아이콘 교육"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="19dp"
+        android:layout_marginLeft="32dp"
+        />
+
+    <TextView
+        android:id="@+id/iconedu_tool_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/pretendard_semibold"
+        android:text="모르는 아이콘에 대해 학습하세요"
+        android:textSize="24sp"
+        android:textColor="#E1E1E1"
+        app:layout_constraintTop_toBottomOf="@id/iconedu_tool"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="7dp"
+        android:layout_marginLeft="32dp"
+        />
+
+    <ImageView
+        android:id="@+id/searchIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/search_bar"
+        app:layout_constraintTop_toBottomOf="@id/iconedu_tool_2"
+        app:layout_constraintStart_toStartOf="@id/iconedu_tool_2"
+        android:layout_marginTop="10dp"
+    />
+
+    <ImageView
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:src="@drawable/baseline_search_24"
+        app:layout_constraintTop_toTopOf="@id/searchIcon"
+        app:layout_constraintStart_toStartOf="@id/searchIcon"
+        android:layout_marginTop="7dp"
+        android:layout_marginLeft="23dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/searchIcon"
+        app:layout_constraintStart_toStartOf="@id/searchIcon"
+        android:fontFamily="@font/pretendard_regular"
+        android:textSize="22dp"
+        android:textColor="#B3000000"
+        android:text="검색해주세요"
+        android:layout_marginLeft="63dp"
+        android:layout_marginTop="4dp"
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

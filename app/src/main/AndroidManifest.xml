@@ -22,12 +22,10 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.default_app.CameraActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".edu_space.default_app.PhoneActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".edu_space.kakaotalk.activity.ProfileDetailActivity"
             android:exported="false" />
@@ -49,13 +47,7 @@
         <!-- 화면구성 교육 -->
         <activity
             android:name=".edu_space.screenEdu.activity.ScreenEduMainActivity"
-            android:exported="true" > <!-- 화면 구성: 1.메인 -->
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" /> <!-- 화면 구성: 1.메인 -->
         <activity
             android:name=".edu_space.screenEdu.activity.ScreenEduToolActivity"
             android:exported="false" /> <!--상단바-->
@@ -72,7 +64,12 @@
             android:exported="false" />
         <activity
             android:name=".EduSpaceActivity"
-            android:exported="false" >
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <!-- 환경설정 교육 -->
@@ -81,22 +78,12 @@
             android:exported="false" />
         <activity
             android:name="com.sungkyul.synergy.edu_space.settingedu.activity.SettingEduActivity"
-            android:exported="false">
-
-        </activity>
-
+            android:exported="false" />
         <activity
             android:name="com.sungkyul.synergy.edu_space.settingedu.activity.SettingFontSizeActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".edu_space.settingedu.activity.SettingDetailActivity"
             android:exported="false" />
-
-
     </application>
 </manifest>
