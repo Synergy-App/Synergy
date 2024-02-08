@@ -8,19 +8,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.databinding.ActivityPhoneBinding
+import com.sungkyul.synergy.databinding.ActivityDefaultCallPhoneBinding
 import com.sungkyul.synergy.util.AnimationUtil
 import com.sungkyul.synergy.util.EduUtil
 
 class PhoneActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityPhoneBinding
+    private lateinit var binding: ActivityDefaultCallPhoneBinding
     private lateinit var keypadFragment: Fragment
     private lateinit var recentHistoryFragment: Fragment
     private lateinit var contactFragment: Fragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityPhoneBinding.inflate(layoutInflater)
+        binding = ActivityDefaultCallPhoneBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // Fragments

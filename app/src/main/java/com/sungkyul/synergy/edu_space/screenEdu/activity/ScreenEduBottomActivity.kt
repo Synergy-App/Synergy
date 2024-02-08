@@ -6,9 +6,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.startActivity
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.edu_space.screenEdu.activity.ScreenEduToolActivity
 
 class ScreenEduBottomActivity : AppCompatActivity() {
     private var clickCount = 0 // 다음 버튼 클릭 횟수를 저장하는 변수
@@ -19,7 +17,7 @@ class ScreenEduBottomActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_screen_edu_bottom)
+        setContentView(R.layout.activity_screen_nevigation)
 
         // 상단바 없애기
         supportActionBar?.hide()

@@ -6,42 +6,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/screenedu_background"
-    android:gravity="center|fill_vertical">
+    android:gravity="center">
 
-    <!-- 상단바-->
-    <include
-        layout="@layout/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="69dp"
-        android:layout_marginBottom="670dp" />
-
+    <!-- Vector Drawable을 추가 -->
     <ImageView
-        android:layout_width="399dp"
-        android:layout_height="703dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="-6dp"
+        android:layout_marginTop="94dp"
+        android:layout_marginEnd="0dp"
         android:scaleType="fitXY"
         android:src="@drawable/screenedu_blackground" />
 
-    <!-- 하단바 -->
-    <LinearLayout
-
+    <!-- 상단바-->
+    <RelativeLayout
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="800dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="0dp"
         android:background="@drawable/ic_edu_explane_greenbar">
 
-        <include layout="@layout/nevigationbar" />
+        <include layout="@layout/fragment_screen_toolbar" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
+    <!-- 하단바 -->
+    <include
+        layout="@layout/fragment_sreen_nevigationbar"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -55,13 +51,15 @@
         android:background="@drawable/explanation_whitebox" />
 
     <ImageView
-        android:layout_width="190dp"
-        android:layout_height="0dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="299dp"
-        android:layout_marginTop="523dp"
-        android:background="@drawable/ic_edu_arrow_down_white" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/ic_edu_arrow_up_white" />
 
     <View
         android:layout_width="match_parent"
@@ -81,18 +79,18 @@
         android:layout_marginLeft="50dp"
         android:layout_marginTop="207dp"
         android:fontFamily="@font/pretendard_extrabold"
-        android:text="하단바"
+        android:text="상단바"
         android:textColor="#000000"
         android:textSize="30sp" />
 
     <TextView
         android:id="@+id/description_text"
-        android:layout_width="302dp"
-        android:layout_height="133dp"
+        android:layout_width="331dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="45dp"
         android:layout_marginTop="270dp"
         android:fontFamily="@font/pretendard_semibold"
-        android:text="이 부분은\n하단바(네비게이션바)\n입니다."
+        android:text="이 부분은\n상단바(상태 표시줄)\n입니다."
         android:textColor="#000000"
         android:textSize="32sp" />
 

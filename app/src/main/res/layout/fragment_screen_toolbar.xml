@@ -2,8 +2,8 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/screenedu_toolbar"
-    android:layout_width="360dp"
-    android:layout_height="60dp"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
     >
 
     <TextView
@@ -15,7 +15,7 @@
         android:layout_marginLeft="27dp"
         android:layout_marginTop="17dp"
         android:text="4:19"
-        android:textColor="#ffffff"
+        android:textColor="@color/white"
         android:textSize="20sp" />
 
     <ImageView
@@ -32,7 +32,7 @@
         android:layout_height="23dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="262dp"
+        android:layout_marginLeft="310dp"
         android:layout_marginTop="20dp"
         android:src="@drawable/sound_white" />
 
@@ -41,7 +41,7 @@
         android:layout_height="43dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="299dp"
+        android:layout_marginLeft="320dp"
         android:layout_marginTop="13dp"
         android:src="@drawable/signal_white" />
 
@@ -50,7 +50,7 @@
         android:layout_height="23dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="330dp"
+        android:layout_marginLeft="350dp"
         android:layout_marginTop="20dp"
         android:src="@drawable/ic_screen_battery_white" />
 

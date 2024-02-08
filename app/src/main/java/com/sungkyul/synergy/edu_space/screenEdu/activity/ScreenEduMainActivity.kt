@@ -18,7 +18,7 @@ class ScreenEduMainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_screen_edu_main)
+        setContentView(R.layout.activity_screen_home)
 
         // 상단바 없애기
         supportActionBar?.hide()

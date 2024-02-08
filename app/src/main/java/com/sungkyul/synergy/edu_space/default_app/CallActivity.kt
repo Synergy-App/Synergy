@@ -8,16 +8,16 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.databinding.ActivityCallBinding
-import com.sungkyul.synergy.databinding.ActivityPhoneBinding
+import com.sungkyul.synergy.databinding.ActivityDefaultCallBinding
+import com.sungkyul.synergy.databinding.ActivityDefaultCallPhoneBinding
 import com.sungkyul.synergy.util.AnimationUtil
 
 class CallActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityCallBinding
+    private lateinit var binding: ActivityDefaultCallBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCallBinding.inflate(layoutInflater)
+        binding = ActivityDefaultCallBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val intent = intent
