@@ -5,17 +5,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".edu_space.icon_edu.activity.IconEduActivity">
+    tools:context=".edu_space.icon_edu.activity.IconEduActivity"
+    android:background="@color/bgColor1">
+
 
     <LinearLayout
+        android:layout_marginTop="0dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <include layout="@layout/icon_edu"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/icon_rv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="29dp"/>
     </LinearLayout>
 
 </LinearLayout>
