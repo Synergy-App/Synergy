@@ -52,6 +52,6 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="330dp"
         android:layout_marginTop="20dp"
-        android:src="@drawable/battery_white" />
+        android:src="@drawable/ic_screen_battery_white" />
 
 </RelativeLayout>
