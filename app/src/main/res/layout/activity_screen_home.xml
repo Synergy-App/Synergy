@@ -11,7 +11,7 @@
     tools:context=".edu_space.screenEdu.activity.ScreenEduMainActivity">
 
     <!-- 상단바 -->
-    <include layout="@layout/toolbar" />
+    <include layout="@layout/fragment_screen_toolbar" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -110,6 +110,6 @@
     </RelativeLayout>
 
     <!-- 하단바 -->
-    <include layout="@layout/nevigationbar" />
+    <include layout="@layout/fragment_sreen_nevigationbar" />
 
 </LinearLayout>

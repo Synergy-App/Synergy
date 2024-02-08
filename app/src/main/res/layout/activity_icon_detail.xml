@@ -12,9 +12,9 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <include layout="@layout/icon_edu"/>
+    <include layout="@layout/fragment_icon_toolbar"/>
 
-        <include layout="@layout/icon_detail_edu"/>
+        <include layout="@layout/fragment_icon_detail"/>
     </LinearLayout>
 
 

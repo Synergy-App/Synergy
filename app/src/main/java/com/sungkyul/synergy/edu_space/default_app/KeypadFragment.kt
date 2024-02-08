@@ -14,19 +14,19 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.databinding.FragmentKeypadBinding
+import com.sungkyul.synergy.databinding.FragmentDefaultCallKeypadBinding
 import com.sungkyul.synergy.util.AnimationUtil
 import com.sungkyul.synergy.util.TextUtil
 
 class KeypadFragment : Fragment() {
-    private lateinit var binding: FragmentKeypadBinding
+    private lateinit var binding: FragmentDefaultCallKeypadBinding
     private var secondaryButtonsIsEnabled = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentKeypadBinding.inflate(inflater, container, false)
+        binding = FragmentDefaultCallKeypadBinding.inflate(inflater, container, false)
 
         // 키 버튼 리스트
         val keyButtons = listOf(

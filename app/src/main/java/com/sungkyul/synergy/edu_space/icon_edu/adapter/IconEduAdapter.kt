@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.edu_space.icon_edu.data.Icon
 import com.sungkyul.synergy.edu_space.icon_edu.data.IconInfo
-import com.sungkyul.synergy.databinding.IconListBinding
+import com.sungkyul.synergy.databinding.FragmentIconListBinding
 import com.sungkyul.synergy.edu_space.icon_edu.activity.IconDetailActivity
 
 /**교육공간 속 아이콘 리사이클러뷰 어뎁터 */
@@ -20,7 +20,7 @@ class IconEduAdapter(val context: Context,  val iconList:ArrayList<Icon>):Recycl
         viewType: Int,
     ): CustomViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val binding = IconListBinding.inflate(inflater, parent, false)
+        val binding = FragmentIconListBinding.inflate(inflater, parent, false)
         return CustomViewHolder(binding)
     }
 
@@ -36,7 +36,7 @@ class IconEduAdapter(val context: Context,  val iconList:ArrayList<Icon>):Recycl
     }
 
     //holder에서 보관해야할 View(iconText)들을 변수에 담아둔다.
-    inner class CustomViewHolder(private val binding: IconListBinding) :
+    inner class CustomViewHolder(private val binding: FragmentIconListBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(icon: Icon) {
             binding.apply {

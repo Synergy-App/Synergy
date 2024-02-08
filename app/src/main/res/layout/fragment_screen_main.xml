@@ -7,22 +7,24 @@
     android:layout_height="match_parent"
     android:background="@drawable/screenedu_background"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/screen_toolbar">
 
     <!-- 상단바-->
-        <include layout="@layout/toolbar" />
-
     <RelativeLayout
-        android:layout_width="370dp"
-        android:layout_height="65dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="600dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="0dp"
-        android:background="@drawable/ic_edu_explane_greenbar">
-        <include layout="@layout/nevigationbar" />
+        android:layout_marginTop="-10dp"
+        android:layout_marginBottom="600dp"
+        android:layout_width="370dp"
+        android:layout_height="58dp"
+        android:layout_gravity="bottom">
+
+        <include layout="@layout/fragment_screen_toolbar" />
 
     </RelativeLayout>
 
+
+    <include layout="@layout/fragment_sreen_nevigationbar" />
 
 </LinearLayout>
