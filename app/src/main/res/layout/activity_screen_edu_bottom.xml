@@ -36,7 +36,7 @@
         android:layout_marginTop="800dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="0dp"
-        android:background="@drawable/green_bar">
+        android:background="@drawable/ic_edu_explane_greenbar">
 
         <include layout="@layout/nevigationbar" />
 
@@ -61,7 +61,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="299dp"
         android:layout_marginTop="523dp"
-        android:background="@drawable/arrowdown_white" />
+        android:background="@drawable/ic_edu_arrow_down_white" />
 
     <View
         android:layout_width="match_parent"
