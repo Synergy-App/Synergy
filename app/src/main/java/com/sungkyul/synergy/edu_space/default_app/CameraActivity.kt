@@ -7,15 +7,15 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.databinding.ActivityCameraBinding
+import com.sungkyul.synergy.databinding.ActivityDefaultCameraBinding
 import com.sungkyul.synergy.util.AnimationUtil
 
 class CameraActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityCameraBinding
+    private lateinit var binding: ActivityDefaultCameraBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCameraBinding.inflate(layoutInflater)
+        binding = ActivityDefaultCameraBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // 버튼의 배경 알파 값 초기화
