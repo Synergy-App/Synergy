@@ -14,36 +14,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Synergy"
         tools:targetApi="31">
-        <activity
-            android:name=".edu_space.default_app.CallActivity"
-            android:exported="false" />
-        <activity
-            android:name=".edu_space.default_app.GalleryViewActivity"
-            android:exported="false" />
-        <activity
-            android:name=".edu_space.default_app.CameraActivity"
-            android:exported="false" />
-        <activity
-            android:name=".edu_space.default_app.PhoneActivity"
-            android:exported="false" />
-        <activity
-            android:name=".edu_space.kakaotalk.activity.ProfileDetailActivity"
-            android:exported="false" />
-        <activity
-            android:name=".edu_space.kakaotalk.activity.ChattingActivity"
-            android:exported="false" />
+
+        <!--메인 화면-->
         <activity
             android:name=".MainActivity"
             android:exported="false">
         </activity>
 
+        <!-- 아이콘 교육 -->
         <activity
-            android:name=".edu_space.kakaotalk.activity.KakaotalkLoginActivity"
+            android:name=".edu_space.icon_edu.activity.IconEduActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.kakaotalk.activity.KakaoMainActivity"
-            android:exported="false" >
-
+            android:name=".edu_space.icon_edu.activity.IconDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EduSpaceActivity"
+            android:exported="true" >
         </activity>
 
         <!-- 화면구성 교육 -->
@@ -57,18 +44,19 @@
             android:name=".edu_space.screenEdu.activity.ScreenEduBottomActivity"
             android:exported="false" /> <!--하단바-->
 
-        <!-- 아이콘 교육 -->
+        <!--기본 앱 교육-->
         <activity
-            android:name=".edu_space.icon_edu.activity.IconEduActivity"
+            android:name=".edu_space.default_app.CallActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.icon_edu.activity.IconDetailActivity"
+            android:name=".edu_space.default_app.GalleryViewActivity"
             android:exported="false" />
         <activity
-            android:name=".EduSpaceActivity"
-            android:exported="true" >
-
-        </activity>
+            android:name=".edu_space.default_app.CameraActivity"
+            android:exported="false" />
+        <activity
+            android:name=".edu_space.default_app.PhoneActivity"
+            android:exported="false" />
 
         <!-- 환경설정 교육 -->
         <activity
@@ -94,10 +82,35 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name="com.sungkyul.synergy.edu_space.accountedu.GoogleLoginActivity"
             android:exported="false" />
+
+        <!-- 앱 설치-->
+
+
+        <!--카카오톡 교육-->
+        <activity
+            android:name=".edu_space.kakaotalk.activity.ProfileDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".edu_space.kakaotalk.activity.ChattingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".edu_space.kakaotalk.activity.KakaotalkLoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".edu_space.kakaotalk.activity.KakaoMainActivity"
+            android:exported="false" >
+        </activity>
+
+        <!--네이버-->
+
+        <!--코레일-->
+
+        <!--카카오택시-->
+
+        <!--배달의 민족-->
 
     </application>
 </manifest>
