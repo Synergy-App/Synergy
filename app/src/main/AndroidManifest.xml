@@ -31,6 +31,10 @@
         <activity
             android:name=".EduSpaceActivity"
             android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <!-- 화면구성 교육 -->
@@ -41,7 +45,22 @@
             android:name=".edu_space.screenEdu.activity.ScreenEduToolActivity"
             android:exported="false" /> <!--상단바-->
         <activity
+            android:name=".edu_space.screenEdu.activity.ScreenEduLeftToolActivity"
+            android:excludeFromRecents="false" />
+        <activity
+            android:name=".edu_space.screenEdu.activity.ScreenEduRightToolActivity"
+            android:excludeFromRecents="false" />
+        <activity
             android:name=".edu_space.screenEdu.activity.ScreenEduBottomActivity"
+            android:exported="false" /> <!--하단바-->
+        <activity
+            android:name=".edu_space.screenEdu.activity.ScreenEduLeftBottomActivity"
+            android:exported="false" /> <!--하단바-->
+        <activity
+            android:name=".edu_space.screenEdu.activity.ScreenEduCenterBottomActivity"
+            android:exported="false" /> <!--하단바-->
+        <activity
+            android:name=".edu_space.screenEdu.activity.ScreenEduRightBottomActivity"
             android:exported="false" /> <!--하단바-->
 
         <!--기본 앱 교육-->
@@ -75,13 +94,7 @@
         <!-- 계정생성 교육 -->
         <activity
             android:name="com.sungkyul.synergy.edu_space.accountedu.GoogleMainActivity"
-            android:exported="true">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
         <activity
             android:name="com.sungkyul.synergy.edu_space.accountedu.GoogleLoginActivity"
             android:exported="false" />

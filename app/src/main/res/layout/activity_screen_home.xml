@@ -11,7 +11,22 @@
     tools:context=".edu_space.screenEdu.activity.ScreenEduMainActivity">
 
     <!-- 상단바 -->
-    <include layout="@layout/fragment_screen_toolbar" />
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <!-- toolbar 배경 -->
+        <include layout="@layout/fragment_screen_toolbar" />
+
+        <!-- blackground -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/screenedu_blackground"
+            android:scaleType="fitXY" />
+
+    </RelativeLayout>
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -109,7 +124,22 @@
 
     </RelativeLayout>
 
-    <!-- 하단바 -->
-    <include layout="@layout/fragment_sreen_nevigationbar" />
+
+    <!-- 상단바 -->
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <!-- toolbar 배경 -->
+        <include layout="@layout/fragment_sreen_nevigationbar" />
+
+        <!-- blackground -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/screenedu_blackground"
+            android:scaleType="fitXY" />
+
+    </RelativeLayout>
 
 </LinearLayout>
