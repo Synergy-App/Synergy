@@ -40,25 +40,20 @@ class ScreenEduToolActivity : AppCompatActivity() {
                 // 텍스트 변경
                 val textToDisplay = when (clickCount) {
                     1 -> "주로 스마트폰의 상태를 보여줍니다"
-                    2 -> "좌측 상단에는 현재 시간이 나타납니다."
-                    3 -> "우측 상단에는 스마트폰의 현재 상태를 나타냅니다"
-                    4 -> "상단바(상대 표시줄)을 내려주세요."
-                    5 -> "원하는 동작5"
-                    6 -> {
-                        // 6번째 클릭일 때 다른 화면으로 이동
-                        startActivity(Intent(this, ScreenEduBottomActivity::class.java))
-                        finish() // 현재 화면 종료
-                        return@setOnClickListener
-                    }
-                    else -> "클릭을 계속해주세요." // 클릭 7번 이상부터는 계속 같은 문구로 유지
+                    else -> " " // 클릭 2번 이상부터는 계속 같은 문구로 유지
                 }
 
                 // 현재 텍스트를 리스트에 추가
                 previousTexts.add(descriptionTextView.text.toString())
 
                 descriptionTextView.text = textToDisplay
-            }
 
+                // 2번 클릭 시 ScreenEduLeftToolActivity로 전환
+                if (clickCount == 2) {
+                    startActivity(Intent(this, ScreenEduLeftToolActivity::class.java))
+                    return@setOnClickListener
+                }
+            }
             backButton.setOnClickListener {
                 // 이전 멘트가 있을 때만 실행
                 if (previousTexts.isNotEmpty()) {
@@ -70,6 +65,6 @@ class ScreenEduToolActivity : AppCompatActivity() {
                     clickCount--
                 }
             }
+            }
         }
     }
-}
