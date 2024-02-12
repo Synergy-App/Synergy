@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -42,6 +43,9 @@ android {
 }
 
 dependencies {
+    implementation(platform("com.google.firebase:firebase-bom:32.7.2"))
+    implementation("com.google.firebase:firebase-analytics")
+
 
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     implementation("androidx.core:core-ktx:1.8.0")
@@ -53,6 +57,7 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation ("com.github.bumptech.glide:glide:4.12.0") // Glide 라이브러리
     implementation ("com.google.android.material:material:1.4.0")
+    implementation("com.google.firebase:firebase-auth-ktx:22.3.1")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0") // Glide 어노테이션 프로세서
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

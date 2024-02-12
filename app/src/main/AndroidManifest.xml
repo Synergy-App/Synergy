@@ -21,11 +21,11 @@
             android:name=".main.activity.DigitalStartActivity"
             android:exported="false" />
         <activity
-            android:name=".main.activity.RegisterActivity"
-            android:exported="false" /> <!-- 메인 화면 -->
+            android:name=".EduSpaceActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false" /> <!-- 아이콘 교육 -->
+            android:exported="false" />
         <activity
             android:name=".edu_space.icon_edu.activity.IconEduActivity"
             android:exported="false" />
@@ -33,7 +33,7 @@
             android:name=".edu_space.icon_edu.activity.IconDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".EduSpaceActivity"
+            android:name=".main.activity.RegisterActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
