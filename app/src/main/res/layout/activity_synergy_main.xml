@@ -17,9 +17,9 @@
         <Button
             android:id="@+id/iconEdu_btn"
             android:layout_width="312dp"
-            android:layout_height="150dp"
+            android:layout_height="151dp"
             android:layout_gravity="center"
-            android:background="#51A66A"
+            android:background="@color/eduColor1"
             android:gravity="center"
             android:text="교육공간"
             android:textColor="@color/white"
