@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".edu_space.default_app.NaverSearchActivity"
+    tools:context=".edu_space.naver.activity.NaverSearchActivity"
     android:background="@color/naver_search_bg">
 
     <LinearLayout

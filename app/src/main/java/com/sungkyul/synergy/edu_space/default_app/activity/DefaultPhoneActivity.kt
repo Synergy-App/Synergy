@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.edu_space.default_app
+package com.sungkyul.synergy.edu_space.default_app.activity
 
 import android.os.Bundle
 import android.view.MotionEvent
@@ -7,26 +7,32 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.databinding.ActivityPhoneBinding
+import com.sungkyul.synergy.databinding.ActivityDefaultPhoneBinding
+import com.sungkyul.synergy.edu_space.default_app.TOUCH_DOWN_ALPHA
+import com.sungkyul.synergy.edu_space.default_app.TOUCH_DURATION_ALPHA
+import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_ALPHA
+import com.sungkyul.synergy.edu_space.default_app.fragment.DefaultPhoneContactFragment
+import com.sungkyul.synergy.edu_space.default_app.fragment.DefaultPhoneKeypadFragment
+import com.sungkyul.synergy.edu_space.default_app.fragment.DefaultPhoneRecentHistoryFragment
 import com.sungkyul.synergy.util.AnimUtil
 import com.sungkyul.synergy.util.Edu
 import com.sungkyul.synergy.util.EduData
 
-class PhoneActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityDefaultCallPhoneBinding
+class DefaultPhoneActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityDefaultPhoneBinding
     private lateinit var keypadFragment: Fragment
     private lateinit var recentHistoryFragment: Fragment
     private lateinit var contactFragment: Fragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDefaultCallPhoneBinding.inflate(layoutInflater)
+        binding = ActivityDefaultPhoneBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // Fragments
-        keypadFragment = KeypadFragment()
-        recentHistoryFragment = RecentHistoryFragment()
-        contactFragment = ContactFragment()
+        keypadFragment = DefaultPhoneKeypadFragment()
+        recentHistoryFragment = DefaultPhoneRecentHistoryFragment()
+        contactFragment = DefaultPhoneContactFragment()
 
         // 돋보기, 더보기 버튼의 배경 알파 값 초기화
         binding.magnifyingGlassButton.background.alpha = TOUCH_UP_ALPHA

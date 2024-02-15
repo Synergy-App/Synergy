@@ -1,12 +1,11 @@
-package com.sungkyul.synergy.edu_space.default_app
+package com.sungkyul.synergy.edu_space.naver.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.sungkyul.synergy.R
-import com.sungkyul.synergy.databinding.ActivityNaverBinding
 import com.sungkyul.synergy.databinding.ActivityNaverSearchBinding
+import com.sungkyul.synergy.edu_space.naver.adapter.NaverAutocompleteAdapter
+import com.sungkyul.synergy.edu_space.naver.adapter.NaverAutocompleteData
 
 class NaverSearchActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNaverSearchBinding

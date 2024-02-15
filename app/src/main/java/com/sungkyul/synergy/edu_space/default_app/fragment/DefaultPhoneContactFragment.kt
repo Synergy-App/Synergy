@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.edu_space.default_app
+package com.sungkyul.synergy.edu_space.default_app.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,16 +7,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.databinding.FragmentDefaultContactBinding
+import com.sungkyul.synergy.databinding.FragmentDefaultPhoneContactBinding
+import com.sungkyul.synergy.edu_space.default_app.adapter.ContactAdapter
+import com.sungkyul.synergy.edu_space.default_app.adapter.ContactData
 
-class ContactFragment : Fragment() {
-    private lateinit var binding: FragmentDefaultContactBinding
+class DefaultPhoneContactFragment : Fragment() {
+    private lateinit var binding: FragmentDefaultPhoneContactBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentDefaultContactBinding.inflate(inflater, container, false)
+        binding = FragmentDefaultPhoneContactBinding.inflate(inflater, container, false)
 
         val contactArray = ArrayList<ContactData>()
         contactArray.add(ContactData(R.drawable.ic_person_black_24dp, "대장님"))

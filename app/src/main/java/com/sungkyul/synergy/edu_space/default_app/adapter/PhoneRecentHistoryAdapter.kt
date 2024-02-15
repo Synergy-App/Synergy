@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.edu_space.default_app
+package com.sungkyul.synergy.edu_space.default_app.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -70,7 +70,7 @@ class RecentHistoryAdapter(private val dataSet: ArrayList<RecentHistoryData>): R
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.item_recent_history, viewGroup, false)
+            .inflate(R.layout.item_phone_recent_history, viewGroup, false)
 
         return ViewHolder(view)
     }

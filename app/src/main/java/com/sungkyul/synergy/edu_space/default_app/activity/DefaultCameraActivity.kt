@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.edu_space.default_app
+package com.sungkyul.synergy.edu_space.default_app.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,10 +7,13 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.databinding.ActivityCameraBinding
+import com.sungkyul.synergy.databinding.ActivityDefaultCameraBinding
+import com.sungkyul.synergy.edu_space.default_app.TOUCH_DOWN_ALPHA
+import com.sungkyul.synergy.edu_space.default_app.TOUCH_DURATION_ALPHA
+import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_ALPHA
 import com.sungkyul.synergy.util.AnimUtil
 
-class CameraActivity : AppCompatActivity() {
+class DefaultCameraActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDefaultCameraBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -134,7 +137,7 @@ class CameraActivity : AppCompatActivity() {
                 AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
 
                 // 갤러리 뷰로 이동
-                val intent = Intent(this, GalleryViewActivity::class.java)
+                val intent = Intent(this, DefaultCameraGalleryViewActivity::class.java)
                 startActivity(intent)
 
                 view.performClick()

@@ -1,30 +1,34 @@
-package com.sungkyul.synergy.edu_space.default_app
+package com.sungkyul.synergy.edu_space.default_app.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
 
-data class NaverAutocompleteData(
-    val searchQuery: String
+data class ContactData(
+    val profile: Int,
+    val name: String
 )
 
-class NaverAutocompleteAdapter(private val dataSet: ArrayList<NaverAutocompleteData>): RecyclerView.Adapter<NaverAutocompleteAdapter.ViewHolder>() {
+class ContactAdapter(private val dataSet: ArrayList<ContactData>): RecyclerView.Adapter<ContactAdapter.ViewHolder>() {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val searchQuery: TextView = view.findViewById(R.id.search_query)
+        val profile = view.findViewById<ImageView>(R.id.profile)
+        val name = view.findViewById<TextView>(R.id.name)
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.item_naver_autocomplete, viewGroup, false)
-        
+            .inflate(R.layout.item_phone_contact, viewGroup, false)
+
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.searchQuery.text = dataSet[position].searchQuery
+        viewHolder.profile.setImageResource(dataSet[position].profile)
+        viewHolder.name.text = dataSet[position].name
     }
 
     override fun getItemCount() = dataSet.size

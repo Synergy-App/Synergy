@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".edu_space.default_app.GalleryViewActivity"
+    tools:context=".edu_space.default_app.activity.DefaultCameraGalleryViewActivity"
     android:background="@color/black">
 
     <LinearLayout

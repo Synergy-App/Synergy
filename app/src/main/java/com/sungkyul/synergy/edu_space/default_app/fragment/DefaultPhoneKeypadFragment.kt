@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.edu_space.default_app
+package com.sungkyul.synergy.edu_space.default_app.fragment
 
 import android.app.AlertDialog
 import android.content.Intent
@@ -10,19 +10,26 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.sungkyul.synergy.databinding.FragmentKeypadBinding
+import com.sungkyul.synergy.databinding.FragmentDefaultPhoneKeypadBinding
+import com.sungkyul.synergy.edu_space.default_app.TOUCH_DOWN_ALPHA
+import com.sungkyul.synergy.edu_space.default_app.TOUCH_DOWN_SCALE
+import com.sungkyul.synergy.edu_space.default_app.TOUCH_DURATION_ALPHA
+import com.sungkyul.synergy.edu_space.default_app.TOUCH_DURATION_SCALE
+import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_ALPHA
+import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_SCALE
+import com.sungkyul.synergy.edu_space.default_app.activity.DefaultPhoneCallActivity
 import com.sungkyul.synergy.util.AnimUtil
 import com.sungkyul.synergy.util.TextUtil
 
-class KeypadFragment : Fragment() {
-    private lateinit var binding: FragmentDefaultCallKeypadBinding
+class DefaultPhoneKeypadFragment : Fragment() {
+    private lateinit var binding: FragmentDefaultPhoneKeypadBinding
     private var secondaryButtonsIsEnabled = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentDefaultCallKeypadBinding.inflate(inflater, container, false)
+        binding = FragmentDefaultPhoneKeypadBinding.inflate(inflater, container, false)
 
         // 키 버튼 리스트
         val keyButtons = listOf(
@@ -139,7 +146,7 @@ class KeypadFragment : Fragment() {
 
                 if(binding.phoneNumText.text.toString().isNotEmpty()) {
                     // 전화 화면으로 이동
-                    val intent = Intent(requireContext(), CallActivity::class.java)
+                    val intent = Intent(requireContext(), DefaultPhoneCallActivity::class.java)
                     intent.putExtra("phone_num", binding.phoneNumText.text.toString())
                     startActivity(intent)
                 }
