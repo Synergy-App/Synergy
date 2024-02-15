@@ -25,7 +25,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="286dp"
         android:layout_marginTop="20dp"
-        android:src="@drawable/wifi_white" />
+        android:src="@drawable/ic_wifi_white" />
 
     <ImageView
         android:layout_width="21dp"
@@ -34,7 +34,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="310dp"
         android:layout_marginTop="20dp"
-        android:src="@drawable/sound_white" />
+        android:src="@drawable/ic_sound_white" />
 
     <ImageView
         android:layout_width="40dp"

@@ -115,7 +115,7 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_kakao_call_24" />
+                        android:src="@drawable/ic_call_white_24" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -136,7 +136,7 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_kakao_video_white_24dp" />
+                        android:src="@drawable/ic_video_white_24dp" />
 
                     <TextView
                         android:layout_width="match_parent"

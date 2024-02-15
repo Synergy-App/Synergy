@@ -71,7 +71,7 @@ class SettingEduActivity : AppCompatActivity() {
         datas.apply {
             add(SettingData(img = R.drawable.wifi, name = "연결", explain = "Wi-Fi, 블루투스, 비행기 탑승 모드, 데이터 사용"))
             add(SettingData(img = R.drawable.soundimg, name = "소리 및 진동", explain = "소리 모드, 벨소리, 음량"))
-            add(SettingData(img = R.drawable.message, name = "알림", explain = "앱 알림, 상태표시줄, 방해 금지"))
+            add(SettingData(img = R.drawable.ic_call_message_24, name = "알림", explain = "앱 알림, 상태표시줄, 방해 금지"))
             add(SettingData(img = R.drawable.display, name = "디스플레이", explain = "밝기, 블루라이트 필터, 홈 화면"))
             add(SettingData(img = R.drawable.backgroundimg, name = "배경화면", explain = "홈 배경화면, 잠금화면 배경"))
             add(SettingData(img = R.drawable.theme, name = "테마", explain = "테마, 배경화면, 아이콘"))

@@ -34,17 +34,17 @@ class FriendsFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         // 데이터 설정 (임시 데이터 예시)
-        profileItems.add(profileItem(R.drawable.ic_kakao_profile, "서인국", "안녕하세요"))
-        profileItems.add(profileItem(R.drawable.ic_kakao_profile, "임영웅", "별빛같은 사랑아 ~ "))
-        profileItems.add(profileItem(R.drawable.ic_kakao_profile, "박연우", "너는 내 운명"))
-        profileItems.add(profileItem(R.drawable.ic_kakao_profile, "추민영", "키키키"))
-        profileItems.add(profileItem(R.drawable.ic_kakao_profile, "노승현", ""))
-        profileItems.add(profileItem(R.drawable.ic_kakao_profile, "박지현", ""))
-        profileItems.add(profileItem(R.drawable.ic_kakao_profile, "덱스", "멋쟁이"))
-        profileItems.add(profileItem(R.drawable.ic_kakao_profile, "심춘희", "그대와 나"))
-        profileItems.add(profileItem(R.drawable.ic_kakao_profile, "박박박", "유아쏘뷰티풀"))
-        profileItems.add(profileItem(R.drawable.ic_kakao_profile, "황진닝", ""))
-        profileItems.add(profileItem(R.drawable.ic_kakao_profile, "허수진", "대장님"))
+        profileItems.add(profileItem(R.drawable.ic_profile, "서인국", "안녕하세요"))
+        profileItems.add(profileItem(R.drawable.ic_profile, "임영웅", "별빛같은 사랑아 ~ "))
+        profileItems.add(profileItem(R.drawable.ic_profile, "박연우", "너는 내 운명"))
+        profileItems.add(profileItem(R.drawable.ic_profile, "추민영", "키키키"))
+        profileItems.add(profileItem(R.drawable.ic_profile, "노승현", ""))
+        profileItems.add(profileItem(R.drawable.ic_profile, "박지현", ""))
+        profileItems.add(profileItem(R.drawable.ic_profile, "덱스", "멋쟁이"))
+        profileItems.add(profileItem(R.drawable.ic_profile, "심춘희", "그대와 나"))
+        profileItems.add(profileItem(R.drawable.ic_profile, "박박박", "유아쏘뷰티풀"))
+        profileItems.add(profileItem(R.drawable.ic_profile, "황진닝", ""))
+        profileItems.add(profileItem(R.drawable.ic_profile, "허수진", "대장님"))
 
 
         adapter.datas = profileItems // Adapter에 데이터 설정
