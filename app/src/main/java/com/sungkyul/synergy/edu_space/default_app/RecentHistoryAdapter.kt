@@ -1,7 +1,6 @@
 package com.sungkyul.synergy.edu_space.default_app
 
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -9,7 +8,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.util.AnimationUtil
+import com.sungkyul.synergy.util.AnimUtil
 
 data class RecentHistoryData(
     val profile: Int,
@@ -59,10 +58,10 @@ class RecentHistoryAdapter(private val dataSet: ArrayList<RecentHistoryData>): R
             itemLayout.setOnClickListener {
                 // 히든 레이아웃을 펼쳤다 접었다 할 수 있다.
                 if(toggle) {
-                    AnimationUtil.startHeightAnimation(hiddenLayout, 250L, hiddenLayout.height, 0)
+                    AnimUtil.startHeightAnimation(hiddenLayout, 250L, hiddenLayout.height, 0)
                     toggle = false
                 } else {
-                    AnimationUtil.startHeightAnimation(hiddenLayout, 250L, hiddenLayout.height, maxHeight)
+                    AnimUtil.startHeightAnimation(hiddenLayout, 250L, hiddenLayout.height, maxHeight)
                     toggle = true
                 }
             }

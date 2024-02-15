@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".edu_space.default_app.NaverActivity"
+    android:background="@color/naver_bg">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/navigation_bar"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start">
+
+                        <ImageButton
+                            android:id="@+id/menu_button"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:padding="12dp"
+                            android:src="@drawable/naver_menu_button"
+                            android:scaleType="centerInside"
+                            android:background="@null"
+                            android:contentDescription="@string/menu"/>
+
+                        <ImageButton
+                            android:id="@+id/pay_button"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:padding="4dp"
+                            android:src="@drawable/naver_pay_button"
+                            android:scaleType="centerInside"
+                            android:background="@null"
+                            android:contentDescription="@string/naver_pay"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end">
+
+                        <ImageButton
+                            android:id="@+id/talk_button"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:padding="4dp"
+                            android:src="@drawable/todo_circle"
+                            android:scaleType="centerInside"
+                            android:background="@null"
+                            android:contentDescription="@string/naver_talk"/>
+
+                        <ImageButton
+                            android:id="@+id/notification_button"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:padding="4dp"
+                            android:src="@drawable/todo_circle"
+                            android:scaleType="centerInside"
+                            android:background="@null"
+                            android:contentDescription="@string/notification"/>
+
+                        <ImageButton
+                            android:id="@+id/wallet_button"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:padding="4dp"
+                            android:src="@drawable/naver_wallet_button"
+                            android:scaleType="centerInside"
+                            android:background="@null"
+                            android:contentDescription="@string/wallet"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/search_bar"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="96dp"
+                android:layout_marginHorizontal="12dp"
+                android:padding="12dp"
+                app:layout_constraintTop_toBottomOf="@id/navigation_bar"
+                android:background="@drawable/rounded_naver_search_bar">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/naver_logo"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:padding="8dp"
+                        android:src="@drawable/naver_logo"
+                        android:scaleType="centerInside"
+                        android:background="@null"
+                        android:contentDescription="@string/naver_logo"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end">
+
+                        <ImageButton
+                            android:id="@+id/search_menu_button"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:padding="4dp"
+                            android:src="@drawable/naver_search_menu_button"
+                            android:scaleType="centerInside"
+                            android:background="@null"
+                            android:contentDescription="@string/search_menu"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ad1"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="48dp"
+                android:gravity="end"
+                app:layout_constraintTop_toBottomOf="@id/search_bar">
+
+                <ImageView
+                    android:layout_width="96dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/todo_rect"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ad2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="96dp"
+                android:layout_marginHorizontal="24dp"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/ad1">
+
+                <ImageView
+                    android:layout_width="256dp"
+                    android:layout_height="64dp"
+                    android:src="@drawable/todo_rect"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/weather_and_stock_view"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                app:layout_constraintTop_toBottomOf="@id/ad2">
+
+                <ImageView
+                    android:id="@+id/weather_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/naver_post"/>
+
+                <ImageView
+                    android:id="@+id/stock_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/naver_post"/>
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/naver_post_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                app:layout_constraintTop_toBottomOf="@id/weather_and_stock_view"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</LinearLayout>

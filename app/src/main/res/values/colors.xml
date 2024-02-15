@@ -3,6 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFF</color>
     <color name="transparency">#00000000</color>
+    <color name="semi_transparent_black">#80000000</color>
     <color name="todo">#0096FF</color>
 
     <color name="learnChatColor">#FF5106</color>
@@ -32,4 +33,19 @@
     <color name="phoneBgColor">#FCFCFC</color>
     <color name="phoneDeepBgColor">#F2F2F2</color>
     <color name="phoneRed">#E96056</color>
+
+    <!-- 네이버 -->
+    <color name="naver">#03C75A</color>
+    <color name="naver_bg">#F4F6F8</color>
+    <color name="naver_black">#303038</color>
+    <color name="naver_grey">#929294</color>
+
+    <!-- 네이버 검색 -->
+    <color name="naver_search_bg">#F0F0F3</color>
+    <color name="naver_search_black">#2E2F2F</color>
+    <color name="naver_search_grey">#939396</color>
+    <color name="naver_search_green_line">#03C75A</color>
+    <color name="naver_search_grey_line">#F5F5F8</color>
+    <color name="naver_search_dot">#D9D9DC</color>
+    <color name="naver_search_bottom">#F9FCFF</color>
 </resources>
