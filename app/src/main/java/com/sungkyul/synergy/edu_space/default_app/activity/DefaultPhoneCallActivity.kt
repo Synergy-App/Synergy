@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.edu_space.default_app
+package com.sungkyul.synergy.edu_space.default_app.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,15 +8,22 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.databinding.ActivityCallBinding
+import com.sungkyul.synergy.databinding.ActivityDefaultPhoneCallBinding
+import com.sungkyul.synergy.edu_space.default_app.CALL_ENDED_DELAY
+import com.sungkyul.synergy.edu_space.default_app.TOUCH_DOWN_ALPHA
+import com.sungkyul.synergy.edu_space.default_app.TOUCH_DOWN_SCALE
+import com.sungkyul.synergy.edu_space.default_app.TOUCH_DURATION_ALPHA
+import com.sungkyul.synergy.edu_space.default_app.TOUCH_DURATION_SCALE
+import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_ALPHA
+import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_SCALE
 import com.sungkyul.synergy.util.AnimUtil
 
-class CallActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityDefaultCallBinding
+class DefaultPhoneCallActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityDefaultPhoneCallBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDefaultCallBinding.inflate(layoutInflater)
+        binding = ActivityDefaultPhoneCallBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val intent = intent

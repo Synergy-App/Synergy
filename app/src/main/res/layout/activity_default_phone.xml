@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/phoneDeepBgColor"
-    tools:context=".edu_space.default_app.PhoneActivity">
+    tools:context=".edu_space.default_app.activity.DefaultPhoneActivity">
 
     <FrameLayout
         android:id="@+id/edu_screen"
@@ -72,7 +72,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:menu="@menu/phone_menu"
+        app:menu="@menu/menu_phone"
         style="@style/PhoneBottomNavView"/>
 
 </RelativeLayout>

@@ -1,18 +1,21 @@
-package com.sungkyul.synergy.edu_space.default_app
+package com.sungkyul.synergy.edu_space.default_app.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
-import com.sungkyul.synergy.databinding.ActivityGalleryViewBinding
+import com.sungkyul.synergy.databinding.ActivityDefaultCameraGalleryViewBinding
+import com.sungkyul.synergy.edu_space.default_app.TOUCH_DOWN_ALPHA
+import com.sungkyul.synergy.edu_space.default_app.TOUCH_DURATION_ALPHA
+import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_ALPHA
 import com.sungkyul.synergy.util.AnimUtil
 
-class GalleryViewActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityDefaultGalleryViewBinding
+class DefaultCameraGalleryViewActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityDefaultCameraGalleryViewBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDefaultGalleryViewBinding.inflate(layoutInflater)
+        binding = ActivityDefaultCameraGalleryViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // 버튼의 배경 알파 값 초기화

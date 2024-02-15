@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.edu_space.default_app
+package com.sungkyul.synergy.edu_space.naver.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityNaverBinding
+import com.sungkyul.synergy.edu_space.naver.adapter.NaverPostAdapter
+import com.sungkyul.synergy.edu_space.naver.adapter.NaverPostData
 
 class NaverActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNaverBinding

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_default_call"
-    tools:context=".edu_space.default_app.CallActivity">
+    tools:context=".edu_space.default_app.activity.DefaultPhoneCallActivity">
 
     <ImageView
         android:id="@+id/white_background"

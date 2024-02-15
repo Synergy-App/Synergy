@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".edu_space.default_app.NaverActivity"
+    tools:context=".edu_space.naver.activity.NaverActivity"
     android:background="@color/naver_bg">
 
     <ScrollView

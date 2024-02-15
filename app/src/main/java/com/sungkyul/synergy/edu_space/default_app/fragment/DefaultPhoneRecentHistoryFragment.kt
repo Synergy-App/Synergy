@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.edu_space.default_app
+package com.sungkyul.synergy.edu_space.default_app.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,16 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.databinding.FragmentRecentHistoryBinding
+import com.sungkyul.synergy.databinding.FragmentDefaultPhoneRecentHistoryBinding
+import com.sungkyul.synergy.edu_space.default_app.adapter.RecentHistoryAdapter
+import com.sungkyul.synergy.edu_space.default_app.adapter.RecentHistoryData
 
-class RecentHistoryFragment : Fragment() {
-    private lateinit var binding: FragmentRecentHistoryBinding
+class DefaultPhoneRecentHistoryFragment : Fragment() {
+    private lateinit var binding: FragmentDefaultPhoneRecentHistoryBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentRecentHistoryBinding.inflate(inflater, container, false)
+        binding = FragmentDefaultPhoneRecentHistoryBinding.inflate(inflater, container, false)
 
         val recentHistoryArray = ArrayList<RecentHistoryData>()
         recentHistoryArray.add(RecentHistoryData(R.drawable.ic_person_black_24dp, R.drawable.lock, R.drawable.white_circle, "대장님", "휴대전화", "오후 4:30", "휴대전화: 010-1234-5678"))
