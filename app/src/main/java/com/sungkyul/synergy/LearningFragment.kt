@@ -79,12 +79,17 @@ class LearningFragment : Fragment() {
         recyclerView.layoutManager = layoutManager
 
         val buttonItemList = listOf(
-            EduButtonItem("아이콘 교육", Color.parseColor("#FFE7EE")),
-            EduButtonItem("메세지 교육", Color.parseColor("#BAD6FF")),
-            EduButtonItem("전화 교육", Color.parseColor("#BAE0DB")),
-            EduButtonItem("화면구성", Color.parseColor("#C4BAE0")),
-            EduButtonItem("네이버 교육", Color.parseColor("#DFE0BA")),
-            EduButtonItem("카카오톡 교육", Color.parseColor("#E0BAC8")),
+            EduButtonItem("아이콘", Color.parseColor("#ffffff")),
+            EduButtonItem("화면구성", Color.parseColor("#ffffff")),
+            EduButtonItem("기본 앱", Color.parseColor("#ffffff")),
+            EduButtonItem("환경설정", Color.parseColor("#ffffff")),
+            EduButtonItem("계정 생성", Color.parseColor("#ffffff")),
+            EduButtonItem("앱 설치", Color.parseColor("#ffffff")),
+            EduButtonItem("카카오톡", Color.parseColor("#ffffff")),
+            EduButtonItem("네이버", Color.parseColor("#ffffff")),
+            EduButtonItem("코레일", Color.parseColor("#ffffff")),
+            EduButtonItem("카카오택시", Color.parseColor("#ffffff")),
+            EduButtonItem("배달의 민족", Color.parseColor("#ffffff")),
         )
         val adapter = EduButtonAdapter(buttonItemList)
         recyclerView.adapter = adapter

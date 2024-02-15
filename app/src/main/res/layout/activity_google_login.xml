@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <!-- Google 이미지 -->
+    <ImageView
+        android:id="@+id/google_logo"
+        android:layout_width="95dp"
+        android:layout_height="60dp"
+        android:src="@drawable/googlelogo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/login_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp"
+        />
+
+    <!-- "로그인" 텍스트 -->
+    <TextView
+        android:id="@+id/login_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="로그인"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/google_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="0dp"/>
+
+    <!-- "Google 계정 사용" 텍스트 -->
+    <TextView
+        android:id="@+id/google_account_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Google 계정 사용"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/login_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <!-- 이메일 입력 칸 -->
+    <EditText
+        android:id="@+id/emailEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="이메일 또는 휴대전화"
+        android:inputType="textEmailAddress"
+        android:background="@drawable/google_login_edit_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/google_account_text"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="24dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"/>
+
+    <!-- "이메일을 잊으셨나요?" 텍스트 -->
+    <TextView
+        android:id="@+id/forgot_email_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이메일을 잊으셨나요?"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="#1B76EB"
+        app:layout_constraintTop_toBottomOf="@+id/emailEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="20dp"/>
+
+    <!-- "게스트 코드 사용 방법 자세히 알아보기" 텍스트 -->
+    <TextView
+        android:id="@+id/guest_code_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="내 컴퓨터가 아닌가요? 시크릿 브라우저 창을 사용하여 로&#10;그인하세요. 게스트 코드 사용 방법 자세히 알아보기"
+        android:textSize="14sp"
+        android:bufferType="spannable"
+        android:textColor="#1B76EB"
+        app:layout_constraintTop_toBottomOf="@+id/forgot_email_text"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="20dp"/>
+
+
+    <!-- "계정 만들기" 버튼 -->
+    <Button
+        android:id="@+id/create_account_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="계정 만들기"
+        android:textColor="#1B76EB"
+        android:background="@android:color/transparent"
+        android:outlineProvider="background"
+        android:elevation="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/guest_code_text"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="36dp"
+        android:layout_marginStart="16dp"/>
+
+
+    <!-- "다음" 버튼 -->
+    <Button
+        android:id="@+id/next_button"
+        android:layout_width="85dp"
+        android:layout_height="40dp"
+        android:text="다음"
+        android:background="@drawable/blue_rounded_button"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/guest_code_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="16dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

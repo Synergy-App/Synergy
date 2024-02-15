@@ -15,7 +15,7 @@ class SettingDisplayAdapter(private val context: Context) : RecyclerView.Adapter
 
     var datas = mutableListOf<DisplayData>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.display_setting_recycler,parent,false)
+        val view = LayoutInflater.from(context).inflate(R.layout.fragment_setting_display_recycler,parent,false)
         return ViewHolder(view)
     }
 

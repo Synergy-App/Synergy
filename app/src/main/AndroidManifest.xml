@@ -26,7 +26,7 @@
             android:name=".edu_space.default_app.CallActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.default_app.GalleryViewActivity"
+            android:name=".main.activity.DigitalStartActivity"
             android:exported="false" />
         <activity
             android:name=".edu_space.default_app.CameraActivity"
@@ -34,26 +34,25 @@
         <activity
             android:name=".edu_space.default_app.PhoneActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+
         <activity
-            android:name=".edu_space.kakaotalk.activity.ProfileDetailActivity"
+            android:name=".edu_space.icon_edu.activity.IconEduActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.kakaotalk.activity.ChattingActivity"
+            android:name=".edu_space.icon_edu.activity.IconDetailActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.kakaotalk.activity.KakaotalkLoginActivity"
-            android:exported="false" />
+            android:name=".edu_space.screenEdu.activity.ScreenEduMainActivity"
+            android:exported="false" /> <!-- 화면 구성: 1.메인 -->
         <activity
             android:name=".edu_space.kakaotalk.activity.KakaoMainActivity"
             android:exported="false" /> <!-- 화면구성 교육 -->
@@ -76,16 +75,17 @@
             android:name=".screenEdu.ScreenEdu_ToolBar_Navigation_Activity"
             android:exported="false" /> <!-- 아이콘 교육 -->
         <activity
-            android:name=".edu_space.icon_edu.activity.IconEduActivity"
+            android:name=".edu_space.settingedu.activity.SettingDetailActivity"
             android:exported="false" />
+        <!-- 계정생성 교육 -->
         <activity
-            android:name=".edu_space.icon_edu.activity.IconDetailActivity"
+            android:name=".edu_space.accountedu.GoogleMainActivity"
             android:exported="false" />
         <activity
             android:name=".EduSpaceActivity"
             android:exported="false" /> <!-- 환경설정 교육 -->
         <activity
-            android:name=".edu_space.settingedu.activity.SettingDisplayActivity"
+            android:name=".edu_space.kakaotalk.activity.ProfileDetailActivity"
             android:exported="false" />
         <activity
             android:name=".edu_space.settingedu.activity.SettingEduActivity"
@@ -94,7 +94,7 @@
             android:name=".edu_space.settingedu.activity.SettingFontSizeActivity"
             android:exported="false"></activity>
         <activity
-            android:name=".edu_space.settingedu.activity.SettingDetailActivity"
+            android:name=".edu_space.kakaotalk.activity.KakaoMainActivity"
             android:exported="false" />
     </application>
 

@@ -11,11 +11,11 @@ import com.sungkyul.synergy.databinding.ActivityCameraBinding
 import com.sungkyul.synergy.util.AnimUtil
 
 class CameraActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityCameraBinding
+    private lateinit var binding: ActivityDefaultCameraBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCameraBinding.inflate(layoutInflater)
+        binding = ActivityDefaultCameraBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // 버튼의 배경 알파 값 초기화

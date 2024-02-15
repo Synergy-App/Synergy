@@ -8,11 +8,11 @@ import com.sungkyul.synergy.databinding.ActivityGalleryViewBinding
 import com.sungkyul.synergy.util.AnimUtil
 
 class GalleryViewActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityGalleryViewBinding
+    private lateinit var binding: ActivityDefaultGalleryViewBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityGalleryViewBinding.inflate(layoutInflater)
+        binding = ActivityDefaultGalleryViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // 버튼의 배경 알파 값 초기화

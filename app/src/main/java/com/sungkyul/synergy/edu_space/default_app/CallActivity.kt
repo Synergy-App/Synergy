@@ -12,11 +12,11 @@ import com.sungkyul.synergy.databinding.ActivityCallBinding
 import com.sungkyul.synergy.util.AnimUtil
 
 class CallActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityCallBinding
+    private lateinit var binding: ActivityDefaultCallBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCallBinding.inflate(layoutInflater)
+        binding = ActivityDefaultCallBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val intent = intent

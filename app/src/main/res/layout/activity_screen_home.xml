@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/screenedu_background"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".edu_space.screenEdu.activity.ScreenEduMainActivity">
+
+    <!-- 상단바 -->
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <!-- toolbar 배경 -->
+        <include layout="@layout/fragment_screen_toolbar" />
+
+        <!-- blackground -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/screenedu_blackground"
+            android:scaleType="fitXY" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/ic_edu_explane_greenbox">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="334dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/explanation_whitebox" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="260dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="30dp"
+            android:background="@android:color/black" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="207dp"
+            android:fontFamily="@font/pretendard_extrabold"
+            android:text="홈 화면"
+            android:textColor="#000000"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/description_text"
+            android:layout_width="331dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="270dp"
+            android:fontFamily="@font/pretendard_semibold"
+            android:text="주로 배경화면이라고 불립니다."
+            android:textColor="#000000"
+            android:textSize="32sp" />
+
+        <ImageView
+            android:id="@+id/screenedu_nextbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="452dp"
+            android:background="@drawable/screenedu_nextbtn" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="231dp"
+            android:layout_marginTop="460dp"
+            android:fontFamily="@font/pretendard_semibold"
+            android:text="다음"
+            android:textColor="#000000"
+            android:textSize="28sp" />
+
+
+        <ImageView
+            android:id="@+id/screenedu_backbtn"
+            android:layout_width="115dp"
+            android:layout_height="52dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="452dp"
+            android:background="@drawable/screenedu_backbtn" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="81dp"
+            android:layout_marginTop="460dp"
+            android:fontFamily="@font/pretendard_semibold"
+            android:text="이전"
+            android:textColor="#000000"
+            android:textSize="28sp" />
+
+
+    </RelativeLayout>
+
+
+    <!-- 상단바 -->
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <!-- toolbar 배경 -->
+        <include layout="@layout/fragment_sreen_nevigationbar" />
+
+        <!-- blackground -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/screenedu_blackground"
+            android:scaleType="fitXY" />
+
+    </RelativeLayout>
+
+</LinearLayout>

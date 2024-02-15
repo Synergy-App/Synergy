@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/screenedu_background"
+    android:gravity="center">
+
+    <!-- Vector Drawable을 추가 -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="94dp"
+        android:layout_marginEnd="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/screenedu_blackground" />
+
+    <include layout="@layout/fragment_screen_toolbar" />
+    <!-- 상단바-->
+    <RelativeLayout
+        android:layout_margin="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_edu_explane_leftgreenbar">
+
+    </RelativeLayout>
+
+    <!-- 하단바 -->
+    <include
+        layout="@layout/fragment_sreen_nevigationbar"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="302dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/explanation_whitebox" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/ic_edu_arrow_up_white" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="260dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="30dp"
+        android:background="@android:color/black" />
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="207dp"
+        android:fontFamily="@font/pretendard_extrabold"
+        android:text="상단바"
+        android:textColor="#000000"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/description_text"
+        android:layout_width="331dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="270dp"
+        android:fontFamily="@font/pretendard_semibold"
+        android:text="좌측 상단에는\n현재 시간이\n나타납니다."
+        android:textColor="#000000"
+        android:textSize="32sp" />
+
+    <ImageView
+        android:id="@+id/screenedu_nextbtn"
+        android:layout_width="115dp"
+        android:layout_height="52dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="420dp"
+        android:background="@drawable/screenedu_nextbtn" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="231dp"
+        android:layout_marginTop="425dp"
+        android:fontFamily="@font/pretendard_semibold"
+        android:text="다음"
+        android:textColor="#000000"
+        android:textSize="28sp" />
+
+
+    <ImageView
+        android:id="@+id/screenedu_backbtn"
+        android:layout_width="115dp"
+        android:layout_height="52dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="420dp"
+        android:background="@drawable/screenedu_backbtn" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="81dp"
+        android:layout_marginTop="425dp"
+        android:fontFamily="@font/pretendard_semibold"
+        android:text="이전"
+        android:textColor="#000000"
+        android:textSize="28sp" />
+
+</RelativeLayout>

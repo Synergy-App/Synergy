@@ -93,7 +93,6 @@
             android:layout_height="wrap_content"
             android:text="기본"
             android:textStyle="bold"
-
             android:textColor="#0672D5"
             android:textSize="12sp"
             android:gravity="start"

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "427647704015",
+    "project_id": "synergy-1e5d1",
+    "storage_bucket": "synergy-1e5d1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:427647704015:android:aefbae77ae823c56fc50ba",
+        "android_client_info": {
+          "package_name": "com.sungkyul.synergy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPnb49tLm-f7ArphsLqRoVeWzgR8IFrB8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

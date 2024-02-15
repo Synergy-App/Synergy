@@ -10,7 +10,7 @@ import com.sungkyul.synergy.edu_space.kakaotalk.data.profileItem
 class ProfileDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_profile_detail)
+        setContentView(R.layout.activity_kakao_profile_detail)
 
         val receivedData = intent.getSerializableExtra("profile_detail") as? profileItem
 

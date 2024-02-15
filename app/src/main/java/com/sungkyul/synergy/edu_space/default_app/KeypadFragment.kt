@@ -15,14 +15,14 @@ import com.sungkyul.synergy.util.AnimUtil
 import com.sungkyul.synergy.util.TextUtil
 
 class KeypadFragment : Fragment() {
-    private lateinit var binding: FragmentKeypadBinding
+    private lateinit var binding: FragmentDefaultCallKeypadBinding
     private var secondaryButtonsIsEnabled = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentKeypadBinding.inflate(inflater, container, false)
+        binding = FragmentDefaultCallKeypadBinding.inflate(inflater, container, false)
 
         // 키 버튼 리스트
         val keyButtons = listOf(
