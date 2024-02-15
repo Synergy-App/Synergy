@@ -1,6 +1,5 @@
 package com.sungkyul.synergy.edu_space.default_app
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
@@ -8,9 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.databinding.ActivityDefaultCallPhoneBinding
-import com.sungkyul.synergy.util.AnimationUtil
-import com.sungkyul.synergy.util.EduUtil
+import com.sungkyul.synergy.databinding.ActivityPhoneBinding
+import com.sungkyul.synergy.util.AnimUtil
+import com.sungkyul.synergy.util.Edu
+import com.sungkyul.synergy.util.EduData
 
 class PhoneActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDefaultCallPhoneBinding
@@ -59,21 +59,19 @@ class PhoneActivity : AppCompatActivity() {
 
         replaceFragment(keypadFragment)
 
-        // TODO: TEST
-        /*binding.eduScreen.bringToFront()
-        binding.phoneBottomNav.visibility = View.INVISIBLE
-        EduUtil.setAllViewsEnabled(binding.mainLayout, false)
-        EduUtil.test(supportFragmentManager, binding.eduScreen.id)*/
+        val course = ArrayList<EduData>()
+        val edu = Edu(this, course)
+        edu.start()
     }
 
     // 돋보기 버튼의 터치 이벤트 리스너
     private val onTouchMagnifyingGlassListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimationUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
+                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
             }
             MotionEvent.ACTION_UP -> {
-                AnimationUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
+                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
                 view.performClick()
             }
         }
@@ -84,10 +82,10 @@ class PhoneActivity : AppCompatActivity() {
     private val onTouchMoreListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimationUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
+                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
             }
             MotionEvent.ACTION_UP -> {
-                AnimationUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
+                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
                 view.performClick()
             }
         }

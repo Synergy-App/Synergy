@@ -15,16 +15,24 @@
         android:theme="@style/Theme.Synergy"
         tools:targetApi="31">
         <activity
-            android:name=".main.activity.SynergyMainActivity"
+            android:name=".edu_space.default_app.NaverSearchActivity"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".edu_space.default_app.NaverActivity"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".edu_space.default_app.CallActivity"
             android:exported="false" />
         <activity
             android:name=".main.activity.DigitalStartActivity"
             android:exported="false" />
         <activity
-            android:name=".EduSpaceActivity"
+            android:name=".edu_space.default_app.CameraActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".edu_space.default_app.PhoneActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,57 +48,32 @@
             android:name=".edu_space.icon_edu.activity.IconDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".main.activity.RegisterActivity"
-            android:exported="true" />
-
-             <!-- 화면구성 교육 -->
+            android:name=".MainActivity"
+            android:exported="false" />
         <activity
             android:name=".edu_space.screenEdu.activity.ScreenEduMainActivity"
             android:exported="false" /> <!-- 화면 구성: 1.메인 -->
         <activity
-            android:name=".edu_space.screenEdu.activity.ScreenEduToolActivity"
-            android:exported="false" /> <!-- 상단바 -->
+            android:name=".edu_space.kakaotalk.activity.KakaoMainActivity"
+            android:exported="false" /> <!-- 화면구성 교육 -->
         <activity
-            android:name=".edu_space.screenEdu.activity.ScreenEduLeftToolActivity"
-            android:excludeFromRecents="false" />
+            android:name=".screenEdu.ScreenEduActivity"
+            android:exported="false" /> <!-- 화면 구성: 1.메인 화면 -->
         <activity
-            android:name=".edu_space.screenEdu.activity.ScreenEduRightToolActivity"
-            android:excludeFromRecents="false" />
+            android:name=".screenEdu.ScreenEduMainActivity"
+            android:exported="false" /> <!-- 화면 구성: 2.상단바 -->
         <activity
-            android:name=".edu_space.screenEdu.activity.ScreenEduBottomActivity"
-            android:exported="false" /> <!-- 하단바 -->
+            android:name=".screenEdu.ScreenEduToolActivity"
+            android:exported="false" /> <!-- 화면 구성: 3.하단바 -->
         <activity
-            android:name=".edu_space.screenEdu.activity.ScreenEduLeftBottomActivity"
-            android:exported="false" /> <!-- 하단바 -->
+            android:name=".screenEdu.ScreenEduBottomActivity"
+            android:exported="false" /> <!-- 화면 구성: -->
         <activity
-            android:name=".edu_space.screenEdu.activity.ScreenEduCenterBottomActivity"
-            android:exported="false" /> <!-- 하단바 -->
+            android:name=".screenEdu.ScreenEdu_select_Activity"
+            android:exported="false" /> <!-- 화면 구성: 상단바 교육 화면 -->
         <activity
-            android:name=".edu_space.screenEdu.activity.ScreenEduRightBottomActivity"
-            android:exported="false" /> <!-- 하단바 -->
-        <!-- 기본 앱 교육 -->
-        <activity
-            android:name=".edu_space.default_app.CallActivity"
-            android:exported="false" />
-        <activity
-            android:name=".edu_space.default_app.GalleryViewActivity"
-            android:exported="false" />
-        <activity
-            android:name=".edu_space.default_app.CameraActivity"
-            android:exported="false" />
-        <activity
-            android:name=".edu_space.default_app.PhoneActivity"
-            android:exported="false" />
-        <!-- 환경설정 교육 -->
-        <activity
-            android:name=".edu_space.settingedu.activity.SettingDisplayActivity"
-            android:exported="false" />
-        <activity
-            android:name=".edu_space.settingedu.activity.SettingEduActivity"
-            android:exported="false" />
-        <activity
-            android:name=".edu_space.settingedu.activity.SettingFontSizeActivity"
-            android:exported="false" />
+            android:name=".screenEdu.ScreenEdu_ToolBar_Navigation_Activity"
+            android:exported="false" /> <!-- 아이콘 교육 -->
         <activity
             android:name=".edu_space.settingedu.activity.SettingDetailActivity"
             android:exported="false" />
@@ -99,20 +82,17 @@
             android:name=".edu_space.accountedu.GoogleMainActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.accountedu.GoogleLoginActivity"
-            android:exported="false" />
-        <!-- 앱 설치 -->
-
-        <!-- 카카오톡 교육 -->
+            android:name=".EduSpaceActivity"
+            android:exported="false" /> <!-- 환경설정 교육 -->
         <activity
             android:name=".edu_space.kakaotalk.activity.ProfileDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.kakaotalk.activity.ChattingActivity"
+            android:name=".edu_space.settingedu.activity.SettingEduActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.kakaotalk.activity.KakaotalkLoginActivity"
-            android:exported="false" />
+            android:name=".edu_space.settingedu.activity.SettingFontSizeActivity"
+            android:exported="false"></activity>
         <activity
             android:name=".edu_space.kakaotalk.activity.KakaoMainActivity"
             android:exported="false" />

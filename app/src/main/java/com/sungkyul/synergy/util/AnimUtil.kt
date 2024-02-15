@@ -3,16 +3,19 @@ package com.sungkyul.synergy.util
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
+import android.content.Context
 import android.graphics.drawable.Drawable
+import android.util.DisplayMetrics
+import android.util.TypedValue
 import android.view.View
-import android.view.ViewGroup
+import android.view.WindowManager
 import android.view.animation.Animation
 import android.view.animation.DecelerateInterpolator
+import android.view.animation.Interpolator
 import android.view.animation.ScaleAnimation
-import android.widget.Toast
 import androidx.core.view.updateLayoutParams
 
-class AnimationUtil {
+class AnimUtil {
     companion object {
         // (duration)ms 동안 drawable의 알파 값이 startAlpha에서 endAlpha로 바뀌는 함수
         // startAlpha, endAlpha의 범위는 [0, 255]이다.
@@ -105,6 +108,45 @@ class AnimationUtil {
             animator.duration = duration
             animator.interpolator = interpolator
             animator.start()
+        }
+
+        // ObjectAnimator.ofFloat를 편하게 사용하려고 만든 함수
+        fun startObjectAnimatorOfFloat(view: View, target: String, value1: Float, value2: Float, duration: Long, interpolator: Interpolator) {
+            ObjectAnimator.ofFloat(view, target, value1, value2).apply {
+                this.duration = duration
+                this.interpolator = interpolator
+                start()
+            }
+        }
+
+        // ValueAnimator.ofFloat를 편하게 사용하려고 만든 함수
+        fun startValueAnimatorOfFloat(update: (Float) -> Unit, value1: Float, value2: Float, duration: Long, interpolator: Interpolator) {
+            val animator = ValueAnimator.ofFloat(value1, value2)
+            animator.addUpdateListener {
+                update(it.animatedValue as Float)
+            }
+            animator.duration = duration
+            animator.interpolator = interpolator
+            animator.start()
+        }
+
+        // dp에서 px로 바꾸는 함수
+        fun dpToPx(context: Context, dp: Float): Float {
+            return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.resources.displayMetrics)
+        }
+
+        fun getScreenDimensions(context: Context): Pair<Int, Int> {
+            val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+            val displayMetrics = DisplayMetrics()
+
+            // 현재 활성화된 디스플레이의 메트릭스 정보 가져오기
+            //windowManager.defaultDisplay.getMetrics(displayMetrics)
+
+            // 가로와 세로 길이를 px 단위로 반환
+            val screenWidthPx = displayMetrics.widthPixels
+            val screenHeightPx = displayMetrics.heightPixels
+
+            return Pair(screenWidthPx, screenHeightPx)
         }
     }
 }

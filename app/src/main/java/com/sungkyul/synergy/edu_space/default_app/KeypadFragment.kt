@@ -1,10 +1,7 @@
 package com.sungkyul.synergy.edu_space.default_app
 
 import android.app.AlertDialog
-import android.app.Dialog
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -13,9 +10,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.sungkyul.synergy.R
-import com.sungkyul.synergy.databinding.FragmentDefaultCallKeypadBinding
-import com.sungkyul.synergy.util.AnimationUtil
+import com.sungkyul.synergy.databinding.FragmentKeypadBinding
+import com.sungkyul.synergy.util.AnimUtil
 import com.sungkyul.synergy.util.TextUtil
 
 class KeypadFragment : Fragment() {
@@ -84,10 +80,10 @@ class KeypadFragment : Fragment() {
     private val onTouchContactAdditionListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimationUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
+                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
             }
             MotionEvent.ACTION_UP -> {
-                AnimationUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
+                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
                 showContactAdditionDialog()
                 view.performClick()
             }
@@ -99,11 +95,11 @@ class KeypadFragment : Fragment() {
     private val onTouchKeyListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimationUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
-                AnimationUtil.startScaleAnimation(view, TOUCH_DURATION_SCALE, TOUCH_UP_SCALE, TOUCH_DOWN_SCALE)
+                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
+                AnimUtil.startScaleAnimation(view, TOUCH_DURATION_SCALE, TOUCH_UP_SCALE, TOUCH_DOWN_SCALE)
             }
             MotionEvent.ACTION_UP -> {
-                AnimationUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
+                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
                 TextUtil.extendText(binding.phoneNumText, (view as Button).text.toString())
 
                 // 번호 입력 란이 비어 있지 않으면, '연락처 추가, 영상 통화, 지우기' 버튼이 나타난다.
@@ -122,10 +118,10 @@ class KeypadFragment : Fragment() {
     private val onTouchVideoCallListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimationUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
+                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
             }
             MotionEvent.ACTION_UP -> {
-                AnimationUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
+                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
                 view.performClick()
             }
         }
@@ -136,10 +132,10 @@ class KeypadFragment : Fragment() {
     private val onTouchCallListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimationUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
+                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
             }
             MotionEvent.ACTION_UP -> {
-                AnimationUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
+                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
 
                 if(binding.phoneNumText.text.toString().isNotEmpty()) {
                     // 전화 화면으로 이동
@@ -158,10 +154,10 @@ class KeypadFragment : Fragment() {
     private val onTouchDeleteListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimationUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
+                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
             }
             MotionEvent.ACTION_UP -> {
-                AnimationUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
+                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
                 TextUtil.popText(binding.phoneNumText)
 
                 // 번호 입력 란이 비어 있으면, '연락처 추가, 영상 통화, 지우기' 버튼이 사라진다.
@@ -211,10 +207,10 @@ class KeypadFragment : Fragment() {
         else binding.contactAddition.visibility = View.INVISIBLE
 
         binding.videoCall.isEnabled = enabled
-        AnimationUtil.startAlphaAnimation(binding.videoCall.drawable, TOUCH_DURATION_ALPHA, startAlpha, endAlpha)
+        AnimUtil.startAlphaAnimation(binding.videoCall.drawable, TOUCH_DURATION_ALPHA, startAlpha, endAlpha)
 
         binding.delete.isEnabled = enabled
-        AnimationUtil.startAlphaAnimation(binding.delete.drawable, TOUCH_DURATION_ALPHA, startAlpha, endAlpha)
+        AnimUtil.startAlphaAnimation(binding.delete.drawable, TOUCH_DURATION_ALPHA, startAlpha, endAlpha)
     }
 
     private fun initSecondaryButtonsBackground() {
