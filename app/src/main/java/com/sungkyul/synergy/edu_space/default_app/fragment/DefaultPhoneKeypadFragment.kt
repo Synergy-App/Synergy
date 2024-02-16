@@ -3,6 +3,9 @@ package com.sungkyul.synergy.edu_space.default_app.fragment
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -19,9 +22,10 @@ import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_ALPHA
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_SCALE
 import com.sungkyul.synergy.edu_space.default_app.activity.DefaultPhoneCallActivity
 import com.sungkyul.synergy.util.AnimUtil
+import com.sungkyul.synergy.util.EduListener
 import com.sungkyul.synergy.util.TextUtil
 
-class DefaultPhoneKeypadFragment : Fragment() {
+class DefaultPhoneKeypadFragment(private val eduListener: EduListener) : Fragment() {
     private lateinit var binding: FragmentDefaultPhoneKeypadBinding
     private var secondaryButtonsIsEnabled = false
 
@@ -70,6 +74,7 @@ class DefaultPhoneKeypadFragment : Fragment() {
         binding.call.setOnTouchListener(onTouchCallListener)
         binding.delete.setOnTouchListener(onTouchDeleteListener)
         binding.delete.setOnLongClickListener(onLongClickDeleteListener)
+        binding.phoneNumText.addTextChangedListener(phoneNumTextWatcher)
 
         binding.phoneNumText.keyListener = null // 키 버튼을 눌러도 키보드가 안 뜨게 한다.
 
@@ -108,6 +113,8 @@ class DefaultPhoneKeypadFragment : Fragment() {
             MotionEvent.ACTION_UP -> {
                 AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
                 TextUtil.extendText(binding.phoneNumText, (view as Button).text.toString())
+
+                eduListener.onAction("click_key_button", view.text.toString())
 
                 // 번호 입력 란이 비어 있지 않으면, '연락처 추가, 영상 통화, 지우기' 버튼이 나타난다.
                 if(binding.phoneNumText.text.toString().isNotEmpty() && !secondaryButtonsIsEnabled) {
@@ -192,6 +199,22 @@ class DefaultPhoneKeypadFragment : Fragment() {
         }
         
         true
+    }
+
+    // 전화번호 텍스트 Watcher
+    private val phoneNumTextWatcher = object: TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+        }
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            Log.i("PhoneNumText", s.toString())
+            eduListener.onAction("phone_num_text_changed", s.toString())
+        }
+
+        override fun afterTextChanged(s: Editable?) {
+
+        }
     }
 
     // 연락처 추가 다이얼로그를 보여준다.

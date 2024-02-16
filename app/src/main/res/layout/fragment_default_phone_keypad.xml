@@ -39,7 +39,8 @@
             android:layout_above="@id/key_layout1"
             android:gravity="center|bottom"
             android:inputType="phone"
-            android:textSize="24sp"/>
+            android:textSize="24sp"
+            android:textColor="@color/black"/>
 
         <!-- 1, 2, 3 -->
         <LinearLayout

@@ -140,7 +140,7 @@ class AnimUtil {
             val displayMetrics = DisplayMetrics()
 
             // 현재 활성화된 디스플레이의 메트릭스 정보 가져오기
-            //windowManager.defaultDisplay.getMetrics(displayMetrics)
+            windowManager.defaultDisplay.getMetrics(displayMetrics)
 
             // 가로와 세로 길이를 px 단위로 반환
             val screenWidthPx = displayMetrics.widthPixels

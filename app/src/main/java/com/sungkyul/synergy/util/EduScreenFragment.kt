@@ -1,6 +1,7 @@
 package com.sungkyul.synergy.util
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,11 +10,16 @@ import android.view.animation.DecelerateInterpolator
 import android.view.animation.Interpolator
 import android.widget.FrameLayout
 import android.widget.RelativeLayout
+import android.widget.TextView
+import androidx.core.view.marginBottom
+import androidx.core.view.marginEnd
+import androidx.core.view.marginStart
+import androidx.core.view.marginTop
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import com.sungkyul.synergy.databinding.FragmentEduScreenBinding
 
-class EduScreenFragment : Fragment() {
+class EduScreenFragment(private val eduListener: EduListener) : Fragment() {
     private lateinit var binding: FragmentEduScreenBinding
 
     override fun onCreateView(
@@ -21,6 +27,9 @@ class EduScreenFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentEduScreenBinding.inflate(inflater, container, false)
+
+        // onCreateView가 호출되었다는 걸 리스너를 통해 알린다.
+        eduListener.onCreateViewFinished()
 
         return binding.root
     }
@@ -132,6 +141,26 @@ class EduScreenFragment : Fragment() {
         }, startRight, endRight, duration, interpolator)
     }
 
+    // 제목을 보여주는 함수
+    fun showTitle() {
+        binding.eduTitle.visibility = TextView.VISIBLE
+        binding.separator.visibility = TextView.VISIBLE
+    }
+
+    // 제목을 숨기는 함수
+    fun hideTitle() {
+        binding.eduTitle.visibility = TextView.GONE
+        binding.separator.visibility = TextView.GONE
+    }
+
+    // 다이얼로그의 제목과 내용을 업데이트하는 함수
+    fun updateDialogTitleAndContent(title: String, titleGravity: Int, content: String, contentGravity: Int) {
+        binding.eduTitle.text = title
+        binding.eduTitle.gravity = titleGravity
+        binding.eduContent.text = content
+        binding.eduContent.gravity = contentGravity
+    }
+
     // 설명 다이얼로그를 보여주는 함수
     fun showDialog() {
         startObjectAnimationOfDialog(
@@ -169,28 +198,25 @@ class EduScreenFragment : Fragment() {
     }
 
     // 설명 다이얼로그를 움직이는 함수
+    // 단위는 dp이다.
     fun translateDialog(
         duration: Long,
-        startTopMargin: Int,
-        endTopMargin: Int,
-        startBottomMargin: Int,
-        endBottomMargin: Int,
-        startLeftMargin: Int,
-        endLeftMargin: Int,
-        startRightMargin: Int,
-        endRightMargin: Int
+        dialogTop: Int,
+        dialogBottom: Int,
+        dialogStart: Int,
+        dialogEnd: Int
     ) {
         startValueAnimationOfDialog(
             duration,
             AccelerateDecelerateInterpolator(),
-            AnimUtil.dpToPx(binding.root.context, startTopMargin.toFloat()),
-            AnimUtil.dpToPx(binding.root.context, endTopMargin.toFloat()),
-            AnimUtil.dpToPx(binding.root.context, startBottomMargin.toFloat()),
-            AnimUtil.dpToPx(binding.root.context, endBottomMargin.toFloat()),
-            AnimUtil.dpToPx(binding.root.context, startLeftMargin.toFloat()),
-            AnimUtil.dpToPx(binding.root.context, endLeftMargin.toFloat()),
-            AnimUtil.dpToPx(binding.root.context, startRightMargin.toFloat()),
-            AnimUtil.dpToPx(binding.root.context, endRightMargin.toFloat())
+            binding.eduDialog.marginTop.toFloat(),
+            AnimUtil.dpToPx(binding.root.context, dialogTop.toFloat()),
+            binding.eduDialog.marginBottom.toFloat(),
+            AnimUtil.dpToPx(binding.root.context, dialogBottom.toFloat()),
+            binding.eduDialog.marginStart.toFloat(),
+            AnimUtil.dpToPx(binding.root.context, dialogStart.toFloat()),
+            binding.eduDialog.marginEnd.toFloat(),
+            AnimUtil.dpToPx(binding.root.context, dialogEnd.toFloat())
         )
     }
 
@@ -217,26 +243,22 @@ class EduScreenFragment : Fragment() {
     // 커버들을 움직이는 함수
     fun translateCovers(
         duration: Long,
-        startTop: Int,
-        endTop: Int,
-        startBottom: Int,
-        endBottom: Int,
-        startLeft: Int,
-        endLeft: Int,
-        startRight: Int,
-        endRight: Int
+        coverTop: Int,
+        coverBottom: Int,
+        coverStart: Int,
+        coverEnd: Int
     ) {
         startValueAnimationOfCovers(
             duration,
             AccelerateDecelerateInterpolator(),
-            AnimUtil.dpToPx(binding.root.context, startTop.toFloat()),
-            AnimUtil.dpToPx(binding.root.context, endTop.toFloat()),
-            AnimUtil.dpToPx(binding.root.context, startBottom.toFloat()),
-            AnimUtil.dpToPx(binding.root.context, endBottom.toFloat()),
-            AnimUtil.dpToPx(binding.root.context, startLeft.toFloat()),
-            AnimUtil.dpToPx(binding.root.context, endLeft.toFloat()),
-            AnimUtil.dpToPx(binding.root.context, startRight.toFloat()),
-            AnimUtil.dpToPx(binding.root.context, endRight.toFloat())
+            binding.eduCoverTop.height.toFloat(),
+            AnimUtil.dpToPx(binding.root.context, coverTop.toFloat()),
+            binding.eduCoverBottom.height.toFloat(),
+            AnimUtil.dpToPx(binding.root.context, coverBottom.toFloat()),
+            binding.eduCoverStart.width.toFloat(),
+            AnimUtil.dpToPx(binding.root.context, coverStart.toFloat()),
+            binding.eduCoverEnd.width.toFloat(),
+            AnimUtil.dpToPx(binding.root.context, coverEnd.toFloat())
         )
     }
 }

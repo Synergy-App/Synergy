@@ -20,7 +20,7 @@ class IconEduActivity : AppCompatActivity() {
         binding = ActivityIconEduBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val recyclerView: RecyclerView = binding.iconRv // XML에서 정의한 RecyclerView의 ID를 가져옵니다.
+        /*val recyclerView: RecyclerView = binding.iconRv // XML에서 정의한 RecyclerView의 ID를 가져옵니다.
 
         // RecyclerView에 레이아웃 매니저 설정
         recyclerView.layoutManager = LinearLayoutManager(this) // LinearLayoutManager 또는 필요한 레이아웃 매니저를 사용합니다.
@@ -42,6 +42,6 @@ class IconEduActivity : AppCompatActivity() {
         )
         // RecyclerView Adapter 생성 및 연결
         iconAdapter = IconEduAdapter(this, iconList) // 여기에 생성한 아이템 리스트를 넣어줍니다.
-        recyclerView.adapter = iconAdapter
+        recyclerView.adapter = iconAdapter*/
     }
 }
