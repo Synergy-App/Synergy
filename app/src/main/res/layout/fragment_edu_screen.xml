@@ -52,54 +52,37 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="150dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginBottom="300dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:paddingHorizontal="24dp"
         android:background="@drawable/edu_dialog_bg"
         android:gravity="center">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:text="홈 화면"
-            android:textSize="24sp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="주로 배경화면이라고 불립니다."
-            android:textSize="20sp"/>
-
-        <LinearLayout
+            android:id="@+id/edu_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:gravity="center">
+            android:text="제목"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
 
-            <Button
-                android:id="@+id/prev_button"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:layout_marginEnd="12dp"
-                android:text="이전"
-                android:visibility="gone"
-                android:background="@drawable/white_rounded_rect"/>
+        <View
+            android:id="@+id/separator"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="12dp"
+            android:background="@color/light_grey"/>
 
-            <Button
-                android:id="@+id/next_button"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="다음"
-                android:background="@drawable/white_rounded_rect"/>
-
-            <Button
-                android:id="@+id/fin_button"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="완료"
-                android:visibility="gone"
-                android:background="@drawable/white_rounded_rect"/>
-
-        </LinearLayout>
+        <TextView
+            android:id="@+id/edu_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="내용 내용 내용 내용\n내용 내용 내용 내용 내용 내용\n내용 내용 내용 내용 내용"
+            android:textSize="18sp"
+            android:textColor="@color/black"/>
 
     </LinearLayout>
 

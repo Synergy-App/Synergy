@@ -43,7 +43,7 @@ class IconEduAdapter(val context: Context,  val iconList:ArrayList<Icon>):Recycl
                 iconIv.setImageResource(icon.iconImage) // 이미지 설정
                 iconTv.text = icon.iconText // 텍스트 설정
 
-                root.setOnClickListener {
+                /*root.setOnClickListener {
                     val iconInfo = when (icon.iconText)  {
                         "음량 조절" -> IconInfo(R.drawable.ic_sound_black, "음량 조절", "음량을 조절합니다.")
                         "와이파이" -> IconInfo(R.drawable.ic_sound_black, "와이파이", "와이파이를 설정합니다.")
@@ -79,7 +79,7 @@ class IconEduAdapter(val context: Context,  val iconList:ArrayList<Icon>):Recycl
                         *?/
                     */
 
-                }
+                }*/
             }
         }
     }
