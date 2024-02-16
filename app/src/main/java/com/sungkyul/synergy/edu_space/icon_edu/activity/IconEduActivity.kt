@@ -28,16 +28,16 @@ class IconEduActivity : AppCompatActivity() {
 
             // 데이터를 생성하거나 가져와서 리스트를 만듭니다. 여기서는 예시로 더미 데이터를 만듭니다.
         val iconList = arrayListOf(
-            Icon(R.drawable.sound, "음량 조절"),
-            Icon(R.drawable.sound, "와이파이"),
-            Icon(R.drawable.sound, "손전등"),
-            Icon(R.drawable.sound, "블루투스"),
-            Icon(R.drawable.sound, "비행기모드"),
-            Icon(R.drawable.sound, "절전모드"),
-            Icon(R.drawable.sound, "데이터 모바일"),
-            Icon(R.drawable.sound, "화면 녹화"),
-            Icon(R.drawable.sound, "다크모드"),
-            Icon(R.drawable.sound, "빅스비 루틴"),
+            Icon(R.drawable.ic_sound_black, "음량 조절"),
+            Icon(R.drawable.ic_sound_black, "와이파이"),
+            Icon(R.drawable.ic_sound_black, "손전등"),
+            Icon(R.drawable.ic_sound_black, "블루투스"),
+            Icon(R.drawable.ic_sound_black, "비행기모드"),
+            Icon(R.drawable.ic_sound_black, "절전모드"),
+            Icon(R.drawable.ic_sound_black, "데이터 모바일"),
+            Icon(R.drawable.ic_sound_black, "화면 녹화"),
+            Icon(R.drawable.ic_sound_black, "다크모드"),
+            Icon(R.drawable.ic_sound_black, "빅스비 루틴"),
             // 예시임. 변경해야됨.
         )
         // RecyclerView Adapter 생성 및 연결
