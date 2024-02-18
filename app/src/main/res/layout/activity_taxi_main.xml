@@ -22,10 +22,9 @@
 
     <Button
         android:id="@+id/button18"
-        android:layout_width="75dp"
+        android:layout_width="85dp"
         android:layout_height="75dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginEnd="150dp"
+        android:layout_marginEnd="140dp"
         android:background="@drawable/taxi"
         android:gravity="bottom|center"
         android:text="택시"
@@ -111,7 +110,7 @@
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="75dp"
+        android:layout_width="85dp"
         android:layout_height="75dp"
         android:background="@drawable/reservationtaxi"
         android:gravity="bottom|center"
@@ -122,10 +121,10 @@
 
     <Button
         android:id="@+id/button5"
-        android:layout_width="75dp"
+        android:layout_width="85dp"
         android:layout_height="75dp"
         android:layout_marginTop="164dp"
-        android:layout_marginEnd="168dp"
+        android:layout_marginEnd="128dp"
         android:background="@drawable/bicycle"
         android:gravity="bottom|center"
         android:text="바이크"
@@ -137,7 +136,7 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="75dp"
+        android:layout_width="85dp"
         android:layout_height="75dp"
         android:layout_marginTop="236dp"
         android:background="@drawable/parking"
@@ -149,11 +148,11 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/button5"
         app:layout_constraintTop_toTopOf="@+id/view"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.75" />
 
     <Button
         android:id="@+id/button7"
-        android:layout_width="75dp"
+        android:layout_width="85dp"
         android:layout_height="0dp"
         android:layout_marginTop="75dp"
         android:layout_marginBottom="75dp"
@@ -167,7 +166,7 @@
 
     <Button
         android:id="@+id/button8"
-        android:layout_width="0dp"
+        android:layout_width="85dp"
         android:layout_height="75dp"
         android:layout_marginStart="18dp"
         android:layout_marginEnd="75dp"
@@ -181,9 +180,9 @@
 
     <Button
         android:id="@+id/button9"
-        android:layout_width="0dp"
+        android:layout_width="85dp"
         android:layout_height="75dp"
-        android:layout_marginEnd="168dp"
+        android:layout_marginEnd="116dp"
         android:background="@drawable/global"
         android:gravity="bottom|center"
         android:text="해외"
@@ -194,9 +193,9 @@
 
     <Button
         android:id="@+id/button10"
-        android:layout_width="75dp"
+        android:layout_width="85dp"
         android:layout_height="75dp"
-        android:layout_marginEnd="93dp"
+        android:layout_marginEnd="17dp"
         android:background="@drawable/charge"
         android:gravity="bottom|center"
         android:text="전기차충전"
@@ -207,7 +206,7 @@
 
     <Button
         android:id="@+id/button11"
-        android:layout_width="0dp"
+        android:layout_width="85dp"
         android:layout_height="75dp"
         android:layout_marginStart="18dp"
         android:layout_marginEnd="75dp"
@@ -221,7 +220,7 @@
 
     <Button
         android:id="@+id/button12"
-        android:layout_width="75dp"
+        android:layout_width="85dp"
         android:layout_height="75dp"
         android:background="@drawable/train"
         android:gravity="bottom|center"
@@ -232,9 +231,9 @@
 
     <Button
         android:id="@+id/button13"
-        android:layout_width="0dp"
+        android:layout_width="85dp"
         android:layout_height="75dp"
-        android:layout_marginEnd="168dp"
+        android:layout_marginEnd="116dp"
         android:background="@drawable/ballon"
         android:gravity="bottom|center"
         android:text="레저/티켓"
@@ -243,11 +242,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button11"
         app:layout_constraintTop_toBottomOf="@+id/button9"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.004" />
 
     <Button
         android:id="@+id/button17"
-        android:layout_width="75dp"
+        android:layout_width="85dp"
         android:layout_height="75dp"
         android:background="@drawable/select"
         android:gravity="bottom|center"
@@ -267,32 +266,84 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/navigationView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.079"
+        app:layout_constraintHorizontal_bias="0.061"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button13"
-        app:layout_constraintVertical_bias="0.638" />
+        app:layout_constraintVertical_bias="0.3" />
 
     <Button
         android:id="@+id/homeb"
-        android:layout_width="120dp"
-        android:layout_height="40dp"
+        android:layout_width="60dp"
+        android:layout_height="25dp"
         android:layout_marginStart="16dp"
         android:background="#00FF0000"
-        android:drawableLeft="@drawable/home__1_"
-        android:text="Button"
+        android:drawableLeft="@drawable/home__2_"
+        android:text="집"
         app:layout_constraintBaseline_toBaselineOf="@+id/busb"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/busb"
-        android:layout_width="120dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="40dp"
+        android:layout_width="60dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="60dp"
         android:background="#00FF0000"
-        android:drawableLeft="@drawable/home__1_"
-        android:text="Button"
+        android:drawableLeft="@drawable/home__2_"
+        android:text="회사"
         app:layout_constraintBottom_toTopOf="@+id/button4"
         app:layout_constraintStart_toEndOf="@+id/homeb" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="22dp"
+        android:layout_height="26dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toStartOf="@+id/textView12"
+        app:layout_constraintHorizontal_bias="0.812"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/button13"
+        app:layout_constraintVertical_bias="0.293"
+        app:srcCompat="@drawable/coin" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="충전하기"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toStartOf="@+id/view7"
+        app:layout_constraintHorizontal_bias="0.891"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/button13"
+        app:layout_constraintVertical_bias="0.312" />
+
+    <View
+        android:id="@+id/view7"
+        android:layout_width="1dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="120dp"
+        android:background="#939393"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toStartOf="@+id/textView13"
+        app:layout_constraintHorizontal_bias="0.625"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/button17"
+        app:layout_constraintVertical_bias="0.315" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="무료적립"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/button17"
+        app:layout_constraintVertical_bias="0.312" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

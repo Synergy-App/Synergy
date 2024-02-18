@@ -15,9 +15,11 @@
         android:theme="@style/Theme.Synergy"
         tools:targetApi="31">
         <activity
-            android:name=".edu_space.kakaotaxi.payActivity"
+            android:name=".edu_space.kakaotaxi.payMActivity"
             android:exported="false" />
-        <!-- 메인화면 -->
+        <activity
+            android:name=".edu_space.kakaotaxi.payActivity"
+            android:exported="false" /> <!-- 메인화면 -->
         <activity
             android:name=".main.activity.DigitalStartActivity"
             android:exported="false" /> <!-- 디지털 나이 검사 -->
