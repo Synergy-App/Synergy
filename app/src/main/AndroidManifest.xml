@@ -14,31 +14,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Synergy"
         tools:targetApi="31">
-
-        <!--메인화면-->
+        <!-- 메인화면 -->
         <activity
             android:name=".main.activity.DigitalStartActivity"
-            android:exported="false" /> <!--디지털 나이 검사-->
+            android:exported="false" /> <!-- 디지털 나이 검사 -->
         <activity
             android:name=".MainActivity"
-            android:exported="true" ><!--첫 화면-->
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false" /> <!-- 첫 화면 -->
         </activity>
         <activity
             android:name=".EduSpaceActivity"
-            android:exported="false" /> <!--삭제할거-->
-        <!--아이콘 교육-->
+            android:exported="false" /> <!-- 삭제할거 -->
+        <!-- 아이콘 교육 -->
         <activity
             android:name=".edu_space.icon_edu.activity.IconEduActivity"
-            android:exported="false" /> <!--아이콘 첫화면-->
+            android:exported="false" /> <!-- 아이콘 첫화면 -->
         <activity
             android:name=".edu_space.icon_edu.activity.IconDetailActivity"
-            android:exported="false" /><!--아이콘 설명-->
-        <!--화면구성-->
+            android:exported="false" /> <!-- 아이콘 설명 -->
+        <!-- 화면구성 -->
         <activity
             android:name=".edu_space.screenEdu.activity.ScreenEduMainActivity"
             android:exported="false" />
@@ -47,71 +41,78 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.screenEdu.activity.ScreenEduToolActivity"
-            android:exported="false" /> <!--상단바-->
+            android:exported="false" /> <!-- 상단바 -->
         <activity
             android:name=".edu_space.screenEdu.activity.ScreenEduLeftToolActivity"
-            android:exported="false" /> <!--상단바 왼쪽-->
+            android:exported="false" /> <!-- 상단바 왼쪽 -->
         <activity
             android:name=".edu_space.screenEdu.activity.ScreenEduRightToolActivity"
-            android:exported="false" /> <!--상단바 오른쪽-->
+            android:exported="false" /> <!-- 상단바 오른쪽 -->
         <activity
             android:name=".edu_space.screenEdu.activity.ScreenEduBottomActivity"
-            android:exported="false" /> <!--하단바-->
+            android:exported="false" /> <!-- 하단바 -->
         <activity
             android:name=".edu_space.screenEdu.activity.ScreenEduLeftBottomActivity"
-            android:exported="false" /> <!--하단바 왼쪽-->
+            android:exported="false" /> <!-- 하단바 왼쪽 -->
         <activity
             android:name=".edu_space.screenEdu.activity.ScreenEduCenterBottomActivity"
-            android:exported="false" /> <!--하단바 가운데-->
+            android:exported="false" /> <!-- 하단바 가운데 -->
         <activity
             android:name=".edu_space.screenEdu.activity.ScreenEduRightBottomActivity"
-            android:exported="false" /> <!--하단바 오른쪽-->
-        <!--기본앱 활용-->
+            android:exported="false" /> <!-- 하단바 오른쪽 -->
+        <!-- 기본앱 활용 -->
         <activity
             android:name=".edu_space.default_app.activity.DefaultPhoneActivity"
             android:exported="false" />
         <activity
             android:name=".edu_space.default_app.activity.DefaultPhoneCallActivity"
-            android:exported="false" /> <!--전화-->
+            android:exported="false" /> <!-- 전화 -->
         <activity
             android:name=".edu_space.default_app.activity.DefaultCameraActivity"
-            android:exported="false" /><!--카메라-->
-        <!--환경설정-->
+            android:exported="false" /> <!-- 카메라 -->
+        <!-- 환경설정 -->
         <activity
             android:name=".edu_space.settingedu.activity.SettingEduActivity"
-            android:exported="false" /> <!--환경설정 시작-->
+            android:exported="false" /> <!-- 환경설정 시작 -->
         <activity
-        android:name=".edu_space.settingedu.activity.SettingDetailActivity"
-        android:exported="false" /> <!--화면 밝기-->
+            android:name=".edu_space.settingedu.activity.SettingDetailActivity"
+            android:exported="false" /> <!-- 화면 밝기 -->
         <activity
             android:name=".edu_space.settingedu.activity.SettingFontSizeActivity"
-            android:exported="false"/> <!--폰트 사이즈-->
-        <!--계정생성-->
+            android:exported="false" /> <!-- 폰트 사이즈 -->
+        <!-- 계정생성 -->
         <activity
             android:name=".edu_space.accountedu.GoogleMainActivity"
-            android:exported="false" />
-        <!--앱 설치--> <!--이 부분 아래에 넣어주세요-->
-
-        <!-- 카카오톡-->
+            android:exported="false" /> <!-- 앱 설치 -->
+        <!-- 이 부분 아래에 넣어주세요 -->
+        <!-- 카카오톡 -->
         <activity
             android:name=".edu_space.kakaotalk.activity.KakaoMainActivity"
             android:exported="false" />
         <activity
             android:name=".edu_space.kakaotalk.activity.ProfileDetailActivity"
-            android:exported="false" />
-        <!--네이버-->
+            android:exported="false" /> <!-- 네이버 -->
         <activity
             android:name=".edu_space.naver.activity.NaverSearchActivity"
             android:exported="false" />
         <activity
             android:name=".edu_space.naver.activity.NaverActivity"
-            android:exported="false"/>
-       <!--코레일--> <!--이 부분 아래에 넣어주세요-->
-
-        <!--카카오 택시--> <!--이 부분 아래에 넣어주세요-->
-
-        <!--배달의 민족--> <!--이 부분 아래에 넣어주세요-->
-
+            android:exported="false" /> <!-- 코레일 -->
+        <!-- 이 부분 아래에 넣어주세요 -->
+        <!-- 카카오 택시 -->
+        <!-- 이 부분 아래에 넣어주세요 -->
+        <activity
+            android:name=".edu_space.kakaotaxi.TaxiMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".edu_space.kakaotaxi.mapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".edu_space.kakaotaxi.payMActivity"
+            android:exported="false" />
+        <activity
+            android:name=".edu_space.kakaotaxi.payActivity"
+            android:exported="false" /> 
     </application>
 
 </manifest>
