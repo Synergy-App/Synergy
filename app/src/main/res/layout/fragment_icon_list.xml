@@ -14,7 +14,6 @@
         android:orientation="horizontal"
         android:background="@drawable/round_corner_white"
         android:layout_gravity="center_vertical"
-
         android:elevation="4dp">
 
         <ImageView
