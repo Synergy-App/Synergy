@@ -79,17 +79,18 @@ class LearningFragment : Fragment() {
         recyclerView.layoutManager = layoutManager
 
         val buttonItemList = listOf(
-            EduButtonItem("아이콘", Color.parseColor("#ffffff")),
-            EduButtonItem("화면구성", Color.parseColor("#ffffff")),
-            EduButtonItem("기본 앱", Color.parseColor("#ffffff")),
-            EduButtonItem("환경설정", Color.parseColor("#ffffff")),
-            EduButtonItem("계정 생성", Color.parseColor("#ffffff")),
-            EduButtonItem("앱 설치", Color.parseColor("#ffffff")),
-            EduButtonItem("카카오톡", Color.parseColor("#ffffff")),
-            EduButtonItem("네이버", Color.parseColor("#ffffff")),
-            EduButtonItem("코레일", Color.parseColor("#ffffff")),
-            EduButtonItem("카카오택시", Color.parseColor("#ffffff")),
-            EduButtonItem("배달의 민족", Color.parseColor("#ffffff")),
+            EduButtonItem("아이콘", R.drawable.ic_edubotton_icon),
+            EduButtonItem("화면구성",R.drawable.ic_edubutton_screen),
+            EduButtonItem("기본앱",R.drawable.ic_edubutton_default),
+            EduButtonItem("환경 설정",R.drawable.ic_edubutton_setting),
+            EduButtonItem("계정 생성",R.drawable.ic_edubutton_account),
+            EduButtonItem("앱 설치",R.drawable.ic_edubutton_download),
+            EduButtonItem("카카오톡",R.drawable.ic_edubutton_kakaotalk),
+            EduButtonItem("네이버",R.drawable.ic_edubutton_naver),
+            EduButtonItem("코레일",R.drawable.ic_edubutton_korail),
+            EduButtonItem("카카오택시",R.drawable.ic_edubutton_kakaotaxi),
+            EduButtonItem("배달의 민족",R.drawable.ic_edubutton_delivery),
+
         )
         val adapter = EduButtonAdapter(buttonItemList)
         recyclerView.adapter = adapter
