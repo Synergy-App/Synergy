@@ -18,9 +18,9 @@ class TaxiMainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_taxi_main)
 
         //콜버튼 클릭시 지도로 넘어감
-        val imageButton: Button = findViewById(R.id.button18)
+        val taxiButton: Button = findViewById(R.id.button18)
 
-        imageButton.setOnClickListener {
+        taxiButton.setOnClickListener {
             val mapIntent = Intent(this, mapActivity::class.java)
             startActivity(mapIntent)
         }
