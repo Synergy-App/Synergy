@@ -49,4 +49,15 @@
     <color name="naver_search_grey_line">#F5F5F8</color>
     <color name="naver_search_dot">#D9D9DC</color>
     <color name="naver_search_bottom">#F9FCFF</color>
+
+    <color name="message_your_message">#252525</color>
+    <color name="message_your_message_bg">#EDEDED</color>
+    <color name="message_my_message">#252525</color>
+    <color name="message_my_message_bg">#EDEDED</color>
+    <color name="message_date">#737373</color>
+    <color name="message_input_bg">#EFEFEF</color>
+    <color name="message_phone_num">#636363</color>
+    <color name="message_profile_name">#252525</color>
+    <color name="message_screen_bg">#FCFCFC</color>
+    <color name="message_time">#737373</color>
 </resources>
