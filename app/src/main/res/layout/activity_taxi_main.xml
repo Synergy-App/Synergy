@@ -33,7 +33,7 @@
 
     <Button
         android:id="@+id/button18"
-        android:layout_width="0dp"
+        android:layout_width="64dp"
         android:layout_height="50dp"
         android:layout_marginStart="26dp"
         android:layout_marginEnd="28dp"
@@ -49,6 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="35dp"
+
         android:text="택시"
         android:textSize="12dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView7"
@@ -130,12 +131,11 @@
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="28dp"
         android:background="@drawable/border_background"
-        android:queryHint="어디로갈까요?"
+        android:queryHint="어디로 갈까요?"
         app:layout_constraintBottom_toBottomOf="@+id/homeb"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2">
-
     </SearchView>
 
     <TextView
