@@ -1,10 +1,11 @@
 package com.sungkyul.synergy.edu_space.default_app.activity
 
+import android.animation.AnimatorInflater
 import android.os.Bundle
 import android.view.Gravity
 import android.view.MotionEvent
 import android.view.View
-import android.widget.TextView
+import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
