@@ -24,25 +24,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".edu_space.naver.activity.NaverSearchActivity"
-            android:exported="false"/>
-        <activity
-            android:name=".edu_space.naver.activity.NaverActivity"
-            android:exported="false"/>
-        <activity
-            android:name=".edu_space.default_app.activity.DefaultPhoneCallActivity"
-            android:exported="false" />
-        <activity
             android:name=".main.activity.DigitalStartActivity"
             android:exported="false" /> <!-- 디지털 나이 검사 -->
-        <activity
-            android:name=".edu_space.default_app.activity.DefaultCameraActivity"
-            android:exported="false" />
-        <activity
-            android:name=".edu_space.default_app.activity.DefaultPhoneActivity"
-            android:exported="false">
-
-        </activity>
         <activity
             android:name=".EduSpaceActivity"
             android:exported="false" /> <!-- 삭제할거 -->
