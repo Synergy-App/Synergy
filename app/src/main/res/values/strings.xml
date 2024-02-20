@@ -27,7 +27,7 @@
     <string name="zero">0</string>
     <string name="star">*</string>
     <string name="sharp">#</string>
-    <string name="init_phone_num">010-1234-5678</string>
+    <string name="init_phone_number">010-1234-5678</string>
     <string name="on_a_call">전화를 거는 중...</string>
 
     <!-- Camera Activity -->
@@ -74,4 +74,19 @@
     <string name="autocomplete_help">관심사를 반영한 컨텍스트 자동완성도움말</string>
     <string name="cancel">취소</string>
     <string name="selection_button">선택 버튼</string>
+
+    <string name="call_button">통화 버튼</string>
+    <string name="camera_button">카메라 버튼</string>
+    <string name="conversation_settings_button">대화 설정 버튼</string>
+    <string name="emoji_button">이모지 버튼</string>
+    <string name="expand_button">펼치기 버튼</string>
+    <string name="go_to_top_menu_button">상위 메뉴로 이동 버튼</string>
+    <string name="image_button">이미지 버튼</string>
+    <string name="init_date">2022년 12월 7일 수요일</string>
+    <string name="init_time">오후 2:24</string>
+    <string name="plus_button">플러스 버튼</string>
+    <string name="record_button">녹음 버튼</string>
+    <string name="search_button">검색 버튼</string>
+    <string name="send_button">보내기 버튼</string>
+    <string name="text_message">문자 메시지</string>
 </resources>

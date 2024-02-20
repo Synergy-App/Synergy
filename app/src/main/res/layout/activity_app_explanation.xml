@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/fragment_screen_main"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/screenedu_blackground" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="카메라"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        android:fontFamily="@font/pretendard_extrabold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        android:layout_marginTop="-460dp"/>
+
+    <ImageView
+        android:id="@+id/cameraImageView"
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+        android:src="@drawable/ic_camera"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.5"
+        android:layout_marginTop="-100dp"/>
+
+    <ImageView
+        android:id="@+id/ic_app_explanation_whitebox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_app_explanation_whitebox"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="카메라"
+        android:fontFamily="@font/pretendard_extrabold"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        app:layout_constraintTop_toTopOf="@id/ic_app_explanation_whitebox"
+        app:layout_constraintStart_toStartOf="@id/ic_app_explanation_whitebox"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="24dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toTopOf="@id/ic_app_explanation_whitebox"
+        app:layout_constraintStart_toStartOf="@id/ic_app_explanation_whitebox"
+        android:layout_marginTop="75dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="자신이 찍고 싶은 것들을 촬영할 수 있는 어플입니다."
+        android:fontFamily="@font/pretendard_semibold"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        app:layout_constraintTop_toTopOf="@id/ic_app_explanation_whitebox"
+        app:layout_constraintStart_toStartOf="@id/ic_app_explanation_whitebox"
+        android:layout_marginTop="85dp"
+        android:layout_marginLeft="10dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
