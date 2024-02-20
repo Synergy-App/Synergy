@@ -5,25 +5,25 @@
     <item
         android:id="@+id/home"
         android:title="홈"
-        app:showAsAction="always"
+        app:showAsAction="ifRoom"
         android:icon="@drawable/home__1_"
         />
     <item
         android:id="@+id/business"
         android:title="비즈니스"
-        app:showAsAction="always"
+        app:showAsAction="ifRoom"
         android:icon="@drawable/business"
         />
     <item
         android:id="@+id/alarm"
         android:title="이용/알림"
-        app:showAsAction="always"
+        app:showAsAction="ifRoom"
         android:icon="@drawable/alarm"
         />
     <item
         android:id="@+id/my"
         android:title="내 정보"
-        app:showAsAction="always"
+        app:showAsAction="ifRoom"
         android:icon="@drawable/myinfo"
         />
 </menu>

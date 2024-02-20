@@ -48,7 +48,7 @@
         android:id="@+id/textView40"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="35dp"
+        android:layout_marginEnd="42dp"
         android:text="택시"
         android:textSize="12dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView7"
@@ -117,6 +117,7 @@
         app:layout_constraintTop_toBottomOf="@+id/view"
         app:layout_constraintVertical_bias="0.0"
         app:menu="@menu/taxi_menu"
+        app:labelVisibilityMode="labeled"
         tools:ignore="MissingConstraints">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
@@ -132,11 +133,13 @@
         android:background="@drawable/border_background"
         android:queryHint="어디로갈까요?"
         app:layout_constraintBottom_toBottomOf="@+id/homeb"
+        app:iconifiedByDefault="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2">
-
-    </SearchView>
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:iconifiedByDefault="false" />
 
     <TextView
         android:id="@+id/textView2"
@@ -186,9 +189,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="13dp"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="13dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="10dp"
         android:src="@drawable/screenedu_blackground"
         app:layout_constraintBottom_toTopOf="@+id/button18"
         app:layout_constraintEnd_toEndOf="parent"
@@ -412,51 +415,56 @@
         app:layout_constraintEnd_toStartOf="@+id/textView25"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.388" />
 
     <TextView
         android:id="@+id/textView25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
         android:text="바이크"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.437" />
+        app:layout_constraintVertical_bias="0.441" />
 
     <TextView
         android:id="@+id/textView26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="45dp"
         android:text="주차"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/imageView10"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.008"
         app:layout_constraintStart_toEndOf="@+id/textView25"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintVertical_bias="0.388" />
 
     <TextView
         android:id="@+id/textView27"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
+        android:layout_marginStart="53dp"
+        android:layout_marginBottom="1dp"
         android:text="대리"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/imageView11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView26"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:layout_constraintVertical_bias="0.388" />
 
     <TextView
         android:id="@+id/textView28"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="6dp"
         android:text="퀵배송"
         android:textSize="12sp"
@@ -467,7 +475,7 @@
         android:id="@+id/textView29"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="7dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
         android:text="렌터카"
         android:textSize="12sp"
@@ -509,7 +517,7 @@
         android:id="@+id/textView34"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="7dp"
         android:layout_marginEnd="17dp"
         android:text="펫"
         android:textSize="12sp"
@@ -520,8 +528,8 @@
         android:id="@+id/textView35"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="6dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="7dp"
         android:text="기차"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@+id/imageView13"
@@ -531,7 +539,7 @@
         android:id="@+id/textView36"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="12dp"
         android:text="레저/티켓"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
@@ -556,6 +564,18 @@
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@+id/imageView16"
         app:layout_constraintTop_toBottomOf="@+id/imageView16" />
+
+    <ImageView
+        android:id="@+id/imageView17"
+        android:layout_width="412dp"
+        android:layout_height="111dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:srcCompat="@drawable/screenedu_blackground" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
