@@ -45,18 +45,18 @@ class IconEduAdapter(val context: Context,  val iconList:ArrayList<Icon>):Recycl
 
                 /*root.setOnClickListener {
                     val iconInfo = when (icon.iconText)  {
-                        "음량 조절" -> IconInfo(R.drawable.sound, "음량 조절", "음량을 조절합니다.")
-                        "와이파이" -> IconInfo(R.drawable.sound, "와이파이", "와이파이를 설정합니다.")
-                        "손전등" -> IconInfo(R.drawable.sound, "손전등", "손전등을 켭니다.")
-                        "블루투스" -> IconInfo(R.drawable.sound, "블루투스", "블루투스에 대한 설명.")
-                        "비행기모드" -> IconInfo(R.drawable.sound, "비행기모드", "비행기모드에 대한 설명.")
-                        "절전모드" -> IconInfo(R.drawable.sound, "절전모드", "절전모드에 대한 설명.")
-                        "데이터모바일" -> IconInfo(R.drawable.sound, "데이터모바일", "데이터모바일에 대한 설명.")
-                        "화면녹화" -> IconInfo(R.drawable.sound, "화면녹화", "화면녹화에 대한 설명.")
-                        "다크모드" -> IconInfo(R.drawable.sound, "다크모드", "다크모드에 대한 설명.")
-                        "빅스비 루틴" -> IconInfo(R.drawable.sound, "빅스비 루틴", "빅스비 루틴에 대한 설명.")
+                        "음량 조절" -> IconInfo(R.drawable.ic_sound_black, "음량 조절", "음량을 조절합니다.")
+                        "와이파이" -> IconInfo(R.drawable.ic_sound_black, "와이파이", "와이파이를 설정합니다.")
+                        "손전등" -> IconInfo(R.drawable.ic_sound_black, "손전등", "손전등을 켭니다.")
+                        "블루투스" -> IconInfo(R.drawable.ic_sound_black, "블루투스", "블루투스에 대한 설명.")
+                        "비행기모드" -> IconInfo(R.drawable.ic_sound_black, "비행기모드", "비행기모드에 대한 설명.")
+                        "절전모드" -> IconInfo(R.drawable.ic_sound_black, "절전모드", "절전모드에 대한 설명.")
+                        "데이터모바일" -> IconInfo(R.drawable.ic_sound_black, "데이터모바일", "데이터모바일에 대한 설명.")
+                        "화면녹화" -> IconInfo(R.drawable.ic_sound_black, "화면녹화", "화면녹화에 대한 설명.")
+                        "다크모드" -> IconInfo(R.drawable.ic_sound_black, "다크모드", "다크모드에 대한 설명.")
+                        "빅스비 루틴" -> IconInfo(R.drawable.ic_sound_black, "빅스비 루틴", "빅스비 루틴에 대한 설명.")
                         // 추가적인 아이콘 정보도 필요한 대로 추가하세요
-                        else -> IconInfo(R.drawable.sound, icon.iconText, "상세 설명이 없습니다.")
+                        else -> IconInfo(R.drawable.ic_sound_black, icon.iconText, "상세 설명이 없습니다.")
                     }
 
                     val intent = Intent(context, IconDetailActivity::class.java)

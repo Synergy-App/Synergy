@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -29,12 +30,11 @@ class EduButtonAdapter(private val buttonList: List<EduButtonItem>) :
 
     inner class ButtonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val layout1: LinearLayout = itemView.findViewById(R.id.learning_layout)
-        private val text1: TextView =
-            itemView.findViewById(R.id.learning_tv) // 이 부분에 해당하는 TextView의 ID를 정확히 입력해야 합니다.
-
+        private val text1: TextView = itemView.findViewById(R.id.learning_tv) // 이 부분에 해당하는 TextView의 ID를 정확히 입력해야 합니다.
+        private val imageView:ImageView=itemView.findViewById(R.id.edu_icon)
         fun bind(buttonItem: EduButtonItem) {
             text1.text = buttonItem.buttonText
-            layout1.setBackgroundColor(buttonItem.buttonColor)
+            imageView.setImageResource(buttonItem.imageResId)
         }
     }
 }
