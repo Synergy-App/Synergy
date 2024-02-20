@@ -1,6 +1,5 @@
-package com.sungkyul.synergy
+package com.sungkyul.synergy.main.fragment
 
-import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +11,7 @@ import com.github.mikephil.charting.charts.HorizontalBarChart
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
+import com.sungkyul.synergy.R
 import com.sungkyul.synergy.adapter.EduButtonAdapter
 import com.sungkyul.synergy.data.EduButtonItem
 
@@ -80,16 +80,16 @@ class LearningFragment : Fragment() {
 
         val buttonItemList = listOf(
             EduButtonItem("아이콘", R.drawable.ic_edubotton_icon),
-            EduButtonItem("화면구성",R.drawable.ic_edubutton_screen),
-            EduButtonItem("기본앱",R.drawable.ic_edubutton_default),
-            EduButtonItem("환경 설정",R.drawable.ic_edubutton_setting),
-            EduButtonItem("계정 생성",R.drawable.ic_edubutton_account),
-            EduButtonItem("앱 설치",R.drawable.ic_edubutton_download),
-            EduButtonItem("카카오톡",R.drawable.ic_edubutton_kakaotalk),
-            EduButtonItem("네이버",R.drawable.ic_edubutton_naver),
-            EduButtonItem("코레일",R.drawable.ic_edubutton_korail),
-            EduButtonItem("카카오택시",R.drawable.ic_edubutton_kakaotaxi),
-            EduButtonItem("배달의 민족",R.drawable.ic_edubutton_delivery),
+            EduButtonItem("화면구성", R.drawable.ic_edubutton_screen),
+            EduButtonItem("기본앱", R.drawable.ic_edubutton_default),
+            EduButtonItem("환경 설정", R.drawable.ic_edubutton_setting),
+            EduButtonItem("계정 생성", R.drawable.ic_edubutton_account),
+            EduButtonItem("앱 설치", R.drawable.ic_edubutton_download),
+            EduButtonItem("카카오톡", R.drawable.ic_edubutton_kakaotalk),
+            EduButtonItem("네이버", R.drawable.ic_edubutton_naver),
+            EduButtonItem("코레일", R.drawable.ic_edubutton_korail),
+            EduButtonItem("카카오택시", R.drawable.ic_edubutton_kakaotaxi),
+            EduButtonItem("배달의 민족", R.drawable.ic_edubutton_delivery),
 
         )
         val adapter = EduButtonAdapter(buttonItemList)

@@ -4,7 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import com.sungkyul.synergy.databinding.ActivityMainBinding
+import com.sungkyul.synergy.databinding.ActivityStudyMainBinding
+import com.sungkyul.synergy.main.fragment.LearningFragment
 
 
 /** 시너지 앱 메인 네비게이션 바 + fragment */
@@ -13,12 +14,12 @@ private const val Tag_learning = "learn_fragment"
 private const val Tag_solving = "solving_fragment"
 private const val Tag_review = "review_fragment"
 private const val Tag_myProfile = "myProfile_fragment"
-private lateinit var binding: ActivityMainBinding
+private lateinit var binding: ActivityStudyMainBinding
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityStudyMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setFragment(Tag_learning, LearningFragment())
