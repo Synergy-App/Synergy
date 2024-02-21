@@ -1,24 +1,32 @@
 package com.sungkyul.synergy.edu_space.kakaotaxi.adapter
 
 import android.view.LayoutInflater
+import android.widget.ImageView
+
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.sungkyul.synergy.R
 
+class ViewPagerAdapter(private val paymentList: ArrayList<Int>) : RecyclerView.Adapter<ViewPagerAdapter.PagerViewHolder>() {
 
-class ViewPagerAdapter(PaymentList: ArrayList<Int>) : RecyclerView.Adapter<ViewPagerAdapter.PagerViewHolder>() {
-    var item = PaymentList
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = PagerViewHolder((parent))
-
-    override fun getItemCount(): Int = item.size
-
-    override fun onBindViewHolder(holder: PagerViewHolder, position: Int) {
-        holder.idol.setImageResource(item[position])
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagerViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        return PagerViewHolder(inflater, parent)
     }
 
-    inner class PagerViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder
-        (LayoutInflater.from(parent.context).inflate(R.layout.card_list_item, parent, false)){
+    override fun getItemCount(): Int = paymentList.size
 
-        val idol = itemView.imageView_card1!!
+    override fun onBindViewHolder(holder: PagerViewHolder, position: Int) {
+        holder.bind(paymentList[position])
+    }
+
+    inner class PagerViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
+        RecyclerView.ViewHolder(inflater.inflate(R.layout.card_list_item, parent, false)) {
+
+        private val card: ImageView = itemView.findViewById(R.id.imageView_card1)
+
+        fun bind(imageResId: Int) {
+            card.setImageResource(imageResId)
+        }
     }
 }

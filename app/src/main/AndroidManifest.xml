@@ -132,10 +132,12 @@
             android:exported="false"/>
         <activity
             android:name=".edu_space.kakaotaxi.payMActivity"
+
             android:exported="false" />
+
         <activity
             android:name=".edu_space.kakaotaxi.payActivity"
-            android:exported="false" />
+            android:exported="true" />
     </application>
 
 </manifest>
