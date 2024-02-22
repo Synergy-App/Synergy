@@ -60,4 +60,7 @@
     <color name="message_profile_name">#252525</color>
     <color name="message_screen_bg">#FCFCFC</color>
     <color name="message_time">#737373</color>
+  <!-- 실습 공간 -->
+    <color name="icon_learning_btn">#3DB2FF</color>
+
 </resources>
