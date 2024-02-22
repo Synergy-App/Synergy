@@ -24,6 +24,6 @@ class payMActivity : AppCompatActivity() {
     }
 
     private fun getPaymentList(): ArrayList<Int> {
-        return arrayListOf<Int>(R.drawable.air, R.drawable.air, R.drawable.air)
+        return arrayListOf<Int>(R.drawable.card, R.drawable.card, R.drawable.pay)
     }
 }
