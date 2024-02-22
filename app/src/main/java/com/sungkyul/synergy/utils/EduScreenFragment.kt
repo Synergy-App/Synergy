@@ -47,11 +47,11 @@ class EduScreenFragment(private val eduListener: EduListener) : Fragment() {
         startTranslationY: Float,
         endTranslationY: Float
     ) {
-        AnimUtil.startObjectAnimatorOfFloat(binding.eduDialog, "alpha", startAlpha, endAlpha, duration, interpolator)
-        AnimUtil.startObjectAnimatorOfFloat(binding.eduDialog, "scaleX", startScaleX, endScaleX, duration, interpolator)
-        AnimUtil.startObjectAnimatorOfFloat(binding.eduDialog, "scaleY", startScaleY, endScaleY, duration, interpolator)
-        AnimUtil.startObjectAnimatorOfFloat(binding.eduDialog, "translationX", startTranslationX, endTranslationX, duration, interpolator)
-        AnimUtil.startObjectAnimatorOfFloat(binding.eduDialog, "translationY", startTranslationY, endTranslationY, duration, interpolator)
+        AnimUtils.startObjectAnimatorOfFloat(binding.eduDialog, "alpha", startAlpha, endAlpha, duration, interpolator)
+        AnimUtils.startObjectAnimatorOfFloat(binding.eduDialog, "scaleX", startScaleX, endScaleX, duration, interpolator)
+        AnimUtils.startObjectAnimatorOfFloat(binding.eduDialog, "scaleY", startScaleY, endScaleY, duration, interpolator)
+        AnimUtils.startObjectAnimatorOfFloat(binding.eduDialog, "translationX", startTranslationX, endTranslationX, duration, interpolator)
+        AnimUtils.startObjectAnimatorOfFloat(binding.eduDialog, "translationY", startTranslationY, endTranslationY, duration, interpolator)
     }
 
     private fun startValueAnimationOfDialog(
@@ -66,25 +66,25 @@ class EduScreenFragment(private val eduListener: EduListener) : Fragment() {
         startRightMargin: Float,
         endRightMargin: Float
     ) {
-        AnimUtil.startValueAnimatorOfFloat({
+        AnimUtils.startValueAnimatorOfFloat({
             binding.eduDialog.updateLayoutParams<FrameLayout.LayoutParams> {
                 topMargin = it.toInt()
             }
         }, startTopMargin, endTopMargin, duration, interpolator)
 
-        AnimUtil.startValueAnimatorOfFloat({
+        AnimUtils.startValueAnimatorOfFloat({
             binding.eduDialog.updateLayoutParams<FrameLayout.LayoutParams> {
                 bottomMargin = it.toInt()
             }
         }, startBottomMargin, endBottomMargin, duration, interpolator)
 
-        AnimUtil.startValueAnimatorOfFloat({
+        AnimUtils.startValueAnimatorOfFloat({
             binding.eduDialog.updateLayoutParams<FrameLayout.LayoutParams> {
                 marginStart = it.toInt()
             }
         }, startLeftMargin, endLeftMargin, duration, interpolator)
 
-        AnimUtil.startValueAnimatorOfFloat({
+        AnimUtils.startValueAnimatorOfFloat({
             binding.eduDialog.updateLayoutParams<FrameLayout.LayoutParams> {
                 marginEnd = it.toInt()
             }
@@ -97,10 +97,10 @@ class EduScreenFragment(private val eduListener: EduListener) : Fragment() {
         startAlpha: Float,
         endAlpha: Float
     ) {
-        AnimUtil.startObjectAnimatorOfFloat(binding.eduCoverTop, "alpha", startAlpha, endAlpha, duration, interpolator)
-        AnimUtil.startObjectAnimatorOfFloat(binding.eduCoverBottom, "alpha", startAlpha, endAlpha, duration, interpolator)
-        AnimUtil.startObjectAnimatorOfFloat(binding.eduCoverStart, "alpha", startAlpha, endAlpha, duration, interpolator)
-        AnimUtil.startObjectAnimatorOfFloat(binding.eduCoverEnd, "alpha", startAlpha, endAlpha, duration, interpolator)
+        AnimUtils.startObjectAnimatorOfFloat(binding.eduCoverTop, "alpha", startAlpha, endAlpha, duration, interpolator)
+        AnimUtils.startObjectAnimatorOfFloat(binding.eduCoverBottom, "alpha", startAlpha, endAlpha, duration, interpolator)
+        AnimUtils.startObjectAnimatorOfFloat(binding.eduCoverStart, "alpha", startAlpha, endAlpha, duration, interpolator)
+        AnimUtils.startObjectAnimatorOfFloat(binding.eduCoverEnd, "alpha", startAlpha, endAlpha, duration, interpolator)
     }
 
     private fun startValueAnimationOfCovers(
@@ -115,25 +115,25 @@ class EduScreenFragment(private val eduListener: EduListener) : Fragment() {
         startRight: Float,
         endRight: Float
     ) {
-        AnimUtil.startValueAnimatorOfFloat({
+        AnimUtils.startValueAnimatorOfFloat({
             binding.eduCoverTop.updateLayoutParams<RelativeLayout.LayoutParams> {
                 height = it.toInt()
             }
         }, startTop, endTop, duration, interpolator)
 
-        AnimUtil.startValueAnimatorOfFloat({
+        AnimUtils.startValueAnimatorOfFloat({
             binding.eduCoverBottom.updateLayoutParams<RelativeLayout.LayoutParams> {
                 height = it.toInt()
             }
         }, startBottom, endBottom, duration, interpolator)
 
-        AnimUtil.startValueAnimatorOfFloat({
+        AnimUtils.startValueAnimatorOfFloat({
             binding.eduCoverStart.updateLayoutParams<RelativeLayout.LayoutParams> {
                 width = it.toInt()
             }
         }, startLeft, endLeft, duration, interpolator)
 
-        AnimUtil.startValueAnimatorOfFloat({
+        AnimUtils.startValueAnimatorOfFloat({
             binding.eduCoverEnd.updateLayoutParams<RelativeLayout.LayoutParams> {
                 width = it.toInt()
             }
@@ -171,10 +171,10 @@ class EduScreenFragment(private val eduListener: EduListener) : Fragment() {
             1.0f,
             0.9f,
             1.0f,
-            AnimUtil.dpToPx(binding.root.context, 0.0f),
-            AnimUtil.dpToPx(binding.root.context, 0.0f),
-            AnimUtil.dpToPx(binding.root.context, 100.0f),
-            AnimUtil.dpToPx(binding.root.context, 0.0f)
+            AnimUtils.dpToPx(binding.root.context, 0.0f),
+            AnimUtils.dpToPx(binding.root.context, 0.0f),
+            AnimUtils.dpToPx(binding.root.context, 100.0f),
+            AnimUtils.dpToPx(binding.root.context, 0.0f)
         )
     }
 
@@ -189,10 +189,10 @@ class EduScreenFragment(private val eduListener: EduListener) : Fragment() {
             0.9f,
             1.0f,
             0.9f,
-            AnimUtil.dpToPx(binding.root.context, 0.0f),
-            AnimUtil.dpToPx(binding.root.context, 0.0f),
-            AnimUtil.dpToPx(binding.root.context, 0.0f),
-            AnimUtil.dpToPx(binding.root.context, -100.0f)
+            AnimUtils.dpToPx(binding.root.context, 0.0f),
+            AnimUtils.dpToPx(binding.root.context, 0.0f),
+            AnimUtils.dpToPx(binding.root.context, 0.0f),
+            AnimUtils.dpToPx(binding.root.context, -100.0f)
         )
     }
 
@@ -209,13 +209,13 @@ class EduScreenFragment(private val eduListener: EduListener) : Fragment() {
             duration,
             AccelerateDecelerateInterpolator(),
             binding.eduDialog.marginTop.toFloat(),
-            AnimUtil.dpToPx(binding.root.context, dialogTop.toFloat()),
+            AnimUtils.dpToPx(binding.root.context, dialogTop.toFloat()),
             binding.eduDialog.marginBottom.toFloat(),
-            AnimUtil.dpToPx(binding.root.context, dialogBottom.toFloat()),
+            AnimUtils.dpToPx(binding.root.context, dialogBottom.toFloat()),
             binding.eduDialog.marginStart.toFloat(),
-            AnimUtil.dpToPx(binding.root.context, dialogStart.toFloat()),
+            AnimUtils.dpToPx(binding.root.context, dialogStart.toFloat()),
             binding.eduDialog.marginEnd.toFloat(),
-            AnimUtil.dpToPx(binding.root.context, dialogEnd.toFloat())
+            AnimUtils.dpToPx(binding.root.context, dialogEnd.toFloat())
         )
     }
 
@@ -251,13 +251,13 @@ class EduScreenFragment(private val eduListener: EduListener) : Fragment() {
             duration,
             AccelerateDecelerateInterpolator(),
             binding.eduCoverTop.height.toFloat(),
-            AnimUtil.dpToPx(binding.root.context, coverTop.toFloat()),
+            AnimUtils.dpToPx(binding.root.context, coverTop.toFloat()),
             binding.eduCoverBottom.height.toFloat(),
-            AnimUtil.dpToPx(binding.root.context, coverBottom.toFloat()),
+            AnimUtils.dpToPx(binding.root.context, coverBottom.toFloat()),
             binding.eduCoverStart.width.toFloat(),
-            AnimUtil.dpToPx(binding.root.context, coverStart.toFloat()),
+            AnimUtils.dpToPx(binding.root.context, coverStart.toFloat()),
             binding.eduCoverEnd.width.toFloat(),
-            AnimUtil.dpToPx(binding.root.context, coverEnd.toFloat())
+            AnimUtils.dpToPx(binding.root.context, coverEnd.toFloat())
         )
     }
 }

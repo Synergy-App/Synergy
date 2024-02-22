@@ -21,7 +21,7 @@ import com.sungkyul.synergy.edu_space.default_app.TOUCH_DURATION_SCALE
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_ALPHA
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_SCALE
 import com.sungkyul.synergy.edu_space.default_app.activity.DefaultPhoneCallActivity
-import com.sungkyul.synergy.utils.AnimUtil
+import com.sungkyul.synergy.utils.AnimUtils
 import com.sungkyul.synergy.utils.EduListener
 import com.sungkyul.synergy.utils.TextUtils
 
@@ -92,10 +92,10 @@ class DefaultPhoneKeypadFragment(private val eduListener: EduListener) : Fragmen
     private val onTouchContactAdditionListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
+                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
             }
             MotionEvent.ACTION_UP -> {
-                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
+                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
                 showContactAdditionDialog()
                 view.performClick()
             }
@@ -107,11 +107,11 @@ class DefaultPhoneKeypadFragment(private val eduListener: EduListener) : Fragmen
     private val onTouchKeyListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
-                AnimUtil.startScaleAnimation(view, TOUCH_DURATION_SCALE, TOUCH_UP_SCALE, TOUCH_DOWN_SCALE)
+                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
+                AnimUtils.startScaleAnimation(view, TOUCH_DURATION_SCALE, TOUCH_UP_SCALE, TOUCH_DOWN_SCALE)
             }
             MotionEvent.ACTION_UP -> {
-                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
+                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
                 TextUtils.extendText(binding.phoneNumText, (view as Button).text.toString())
 
                 eduListener.onAction("click_key_button", view.text.toString())
@@ -132,10 +132,10 @@ class DefaultPhoneKeypadFragment(private val eduListener: EduListener) : Fragmen
     private val onTouchVideoCallListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
+                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
             }
             MotionEvent.ACTION_UP -> {
-                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
+                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
                 view.performClick()
             }
         }
@@ -146,10 +146,10 @@ class DefaultPhoneKeypadFragment(private val eduListener: EduListener) : Fragmen
     private val onTouchCallListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
+                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
             }
             MotionEvent.ACTION_UP -> {
-                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
+                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
 
                 if(binding.phoneNumText.text.toString().isNotEmpty()) {
                     // 전화 화면으로 이동
@@ -168,10 +168,10 @@ class DefaultPhoneKeypadFragment(private val eduListener: EduListener) : Fragmen
     private val onTouchDeleteListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
+                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
             }
             MotionEvent.ACTION_UP -> {
-                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
+                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
                 TextUtils.popText(binding.phoneNumText)
 
                 // 번호 입력 란이 비어 있으면, '연락처 추가, 영상 통화, 지우기' 버튼이 사라진다.
@@ -237,10 +237,10 @@ class DefaultPhoneKeypadFragment(private val eduListener: EduListener) : Fragmen
         else binding.contactAddition.visibility = View.INVISIBLE
 
         binding.videoCall.isEnabled = enabled
-        AnimUtil.startAlphaAnimation(binding.videoCall.drawable, TOUCH_DURATION_ALPHA, startAlpha, endAlpha)
+        AnimUtils.startAlphaAnimation(binding.videoCall.drawable, TOUCH_DURATION_ALPHA, startAlpha, endAlpha)
 
         binding.delete.isEnabled = enabled
-        AnimUtil.startAlphaAnimation(binding.delete.drawable, TOUCH_DURATION_ALPHA, startAlpha, endAlpha)
+        AnimUtils.startAlphaAnimation(binding.delete.drawable, TOUCH_DURATION_ALPHA, startAlpha, endAlpha)
     }
 
     private fun initSecondaryButtonsBackground() {
