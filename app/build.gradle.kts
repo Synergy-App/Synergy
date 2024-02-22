@@ -46,6 +46,8 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.7.2"))
     implementation("com.google.firebase:firebase-analytics")
 
+    // ViewPager2 슬라이드
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
 
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     implementation("androidx.core:core-ktx:1.8.0")
