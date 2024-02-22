@@ -83,7 +83,8 @@
             android:exported="false" /> <!-- 카메라 -->
         <activity
             android:name=".edu_space.default_app.activity.DefaultMessageActivity"
-            android:exported="false" /> <!--전화-->
+            android:exported="false"
+            tools:ignore="DuplicateActivity" /> <!--전화-->
 
         <!-- 환경설정 -->
         <activity
