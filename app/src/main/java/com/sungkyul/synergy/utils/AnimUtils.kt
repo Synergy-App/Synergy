@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.util
+package com.sungkyul.synergy.utils
 
 import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
@@ -14,13 +14,14 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.Interpolator
+import android.view.animation.LinearInterpolator
 import android.view.animation.ScaleAnimation
 import androidx.core.view.updateLayoutParams
 import com.sungkyul.synergy.R
 
 const val TOUCH_DOWN_ELASTIC_BUTTON_DURATION = 250L
 
-class AnimUtil {
+class AnimUtils {
     companion object {
         // 버튼의 터치 애니메이션을 초기화하는 함수
         fun initTouchAnimationOfButton(view: View) {
@@ -155,7 +156,7 @@ class AnimUtil {
         }
 
         // ObjectAnimator.ofFloat를 편하게 사용하려고 만든 함수
-        fun startObjectAnimatorOfFloat(view: View, target: String, value1: Float, value2: Float, duration: Long, interpolator: Interpolator) {
+        fun startObjectAnimatorOfFloat(view: View, target: String, value1: Float, value2: Float, duration: Long, interpolator: Interpolator = LinearInterpolator()) {
             ObjectAnimator.ofFloat(view, target, value1, value2).apply {
                 this.duration = duration
                 this.interpolator = interpolator
@@ -164,7 +165,7 @@ class AnimUtil {
         }
 
         // ValueAnimator.ofFloat를 편하게 사용하려고 만든 함수
-        fun startValueAnimatorOfFloat(update: (Float) -> Unit, value1: Float, value2: Float, duration: Long, interpolator: Interpolator) {
+        fun startValueAnimatorOfFloat(update: (Float) -> Unit, value1: Float, value2: Float, duration: Long, interpolator: Interpolator = LinearInterpolator()) {
             val animator = ValueAnimator.ofFloat(value1, value2)
             animator.addUpdateListener {
                 update(it.animatedValue as Float)

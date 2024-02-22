@@ -14,8 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="22dp"
         android:text="TextView"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView32"
-        app:layout_constraintStart_toEndOf="@+id/imageView9" />
+        app:layout_constraintBaseline_toBaselineOf="@id/textView32"
+        app:layout_constraintStart_toEndOf="@id/imageView9" />
 
     <View
         android:id="@+id/view"
@@ -38,10 +38,10 @@
         android:layout_marginStart="26dp"
         android:layout_marginEnd="28dp"
         android:background="@drawable/taxi"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintBottom_toBottomOf="@id/imageView3"
+        app:layout_constraintEnd_toStartOf="@id/imageView3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView3" />
+        app:layout_constraintTop_toTopOf="@id/imageView3" />
 
 
     <TextView
@@ -51,11 +51,11 @@
         android:layout_marginEnd="42dp"
         android:text="택시"
         android:textSize="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView7"
-        app:layout_constraintEnd_toStartOf="@+id/textView24"
+        app:layout_constraintBottom_toTopOf="@id/imageView7"
+        app:layout_constraintEnd_toStartOf="@id/textView24"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button18"
+        app:layout_constraintTop_toBottomOf="@id/button18"
         app:layout_constraintVertical_bias="0.388" />
 
     <Button
@@ -69,8 +69,8 @@
         android:text="마이카"
         android:textColor="#B3B3B3"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/view"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@id/view"
+        app:layout_constraintEnd_toStartOf="@id/button2"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -83,8 +83,8 @@
         android:text="홈"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
-        app:layout_constraintStart_toEndOf="@+id/button1"
+        app:layout_constraintEnd_toStartOf="@id/button3"
+        app:layout_constraintStart_toEndOf="@id/button1"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -97,9 +97,9 @@
         android:text="여행"
         android:textColor="#FFB3B3B3"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/view"
+        app:layout_constraintBottom_toTopOf="@id/view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button2" />
+        app:layout_constraintStart_toEndOf="@id/button2" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigationView"
@@ -114,7 +114,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view"
+        app:layout_constraintTop_toBottomOf="@id/view"
         app:layout_constraintVertical_bias="0.0"
         app:menu="@menu/taxi_menu"
         app:labelVisibilityMode="labeled"
@@ -132,11 +132,11 @@
         android:layout_marginBottom="28dp"
         android:background="@drawable/border_background"
         android:queryHint="어디로 갈까요?"
-        app:layout_constraintBottom_toBottomOf="@+id/homeb"
+        app:layout_constraintBottom_toBottomOf="@id/homeb"
         app:iconifiedByDefault="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@id/button2"
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:iconifiedByDefault="false">
@@ -153,7 +153,7 @@
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintEnd_toStartOf="@id/imageView2"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -165,10 +165,10 @@
         android:background="#00FF0000"
         android:drawableLeft="@drawable/home__2_"
         android:text="집"
-        app:layout_constraintBottom_toBottomOf="@+id/busb"
-        app:layout_constraintEnd_toStartOf="@+id/busb"
+        app:layout_constraintBottom_toBottomOf="@id/busb"
+        app:layout_constraintEnd_toStartOf="@id/busb"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/busb" />
+        app:layout_constraintTop_toTopOf="@id/busb" />
 
     <Button
         android:id="@+id/busb"
@@ -180,10 +180,10 @@
         android:background="#00FF0000"
         android:drawableLeft="@drawable/home__2_"
         android:text="회사"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintBottom_toBottomOf="@id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/homeb"
-        app:layout_constraintTop_toTopOf="@+id/button1" />
+        app:layout_constraintStart_toEndOf="@id/homeb"
+        app:layout_constraintTop_toTopOf="@id/button1" />
 
     <ImageView
         android:id="@+id/adverise"
@@ -194,10 +194,10 @@
         android:layout_marginEnd="13dp"
         android:layout_marginBottom="10dp"
         android:src="@drawable/screenedu_blackground"
-        app:layout_constraintBottom_toTopOf="@+id/button18"
+        app:layout_constraintBottom_toTopOf="@id/button18"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeb" />
+        app:layout_constraintTop_toBottomOf="@id/homeb" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -205,10 +205,10 @@
         android:layout_height="0dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="11dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView12"
-        app:layout_constraintEnd_toStartOf="@+id/textView12"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toBottomOf="@id/textView12"
+        app:layout_constraintEnd_toStartOf="@id/textView12"
+        app:layout_constraintStart_toEndOf="@id/textView2"
+        app:layout_constraintTop_toTopOf="@id/textView2"
         app:srcCompat="@drawable/coin" />
 
     <TextView
@@ -217,9 +217,9 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="13dp"
         android:text="충전하기"
-        app:layout_constraintBottom_toBottomOf="@+id/view7"
-        app:layout_constraintEnd_toStartOf="@+id/view7"
-        app:layout_constraintStart_toEndOf="@+id/imageView2" />
+        app:layout_constraintBottom_toBottomOf="@id/view7"
+        app:layout_constraintEnd_toStartOf="@id/view7"
+        app:layout_constraintStart_toEndOf="@id/imageView2" />
 
     <View
         android:id="@+id/view7"
@@ -227,10 +227,10 @@
         android:layout_height="0dp"
         android:layout_marginEnd="9dp"
         android:background="#939393"
-        app:layout_constraintBottom_toBottomOf="@+id/textView13"
-        app:layout_constraintEnd_toStartOf="@+id/textView13"
-        app:layout_constraintStart_toEndOf="@+id/textView12"
-        app:layout_constraintTop_toTopOf="@+id/textView13" />
+        app:layout_constraintBottom_toBottomOf="@id/textView13"
+        app:layout_constraintEnd_toStartOf="@id/textView13"
+        app:layout_constraintStart_toEndOf="@id/textView12"
+        app:layout_constraintTop_toTopOf="@id/textView13" />
 
     <TextView
         android:id="@+id/textView13"
@@ -242,18 +242,18 @@
         android:textColor="#000000"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/view7"
-        app:layout_constraintTop_toBottomOf="@+id/textView38" />
+        app:layout_constraintStart_toEndOf="@id/view7"
+        app:layout_constraintTop_toBottomOf="@id/textView38" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginEnd="26dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-        app:layout_constraintEnd_toStartOf="@+id/imageView4"
-        app:layout_constraintStart_toEndOf="@+id/button18"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        app:layout_constraintBottom_toBottomOf="@id/imageView4"
+        app:layout_constraintEnd_toStartOf="@id/imageView4"
+        app:layout_constraintStart_toEndOf="@id/button18"
+        app:layout_constraintTop_toTopOf="@id/imageView4"
         app:srcCompat="@drawable/reservationtaxi" />
 
     <ImageView
@@ -263,10 +263,10 @@
         android:layout_marginTop="196dp"
         android:layout_marginEnd="27dp"
         android:layout_marginBottom="195dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView2"
-        app:layout_constraintEnd_toStartOf="@+id/imageView5"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/button1"
+        app:layout_constraintBottom_toTopOf="@id/imageView2"
+        app:layout_constraintEnd_toStartOf="@id/imageView5"
+        app:layout_constraintStart_toEndOf="@id/imageView3"
+        app:layout_constraintTop_toBottomOf="@id/button1"
         app:srcCompat="@drawable/bicycle" />
 
     <ImageView
@@ -274,10 +274,10 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginEnd="27dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-        app:layout_constraintEnd_toStartOf="@+id/imageView6"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        app:layout_constraintBottom_toBottomOf="@id/imageView4"
+        app:layout_constraintEnd_toStartOf="@id/imageView6"
+        app:layout_constraintStart_toEndOf="@id/imageView4"
+        app:layout_constraintTop_toTopOf="@id/imageView4"
         app:srcCompat="@drawable/parking" />
 
     <ImageView
@@ -285,10 +285,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="27dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+        app:layout_constraintBottom_toBottomOf="@id/imageView5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView5"
-        app:layout_constraintTop_toTopOf="@+id/imageView5"
+        app:layout_constraintStart_toEndOf="@id/imageView5"
+        app:layout_constraintTop_toTopOf="@id/imageView5"
         app:srcCompat="@drawable/drive" />
 
     <ImageView
@@ -298,7 +298,7 @@
         android:layout_marginStart="26dp"
         android:layout_marginEnd="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView8"
+        app:layout_constraintEnd_toStartOf="@id/imageView8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/parcel" />
@@ -309,8 +309,8 @@
         android:layout_height="50dp"
         android:layout_marginEnd="26dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView9"
-        app:layout_constraintStart_toEndOf="@+id/imageView7"
+        app:layout_constraintEnd_toStartOf="@id/imageView9"
+        app:layout_constraintStart_toEndOf="@id/imageView7"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/rent" />
 
@@ -320,8 +320,8 @@
         android:layout_height="50dp"
         android:layout_marginEnd="27dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView10"
-        app:layout_constraintStart_toEndOf="@+id/imageView8"
+        app:layout_constraintEnd_toStartOf="@id/imageView10"
+        app:layout_constraintStart_toEndOf="@id/imageView8"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/air" />
 
@@ -331,8 +331,8 @@
         android:layout_height="50dp"
         android:layout_marginEnd="27dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView11"
-        app:layout_constraintStart_toEndOf="@+id/imageView9"
+        app:layout_constraintEnd_toStartOf="@id/imageView11"
+        app:layout_constraintStart_toEndOf="@id/imageView9"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/charge" />
 
@@ -343,7 +343,7 @@
         android:layout_marginEnd="27dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView10"
+        app:layout_constraintStart_toEndOf="@id/imageView10"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/global" />
 
@@ -353,10 +353,10 @@
         android:layout_height="0dp"
         android:layout_marginStart="26dp"
         android:layout_marginEnd="28dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView13"
-        app:layout_constraintEnd_toStartOf="@+id/imageView13"
+        app:layout_constraintBottom_toBottomOf="@id/imageView13"
+        app:layout_constraintEnd_toStartOf="@id/imageView13"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView13"
+        app:layout_constraintTop_toTopOf="@id/imageView13"
         app:srcCompat="@drawable/pet" />
 
     <ImageView
@@ -364,10 +364,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="26dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView14"
-        app:layout_constraintEnd_toStartOf="@+id/imageView14"
-        app:layout_constraintStart_toEndOf="@+id/imageView12"
-        app:layout_constraintTop_toTopOf="@+id/imageView14"
+        app:layout_constraintBottom_toBottomOf="@id/imageView14"
+        app:layout_constraintEnd_toStartOf="@id/imageView14"
+        app:layout_constraintStart_toEndOf="@id/imageView12"
+        app:layout_constraintTop_toTopOf="@id/imageView14"
         app:srcCompat="@drawable/train" />
 
     <ImageView
@@ -377,10 +377,10 @@
         android:layout_marginTop="25dp"
         android:layout_marginEnd="27dp"
         android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView36"
-        app:layout_constraintEnd_toStartOf="@+id/imageView15"
-        app:layout_constraintStart_toEndOf="@+id/imageView13"
-        app:layout_constraintTop_toTopOf="@+id/textView30"
+        app:layout_constraintBottom_toBottomOf="@id/textView36"
+        app:layout_constraintEnd_toStartOf="@id/imageView15"
+        app:layout_constraintStart_toEndOf="@id/imageView13"
+        app:layout_constraintTop_toTopOf="@id/textView30"
         app:srcCompat="@drawable/ballon" />
 
     <ImageView
@@ -388,10 +388,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="27dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView14"
-        app:layout_constraintEnd_toStartOf="@+id/imageView16"
-        app:layout_constraintStart_toEndOf="@+id/imageView14"
-        app:layout_constraintTop_toTopOf="@+id/imageView14"
+        app:layout_constraintBottom_toBottomOf="@id/imageView14"
+        app:layout_constraintEnd_toStartOf="@id/imageView16"
+        app:layout_constraintStart_toEndOf="@id/imageView14"
+        app:layout_constraintTop_toTopOf="@id/imageView14"
         app:srcCompat="@drawable/coin" />
 
     <ImageView
@@ -399,10 +399,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="27dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView15"
+        app:layout_constraintBottom_toBottomOf="@id/imageView15"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView15"
-        app:layout_constraintTop_toTopOf="@+id/imageView15"
+        app:layout_constraintStart_toEndOf="@id/imageView15"
+        app:layout_constraintTop_toTopOf="@id/imageView15"
         app:srcCompat="@drawable/select" />
 
     <TextView
@@ -412,11 +412,11 @@
         android:layout_marginEnd="40dp"
         android:text="택시예약"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView8"
-        app:layout_constraintEnd_toStartOf="@+id/textView25"
+        app:layout_constraintBottom_toTopOf="@id/imageView8"
+        app:layout_constraintEnd_toStartOf="@id/textView25"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@id/imageView3"
         app:layout_constraintVertical_bias="0.388" />
 
     <TextView
@@ -439,11 +439,11 @@
         android:layout_marginStart="45dp"
         android:text="주차"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView10"
+        app:layout_constraintBottom_toTopOf="@id/imageView10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.008"
-        app:layout_constraintStart_toEndOf="@+id/textView25"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintStart_toEndOf="@id/textView25"
+        app:layout_constraintTop_toBottomOf="@id/imageView5"
         app:layout_constraintVertical_bias="0.388" />
 
     <TextView
@@ -454,11 +454,11 @@
         android:layout_marginBottom="1dp"
         android:text="대리"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView11"
+        app:layout_constraintBottom_toTopOf="@id/imageView11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView26"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:layout_constraintStart_toEndOf="@id/textView26"
+        app:layout_constraintTop_toBottomOf="@id/imageView6"
         app:layout_constraintVertical_bias="0.388" />
 
     <TextView
@@ -469,8 +469,8 @@
         android:layout_marginEnd="6dp"
         android:text="퀵배송"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView7"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+        app:layout_constraintEnd_toEndOf="@id/imageView7"
+        app:layout_constraintTop_toBottomOf="@id/imageView7" />
 
     <TextView
         android:id="@+id/textView29"
@@ -480,8 +480,8 @@
         android:layout_marginTop="4dp"
         android:text="렌터카"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/imageView8"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+        app:layout_constraintStart_toStartOf="@id/imageView8"
+        app:layout_constraintTop_toBottomOf="@id/imageView8" />
 
     <TextView
         android:id="@+id/textView30"
@@ -491,8 +491,8 @@
         android:layout_marginTop="4dp"
         android:text="항공"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/imageView9"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+        app:layout_constraintStart_toStartOf="@id/imageView9"
+        app:layout_constraintTop_toBottomOf="@id/imageView9" />
 
     <TextView
         android:id="@+id/textView32"
@@ -501,8 +501,8 @@
         android:layout_marginTop="4dp"
         android:text="전기차충전"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView31"
-        app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+        app:layout_constraintEnd_toEndOf="@id/textView31"
+        app:layout_constraintTop_toBottomOf="@id/imageView10" />
 
     <TextView
         android:id="@+id/textView33"
@@ -511,8 +511,8 @@
         android:layout_marginTop="4dp"
         android:text="차량호출"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/imageView11"
-        app:layout_constraintTop_toBottomOf="@+id/imageView11" />
+        app:layout_constraintStart_toStartOf="@id/imageView11"
+        app:layout_constraintTop_toBottomOf="@id/imageView11" />
 
     <TextView
         android:id="@+id/textView34"
@@ -522,8 +522,8 @@
         android:layout_marginEnd="17dp"
         android:text="펫"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView12"
-        app:layout_constraintTop_toBottomOf="@+id/imageView12" />
+        app:layout_constraintEnd_toEndOf="@id/imageView12"
+        app:layout_constraintTop_toBottomOf="@id/imageView12" />
 
     <TextView
         android:id="@+id/textView35"
@@ -533,8 +533,8 @@
         android:layout_marginTop="7dp"
         android:text="기차"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/imageView13"
-        app:layout_constraintTop_toBottomOf="@+id/imageView13" />
+        app:layout_constraintStart_toStartOf="@id/imageView13"
+        app:layout_constraintTop_toBottomOf="@id/imageView13" />
 
     <TextView
         android:id="@+id/textView36"
@@ -543,8 +543,8 @@
         android:layout_marginBottom="12dp"
         android:text="레저/티켓"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintEnd_toEndOf="@+id/imageView14" />
+        app:layout_constraintBottom_toTopOf="@id/textView2"
+        app:layout_constraintEnd_toEndOf="@id/imageView14" />
 
     <TextView
         android:id="@+id/textView37"
@@ -553,8 +553,8 @@
         android:layout_marginTop="6dp"
         android:text="무료적립"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/imageView15"
-        app:layout_constraintTop_toBottomOf="@+id/imageView15" />
+        app:layout_constraintStart_toStartOf="@id/imageView15"
+        app:layout_constraintTop_toBottomOf="@id/imageView15" />
 
     <TextView
         android:id="@+id/textView38"
@@ -563,8 +563,8 @@
         android:layout_marginTop="6dp"
         android:text="전체보기"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/imageView16"
-        app:layout_constraintTop_toBottomOf="@+id/imageView16" />
+        app:layout_constraintStart_toStartOf="@id/imageView16"
+        app:layout_constraintTop_toBottomOf="@id/imageView16" />
 
     <ImageView
         android:id="@+id/imageView17"
@@ -572,10 +572,10 @@
         android:layout_height="111dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintBottom_toBottomOf="@id/view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@id/textView2"
         app:srcCompat="@drawable/screenedu_blackground" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
