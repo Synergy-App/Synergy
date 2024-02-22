@@ -8,7 +8,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.util.AnimUtil
+import com.sungkyul.synergy.utils.AnimUtil
 
 data class RecentHistoryData(
     val profile: Int,

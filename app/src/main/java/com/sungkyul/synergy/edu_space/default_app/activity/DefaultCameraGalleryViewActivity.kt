@@ -8,7 +8,7 @@ import com.sungkyul.synergy.databinding.ActivityDefaultCameraGalleryViewBinding
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_DOWN_ALPHA
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_DURATION_ALPHA
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_ALPHA
-import com.sungkyul.synergy.util.AnimUtil
+import com.sungkyul.synergy.utils.AnimUtil
 
 class DefaultCameraGalleryViewActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDefaultCameraGalleryViewBinding
