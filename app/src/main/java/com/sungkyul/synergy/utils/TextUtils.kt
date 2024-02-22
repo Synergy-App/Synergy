@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.util
+package com.sungkyul.synergy.utils
 
 import android.app.Activity
 import android.content.Context
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 
-class TextUtil {
+class TextUtils {
     companion object {
         // editText의 맨 끝에 str을 추가하는 함수
         fun extendText(editText: EditText, str: String) {

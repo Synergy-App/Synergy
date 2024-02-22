@@ -1,12 +1,9 @@
-package com.sungkyul.synergy.util
+package com.sungkyul.synergy.utils
 
-import android.animation.ObjectAnimator
 import android.util.Log
+import android.view.Gravity
 import android.view.View
-import android.view.animation.AccelerateDecelerateInterpolator
-import android.view.animation.DecelerateInterpolator
 import android.widget.FrameLayout
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -153,6 +150,86 @@ class Edu (
 
         // 프래그먼트 화면의 클릭 이벤트를 설정한다.
         eduScreen.setOnClickListener(onEduScreenClickListener)
+
+        // TODO(클래스 초기 설계; 화살표는 어떻게 하지)
+        val e = ArrayList<List<Pair<String, Map<String, Any>>>>()
+        e.add(listOf(
+            Pair("dialog", mapOf(
+                "title_text" to "시너지",
+                "title_gravity" to Gravity.CENTER,
+                "content_text" to "여기는 교육 공간입니다.\n근사하고 멋있습니다.",
+                "content_gravity" to Gravity.CENTER,
+                "content_bolds" to listOf(Pair(1, 3), Pair(5, 8)),
+                "duration" to 500,
+                "top" to 0,
+                "bottom" to 0,
+                "start" to 0,
+                "end" to 0,
+                "visibility" to true
+            )),
+            Pair("image_dialog", mapOf(
+                "title_text" to "시너지",
+                "duration" to 500,
+                "top" to 0,
+                "bottom" to 0,
+                "start" to 0,
+                "end" to 0,
+                "background" to 0,
+                "visibility" to true
+            )),
+            Pair("top_dialog", mapOf(
+                "title_text" to "시너지",
+                "title_gravity" to Gravity.CENTER,
+                "content_text" to "여기는 교육 공간입니다.\n근사하고 멋있습니다.",
+                "content_gravity" to Gravity.CENTER,
+                "content_bolds" to listOf(Pair(1, 3), Pair(5, 8)),
+                "duration" to 500,
+                "height" to 500,
+                "visibility" to true
+            )),
+            Pair("bottom_dialog", mapOf(
+                "title_text" to "시너지",
+                "title_gravity" to Gravity.CENTER,
+                "content_text" to "여기는 교육 공간입니다.\n근사하고 멋있습니다.",
+                "content_gravity" to Gravity.CENTER,
+                "content_bolds" to listOf(Pair(1, 3), Pair(5, 8)),
+                "duration" to 500,
+                "height" to 500,
+                "visibility" to true
+            )),
+            Pair("covers", mapOf(
+                "duration" to 500,
+                "top" to 0,
+                "bottom" to 0,
+                "start" to 0,
+                "end" to 0,
+                "visibility" to true
+            )),
+            Pair("action", mapOf(
+                "id" to "click",
+                "message" to "hello"
+            )),
+            Pair("add_box", mapOf(
+                "id" to "hello",
+                "top" to 0,
+                "bottom" to 0,
+                "start" to 0,
+                "end" to 0,
+                "background" to R.drawable.display
+            )),
+            Pair("delete_box", mapOf(
+                "id" to "hello"
+            )),
+            Pair("add_finger", mapOf(
+                "id" to "hello",
+                "x" to 10,
+                "y" to 20,
+                "anim" to androidx.appcompat.R.anim.abc_fade_out
+            )),
+            Pair("delete_finger", mapOf(
+                "id" to "hello"
+            ))
+        ))
     }
 
     // eduScreenFragment.onCreateView가 호출될 때 반응하는 함수

@@ -16,7 +16,7 @@ import com.sungkyul.synergy.edu_space.default_app.TOUCH_DURATION_ALPHA
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_DURATION_SCALE
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_ALPHA
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_SCALE
-import com.sungkyul.synergy.util.AnimUtil
+import com.sungkyul.synergy.utils.AnimUtils
 
 class DefaultPhoneCallActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDefaultPhoneCallBinding
@@ -61,11 +61,11 @@ class DefaultPhoneCallActivity : AppCompatActivity() {
     private val onTouchRecordingListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
-                AnimUtil.startScaleAnimation(view, TOUCH_DURATION_SCALE, TOUCH_UP_SCALE, TOUCH_DOWN_SCALE)
+                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
+                AnimUtils.startScaleAnimation(view, TOUCH_DURATION_SCALE, TOUCH_UP_SCALE, TOUCH_DOWN_SCALE)
             }
             MotionEvent.ACTION_UP -> {
-                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
+                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
                 view.performClick()
             }
         }
@@ -76,11 +76,11 @@ class DefaultPhoneCallActivity : AppCompatActivity() {
     private val onTouchVideoCallListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
-                AnimUtil.startScaleAnimation(view, TOUCH_DURATION_SCALE, TOUCH_UP_SCALE, TOUCH_DOWN_SCALE)
+                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
+                AnimUtils.startScaleAnimation(view, TOUCH_DURATION_SCALE, TOUCH_UP_SCALE, TOUCH_DOWN_SCALE)
             }
             MotionEvent.ACTION_UP -> {
-                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
+                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
                 view.performClick()
             }
         }
@@ -91,11 +91,11 @@ class DefaultPhoneCallActivity : AppCompatActivity() {
     private val onTouchBluetoothListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
-                AnimUtil.startScaleAnimation(view, TOUCH_DURATION_SCALE, TOUCH_UP_SCALE, TOUCH_DOWN_SCALE)
+                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
+                AnimUtils.startScaleAnimation(view, TOUCH_DURATION_SCALE, TOUCH_UP_SCALE, TOUCH_DOWN_SCALE)
             }
             MotionEvent.ACTION_UP -> {
-                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
+                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
                 view.performClick()
             }
         }
@@ -106,11 +106,11 @@ class DefaultPhoneCallActivity : AppCompatActivity() {
     private val onTouchSpeakerListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
-                AnimUtil.startScaleAnimation(view, TOUCH_DURATION_SCALE, TOUCH_UP_SCALE, TOUCH_DOWN_SCALE)
+                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
+                AnimUtils.startScaleAnimation(view, TOUCH_DURATION_SCALE, TOUCH_UP_SCALE, TOUCH_DOWN_SCALE)
             }
             MotionEvent.ACTION_UP -> {
-                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
+                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
                 view.performClick()
             }
         }
@@ -121,11 +121,11 @@ class DefaultPhoneCallActivity : AppCompatActivity() {
     private val onTouchMuteMyAudioListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
-                AnimUtil.startScaleAnimation(view, TOUCH_DURATION_SCALE, TOUCH_UP_SCALE, TOUCH_DOWN_SCALE)
+                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
+                AnimUtils.startScaleAnimation(view, TOUCH_DURATION_SCALE, TOUCH_UP_SCALE, TOUCH_DOWN_SCALE)
             }
             MotionEvent.ACTION_UP -> {
-                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
+                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
                 view.performClick()
             }
         }
@@ -136,11 +136,11 @@ class DefaultPhoneCallActivity : AppCompatActivity() {
     private val onTouchKeypadListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
-                AnimUtil.startScaleAnimation(view, TOUCH_DURATION_SCALE, TOUCH_UP_SCALE, TOUCH_DOWN_SCALE)
+                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
+                AnimUtils.startScaleAnimation(view, TOUCH_DURATION_SCALE, TOUCH_UP_SCALE, TOUCH_DOWN_SCALE)
             }
             MotionEvent.ACTION_UP -> {
-                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
+                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
                 view.performClick()
             }
         }
@@ -151,10 +151,10 @@ class DefaultPhoneCallActivity : AppCompatActivity() {
     private val onTouchHangUpListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
+                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
             }
             MotionEvent.ACTION_UP -> {
-                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
+                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
 
                 hangOut()
 
@@ -168,11 +168,11 @@ class DefaultPhoneCallActivity : AppCompatActivity() {
     private val onTouchViewContactListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
-                AnimUtil.startScaleAnimation(view, TOUCH_DURATION_SCALE, TOUCH_UP_SCALE, TOUCH_DOWN_SCALE)
+                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
+                AnimUtils.startScaleAnimation(view, TOUCH_DURATION_SCALE, TOUCH_UP_SCALE, TOUCH_DOWN_SCALE)
             }
             MotionEvent.ACTION_UP -> {
-                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
+                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
                 view.performClick()
             }
         }
@@ -183,11 +183,11 @@ class DefaultPhoneCallActivity : AppCompatActivity() {
     private val onTouchCallListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
-                AnimUtil.startScaleAnimation(view, TOUCH_DURATION_SCALE, TOUCH_UP_SCALE, TOUCH_DOWN_SCALE)
+                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
+                AnimUtils.startScaleAnimation(view, TOUCH_DURATION_SCALE, TOUCH_UP_SCALE, TOUCH_DOWN_SCALE)
             }
             MotionEvent.ACTION_UP -> {
-                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
+                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
                 view.performClick()
             }
         }
@@ -198,11 +198,11 @@ class DefaultPhoneCallActivity : AppCompatActivity() {
     private val onTouchMessageListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
-                AnimUtil.startScaleAnimation(view, TOUCH_DURATION_SCALE, TOUCH_UP_SCALE, TOUCH_DOWN_SCALE)
+                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
+                AnimUtils.startScaleAnimation(view, TOUCH_DURATION_SCALE, TOUCH_UP_SCALE, TOUCH_DOWN_SCALE)
             }
             MotionEvent.ACTION_UP -> {
-                AnimUtil.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
+                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
                 view.performClick()
             }
         }
@@ -212,7 +212,7 @@ class DefaultPhoneCallActivity : AppCompatActivity() {
     // 전화를 끊었을 때, 통화 종료에 맞게 화면을 꾸미는 함수
     private fun hangOut() {
         // 배경 화면을 하얀색으로 변경한다.
-        AnimUtil.startAlphaAnimation(binding.whiteBackground.drawable, 200L, 0, 255)
+        AnimUtils.startAlphaAnimation(binding.whiteBackground.drawable, 200L, 0, 255)
 
         // 통화 종료를 알려준다.
         binding.callStatusText.text = "통화 종료"
