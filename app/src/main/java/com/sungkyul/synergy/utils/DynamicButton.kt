@@ -93,7 +93,7 @@ class DynamicButton(context: Context, attrs: AttributeSet?): View(context, attrs
         circleY = y
         circleRadius = startRadius
         AnimUtils.startValueAnimatorOfFloat({
-            circlePaint.alpha = (36*it).toInt()
+            circlePaint.alpha = (51*it).toInt()
 
             val diagonal = sqrt((width*width+height*height).toDouble()).toFloat()
             circleRadius = startRadius+(diagonal-startRadius)*it
@@ -105,7 +105,7 @@ class DynamicButton(context: Context, attrs: AttributeSet?): View(context, attrs
     // 터치 업 애니메이션을 시작한다.
     fun startTouchUpAnimation() {
         AnimUtils.startValueAnimatorOfFloat({
-            circlePaint.alpha = (36*it).toInt()
+            circlePaint.alpha = (51*it).toInt()
             invalidate()
         }, 1.0f, 0.0f, 500, DecelerateInterpolator())
     }
