@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.learingFragment -> setFragment(Tag_learning, LearningFragment())
                 R.id.solvingFragment -> setFragment(Tag_solving, SolvingFragment())
-                R.id.reviewFragment -> setFragment(Tag_review, ReviewFragment())
+                //R.id.reviewFragment -> setFragment(Tag_review, ReviewFragment())
                 R.id.myProfileFrangment -> setFragment(Tag_myProfile, MyProfileFragment())
             }
             true
@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         }
         val learning = manager.findFragmentByTag(Tag_learning)
         val solving = manager.findFragmentByTag(Tag_solving)
-        val review = manager.findFragmentByTag(Tag_review)
+       // val review = manager.findFragmentByTag(Tag_review)
         val myProfile = manager.findFragmentByTag(Tag_myProfile)
 
         if (learning != null) {
@@ -59,13 +59,13 @@ class MainActivity : AppCompatActivity() {
                 fragTransaction.hide(solving)
             }
         }
-        if (review != null) {
-            if (tag == Tag_review) {
-                fragTransaction.show(review)
-            } else {
-                fragTransaction.hide(review)
-            }
-        }
+//        if (review != null) {
+//            if (tag == Tag_review) {
+//                fragTransaction.show(review)
+//            } else {
+//                fragTransaction.hide(review)
+//            }
+//        }
         if (myProfile != null) {
             if (tag == Tag_myProfile) {
                 fragTransaction.show(myProfile)
