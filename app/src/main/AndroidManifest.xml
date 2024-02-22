@@ -18,19 +18,18 @@
         <!--교육공간-->
         <activity
             android:name=".edu_space.default_app.activity.DefaultAppActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity>
         <activity
             android:name=".main.activity.DigitalStartActivity"
             android:exported="false" /> <!-- 디지털 나이 검사 -->
         <activity android:name=".MainActivity"
-            android:exported="false"> <!--메인화면-->
+            android:exported="true"> <!--메인화면-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".edu_space.default_app.activity.DefaultMessageActivity"
