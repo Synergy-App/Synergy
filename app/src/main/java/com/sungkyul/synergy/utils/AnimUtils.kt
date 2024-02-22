@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.util
+package com.sungkyul.synergy.utils
 
 import android.animation.AnimatorInflater
 import android.animation.AnimatorSet

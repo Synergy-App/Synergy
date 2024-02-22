@@ -1,7 +1,6 @@
-package com.sungkyul.synergy.util
+package com.sungkyul.synergy.utils
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

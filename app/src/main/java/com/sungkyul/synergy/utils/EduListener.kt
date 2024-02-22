@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.util
+package com.sungkyul.synergy.utils
 
 interface EduListener {
     // 프래그먼트의 onCreateView가 호출되었을 때 실행되는 함수

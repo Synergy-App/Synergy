@@ -1,11 +1,11 @@
-package com.sungkyul.synergy.util
+package com.sungkyul.synergy.utils
 
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
 import java.util.Locale
 
-class DateTimeUtil {
+class DateTimeUtils {
     companion object {
         val dateFormatter = DateTimeFormatter.ofPattern("yyyy년 M월 d일")
         val timeFormatter = DateTimeFormatter.ofPattern("h:mm")

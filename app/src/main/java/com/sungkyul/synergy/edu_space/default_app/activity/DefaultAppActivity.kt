@@ -7,10 +7,6 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.databinding.ActivityDefaultAppBinding
-import com.sungkyul.synergy.edu_space.default_app.TOUCH_DOWN_ALPHA
-import com.sungkyul.synergy.edu_space.default_app.TOUCH_DURATION_ALPHA
-import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_ALPHA
-import com.sungkyul.synergy.util.AnimUtil
 
 class DefaultAppActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDefaultAppBinding

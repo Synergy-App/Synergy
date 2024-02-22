@@ -1,13 +1,9 @@
-package com.sungkyul.synergy.util
+package com.sungkyul.synergy.utils
 
-import android.animation.ObjectAnimator
 import android.util.Log
 import android.view.Gravity
 import android.view.View
-import android.view.animation.AccelerateDecelerateInterpolator
-import android.view.animation.DecelerateInterpolator
 import android.widget.FrameLayout
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
