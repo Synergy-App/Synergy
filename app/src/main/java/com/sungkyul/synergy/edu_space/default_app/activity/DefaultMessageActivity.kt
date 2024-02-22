@@ -12,7 +12,7 @@ import com.sungkyul.synergy.edu_space.default_app.adapter.MessageAdapter
 import com.sungkyul.synergy.edu_space.default_app.adapter.MessageData
 import com.sungkyul.synergy.edu_space.default_app.adapter.MyMessageData
 import com.sungkyul.synergy.edu_space.default_app.adapter.YourMessageData
-import com.sungkyul.synergy.utils.AnimUtil
+import com.sungkyul.synergy.utils.AnimUtils
 import com.sungkyul.synergy.utils.DateTimeUtils
 import java.time.LocalDateTime
 
@@ -59,17 +59,17 @@ class DefaultMessageActivity : AppCompatActivity() {
         messages.adapter = MessageAdapter(messageArray)
 
         // 버튼의 터치 애니메이션을 초기화한다.
-        AnimUtil.initTouchAnimationOfButton(binding.goToTopMenuButton)
-        AnimUtil.initTouchAnimationOfButton(binding.callButton)
-        AnimUtil.initTouchAnimationOfButton(binding.searchButton)
-        AnimUtil.initTouchAnimationOfButton(binding.conversationSettingsButton)
-        AnimUtil.initTouchAnimationOfButton(binding.imageButton)
-        AnimUtil.initTouchAnimationOfButton(binding.cameraButton)
-        AnimUtil.initTouchAnimationOfButton(binding.plusButton)
-        AnimUtil.initTouchAnimationOfButton(binding.expandButton)
-        AnimUtil.initTouchAnimationOfButton(binding.emojiButton)
-        AnimUtil.initTouchAnimationOfButton(binding.recordButton)
-        AnimUtil.initTouchAnimationOfButton(binding.sendButton)
+        AnimUtils.initTouchAnimationOfButton(binding.goToTopMenuButton)
+        AnimUtils.initTouchAnimationOfButton(binding.callButton)
+        AnimUtils.initTouchAnimationOfButton(binding.searchButton)
+        AnimUtils.initTouchAnimationOfButton(binding.conversationSettingsButton)
+        AnimUtils.initTouchAnimationOfButton(binding.imageButton)
+        AnimUtils.initTouchAnimationOfButton(binding.cameraButton)
+        AnimUtils.initTouchAnimationOfButton(binding.plusButton)
+        AnimUtils.initTouchAnimationOfButton(binding.expandButton)
+        AnimUtils.initTouchAnimationOfButton(binding.emojiButton)
+        AnimUtils.initTouchAnimationOfButton(binding.recordButton)
+        AnimUtils.initTouchAnimationOfButton(binding.sendButton)
 
         // 버튼의 터치 리스너를 설정한다.
         binding.goToTopMenuButton.setOnTouchListener(onTouchGoToTopMenuButtonListener)
@@ -88,10 +88,10 @@ class DefaultMessageActivity : AppCompatActivity() {
     private val onTouchGoToTopMenuButtonListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimUtil.startTouchDownAnimationOfButton(this, view)
+                AnimUtils.startTouchDownAnimationOfButton(this, view)
             }
             MotionEvent.ACTION_UP -> {
-                AnimUtil.startTouchUpAnimationOfButton(this, view)
+                AnimUtils.startTouchUpAnimationOfButton(this, view)
                 view.performClick()
             }
         }
@@ -101,10 +101,10 @@ class DefaultMessageActivity : AppCompatActivity() {
     private val onTouchCallButtonListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimUtil.startTouchDownAnimationOfButton(this, view)
+                AnimUtils.startTouchDownAnimationOfButton(this, view)
             }
             MotionEvent.ACTION_UP -> {
-                AnimUtil.startTouchUpAnimationOfButton(this, view)
+                AnimUtils.startTouchUpAnimationOfButton(this, view)
                 view.performClick()
             }
         }
@@ -114,10 +114,10 @@ class DefaultMessageActivity : AppCompatActivity() {
     private val onTouchSearchButtonListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimUtil.startTouchDownAnimationOfButton(this, view)
+                AnimUtils.startTouchDownAnimationOfButton(this, view)
             }
             MotionEvent.ACTION_UP -> {
-                AnimUtil.startTouchUpAnimationOfButton(this, view)
+                AnimUtils.startTouchUpAnimationOfButton(this, view)
                 view.performClick()
             }
         }
@@ -127,10 +127,10 @@ class DefaultMessageActivity : AppCompatActivity() {
     private val onTouchConversationSettingsButtonListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimUtil.startTouchDownAnimationOfButton(this, view)
+                AnimUtils.startTouchDownAnimationOfButton(this, view)
             }
             MotionEvent.ACTION_UP -> {
-                AnimUtil.startTouchUpAnimationOfButton(this, view)
+                AnimUtils.startTouchUpAnimationOfButton(this, view)
                 view.performClick()
             }
         }
@@ -140,10 +140,10 @@ class DefaultMessageActivity : AppCompatActivity() {
     private val onTouchImageButtonListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimUtil.startTouchDownAnimationOfButton(this, view)
+                AnimUtils.startTouchDownAnimationOfButton(this, view)
             }
             MotionEvent.ACTION_UP -> {
-                AnimUtil.startTouchUpAnimationOfButton(this, view)
+                AnimUtils.startTouchUpAnimationOfButton(this, view)
                 view.performClick()
             }
         }
@@ -153,10 +153,10 @@ class DefaultMessageActivity : AppCompatActivity() {
     private val onTouchCameraButtonListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimUtil.startTouchDownAnimationOfButton(this, view)
+                AnimUtils.startTouchDownAnimationOfButton(this, view)
             }
             MotionEvent.ACTION_UP -> {
-                AnimUtil.startTouchUpAnimationOfButton(this, view)
+                AnimUtils.startTouchUpAnimationOfButton(this, view)
                 view.performClick()
             }
         }
@@ -166,10 +166,10 @@ class DefaultMessageActivity : AppCompatActivity() {
     private val onTouchPlusButtonListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimUtil.startTouchDownAnimationOfButton(this, view)
+                AnimUtils.startTouchDownAnimationOfButton(this, view)
             }
             MotionEvent.ACTION_UP -> {
-                AnimUtil.startTouchUpAnimationOfButton(this, view)
+                AnimUtils.startTouchUpAnimationOfButton(this, view)
                 view.performClick()
             }
         }
@@ -179,10 +179,10 @@ class DefaultMessageActivity : AppCompatActivity() {
     private val onTouchExpandButtonListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimUtil.startTouchDownAnimationOfButton(this, view)
+                AnimUtils.startTouchDownAnimationOfButton(this, view)
             }
             MotionEvent.ACTION_UP -> {
-                AnimUtil.startTouchUpAnimationOfButton(this, view)
+                AnimUtils.startTouchUpAnimationOfButton(this, view)
                 view.performClick()
             }
         }
@@ -192,10 +192,10 @@ class DefaultMessageActivity : AppCompatActivity() {
     private val onTouchEmojiButtonListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimUtil.startTouchDownAnimationOfButton(this, view)
+                AnimUtils.startTouchDownAnimationOfButton(this, view)
             }
             MotionEvent.ACTION_UP -> {
-                AnimUtil.startTouchUpAnimationOfButton(this, view)
+                AnimUtils.startTouchUpAnimationOfButton(this, view)
                 view.performClick()
             }
         }
@@ -205,10 +205,10 @@ class DefaultMessageActivity : AppCompatActivity() {
     private val onTouchRecordButtonListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimUtil.startTouchDownAnimationOfButton(this, view)
+                AnimUtils.startTouchDownAnimationOfButton(this, view)
             }
             MotionEvent.ACTION_UP -> {
-                AnimUtil.startTouchUpAnimationOfButton(this, view)
+                AnimUtils.startTouchUpAnimationOfButton(this, view)
                 view.performClick()
             }
         }
@@ -218,10 +218,10 @@ class DefaultMessageActivity : AppCompatActivity() {
     private val onTouchSendButtonListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
-                AnimUtil.startTouchDownAnimationOfButton(this, view)
+                AnimUtils.startTouchDownAnimationOfButton(this, view)
             }
             MotionEvent.ACTION_UP -> {
-                AnimUtil.startTouchUpAnimationOfButton(this, view)
+                AnimUtils.startTouchUpAnimationOfButton(this, view)
                 view.performClick()
             }
         }

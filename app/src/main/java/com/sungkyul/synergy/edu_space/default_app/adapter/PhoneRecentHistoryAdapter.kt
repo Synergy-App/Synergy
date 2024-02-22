@@ -8,7 +8,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.utils.AnimUtil
+import com.sungkyul.synergy.utils.AnimUtils
 
 data class RecentHistoryData(
     val profile: Int,
@@ -58,10 +58,10 @@ class RecentHistoryAdapter(private val dataSet: ArrayList<RecentHistoryData>): R
             itemLayout.setOnClickListener {
                 // 히든 레이아웃을 펼쳤다 접었다 할 수 있다.
                 if(toggle) {
-                    AnimUtil.startHeightAnimation(hiddenLayout, 250L, hiddenLayout.height, 0)
+                    AnimUtils.startHeightAnimation(hiddenLayout, 250L, hiddenLayout.height, 0)
                     toggle = false
                 } else {
-                    AnimUtil.startHeightAnimation(hiddenLayout, 250L, hiddenLayout.height, maxHeight)
+                    AnimUtils.startHeightAnimation(hiddenLayout, 250L, hiddenLayout.height, maxHeight)
                     toggle = true
                 }
             }

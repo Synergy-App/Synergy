@@ -7,6 +7,7 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.databinding.ActivityDefaultAppBinding
+import com.sungkyul.synergy.utils.DynamicButton
 
 class DefaultAppActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDefaultAppBinding
@@ -17,54 +18,54 @@ class DefaultAppActivity : AppCompatActivity() {
         binding = ActivityDefaultAppBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 각 버튼의 터치 리스너를 설정한다.
-        binding.callEduBox.setOnTouchListener(onTouchCallEduButtonListener)
-        binding.cameraEduBox.setOnTouchListener(onTouchCameraEduButtonListener)
-        binding.messageEduBox.setOnTouchListener(onTouchMessageEduButtonListener)
-    }
+        binding.callEduBox.post { binding.callEduBox.clipToRoundRect(27.0f) }
+        binding.cameraEduBox.post { binding.cameraEduBox.clipToRoundRect(27.0f) }
+        binding.messageEduBox.post { binding.messageEduBox.clipToRoundRect(27.0f) }
 
-    private val onTouchCallEduButtonListener = View.OnTouchListener { view, event ->
-        when(event.action) {
-            MotionEvent.ACTION_DOWN -> {
-            }
-            MotionEvent.ACTION_UP -> {
-                // 전화 앱으로 이동한다.
-                val intent = Intent(applicationContext, DefaultPhoneActivity::class.java)
-                startActivity(intent)
+        binding.callEduBox.setOnTouchListener { view, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    (view as DynamicButton).startTouchDownAnimation(event.x, event.y, 100.0f)
+                }
+                MotionEvent.ACTION_UP -> {
+                    (view as DynamicButton).startTouchUpAnimation()
 
-                view.performClick()
+                    // 전화 앱으로 이동한다.
+                    val intent = Intent(applicationContext, DefaultPhoneActivity::class.java)
+                    startActivity(intent)
+                }
             }
+            true
         }
-        true
-    }
+        binding.cameraEduBox.setOnTouchListener { view, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    (view as DynamicButton).startTouchDownAnimation(event.x, event.y, 100.0f)
+                }
+                MotionEvent.ACTION_UP -> {
+                    (view as DynamicButton).startTouchUpAnimation()
 
-    private val onTouchCameraEduButtonListener = View.OnTouchListener { view, event ->
-        when(event.action) {
-            MotionEvent.ACTION_DOWN -> {
+                    // 카메라 앱으로 이동한다.
+                    val intent = Intent(applicationContext, DefaultCameraActivity::class.java)
+                    startActivity(intent)
+                }
             }
-            MotionEvent.ACTION_UP -> {
-                // 카메라 앱으로 이동한다.
-                val intent = Intent(applicationContext, DefaultCameraActivity::class.java)
-                startActivity(intent)
-
-                view.performClick()
-            }
+            true
         }
-        true
-    }
+        binding.messageEduBox.setOnTouchListener { view, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    (view as DynamicButton).startTouchDownAnimation(event.x, event.y, 100.0f)
+                }
+                MotionEvent.ACTION_UP -> {
+                    (view as DynamicButton).startTouchUpAnimation()
 
-    private val onTouchMessageEduButtonListener = View.OnTouchListener { view, event ->
-        when(event.action) {
-            MotionEvent.ACTION_DOWN -> {
+                    // 메시지 앱으로 이동한다.
+                    val intent = Intent(applicationContext, DefaultMessageActivity::class.java)
+                    startActivity(intent)
+                }
             }
-            MotionEvent.ACTION_UP -> {
-                // 메시지 앱으로 이동한다.
-                val intent = Intent(applicationContext, DefaultMessageActivity::class.java)
-                startActivity(intent)
-
-                view.performClick()
-            }
+            true
         }
-        true
     }
 }
