@@ -1,5 +1,6 @@
 package com.sungkyul.synergy
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -19,6 +20,7 @@ import com.sungkyul.synergy.data.EduButtonItem
  * MPAndroidChart라이브러리 나중에 분리해야할듯 */
 
 class LearningFragment : Fragment() {
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -94,6 +96,10 @@ class LearningFragment : Fragment() {
         )
         val adapter = EduButtonAdapter(buttonItemList)
         recyclerView.adapter = adapter
+
+        recyclerView.setOnTouchListener { _, _ -> false }
+        recyclerView.setOnScrollChangeListener { _, _, _, _, _ ->
+        }
 
         return view
     }

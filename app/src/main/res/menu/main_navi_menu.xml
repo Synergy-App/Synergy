@@ -4,22 +4,22 @@
     <item
         android:id="@+id/learingFragment"
         android:title="학습하기"
-        android:icon="@drawable/bookopentext"/>
+        android:icon="@drawable/ic_nevigation_study_black"/>
 
     <item
         android:id="@+id/solvingFragment"
         android:title="문제풀기"
-        android:icon="@drawable/binoculars"/>
+        android:icon="@drawable/ic_nevigation_training_black"/>
 
-
-    <item
-        android:id="@+id/reviewFragment"
-        android:title="복습하기"
-        android:icon="@drawable/trophy"/>
 
     <item
         android:id="@+id/myProfileFrangment"
         android:title="내 프로필"
-        android:icon="@drawable/usercircle"/>
+        android:icon="@drawable/ic_nevigation_user_black"/>
+
+<!--    <item-->
+<!--        android:id="@+id/myProfileFrangment"-->
+<!--        android:title="내 프로필"-->
+<!--        android:icon="@drawable/usercircle"/>-->
 
 </menu>
