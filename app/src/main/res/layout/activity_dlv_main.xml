@@ -51,60 +51,69 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"></SearchView>
 
-    <View
-        android:id="@+id/view11"
-        android:layout_width="170dp"
-        android:layout_height="120dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="27dp"
-        android:background="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/view13"
+
+    <ImageView
+        android:id="@+id/adverise1"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="13dp"
+        android:src="@drawable/screenedu_blackground"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view10" />
 
     <View
-        android:id="@+id/view12"
-        android:layout_width="170dp"
+        android:id="@+id/view11"
+        android:layout_width="180dp"
         android:layout_height="120dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="27dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="20dp"
         android:background="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/view13"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view10" />
+        app:layout_constraintStart_toStartOf="parent" />
 
+    <View
+        android:id="@+id/view12"
+        android:layout_width="180dp"
+        android:layout_height="120dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="20dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/view13"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <View
         android:id="@+id/view13"
         android:layout_width="360dp"
         android:layout_height="186dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="10dp"
         android:background="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/adverise"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/adverise"
         android:layout_width="wrap_content"
-        android:layout_height="80dp"
+        android:layout_height="100dp"
         android:layout_marginStart="13dp"
         android:layout_marginEnd="13dp"
         android:layout_marginBottom="20dp"
         android:src="@drawable/screenedu_blackground"
         app:layout_constraintBottom_toTopOf="@+id/view14"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent" />
 
     <View
         android:id="@+id/view14"
         android:layout_width="0dp"
         android:layout_height="90dp"
-        android:layout_marginBottom="12dp"
         android:background="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/navigationView"
         app:layout_constraintStart_toStartOf="parent" />
@@ -229,6 +238,41 @@
         app:layout_constraintBottom_toBottomOf="@+id/view12"
         app:layout_constraintEnd_toEndOf="@+id/view12"
         app:srcCompat="@drawable/takeout" />
+
+    <ImageView
+        android:id="@+id/imageView19"
+        android:layout_width="360dp"
+        android:layout_height="150dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view13"
+        app:layout_constraintEnd_toEndOf="@+id/view13"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/view13"
+        app:srcCompat="@drawable/food" />
+
+    <TextView
+        android:id="@+id/textView44"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="5dp"
+        android:text="배민배달"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/view13"
+        app:layout_constraintTop_toTopOf="@+id/view13" />
+
+    <TextView
+        android:id="@+id/textView45"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="15dp"
+        android:text="배민이 직접 챙겨요"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/textView44"
+        app:layout_constraintTop_toTopOf="@+id/view13" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
