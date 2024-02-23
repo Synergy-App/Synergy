@@ -14,11 +14,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Synergy"
         tools:targetApi="31">
-
-        <!--교육공간-->
+        <activity
+            android:name=".edu_space.delivery.shopActivity"
+            android:exported="false" />
+        <!-- 교육공간 -->
         <activity
             android:name=".edu_space.default_app.activity.DefaultAppActivity"
             android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".main.activity.DigitalStartActivity"
@@ -27,8 +34,16 @@
             android:name=".MainActivity"
             android:exported="false"/> <!--메인화면-->
 
+
         <activity
             android:name=".edu_space.default_app.activity.DefaultMessageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".main.activity.DigitalStartActivity"
+            android:exported="false" /> <!-- 디지털 나이 검사 -->
+        <activity
+            android:name=".EduSpaceActivity"
+            android:exported="false" /> <!-- 삭제할거 -->
             android:exported="false">
         </activity>
         <!-- 아이콘 교육 -->
@@ -78,6 +93,7 @@
             android:exported="false" /> <!-- 카메라 -->
         <activity
             android:name=".edu_space.default_app.activity.DefaultMessageActivity"
+            android:exported="false" /> <!-- 전화 -->
             android:exported="false"
             tools:ignore="DuplicateActivity" /> <!--전화-->
 
@@ -87,10 +103,10 @@
             android:exported="false" /> <!-- 환경설정 시작 -->
         <activity
             android:name=".edu_space.settingedu.activity.SettingDetailActivity"
-            android:exported="false" /><!--화면 밝기-->
+            android:exported="false" /> <!-- 화면 밝기 -->
         <activity
             android:name=".edu_space.settingedu.activity.SettingFontSizeActivity"
-            android:exported="false" /><!--글씨 크기-->
+            android:exported="false" /> <!-- 글씨 크기 -->
         <!-- 계정생성 교육 -->
         <activity
             android:name=".edu_space.accountedu.GoogleMainActivity"
@@ -127,19 +143,32 @@
             android:exported="false" /> <!-- 코레일 -->
         <!-- 이 부분 아래에 넣어주세요 -->
         <!-- 카카오 택시 -->
+
         <activity android:name=".edu_space.kakaotaxi.TaxiMainActivity"
             android:exported="false"/>
-
+  
+        <activity
+            android:name=".edu_space.kakaotaxi.TaxiMainActivity"
+            android:exported="false" />
+            
         <activity
             android:name=".edu_space.kakaotaxi.mapActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".edu_space.kakaotaxi.payMActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.kakaotaxi.payActivity"
-            android:exported="true" />
+            android:exported="true" /> <!-- 배달의 민족 -->
+        <activity
+            android:name=".edu_space.delivery.DlvMainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
