@@ -1,21 +1,16 @@
 package com.sungkyul.synergy.adapter
 
 import android.annotation.SuppressLint
-import android.content.Intent
-import android.util.Log
-import android.view.GestureDetector
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.data.EduButtonItem
-import com.sungkyul.synergy.edu_space.default_app.activity.DefaultPhoneActivity
 import com.sungkyul.synergy.utils.DynamicButton
 
 class EduButtonAdapter(private val buttonList: List<EduButtonItem>): RecyclerView.Adapter<EduButtonAdapter.ButtonViewHolder>() {

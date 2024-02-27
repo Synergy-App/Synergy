@@ -5,55 +5,36 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.sungkyul.synergy.adapter.MyProfileAdapter
+import com.sungkyul.synergy.data.MyProfileItem
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [MyProfileFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MyProfileFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_profile, container, false)
-    }
+        val view = inflater.inflate(R.layout.fragment_my_profile, container, false)
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MyProfileFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MyProfileFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        val myProfileItems = listOf(
+            MyProfileItem("시험결과\n확인하기", R.drawable.illustration),
+            MyProfileItem("자주틀린문제\n다시풀기", R.drawable.illustration),
+            MyProfileItem("일별학습\n다시풀기", R.drawable.illustration),
+            MyProfileItem("오래걸린문제\n다시풀기", R.drawable.illustration),
+
+
+            )
+
+        val mySpaceRecyclerView: RecyclerView = view.findViewById(R.id.my_space_recyclerView)
+
+        val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        mySpaceRecyclerView.layoutManager = layoutManager
+
+        val mySpaceAdapter = MyProfileAdapter(requireContext(), myProfileItems)
+        mySpaceRecyclerView.adapter = mySpaceAdapter
+
+        return view
     }
 }

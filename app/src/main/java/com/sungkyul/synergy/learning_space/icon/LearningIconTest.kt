@@ -20,8 +20,8 @@ class LearningIconTest : AppCompatActivity() {
 
     // 퀴즈 데이터 리스트
     val quizzes = listOf(
-        QuizData("다음은 어떤 아이콘인가요?", listOf("블루투스", "블루장생", "전화버튼", "와이파이"), "와이파이"),
-        QuizData("다음은 어떤 아이콘인가요?", listOf("블루투스", "블루장생", "전화버튼", "와이파이"), "전화버튼"),
+        QuizData("다음은 어떤 아이콘인가요?", listOf("블루투스", "환경설정", "전화버튼", "와이파이"), "와이파이"),
+        QuizData("다음은 어떤 아이콘인가요?", listOf("블루투스", "환경설정", "전화버튼", "와이파이"), "전화버튼"),
     )
 
     var currentQuizIndex = 0 // 현재 퀴즈 인덱스
@@ -188,10 +188,11 @@ class LearningIconTest : AppCompatActivity() {
             // 여기에서 원하는 동작을 수행하세요.
             // 예를 들어, 오답 메시지를 표시하거나 재시도 기회를 제공하는 등의 동작을 추가할 수 있습니다.
         }
+
         // Firebase에 데이터 저장
         val currentQuizReference = quizReference.child("quiz_$currentQuizIndex")
         currentQuizReference.child("question").setValue(currentQuiz?.question)
-       // currentQuizReference.child("options").setValue(currentQuiz?.options)
+        currentQuizReference.child("options").setValue(currentQuiz?.options)
         currentQuizReference.child("correctAnswer").setValue(currentQuiz?.correctAnswer)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -215,6 +216,6 @@ class LearningIconTest : AppCompatActivity() {
                     Log.e("Firebase", "Firebase 데이터 저장 중 오류 발생: ${task.exception?.message}")
                 }
             }
-
     }
+
 }
