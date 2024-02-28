@@ -13,6 +13,7 @@ import android.graphics.PorterDuffXfermode
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.style.StyleSpan
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -174,7 +175,7 @@ class EduScreenFragment : Fragment() {
     }
 
     // 손이 등장하는 애니메이션을 시작한다.
-    // 등장 이후에는 nextAnimator가 시작된다.
+    // 등장 이후에는 nextAnimator가 무한 반복된다.
     private fun startShowHandAnimationSet(imageView: ImageView, nextAnimator: AnimatorSet): AnimatorSet {
         val fromValue = 0.0f
         val toValue = 1.0f
@@ -186,12 +187,6 @@ class EduScreenFragment : Fragment() {
                 ObjectAnimator.ofFloat(imageView, "scaleX", fromValue, toValue),
                 ObjectAnimator.ofFloat(imageView, "scaleY", fromValue, toValue)
             )
-            addListener(object: Animator.AnimatorListener {
-                override fun onAnimationStart(animation: Animator) {}
-                override fun onAnimationEnd(animation: Animator) {}
-                override fun onAnimationCancel(animation: Animator) {}
-                override fun onAnimationRepeat(animation: Animator) {}
-            })
         }
 
         val animatorSet = AnimatorSet().apply {
@@ -199,6 +194,21 @@ class EduScreenFragment : Fragment() {
                 scaleSet,
                 nextAnimator
             )
+            addListener(object: Animator.AnimatorListener {
+                var canceled = false
+                override fun onAnimationStart(animation: Animator) {}
+                override fun onAnimationEnd(animation: Animator) {
+                    // 애니메이션이 취소될 때까지 nextAnimator에서부터 무한 반복한다.
+                    if(!canceled) {
+                        currentPlayTime = toggleHandDuration
+                        start()
+                    }
+                }
+                override fun onAnimationCancel(animation: Animator) {
+                    canceled = true
+                }
+                override fun onAnimationRepeat(animation: Animator) {}
+            })
             start()
         }
 
