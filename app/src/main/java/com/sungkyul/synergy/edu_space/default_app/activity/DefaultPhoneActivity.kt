@@ -1,7 +1,6 @@
 package com.sungkyul.synergy.edu_space.default_app.activity
 
 import android.os.Bundle
-import android.view.Gravity
 import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -17,10 +16,6 @@ import com.sungkyul.synergy.edu_space.default_app.fragment.DefaultPhoneContactFr
 import com.sungkyul.synergy.edu_space.default_app.fragment.DefaultPhoneKeypadFragment
 import com.sungkyul.synergy.edu_space.default_app.fragment.DefaultPhoneRecentHistoryFragment
 import com.sungkyul.synergy.utils.AnimUtils
-import com.sungkyul.synergy.utils.Edu
-import com.sungkyul.synergy.utils.EduData
-import com.sungkyul.synergy.utils.EduDescription
-import com.sungkyul.synergy.utils.EduPractice
 
 class DefaultPhoneActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDefaultPhoneBinding
@@ -35,7 +30,7 @@ class DefaultPhoneActivity : AppCompatActivity() {
 
 
         // 교육 코스 추가
-        val course = ArrayList<EduData>()
+        /*val course = ArrayList<EduData>()
 
         course.add(EduDescription(
             title = "",
@@ -145,13 +140,18 @@ class DefaultPhoneActivity : AppCompatActivity() {
             coverEnd = 0
         ))
 
-        val edu = Edu(this, course)
+        val edu = Edu(this, course)*/
+
+        //val eduFragment = EduScreenFragment()
+
+        binding.eduScreen.start(this)
+
 
         binding.phoneBottomNav.visibility = BottomNavigationView.INVISIBLE
 
 
         // Fragments
-        keypadFragment = DefaultPhoneKeypadFragment(edu)
+        keypadFragment = DefaultPhoneKeypadFragment()
         recentHistoryFragment = DefaultPhoneRecentHistoryFragment()
         contactFragment = DefaultPhoneContactFragment()
 

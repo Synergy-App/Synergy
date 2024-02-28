@@ -25,7 +25,7 @@ import com.sungkyul.synergy.utils.AnimUtils
 import com.sungkyul.synergy.utils.EduListener
 import com.sungkyul.synergy.utils.TextUtils
 
-class DefaultPhoneKeypadFragment(private val eduListener: EduListener) : Fragment() {
+class DefaultPhoneKeypadFragment : Fragment() {//(private val eduListener: EduListener) : Fragment() {
     private lateinit var binding: FragmentDefaultPhoneKeypadBinding
     private var secondaryButtonsIsEnabled = false
 
@@ -114,7 +114,7 @@ class DefaultPhoneKeypadFragment(private val eduListener: EduListener) : Fragmen
                 AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
                 TextUtils.extendText(binding.phoneNumText, (view as Button).text.toString())
 
-                eduListener.onAction("click_key_button", view.text.toString())
+                //eduListener.onAction("click_key_button", view.text.toString())
 
                 // 번호 입력 란이 비어 있지 않으면, '연락처 추가, 영상 통화, 지우기' 버튼이 나타난다.
                 if(binding.phoneNumText.text.toString().isNotEmpty() && !secondaryButtonsIsEnabled) {
@@ -209,7 +209,7 @@ class DefaultPhoneKeypadFragment(private val eduListener: EduListener) : Fragmen
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             Log.i("PhoneNumText", s.toString())
-            eduListener.onAction("phone_num_text_changed", s.toString())
+            //eduListener.onAction("phone_num_text_changed", s.toString())
         }
 
         override fun afterTextChanged(s: Editable?) {
