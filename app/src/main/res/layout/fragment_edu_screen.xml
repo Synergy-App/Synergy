@@ -1,61 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    android:id="@+id/root"
+<FrameLayout android:id="@+id/root"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".utils.EduScreenFragment">
+    tools:context=".utils.EduScreenFragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <RelativeLayout
+    <!-- Cover, Box, Arrow를 그릴 Canvas -->
+    <ImageView
+        android:id="@+id/canvas"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"/>
 
-        <View
-            android:id="@+id/edu_cover_start"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/edu_cover_bg"
-            android:layout_alignParentStart="true"/>
-
-        <View
-            android:id="@+id/edu_cover_end"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/edu_cover_bg"
-            android:layout_alignParentEnd="true"/>
-
-        <View
-            android:id="@+id/edu_cover_top"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@drawable/edu_cover_bg"
-            android:layout_alignParentTop="true"/>
-
-        <View
-            android:id="@+id/edu_cover_bottom"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@drawable/edu_cover_bg"
-            android:layout_alignParentBottom="true"/>
-
-        <ImageView
-            android:id="@+id/focus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/rounded_naver_search_bar"/>
-
-    </RelativeLayout>
-
-    <View
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="250dp"
-        android:layout_marginLeft="75dp"
-        android:background="@color/naver"/>
-
+    <!-- Dialog -->
     <LinearLayout
-        android:id="@+id/edu_dialog"
+        android:id="@+id/dialog"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -68,7 +28,7 @@
         android:gravity="center">
 
         <TextView
-            android:id="@+id/edu_title"
+            android:id="@+id/dialog_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="제목"
@@ -77,14 +37,14 @@
             android:textColor="@color/black"/>
 
         <View
-            android:id="@+id/separator"
+            android:id="@+id/dialog_separator"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginVertical="12dp"
             android:background="@color/light_grey"/>
 
         <TextView
-            android:id="@+id/edu_content"
+            android:id="@+id/dialog_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="내용 내용 내용 내용\n내용 내용 내용 내용 내용 내용\n내용 내용 내용 내용 내용"
@@ -92,5 +52,55 @@
             android:textColor="@color/black"/>
 
     </LinearLayout>
+
+    <!-- Image Dialog -->
+    <LinearLayout
+        android:id="@+id/image_dialog"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="300dp"
+        android:layout_marginBottom="300dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginEnd="75dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/image_dialog_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="제목"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <ImageView
+            android:id="@+id/image_dialog_source"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="12dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/todo_rect"/>
+
+    </LinearLayout>
+
+    <!-- Top Dialog -->
+
+    <!-- Bottom Dialog -->
+
+    <!-- Gesture Layout -->
+    <FrameLayout
+        android:id="@+id/gesture_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--<ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/hand"/>-->
+
+    </FrameLayout>
 
 </FrameLayout>

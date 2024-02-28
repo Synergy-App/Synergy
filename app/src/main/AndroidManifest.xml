@@ -30,9 +30,9 @@
             android:exported="false" /> <!-- 디지털 나이 검사 -->
         <activity
             android:name=".MainActivity"
-            android:exported="false"/><!--메인화면-->
 
-
+            android:exported="false"> <!--메인화면-->
+        </activity>
         <activity
             android:name=".edu_space.default_app.activity.DefaultMessageActivity"
             android:exported="false" />
@@ -79,10 +79,22 @@
         <!-- 기본앱 활용 -->
         <activity
             android:name=".edu_space.default_app.activity.DefaultPhoneActivity"
-            android:exported="false" />
+            android:exported="true" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity
             android:name=".edu_space.default_app.activity.DefaultPhoneCallActivity"
-            android:exported="false" /> <!-- 전화 -->
+            android:exported="true" > <!-- 전화 -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".edu_space.default_app.activity.DefaultCameraActivity"
             android:exported="false" /> <!-- 카메라 -->
@@ -131,7 +143,9 @@
 
         <!-- 카카오 택시 -->
         <activity android:name=".edu_space.kakaotaxi.TaxiMainActivity"
-            android:exported="false"/>
+            android:exported="true">
+
+        </activity>
         <activity
             android:name=".edu_space.kakaotaxi.mapActivity"
             android:exported="false" />

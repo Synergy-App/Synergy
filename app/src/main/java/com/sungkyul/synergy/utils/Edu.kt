@@ -2,80 +2,86 @@ package com.sungkyul.synergy.utils
 
 import android.util.Log
 import android.view.Gravity
-import android.view.View
 import android.widget.FrameLayout
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.sungkyul.synergy.R
 
-// 현재 교육 단계의 정보 클래스
-data class EduCurrentInfo(
-    var title: String = "시너지",
-    var titleGravity: Int = TextView.TEXT_ALIGNMENT_CENTER,
-    var content: String = "생각보다 귀여움",
-    var contentGravity: Int = TextView.TEXT_ALIGNMENT_CENTER,
-    var dialogDuration: Long = 0,
-    var dialogTop: Int = 100,
-    var dialogBottom: Int = 100,
-    var dialogStart: Int = 40,
-    var dialogEnd: Int = 40,
-    var coverDuration: Long = 0,
-    var coverTop: Int = 20,
-    var coverBottom: Int = 20,
-    var coverStart: Int = 20,
-    var coverEnd: Int = 20,
-    var actionId: String = "synergy",
-    var actionMsg: String? = null
+/*data class EduDialog(
+    var titleText: String? = null,
+    var titleGravity: Int? = null,
+    var contentText: String? = null,
+    var contentGravity: Int? = null,
+    var contentBolds: List<Pair<Int, Int>>? = null,
+    var duration: Int? = null,
+    var top: Int? = null,
+    var bottom: Int? = null,
+    var start: Int? = null,
+    var end: Int? = null,
+    var visibility: Boolean? = null
 )
-
-interface EduData
-
-// 교육에서 설명을 담당하는 클래스
-data class EduDescription(
-    val title: String? = null,
-    val titleGravity: Int? = null,
-    val content: String? = null,
-    val contentGravity: Int? = null,
-    val dialogDuration: Long? = null,
-    val dialogTop: Int? = null,
-    val dialogBottom: Int? = null,
-    val dialogStart: Int? = null,
-    val dialogEnd: Int? = null,
-    val coverDuration: Long? = null,
-    val coverTop: Int? = null,
-    val coverBottom: Int? = null,
-    val coverStart: Int? = null,
-    val coverEnd: Int? = null
-): EduData
-
-/*data class EduImgDescription(
-    val title: String,
-    val content: String,
-    val duration: Long,
-    val src: String,
-    val dialogTop: Int,
-    val dialogBottom: Int,
-    val dialogStart: Int,
-    val dialogEnd: Int
-): EduData*/
-
-// 교육에서 연습을 담당하는 클래스
-data class EduPractice(
-    val actionId: String,
-    val actionMsg: String? = null,
-    val fingers: ArrayList<Int> = ArrayList()
-): EduData
+data class EduImageDialog(
+    var titleText: String? = null,
+    var image: Int? = null,
+    var duration: Int? = null,
+    var top: Int? = null,
+    var bottom: Int? = null,
+    var start: Int? = null,
+    var end: Int? = null,
+    var visibility: Boolean? = null
+)
+data class EduVerticalDialog(
+    var titleText: String? = null,
+    var titleGravity: Int? = null,
+    var contentText: String? = null,
+    var contentGravity: Int? = null,
+    var contentBolds: List<Pair<Int, Int>>? = null,
+    var duration: Int? = null,
+    var visibility: Boolean? = null
+)
+data class EduCover(
+    var duration: Int? = null,
+    var top: Int? = null,
+    var bottom: Int? = null,
+    var start: Int? = null,
+    var end: Int? = null,
+    var hasStroke: Boolean? = null,
+    var visibility: Boolean? = null
+)
+data class EduArrow(
+    var duration: Int? = null,
+    var visibility: Boolean? = null
+)
+data class EduAction(
+    var id: String? = null,
+    var message: String? = null
+)
+data class EduFinger(
+    var image: Int? = null,
+    var x: Int? = null,
+    var y: Int? = null,
+    var anim: Int? = null
+)
+data class EduData(
+    val dialog: EduDialog = EduDialog(),
+    val imageDialog: EduImageDialog = EduImageDialog(),
+    val topDialog: EduVerticalDialog = EduVerticalDialog(),
+    val bottomDialog: EduVerticalDialog = EduVerticalDialog(),
+    val covers: EduCover = EduCover(),
+    val arrow: EduArrow = EduArrow(),
+    val action: EduAction = EduAction(),
+    val fingers: ArrayList<EduFinger> = ArrayList()
+)*/
 
 /*
-# TODO: 설명 작성 중
-# 교육 내용을 편하게 제작할 수 있도록 만든 클래스
+## 소개
+교육 과정을 편하게 제작할 수 있도록 만든 클래스이다.
 
 ## 사용법
-교육을 진행할 액티비티가 `Name`이라 가정한다.
+0. 교육을 진행할 액티비티는 `NameActivity.kt`, 레이아웃은 `activity_name.xml`이라 가정한다.
 
-1. `activity_<name>.xml`의 루트 레이아웃 안에 교육 화면을 보여줄 FrameLayout을 추가한다.
+1. `activity_name.xml` 안에 교육 화면을 보여줄 FrameLayout을 추가한다. 이 레이아웃의 id는 `edu_screen`이다.
 ```
 <FrameLayout
     android:id="@+id/edu_screen"
@@ -83,16 +89,29 @@ data class EduPractice(
     android:layout_height="match_parent"/>
 ```
 
-2. `<Name>Activity.kt` 클래스의 `onCreate()` 함수 안에 Edu 클래스를 선언하여 교육을 시작한다.
+2. `NameActivity` 클래스의 `onCreate()` 함수 안에 Edu 클래스를 선언한다. `size`는 교육 슬라이드의 수이다.
 ```
-// 교육 과정을 만든다.
-val course = ArrayList<EduData>()
-course.add(...)
-course.add(...)
-...
+val edu = Edu(this, size)
+```
 
-// 교육 클래스를 선언한다.
-val edu = Edu(this, course)
+3. 각 슬라이드에 들어갈 교육을 만든다.
+```
+edu.course = arrayListOf(
+    EduData(
+        dialogTitleText = "안녕",
+        dialogTitleGravity = Gravity.CENTER,
+        fingers = listOf(
+            EduFinger(R.drawable.finger, 0, 0, R.anim.click)
+        )
+    ),
+    EduData(
+
+    ),
+)
+
+edu[0].dialog.titleText = "hello"
+edu[0].dialog.top = 10
+...
 ```
 
 ## 교육 과정 만들기
@@ -131,129 +150,64 @@ class NameFragment(private val eduListener: EduListener) : Fragment() {
 */
 class Edu (
     private val activity: AppCompatActivity,
-    private val course: ArrayList<EduData>
+    size: Int
 ): EduListener {
     private var num = -1
-    private val eduScreenFragment = EduScreenFragment(this)
+    private val course = Array(size) {EduData()}
+    private val eduScreenFragment = EduScreenFragment()
     private val eduScreen = activity.findViewById<FrameLayout>(R.id.edu_screen)
-    private val eduCurrentInfo = EduCurrentInfo()
-
-    private val onEduScreenClickListener = { _: View -> update() }
 
     init {
-        // 교육 화면을 맨 앞으로 오게 한다.
         eduScreen.bringToFront()
-
         replaceFragment(activity.supportFragmentManager, R.id.edu_screen, eduScreenFragment)
-
         num = -1
-
-        // 프래그먼트 화면의 클릭 이벤트를 설정한다.
-        eduScreen.setOnClickListener(onEduScreenClickListener)
-
-        // TODO(클래스 초기 설계; 화살표는 어떻게 하지)
-        val e = ArrayList<List<Pair<String, Map<String, Any>>>>()
-        e.add(listOf(
-            Pair("dialog", mapOf(
-                "title_text" to "시너지",
-                "title_gravity" to Gravity.CENTER,
-                "content_text" to "여기는 교육 공간입니다.\n근사하고 멋있습니다.",
-                "content_gravity" to Gravity.CENTER,
-                "content_bolds" to listOf(Pair(1, 3), Pair(5, 8)),
-                "duration" to 500,
-                "top" to 0,
-                "bottom" to 0,
-                "start" to 0,
-                "end" to 0,
-                "visibility" to true
-            )),
-            Pair("image_dialog", mapOf(
-                "title_text" to "시너지",
-                "duration" to 500,
-                "top" to 0,
-                "bottom" to 0,
-                "start" to 0,
-                "end" to 0,
-                "background" to 0,
-                "visibility" to true
-            )),
-            Pair("top_dialog", mapOf(
-                "title_text" to "시너지",
-                "title_gravity" to Gravity.CENTER,
-                "content_text" to "여기는 교육 공간입니다.\n근사하고 멋있습니다.",
-                "content_gravity" to Gravity.CENTER,
-                "content_bolds" to listOf(Pair(1, 3), Pair(5, 8)),
-                "duration" to 500,
-                "height" to 500,
-                "visibility" to true
-            )),
-            Pair("bottom_dialog", mapOf(
-                "title_text" to "시너지",
-                "title_gravity" to Gravity.CENTER,
-                "content_text" to "여기는 교육 공간입니다.\n근사하고 멋있습니다.",
-                "content_gravity" to Gravity.CENTER,
-                "content_bolds" to listOf(Pair(1, 3), Pair(5, 8)),
-                "duration" to 500,
-                "height" to 500,
-                "visibility" to true
-            )),
-            Pair("covers", mapOf(
-                "duration" to 500,
-                "top" to 0,
-                "bottom" to 0,
-                "start" to 0,
-                "end" to 0,
-                "visibility" to true
-            )),
-            Pair("action", mapOf(
-                "id" to "click",
-                "message" to "hello"
-            )),
-            Pair("add_box", mapOf(
-                "id" to "hello",
-                "top" to 0,
-                "bottom" to 0,
-                "start" to 0,
-                "end" to 0,
-                "background" to R.drawable.display
-            )),
-            Pair("delete_box", mapOf(
-                "id" to "hello"
-            )),
-            Pair("add_finger", mapOf(
-                "id" to "hello",
-                "x" to 10,
-                "y" to 20,
-                "anim" to androidx.appcompat.R.anim.abc_fade_out
-            )),
-            Pair("delete_finger", mapOf(
-                "id" to "hello"
-            ))
-        ))
+        
+        eduScreen.setOnClickListener {
+            update()
+        }
     }
 
-    // eduScreenFragment.onCreateView가 호출될 때 반응하는 함수
+    // eduScreenFragment.onCreateView가 호출되면, 이 함수가 호출된다.
     override fun onCreateViewFinished() {
         update()
     }
 
-    override fun onAction(actionId: String, actionMsg: String?) {
+    // 액션이 발생하면, 이 함수가 호출된다.
+    override fun onAction(id: String, message: String?) {
         val eduData = course[num]
-        if(eduData is EduPractice) {
-            Log.i(actionId, actionMsg ?: "null")
-            if (actionId == eduData.actionId && (eduData.actionMsg == null || actionMsg == eduData.actionMsg)) {
-                update()
-            }
+        Log.i(id, message ?: "null")
+        if(id == eduData.action.id && (eduData.action.message == null || message == eduData.action.message)) {
+            update()
         }
     }
 
     private fun update() {
         num++
 
+        // TEST
         if(num == course.size) {
             num = 0
         }
 
+        val data = course[num]
+
+        /*if(data.dialog.titleText != null) {
+            //eduScreenFragment.setDialogTitleText(data.dialog.titleText!!)
+        }
+        if(data.dialog.titleGravity != null) {
+            eduScreenFragment.setDialogTitleGravity(data.dialog.titleGravity!!)
+        }
+        if(data.dialog.contentText != null) {
+            eduScreenFragment.setDialogContentText(data.dialog.titleText!!)
+        }
+        if(data.dialog.contentGravity != null) {
+            eduScreenFragment.setDialogContentGravity(data.dialog.contentGravity!!)
+        }
+        if(data.dialog.contentBolds != null) {
+            eduScreenFragment.setDialogContentBolds(data.dialog.contentBolds!!)
+        }*/
+
+        /*
         when(val data = course[num]) {
             is EduDescription -> {
                 if(data.title != null) eduCurrentInfo.title = data.title
@@ -325,7 +279,7 @@ class Edu (
             else -> {
 
             }
-        }
+        }*/
     }
 
     private fun replaceFragment(fragmentManager: FragmentManager, screenID: Int, fragment: Fragment) {
