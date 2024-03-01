@@ -1,5 +1,6 @@
 package com.sungkyul.synergy.edu_space.default_app.fragment
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
@@ -27,10 +28,11 @@ import com.sungkyul.synergy.utils.EduListener
 import com.sungkyul.synergy.utils.EduScreen
 import com.sungkyul.synergy.utils.TextUtils
 
-class DefaultPhoneKeypadFragment(private val eduScreen: EduScreen) : Fragment() {
+class DefaultPhoneKeypadFragment(private val eduListener: EduListener) : Fragment() {
     private lateinit var binding: FragmentDefaultPhoneKeypadBinding
     private var secondaryButtonsIsEnabled = false
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -116,7 +118,7 @@ class DefaultPhoneKeypadFragment(private val eduScreen: EduScreen) : Fragment() 
                 AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
                 TextUtils.extendText(binding.phoneNumText, (view as Button).text.toString())
 
-                eduScreen.onAction("click_key_button", view.text.toString())
+                eduListener.onAction("click_key_button", view.text.toString())
 
                 // 번호 입력 란이 비어 있지 않으면, '연락처 추가, 영상 통화, 지우기' 버튼이 나타난다.
                 if(binding.phoneNumText.text.toString().isNotEmpty() && !secondaryButtonsIsEnabled) {
@@ -211,7 +213,7 @@ class DefaultPhoneKeypadFragment(private val eduScreen: EduScreen) : Fragment() 
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             Log.i("PhoneNumText", s.toString())
-            eduScreen.onAction("phone_num_text_changed", s.toString())
+            eduListener.onAction("phone_num_text_changed", s.toString())
         }
 
         override fun afterTextChanged(s: Editable?) {
@@ -223,7 +225,7 @@ class DefaultPhoneKeypadFragment(private val eduScreen: EduScreen) : Fragment() 
     private fun showContactAdditionDialog() {
         val builder = AlertDialog.Builder(requireActivity())
         builder.setTitle("연락처에 추가")
-            .setItems(arrayOf("새 연락처 등록", "기존 연락처 업데이트")) { dialog, which ->
+            .setItems(arrayOf("새 연락처 등록", "기존 연락처 업데이트")) { _, which ->
                 when(which) {
                     0 -> Toast.makeText(requireContext(), "새 연락처 등록", Toast.LENGTH_SHORT).show()
                     1 -> Toast.makeText(requireContext(), "기존 연락처 업데이트", Toast.LENGTH_SHORT).show()

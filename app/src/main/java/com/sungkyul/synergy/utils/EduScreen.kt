@@ -101,7 +101,11 @@ data class EduData(
     2. EduCourses에 원하는 교육 코스 함수를 만들고, 교육을 진행할 액티비티에 아래 코드를 작성한다.
     ```
     binding.eduScreen.post {
-        binding.eduScreen.course = EduCourses.nameCourse(...)
+        binding.eduScreen.course = EduCourses.nameCourse(
+            binding.eduScreen.context,
+            binding.eduScreen.width.toFloat(),
+            binding.eduScreen.height.toFloat()
+        )
         binding.eduScreen.start(this)
     }
     ```
@@ -109,20 +113,25 @@ data class EduData(
     ### 프래그먼트에서 onAction 사용하기
     1. EduScreen을 사용할 프래그먼트 클래스를 다음과 같이 작성한다.
     ```
-    class NameFragment(private val eduScreen: EduScreen) : Fragment() {
+    class NameFragment(private val eduListener: EduListener) : Fragment() {
         ...
     }
     ```
 
     2. 프래그먼트 클래스 안의 원하는 이벤트 리스너에 onAction을 호출한다.
     ```
-    eduScreen.onAction("id", "message")
+    eduListener.onAction("id", "message")
     ```
-*/
-class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, attrs) {
-    private val eduScreenFragment = EduScreenFragment()
-    var course = ArrayList<EduData>()
 
+    ## 멤버
+    - course
+    - setOnFinishedCourseListener(l): 교육 코스가 끝났을 때 이벤트가 발생한다.
+    - onAction(id, message)
+    - start(activity)
+*/
+class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, attrs), EduListener {
+    private val eduScreenFragment = EduScreenFragment()
+    private var onFinishedCourseListener: (() -> Unit)? = null
     private val currentEduData = EduData(
         EduDialog(
             "",
@@ -184,10 +193,18 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         EduAction(),
         arrayListOf()
     )
-
     private var num = -1
+    var course = ArrayList<EduData>()
 
-    fun onAction(id: String, message: String?): Boolean {
+    init {
+        eduScreenFragment.setEduListener(this)
+    }
+
+    override fun onPosted() {
+        next()
+    }
+
+    override fun onAction(id: String, message: String?): Boolean {
         val eduData = course[num]
         Log.i(id, message ?: "null")
         if(id == eduData.action.id && (eduData.action.message == null || message == eduData.action.message)) {
@@ -195,6 +212,10 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
             return true
         }
         return false
+    }
+
+    fun setOnFinishedCourseListener(l: (() -> Unit)?) {
+        onFinishedCourseListener = l
     }
 
     fun start(activity: AppCompatActivity) {
@@ -209,16 +230,13 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         activity.supportFragmentManager.beginTransaction()
             .replace(id, eduScreenFragment)
             .commit()
-
-        post {
-            next()
-        }
     }
 
     fun next() {
         num++
 
         if(num >= course.size) {
+            onFinishedCourseListener?.invoke()
             return
         }
 
@@ -316,7 +334,7 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         }
 
         // 화살표를 이동시킨다.
-        eduScreenFragment.translateArrowStart(0)
+        eduScreenFragment.translateArrowStart(currentArrow.duration!!)
         if(currentArrow.endTo == "dialog") {
             eduScreenFragment.translateArrowEndToDialog(currentArrow.duration!!)
         }
