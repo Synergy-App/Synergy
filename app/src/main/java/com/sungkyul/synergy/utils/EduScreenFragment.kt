@@ -13,6 +13,7 @@ import android.graphics.PorterDuffXfermode
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.style.StyleSpan
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,6 +44,7 @@ class EduScreenFragment : Fragment() {
 
     private lateinit var binding: FragmentEduScreenBinding
     private lateinit var bitmap: Bitmap
+    private var eduListener: EduListener? = null
     private val canvas = Canvas()
     private val animatorMap = hashMapOf<String, ValueAnimator>()
 
@@ -112,6 +114,8 @@ class EduScreenFragment : Fragment() {
             bitmap = Bitmap.createBitmap(binding.root.width, binding.root.height, Bitmap.Config.ARGB_8888)
             canvas.setBitmap(bitmap)
             binding.canvas.setImageBitmap(bitmap)
+
+            eduListener?.onPosted()
         }
 
         return binding.root
@@ -270,6 +274,10 @@ class EduScreenFragment : Fragment() {
         if(::bitmap.isInitialized) {
             binding.canvas.setImageBitmap(bitmap)
         }
+    }
+
+    fun setEduListener(l: EduListener) {
+        eduListener = l
     }
 
     fun setDialogTitle(text: String, gravity: Int) {

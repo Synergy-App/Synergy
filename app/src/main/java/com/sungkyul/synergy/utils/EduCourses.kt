@@ -6,6 +6,22 @@ import com.sungkyul.synergy.R
 
 class EduCourses {
     companion object {
+        /*
+        교육 코스를 추가해보자!
+        ```
+        fun nameCourse(context: Context, width: Float, height: Float): ArrayList<EduData> {
+            val width = AnimUtils.pxToDp(context, width)
+            val height = AnimUtils.pxToDp(context, height)
+            val result = ArrayList<EduData>()
+
+            val data0 = EduData()
+            result.add(data0)
+
+            return result
+        }
+        ```
+        */
+
         fun defaultPhoneTestCourse(context: Context, width: Float, height: Float): ArrayList<EduData> {
             val width = AnimUtils.pxToDp(context, width)
             val height = AnimUtils.pxToDp(context, height)
@@ -165,6 +181,46 @@ class EduCourses {
             data17.dialog.visibility = true
             data17.cover.visibility = true
             result.add(data17)
+
+            return result
+        }
+
+        fun kakaoCourse(context: Context, width: Float, height: Float): ArrayList<EduData> {
+            val width = AnimUtils.pxToDp(context, width)
+            val height = AnimUtils.pxToDp(context, height)
+            val result = ArrayList<EduData>()
+
+            val data0 = EduData()
+            data0.dialog.contentText = "카카오톡의\n메인 화면입니다."
+            data0.dialog.contentGravity = Gravity.CENTER
+            data0.dialog.top = 300.0f
+            data0.dialog.bottom = 300.0f
+            data0.dialog.start = 50.0f
+            data0.dialog.end = 50.0f
+            data0.dialog.visibility = true
+            data0.cover.visibility = true
+            data0.arrow.visibility = true
+            data0.arrow.duration = 1000
+            data0.arrow.endTo = "dialog"
+            result.add(data0)
+
+            val data2 = EduData()
+            result.add(data2)
+
+            val data1 = EduData()
+            data1.dialog.duration = 750
+            data1.dialog.top = 200.0f
+            data1.dialog.bottom = 400.0f
+            data1.cover.left = 225.0f
+            data1.cover.top = 15.0f
+            data1.cover.right = 275.0f
+            data1.cover.bottom = 65.0f
+            data1.cover.hasStroke = true
+            data1.arrow.duration = 500
+            data1.arrow.endTo = "box"
+            data1.arrow.visibility = true
+            data1.dialog.contentText = "이 버튼은 빠르게\n친구를 찾을 수 있는\n버튼이에요."
+            result.add(data1)
 
             return result
         }

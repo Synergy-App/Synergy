@@ -18,12 +18,7 @@
         <!-- 교육공간 -->
         <activity
             android:name=".edu_space.default_app.activity.DefaultAppActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity>
         <activity
             android:name=".main.activity.DigitalStartActivity"
@@ -79,21 +74,11 @@
         <!-- 기본앱 활용 -->
         <activity
             android:name=".edu_space.default_app.activity.DefaultPhoneActivity"
-            android:exported="true" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+            android:exported="false" >
         </activity>
         <activity
             android:name=".edu_space.default_app.activity.DefaultPhoneCallActivity"
-            android:exported="true" > <!-- 전화 -->
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false" > <!-- 전화 -->
         </activity>
         <activity
             android:name=".edu_space.default_app.activity.DefaultCameraActivity"
@@ -129,7 +114,13 @@
         <!-- 카카오톡 -->
         <activity
             android:name=".edu_space.kakaotalk.activity.KakaoMainActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".edu_space.kakaotalk.activity.ProfileDetailActivity"
             android:exported="false" /> <!-- 네이버 -->
@@ -143,7 +134,7 @@
 
         <!-- 카카오 택시 -->
         <activity android:name=".edu_space.kakaotaxi.TaxiMainActivity"
-            android:exported="true">
+            android:exported="false">
 
         </activity>
         <activity
@@ -154,7 +145,7 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.kakaotaxi.payActivity"
-            android:exported="true" />
+            android:exported="false" />
         <!-- 배달의 민족 -->
         <activity
             android:name=".edu_space.delivery.DlvMainActivity"
