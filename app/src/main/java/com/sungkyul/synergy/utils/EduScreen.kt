@@ -1,9 +1,12 @@
 package com.sungkyul.synergy.utils
 
+import android.animation.AnimatorSet
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.Gravity
 import android.widget.FrameLayout
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.R
 
@@ -13,21 +16,21 @@ data class EduDialog(
     var contentText: String? = null,
     var contentGravity: Int? = null,
     var contentBolds: List<Pair<Int, Int>>? = null,
-    var duration: Int? = null,
-    var top: Int? = null,
-    var bottom: Int? = null,
-    var start: Int? = null,
-    var end: Int? = null,
+    var duration: Long? = null,
+    var top: Float? = null,
+    var bottom: Float? = null,
+    var start: Float? = null,
+    var end: Float? = null,
     var visibility: Boolean? = null
 )
 data class EduImageDialog(
     var titleText: String? = null,
     var image: Int? = null,
-    var duration: Int? = null,
-    var top: Int? = null,
-    var bottom: Int? = null,
-    var start: Int? = null,
-    var end: Int? = null,
+    var duration: Long? = null,
+    var top: Float? = null,
+    var bottom: Float? = null,
+    var start: Float? = null,
+    var end: Float? = null,
     var visibility: Boolean? = null
 )
 data class EduVerticalDialog(
@@ -36,20 +39,22 @@ data class EduVerticalDialog(
     var contentText: String? = null,
     var contentGravity: Int? = null,
     var contentBolds: List<Pair<Int, Int>>? = null,
-    var duration: Int? = null,
+    var duration: Long? = null,
+    var height: Int? = null,
     var visibility: Boolean? = null
 )
 data class EduCover(
-    var duration: Int? = null,
-    var top: Int? = null,
-    var bottom: Int? = null,
-    var start: Int? = null,
-    var end: Int? = null,
+    var duration: Long? = null,
+    var left: Float? = null,
+    var top: Float? = null,
+    var right: Float? = null,
+    var bottom: Float? = null,
     var hasStroke: Boolean? = null,
     var visibility: Boolean? = null
 )
 data class EduArrow(
-    var duration: Int? = null,
+    var duration: Long? = null,
+    var endTo: String? = null,
     var visibility: Boolean? = null
 )
 data class EduAction(
@@ -57,17 +62,21 @@ data class EduAction(
     var message: String? = null
 )
 data class EduFinger(
-    var image: Int? = null,
-    var x: Int? = null,
-    var y: Int? = null,
-    var anim: Int? = null
+    var id: String,
+    var source: Int = R.drawable.todo_circle,
+    var x: Float = 0.0f,
+    var y: Float = 0.0f,
+    var width: Float,
+    var height: Float,
+    var rotation: Float = 0.0f,
+    var pickAnimatorSet: ((ImageView) -> AnimatorSet)
 )
 data class EduData(
     val dialog: EduDialog = EduDialog(),
     val imageDialog: EduImageDialog = EduImageDialog(),
     val topDialog: EduVerticalDialog = EduVerticalDialog(),
     val bottomDialog: EduVerticalDialog = EduVerticalDialog(),
-    val covers: EduCover = EduCover(),
+    val cover: EduCover = EduCover(),
     val arrow: EduArrow = EduArrow(),
     val action: EduAction = EduAction(),
     val fingers: ArrayList<EduFinger> = ArrayList()
@@ -76,21 +85,95 @@ data class EduData(
 /*
     ## 소개
     교육 화면이다.
+
+    ## 주의점
+    단위는 dp이다.
 */
 class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, attrs) {
     private val eduScreenFragment = EduScreenFragment()
-    val course = ArrayList<EduData>()
+    var course = ArrayList<EduData>()
+
+    private val currentEduData = EduData(
+        EduDialog(
+            "",
+            Gravity.START,
+            "",
+            Gravity.START,
+            listOf(),
+            0,
+            0.0f,
+            0.0f,
+            0.0f,
+            0.0f,
+            false
+        ),
+        EduImageDialog(
+            "",
+            R.drawable.todo_rect,
+            0,
+            0.0f,
+            0.0f,
+            0.0f,
+            0.0f,
+            false
+        ),
+        EduVerticalDialog(
+            "",
+            Gravity.START,
+            "",
+            Gravity.START,
+            listOf(),
+            0,
+            0,
+            false
+        ),
+        EduVerticalDialog(
+            "",
+            Gravity.START,
+            "",
+            Gravity.START,
+            listOf(),
+            0,
+            0,
+            false
+        ),
+        EduCover(
+            0,
+            0.0f,
+            0.0f,
+            0.0f,
+            0.0f,
+            false,
+            false
+        ),
+        EduArrow(
+            0,
+            "dialog",
+            false
+        ),
+        EduAction(),
+        arrayListOf()
+    )
+
     private var num = -1
 
-    fun onAction(): Boolean {
+    fun onAction(id: String, message: String?): Boolean {
+        val eduData = course[num]
+        Log.i(id, message ?: "null")
+        if(id == eduData.action.id && (eduData.action.message == null || message == eduData.action.message)) {
+            next()
+            return true
+        }
         return false
     }
 
     fun start(activity: AppCompatActivity) {
         bringToFront()
+
         setOnClickListener {
             next()
         }
+        isClickable = false
 
         // fragment_edu_screen.xml 화면으로 전환한다.
         activity.supportFragmentManager.beginTransaction()
@@ -98,53 +181,152 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
             .commit()
 
         post {
-            eduScreenFragment.showDialog()
-            eduScreenFragment.showCover()
-            eduScreenFragment.showArrow()
-            eduScreenFragment.showBoxStroke()
-            eduScreenFragment.setDialogTitle("안녕", Gravity.START)
-            eduScreenFragment.setDialogContent("abcdefg", Gravity.CENTER, listOf(Pair(1, 2)))
-
-            eduScreenFragment.translateDialog(1000, 200.0f, 200.0f, 0.0f, AnimUtils.pxToDp(context, width/2.0f))
-            eduScreenFragment.translateBox(1000, 100.0f, 100.0f, 200.0f, 200.0f)
-
-            eduScreenFragment.translateArrowStart(0)
-            eduScreenFragment.translateArrowEndToDialog(0)
-            eduScreenFragment.translateArrowStart(1000)
-            eduScreenFragment.translateArrowEndToBox(1000)
+            next()
         }
     }
 
     fun next() {
         num++
 
-        if(num == 0) {
-            eduScreenFragment.addHand("touch", R.drawable.hand, 0.0f, 0.0f, 50.0f, 75.0f, R.animator.show_hand)
-
-            eduScreenFragment.translateDialog(1000, 250.0f, 250.0f, 100.0f, 100.0f)
-            eduScreenFragment.translateBox(1000, 200.0f, 600.0f, 350.0f, 700.0f)
-
-            eduScreenFragment.translateArrowStart(1000)
-            eduScreenFragment.translateArrowEndToBox(1000)
+        if(num >= course.size) {
+            return
         }
-        if(num == 1) {
-            eduScreenFragment.removeHand("touch")
 
+        /*
+            현재 EduData를 course[num]에 해당하는 EduData로 갱신하는 작업이다.
+        */
+        val currentDialog = currentEduData.dialog
+        val dialog = course[num].dialog
+        currentDialog.titleText = dialog.titleText ?: currentDialog.titleText
+        currentDialog.titleGravity = dialog.titleGravity ?: currentDialog.titleGravity
+        currentDialog.contentText = dialog.contentText ?: currentDialog.contentText
+        currentDialog.contentGravity = dialog.contentGravity ?: currentDialog.contentGravity
+        currentDialog.contentBolds = dialog.contentBolds ?: currentDialog.contentBolds
+        currentDialog.duration = dialog.duration ?: currentDialog.duration
+        currentDialog.top = dialog.top ?: currentDialog.top
+        currentDialog.bottom = dialog.bottom ?: currentDialog.bottom
+        currentDialog.start = dialog.start ?: currentDialog.start
+        currentDialog.end = dialog.end ?: currentDialog.end
 
-            eduScreenFragment.translateBox(1000, 100.0f, 600.0f, 150.0f, 700.0f)
-            eduScreenFragment.translateArrowEndToBox(1000)
+        val currentCover = currentEduData.cover
+        val cover = course[num].cover
+        currentCover.duration = cover.duration ?: currentCover.duration
+        currentCover.left = cover.left ?: currentCover.left
+        currentCover.top = cover.top ?: currentCover.top
+        currentCover.right = cover.right ?: currentCover.right
+        currentCover.bottom = cover.bottom ?: currentCover.bottom
+
+        val currentArrow = currentEduData.arrow
+        val arrow = course[num].arrow
+        currentArrow.duration = arrow.duration ?: currentArrow.duration
+        currentArrow.endTo = arrow.endTo ?: currentArrow.endTo
+
+        val currentAction = currentEduData.action
+        val action = course[num].action
+        currentAction.id = action.id
+        currentAction.message = action.message
+
+        val currentFingers = currentEduData.fingers
+        val fingers = course[num].fingers
+        currentFingers.clear()
+        currentFingers.addAll(fingers)
+
+        /*
+            현재 EduData(+ course[num]의 EduData)를 참고하여 교육 화면을 변경한다.
+        */
+        // 다이얼로그의 제목과 내용을 변경한다.
+        eduScreenFragment.setDialogTitle(currentDialog.titleText!!, currentDialog.titleGravity!!)
+        eduScreenFragment.setDialogContent(currentDialog.contentText!!, currentDialog.contentGravity!!, currentDialog.contentBolds!!)
+        // 다이얼로그를 이동시킨다.
+        eduScreenFragment.translateDialog(
+            currentDialog.duration!!,
+            currentDialog.top!!,
+            currentDialog.bottom!!,
+            currentDialog.start!!,
+            currentDialog.end!!
+        )
+        // 제목 텍스트가 없으면 숨기고, 있으면 보여준다.
+        if(currentDialog.titleText == "") {
+            eduScreenFragment.hideDialogTitle()
+        } else {
+            eduScreenFragment.showDialogTitle()
         }
-        if(num == 2) {
-
-            eduScreenFragment.translateBox(1000, 100.0f, 600.0f, 200.0f, 700.0f)
-            eduScreenFragment.translateArrowEndToBox(1000)
+        // 다이얼로그를 보여줄까 숨길까
+        if(currentDialog.visibility == false && dialog.visibility == true) {
+            eduScreenFragment.showDialog()
         }
-        if(num == 3) {
-
+        if(currentDialog.visibility == true && dialog.visibility == false) {
             eduScreenFragment.hideDialog()
-            eduScreenFragment.hideCover()
+        }
+
+        // 박스를 이동시킨다.
+        eduScreenFragment.translateBox(
+            currentCover.duration!!,
+            currentCover.left!!,
+            currentCover.top!!,
+            currentCover.right!!,
+            currentCover.bottom!!
+        )
+        // 박스 선을 보여줄까 숨길까
+        if(currentCover.hasStroke == false && cover.hasStroke == true) {
+            eduScreenFragment.showBoxStroke()
+        }
+        if(currentCover.hasStroke == true && cover.hasStroke == false) {
             eduScreenFragment.hideBoxStroke()
+        }
+        // 커버를 보여줄까 숨길까
+        // 커버가 있으면 교육 화면을 클릭할 수 있게 된다.
+        if(currentCover.visibility == false && cover.visibility == true) {
+            isClickable = true
+            eduScreenFragment.showCover()
+        }
+        if(currentCover.visibility == true && cover.visibility == false) {
+            isClickable = false
+            eduScreenFragment.hideCover()
+        }
+
+        // 화살표를 이동시킨다.
+        eduScreenFragment.translateArrowStart(0)
+        if(currentArrow.endTo == "dialog") {
+            eduScreenFragment.translateArrowEndToDialog(currentArrow.duration!!)
+        }
+        if(currentArrow.endTo == "box") {
+            eduScreenFragment.translateArrowEndToBox(currentArrow.duration!!)
+        }
+        // 화살표를 보여줄까 숨길까
+        if(currentArrow.visibility == false && arrow.visibility == true) {
+            eduScreenFragment.showArrow()
+        }
+        if(currentArrow.visibility == true && arrow.visibility == false) {
             eduScreenFragment.hideArrow()
         }
+
+        /*
+            현재 EduData에 있는 손들을 제거하고, course[num]에 있는 손들을 추가한다.
+            손 제스처를 화면에 보여준다.
+        */
+        eduScreenFragment.clearHands()
+        for(i in currentFingers) {
+            eduScreenFragment.addHand(
+                i.id,
+                i.source,
+                i.x,
+                i.y,
+                i.width,
+                i.height,
+                i.rotation,
+                i.pickAnimatorSet
+            )
+        }
+
+        /*
+            교육 화면 변경 이후에 현재 EduData를 갱신해야 하는 작업은 마지막에 한다.
+        */
+        currentDialog.visibility = dialog.visibility ?: currentDialog.visibility
+        currentCover.hasStroke = cover.hasStroke ?: currentCover.hasStroke
+        currentCover.visibility = cover.visibility ?: currentCover.visibility
+        currentArrow.visibility = arrow.visibility ?: currentArrow.visibility
+
+        Log.i("eduScreen", currentEduData.dialog.contentText.toString())
     }
 }

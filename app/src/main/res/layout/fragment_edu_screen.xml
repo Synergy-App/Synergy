@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".utils.EduScreenFragment"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    tools:context=".utils.EduScreenFragment">
 
     <!-- Cover, Box, Arrow를 그릴 Canvas -->
     <ImageView
@@ -85,9 +84,88 @@
 
     </LinearLayout>
 
-    <!-- Top Dialog -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <!-- Bottom Dialog -->
+        <!-- Top Dialog -->
+        <LinearLayout
+            android:id="@+id/top_dialog"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="500dp"
+            android:layout_alignParentTop="true"
+            android:paddingBottom="24dp"
+            android:paddingHorizontal="24dp"
+            android:background="@drawable/edu_top_dialog_bg"
+            android:gravity="bottom|center_horizontal">
+
+            <TextView
+                android:id="@+id/top_dialog_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="제목"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+
+            <View
+                android:id="@+id/top_dialog_separator"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginVertical="12dp"
+                android:background="@color/light_grey"/>
+
+            <TextView
+                android:id="@+id/top_dialog_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="내용 내용 내용 내용\n내용 내용 내용 내용 내용 내용\n내용 내용 내용 내용 내용"
+                android:textSize="18sp"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <!-- Bottom Dialog -->
+        <LinearLayout
+            android:id="@+id/bottom_dialog"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_alignParentBottom="true"
+            android:paddingTop="24dp"
+            android:paddingHorizontal="24dp"
+            android:background="@drawable/edu_bottom_dialog_bg"
+            android:gravity="top|center_horizontal">
+
+            <TextView
+                android:id="@+id/bottom_dialog_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="제목"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+
+            <View
+                android:id="@+id/bottom_dialog_separator"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginVertical="12dp"
+                android:background="@color/light_grey"/>
+
+            <TextView
+                android:id="@+id/bottom_dialog_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="내용 내용 내용 내용\n내용 내용 내용 내용 내용 내용\n내용 내용 내용 내용 내용"
+                android:textSize="18sp"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
     <!-- Gesture Layout -->
     <FrameLayout

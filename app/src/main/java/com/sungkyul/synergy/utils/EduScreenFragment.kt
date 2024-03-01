@@ -13,7 +13,6 @@ import android.graphics.PorterDuffXfermode
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.style.StyleSpan
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,7 +24,6 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.core.animation.addListener
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.view.marginBottom
@@ -35,11 +33,6 @@ import androidx.core.view.marginTop
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import com.sungkyul.synergy.databinding.FragmentEduScreenBinding
-import kotlin.collections.HashMap
-import kotlin.collections.List
-import kotlin.collections.forEach
-import kotlin.collections.hashMapOf
-import kotlin.collections.indices
 import kotlin.collections.set
 
 class EduScreenFragment : Fragment() {
@@ -53,13 +46,13 @@ class EduScreenFragment : Fragment() {
     private val canvas = Canvas()
     private val animatorMap = hashMapOf<String, ValueAnimator>()
 
+    // 페인트
     private val clearPaint = Paint()
     private val coverPaint = Paint()
     private val boxPaint = Paint()
     private val boxStrokePaint = Paint()
     private val arrowPaint = Paint()
 
-    // 알아서 파라미터 설정하세요.
     private val toggleDuration = 250L
     private val toggleHandDuration = 250L
     private val toggleHandInterpolator = DecelerateInterpolator()
@@ -79,6 +72,7 @@ class EduScreenFragment : Fragment() {
     private var arrowEndY = 0.0f
     private val hands = HashMap<String, Hand>()
 
+    // 현재 캔버스 정보
     private var currentDialogCenterX = 0.0f
     private var currentDialogCenterY = 0.0f
     private var currentBoxCenterX = 0.0f
@@ -232,40 +226,6 @@ class EduScreenFragment : Fragment() {
         }
 
         return scaleSet
-    }
-
-    // 손으로 터치를 안내하는 애니메이션 세트
-    fun touchGuideAnimatorSet(imageView: ImageView, duration: Long, toValue: Float): AnimatorSet {
-        val fromValue = 1.0f
-
-        val fromToSet = AnimatorSet().apply {
-            playTogether(
-                ObjectAnimator.ofFloat(imageView, "scaleX", fromValue, toValue),
-                ObjectAnimator.ofFloat(imageView, "scaleY", fromValue, toValue)
-            )
-        }
-        val toFromSet = AnimatorSet().apply {
-            playTogether(
-                ObjectAnimator.ofFloat(imageView, "scaleX", toValue, fromValue),
-                ObjectAnimator.ofFloat(imageView, "scaleY", toValue, fromValue)
-            )
-        }
-
-        val animatorSet = AnimatorSet().apply {
-            this.duration = duration
-            interpolator = AccelerateDecelerateInterpolator()
-            playSequentially(
-                fromToSet,
-                toFromSet
-            )
-        }
-
-        return animatorSet
-    }
-
-    // TODO(손으로 터치 후 드래그를 안내하는 애니메이션 세트)
-    fun touchAndDragGuideAnimatorSet(): AnimatorSet {
-        return AnimatorSet()
     }
 
     private fun draw() {
@@ -509,7 +469,7 @@ class EduScreenFragment : Fragment() {
     }
 
     // 오른쪽 아래에 그림자가 적용된 비트맵을 만든다.
-    fun makeShadowedBitmap(source: Bitmap, x: Int, y: Int, color: Int): Bitmap {
+    private fun makeShadowedBitmap(source: Bitmap, x: Int, y: Int, color: Int): Bitmap {
         val shadow = source.copy(Bitmap.Config.ARGB_8888, true)
         val result = Bitmap.createBitmap(source.width+x, source.height+y, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(result)
@@ -535,36 +495,37 @@ class EduScreenFragment : Fragment() {
     fun addHand(
         id: String,
         source: Int,
-        x: Float = 0.0f,
-        y: Float = 0.0f,
-        w: Float,
-        h: Float,
-        animator: Int
-    ) {
+        x: Float,
+        y: Float,
+        width: Float,
+        height: Float,
+        rotation: Float,
+        pickAnimatorSet: (ImageView) -> AnimatorSet
+    ): ImageView {
         val imageView = ImageView(context)
 
         val bitmap = makeShadowedBitmap(
             ResourcesCompat.getDrawable(resources, source, null)!!.toBitmap(),
             12,
             12,
-            Color.argb(99, 0, 0, 0)
+            Color.argb(100, 0, 0, 0)
         )
         imageView.setImageBitmap(bitmap)
         imageView.scaleType = ImageView.ScaleType.FIT_CENTER
 
         binding.gestureLayout.addView(imageView)
 
-        imageView.rotation = 45.0f
-
+        imageView.translationX = AnimUtils.dpToPx(binding.root.context, x)
+        imageView.translationY = AnimUtils.dpToPx(binding.root.context, y)
+        imageView.rotation = rotation
         imageView.updateLayoutParams<ViewGroup.LayoutParams> {
-            width = AnimUtils.dpToPx(binding.root.context, w).toInt()
-            height = AnimUtils.dpToPx(binding.root.context, h).toInt()
+            this.width = AnimUtils.dpToPx(binding.root.context, width).toInt()
+            this.height = AnimUtils.dpToPx(binding.root.context, height).toInt()
         }
 
-        hands[id] = Hand(
-            imageView,
-            startShowHandAnimationSet(imageView, touchGuideAnimatorSet(imageView, 1000, 1.2f))
-        )
+        hands[id] = Hand(imageView, startShowHandAnimationSet(imageView, pickAnimatorSet(imageView)))
+
+        return imageView
     }
 
     // 손을 삭제한다.
