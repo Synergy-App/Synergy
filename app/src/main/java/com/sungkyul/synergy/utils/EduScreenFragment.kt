@@ -54,7 +54,7 @@ class EduScreenFragment : Fragment() {
     private val arrowPaint = Paint()
 
     private val toggleDuration = 250L
-    private val toggleHandDuration = 250L
+    private val toggleHandDuration = 350L
     private val toggleHandInterpolator = DecelerateInterpolator()
     private val coverMaxAlpha = 128
     private val boxCornerRadius = 100.0f

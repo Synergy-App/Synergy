@@ -6,7 +6,7 @@ import com.sungkyul.synergy.R
 
 class EduCourses {
     companion object {
-        fun defaultPhone(context: Context, width: Float, height: Float): ArrayList<EduData> {
+        fun defaultPhoneTestCourse(context: Context, width: Float, height: Float): ArrayList<EduData> {
             val width = AnimUtils.pxToDp(context, width)
             val height = AnimUtils.pxToDp(context, height)
             val result = ArrayList<EduData>()

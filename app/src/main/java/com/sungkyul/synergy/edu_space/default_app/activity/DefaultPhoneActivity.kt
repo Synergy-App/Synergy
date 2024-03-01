@@ -32,7 +32,7 @@ class DefaultPhoneActivity : AppCompatActivity() {
 
         // 교육 코스 추가
         binding.eduScreen.post {
-            binding.eduScreen.course = EduCourses.defaultPhone(
+            binding.eduScreen.course = EduCourses.defaultPhoneTestCourse(
                 binding.eduScreen.context,
                 binding.eduScreen.width.toFloat(),
                 binding.eduScreen.height.toFloat()
