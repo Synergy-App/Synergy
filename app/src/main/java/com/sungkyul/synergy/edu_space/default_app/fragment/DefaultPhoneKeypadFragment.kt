@@ -11,6 +11,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.sungkyul.synergy.databinding.FragmentDefaultPhoneKeypadBinding
@@ -23,9 +24,10 @@ import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_SCALE
 import com.sungkyul.synergy.edu_space.default_app.activity.DefaultPhoneCallActivity
 import com.sungkyul.synergy.utils.AnimUtils
 import com.sungkyul.synergy.utils.EduListener
+import com.sungkyul.synergy.utils.EduScreen
 import com.sungkyul.synergy.utils.TextUtils
 
-class DefaultPhoneKeypadFragment : Fragment() {//(private val eduListener: EduListener) : Fragment() {
+class DefaultPhoneKeypadFragment(private val eduScreen: EduScreen) : Fragment() {
     private lateinit var binding: FragmentDefaultPhoneKeypadBinding
     private var secondaryButtonsIsEnabled = false
 
@@ -114,7 +116,7 @@ class DefaultPhoneKeypadFragment : Fragment() {//(private val eduListener: EduLi
                 AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
                 TextUtils.extendText(binding.phoneNumText, (view as Button).text.toString())
 
-                //eduListener.onAction("click_key_button", view.text.toString())
+                eduScreen.onAction("click_key_button", view.text.toString())
 
                 // 번호 입력 란이 비어 있지 않으면, '연락처 추가, 영상 통화, 지우기' 버튼이 나타난다.
                 if(binding.phoneNumText.text.toString().isNotEmpty() && !secondaryButtonsIsEnabled) {
@@ -209,7 +211,7 @@ class DefaultPhoneKeypadFragment : Fragment() {//(private val eduListener: EduLi
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             Log.i("PhoneNumText", s.toString())
-            //eduListener.onAction("phone_num_text_changed", s.toString())
+            eduScreen.onAction("phone_num_text_changed", s.toString())
         }
 
         override fun afterTextChanged(s: Editable?) {
