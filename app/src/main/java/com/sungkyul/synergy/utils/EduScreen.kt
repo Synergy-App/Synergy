@@ -88,6 +88,36 @@ data class EduData(
 
     ## 주의점
     단위는 dp이다.
+
+    ## 사용법
+    1. 교육을 진행할 레이아웃에 아래 코드를 작성한다.
+    ```
+    <com.sungkyul.synergy.utils.EduScreen
+        android:id="@+id/edu_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    ```
+
+    2. EduCourses에 원하는 교육 코스 함수를 만들고, 교육을 진행할 액티비티에 아래 코드를 작성한다.
+    ```
+    binding.eduScreen.post {
+        binding.eduScreen.course = EduCourses.nameCourse(...)
+        binding.eduScreen.start(this)
+    }
+    ```
+
+    ### 프래그먼트에서 onAction 사용하기
+    1. EduScreen을 사용할 프래그먼트 클래스를 다음과 같이 작성한다.
+    ```
+    class NameFragment(private val eduScreen: EduScreen) : Fragment() {
+        ...
+    }
+    ```
+
+    2. 프래그먼트 클래스 안의 원하는 이벤트 리스너에 onAction을 호출한다.
+    ```
+    eduScreen.onAction("id", "message")
+    ```
 */
 class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, attrs) {
     private val eduScreenFragment = EduScreenFragment()
