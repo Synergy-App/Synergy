@@ -14,9 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Synergy"
         tools:targetApi="31">
-        <activity
-            android:name=".edu_space.delivery.shopActivity"
-            android:exported="false" />
         <!-- 교육공간 -->
         <activity
             android:name=".edu_space.default_app.activity.DefaultAppActivity"
@@ -33,7 +30,6 @@
         <activity
             android:name=".MainActivity"
             android:exported="false"> <!-- 메인화면 -->
-            android:exported="true"> <!--메인화면-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,16 +37,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".edu_space.default_app.activity.DefaultMessageActivity"
-            android:exported="false" />
-        <activity
-            android:name=".main.activity.DigitalStartActivity"
-            android:exported="false" /> <!-- 디지털 나이 검사 -->
-        <activity
             android:name=".EduSpaceActivity"
             android:exported="false" /> <!-- 삭제할거 -->
-            android:exported="false">
-        </activity>
         <!-- 아이콘 교육 -->
         <activity
             android:name=".edu_space.icon_edu.activity.IconEduActivity"
@@ -99,9 +87,6 @@
         <activity
             android:name=".edu_space.default_app.activity.DefaultMessageActivity"
             android:exported="false" /> <!-- 전화 -->
-            android:exported="false"
-            tools:ignore="DuplicateActivity" /> <!--전화-->
-
         <!-- 환경설정 -->
         <activity
             android:name=".edu_space.settingedu.activity.SettingEduActivity"
@@ -149,7 +134,7 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.kakaotaxi.payActivity"
-            android:exported="true" /> <!-- 배달의 민족 -->
+            android:exported="false" /> <!-- 배달의 민족 -->
         <activity
             android:name=".edu_space.delivery.DlvMainActivity"
             android:exported="true">
@@ -159,6 +144,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".edu_space.delivery.shopActivity"
+            android:exported="false" />
+        <activity
+            android:name=".edu_space.delivery.foodmenuActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
