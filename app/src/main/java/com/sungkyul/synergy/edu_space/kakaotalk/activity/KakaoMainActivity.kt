@@ -1,6 +1,7 @@
 package com.sungkyul.synergy.edu_space.kakaotalk.activity
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import com.sungkyul.synergy.R
@@ -8,6 +9,7 @@ import com.sungkyul.synergy.databinding.ActivityKakaoMainBinding
 import androidx.fragment.app.Fragment
 import com.sungkyul.synergy.edu_space.kakaotalk.fragment.ChatFragment
 import com.sungkyul.synergy.edu_space.kakaotalk.fragment.FriendsFragment
+import com.sungkyul.synergy.utils.EduCourses
 
 /** 카카오톡 메인화면 하단 네비게이션바 + fragment */
 
@@ -33,6 +35,19 @@ class KakaoMainActivity : AppCompatActivity() {
                 //  R.id.openChatFragment -> setFragment(TAG_OPENCHAT, OpenchatFragment())
             }
             true
+        }
+
+        // 교육 추가
+        binding.eduScreen.post {
+            binding.eduScreen.course = EduCourses.kakaoCourse(
+                binding.eduScreen.context,
+                binding.eduScreen.width.toFloat(),
+                binding.eduScreen.height.toFloat()
+            )
+            binding.eduScreen.setOnFinishedCourseListener {
+                finish()
+            }
+            binding.eduScreen.start(this)
         }
     }
 

@@ -1,148 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".edu_space.kakaotalk.activity.KakaoChattingActivity"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#AFC0CF"
-    android:orientation="vertical"
-    tools:context=".edu_space.kakaotalk.activity.ChattingActivity">
+    android:layout_height="match_parent">
+
+    <com.sungkyul.synergy.utils.EduScreen
+        android:id="@+id/edu_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="#AFC0CF"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="20dp"
-                    android:src="@drawable/ic_arrowline_left_black_24dp" />
-
-                <TextView
-                    android:id="@+id/chatting_tv"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="이경희"
-                    android:textColor="@color/black"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="20dp"
+                        android:src="@drawable/ic_arrowline_left_black_24dp" />
+
+                    <TextView
+                        android:id="@+id/chatting_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="이경희"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/ic_search_black_24dp" />
+
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/ic_kakao_chat_menu_black_24dp" />
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="end"
-                android:orientation="horizontal">
+                android:layout_gravity="center"
+                android:gravity="center">
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="5dp"
-                    android:src="@drawable/ic_search_black_24dp" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_kakao_chat_roundbox_gray"
+                    android:orientation="horizontal"
+                    android:padding="3dp">
 
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/ic_kakao_chat_date_white_24dp" />
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="5dp"
-                    android:src="@drawable/ic_kakao_chat_menu_black_24dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:text="2023년 12월 31일 금요일"
+                        android:textColor="@color/white" />
+                </LinearLayout>
             </LinearLayout>
+
         </LinearLayout>
 
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center">
+            android:layout_alignParentBottom="true"
+            android:background="@color/white">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_kakao_chat_roundbox_gray"
-                android:orientation="horizontal"
-                android:padding="3dp">
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/ic_add_black_24"/>
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="메시지를 입력하세요"
+                    android:imeOptions="actionSend"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:textColor="@color/black" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/ic_kakao_chat_date_white_24dp" />
-
-                <TextView
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_kakao_chat_face_black_24dp"/>
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="10dp"
-                    android:text="2023년 12월 31일 금요일"
-                    android:textColor="@color/white" />
+                    android:layout_marginEnd="10dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_kakao_chat_grid_black_24dp"/>
             </LinearLayout>
-        </LinearLayout>
-
+        </RelativeLayout>
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/white">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="10dp"
-                android:layout_gravity="center"
-                android:layout_marginEnd="10dp"
-                android:src="@drawable/ic_add_black_24"/>
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="메시지를 입력하세요"
-                android:imeOptions="actionSend"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:textColor="@color/black" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_kakao_chat_face_black_24dp"/>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_kakao_chat_grid_black_24dp"/>
-        </LinearLayout>
-    </RelativeLayout>
-</LinearLayout>
+</FrameLayout>
