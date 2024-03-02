@@ -5,10 +5,22 @@ import android.animation.ObjectAnimator
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.ImageView
 
-class HandAnims {
+class HandGestures {
     companion object {
-        // 손으로 터치를 안내하는 애니메이션 세트
-        fun touchGuideAnimatorSet(imageView: ImageView): AnimatorSet {
+        /*
+        ## Gesture를 만들어보자!
+        ```
+        fun createNameGesture(imageView: ImageView): AnimatorSet {
+            val animatorSet = AnimatorSet().apply {
+                playSequentially()
+            }
+            return animatorSet
+        }
+        ```
+        */
+
+        // Tap Gesture
+        fun createTapGesture(imageView: ImageView): AnimatorSet {
             val fromValue = 1.0f
             val toValue = 1.2f
             val duration = 1000L
@@ -38,8 +50,8 @@ class HandAnims {
             return animatorSet
         }
 
-        // 손으로 터치 후 드래그를 안내하는 애니메이션 세트
-        fun touchAndDragGuideAnimatorSet(imageView: ImageView): AnimatorSet {
+        // Press and Drag Gesture
+        fun createPressAndDragGesture(imageView: ImageView): AnimatorSet {
             val fromValueX = 0.0f
             val toValueX = 100.0f
             val fromValueY = 0.0f

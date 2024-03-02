@@ -122,8 +122,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".edu_space.kakaotalk.activity.ProfileDetailActivity"
-            android:exported="false" /> <!-- 네이버 -->
+            android:name=".edu_space.kakaotalk.activity.KakaoProfileDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".edu_space.kakaotalk.activity.KakaoChattingActivity"
+            android:exported="false"/>
+        <!-- 네이버 -->
         <activity
             android:name=".edu_space.naver.activity.NaverSearchActivity"
             android:exported="false" />
