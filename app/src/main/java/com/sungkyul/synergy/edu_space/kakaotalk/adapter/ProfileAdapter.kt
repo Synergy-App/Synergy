@@ -10,7 +10,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.edu_space.kakaotalk.activity.ProfileDetailActivity
+import com.sungkyul.synergy.edu_space.kakaotalk.activity.KakaoProfileDetailActivity
 import com.sungkyul.synergy.edu_space.kakaotalk.data.profileItem
 
 /** 카카오톡 프로필 어뎁터와 뷰홀더 */
@@ -40,7 +40,7 @@ class ProfileAdapter(private val context: Context) :
             friend_detail_LL.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
-                    val intent = Intent(context, ProfileDetailActivity::class.java)
+                    val intent = Intent(context, KakaoProfileDetailActivity::class.java)
                     intent.putExtra("profile_detail", datas[position]) // 데이터를 전달합니다. profileItem이 Parcelable이어야 합니다.
                     context.startActivity(intent)
                 }

@@ -49,14 +49,16 @@
                     android:text="서인국"
                     android:textSize="15dp"
                     android:layout_marginLeft="8dp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
 
                 <TextView
                     android:id="@+id/profile_message"
                     android:layout_marginLeft="6dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="안녕하세요~~!!" />
+                    android:text="안녕하세요~~!!"
+                    android:textColor="@color/black"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

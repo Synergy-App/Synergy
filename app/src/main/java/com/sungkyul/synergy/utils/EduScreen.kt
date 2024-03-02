@@ -2,6 +2,7 @@ package com.sungkyul.synergy.utils
 
 import android.animation.AnimatorSet
 import android.content.Context
+import android.content.Intent
 import android.util.AttributeSet
 import android.util.Log
 import android.view.Gravity
@@ -9,6 +10,7 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.edu_space.kakaotalk.activity.KakaoChattingActivity
 
 data class EduDialog(
     var titleText: String? = null,
@@ -25,7 +27,7 @@ data class EduDialog(
 )
 data class EduImageDialog(
     var titleText: String? = null,
-    var image: Int? = null,
+    var source: Int? = null,
     var duration: Long? = null,
     var top: Float? = null,
     var bottom: Float? = null,
@@ -45,11 +47,12 @@ data class EduVerticalDialog(
 )
 data class EduCover(
     var duration: Long? = null,
-    var left: Float? = null,
-    var top: Float? = null,
-    var right: Float? = null,
-    var bottom: Float? = null,
-    var hasStroke: Boolean? = null,
+    var boxLeft: Float? = null,
+    var boxTop: Float? = null,
+    var boxRight: Float? = null,
+    var boxBottom: Float? = null,
+    var boxVisibility: Boolean? = null,
+    var boxStrokeVisibility: Boolean? = null,
     var visibility: Boolean? = null
 )
 data class EduArrow(
@@ -69,7 +72,7 @@ data class EduFinger(
     var width: Float,
     var height: Float,
     var rotation: Float = 0.0f,
-    var pickAnimatorSet: ((ImageView) -> AnimatorSet)
+    var gesture: ((ImageView) -> AnimatorSet)
 )
 data class EduData(
     val dialog: EduDialog = EduDialog(),
@@ -87,10 +90,12 @@ data class EduData(
     교육 화면이다.
 
     ## 주의점
-    단위는 dp이다.
+    - 단위는 dp이다.
 
     ## 사용법
-    1. 교육을 진행할 레이아웃에 아래 코드를 작성한다.
+    0. 교육을 진행할 액티비티 이름은 Target이라 가정한다.
+
+    1. activity_target.xml 안에 EduScreen을 추가한다.
     ```
     <com.sungkyul.synergy.utils.EduScreen
         android:id="@+id/edu_screen"
@@ -98,29 +103,56 @@ data class EduData(
         android:layout_height="match_parent"/>
     ```
 
-    2. EduCourses에 원하는 교육 코스 함수를 만들고, 교육을 진행할 액티비티에 아래 코드를 작성한다.
+    2. EduCourses 안에 원하는 교육 코스 함수를 만들고, TargetActivity의 onCreate 함수 안에 아래 코드를 작성한다.
     ```
     binding.eduScreen.post {
-        binding.eduScreen.course = EduCourses.nameCourse(
+        binding.eduScreen.course = EduCourses.customCourse(
             binding.eduScreen.context,
             binding.eduScreen.width.toFloat(),
             binding.eduScreen.height.toFloat()
         )
+        binding.eduScreen.setOnFinishedCourseListener {
+            // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳
+        }
         binding.eduScreen.start(this)
     }
     ```
 
-    ### 프래그먼트에서 onAction 사용하기
-    1. EduScreen을 사용할 프래그먼트 클래스를 다음과 같이 작성한다.
+    3. TargetActivity의 onCreate 함수 안에 뒤로 가기 이벤트에 대한 코드를 작성한다.
     ```
-    class NameFragment(private val eduListener: EduListener) : Fragment() {
+    // 뒤로 가기 키를 눌렀을 때의 이벤트를 처리한다.
+    onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            // MainActivity로 되돌아 간다.
+            val intent = Intent(binding.root.context, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            startActivity(intent)
+        }
+    })
+    ```
+
+    ### 프래그먼트에서 eduListener.onAction 함수 사용
+    0. EduScreen에 액션을 보낼 프래그먼트 이름은 Target이라 가정한다.
+
+    1. TargetFragment의 생성자를 다음과 같이 작성한다.
+    ```
+    class TargetFragment(private val eduListener: EduListener) : Fragment() {
         ...
     }
     ```
 
-    2. 프래그먼트 클래스 안의 원하는 이벤트 리스너에 onAction을 호출한다.
+    2. TargetFragment 안의 원하는 이벤트 리스너에 eduListener.onAction을 호출한다. 다음은 button의 클릭 리스너 안에 호출하는 예시이다.
     ```
-    eduListener.onAction("id", "message")
+    binding.button.setOnClickListener {
+        if(binding.eduScreen.onAction("click_button")) {
+            // 보낸 액션이 현재 교육 진행에서 요구하는 액션이라면, 이 부분이 실행된다.
+        }
+    }
+    ```
+
+    3. 액티비티에서 사용할 때 다음과 같이 TargetFragment를 선언하고 사용하면 된다.
+    ```
+    var targetFragment = TargetFragment(binding.eduScreen)
     ```
 
     ## 멤버
@@ -134,61 +166,62 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
     private var onFinishedCourseListener: (() -> Unit)? = null
     private val currentEduData = EduData(
         EduDialog(
-            "",
-            Gravity.START,
-            "",
-            Gravity.START,
-            listOf(),
-            0,
-            0.0f,
-            0.0f,
-            0.0f,
-            0.0f,
-            false
+            titleText = "",
+            titleGravity = Gravity.START,
+            contentText = "",
+            contentGravity = Gravity.START,
+            contentBolds = listOf(),
+            duration = 0,
+            top = 0.0f,
+            bottom = 0.0f,
+            start = 0.0f,
+            end = 0.0f,
+            visibility = false
         ),
         EduImageDialog(
-            "",
-            R.drawable.todo_rect,
-            0,
-            0.0f,
-            0.0f,
-            0.0f,
-            0.0f,
-            false
+            titleText = "",
+            source = R.drawable.todo_rect,
+            duration = 0,
+            top = 0.0f,
+            bottom = 0.0f,
+            start = 0.0f,
+            end = 0.0f,
+            visibility = false
         ),
         EduVerticalDialog(
-            "",
-            Gravity.START,
-            "",
-            Gravity.START,
-            listOf(),
-            0,
-            0,
-            false
+            titleText = "",
+            titleGravity = Gravity.START,
+            contentText = "",
+            contentGravity = Gravity.START,
+            contentBolds = listOf(),
+            duration = 0,
+            height = 0,
+            visibility = false
         ),
         EduVerticalDialog(
-            "",
-            Gravity.START,
-            "",
-            Gravity.START,
-            listOf(),
-            0,
-            0,
-            false
+            titleText = "",
+            titleGravity = Gravity.START,
+            contentText = "",
+            contentGravity = Gravity.START,
+            contentBolds = listOf(),
+            duration = 0,
+            height = 0,
+            visibility = false
         ),
         EduCover(
-            0,
-            0.0f,
-            0.0f,
-            0.0f,
-            0.0f,
-            false,
-            false
+            duration = 0,
+            boxLeft = 0.0f,
+            boxTop = 0.0f,
+            boxRight = 0.0f,
+            boxBottom = 0.0f,
+            boxVisibility = false,
+            boxStrokeVisibility = false,
+            visibility = false
         ),
         EduArrow(
-            0,
-            "dialog",
-            false
+            duration = 0,
+            endTo = "dialog",
+            visibility = false
         ),
         EduAction(),
         arrayListOf()
@@ -205,6 +238,8 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
     }
 
     override fun onAction(id: String, message: String?): Boolean {
+        if(num >= course.size) return false
+
         val eduData = course[num]
         Log.i(id, message ?: "null")
         if(id == eduData.action.id && (eduData.action.message == null || message == eduData.action.message)) {
@@ -241,7 +276,7 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         }
 
         /*
-            현재 EduData를 course[num]에 해당하는 EduData로 갱신하는 작업이다.
+        현재 EduData를 course[num]에 해당하는 EduData로 갱신하는 작업이다.
         */
         val currentDialog = currentEduData.dialog
         val dialog = course[num].dialog
@@ -259,10 +294,10 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         val currentCover = currentEduData.cover
         val cover = course[num].cover
         currentCover.duration = cover.duration ?: currentCover.duration
-        currentCover.left = cover.left ?: currentCover.left
-        currentCover.top = cover.top ?: currentCover.top
-        currentCover.right = cover.right ?: currentCover.right
-        currentCover.bottom = cover.bottom ?: currentCover.bottom
+        currentCover.boxLeft = cover.boxLeft ?: currentCover.boxLeft
+        currentCover.boxTop = cover.boxTop ?: currentCover.boxTop
+        currentCover.boxRight = cover.boxRight ?: currentCover.boxRight
+        currentCover.boxBottom = cover.boxBottom ?: currentCover.boxBottom
 
         val currentArrow = currentEduData.arrow
         val arrow = course[num].arrow
@@ -280,7 +315,7 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         currentFingers.addAll(fingers)
 
         /*
-            현재 EduData(+ course[num]의 EduData)를 참고하여 교육 화면을 변경한다.
+        현재 EduData(+ course[num]의 EduData)를 참고하여 교육 화면을 변경한다.
         */
         // 다이얼로그의 제목과 내용을 변경한다.
         eduScreenFragment.setDialogTitle(currentDialog.titleText!!, currentDialog.titleGravity!!)
@@ -310,16 +345,23 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         // 박스를 이동시킨다.
         eduScreenFragment.translateBox(
             currentCover.duration!!,
-            currentCover.left!!,
-            currentCover.top!!,
-            currentCover.right!!,
-            currentCover.bottom!!
+            currentCover.boxLeft!!,
+            currentCover.boxTop!!,
+            currentCover.boxRight!!,
+            currentCover.boxBottom!!
         )
+        // 박스를 보여줄까 숨길까
+        if(currentCover.boxVisibility == false && cover.boxVisibility == true) {
+            eduScreenFragment.showBox()
+        }
+        if(currentCover.boxVisibility == true && cover.boxVisibility == false) {
+            eduScreenFragment.hideBox()
+        }
         // 박스 선을 보여줄까 숨길까
-        if(currentCover.hasStroke == false && cover.hasStroke == true) {
+        if(currentCover.boxStrokeVisibility == false && cover.boxStrokeVisibility == true) {
             eduScreenFragment.showBoxStroke()
         }
-        if(currentCover.hasStroke == true && cover.hasStroke == false) {
+        if(currentCover.boxStrokeVisibility == true && cover.boxStrokeVisibility == false) {
             eduScreenFragment.hideBoxStroke()
         }
         // 커버를 보여줄까 숨길까
@@ -350,31 +392,30 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         }
 
         /*
-            현재 EduData에 있는 손들을 제거하고, course[num]에 있는 손들을 추가한다.
-            손 제스처를 화면에 보여준다.
+        현재 EduData에 있는 손들을 제거하고, course[num]에 있는 손들을 추가한다.
+        손 제스처를 화면에 보여준다.
         */
         eduScreenFragment.clearHands()
         for(i in currentFingers) {
             eduScreenFragment.addHand(
-                i.id,
-                i.source,
-                i.x,
-                i.y,
-                i.width,
-                i.height,
-                i.rotation,
-                i.pickAnimatorSet
+                id = i.id,
+                source = i.source,
+                xDp = i.x,
+                yDp = i.y,
+                widthDp = i.width,
+                heightDp = i.height,
+                rotation = i.rotation,
+                gesture = i.gesture
             )
         }
 
         /*
-            교육 화면 변경 이후에 현재 EduData를 갱신해야 하는 작업은 마지막에 한다.
+        교육 화면 변경 이후에 현재 EduData를 갱신해야 하는 작업은 마지막에 한다.
         */
         currentDialog.visibility = dialog.visibility ?: currentDialog.visibility
-        currentCover.hasStroke = cover.hasStroke ?: currentCover.hasStroke
+        currentCover.boxVisibility = cover.boxVisibility ?: currentCover.boxVisibility
+        currentCover.boxStrokeVisibility = cover.boxStrokeVisibility ?: currentCover.boxStrokeVisibility
         currentCover.visibility = cover.visibility ?: currentCover.visibility
         currentArrow.visibility = arrow.visibility ?: currentArrow.visibility
-
-        Log.i("eduScreen", currentEduData.dialog.contentText.toString())
     }
 }

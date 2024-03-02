@@ -13,7 +13,6 @@ import android.graphics.PorterDuffXfermode
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.style.StyleSpan
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,17 +48,34 @@ class EduScreenFragment : Fragment() {
     private val animatorMap = hashMapOf<String, ValueAnimator>()
 
     // 페인트
-    private val clearPaint = Paint()
-    private val coverPaint = Paint()
-    private val boxPaint = Paint()
-    private val boxStrokePaint = Paint()
-    private val arrowPaint = Paint()
+    private val clearPaint = Paint().apply {
+        xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
+    }
+    private val coverPaint = Paint().apply {
+        color = Color.BLACK
+        alpha = 0
+    }
+    private val boxPaint = Paint().apply {
+        xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
+        alpha = 0
+    }
+    private val boxStrokePaint = Paint().apply {
+        style = Paint.Style.STROKE
+        strokeWidth = 15.0f
+        color = Color.rgb(69, 232, 188)
+        alpha = 0
+    }
+    private val arrowPaint = Paint().apply {
+        strokeWidth = 20.0f
+        color = Color.WHITE
+        alpha = 0
+    }
 
     private val toggleDuration = 250L
     private val toggleHandDuration = 350L
     private val toggleHandInterpolator = DecelerateInterpolator()
     private val coverMaxAlpha = 128
-    private val boxCornerRadius = 100.0f
+    private val boxCornerRadius = 75.0f
     private val boxStrokeCornerRadius = 100.0f
     private val boxPadding = 35.0f
     private val arrowEndSize = 30.0f
@@ -81,24 +97,6 @@ class EduScreenFragment : Fragment() {
     private var currentBoxCenterY = 0.0f
     private var currentBoxStrokeTopY = 0.0f
     private var currentBoxStrokeBottomY = 0.0f
-
-    init {
-        clearPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
-
-        coverPaint.color = Color.BLACK
-        coverPaint.alpha = 0
-
-        boxPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
-
-        boxStrokePaint.style = Paint.Style.STROKE
-        boxStrokePaint.strokeWidth = 20.0f
-        boxStrokePaint.color = Color.rgb(69, 232, 188)
-        boxStrokePaint.alpha = 0
-
-        arrowPaint.strokeWidth = 20.0f
-        arrowPaint.color = Color.WHITE
-        arrowPaint.alpha = 0
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -245,15 +243,17 @@ class EduScreenFragment : Fragment() {
             coverPaint
         )
         // Box
-        canvas.drawRoundRect(
-            boxLeft,
-            boxTop,
-            boxRight,
-            boxBottom,
-            boxCornerRadius,
-            boxCornerRadius,
-            boxPaint
-        )
+        if(boxPaint.alpha > 0) {
+            canvas.drawRoundRect(
+                boxLeft,
+                boxTop,
+                boxRight,
+                boxBottom,
+                boxCornerRadius,
+                boxCornerRadius,
+                boxPaint
+            )
+        }
         // BoxStroke
         canvas.drawRoundRect(
             boxLeft-boxPadding,
@@ -284,14 +284,17 @@ class EduScreenFragment : Fragment() {
         binding.dialogTitle.text = text
         binding.dialogTitle.gravity = gravity
     }
+
     fun showDialogTitle() {
         binding.dialogTitle.visibility = TextView.VISIBLE
         binding.dialogSeparator.visibility = TextView.VISIBLE
     }
+
     fun hideDialogTitle() {
         binding.dialogTitle.visibility = TextView.GONE
         binding.dialogSeparator.visibility = TextView.GONE
     }
+
     fun setDialogContent(text: String, gravity: Int, bolds: List<Pair<Int, Int>>) {
         binding.dialogContent.text = text
         binding.dialogContent.gravity = gravity
@@ -302,6 +305,7 @@ class EduScreenFragment : Fragment() {
         }
         binding.dialogContent.text = spannableString
     }
+
     fun showDialog() {
         startObjectAnimatorOfDialog(
             toggleDuration,
@@ -318,6 +322,7 @@ class EduScreenFragment : Fragment() {
             AnimUtils.dpToPx(binding.root.context, 0.0f)
         )
     }
+
     fun hideDialog() {
         startObjectAnimatorOfDialog(
             toggleDuration,
@@ -334,36 +339,52 @@ class EduScreenFragment : Fragment() {
             AnimUtils.dpToPx(binding.root.context, -100.0f)
         )
     }
+
     fun showCover() {
         AnimUtils.startValueAnimatorOfFloat({
             coverPaint.alpha = (it*coverMaxAlpha).toInt()
             draw()
         }, 0.0f, 1.0f, toggleDuration)
     }
+
     fun hideCover() {
         AnimUtils.startValueAnimatorOfFloat({
             coverPaint.alpha = (it*coverMaxAlpha).toInt()
             draw()
         }, 1.0f, 0.0f, toggleDuration)
     }
+
+    fun showBox() {
+        boxPaint.alpha = 255
+        draw()
+    }
+
+    fun hideBox() {
+        boxPaint.alpha = 0
+        draw()
+    }
+
     fun showBoxStroke() {
         AnimUtils.startValueAnimatorOfFloat({
             boxStrokePaint.alpha = (it*255).toInt()
             draw()
         }, 0.0f, 1.0f, toggleDuration)
     }
+
     fun hideBoxStroke() {
         AnimUtils.startValueAnimatorOfFloat({
             boxStrokePaint.alpha = (it*255).toInt()
             draw()
         }, 1.0f, 0.0f, toggleDuration)
     }
+
     fun showArrow() {
         AnimUtils.startValueAnimatorOfFloat({
             arrowPaint.alpha = (it*255).toInt()
             draw()
         }, 0.0f, 1.0f, toggleDuration)
     }
+
     fun hideArrow() {
         arrowPaint.alpha = 0
 
@@ -373,19 +394,18 @@ class EduScreenFragment : Fragment() {
         }, 1.0f, 0.0f, showHideDuration)*/
     }
 
-    // 단위는 dp이다.
     fun translateDialog(
         duration: Long,
-        top: Float,
-        bottom: Float,
-        start: Float,
-        end: Float
+        topDp: Float,
+        bottomDp: Float,
+        startDp: Float,
+        endDp: Float
     ) {
         // dp -> px
-        val top = AnimUtils.dpToPx(binding.root.context, top)
-        val bottom = AnimUtils.dpToPx(binding.root.context, bottom)
-        val start = AnimUtils.dpToPx(binding.root.context, start)
-        val end = AnimUtils.dpToPx(binding.root.context, end)
+        val top = AnimUtils.dpToPx(binding.root.context, topDp)
+        val bottom = AnimUtils.dpToPx(binding.root.context, bottomDp)
+        val start = AnimUtils.dpToPx(binding.root.context, startDp)
+        val end = AnimUtils.dpToPx(binding.root.context, endDp)
 
         startValueAnimatorOfDialog(
             binding.dialog,
@@ -406,16 +426,16 @@ class EduScreenFragment : Fragment() {
     }
     fun translateBox(
         duration: Long,
-        left: Float,
-        top: Float,
-        right: Float,
-        bottom: Float
+        leftDp: Float,
+        topDp: Float,
+        rightDp: Float,
+        bottomDp: Float
     ) {
         // dp -> px
-        val left = AnimUtils.dpToPx(binding.root.context, left)
-        val top = AnimUtils.dpToPx(binding.root.context, top)
-        val right = AnimUtils.dpToPx(binding.root.context, right)
-        val bottom = AnimUtils.dpToPx(binding.root.context, bottom)
+        val left = AnimUtils.dpToPx(binding.root.context, leftDp)
+        val top = AnimUtils.dpToPx(binding.root.context, topDp)
+        val right = AnimUtils.dpToPx(binding.root.context, rightDp)
+        val bottom = AnimUtils.dpToPx(binding.root.context, bottomDp)
 
         val startLeft = boxLeft
         val startTop = boxTop
@@ -436,7 +456,7 @@ class EduScreenFragment : Fragment() {
         currentBoxStrokeBottomY = bottom+boxPadding
     }
 
-    // 화살표의 시작점이 다이얼로그의 중앙을 향해 이동하도록 만든다.
+    // 화살표의 시작점이 다이얼로그의 중심을 향해 이동하도록 만든다.
     fun translateArrowStart(duration: Long) {
         val startArrowStartX = arrowStartX
         val startArrowStartY = arrowStartY
@@ -448,7 +468,7 @@ class EduScreenFragment : Fragment() {
         }, 0.0f, 1.0f, duration, AccelerateDecelerateInterpolator()))
     }
 
-    // 화살표의 끝점이 다이얼로그의 중앙을 향해 이동하도록 만든다.
+    // 화살표의 끝점이 다이얼로그의 중심을 향해 이동하도록 만든다.
     fun translateArrowEndToDialog(duration: Long) {
         val startArrowEndX = arrowEndX
         val startArrowEndY = arrowEndY
@@ -461,6 +481,8 @@ class EduScreenFragment : Fragment() {
     }
 
     // 화살표의 끝점이 박스를 향해 이동하도록 만든다.
+    // 화살표 끝점의 x좌표는 박스 중심의 x좌표로 이동한다.
+    // 화살표 끝점의 y좌표는 만일 '다이얼로그 중심의 y좌표 < 박스 중심의 y좌표'이면 박스 테두리의 top y좌표로 이동하고, 아니면 bottom y좌표로 이동한다.
     fun translateArrowEndToBox(duration: Long) {
         val startArrowEndX = arrowEndX
         val startArrowEndY = arrowEndY
@@ -503,12 +525,12 @@ class EduScreenFragment : Fragment() {
     fun addHand(
         id: String,
         source: Int,
-        x: Float,
-        y: Float,
-        width: Float,
-        height: Float,
+        xDp: Float,
+        yDp: Float,
+        widthDp: Float,
+        heightDp: Float,
         rotation: Float,
-        pickAnimatorSet: (ImageView) -> AnimatorSet
+        gesture: (ImageView) -> AnimatorSet
     ): ImageView {
         val imageView = ImageView(context)
 
@@ -523,15 +545,15 @@ class EduScreenFragment : Fragment() {
 
         binding.gestureLayout.addView(imageView)
 
-        imageView.translationX = AnimUtils.dpToPx(binding.root.context, x)
-        imageView.translationY = AnimUtils.dpToPx(binding.root.context, y)
+        imageView.translationX = AnimUtils.dpToPx(binding.root.context, xDp)
+        imageView.translationY = AnimUtils.dpToPx(binding.root.context, yDp)
         imageView.rotation = rotation
         imageView.updateLayoutParams<ViewGroup.LayoutParams> {
-            this.width = AnimUtils.dpToPx(binding.root.context, width).toInt()
-            this.height = AnimUtils.dpToPx(binding.root.context, height).toInt()
+            this.width = AnimUtils.dpToPx(binding.root.context, widthDp).toInt()
+            this.height = AnimUtils.dpToPx(binding.root.context, heightDp).toInt()
         }
 
-        hands[id] = Hand(imageView, startShowHandAnimationSet(imageView, pickAnimatorSet(imageView)))
+        hands[id] = Hand(imageView, startShowHandAnimationSet(imageView, gesture(imageView)))
 
         return imageView
     }
