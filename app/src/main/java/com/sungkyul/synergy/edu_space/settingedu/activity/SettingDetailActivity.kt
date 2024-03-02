@@ -6,6 +6,7 @@ import android.view.View
 import com.bumptech.glide.Glide
 import com.sungkyul.synergy.edu_space.settingedu.data.SettingData
 import com.sungkyul.synergy.databinding.ActivitySettingDetailBinding
+import com.sungkyul.synergy.utils.EduCourses
 
 /** 교육공간 속 환경설정교육 속 상세분야 액티비티 (환경설정 리사이클러뷰 아이템 누르면 나오는 액티비티) */
 class SettingDetailActivity : AppCompatActivity() {
@@ -21,8 +22,6 @@ class SettingDetailActivity : AppCompatActivity() {
 
         Glide.with(this).load(datas.img).into(binding.imgSetting)
         binding.tvName.text = datas.name
-
-
 
         // 디스플레이를 클릭한 경우에만 추가적인 내용을 보여줌
         if (datas.name == "디스플레이") {
@@ -41,5 +40,7 @@ class SettingDetailActivity : AppCompatActivity() {
             binding.imgSetting.visibility = View.VISIBLE
             binding.tvName.visibility = View.VISIBLE
         }
+
+
     }
 }

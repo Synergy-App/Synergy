@@ -2,7 +2,6 @@ package com.sungkyul.synergy.utils
 
 import android.animation.AnimatorSet
 import android.content.Context
-import android.content.Intent
 import android.util.AttributeSet
 import android.util.Log
 import android.view.Gravity
@@ -10,7 +9,6 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.edu_space.kakaotalk.activity.KakaoChattingActivity
 
 data class EduDialog(
     var titleText: String? = null,
@@ -64,7 +62,7 @@ data class EduAction(
     var id: String? = null,
     var message: String? = null
 )
-data class EduFinger(
+data class EduHand(
     var id: String,
     var source: Int = R.drawable.todo_circle,
     var x: Float = 0.0f,
@@ -72,7 +70,7 @@ data class EduFinger(
     var width: Float,
     var height: Float,
     var rotation: Float = 0.0f,
-    var gesture: ((ImageView) -> AnimatorSet)
+    var gesture: ((Context, ImageView) -> AnimatorSet)
 )
 data class EduData(
     val dialog: EduDialog = EduDialog(),
@@ -82,7 +80,7 @@ data class EduData(
     val cover: EduCover = EduCover(),
     val arrow: EduArrow = EduArrow(),
     val action: EduAction = EduAction(),
-    val fingers: ArrayList<EduFinger> = ArrayList()
+    val hands: ArrayList<EduHand> = ArrayList()
 )
 
 /*
@@ -105,6 +103,7 @@ data class EduData(
 
     2. EduCourses 안에 원하는 교육 코스 함수를 만들고, TargetActivity의 onCreate 함수 안에 아래 코드를 작성한다.
     ```
+    // 교육을 진행해보자!
     binding.eduScreen.post {
         binding.eduScreen.course = EduCourses.customCourse(
             binding.eduScreen.context,
@@ -155,11 +154,15 @@ data class EduData(
     var targetFragment = TargetFragment(binding.eduScreen)
     ```
 
-    ## 멤버
-    - course
-    - setOnFinishedCourseListener(l): 교육 코스가 끝났을 때 이벤트가 발생한다.
+    ## Members
+    - course: 교육 코스이다.
+    - onPosted()
     - onAction(id, message)
-    - start(activity)
+    - getAction()
+    - setOnFinishedCourseListener(l): 교육 코스가 끝났을 때 이벤트 리스너 l이 호출된다.
+    - start(activity): 교육을 시작한다.
+    - next()
+    - prev()
 */
 class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, attrs), EduListener {
     private val eduScreenFragment = EduScreenFragment()
@@ -238,7 +241,8 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
     }
 
     override fun onAction(id: String, message: String?): Boolean {
-        if(num >= course.size) return false
+        // 교육 코스가 끝나면 모든 액션을 다시 사용할 수 있게 된다.
+        if(num >= course.size) return true
 
         val eduData = course[num]
         Log.i(id, message ?: "null")
@@ -247,6 +251,10 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
             return true
         }
         return false
+    }
+
+    fun getAction(): EduAction {
+        return currentEduData.action
     }
 
     fun setOnFinishedCourseListener(l: (() -> Unit)?) {
@@ -309,10 +317,10 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         currentAction.id = action.id
         currentAction.message = action.message
 
-        val currentFingers = currentEduData.fingers
-        val fingers = course[num].fingers
-        currentFingers.clear()
-        currentFingers.addAll(fingers)
+        val currentHands = currentEduData.hands
+        val hands = course[num].hands
+        currentHands.clear()
+        currentHands.addAll(hands)
 
         /*
         현재 EduData(+ course[num]의 EduData)를 참고하여 교육 화면을 변경한다.
@@ -396,7 +404,7 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         손 제스처를 화면에 보여준다.
         */
         eduScreenFragment.clearHands()
-        for(i in currentFingers) {
+        for(i in currentHands) {
             eduScreenFragment.addHand(
                 id = i.id,
                 source = i.source,
@@ -417,5 +425,12 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         currentCover.boxStrokeVisibility = cover.boxStrokeVisibility ?: currentCover.boxStrokeVisibility
         currentCover.visibility = cover.visibility ?: currentCover.visibility
         currentArrow.visibility = arrow.visibility ?: currentArrow.visibility
+    }
+
+    fun prev() {
+        if(num > 0) {
+            num -= 2
+            next()
+        }
     }
 }

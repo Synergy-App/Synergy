@@ -141,8 +141,8 @@ class EduCourses {
             data15.dialog.visibility = false
             data15.cover.visibility = false
             data15.arrow.visibility = false
-            data15.fingers.add(
-                EduFinger(
+            data15.hands.add(
+                EduHand(
                     "touch",
                     R.drawable.hand,
                     110.0f,
@@ -150,7 +150,7 @@ class EduCourses {
                     50.0f,
                     75.0f,
                     -90.0f,
-                    HandGestures::createTapGesture
+                    HandGestures::tapGesture
                 )
             )
             data15.action.id = "click_key_button"
@@ -158,8 +158,8 @@ class EduCourses {
             result.add(data15)
 
             val data16 = EduData()
-            data16.fingers.add(
-                EduFinger(
+            data16.hands.add(
+                EduHand(
                     "touch",
                     R.drawable.hand,
                     200.0f,
@@ -167,7 +167,7 @@ class EduCourses {
                     50.0f,
                     75.0f,
                     0.0f,
-                    HandGestures::createTapGesture
+                    HandGestures::tapGesture
                 )
             )
             data16.action.id = "click_key_button"
@@ -280,14 +280,14 @@ class EduCourses {
             data9.dialog.visibility = false
             data9.cover.visibility = false
             data9.arrow.visibility = false
-            data9.fingers.add(EduFinger(
-                    id = "touch",
+            data9.hands.add(EduHand(
+                    id = "tap",
                     source = R.drawable.hand,
                     x = 100.0f,
                     y = 200.0f,
                     width = 50.0f,
                     height = 75.0f,
-                    gesture = HandGestures::createTapGesture
+                    gesture = HandGestures::tapGesture
                 )
             )
             result.add(data9)
@@ -365,15 +365,15 @@ class EduCourses {
             data7.cover.visibility = false
             data7.arrow.visibility = false
             data7.action.id = "click_chat11_button"
-            data7.fingers.add(EduFinger(
-                id = "touch",
+            data7.hands.add(EduHand(
+                id = "tap",
                 source = R.drawable.hand,
                 x = 85.0f,
                 y = 675.0f,
                 width = 50.0f,
                 height = 75.0f,
                 rotation = -90.0f,
-                gesture = HandGestures::createTapGesture
+                gesture = HandGestures::tapGesture
             ))
             result.add(data7)
 
@@ -387,6 +387,173 @@ class EduCourses {
 
             val data0 = EduData()
             result.add(data0)
+
+            return result
+        }
+
+        fun settingsCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
+            val width = AnimUtils.pxToDp(context, widthDp)
+            val height = AnimUtils.pxToDp(context, heightDp)
+            val result = ArrayList<EduData>()
+
+            val data0 = EduData()
+            data0.dialog.contentText = "화면 밝기와\n글자 크기에 대해서\n배워보겠습니다."
+            data0.dialog.contentGravity = Gravity.CENTER
+            data0.dialog.top = 300.0f
+            data0.dialog.bottom = 300.0f
+            data0.dialog.start = 50.0f
+            data0.dialog.end = 50.0f
+            data0.dialog.visibility = true
+            data0.cover.visibility = true
+            result.add(data0)
+
+            val data1 = EduData()
+            data1.dialog.contentText = "디스플레이는\n스마트폰의 다양한 설정을\n할 수 있습니다."
+            data1.dialog.contentBolds = listOf(Pair(0, 5))
+            data1.dialog.duration = 750
+            data1.dialog.top = 450.0f
+            data1.dialog.bottom = 150.0f
+            data1.cover.boxLeft = 20.0f
+            data1.cover.boxTop = 320.0f
+            data1.cover.boxRight = width-20.0f
+            data1.cover.boxBottom = 400.0f
+            data1.cover.boxVisibility = true
+            data1.cover.boxStrokeVisibility = true
+            result.add(data1)
+
+            val data2 = EduData()
+            data2.dialog.contentText = "디스플레이를 클릭해주세요."
+            result.add(data2)
+
+            val data3 = EduData()
+            data3.dialog.visibility = false
+            data3.cover.visibility = false
+            data3.cover.boxVisibility = false
+            data3.cover.boxStrokeVisibility = false
+            data3.action.id = "click_display_item"
+            data3.hands.add(EduHand(
+                id = "tap",
+                source = R.drawable.hand,
+                x = width/2,
+                y = 360.0f,
+                width = 50.0f,
+                height = 75.0f,
+                gesture = HandGestures::tapGesture
+            ))
+            result.add(data3)
+
+            return result
+        }
+
+        fun settingsDisplayCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
+            val width = AnimUtils.pxToDp(context, widthDp)
+            val height = AnimUtils.pxToDp(context, heightDp)
+            val result = ArrayList<EduData>()
+
+            val data0 = EduData()
+            data0.dialog.contentText = "먼저 스마트폰\n밝기 조절을\n배워보겠습니다."
+            data0.dialog.contentGravity = Gravity.CENTER
+            data0.dialog.top = 300.0f
+            data0.dialog.bottom = 300.0f
+            data0.dialog.start = 50.0f
+            data0.dialog.end = 50.0f
+            data0.dialog.visibility = true
+            data0.cover.visibility = true
+            result.add(data0)
+
+            val data1 = EduData()
+            data1.dialog.contentText = "손가락을 따라\n움직여주세요."
+            result.add(data1)
+
+            val data2 = EduData()
+            data2.dialog.visibility = false
+            data2.cover.visibility = false
+            data2.action.id = "change_light_bar"
+            data2.action.message = "100"
+            data2.hands.add(EduHand(
+                id = "drag",
+                source = R.drawable.hand,
+                x = 30.0f,
+                y = 350.0f,
+                width = 50.0f,
+                height = 75.0f,
+                gesture = HandGestures::displayLightDragGesture
+            ))
+            result.add(data2)
+
+            val data3 = EduData()
+            data3.dialog.contentText = "이번엔 글자 크기를\n조절해보겠습니다."
+            data3.dialog.visibility = true
+            data3.cover.visibility = true
+            result.add(data3)
+
+            val data4 = EduData()
+            data4.dialog.contentText = "일단 글자 크기와 스타일이\n안 보이거던요!?\n손가락을 따라\n내려보면 있을까요??"
+            result.add(data4)
+
+            val data5 = EduData()
+            data5.dialog.visibility = false
+            data5.cover.visibility = false
+            data5.action.id = "scroll_to_bottom"
+            data5.hands.add(EduHand(
+                id = "drag",
+                source = R.drawable.hand,
+                x = 20.0f,
+                y = 400.0f,
+                width = 50.0f,
+                height = 75.0f,
+                gesture = HandGestures::displayScrollGesture
+            ))
+            result.add(data5)
+
+            val data6 = EduData()
+            data6.action.id = "tap_font_item"
+            data6.hands.add(EduHand(
+                id = "tap",
+                source = R.drawable.hand,
+                x = 250.0f,
+                y = 675.0f,
+                width = 50.0f,
+                height = 75.0f,
+                rotation = -45.0f,
+                gesture = HandGestures::tapGesture
+            ))
+            result.add(data6)
+
+            return result
+        }
+
+        fun settingsFontCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
+            val width = AnimUtils.pxToDp(context, widthDp)
+            val height = AnimUtils.pxToDp(context, heightDp)
+            val result = ArrayList<EduData>()
+
+            val data0 = EduData()
+            data0.dialog.contentText = "손가락을 따라\n움직여주세요."
+            data0.dialog.contentGravity = Gravity.CENTER
+            data0.dialog.top = 300.0f
+            data0.dialog.bottom = 300.0f
+            data0.dialog.start = 50.0f
+            data0.dialog.end = 50.0f
+            data0.dialog.visibility = true
+            data0.cover.visibility = true
+            result.add(data0)
+
+            val data1 = EduData()
+            data1.dialog.visibility = false
+            data1.cover.visibility = false
+            data1.action.id = "change_light_bar"
+            data1.action.message = "100"
+            data1.hands.add(EduHand(
+                id = "drag",
+                source = R.drawable.hand,
+                x = 30.0f,
+                y = 350.0f,
+                width = 50.0f,
+                height = 75.0f,
+                gesture = HandGestures::displayLightDragGesture
+            ))
+            result.add(data1)
 
             return result
         }

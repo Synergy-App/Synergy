@@ -4,6 +4,7 @@ import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
@@ -530,7 +531,7 @@ class EduScreenFragment : Fragment() {
         widthDp: Float,
         heightDp: Float,
         rotation: Float,
-        gesture: (ImageView) -> AnimatorSet
+        gesture: (Context, ImageView) -> AnimatorSet
     ): ImageView {
         val imageView = ImageView(context)
 
@@ -553,7 +554,7 @@ class EduScreenFragment : Fragment() {
             this.height = AnimUtils.dpToPx(binding.root.context, heightDp).toInt()
         }
 
-        hands[id] = Hand(imageView, startShowHandAnimationSet(imageView, gesture(imageView)))
+        hands[id] = Hand(imageView, startShowHandAnimationSet(imageView, gesture(binding.root.context, imageView)))
 
         return imageView
     }
