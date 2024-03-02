@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="175dp"
+    android:layout_height="200dp"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <Button
+        android:id="@+id/btn_personal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="개인용"
+        android:background="@android:color/transparent"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"
+        android:gravity="left|center_vertical"/> <!-- 텍스트를 왼쪽으로 정렬하고 수직 가운데 정렬 -->
+
+    <Button
+        android:id="@+id/btn_child"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="자녀 계정"
+        android:background="@android:color/transparent"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"
+        android:gravity="left|center_vertical"/> <!-- 텍스트를 왼쪽으로 정렬하고 수직 가운데 정렬 -->
+
+    <Button
+        android:id="@+id/btn_business"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="직장 또는 비즈니스용"
+        android:background="@android:color/transparent"
+        android:textSize="16sp"
+        android:gravity="left|center_vertical"/> <!-- 텍스트를 왼쪽으로 정렬하고 수직 가운데 정렬 -->
+
+</LinearLayout>

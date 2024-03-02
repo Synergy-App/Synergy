@@ -9,7 +9,7 @@
     android:background="@color/phoneDeepBgColor"
     tools:context=".edu_space.default_app.activity.DefaultPhoneActivity">
 
-    <FrameLayout
+    <com.sungkyul.synergy.utils.EduScreen
         android:id="@+id/edu_screen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
