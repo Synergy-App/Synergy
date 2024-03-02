@@ -87,13 +87,22 @@
         <!-- 환경설정 -->
         <activity
             android:name=".edu_space.settingedu.activity.SettingEduActivity"
-            android:exported="false" /> <!-- 환경설정 시작 -->
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> <!-- 환경설정 시작 -->
         <activity
             android:name=".edu_space.settingedu.activity.SettingDetailActivity"
             android:exported="false" /> <!-- 화면 밝기 -->
         <activity
             android:name=".edu_space.settingedu.activity.SettingFontSizeActivity"
             android:exported="false" /> <!-- 글씨 크기 -->
+        <activity
+            android:name=".edu_space.settingedu.activity.SettingDisplayActivity"
+            android:exported="false" /> <!-- 화면 디스플레이 -->
 
         <!-- 계정생성 교육 -->
         <activity
@@ -115,11 +124,7 @@
         <activity
             android:name=".edu_space.kakaotalk.activity.KakaoMainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".edu_space.kakaotalk.activity.KakaoProfileDetailActivity"
