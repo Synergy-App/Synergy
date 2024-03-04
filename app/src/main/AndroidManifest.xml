@@ -15,29 +15,22 @@
         android:theme="@style/Theme.Synergy"
         tools:targetApi="31">
         <activity
-            android:name=".edu_space.delivery.payDActivity"
+            android:name=".edu_space.naver.activity.NaverSearchResultActivity"
             android:exported="false" />
         <!-- 교육공간 -->
         <activity
             android:name=".edu_space.default_app.activity.DefaultAppActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".main.activity.DigitalStartActivity"
             android:exported="false" /> <!-- 디지털 나이 검사 -->
         <activity
             android:name=".MainActivity"
             android:exported="false"> <!-- 메인화면 -->
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-
-            android:exported="false"> <!--메인화면-->
         </activity>
         <activity
             android:name=".edu_space.default_app.activity.DefaultMessageActivity"
             android:exported="false" />
-
         <activity
             android:name=".EduSpaceActivity"
             android:exported="false" /> <!-- 삭제할거 -->
@@ -76,32 +69,21 @@
         <activity
             android:name=".edu_space.screenEdu.activity.ScreenEduRightBottomActivity"
             android:exported="false" /> <!-- 하단바 오른쪽 -->
-
         <!-- 기본앱 활용 -->
         <activity
             android:name=".edu_space.default_app.activity.DefaultPhoneActivity"
-            android:exported="false" >
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".edu_space.default_app.activity.DefaultPhoneCallActivity"
-            android:exported="false" > <!-- 전화 -->
+            android:exported="false"> <!-- 전화 -->
         </activity>
         <activity
             android:name=".edu_space.default_app.activity.DefaultCameraActivity"
             android:exported="false" /> <!-- 카메라 -->
-        <activity
-            android:name=".edu_space.default_app.activity.DefaultMessageActivity"
-            android:exported="false" /> <!-- 전화 -->
         <!-- 환경설정 -->
         <activity
             android:name=".edu_space.settingedu.activity.SettingEduActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity> <!-- 환경설정 시작 -->
+            android:exported="true"></activity> <!-- 환경설정 시작 -->
         <activity
             android:name=".edu_space.settingedu.activity.SettingDetailActivity"
             android:exported="false" /> <!-- 화면 밝기 -->
@@ -111,49 +93,47 @@
         <activity
             android:name=".edu_space.settingedu.activity.SettingDisplayActivity"
             android:exported="false" /> <!-- 화면 디스플레이 -->
-
         <!-- 계정생성 교육 -->
         <activity
             android:name=".edu_space.accountedu.GoogleMainActivity"
             android:exported="false" />
         <activity
             android:name=".edu_space.accountedu.GoogleLoginActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".edu_space.accountedu.GoogleMakeActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".edu_space.accountedu.GoogleDefaultInfoActivity"
-            android:exported="false"/>
-
-        <!-- 앱 설치 --> <!-- 이 부분 아래에 넣어주세요 -->
-
+            android:exported="false" /> <!-- 앱 설치 -->
+        <!-- 이 부분 아래에 넣어주세요 -->
         <!-- 카카오톡 -->
         <activity
             android:name=".edu_space.kakaotalk.activity.KakaoMainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".edu_space.kakaotalk.activity.KakaoProfileDetailActivity"
             android:exported="false" />
         <activity
             android:name=".edu_space.kakaotalk.activity.KakaoChattingActivity"
-            android:exported="false"/>
-        <!-- 네이버 -->
+            android:exported="false" /> <!-- 네이버 -->
         <activity
             android:name=".edu_space.naver.activity.NaverSearchActivity"
-            android:exported="false" />
+            android:exported="false"></activity>
         <activity
             android:name=".edu_space.naver.activity.NaverActivity"
-            android:exported="false" />
-        <!-- 코레일 --> <!-- 이 부분 아래에 넣어주세요 -->
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> <!-- 코레일 -->
+        <!-- 이 부분 아래에 넣어주세요 -->
         <!-- 카카오 택시 -->
-        <activity android:name=".edu_space.kakaotaxi.TaxiMainActivity"
-            android:exported="false">
-
-        </activity>
+        <activity
+            android:name=".edu_space.kakaotaxi.TaxiMainActivity"
+            android:exported="false"></activity>
         <activity
             android:name=".edu_space.kakaotaxi.mapActivity"
             android:exported="false" />
@@ -163,22 +143,6 @@
         <activity
             android:name=".edu_space.kakaotaxi.payActivity"
             android:exported="false" /> <!-- 배달의 민족 -->
-        <activity
-            android:name=".edu_space.delivery.DlvMainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".edu_space.delivery.shopActivity"
-            android:exported="false" />
-        <activity
-            android:name=".edu_space.delivery.foodmenuActivity"
-            android:exported="false" />
-        <!-- 배달의 민족 -->
         <activity
             android:name=".edu_space.delivery.DlvMainActivity"
             android:exported="false" />
