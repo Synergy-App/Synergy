@@ -185,20 +185,75 @@
                 android:padding="8dp"
                 app:layout_constraintTop_toBottomOf="@id/ad2">
 
-                <ImageView
+                <LinearLayout
                     android:id="@+id/weather_view"
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="64dp"
                     android:layout_weight="1"
-                    android:src="@drawable/naver_post"/>
+                    android:padding="12dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/naver_post">
 
-                <ImageView
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="12.5° 안양"
+                            android:textSize="16sp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="어제보다 0.8° 높아요"
+                            android:textSize="12sp"/>
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/weather_image"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="16dp"
+                        android:src="@drawable/todo_rect"/>
+
+                </LinearLayout>
+                
+                <LinearLayout
                     android:id="@+id/stock_view"
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="64dp"
-                    android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:src="@drawable/naver_post"/>
+                    android:layout_marginStart="8dp"
+                    android:padding="12dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/naver_post">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="871.97"
+                            android:textSize="16sp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="코스닥 ▲ 1.04%"
+                            android:textSize="8sp"/>
+
+                    </LinearLayout>
+                    
+                </LinearLayout>
 
             </LinearLayout>
 

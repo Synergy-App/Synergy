@@ -1,5 +1,6 @@
 package com.sungkyul.synergy.edu_space.naver.activity
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,7 @@ import com.sungkyul.synergy.edu_space.naver.adapter.NaverPostData
 class NaverActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNaverBinding
     
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityNaverBinding.inflate(layoutInflater)
@@ -32,7 +34,7 @@ class NaverActivity : AppCompatActivity() {
         naverPostList.layoutManager = layoutManager
         naverPostList.adapter = NaverPostAdapter(naverPostArray)
         // TODO: height를 어떻게 계산할지 고민해보기
-        naverPostList.layoutParams.height = 2000*layoutManager.itemCount // 아이템들의 높이에 맞게 네이버 포스트 리스트의 높이를 정한다.
+        naverPostList.layoutParams.height = 1500*layoutManager.itemCount // 아이템들의 높이에 맞게 네이버 포스트 리스트의 높이를 정한다.
         Log.i("all_height", "${naverPostList.layoutParams.height}")
 
         // 이벤트 리스너 설정
