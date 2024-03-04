@@ -4,13 +4,16 @@ import android.graphics.Rect
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.databinding.ActivitySettingDisplayBinding
 import com.sungkyul.synergy.edu_space.settingedu.adapter.SettingDisplayAdapter
 import com.sungkyul.synergy.edu_space.settingedu.data.DisplayData
+import com.sungkyul.synergy.utils.EduCourses
 
 /** 교육공간 속 환경설정교육 속 디스플레이 액티비티 */
 
@@ -40,6 +43,7 @@ class dHorizontalItemDecorator(private val divHeight: Int) : RecyclerView.ItemDe
 
 // AppCompatActivity를 상속받는 SettingDisplayActivity 클래스 정의
 class SettingDisplayActivity : AppCompatActivity() {
+    private lateinit var binding: ActivitySettingDisplayBinding
 
     // SettingDisplayAdapter 및 데이터 리스트를 초기화할 변수 선언
     lateinit var displayAdapter: SettingDisplayAdapter
@@ -48,13 +52,16 @@ class SettingDisplayActivity : AppCompatActivity() {
     // 액티비티가 생성될 때 호출되는 onCreate 메서드 재정의
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivitySettingDisplayBinding.inflate(layoutInflater)
         // 레이아웃 설정
-        setContentView(R.layout.activity_setting_display)
+        setContentView(binding.root)
         // RecyclerView 초기화 함수 호출
         initRecycler()
 
         // SeekBar 초기화 및 리스너 등록
         val seekBar: SeekBar = findViewById(R.id.sb_Brightness)
+        seekBar.progress = 0
+
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 // SeekBar의 값이 변경될 때 호출되는 콜백
@@ -76,6 +83,8 @@ class SettingDisplayActivity : AppCompatActivity() {
                 // 예제로 밝기 값에 따라 텍스트뷰에 표시하는 코드
                 val brightnessTextView: TextView = findViewById(R.id.tv_Brightness)
                 brightnessTextView.text = "밝기: $progress"
+
+                binding.eduScreen.onAction("change_light_bar", progress.toString())
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -86,6 +95,19 @@ class SettingDisplayActivity : AppCompatActivity() {
                 // 사용자가 SeekBar 터치를 끝낼 때 호출되는 콜백
             }
         })
+
+        // 교육을 진행해보자!
+        binding.eduScreen.post {
+            binding.eduScreen.course = EduCourses.settingsDisplayCourse(
+                binding.eduScreen.context,
+                binding.eduScreen.width.toFloat(),
+                binding.eduScreen.height.toFloat()
+            )
+            binding.eduScreen.setOnFinishedCourseListener {
+                // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳
+            }
+            binding.eduScreen.start(this)
+        }
     }
 
 
@@ -95,7 +117,7 @@ class SettingDisplayActivity : AppCompatActivity() {
         // RecyclerView 인스턴스 가져오기
         val rv_display: RecyclerView = findViewById(R.id.rv_display)
         // SettingEduAdapter 초기화
-        displayAdapter = SettingDisplayAdapter(this)
+        displayAdapter = SettingDisplayAdapter(this, binding.eduScreen)
 
         // RecyclerView에 수직 및 수평 간격 조정 ItemDecorator 적용
         rv_display.addItemDecoration(VerticalItemDecorator(20))
@@ -123,5 +145,28 @@ class SettingDisplayActivity : AppCompatActivity() {
             displayAdapter.datas = ddatas
             displayAdapter.notifyDataSetChanged()
         }
+
+        // TODO(나중에 한 번 더 스크롤 이벤트 쓰게 되면 수정해야 할 듯)
+        rv_display.addOnScrollListener(object: RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+
+                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+                val lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition()
+                val totalItemCount = layoutManager.itemCount
+
+                // '탭을 해야지 스크롤을 다시 위로 올리면 어떡해!! 다시 내려!!'를 의미한다.
+                if(rv_display.canScrollVertically(1) && binding.eduScreen.getAction().id == "tap_font_item") {
+                    binding.eduScreen.prev()
+                    Log.i("scroll", "마지막 아님!")
+                }
+
+                // 스크롤이 최하단에 도달한 경우
+                if(!rv_display.canScrollVertically(1) && binding.eduScreen.getAction().id == "scroll_to_bottom") {
+                    binding.eduScreen.next()
+                    Log.i("scroll", "마지막!")
+                }
+            }
+        })
     }
 }

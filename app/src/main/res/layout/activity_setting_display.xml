@@ -7,6 +7,11 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <com.sungkyul.synergy.utils.EduScreen
+        android:id="@+id/edu_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <!-- 상단 백버튼과 타이틀 -->
     <Button
         android:id="@+id/display_back_button"

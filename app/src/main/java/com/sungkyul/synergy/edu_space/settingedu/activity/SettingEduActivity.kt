@@ -7,8 +7,10 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.databinding.ActivitySettingBinding
 import com.sungkyul.synergy.edu_space.settingedu.adapter.SettingEduAdapter
 import com.sungkyul.synergy.edu_space.settingedu.data.SettingData
+import com.sungkyul.synergy.utils.EduCourses
 
 /** 교육공간 속 환경설정교육 액티비티 */
 
@@ -38,6 +40,7 @@ class HorizontalItemDecorator(private val divHeight: Int) : RecyclerView.ItemDec
 
 // AppCompatActivity를 상속받는 SettingEduActivity 클래스 정의
 class SettingEduActivity : AppCompatActivity() {
+    private lateinit var binding: ActivitySettingBinding
 
     // SettingEduAdapter 및 데이터 리스트를 초기화할 변수 선언
     lateinit var settingAdapter: SettingEduAdapter
@@ -46,10 +49,24 @@ class SettingEduActivity : AppCompatActivity() {
     // 액티비티가 생성될 때 호출되는 onCreate 메서드 재정의
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivitySettingBinding.inflate(layoutInflater)
         // 레이아웃 설정
-        setContentView(R.layout.activity_setting)
+        setContentView(binding.root)
         // RecyclerView 초기화 함수 호출
         initRecycler()
+
+        // 교육을 진행해보자!
+        binding.eduScreen.post {
+            binding.eduScreen.course = EduCourses.settingsCourse(
+                binding.eduScreen.context,
+                binding.eduScreen.width.toFloat(),
+                binding.eduScreen.height.toFloat()
+            )
+            binding.eduScreen.setOnFinishedCourseListener {
+                // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳
+            }
+            binding.eduScreen.start(this)
+        }
     }
 
     // RecyclerView를 초기화하고 설정하는 함수
@@ -57,7 +74,7 @@ class SettingEduActivity : AppCompatActivity() {
         // RecyclerView 인스턴스 가져오기
         val rv_function: RecyclerView = findViewById(R.id.rv_function)
         // SettingEduAdapter 초기화
-        settingAdapter = SettingEduAdapter(this)
+        settingAdapter = SettingEduAdapter(this, binding.eduScreen)
 
         // RecyclerView에 수직 및 수평 간격 조정 ItemDecorator 적용
         rv_function.addItemDecoration(VerticalItemDecorator(20))
