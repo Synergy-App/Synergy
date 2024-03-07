@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/google_dialog_background">
+
+    <!-- 이전, 다음, 완료 버튼 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/google_dialog_background"
+        >
+
+        <Button
+            android:id="@+id/g_di_previous_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이전" />
+
+        <Button
+            android:id="@+id/g_di_next_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="다음" />
+
+        <Button
+            android:id="@+id/g_di_complete_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="완료" />
+
+    </LinearLayout>
+
+    <!-- 라디오 버튼 그룹 -->
+    <RadioGroup
+        android:id="@+id/gender_radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@drawable/google_dialog_background">
+
+        <RadioButton
+            android:id="@+id/radio_female"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 여자"
+            android:textSize="16sp"/>
+
+        <RadioButton
+            android:id="@+id/radio_male"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 남자"
+            android:textSize="16sp"/>
+
+        <RadioButton
+            android:id="@+id/radio_secret"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 공개 안함"
+            android:textSize="16sp"/>
+
+    </RadioGroup>
+
+</LinearLayout>

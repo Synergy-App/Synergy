@@ -99,13 +99,29 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.accountedu.GoogleLoginActivity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".edu_space.accountedu.GoogleMakeActivity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".edu_space.accountedu.GoogleDefaultInfoActivity"
-            android:exported="false" /> <!-- 앱 설치 -->
+            android:exported="false"/>
+        <activity
+            android:name=".edu_space.accountedu.GoogleMailActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".edu_space.accountedu.GooglePasswordActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".edu_space.accountedu.GoogleGetCodeActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".edu_space.accountedu.GooglePutCodeActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".edu_space.accountedu.GoogleMailAddActivity"
+            android:exported="false"/>
+        <!-- 앱 설치 -->
         <!-- 이 부분 아래에 넣어주세요 -->
         <!-- 카카오톡 -->
         <activity

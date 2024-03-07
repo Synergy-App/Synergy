@@ -1,0 +1,109 @@
+package com.sungkyul.synergy.edu_space.accountedu
+
+import android.content.Intent
+import android.os.Bundle
+import android.view.View
+import android.widget.Button
+import android.widget.EditText
+import android.widget.RadioButton
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import com.sungkyul.synergy.R
+
+class GoogleMailActivity : AppCompatActivity() {
+
+    private lateinit var existingMailText: TextView
+    private lateinit var mailNextButton: Button
+    private lateinit var newMailAddressEditText: EditText
+    private lateinit var smallText: TextView
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_google_mail)
+
+        // 뷰 초기화
+        existingMailText = findViewById(R.id.existing_mail_text)
+        mailNextButton = findViewById(R.id.mail_next_button)
+        newMailAddressEditText = findViewById(R.id.new_mail_address_edittext)
+        smallText = findViewById(R.id.small_text)
+
+        val radioButtonTemp3 = findViewById<RadioButton>(R.id.radio_button_temp3)
+
+        radioButtonTemp3.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                showNewMailEditText()
+            } else {
+                hideNewMailEditText()
+            }
+        }
+
+        mailNextButton.setOnClickListener {
+            // GooglePasswordActivity 로 이동하는 인텐트 생성
+            val intent = Intent(this, GooglePasswordActivity::class.java)
+            startActivity(intent) // 화면 전환
+        }
+    }
+
+
+    private fun showNewMailEditText() {
+        // 메일 에딧창, 작은 텍스트 표시
+        newMailAddressEditText.visibility = View.VISIBLE
+        smallText.visibility = View.VISIBLE
+
+        // 기존 이메일 사용 텍스트와 다음 버튼을 메일 에딧창 아래로 이동
+        moveTextAndButton()
+    }
+
+    private fun hideNewMailEditText() {
+        // 메일 에딧창, 작은 텍스트 숨기기
+        newMailAddressEditText.visibility = View.GONE
+        smallText.visibility = View.GONE
+
+        // 기존 위치로 이동
+        resetTextAndButton()
+    }
+
+    private fun moveTextAndButton() {
+        val params = newMailAddressEditText.layoutParams as ConstraintLayout.LayoutParams
+        val existingMailParams = existingMailText.layoutParams as ConstraintLayout.LayoutParams
+        val buttonParams = mailNextButton.layoutParams as ConstraintLayout.LayoutParams
+        val smallTextParams = smallText.layoutParams as ConstraintLayout.LayoutParams
+
+        // 메일 에딧창 아래로 이동
+        params.topToBottom = R.id.mail_radio_group
+        newMailAddressEditText.layoutParams = params
+
+        // 작은 텍스트 아래로 이동
+        smallTextParams.topToBottom = R.id.new_mail_address_edittext
+        smallText.layoutParams = smallTextParams
+
+        // 기존 이메일 사용 텍스트와 다음 버튼도 메일 에딧창 아래로 이동
+        existingMailParams.topToBottom = R.id.small_text
+        existingMailText.layoutParams = existingMailParams
+
+        buttonParams.topToBottom = R.id.small_text
+        mailNextButton.layoutParams = buttonParams
+
+        // 스몰 텍스트 왼쪽으로 이동
+        smallText.translationX = -120f // 이동 거리 조정
+
+        // 스몰 텍스트와 다른 뷰 사이의 간격 조정
+        smallTextParams.marginStart = 0 // 간격 조정
+        existingMailParams.topMargin = 120 // 간격 조정
+        buttonParams.topMargin = 120 // 간격 조정
+    }
+
+
+    private fun resetTextAndButton() {
+        val existingMailParams = existingMailText.layoutParams as ConstraintLayout.LayoutParams
+        val buttonParams = mailNextButton.layoutParams as ConstraintLayout.LayoutParams
+
+        // 기존 이메일 사용 텍스트와 다음 버튼을 초기 위치로 되돌림
+        existingMailParams.topToBottom = R.id.mail_radio_group
+        existingMailText.layoutParams = existingMailParams
+
+        buttonParams.topToBottom = R.id.existing_mail_text
+        mailNextButton.layoutParams = buttonParams
+    }
+}

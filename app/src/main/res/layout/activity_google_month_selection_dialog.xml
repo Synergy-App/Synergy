@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/google_dialog_background">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/google_dialog_background">
+
+
+            <!-- 이전, 다음, 완료 버튼 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/m_di_previous_button"
+                    android:layout_width="60dp"
+                    android:layout_height="38dp"
+                    android:text="이전" />
+
+                <Button
+                    android:id="@+id/m_di_next_button"
+                    android:layout_width="60dp"
+                    android:layout_height="38dp"
+                    android:text="다음" />
+
+                <Button
+                    android:id="@+id/m_di_complete_button"
+                    android:layout_width="60dp"
+                    android:layout_height="38dp"
+                    android:text="완료" />
+            </LinearLayout>
+
+            <!-- 월 선택 -->
+            <RadioGroup
+                android:id="@+id/month_radio_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- 이 부분에 라디오 버튼이 동적으로 추가됩니다. -->
+
+            </RadioGroup>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
