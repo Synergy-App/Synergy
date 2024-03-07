@@ -1,5 +1,6 @@
 package com.sungkyul.synergy.edu_space.default_app.fragment
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
@@ -11,6 +12,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.sungkyul.synergy.databinding.FragmentDefaultPhoneKeypadBinding
@@ -23,12 +25,14 @@ import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_SCALE
 import com.sungkyul.synergy.edu_space.default_app.activity.DefaultPhoneCallActivity
 import com.sungkyul.synergy.utils.AnimUtils
 import com.sungkyul.synergy.utils.EduListener
+import com.sungkyul.synergy.utils.EduScreen
 import com.sungkyul.synergy.utils.TextUtils
 
 class DefaultPhoneKeypadFragment(private val eduListener: EduListener) : Fragment() {
     private lateinit var binding: FragmentDefaultPhoneKeypadBinding
     private var secondaryButtonsIsEnabled = false
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -221,7 +225,7 @@ class DefaultPhoneKeypadFragment(private val eduListener: EduListener) : Fragmen
     private fun showContactAdditionDialog() {
         val builder = AlertDialog.Builder(requireActivity())
         builder.setTitle("연락처에 추가")
-            .setItems(arrayOf("새 연락처 등록", "기존 연락처 업데이트")) { dialog, which ->
+            .setItems(arrayOf("새 연락처 등록", "기존 연락처 업데이트")) { _, which ->
                 when(which) {
                     0 -> Toast.makeText(requireContext(), "새 연락처 등록", Toast.LENGTH_SHORT).show()
                     1 -> Toast.makeText(requireContext(), "기존 연락처 업데이트", Toast.LENGTH_SHORT).show()

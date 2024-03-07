@@ -6,16 +6,15 @@ import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.drawable.Drawable
-import android.util.DisplayMetrics
 import android.util.TypedValue
 import android.view.View
-import android.view.WindowManager
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.Interpolator
 import android.view.animation.LinearInterpolator
 import android.view.animation.ScaleAnimation
+import android.widget.ImageView
 import androidx.core.view.updateLayoutParams
 import com.sungkyul.synergy.R
 
@@ -24,42 +23,42 @@ const val TOUCH_DOWN_ELASTIC_BUTTON_DURATION = 250L
 class AnimUtils {
     companion object {
         // 버튼의 터치 애니메이션을 초기화하는 함수
-        fun initTouchAnimationOfButton(view: View) {
+        fun initTouchButtonAnimation(view: View) {
             view.background.alpha = 0
         }
 
         // 버튼의 터치 다운 애니메이션을 시작하는 함수
-        fun startTouchDownAnimationOfButton(context: Context, view: View) {
+        fun startTouchDownButtonAnimation(context: Context, view: View) {
             val animator = AnimatorInflater.loadAnimator(context, R.animator.touch_down_button)
             animator.setTarget(view.background)
             animator.start()
         }
 
         // 버튼의 터치 업 애니메이션을 시작하는 함수
-        fun startTouchUpAnimationOfButton(context: Context, view: View) {
+        fun startTouchUpButtonAnimation(context: Context, view: View) {
             val animator = AnimatorInflater.loadAnimator(context, R.animator.touch_up_button)
             animator.setTarget(view.background)
             animator.start()
         }
 
         // 탄성 있는 버튼의 터치 애니메이션을 초기화하는 함수
-        fun initTouchAnimationOfElasticButton(view: View) {
+        fun initTouchElasticButtonAnimation(view: View) {
             view.background.alpha = 0
         }
 
         // 탄성 있는 버튼의 터치 다운 애니메이션을 시작하는 함수
-        fun startTouchDownAnimationOfElasticButton(context: Context, view: View) {
+        fun startTouchDownElasticButtonAnimation(context: Context, view: View) {
             val animation = AnimationUtils.loadAnimation(context, R.anim.touch_down_elastic_button)
             animation.duration = TOUCH_DOWN_ELASTIC_BUTTON_DURATION
             animation.interpolator = DecelerateInterpolator()
             view.startAnimation(animation)
 
-            startTouchDownAnimationOfButton(context, view)
+            startTouchDownButtonAnimation(context, view)
         }
 
         // 탄성 있는 버튼의 터치 업 애니메이션을 시작하는 함수
-        fun startTouchUpAnimationOfElasticButton(context: Context, view: View) {
-            startTouchUpAnimationOfButton(context, view)
+        fun startTouchUpElasticButtonAnimation(context: Context, view: View) {
+            startTouchUpButtonAnimation(context, view)
         }
 
         // (duration)ms 동안 drawable의 알파 값이 startAlpha에서 endAlpha로 바뀌는 함수
@@ -156,16 +155,17 @@ class AnimUtils {
         }
 
         // ObjectAnimator.ofFloat를 편하게 사용하려고 만든 함수
-        fun startObjectAnimatorOfFloat(view: View, target: String, value1: Float, value2: Float, duration: Long, interpolator: Interpolator = LinearInterpolator()) {
-            ObjectAnimator.ofFloat(view, target, value1, value2).apply {
+        fun startObjectAnimatorOfFloat(view: View, target: String, value1: Float, value2: Float, duration: Long, interpolator: Interpolator = LinearInterpolator()): ObjectAnimator {
+            val animator = ObjectAnimator.ofFloat(view, target, value1, value2).apply {
                 this.duration = duration
                 this.interpolator = interpolator
                 start()
             }
+            return animator
         }
 
         // ValueAnimator.ofFloat를 편하게 사용하려고 만든 함수
-        fun startValueAnimatorOfFloat(update: (Float) -> Unit, value1: Float, value2: Float, duration: Long, interpolator: Interpolator = LinearInterpolator()) {
+        fun startValueAnimatorOfFloat(update: (Float) -> Unit, value1: Float, value2: Float, duration: Long, interpolator: Interpolator = LinearInterpolator()): ValueAnimator {
             val animator = ValueAnimator.ofFloat(value1, value2)
             animator.addUpdateListener {
                 update(it.animatedValue as Float)
@@ -173,6 +173,7 @@ class AnimUtils {
             animator.duration = duration
             animator.interpolator = interpolator
             animator.start()
+            return animator
         }
 
         // dp에서 px로 바꾸는 함수
@@ -180,19 +181,9 @@ class AnimUtils {
             return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.resources.displayMetrics)
         }
 
-        // TODO(스마트폰 화면의 가로/세로 크기를 불러와야 한다.)
-        fun getScreenDimensions(context: Context): Pair<Int, Int> {
-            val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-            val displayMetrics = DisplayMetrics()
-
-            // 현재 활성화된 디스플레이의 메트릭스 정보 가져오기
-            windowManager.defaultDisplay.getMetrics(displayMetrics)
-
-            // 가로와 세로 길이를 px 단위로 반환
-            val screenWidthPx = displayMetrics.widthPixels
-            val screenHeightPx = displayMetrics.heightPixels
-
-            return Pair(screenWidthPx, screenHeightPx)
+        // px에서 dp로 바꾸는 함수
+        fun pxToDp(context: Context, px: Float): Float {
+            return px/context.resources.displayMetrics.density
         }
     }
 }

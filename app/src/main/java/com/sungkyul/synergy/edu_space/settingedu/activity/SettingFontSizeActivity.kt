@@ -4,27 +4,30 @@ import android.os.Bundle
 import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.databinding.ActivitySettingFontsizeBinding
+import com.sungkyul.synergy.databinding.ActivitySettingsFontBinding
 
 class SettingFontSizeActivity : AppCompatActivity() {
     companion object {
         private const val TAG = "SettingFontSizeActivity"
     }
 
-    private lateinit var viewBinding: ActivitySettingFontsizeBinding
+    private lateinit var viewBinding: ActivitySettingsFontBinding
     private lateinit var pref: DefaultPreferenceManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewBinding = ActivitySettingsFontBinding.inflate(layoutInflater)
+        setContentView(viewBinding.root)
+        
         pref = DefaultPreferenceManager(this)
 
         val textSize = pref.getTextSize()
         setTheme(getAppTheme(textSize))
 
-        viewBinding = ActivitySettingFontsizeBinding.inflate(layoutInflater)
-        setContentView(viewBinding.root)
-
         initView()
+
+        // 교육을 진행해보자!
+        // TODO(여기에 숨겨진 오류 너무 많아서 보류)
     }
 
     private fun initView() {
@@ -60,5 +63,4 @@ class SettingFontSizeActivity : AppCompatActivity() {
 
             else -> R.style.Theme_App_3 // 기본값은 3
         }
-
 }

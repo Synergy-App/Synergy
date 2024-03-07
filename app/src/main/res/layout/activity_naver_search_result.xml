@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".edu_space.naver.activity.NaverSearchResultActivity">
+
+    <LinearLayout
+        android:id="@+id/search_bar"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center_vertical"
+        android:background="@color/white">
+
+        <ImageButton
+            android:id="@+id/naver_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="8dp"
+            android:src="@drawable/todo_circle"
+            android:scaleType="centerInside"
+            android:background="@null"
+            android:contentDescription="@null"/>
+
+        <EditText
+            android:id="@+id/search_edit_text"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:textSize="16sp"
+            android:textColor="@color/naver_search_black"
+            android:autofillHints="@string/naver_search_hint_2"
+            android:layout_weight="1"
+            android:inputType="text"
+            tools:ignore="LabelFor"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:padding="8dp"
+                android:src="@drawable/todo_circle"
+                android:scaleType="centerInside"
+                android:background="@null"
+                android:contentDescription="@null"/>
+
+            <ImageButton
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:padding="8dp"
+                android:src="@drawable/todo_circle"
+                android:scaleType="centerInside"
+                android:background="@null"
+                android:contentDescription="@null"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_results"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_bar"
+        android:layout_above="@id/bottom_menu_bar"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottom_menu_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <ImageButton
+            android:id="@+id/bottom_naver_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="8dp"
+            android:src="@drawable/todo_circle"
+            android:scaleType="centerInside"
+            android:background="@null"
+            android:contentDescription="@null"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/previous_button"/>
+
+        <ImageButton
+            android:id="@+id/previous_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_toEndOf="@id/bottom_naver_button"
+            android:padding="8dp"
+            android:src="@drawable/todo_circle"
+            android:scaleType="centerInside"
+            android:background="@null"
+            android:contentDescription="@null"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/bottom_naver_button"
+            app:layout_constraintEnd_toStartOf="@id/next_button"/>
+
+        <ImageButton
+            android:id="@+id/next_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="8dp"
+            android:src="@drawable/todo_circle"
+            android:scaleType="centerInside"
+            android:background="@null"
+            android:contentDescription="@null"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/previous_button"
+            app:layout_constraintEnd_toStartOf="@id/search_menu_button"/>
+
+        <ImageButton
+            android:id="@+id/search_menu_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="8dp"
+            android:src="@drawable/todo_circle"
+            android:scaleType="centerInside"
+            android:background="@null"
+            android:contentDescription="@null"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/next_button"
+            app:layout_constraintEnd_toStartOf="@id/refresh_button"/>
+
+        <ImageButton
+            android:id="@+id/refresh_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="8dp"
+            android:src="@drawable/todo_circle"
+            android:scaleType="centerInside"
+            android:background="@null"
+            android:contentDescription="@null"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/search_menu_button"
+            app:layout_constraintEnd_toStartOf="@id/share_button"/>
+
+        <ImageButton
+            android:id="@+id/share_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="8dp"
+            android:src="@drawable/todo_circle"
+            android:scaleType="centerInside"
+            android:background="@null"
+            android:contentDescription="@null"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/refresh_button"
+            app:layout_constraintEnd_toStartOf="@id/bottom_other_menu_button"/>
+
+        <ImageButton
+            android:id="@+id/bottom_other_menu_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="8dp"
+            android:src="@drawable/todo_circle"
+            android:scaleType="centerInside"
+            android:background="@null"
+            android:contentDescription="@null"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/share_button"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

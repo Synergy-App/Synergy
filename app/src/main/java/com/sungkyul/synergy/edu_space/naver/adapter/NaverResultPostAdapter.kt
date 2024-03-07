@@ -9,22 +9,18 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
 
-data class NaverPostData(
-    val profileImage: Int,
-    val profileName: String,
-    val date: String,
+data class NaverResultPostData(
+    val linkImage: Int,
+    val linkName: String,
     val postTitle: String,
     val postContent: String,
     val postImage: Int
 )
 
-class NaverPostAdapter(private val dataSet: ArrayList<NaverPostData>): RecyclerView.Adapter<NaverPostAdapter.ViewHolder>() {
-    var height = 0 // 네이버 포스트 리스트의 높이
-
+class NaverResultPostAdapter(private val dataSet: ArrayList<NaverResultPostData>): RecyclerView.Adapter<NaverResultPostAdapter.ViewHolder>() {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val profileImage: ImageView = view.findViewById(R.id.profile_image)
-        val profileName: TextView = view.findViewById(R.id.profile_name)
-        val date: TextView = view.findViewById(R.id.date)
+        val linkImage: ImageView = view.findViewById(R.id.link_image)
+        val linkName: TextView = view.findViewById(R.id.link_name)
         val postTitle: TextView = view.findViewById(R.id.post_title)
         val postContent: TextView = view.findViewById(R.id.post_content)
         val postImage: ImageView = view.findViewById(R.id.post_image)
@@ -32,19 +28,14 @@ class NaverPostAdapter(private val dataSet: ArrayList<NaverPostData>): RecyclerV
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.item_naver_post, viewGroup, false)
-
-        // 각 아이템의 높이를 측정해서 전체 높이에 추가한다.
-        view.measure(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
-        height += view.measuredHeight
+            .inflate(R.layout.item_naver_result_post, viewGroup, false)
 
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.profileImage.setImageResource(dataSet[position].profileImage)
-        viewHolder.profileName.text = dataSet[position].profileName
-        viewHolder.date.text = dataSet[position].date
+        viewHolder.linkImage.setImageResource(dataSet[position].linkImage)
+        viewHolder.linkName.text = dataSet[position].linkName
         viewHolder.postTitle.text = dataSet[position].postTitle
         viewHolder.postContent.text = dataSet[position].postContent
         viewHolder.postImage.setImageResource(dataSet[position].postImage)

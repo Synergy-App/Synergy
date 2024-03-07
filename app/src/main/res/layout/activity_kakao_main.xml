@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".edu_space.kakaotalk.activity.KakaoMainActivity">
+    tools:context=".edu_space.kakaotalk.activity.KakaoMainActivity"
+    android:background="@color/white">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/kakaoNavigationView"
@@ -16,7 +17,7 @@
         app:itemTextColor="@drawable/menu_click_color"
         app:menu="@menu/kakao_navi_menu"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"/>
 
     <FrameLayout
         android:id="@+id/kakaoMainFrameLayout"
@@ -26,5 +27,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/kakaoNavigationView" />
+
+    <com.sungkyul.synergy.utils.EduScreen
+        android:id="@+id/edu_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
