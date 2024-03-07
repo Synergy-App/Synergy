@@ -10,8 +10,11 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.databinding.ActivityGoogleMailBinding
+import com.sungkyul.synergy.databinding.ActivityGooglePasswordBinding
 
 class GooglePasswordActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityGooglePasswordBinding
 
     private lateinit var passwordEditText: EditText
     private lateinit var confirmPasswordEditText: EditText
@@ -20,7 +23,8 @@ class GooglePasswordActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_google_password)
+        binding = ActivityGooglePasswordBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         passwordEditText = findViewById(R.id.google_pw_edittext)
         confirmPasswordEditText = findViewById(R.id.google_pw_check_edittext)
@@ -42,8 +46,13 @@ class GooglePasswordActivity : AppCompatActivity() {
 
             if (password == confirmPassword) {
                 // 비밀번호 일치 시 다음 화면으로 이동
-                val intent = Intent(this, GoogleGetCodeActivity::class.java)
-                startActivity(intent)
+                val nextIntent = Intent(this, GoogleGetCodeActivity::class.java)
+
+                // 값을 전달한다.
+                nextIntent.putExtras(intent)
+                nextIntent.putExtra("password", binding.googlePwEdittext.text.toString())
+
+                startActivity(nextIntent)
             } else {
                 // 비밀번호 불일치
                 Toast.makeText(this, "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
