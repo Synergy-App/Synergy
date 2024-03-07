@@ -241,8 +241,8 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
     }
 
     override fun onAction(id: String, message: String?): Boolean {
-        // 교육 코스가 끝나면 모든 액션을 다시 사용할 수 있게 된다.
-        if(num >= course.size) return true
+        // 교육 코스가 시작하지 않았거나 끝났으면, 모든 액션을 다시 사용할 수 있게 된다.
+        if(num < 0 || num >= course.size) return true
 
         val eduData = course[num]
         Log.i(id, message ?: "null")
