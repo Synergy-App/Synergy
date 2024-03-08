@@ -43,9 +43,16 @@ android {
 }
 
 dependencies {
+    implementation ("com.squareup.retrofit2:converter-gson:2.7.1")
+    // Retrofit
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-moshi:2.9.0")
+    // OkHttp
+    implementation ("com.squareup.okhttp3:okhttp:4.10.0")
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.10.0")
+
     implementation(platform("com.google.firebase:firebase-bom:32.7.2"))
     implementation("com.google.firebase:firebase-analytics")
-
     // ViewPager2 슬라이드
     implementation("androidx.viewpager2:viewpager2:1.0.0")
 

@@ -1,0 +1,43 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".backend.BackendTest">
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="quiz test"/>
+
+    <TextView
+        android:id="@+id/QustionTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1"/>
+
+    <TextView
+        android:id="@+id/optionTextView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="2"/>
+
+    <TextView
+        android:id="@+id/optionTextView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="3"/>
+    <TextView
+        android:id="@+id/optionTextView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="4"/>
+    <TextView
+    android:id="@+id/optionTextView4"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="5"/>
+</LinearLayout>
