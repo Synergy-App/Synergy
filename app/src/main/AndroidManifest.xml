@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -14,6 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Synergy"
         tools:targetApi="31">
+
         <activity
             android:name=".edu_space.naver.activity.NaverSearchResultActivity"
             android:exported="false" /> <!-- 교육공간 -->
@@ -23,9 +25,19 @@
         <activity
             android:name=".main.activity.DigitalStartActivity"
             android:exported="false" /> <!-- 디지털 나이 검사 -->
+<<<<<<< Updated upstream
         <activity
             android:name=".MainActivity"
             android:exported="false"> <!-- 메인화면 -->
+=======
+        <activity android:name=".MainActivity"
+            android:exported="false"> <!--메인화면-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+>>>>>>> Stashed changes
         </activity>
         <activity
             android:name=".edu_space.default_app.activity.DefaultMessageActivity"
@@ -124,7 +136,11 @@
         <!-- 카카오톡 -->
         <activity
             android:name=".edu_space.kakaotalk.activity.KakaoMainActivity"
+<<<<<<< HEAD
             android:exported="true" />
+=======
+            android:exported="false" />
+>>>>>>> d03979fe33d2e88309f95faf2490cf9e73e186a6
         <activity
             android:name=".edu_space.kakaotalk.activity.KakaoProfileDetailActivity"
             android:exported="false" />
@@ -136,12 +152,8 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.naver.activity.NaverActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity> <!-- 코레일 -->
         <!-- 이 부분 아래에 넣어주세요 -->
         <activity
@@ -165,7 +177,15 @@
         <!-- 카카오 택시 -->
         <activity
             android:name=".edu_space.kakaotaxi.TaxiMainActivity"
+<<<<<<< HEAD
+<<<<<<< Updated upstream
             android:exported="false" />
+=======
+            android:exported="true" />
+>>>>>>> Stashed changes
+=======
+            android:exported="false" />
+>>>>>>> d03979fe33d2e88309f95faf2490cf9e73e186a6
         <activity
             android:name=".edu_space.kakaotaxi.mapActivity"
             android:exported="false" />
@@ -181,6 +201,19 @@
         <activity
             android:name=".edu_space.delivery.shopActivity"
             android:exported="false" />
+
+
+        <!-- TODO : 수진 - backend TEST -->
+        <activity
+            android:name=".backend.BackendTest"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
     </application>
 
 </manifest>
