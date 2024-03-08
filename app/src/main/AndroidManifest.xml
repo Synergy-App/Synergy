@@ -25,11 +25,9 @@
         <activity
             android:name=".main.activity.DigitalStartActivity"
             android:exported="false" /> <!-- 디지털 나이 검사 -->
-<<<<<<< Updated upstream
         <activity
             android:name=".MainActivity"
             android:exported="false"> <!-- 메인화면 -->
-=======
         <activity android:name=".MainActivity"
             android:exported="false"> <!--메인화면-->
             <intent-filter>
@@ -37,7 +35,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
->>>>>>> Stashed changes
         </activity>
         <activity
             android:name=".edu_space.default_app.activity.DefaultMessageActivity"
@@ -136,11 +133,7 @@
         <!-- 카카오톡 -->
         <activity
             android:name=".edu_space.kakaotalk.activity.KakaoMainActivity"
-<<<<<<< HEAD
             android:exported="true" />
-=======
-            android:exported="false" />
->>>>>>> d03979fe33d2e88309f95faf2490cf9e73e186a6
         <activity
             android:name=".edu_space.kakaotalk.activity.KakaoProfileDetailActivity"
             android:exported="false" />
@@ -153,7 +146,6 @@
         <activity
             android:name=".edu_space.naver.activity.NaverActivity"
             android:exported="false">
-
         </activity> <!-- 코레일 -->
         <!-- 이 부분 아래에 넣어주세요 -->
         <activity
@@ -177,15 +169,13 @@
         <!-- 카카오 택시 -->
         <activity
             android:name=".edu_space.kakaotaxi.TaxiMainActivity"
-<<<<<<< HEAD
-<<<<<<< Updated upstream
             android:exported="false" />
-=======
-            android:exported="true" />
->>>>>>> Stashed changes
-=======
+        </activity> <!-- 코레일 -->
+        <!-- 이 부분 아래에 넣어주세요 -->
+        <!-- 카카오 택시 -->
+        <activity
+            android:name=".edu_space.kakaotaxi.TaxiMainActivity"
             android:exported="false" />
->>>>>>> d03979fe33d2e88309f95faf2490cf9e73e186a6
         <activity
             android:name=".edu_space.kakaotaxi.mapActivity"
             android:exported="false" />
