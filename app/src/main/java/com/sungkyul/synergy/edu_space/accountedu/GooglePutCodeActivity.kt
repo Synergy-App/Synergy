@@ -40,8 +40,12 @@ class GooglePutCodeActivity : AppCompatActivity() {
 
         val nextButton: Button = findViewById(R.id.put_next_button)
         nextButton.setOnClickListener {
-            val intent = Intent(this, GoogleMailAddActivity::class.java)
-            startActivity(intent)
+            val nextIntent = Intent(this, GoogleMailAddActivity::class.java)
+
+            // 값을 전달한다.
+            nextIntent.putExtras(intent)
+
+            startActivity(nextIntent)
         }
     }
 
@@ -58,8 +62,6 @@ class GooglePutCodeActivity : AppCompatActivity() {
                 countdownText.setTextColor(Color.parseColor("#1B76EB"))
                 countdownText.text = "새 코드 받기"
                 countdownText.setOnClickListener {
-                    val intent = Intent(this@GooglePutCodeActivity, GoogleGetCodeActivity::class.java)
-                    startActivity(intent)
                     finish() // 현재 액티비티를 종료하여 뒤로 가기 버튼을 눌렀을 때 이전 액티비티로 돌아가지 않도록 합니다.
                 }
             }

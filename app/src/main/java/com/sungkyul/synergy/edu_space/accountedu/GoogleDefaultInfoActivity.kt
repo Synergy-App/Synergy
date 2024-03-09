@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -16,21 +17,33 @@ import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.databinding.ActivityGoogleDefaultinfoBinding
 
 class GoogleDefaultInfoActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityGoogleDefaultinfoBinding
 
     private var selectedGender: String = ""
     private var selectedMonth: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_google_defaultinfo)
+        binding = ActivityGoogleDefaultinfoBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // "다음" 버튼 클릭 리스너 설정
         val defaultinfoNextButton = findViewById<Button>(R.id.defaultinfo_next_button)
         defaultinfoNextButton.setOnClickListener {
+            val nextIntent = Intent(this, GoogleMailActivity::class.java)
+
+            // 값을 전달한다.
+            nextIntent.putExtras(intent)
+            nextIntent.putExtra("year", binding.yearEdittext.text.toString())
+            nextIntent.putExtra("month", binding.monthEdittext.text.toString())
+            nextIntent.putExtra("day", binding.dayEdittext.text.toString())
+            nextIntent.putExtra("gender", binding.genderEdittext.text.toString())
+
             // activity_google_mail 화면으로 이동
-            startActivity(Intent(this@GoogleDefaultInfoActivity, GoogleMailActivity::class.java))
+            startActivity(nextIntent)
         }
 
 

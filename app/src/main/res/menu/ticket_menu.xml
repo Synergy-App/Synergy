@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/reservation"
+        android:title="승차권예매"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/business"
+        />
+    <item
+        android:id="@+id/discount"
+        android:title="할인·정기권"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/alarm"
+        />
+    <item
+        android:id="@+id/tour"
+        android:title="관광상품"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/myinfo"
+        />
+    <item
+        android:id="@+id/ticket"
+        android:title="승차권확인"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/myinfo"
+        />
+</menu>

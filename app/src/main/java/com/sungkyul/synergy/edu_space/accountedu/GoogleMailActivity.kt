@@ -2,6 +2,7 @@ package com.sungkyul.synergy.edu_space.accountedu
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -10,8 +11,10 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.databinding.ActivityGoogleMailBinding
 
 class GoogleMailActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityGoogleMailBinding
 
     private lateinit var existingMailText: TextView
     private lateinit var mailNextButton: Button
@@ -20,7 +23,8 @@ class GoogleMailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_google_mail)
+        binding = ActivityGoogleMailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // 뷰 초기화
         existingMailText = findViewById(R.id.existing_mail_text)
@@ -40,8 +44,17 @@ class GoogleMailActivity : AppCompatActivity() {
 
         mailNextButton.setOnClickListener {
             // GooglePasswordActivity 로 이동하는 인텐트 생성
-            val intent = Intent(this, GooglePasswordActivity::class.java)
-            startActivity(intent) // 화면 전환
+            val nextIntent = Intent(this, GooglePasswordActivity::class.java)
+
+            // 값을 전달한다.
+            nextIntent.putExtras(intent)
+            nextIntent.putExtra("email", when(binding.mailRadioGroup.checkedRadioButtonId) {
+                binding.radioButtonTemp1.id -> binding.radioButtonTemp1.text.toString()
+                binding.radioButtonTemp2.id -> binding.radioButtonTemp2.text.toString()
+                else -> binding.newMailAddressEdittext.text.toString()
+            })
+
+            startActivity(nextIntent) // 화면 전환
         }
     }
 
