@@ -2,6 +2,7 @@ package com.sungkyul.synergy.edu_space.settingedu2
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.TypedValue
 import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.R
@@ -23,20 +24,20 @@ class Setting2FontActivity : AppCompatActivity() {
 
         binding.textsizeSeekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-                // SeekBar 값이 변경될 때마다 메인 텍스트의 크기를 조절
                 val textSize = when (progress) {
-                    0 -> resources.getDimensionPixelSize(R.dimen.main_text_size_0).toFloat()
-                    1 -> resources.getDimensionPixelSize(R.dimen.main_text_size_1).toFloat()
-                    2 -> resources.getDimensionPixelSize(R.dimen.main_text_size_2).toFloat()
-                    3 -> resources.getDimensionPixelSize(R.dimen.main_text_size_3).toFloat()
-                    4 -> resources.getDimensionPixelSize(R.dimen.main_text_size_4).toFloat()
-                    5 -> resources.getDimensionPixelSize(R.dimen.main_text_size_5).toFloat()
-                    6 -> resources.getDimensionPixelSize(R.dimen.main_text_size_6).toFloat()
-                    7 -> resources.getDimensionPixelSize(R.dimen.main_text_size_7).toFloat()
-                    else -> resources.getDimensionPixelSize(R.dimen.main_text_size_default).toFloat()
+                    0 -> resources.getDimension(R.dimen.main_text_size_0)
+                    1 -> resources.getDimension(R.dimen.main_text_size_1)
+                    2 -> resources.getDimension(R.dimen.main_text_size_2)
+                    3 -> resources.getDimension(R.dimen.main_text_size_3)
+                    4 -> resources.getDimension(R.dimen.main_text_size_4)
+                    5 -> resources.getDimension(R.dimen.main_text_size_5)
+                    6 -> resources.getDimension(R.dimen.main_text_size_6)
+                    7 -> resources.getDimension(R.dimen.main_text_size_7)
+                    else -> resources.getDimension(R.dimen.main_text_size_default)
                 }
-                binding.mainText.setTextSize(textSize)
+                binding.mainText.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize)
             }
+
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {}
 
