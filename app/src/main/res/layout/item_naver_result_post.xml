@@ -73,18 +73,22 @@
                 android:id="@+id/post_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="@string/synergy_explanation"
                 android:textSize="12sp"
                 android:textColor="@color/naver_black"/>
 
-            <ImageView
-                android:id="@+id/post_image"
-                android:layout_width="256dp"
-                android:layout_height="128dp"
-                android:layout_weight="1"
-                android:src="@drawable/sample_screenshot2"
-                android:contentDescription="@string/post_image"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/post_image"
+                    android:layout_width="256dp"
+                    android:layout_height="128dp"
+                    android:src="@drawable/sample_screenshot2"
+                    android:contentDescription="@string/post_image"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
