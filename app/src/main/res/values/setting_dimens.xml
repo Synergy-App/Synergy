@@ -2,6 +2,7 @@
 <!-- 환경설정-글자크기및스타일관련 임의파일-->
 
 <resources>
+    <dimen name="main_text_size_default">24sp</dimen>
     <dimen name="main_text_size_0">8sp</dimen>
     <dimen name="main_text_size_1">12sp</dimen>
     <dimen name="main_text_size_2">16sp</dimen>
