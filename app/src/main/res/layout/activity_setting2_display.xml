@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F6F6F6">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".MainActivity">
+
+        <ImageButton
+            android:id="@+id/setting_display_back_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/screenedu_back"
+            android:background="@android:color/transparent"
+            android:layout_marginTop="18dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/setting_display_title_text"
+            android:elevation="0dp" />
+
+
+        <TextView
+            android:id="@+id/setting_display_title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="디스플레이"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/setting_display_back_button"
+            />
+
+        <!-- 돋보기 이미지 -->
+        <ImageView
+            android:id="@+id/setting_display_search_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/setting_search"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="200dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/setting_display_title_text"
+            />
+
+        <!-- 1. 라이트/다크 + 다크모드설정 연결 레이아웃 -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/setting_display1_layout"
+            android:layout_width="0dp"
+            android:layout_height="305dp"
+            android:background="@drawable/rounded_button"
+            app:layout_constraintTop_toBottomOf="@id/setting_display_search_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="16dp">
+
+            <!-- 이미지 레이아웃 -->
+            <LinearLayout
+                android:id="@+id/light_dark_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <!-- 라이트 이미지 -->
+                <ImageView
+                    android:id="@+id/iv_light"
+                    android:layout_width="0dp"
+                    android:layout_height="150dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/light"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp"/>
+
+                <!-- 다크 이미지 -->
+                <ImageView
+                    android:id="@+id/iv_dark"
+                    android:layout_width="0dp"
+                    android:layout_height="150dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/dark"
+                    android:layout_gravity="center_vertical"/>
+            </LinearLayout>
+
+            <!-- 텍스트와 라디오 버튼을 수평으로 나란히 -->
+            <LinearLayout
+                android:id="@+id/bright_radio_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/light_dark_layout">
+
+                <!-- 라이트 텍스트와 라디오 버튼 -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/tv_light"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="라이트"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="8dp"/>
+
+                    <!-- 라이트 라디오 버튼 -->
+                    <RadioButton
+                        android:id="@+id/rb_light"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:checked="true"/>
+                </LinearLayout>
+
+                <!-- 다크 텍스트와 라디오 버튼 -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/tv_dark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="다크"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="8dp"/>
+
+                    <!-- 다크 라디오 버튼 -->
+                    <RadioButton
+                        android:id="@+id/rb_dark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- 회색 구분 선 -->
+            <View
+                android:id="@+id/display_divider1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="25dp"
+                android:background="#E8E8E8"
+                app:layout_constraintTop_toBottomOf="@id/bright_radio_layout"
+                />
+
+            <!-- 다크 모드 설정 텍스트 -->
+            <TextView
+                android:id="@+id/user_account_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="다크 모드 설정"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_marginStart="26dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/display_divider1"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- 2. 밝기 + 밝기 최적화 연결 레이아웃 -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/setting_display2_layout"
+            android:layout_width="0dp"
+            android:layout_height="305dp"
+            android:background="@drawable/rounded_button"
+            app:layout_constraintTop_toBottomOf="@id/setting_display1_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="16dp">
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- 밝기 텍스트 -->
+        <TextView
+            android:id="@+id/display_bright_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="밝기"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="406dp"
+            android:layout_marginBottom="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <!-- 메인화면 텍스트 -->
+        <TextView
+            android:id="@+id/display_main_screen_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="메인 화면"
+            android:textColor="#8C8C8C"
+            android:textSize="13sp"
+            android:layout_marginStart="26dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/display_bright_text"/>
+
+        <!-- 메인화면 밝기 시크바 레이아웃 -->
+        <RelativeLayout
+            android:id="@+id/main_seek_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/display_main_screen_text">
+
+            <!-- 이미지뷰 추가 -->
+            <ImageView
+                android:id="@+id/iv_leftImage"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="40dp"
+                android:src="@drawable/brightness"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true"/>
+
+            <!-- 시크바 추가 -->
+            <SeekBar
+                android:id="@+id/sb_brightness"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:layout_toEndOf="@+id/iv_leftImage"
+                android:layout_marginStart="15dp"
+                android:background="@color/white"
+                android:max="100"
+                android:progress="50"
+                android:theme="@style/Widget.AppCompat.SeekBar.Discrete"/>
+        </RelativeLayout>
+
+        <!-- 커버화면 텍스트 -->
+        <TextView
+            android:id="@+id/display_cover_screen_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="커버 화면"
+            android:textColor="#8C8C8C"
+            android:textSize="13sp"
+            android:layout_marginStart="26dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_seek_layout"/>
+
+        <!-- 커버화면 밝기 시크바 레이아웃 -->
+        <RelativeLayout
+            android:id="@+id/cover_seek_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/display_cover_screen_text">
+
+            <!-- 이미지뷰 추가 -->
+            <ImageView
+                android:id="@+id/bright_cover_img"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="40dp"
+                android:src="@drawable/brightness"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true"/>
+
+            <!-- 시크바 추가 -->
+            <SeekBar
+                android:id="@+id/sb_brightness2"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:layout_toEndOf="@+id/bright_cover_img"
+                android:layout_marginStart="15dp"
+                android:background="@color/white"
+                android:max="100"
+                android:progress="50"
+                android:theme="@style/Widget.AppCompat.SeekBar.Discrete"/>
+        </RelativeLayout>
+
+        <!-- 회색 구분 선2 -->
+        <View
+            android:id="@+id/display_divider2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:background="#E8E8E8"
+            app:layout_constraintTop_toBottomOf="@id/cover_seek_layout"
+            />
+
+        <!-- 밝기 최적화 레이아웃 -->
+        <LinearLayout
+            android:id="@+id/bright_switch_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="0dp"
+            app:layout_constraintTop_toBottomOf="@id/display_divider2">
+
+            <TextView
+                android:id="@+id/bright_optimization_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="밝기 최적화"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:gravity="start"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="0dp"/>
+
+            <Switch
+                android:id="@+id/bright_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:layout_marginStart="240dp"
+                android:layout_marginTop="8dp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/optimization_info_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="사용 중 (메인 화면)"
+            android:textStyle="bold"
+            android:textColor="#0672D5"
+            android:textSize="13sp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="-7dp"
+            android:layout_marginBottom="30dp"
+            app:layout_constraintTop_toBottomOf="@id/bright_switch_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <!-- 3. 부드러운 모션~화면모드 레이아웃 -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/setting_display3_layout"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:background="@drawable/rounded_button"
+            app:layout_constraintTop_toBottomOf="@id/optimization_info_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="35dp">
+
+            <TextView
+                android:id="@+id/motion_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="부드러운 모션 및 화면 전환"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:gravity="start"
+                android:layout_marginStart="26dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="@+id/setting_display3_layout"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/motion_info_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="최적화"
+                android:textStyle="bold"
+                android:textColor="#0672D5"
+                android:textSize="12sp"
+                android:layout_marginStart="26dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/motion_text"/>
+
+            <!-- 회색 구분 선3 -->
+            <View
+                android:id="@+id/display_divider3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="25dp"
+                android:background="#E8E8E8"
+                app:layout_constraintTop_toBottomOf="@id/motion_info_text"
+                />
+
+            <LinearLayout
+                android:id="@+id/comfortable_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                app:layout_constraintTop_toBottomOf="@id/display_divider3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:id="@+id/comfortable_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="편안하게 화면 보기"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="8dp"/>
+
+                <Switch
+                    android:id="@+id/comfortable_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:layout_marginStart="180dp"/>
+
+            </LinearLayout>
+
+            <!-- 회색 구분 선4 -->
+            <View
+                android:id="@+id/display_divider4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="25dp"
+                android:background="#E8E8E8"
+                app:layout_constraintTop_toBottomOf="@id/comfortable_layout"
+                />
+
+            <TextView
+                android:id="@+id/screen_mode_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="화면 모드"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:gravity="start"
+                android:layout_marginStart="26dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="@+id/setting_display3_layout"
+                app:layout_constraintTop_toBottomOf="@id/display_divider4"/>
+
+            <TextView
+                android:id="@+id/screen_mode_info_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="선명한 화면"
+                android:textStyle="bold"
+                android:textColor="#0672D5"
+                android:textSize="12sp"
+                android:layout_marginStart="26dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/screen_mode_text"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- 4. 글자크기~카메라영역 레이아웃 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/setting_display4_layout"
+        android:layout_width="0dp"
+        android:layout_height="230dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintTop_toBottomOf="@id/setting_display3_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="35dp">
+
+        <TextView
+            android:id="@+id/display_font_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="글자 크기와 스타일"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:gravity="start"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="14dp"
+            app:layout_constraintStart_toStartOf="@+id/setting_display4_layout"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <!-- 회색 구분 선5 -->
+        <View
+            android:id="@+id/display_divider5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:background="#E8E8E8"
+            app:layout_constraintTop_toBottomOf="@id/display_font_text"
+            />
+
+        <TextView
+            android:id="@+id/display_screen_size_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="화면 크게/작게"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:gravity="start"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="14dp"
+            app:layout_constraintStart_toStartOf="@+id/setting_display4_layout"
+            app:layout_constraintTop_toBottomOf="@id/display_divider5"/>
+
+        <!-- 회색 구분 선6 -->
+        <View
+            android:id="@+id/display_divider6"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:background="#E8E8E8"
+            app:layout_constraintTop_toBottomOf="@id/display_screen_size_text"
+            />
+
+        <TextView
+            android:id="@+id/display_full_screen_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="전체 화면 비율로 사용할 앱"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:gravity="start"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="14dp"
+            app:layout_constraintStart_toStartOf="@+id/setting_display4_layout"
+            app:layout_constraintTop_toBottomOf="@id/display_divider6"/>
+
+        <!-- 회색 구분 선7 -->
+        <View
+            android:id="@+id/display_divider7"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:background="#E8E8E8"
+            app:layout_constraintTop_toBottomOf="@id/display_full_screen_text"
+            />
+
+        <TextView
+            android:id="@+id/display_camera_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="카메라 영역"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:gravity="start"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="14dp"
+            app:layout_constraintStart_toStartOf="@+id/setting_display4_layout"
+            app:layout_constraintTop_toBottomOf="@id/display_divider7"/>
+
+        <Button
+            android:id="@+id/setting2_display_font_btn"
+            android:layout_width="398dp"
+            android:layout_height="70dp"
+            android:background="@android:color/transparent"
+            android:text=""
+            app:layout_constraintBottom_toBottomOf="@+id/display_divider5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- 5. 화면 자동 꺼짐 시간 레이아웃 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/setting_display5_layout"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintTop_toBottomOf="@id/setting_display4_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="35dp">
+
+        <TextView
+            android:id="@+id/display_screen_off_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="화면 자동 꺼짐 시간"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:gravity="start"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="14dp"
+            app:layout_constraintStart_toStartOf="@+id/setting_display5_layout"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/screen_off_info_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2분"
+            android:textStyle="bold"
+            android:textColor="#0672D5"
+            android:textSize="12sp"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/display_screen_off_text"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

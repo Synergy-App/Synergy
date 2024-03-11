@@ -8,25 +8,21 @@
     android:background="#F6F6F6"
     tools:context=".MainActivity">
 
-    <com.sungkyul.synergy.utils.EduScreen
-        android:id="@+id/edu_screen"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 
-    <!--버튼 텍스트 "<" 이미지 나중에 추가하려고 임의로 뿅텍스트로 해놓음-->
-    <Button
+    <ImageButton
         android:id="@+id/font_back_button"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:text="뿅"
-        android:textSize="30sp"
-        android:textColor="@color/black"
+        android:src="@drawable/screenedu_back"
         android:background="@android:color/transparent"
         android:layout_marginTop="3dp"
         app:layout_constraintTop_toTopOf="@id/font_title_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/font_title_text"
-        android:elevation="0dp" />
+        android:elevation="0dp"
+        android:contentDescription="뒤로 가기 버튼"
+        />
+
 
     <TextView
         android:id="@+id/font_title_text"
@@ -59,11 +55,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="글자가 이 크기로 표시됩니다.&#10;1234567890!@#%*()_+-="
-            android:textSize="?attr/mainTextSize"
             android:textColor="@color/black"
             android:layout_gravity="center"
             android:layout_marginTop="120dp"
             android:layout_marginBottom="16dp"/>
+
 
     </LinearLayout>
 
@@ -132,7 +128,7 @@
                 android:textSize="18sp"
                 android:gravity="start"
                 android:layout_marginEnd="8dp"
-            />
+                />
 
             <Switch
                 android:id="@+id/bold_switch"
@@ -194,8 +190,8 @@
                 android:id="@+id/textsize_seekbar"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginTop="0dp"
+                android:layout_weight="1"
                 android:max="7"
                 android:progress="4" />
 
