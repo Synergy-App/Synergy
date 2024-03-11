@@ -41,7 +41,8 @@ class DefaultPhoneActivity : AppCompatActivity() {
         }
 
 
-        binding.phoneBottomNav.visibility = BottomNavigationView.INVISIBLE
+        // TODO(하단 바를 일반 버튼 모음집으로 바꿔야 함)
+        //binding.phoneBottomNav.visibility = BottomNavigationView.INVISIBLE
 
 
         // Fragments
