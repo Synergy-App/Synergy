@@ -156,7 +156,7 @@
                 <ImageView
                     android:layout_width="96dp"
                     android:layout_height="48dp"
-                    android:src="@drawable/todo_rect"/>
+                    android:src="@drawable/naver_ad1"/>
 
             </LinearLayout>
 
@@ -173,7 +173,7 @@
                 <ImageView
                     android:layout_width="256dp"
                     android:layout_height="64dp"
-                    android:src="@drawable/todo_rect"/>
+                    android:src="@drawable/naver_ad1"/>
 
             </LinearLayout>
 
@@ -219,7 +219,7 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginStart="16dp"
-                        android:src="@drawable/todo_rect"/>
+                        android:src="@drawable/naver_sun"/>
 
                 </LinearLayout>
                 

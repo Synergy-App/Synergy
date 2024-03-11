@@ -30,5 +30,11 @@ class NaverSearchResultActivity : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(binding.root.context)
         searchResults.layoutManager = layoutManager
         searchResults.adapter = NaverResultPostAdapter(naverResultPostArray)
+
+        binding.searchEditText.setText(intent.getStringExtra("search_words"))
+
+        binding.clearButton.setOnClickListener {
+            finish()
+        }
     }
 }
