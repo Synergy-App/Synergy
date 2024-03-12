@@ -42,33 +42,11 @@
             android:name=".edu_space.icon_edu.activity.IconDetailActivity"
             android:exported="false" /> <!-- 아이콘 설명 -->
         <!-- 화면구성 -->
-        <activity
-            android:name=".edu_space.screenEdu.activity.ScreenEduMainActivity"
-            android:exported="false" />
+
         <activity
             android:name=".edu_space.screenEdu.activity.ScreenEduActivity"
             android:exported="false" />
-        <activity
-            android:name=".edu_space.screenEdu.activity.ScreenEduToolActivity"
-            android:exported="false" /> <!-- 상단바 -->
-        <activity
-            android:name=".edu_space.screenEdu.activity.ScreenEduLeftToolActivity"
-            android:exported="false" /> <!-- 상단바 왼쪽 -->
-        <activity
-            android:name=".edu_space.screenEdu.activity.ScreenEduRightToolActivity"
-            android:exported="false" /> <!-- 상단바 오른쪽 -->
-        <activity
-            android:name=".edu_space.screenEdu.activity.ScreenEduBottomActivity"
-            android:exported="false" /> <!-- 하단바 -->
-        <activity
-            android:name=".edu_space.screenEdu.activity.ScreenEduLeftBottomActivity"
-            android:exported="false" /> <!-- 하단바 왼쪽 -->
-        <activity
-            android:name=".edu_space.screenEdu.activity.ScreenEduCenterBottomActivity"
-            android:exported="false" /> <!-- 하단바 가운데 -->
-        <activity
-            android:name=".edu_space.screenEdu.activity.ScreenEduRightBottomActivity"
-            android:exported="false" /> <!-- 하단바 오른쪽 -->
+
         <!-- 기본앱 활용 -->
         <activity
             android:name=".edu_space.default_app.activity.DefaultPhoneActivity"
