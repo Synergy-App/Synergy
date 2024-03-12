@@ -25,6 +25,6 @@
     </RelativeLayout>
 
 
-    <include layout="@layout/fragment_sreen_nevigationbar" />
+    <include layout="@layout/fragment_screen_nevigationbar" />
 
 </LinearLayout>
