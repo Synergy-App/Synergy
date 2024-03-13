@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,7 +10,9 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_above="@id/bottom_navigation_menu">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -66,7 +68,7 @@
                             android:layout_width="48dp"
                             android:layout_height="48dp"
                             android:padding="4dp"
-                            android:src="@drawable/todo_circle"
+                            android:src="@drawable/naver_talk_button"
                             android:scaleType="centerInside"
                             android:background="@null"
                             android:contentDescription="@string/naver_talk"/>
@@ -76,7 +78,7 @@
                             android:layout_width="48dp"
                             android:layout_height="48dp"
                             android:padding="4dp"
-                            android:src="@drawable/todo_circle"
+                            android:src="@drawable/naver_notification_button"
                             android:scaleType="centerInside"
                             android:background="@null"
                             android:contentDescription="@string/notification"/>
@@ -268,4 +270,130 @@
 
     </ScrollView>
 
-</LinearLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottom_navigation_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="4dp">
+
+        <LinearLayout
+            android:id="@+id/shopping_group"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/home_group">
+
+            <ImageButton
+                android:id="@+id/shopping_button"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:padding="8dp"
+                android:src="@drawable/naver_shopping"
+                android:scaleType="centerInside"
+                android:background="@null"
+                android:contentDescription="@null"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="@string/shopping"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/home_group"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/shopping_group"
+            app:layout_constraintEnd_toStartOf="@id/contents_group">
+
+            <ImageButton
+                android:id="@+id/home_button"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_toEndOf="@id/home_button"
+                android:padding="0dp"
+                android:src="@drawable/naver_home"
+                android:scaleType="centerInside"
+                android:background="@null"
+                android:contentDescription="@null"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="@string/home"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/contents_group"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/home_group"
+            app:layout_constraintEnd_toStartOf="@id/clip_group">
+
+            <ImageButton
+                android:id="@+id/contents_button"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:padding="8dp"
+                android:src="@drawable/naver_note"
+                android:scaleType="centerInside"
+                android:background="@null"
+                android:contentDescription="@null"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="@string/contents"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/clip_group"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/contents_group"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageButton
+                android:id="@+id/clip_button"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:padding="6dp"
+                android:src="@drawable/naver_play_circle"
+                android:scaleType="centerInside"
+                android:background="@null"
+                android:contentDescription="@null"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="@string/clip"/>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

@@ -1,8 +1,11 @@
 package com.sungkyul.synergy.edu_space.naver.activity
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MotionEvent
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityNaverSearchResultBinding
@@ -10,10 +13,12 @@ import com.sungkyul.synergy.edu_space.naver.adapter.NaverPostAdapter
 import com.sungkyul.synergy.edu_space.naver.adapter.NaverPostData
 import com.sungkyul.synergy.edu_space.naver.adapter.NaverResultPostAdapter
 import com.sungkyul.synergy.edu_space.naver.adapter.NaverResultPostData
+import com.sungkyul.synergy.utils.AnimUtils
 
 class NaverSearchResultActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNaverSearchResultBinding
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityNaverSearchResultBinding.inflate(layoutInflater)
@@ -31,8 +36,27 @@ class NaverSearchResultActivity : AppCompatActivity() {
         searchResults.layoutManager = layoutManager
         searchResults.adapter = NaverResultPostAdapter(naverResultPostArray)
 
+        binding.naverButton.background.alpha = 0
         binding.searchEditText.setText(intent.getStringExtra("search_words"))
 
+        binding.naverButton.setOnTouchListener { view, event ->
+            when(event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    view.background.alpha = 32
+                }
+                MotionEvent.ACTION_UP -> {
+                    view.background.alpha = 0
+
+                    // 네이버의 태초 마을로 이동한다.
+                    val intent = Intent(this, NaverActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                    startActivity(intent)
+
+                    view.performClick()
+                }
+            }
+            true
+        }
         binding.clearButton.setOnClickListener {
             finish()
         }

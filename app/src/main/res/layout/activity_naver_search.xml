@@ -158,7 +158,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:padding="8dp"
-                android:src="@drawable/todo_circle"
+                android:src="@drawable/naver_microphone"
                 android:scaleType="centerInside"
                 android:background="@null"/>
 
@@ -166,7 +166,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:padding="8dp"
-                android:src="@drawable/todo_circle"
+                android:src="@drawable/naver_camera"
                 android:scaleType="centerInside"
                 android:background="@null"/>
 
@@ -174,7 +174,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:padding="8dp"
-                android:src="@drawable/todo_circle"
+                android:src="@drawable/naver_map_point"
                 android:scaleType="centerInside"
                 android:background="@null"/>
 

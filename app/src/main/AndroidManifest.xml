@@ -17,12 +17,7 @@
         tools:targetApi="31">
         <activity
             android:name=".edu_space.default_app.activity.DefaultMessageChattingActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity>
         <activity
             android:name=".edu_space.naver.activity.NaverSearchResultActivity"
@@ -123,7 +118,12 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.naver.activity.NaverActivity"
-            android:exported="false">
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity> <!-- 코레일 -->
         <!-- 이 부분 아래에 넣어주세요 -->
         <activity
