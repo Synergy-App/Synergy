@@ -151,7 +151,7 @@
             android:id="@+id/gallery_button"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@drawable/todo_circle"
+            android:src="@drawable/ic_camera"
             android:scaleType="centerInside"
             android:padding="8dp"
             android:background="@drawable/white_circle"

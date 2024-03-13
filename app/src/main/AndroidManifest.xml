@@ -53,13 +53,23 @@
         <!-- 기본앱 활용 -->
         <activity
             android:name=".edu_space.default_app.activity.DefaultPhoneActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".edu_space.default_app.activity.DefaultPhoneCallActivity"
             android:exported="false" /> <!-- 전화 -->
         <activity
             android:name=".edu_space.default_app.activity.DefaultCameraActivity"
-            android:exported="false" /> <!-- 카메라 -->
+            android:exported="false">
+        </activity> <!-- 카메라 -->
+        <activity
+            android:name=".edu_space.default_app.activity.DefaultCameraGalleryViewActivity"
+            android:exported="false"/>
         <!-- 환경설정2 -->
         <activity
             android:name=".edu_space.settingedu2.Setting2MainActivity"
@@ -69,7 +79,7 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.settingedu2.Setting2FontActivity"
-            android:exported="false"></activity> <!-- 계정생성 교육 -->
+            android:exported="false" /> <!-- 계정생성 교육 -->
         <activity
             android:name=".edu_space.accountedu.GoogleMainActivity"
             android:exported="false" />
@@ -118,12 +128,7 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.naver.activity.NaverActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity> <!-- 코레일 -->
         <!-- 이 부분 아래에 넣어주세요 -->
         <activity
@@ -152,7 +157,7 @@
             android:exported="false" /> <!-- 배달의 민족 -->
         <activity
             android:name=".edu_space.delivery.DlvMainActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".edu_space.delivery.shopActivity"
             android:exported="false" />
