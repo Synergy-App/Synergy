@@ -21,8 +21,8 @@ class EduSpaceActivity : AppCompatActivity() {
         }
 
         binding.screenEduBtn.setOnClickListener{
-            val intent= Intent(this, ScreenEduMainActivity::class.java)
-            startActivity(intent)
+            /*val intent= Intent(this, ScreenEduMainActivity::class.java)
+            startActivity(intent)*/
         }
     }
 }

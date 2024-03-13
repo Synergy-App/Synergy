@@ -23,7 +23,7 @@
             android:padding="8dp"
             android:src="@drawable/naver_logo"
             android:scaleType="centerInside"
-            android:background="@null"
+            android:background="@color/black"
             android:contentDescription="@null"/>
 
         <EditText
