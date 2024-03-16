@@ -188,6 +188,7 @@ class EduCourses {
             val height = AnimUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
+            // 0
             val data0 = EduData()
             data0.dialog.contentText = "카카오톡의\n메인 화면입니다."
             data0.dialog.contentGravity = Gravity.CENTER
@@ -199,6 +200,7 @@ class EduCourses {
             data0.cover.visibility = true
             result.add(data0)
 
+            // 1
             val data1 = EduData()
             data1.dialog.duration = 750
             data1.arrow.duration = 750
@@ -215,10 +217,12 @@ class EduCourses {
             data1.dialog.contentText = "이 버튼은 빠르게\n친구를 찾을 수 있는\n버튼이에요."
             result.add(data1)
 
+            // 2
             val data2 = EduData()
             data2.dialog.contentText = "친구를 빠르게 찾고\n싶을 때 이 버튼을 눌러\n찾고 싶은 친구의 이름을\n입력하면 돼요."
             result.add(data2)
 
+            // 3
             val data3 = EduData()
             data3.cover.boxLeft = 10.0f
             data3.cover.boxTop = 75.0f
@@ -227,12 +231,14 @@ class EduCourses {
             data3.dialog.contentText = "내 프로필입니다."
             result.add(data3)
 
+            // 4
             val data4 = EduData()
             data4.dialog.titleText = "프로필이란?"
             data4.dialog.contentText = "카카오톡을 사용할 때\n다른 사람들에게\n여러분을 알리는데\n도움을 줄 수 있는\n간단한 자기소개입니다."
             data4.dialog.bottom = 300.0f
             result.add(data4)
 
+            // 5
             val data5 = EduData()
             data5.dialog.titleText = ""
             data5.dialog.contentText = "친구들의 목록을 볼 수 있어요."
@@ -243,6 +249,7 @@ class EduCourses {
             data5.arrow.endTo = "dialog"
             result.add(data5)
 
+            // 6
             val data6 = EduData()
             data6.dialog.contentText = "친구를 찾을 수 있는\n버튼입니다."
             data6.dialog.duration = 750
@@ -252,12 +259,13 @@ class EduCourses {
             data6.dialog.start = 25.0f
             data6.dialog.end = 75.0f
             data6.cover.boxLeft = 25.0f
-            data6.cover.boxTop = height-50.0f
-            data6.cover.boxRight = 75.0f
+            data6.cover.boxTop = height-70.0f
+            data6.cover.boxRight = 80.0f
             data6.cover.boxBottom = height-0.0f
             data6.arrow.endTo = "box"
             result.add(data6)
 
+            // 7
             val data7 = EduData()
             data7.dialog.duration = 750
             data7.arrow.duration = 750
@@ -265,6 +273,7 @@ class EduCourses {
             data7.dialog.top = 425.0f
             result.add(data7)
 
+            // 8
             val data8 = EduData()
             data8.dialog.contentText = "카카오톡으로\n친구와 연락을\n주고 받아 볼까요?"
             data8.dialog.top = 300.0f
@@ -276,17 +285,15 @@ class EduCourses {
             data8.arrow.endTo = "dialog"
             result.add(data8)
 
+            // 9
             val data9 = EduData()
             data9.dialog.visibility = false
             data9.cover.visibility = false
             data9.arrow.visibility = false
             data9.hands.add(EduHand(
                     id = "tap",
-                    source = R.drawable.hand,
                     x = 100.0f,
                     y = 200.0f,
-                    width = 50.0f,
-                    height = 75.0f,
                     gesture = HandGestures::tapGesture
                 )
             )
@@ -385,12 +392,61 @@ class EduCourses {
             val height = AnimUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
+            // 0
             val data0 = EduData()
+            data0.dialog.contentText = "이 공간은\n친구와 채팅을\n할 수 있습니다."
+            data0.dialog.contentGravity = Gravity.CENTER
+            data0.dialog.top = 300.0f
+            data0.dialog.bottom = 300.0f
+            data0.dialog.start = 50.0f
+            data0.dialog.end = 50.0f
+            data0.dialog.visibility = true
+            data0.cover.visibility = true
             result.add(data0)
+
+            // 1
+            /*val data1 = EduData()
+            data1.dialog.visibility = false
+            data1.cover.visibility = false
+            data1.arrow.visibility = false
+            data1.action.id = "click_message_edit_text"
+            data1.hands.add(EduHand(
+                id = "tap",
+                source = R.drawable.hand,
+                x = 200.0f,
+                y = 675.0f,
+                rotation = 180.0f,
+                gesture = HandGestures::tapGesture
+            ))
+            result.add(data1)*/
+
+            // 2
+            val data2 = EduData()
+            data2.dialog.contentText = "메시지를 보내볼까요?"
+            data2.dialog.visibility = true
+            data2.cover.visibility = true
+            result.add(data2)
+
+            // temp
+            val data1 = EduData()
+            data1.dialog.visibility = false
+            data1.cover.visibility = false
+            data1.arrow.visibility = false
+            data1.action.id = "click_message_edit_text"
+            data1.hands.add(EduHand(
+                id = "tap",
+                source = R.drawable.hand,
+                x = 200.0f,
+                y = 675.0f,
+                rotation = 180.0f,
+                gesture = HandGestures::tapGesture
+            ))
+            result.add(data1)
 
             return result
         }
 
+        // activity_setting2_main
         fun settingsCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
             val width = AnimUtils.pxToDp(context, widthDp)
             val height = AnimUtils.pxToDp(context, heightDp)
@@ -408,39 +464,53 @@ class EduCourses {
             result.add(data0)
 
             val data1 = EduData()
-            data1.dialog.contentText = "디스플레이는\n스마트폰의 다양한 설정을\n할 수 있습니다."
-            data1.dialog.contentBolds = listOf(Pair(0, 5))
-            data1.dialog.duration = 750
-            data1.dialog.top = 450.0f
-            data1.dialog.bottom = 150.0f
-            data1.cover.boxLeft = 20.0f
-            data1.cover.boxTop = 320.0f
-            data1.cover.boxRight = width-20.0f
-            data1.cover.boxBottom = 400.0f
-            data1.cover.boxVisibility = true
-            data1.cover.boxStrokeVisibility = true
+            data1.dialog.contentText = "맨 아래까지 스크롤해주세요."
             result.add(data1)
 
             val data2 = EduData()
-            data2.dialog.contentText = "디스플레이를 클릭해주세요."
+            data2.dialog.visibility = false
+            data2.cover.visibility = false
+            data2.action.id = "scroll_to_bottom"
+            data2.hands.add(EduHand(
+                id = "drag",
+                x = 200.0f,
+                y = 650.0f,
+                gesture = HandGestures::settingsScrollDownGesture
+            ))
             result.add(data2)
 
             val data3 = EduData()
-            data3.dialog.visibility = false
-            data3.cover.visibility = false
-            data3.cover.boxVisibility = false
-            data3.cover.boxStrokeVisibility = false
-            data3.action.id = "click_display_item"
-            data3.hands.add(EduHand(
+            data3.dialog.contentText = "디스플레이는\n스마트폰의 다양한 설정을 할 수\n있습니다."
+            data3.dialog.contentBolds = listOf(Pair(0, 5))
+            data3.dialog.top = 450.0f
+            data3.dialog.bottom = 150.0f
+            data3.cover.boxLeft = 20.0f
+            data3.cover.boxTop = 320.0f
+            data3.cover.boxRight = width-20.0f
+            data3.cover.boxBottom = 390.0f
+            data3.dialog.visibility = true
+            data3.cover.visibility = true
+            data3.cover.boxVisibility = true
+            data3.cover.boxStrokeVisibility = true
+            result.add(data3)
+
+            val data4 = EduData()
+            data4.dialog.contentText = "디스플레이를 클릭해주세요."
+            result.add(data4)
+
+            val data5 = EduData()
+            data5.dialog.visibility = false
+            data5.cover.visibility = false
+            data5.cover.boxVisibility = false
+            data5.cover.boxStrokeVisibility = false
+            data5.action.id = "tap_display_item"
+            data5.hands.add(EduHand(
                 id = "tap",
-                source = R.drawable.hand,
                 x = width/2,
                 y = 360.0f,
-                width = 50.0f,
-                height = 75.0f,
                 gesture = HandGestures::tapGesture
             ))
-            result.add(data3)
+            result.add(data5)
 
             return result
         }
@@ -472,11 +542,8 @@ class EduCourses {
             data2.action.message = "100"
             data2.hands.add(EduHand(
                 id = "drag",
-                source = R.drawable.hand,
-                x = 30.0f,
-                y = 350.0f,
-                width = 50.0f,
-                height = 75.0f,
+                x = 220.0f,
+                y = 510.0f,
                 gesture = HandGestures::displayLightDragGesture
             ))
             result.add(data2)
@@ -488,7 +555,7 @@ class EduCourses {
             result.add(data3)
 
             val data4 = EduData()
-            data4.dialog.contentText = "일단 글자 크기와 스타일이\n안 보이거던요!?\n손가락을 따라\n내려보면 있을까요??"
+            data4.dialog.contentText = "맨 아래까지 스크롤해주세요."
             result.add(data4)
 
             val data5 = EduData()
@@ -498,8 +565,8 @@ class EduCourses {
             data5.hands.add(EduHand(
                 id = "drag",
                 source = R.drawable.hand,
-                x = 20.0f,
-                y = 400.0f,
+                x = 200.0f,
+                y = 650.0f,
                 width = 50.0f,
                 height = 75.0f,
                 gesture = HandGestures::displayScrollGesture
@@ -510,12 +577,8 @@ class EduCourses {
             data6.action.id = "tap_font_item"
             data6.hands.add(EduHand(
                 id = "tap",
-                source = R.drawable.hand,
                 x = 250.0f,
-                y = 675.0f,
-                width = 50.0f,
-                height = 75.0f,
-                rotation = -45.0f,
+                y = 475.0f,
                 gesture = HandGestures::tapGesture
             ))
             result.add(data6)
@@ -542,18 +605,22 @@ class EduCourses {
             val data1 = EduData()
             data1.dialog.visibility = false
             data1.cover.visibility = false
-            data1.action.id = "change_light_bar"
-            data1.action.message = "100"
+            data1.action.id = "change_text_size_bar"
+            data1.action.message = "7"
             data1.hands.add(EduHand(
                 id = "drag",
-                source = R.drawable.hand,
-                x = 30.0f,
-                y = 350.0f,
-                width = 50.0f,
-                height = 75.0f,
-                gesture = HandGestures::displayLightDragGesture
+                x = 40.0f,
+                y = 660.0f,
+                rotation = 180.0f,
+                gesture = HandGestures::textSizeDragGesture
             ))
             result.add(data1)
+
+            val data2 = EduData()
+            data2.dialog.visibility = true
+            data2.cover.visibility = true
+            data2.dialog.contentText = "이것으로\n환경 설정 교육을\n마치겠습니다.\n수고하셨습니다!"
+            result.add(data2)
 
             return result
         }
