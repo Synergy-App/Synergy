@@ -8,6 +8,10 @@
     android:background="#F6F6F6"
     tools:context=".MainActivity">
 
+    <com.sungkyul.synergy.utils.EduScreen
+        android:id="@+id/edu_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
     <ImageButton
         android:id="@+id/font_back_button"

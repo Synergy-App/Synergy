@@ -16,8 +16,8 @@ import com.sungkyul.synergy.utils.EduCourses
 private lateinit var binding: ActivityKakaoMainBinding
 private const val TAG_FRIENDS = "friends_fragment"
 private const val TAG_CHAT = "chat_fragment"
-//private const val TAG_OPENCHAT = "openChat_fragment"
-//private const val TAG_SHOPPING = "shopping_fragment"
+private const val TAG_OPENCHAT = "openChat_fragment"
+private const val TAG_SHOPPING = "shopping_fragment"
 private const val TAG_MORE = "more_fragment"
 
 class KakaoMainActivity : AppCompatActivity() {
@@ -28,13 +28,20 @@ class KakaoMainActivity : AppCompatActivity() {
 
         setFragment(TAG_FRIENDS, FriendsFragment())
 
-        binding.kakaoNavigationView.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.friendsFragment -> setFragment(TAG_FRIENDS, FriendsFragment())
-                R.id.chatFragment -> setFragment(TAG_CHAT, ChatFragment())
-                //  R.id.openChatFragment -> setFragment(TAG_OPENCHAT, OpenchatFragment())
-            }
-            true
+        binding.friendButton.setOnClickListener {
+            setFragment(TAG_FRIENDS, FriendsFragment())
+        }
+        binding.chattingButton.setOnClickListener {
+            setFragment(TAG_CHAT, ChatFragment())
+        }
+        binding.openchattingButton.setOnClickListener {
+            //setFragment(TAG_OPENCHAT, ())
+        }
+        binding.shoppingButton.setOnClickListener {
+            //setFragment(TAG_SHOPPING, ())
+        }
+        binding.moreButton.setOnClickListener {
+            //setFragment(TAG_MORE, ())
         }
 
         // 교육 추가

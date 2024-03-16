@@ -30,12 +30,7 @@
             android:exported="false" /> <!-- 디지털 나이 검사 -->
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity> <!-- 메인 화면 -->
         <activity
             android:name=".edu_space.default_app.activity.DefaultMessageActivity"
@@ -70,7 +65,13 @@
         <!-- 환경설정2 -->
         <activity
             android:name=".edu_space.settingedu2.Setting2MainActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".edu_space.settingedu2.Setting2DisplayActivity"
             android:exported="false" />
@@ -113,13 +114,15 @@
             android:exported="false" /> <!-- 앱 설치 메인 화면 -->
         <activity
             android:name=".edu_space.kakaotalk.activity.KakaoMainActivity"
-            android:exported="false" /> <!-- 카카오톡 메인 화면 -->
+            android:exported="false">
+        </activity> <!-- 카카오톡 메인 화면 -->
         <activity
             android:name=".edu_space.kakaotalk.activity.KakaoProfileDetailActivity"
             android:exported="false" />
         <activity
             android:name=".edu_space.kakaotalk.activity.KakaoChattingActivity"
-            android:exported="false" />
+            android:exported="false">
+        </activity>
         <activity
             android:name=".edu_space.naver.activity.NaverSearchActivity"
             android:exported="false" /> <!-- 네이버 검색 화면 -->
