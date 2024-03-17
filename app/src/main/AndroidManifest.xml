@@ -52,7 +52,13 @@
         <!-- 기본앱 활용 -->
         <activity
             android:name=".edu_space.default_app.activity.DefaultPhoneActivity"
-            android:exported="false" /> <!-- 전화 화면 -->
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> <!-- 전화 화면 -->
         <activity
             android:name=".edu_space.default_app.activity.DefaultPhoneCallActivity"
             android:exported="false" /> <!-- 전화 콜 화면 -->
@@ -65,12 +71,7 @@
         <!-- 환경설정2 -->
         <activity
             android:name=".edu_space.settingedu2.Setting2MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity>
         <activity
             android:name=".edu_space.settingedu2.Setting2DisplayActivity"
@@ -80,7 +81,8 @@
             android:exported="false" /> <!-- 계정생성 교육 -->
         <activity
             android:name=".edu_space.accountedu.GoogleMainActivity"
-            android:exported="false" />
+            android:exported="false">
+        </activity>
         <activity
             android:name=".edu_space.accountedu.GoogleLoginActivity"
             android:exported="false" />

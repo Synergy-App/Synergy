@@ -8,6 +8,11 @@
     android:background="@drawable/bg_default_call"
     tools:context=".edu_space.default_app.activity.DefaultPhoneCallActivity">
 
+    <com.sungkyul.synergy.utils.EduScreen
+        android:id="@+id/edu_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <ImageView
         android:id="@+id/white_background"
         android:layout_width="match_parent"
