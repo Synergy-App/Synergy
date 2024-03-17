@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
+    <com.sungkyul.synergy.utils.EduScreen
+        android:id="@+id/edu_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <!-- Google 이미지 -->
     <ImageView
         android:id="@+id/get_google_logo"
