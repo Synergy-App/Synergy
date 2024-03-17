@@ -18,7 +18,13 @@
 
         <activity
             android:name=".edu_space.default_app.activity.DefaultMessageChattingActivity"
-            android:exported="false" /> <!-- 메시지 채팅 화면 -->
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> <!-- 메시지 채팅 화면 -->
         <activity
             android:name=".edu_space.naver.activity.NaverSearchResultActivity"
             android:exported="false" /> <!-- 네이버 검색 결과 화면 -->
@@ -34,7 +40,8 @@
         </activity> <!-- 메인 화면 -->
         <activity
             android:name=".edu_space.default_app.activity.DefaultMessageActivity"
-            android:exported="false" /> <!-- 메시지 화면 -->
+            android:exported="false">
+        </activity> <!-- 메시지 화면 -->
         <activity
             android:name=".EduSpaceActivity"
             android:exported="false" /> <!-- 삭제할 거 -->
@@ -52,19 +59,15 @@
         <!-- 기본앱 활용 -->
         <activity
             android:name=".edu_space.default_app.activity.DefaultPhoneActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity> <!-- 전화 화면 -->
         <activity
             android:name=".edu_space.default_app.activity.DefaultPhoneCallActivity"
             android:exported="false" /> <!-- 전화 콜 화면 -->
         <activity
             android:name=".edu_space.default_app.activity.DefaultCameraActivity"
-            android:exported="false" /> <!-- 카메라 화면 -->
+            android:exported="false">
+        </activity> <!-- 카메라 화면 -->
         <activity
             android:name=".edu_space.default_app.activity.DefaultCameraGalleryViewActivity"
             android:exported="false"/> <!-- 카메라 갤러리 뷰 화면 -->
@@ -81,7 +84,7 @@
             android:exported="false" /> <!-- 계정생성 교육 -->
         <activity
             android:name=".edu_space.accountedu.GoogleMainActivity"
-            android:exported="false">
+            android:exported="true">
         </activity>
         <activity
             android:name=".edu_space.accountedu.GoogleLoginActivity"

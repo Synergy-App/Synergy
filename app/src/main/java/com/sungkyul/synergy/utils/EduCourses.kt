@@ -412,6 +412,347 @@ class EduCourses {
             return result
         }
 
+        // for CameraActivity
+        fun cameraCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
+            val width = AnimUtils.pxToDp(context, widthDp)
+            val height = AnimUtils.pxToDp(context, heightDp)
+            val result = ArrayList<EduData>()
+
+            result.add(EduData().apply {
+                dialog.contentText = "위 메뉴는 카메라의\n플래시, 타이머 등을\n설정할 수 있어요."
+                dialog.contentGravity = Gravity.CENTER
+                dialog.top = 200.0f
+                dialog.bottom = 400.0f
+                dialog.start = 50.0f
+                dialog.end = 50.0f
+                cover.boxLeft = 20.0f
+                cover.boxTop = 5.0f
+                cover.boxRight = width-20.0f
+                cover.boxBottom = 45.0f
+                arrow.endTo = "box"
+                dialog.visibility = true
+                cover.visibility = true
+                cover.boxStrokeVisibility = true
+                cover.boxVisibility = true
+                arrow.visibility = true
+            })
+
+            // 0
+            result.add(EduData().apply {
+                dialog.duration = 750
+                arrow.duration = 750
+                dialog.contentText = "아래 버튼은 사진,\n동영상 등 자신이\n원하는 촬영을\n선택할 수 있어요."
+                dialog.top = 300.0f
+                dialog.bottom = 300.0f
+                cover.boxLeft = 30.0f
+                cover.boxTop = 620.0f
+                cover.boxRight = width-30.0f
+                cover.boxBottom = 650.0f
+            })
+
+            // 1
+            result.add(EduData().apply {
+                cover.duration = 750
+                dialog.contentText = "촬영할 수 있는\n버튼이에요.\n버튼을 클릭하면\n사진 저장이 돼요."
+                dialog.top = 400.0f
+                dialog.bottom = 200.0f
+                cover.boxLeft = 160.0f
+                cover.boxTop = height-105.0f
+                cover.boxRight = width-160.0f
+                cover.boxBottom = height-15.0f
+            })
+
+            // 2
+            result.add(EduData().apply {
+                dialog.contentText = "찍은 사진을\n확인할 수 있는\n앨범이에요."
+                cover.boxLeft = 55.0f
+                cover.boxTop = height-105.0f
+                cover.boxRight = 135.0f
+                cover.boxBottom = height-15.0f
+            })
+
+            // 3
+            result.add(EduData().apply {
+                dialog.contentText = "사진을 찍으면\n이 부분에 나타나요."
+            })
+
+            // 4
+            result.add(EduData().apply {
+                dialog.contentText = "화면을 전환하는\n부분이에요."
+                cover.boxLeft = width-135.0f
+                cover.boxTop = height-105.0f
+                cover.boxRight = width-55.0f
+                cover.boxBottom = height-15.0f
+            })
+
+            // 5
+            result.add(EduData().apply {
+                dialog.contentText = "버튼을 클릭하면\n나를 찍을 수도 있고,\n상대방을 찍을 수도\n있어요."
+                dialog.top = 350.0f
+            })
+
+            // 6
+            result.add(EduData().apply {
+                dialog.contentText = "사진을 촬영해볼까요?"
+                dialog.top = 300.0f
+                dialog.bottom = 300.0f
+                dialog.start = 50.0f
+                dialog.end = 50.0f
+                cover.boxStrokeVisibility = false
+                cover.boxVisibility = false
+                arrow.endTo = "dialog"
+            })
+
+            // 7
+            result.add(EduData().apply {
+                dialog.contentText = "손가락을 따라\n클릭해주세요."
+            })
+
+            // 8
+            result.add(EduData().apply {
+                dialog.visibility = false
+                cover.visibility = false
+                arrow.visibility = false
+                action.id = "click_shooting_button"
+                hands.add(EduHand(
+                    id = "tap",
+                    x = 220.0f,
+                    y = height-100.0f,
+                    rotation = -90.0f,
+                    gesture = HandGestures::tapGesture
+                ))
+            })
+
+            // 9
+            result.add(EduData().apply {
+                dialog.duration = 0
+                cover.duration = 0
+                arrow.duration = 0
+                dialog.contentText = "방금 찍은 사진은\n여기에서 확인할 수\n있어요."
+                dialog.top = 400.0f
+                dialog.bottom = 200.0f
+                cover.boxLeft = 55.0f
+                cover.boxTop = height-105.0f
+                cover.boxRight = 135.0f
+                cover.boxBottom = height-15.0f
+                arrow.endTo = "box"
+                dialog.visibility = true
+                cover.visibility = true
+                cover.boxVisibility = true
+                cover.boxStrokeVisibility = true
+                arrow.visibility = true
+            })
+
+            // 10
+            result.add(EduData().apply {
+                dialog.duration = 750
+                arrow.duration = 750
+                dialog.contentText = "클릭해주세요."
+                dialog.top = 450.0f
+            })
+
+            // 11
+            result.add(EduData().apply {
+                dialog.visibility = false
+                cover.visibility = false
+                cover.boxVisibility = false
+                cover.boxStrokeVisibility = false
+                arrow.visibility = false
+                action.id = "click_gallery_view_button"
+                hands.add(EduHand(
+                    id = "tap",
+                    x = 120.0f,
+                    y = height-100.0f,
+                    rotation = -90.0f,
+                    gesture = HandGestures::tapGesture
+                ))
+            })
+
+            return result
+        }
+
+        // for DefaultMessageActivity
+        fun defaultMessageCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
+            val width = AnimUtils.pxToDp(context, widthDp)
+            val height = AnimUtils.pxToDp(context, heightDp)
+            val result = ArrayList<EduData>()
+
+            result.add(EduData().apply {
+                dialog.contentText = "여기는 채팅방으로\n상대방과 메시지를\n주고받을 수 있어요."
+                dialog.contentGravity = Gravity.CENTER
+                dialog.top = 300.0f
+                dialog.bottom = 300.0f
+                dialog.start = 50.0f
+                dialog.end = 50.0f
+                dialog.visibility = true
+                cover.visibility = true
+            })
+
+            result.add(EduData().apply {
+                dialog.duration = 750
+                arrow.duration = 750
+                dialog.contentText = "여기서 문자 메시지를\n입력할 수 있어요."
+                dialog.top = 450.0f
+                dialog.bottom = 150.0f
+                cover.boxLeft = 90.0f
+                cover.boxTop = height-60.0f
+                cover.boxRight = width-90.0f
+                cover.boxBottom = height
+                arrow.endTo = "box"
+                cover.boxVisibility = true
+                cover.boxStrokeVisibility = true
+                arrow.visibility = true
+            })
+
+            result.add(EduData().apply {
+                dialog.duration = 750
+                cover.duration = 750
+                arrow.duration = 750
+                dialog.contentText = "이 버튼을 누르면\n메시지가 전송돼요."
+                cover.boxLeft = width-55.0f
+                cover.boxRight = width
+            })
+
+            result.add(EduData().apply {
+                dialog.contentText = "시너지에게\n메시지를 보내볼까요?"
+                dialog.top = 300.0f
+                dialog.bottom = 300.0f
+                arrow.endTo = "dialog"
+                cover.boxVisibility = false
+                cover.boxStrokeVisibility = false
+            })
+
+            result.add(EduData().apply {
+                dialog.visibility = false
+                cover.visibility = false
+                arrow.visibility = false
+                action.id = "click_message_edit_text"
+                hands.add(EduHand(
+                    id = "tap",
+                    x = width/2,
+                    y = height-110.0f,
+                    rotation = 180.0f,
+                    gesture = HandGestures::tapGesture
+                ))
+            })
+
+            result.add(EduData().apply {
+                action.id = "click_send_button"
+            })
+
+            result.add(EduData().apply {
+                dialog.duration = 0
+                cover.duration = 0
+                dialog.contentText = "문자 메시지를\n성공적으로 보냈습니다!"
+                dialog.top = 250.0f
+                dialog.bottom = 350.0f
+                cover.boxLeft = 0.0f
+                cover.boxTop = height
+                cover.boxRight = width
+                cover.boxBottom = height
+                dialog.visibility = true
+                cover.visibility = true
+            })
+
+            result.add(EduData().apply {
+                dialog.duration = 750
+                cover.duration = 750
+                dialog.contentText = "자신이 보낸 메시지는\n아래에 보이는 것처럼\n확인할 수 있어요."
+                dialog.top = 150.0f
+                dialog.bottom = 450.0f
+                cover.boxTop = 360.0f
+                cover.boxBottom = height-60.0f
+                cover.boxVisibility = true
+                cover.boxStrokeVisibility = true
+            })
+
+            return result
+        }
+
+        // for DefaultMessageChattingActivity
+        fun defaultMessageChattingCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
+            val width = AnimUtils.pxToDp(context, widthDp)
+            val height = AnimUtils.pxToDp(context, heightDp)
+            val result = ArrayList<EduData>()
+
+            result.add(EduData().apply {
+                dialog.contentText = "여기는 그동안\n주고받은 메시지를\n확인할 수 있어요."
+                dialog.contentGravity = Gravity.CENTER
+                dialog.top = 50.0f
+                dialog.bottom = 550.0f
+                dialog.start = 50.0f
+                dialog.end = 50.0f
+                cover.boxLeft = 0.0f
+                cover.boxTop = 280.0f
+                cover.boxRight = width-0.0f
+                cover.boxBottom = height-60.0f
+                dialog.visibility = true
+                cover.visibility = true
+                cover.boxStrokeVisibility = true
+                cover.boxVisibility = true
+            })
+
+            result.add(EduData().apply {
+                dialog.duration = 1000
+                cover.duration = 750
+                arrow.duration = 1000
+                dialog.contentText = "이 버튼은 새로운\n메시지를 작성할 수 있어요."
+                dialog.contentGravity = Gravity.CENTER
+                dialog.top = 350.0f
+                dialog.bottom = 250.0f
+                cover.boxLeft = width-80.0f
+                cover.boxTop = 630.0f
+                cover.boxRight = width-10.0f
+                cover.boxBottom = height-70.0f
+                arrow.endTo = "box"
+                arrow.visibility = true
+            })
+
+            result.add(EduData().apply {
+                dialog.duration = 750
+                arrow.duration = 750
+                dialog.contentText = "메시지를 작성해볼까요?"
+                dialog.top = 300.0f
+                dialog.bottom = 300.0f
+                arrow.endTo = "dialog"
+                cover.boxVisibility = false
+                cover.boxStrokeVisibility = false
+            })
+
+            result.add(EduData().apply {
+                cover.duration = 0
+                dialog.contentText = "시너지를 클릭해주세요."
+                dialog.top = 250.0f
+                dialog.bottom = 350.0f
+                cover.boxLeft = 0.0f
+                cover.boxTop = 135.0f
+                cover.boxRight = width-0.0f
+                cover.boxBottom = 200.0f
+                arrow.endTo = "box"
+                cover.boxVisibility = true
+                cover.boxStrokeVisibility = true
+                arrow.visibility = true
+            })
+
+            result.add(EduData().apply {
+                dialog.visibility = false
+                cover.visibility = false
+                cover.boxVisibility = false
+                cover.boxStrokeVisibility = false
+                arrow.visibility = false
+                action.id = "click_message_chatting_item"
+                action.message = "시너지"
+                hands.add(EduHand(
+                    id = "tap",
+                    x = width/2,
+                    y = 170.0f,
+                    gesture = HandGestures::tapGesture
+                ))
+            })
+
+            return result
+        }
+
         fun kakaoCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
             val width = AnimUtils.pxToDp(context, widthDp)
             val height = AnimUtils.pxToDp(context, heightDp)
@@ -862,9 +1203,8 @@ class EduCourses {
 
             // 0
             result.add(EduData().apply {
-                dialog.contentText = "계정 만들기를 \n클릭해주세요."
+                dialog.contentText = "로그인 버튼을\n클릭해주세요."
                 dialog.contentGravity = Gravity.CENTER
-                dialog.contentBolds = listOf(Pair(0, 6))
                 dialog.top = 300.0f
                 dialog.bottom = 300.0f
                 dialog.start = 50.0f
@@ -879,8 +1219,8 @@ class EduCourses {
                 cover.visibility = false
                 hands.add(EduHand(
                     id = "tap",
-                    x = 40.0f,
-                    y = 660.0f,
+                    x = width-60.0f,
+                    y = 50.0f,
                     gesture = HandGestures::tapGesture
                 ))
             })
@@ -896,6 +1236,20 @@ class EduCourses {
 
             // 0
             result.add(EduData().apply {
+                dialog.contentText = "기본 정보를\n입력해주세요."
+                dialog.contentGravity = Gravity.CENTER
+                dialog.top = 300.0f
+                dialog.bottom = 300.0f
+                dialog.start = 50.0f
+                dialog.end = 50.0f
+                dialog.visibility = true
+                cover.visibility = true
+            })
+
+            // 1
+            result.add(EduData().apply {
+                dialog.visibility = false
+                cover.visibility = false
             })
 
             return result
@@ -909,6 +1263,20 @@ class EduCourses {
 
             // 0
             result.add(EduData().apply {
+                dialog.contentText = "전화번호를\n입력해주세요."
+                dialog.contentGravity = Gravity.CENTER
+                dialog.top = 300.0f
+                dialog.bottom = 300.0f
+                dialog.start = 50.0f
+                dialog.end = 50.0f
+                dialog.visibility = true
+                cover.visibility = true
+            })
+
+            // 1
+            result.add(EduData().apply {
+                dialog.visibility = false
+                cover.visibility = false
             })
 
             return result
@@ -940,7 +1308,7 @@ class EduCourses {
                 hands.add(EduHand(
                     id = "tap",
                     x = 40.0f,
-                    y = 660.0f,
+                    y = 520.0f,
                     gesture = HandGestures::tapGesture
                 ))
             })
@@ -956,6 +1324,20 @@ class EduCourses {
 
             // 0
             result.add(EduData().apply {
+                dialog.contentText = "원하는 아이디를\n만들어주세요."
+                dialog.contentGravity = Gravity.CENTER
+                dialog.top = 300.0f
+                dialog.bottom = 300.0f
+                dialog.start = 50.0f
+                dialog.end = 50.0f
+                dialog.visibility = true
+                cover.visibility = true
+            })
+
+            // 1
+            result.add(EduData().apply {
+                dialog.visibility = false
+                cover.visibility = false
             })
 
             return result
@@ -982,6 +1364,20 @@ class EduCourses {
 
             // 0
             result.add(EduData().apply {
+                dialog.contentText = "자신의 이름을\n작성해주세요."
+                dialog.contentGravity = Gravity.CENTER
+                dialog.top = 300.0f
+                dialog.bottom = 300.0f
+                dialog.start = 50.0f
+                dialog.end = 50.0f
+                dialog.visibility = true
+                cover.visibility = true
+            })
+
+            // 1
+            result.add(EduData().apply {
+                dialog.visibility = false
+                cover.visibility = false
             })
 
             return result
@@ -995,6 +1391,20 @@ class EduCourses {
 
             // 0
             result.add(EduData().apply {
+                dialog.contentText = "비밀번호를\n생성해주세요."
+                dialog.contentGravity = Gravity.CENTER
+                dialog.top = 300.0f
+                dialog.bottom = 300.0f
+                dialog.start = 50.0f
+                dialog.end = 50.0f
+                dialog.visibility = true
+                cover.visibility = true
+            })
+
+            // 1
+            result.add(EduData().apply {
+                dialog.visibility = false
+                cover.visibility = false
             })
 
             return result
@@ -1008,6 +1418,20 @@ class EduCourses {
 
             // 0
             result.add(EduData().apply {
+                dialog.contentText = "보안문자가 올 때까지\n기다려볼까요?"
+                dialog.contentGravity = Gravity.CENTER
+                dialog.top = 300.0f
+                dialog.bottom = 300.0f
+                dialog.start = 50.0f
+                dialog.end = 50.0f
+                dialog.visibility = true
+                cover.visibility = true
+            })
+
+            // 1
+            result.add(EduData().apply {
+                dialog.visibility = false
+                cover.visibility = false
             })
 
             return result

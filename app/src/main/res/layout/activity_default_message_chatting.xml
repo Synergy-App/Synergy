@@ -8,6 +8,11 @@
     tools:context=".edu_space.default_app.activity.DefaultMessageChattingActivity"
     android:background="@color/message_chatting_bg">
 
+    <com.sungkyul.synergy.utils.EduScreen
+        android:id="@+id/edu_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <LinearLayout
         android:id="@+id/primary_top_bar"
         android:orientation="horizontal"
@@ -70,7 +75,8 @@
             android:layout_height="48dp"
             android:layout_weight="1"
             android:text="@string/entire"
-            android:background="@null"/>
+            android:textSize="14sp"
+            android:background="@drawable/rounded_button_with_border"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -78,6 +84,7 @@
             android:layout_weight="1"
             android:layout_marginStart="8dp"
             android:text="@string/new_category"
+            android:textSize="14sp"
             android:background="@null"/>
 
     </LinearLayout>
@@ -112,6 +119,8 @@
             android:layout_height="48dp"
             android:layout_weight="1"
             android:text="@string/conversation"
+            android:textColor="@color/message_selection"
+            android:textSize="16sp"
             android:background="@null"/>
 
         <Button
@@ -119,6 +128,7 @@
             android:layout_height="48dp"
             android:layout_weight="1"
             android:text="@string/contact"
+            android:textSize="16sp"
             android:background="@null"/>
 
     </LinearLayout>
