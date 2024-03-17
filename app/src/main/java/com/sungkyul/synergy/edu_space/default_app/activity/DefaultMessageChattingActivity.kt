@@ -1,13 +1,16 @@
 package com.sungkyul.synergy.edu_space.default_app.activity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityDefaultMessageBinding
 import com.sungkyul.synergy.databinding.ActivityDefaultMessageChattingBinding
@@ -23,6 +26,7 @@ import com.sungkyul.synergy.edu_space.default_app.adapter.YourMessageData
 import com.sungkyul.synergy.utils.AnimUtils
 import com.sungkyul.synergy.utils.DateTimeUtils
 import com.sungkyul.synergy.utils.DynamicButton
+import com.sungkyul.synergy.utils.EduCourses
 import java.time.LocalDate
 import java.time.LocalDateTime
 
@@ -37,6 +41,36 @@ class DefaultMessageChattingActivity : AppCompatActivity() {
         binding = ActivityDefaultMessageChattingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // 교육을 정의해보자!
+        binding.eduScreen.post {
+            // 교육 코스 customCourse를 지정한다.
+            binding.eduScreen.course = EduCourses.defaultMessageChattingCourse(
+                binding.eduScreen.context,
+                binding.eduScreen.width.toFloat(),
+                binding.eduScreen.height.toFloat()
+            )
+            binding.eduScreen.setOnFinishedCourseListener {
+                // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
+
+                // MainActivity로 되돌아 간다.
+                val intent = Intent(binding.root.context, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                startActivity(intent)
+            }
+            // 교육을 시작한다.
+            binding.eduScreen.start(this)
+        }
+
+        // 뒤로 가기 키를 눌렀을 때의 이벤트를 처리한다.
+        onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // MainActivity로 되돌아 간다.
+                val intent = Intent(binding.root.context, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                startActivity(intent)
+            }
+        })
+
         val date1 = LocalDate.of(2024, 12, 1)
         val date2 = LocalDate.of(2024, 1, 1)
         val now = LocalDate.now()
@@ -44,23 +78,65 @@ class DefaultMessageChattingActivity : AppCompatActivity() {
         val messageChattingArray = ArrayList<MessageChattingData>()
         messageChattingArray.add(MessageChattingData(
             R.drawable.ic_call_profile_24,
-            "A",
+            "시너지",
             date1.format(DateTimeUtils.dateFormatter),
-            "a"
+            "스위트허니너겟님"
         ))
         messageChattingArray.add(MessageChattingData(
             R.drawable.ic_call_profile_24,
-            "B",
+            "031-235-1046",
             date2.format(DateTimeUtils.dateFormatter),
-            "b"
+            "[Web발신]\n[성결대학생상담센터친구상담사모집..."
+        ))
+        messageChattingArray.add(MessageChattingData(
+            R.drawable.ic_call_profile_24,
+            "02-1827-2938",
+            date2.format(DateTimeUtils.dateFormatter),
+            "ICT멘토링 사무국"
+        ))
+        messageChattingArray.add(MessageChattingData(
+            R.drawable.ic_call_profile_24,
+            "114",
+            date2.format(DateTimeUtils.dateFormatter),
+            "[(주)시너지모바일] 1월 명세서\n이미지"
+        ))
+        messageChattingArray.add(MessageChattingData(
+            R.drawable.ic_call_profile_24,
+            "031-273-1827",
+            date2.format(DateTimeUtils.dateFormatter),
+            "[Web발신] 인력 근무 인건비가 지급되었습니다."
+        ))
+        messageChattingArray.add(MessageChattingData(
+            R.drawable.ic_call_profile_24,
+            "010-2837-5826",
+            date2.format(DateTimeUtils.dateFormatter),
+            "[제목없음]"
+        ))
+        messageChattingArray.add(MessageChattingData(
+            R.drawable.ic_call_profile_24,
+            "대장님",
+            date2.format(DateTimeUtils.dateFormatter),
+            "지금 뭐하나 자네"
+        ))
+        messageChattingArray.add(MessageChattingData(
+            R.drawable.ic_call_profile_24,
+            "팀장님",
+            date2.format(DateTimeUtils.dateFormatter),
+            "어디 있는가 자네"
+        ))
+        messageChattingArray.add(MessageChattingData(
+            R.drawable.ic_call_profile_24,
+            "1898-7000",
+            date2.format(DateTimeUtils.dateFormatter),
+            "[시너지모바일] 개인정보 이용 내역 안내"
         ))
         for(i in 0..10) {
             messageChattingArray.add(
                 MessageChattingData(
                     R.drawable.ic_call_profile_24,
-                    "C",
+                    "010-1234-9876",
                     date2.format(DateTimeUtils.dateFormatter),
-                    "c"
+                    "[제목없음]"
                 )
             )
         }
