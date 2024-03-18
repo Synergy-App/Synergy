@@ -63,7 +63,7 @@
 
     <com.sungkyul.synergy.utils.DynamicButton
         android:id="@+id/edu_button"
-        android:layout_width="148dp"
+        android:layout_width="160dp"
         android:layout_height="200dp"
         android:layout_margin="16dp"
         android:translationZ="25dp"/>
