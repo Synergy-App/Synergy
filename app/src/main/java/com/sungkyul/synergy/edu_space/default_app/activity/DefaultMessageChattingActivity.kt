@@ -52,8 +52,8 @@ class DefaultMessageChattingActivity : AppCompatActivity() {
             binding.eduScreen.setOnFinishedCourseListener {
                 // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
 
-                // MainActivity로 되돌아 간다.
-                val intent = Intent(binding.root.context, MainActivity::class.java)
+                // DefaultAppActivity로 되돌아 간다.
+                val intent = Intent(binding.root.context, DefaultAppActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                 startActivity(intent)
             }
@@ -64,8 +64,8 @@ class DefaultMessageChattingActivity : AppCompatActivity() {
         // 뒤로 가기 키를 눌렀을 때의 이벤트를 처리한다.
         onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                // MainActivity로 되돌아 간다.
-                val intent = Intent(binding.root.context, MainActivity::class.java)
+                // DefaultAppActivity로 되돌아 간다.
+                val intent = Intent(binding.root.context, DefaultAppActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                 startActivity(intent)
             }
