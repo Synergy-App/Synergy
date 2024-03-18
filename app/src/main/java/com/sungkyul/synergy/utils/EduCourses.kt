@@ -14,7 +14,6 @@ class EduCourses {
             val height = AnimUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
-            // 0
             result.add(EduData().apply {
             })
 
@@ -22,6 +21,150 @@ class EduCourses {
         }
         ```
         */
+
+        // for ScreenLayoutActivity
+        fun screenLayoutCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
+            val width = AnimUtils.pxToDp(context, widthDp)
+            val height = AnimUtils.pxToDp(context, heightDp)
+            val result = ArrayList<EduData>()
+
+            result.add(EduData().apply {
+                dialog.contentText = "이 부분은\n홈 화면입니다."
+                dialog.contentGravity = Gravity.CENTER
+                dialog.contentBolds = listOf(Pair(6, 10))
+                dialog.top = 300.0f
+                dialog.bottom = 300.0f
+                dialog.start = 50.0f
+                dialog.end = 50.0f
+                dialog.visibility = true
+
+                cover.boxLeft = 20.0f
+                cover.boxTop = 50.0f
+                cover.boxRight = width-20.0f
+                cover.boxBottom = height-50.0f
+                cover.visibility = true
+                cover.boxVisibility = true
+                cover.boxStrokeVisibility = true
+            })
+
+            result.add(EduData().apply {
+                dialog.titleText = "홈 화면"
+                dialog.contentText = "주로 배경화면이라고\n부릅니다."
+                dialog.contentGravity = Gravity.START
+                dialog.contentBolds = listOf(Pair(3, 7))
+                dialog.duration = 750
+                dialog.top = 275.0f
+                dialog.bottom = 275.0f
+            })
+
+            result.add(EduData().apply {
+                dialog.contentText = "자주 사용하는 앱이\n화면에 배치되어\n있습니다."
+                dialog.contentBolds = listOf()
+                dialog.top = 250.0f
+                dialog.bottom = 250.0f
+            })
+
+            result.add(EduData().apply {
+                dialog.titleText = ""
+                dialog.contentText = "이 부분은\n상단바(상태 표시줄)\n입니다."
+                dialog.contentGravity = Gravity.CENTER
+                dialog.contentBolds = listOf(Pair(6, 17))
+                dialog.top = 100.0f
+                dialog.bottom = 500.0f
+
+                cover.boxLeft = 0.0f
+                cover.boxTop = 5.0f
+                cover.boxRight = width
+                cover.boxBottom = 55.0f
+
+                arrow.duration = 750
+                arrow.endTo = "box"
+                arrow.visibility = true
+            })
+
+            result.add(EduData().apply {
+                dialog.contentText = "주로 스마트폰의\n상태를 보여줍니다."
+                dialog.contentBolds = listOf()
+            })
+
+            result.add(EduData().apply {
+                dialog.contentText = "좌측 상단에는\n현재 시간이\n나타납니다."
+                dialog.contentBolds = listOf(Pair(8, 13))
+
+                cover.duration = 750
+                cover.boxRight = 100.0f
+            })
+
+            result.add(EduData().apply {
+                dialog.contentText = "우측 상단은\n스마트폰의 현재\n상태를 나타냅니다."
+                dialog.contentBolds = listOf(Pair(7, 18))
+
+                cover.boxLeft = width-150.0f
+                cover.boxRight = width
+            })
+
+            // TODO(상단바를 내릴 수 있는 기능 추가하기!)
+            // 상단바(상태 표시줄)을\n내려주세요.
+            // 대충 손가락이 위에서 아래로 내려오는 느낌
+
+            result.add(EduData().apply {
+                dialog.contentText = "이 부분은\n하단바(내비게이션바)\n입니다."
+                dialog.contentBolds = listOf(Pair(6, 17))
+                dialog.duration = 1000
+                dialog.top = 500.0f
+                dialog.bottom = 100.0f
+
+                cover.duration = 0
+                cover.boxLeft = 0.0f
+                cover.boxTop = height-55.0f
+                cover.boxRight = width
+                cover.boxBottom = height-5.0f
+
+                arrow.duration = 1000
+            })
+
+            result.add(EduData().apply {
+                dialog.contentText = "이 버튼은\n최근 실행 앱을\n볼 수 있습니다."
+                dialog.contentBolds = listOf(Pair(6, 13))
+                dialog.duration = 750
+
+                cover.duration = 750
+                cover.boxLeft = 50.0f
+                cover.boxRight = 110.0f
+
+                arrow.duration = 750
+            })
+
+            result.add(EduData().apply {
+                dialog.contentText = "이 버튼은\n홈 화면으로\n돌아갈 수 있습니다."
+                dialog.contentBolds = listOf(Pair(6, 10))
+
+                cover.boxLeft = 175.0f
+                cover.boxRight = 235.0f
+            })
+
+            result.add(EduData().apply {
+                dialog.contentText = "이 버튼은\n뒤로(이전 화면)\n돌아갈 수 있습니다."
+                dialog.contentBolds = listOf(Pair(6, 15))
+
+                cover.boxLeft = width-110.0f
+                cover.boxRight = width-50.0f
+            })
+
+            result.add(EduData().apply {
+                dialog.contentText = "상단바(상태 표시줄)를\n한 번 내려볼까요?"
+                dialog.contentBolds = listOf(Pair(0, 11))
+                dialog.top = 300.0f
+                dialog.bottom = 300.0f
+
+                cover.boxVisibility = false
+                cover.boxStrokeVisibility = false
+
+                arrow.endTo = "dialog"
+            })
+
+            return result
+        }
 
         fun defaultPhoneTestCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
             val width = AnimUtils.pxToDp(context, widthDp)
