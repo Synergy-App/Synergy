@@ -29,7 +29,7 @@
             android:letterSpacing="-0.08"
             android:fontFamily="@font/pretendard_semibold"
             android:textColor="@color/black"
-            android:textSize="34sp"
+            android:textSize="28sp"
             android:textStyle="bold" />
         <TextView
             android:id="@+id/learning_tv2"
@@ -43,7 +43,7 @@
             android:letterSpacing="-0.08"
             android:fontFamily="@font/pretendard_semibold"
             android:textColor="#919191"
-            android:textSize="30sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <com.github.mikephil.charting.charts.HorizontalBarChart
