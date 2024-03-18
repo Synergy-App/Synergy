@@ -1,7 +1,11 @@
 package com.sungkyul.synergy.edu_space.screen_layout
 
 import android.content.Intent
+import android.graphics.Rect
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.view.WindowManager
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.MainActivity
@@ -16,13 +20,33 @@ class ScreenLayoutActivity : AppCompatActivity() {
         binding = ActivityScreenLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // API 30 이상에서 사용 가능
+        //window.insetsController?.hide(WindowInsets.Type.statusBars())
+        //window.insetsController?.hide(WindowInsets.Type.systemBars())
+
+        // Hide Status Bars
+        window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        // Hide System Bars
+        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+            or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
+
+        // 시스템 바의 높이를 구한다.
+        val decorView = window.decorView
+        var navigationBarHeight = 0
+        decorView.viewTreeObserver.addOnGlobalLayoutListener {
+            val rect = Rect()
+            decorView.getWindowVisibleDisplayFrame(rect)
+            val statusBarHeight = rect.top
+            navigationBarHeight = decorView.height - rect.bottom
+        }
+
         // 교육을 정의해보자!
         binding.eduScreen.post {
             // 교육 코스 customCourse를 지정한다.
             binding.eduScreen.course = EduCourses.screenLayoutCourse(
                 binding.eduScreen.context,
                 binding.eduScreen.width.toFloat(),
-                binding.eduScreen.height.toFloat()
+                binding.eduScreen.height.toFloat()+navigationBarHeight
             )
             binding.eduScreen.setOnFinishedCourseListener {
                 // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
