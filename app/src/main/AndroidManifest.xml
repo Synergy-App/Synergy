@@ -18,12 +18,7 @@
 
         <activity
             android:name=".edu_space.default_app.activity.DefaultMessageChattingActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity> <!-- 메시지 채팅 화면 -->
         <activity
             android:name=".edu_space.naver.activity.NaverSearchResultActivity"
@@ -36,7 +31,12 @@
             android:exported="false" /> <!-- 디지털 나이 검사 -->
         <activity
             android:name=".MainActivity"
-            android:exported="false">
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity> <!-- 메인 화면 -->
         <activity
             android:name=".edu_space.default_app.activity.DefaultMessageActivity"
@@ -84,7 +84,7 @@
             android:exported="false" /> <!-- 계정생성 교육 -->
         <activity
             android:name=".edu_space.accountedu.GoogleMainActivity"
-            android:exported="true">
+            android:exported="false">
         </activity>
         <activity
             android:name=".edu_space.accountedu.GoogleLoginActivity"
