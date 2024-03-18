@@ -18,13 +18,8 @@
 
         <activity
             android:name=".edu_space.default_app.activity.DefaultMessageChattingActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity> <!-- 메시지 채팅 화면 -->
+            android:exported="false" />
+             <!-- 메시지 채팅 화면 -->
         <activity
             android:name=".edu_space.naver.activity.NaverSearchResultActivity"
             android:exported="false" /> <!-- 네이버 검색 결과 화면 -->
@@ -48,7 +43,13 @@
         <!-- 아이콘 교육 -->
         <activity
             android:name=".edu_space.icon_edu.activity.IconEduActivity"
-            android:exported="false" /> <!-- 아이콘 첫 화면 -->
+            android:exported="true"> <!-- 아이콘 첫 화면 -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".edu_space.icon_edu.activity.IconDetailActivity"
             android:exported="false" /> <!-- 아이콘 설명 -->
