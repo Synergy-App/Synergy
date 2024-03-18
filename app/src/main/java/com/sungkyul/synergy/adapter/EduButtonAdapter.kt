@@ -24,6 +24,7 @@ import com.sungkyul.synergy.edu_space.delivery.DlvMainActivity
 import com.sungkyul.synergy.edu_space.kakaotalk.activity.KakaoMainActivity
 import com.sungkyul.synergy.edu_space.kakaotaxi.TaxiMainActivity
 import com.sungkyul.synergy.edu_space.naver.activity.NaverActivity
+import com.sungkyul.synergy.edu_space.screen_layout.ScreenLayoutActivity
 import com.sungkyul.synergy.edu_space.settingedu2.Setting2MainActivity
 import com.sungkyul.synergy.edu_space.ticket.TicketMainActivity
 import com.sungkyul.synergy.utils.DynamicButton
@@ -72,8 +73,8 @@ class EduButtonAdapter(private val context: Context, private val buttonList: Lis
                                 context.startActivity(intent)*/
                             }
                             "화면구성" -> {
-                                /*val intent = Intent(context, DefaultAppActivity::class.java)
-                                context.startActivity(intent)*/
+                                val intent = Intent(context, ScreenLayoutActivity::class.java)
+                                context.startActivity(intent)
                             }
                             "기본앱" -> {
                                 val intent = Intent(context, DefaultAppActivity::class.java)

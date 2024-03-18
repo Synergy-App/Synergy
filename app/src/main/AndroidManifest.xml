@@ -60,7 +60,7 @@
             android:exported="false" /> <!-- 아이콘 설명 -->
         <!-- 화면구성 -->
         <activity
-            android:name=".edu_space.screenEdu.activity.ScreenEduActivity"
+            android:name=".edu_space.screen_layout.ScreenLayoutActivity"
             android:exported="false" />
         <!-- 기본앱 활용 -->
         <activity
