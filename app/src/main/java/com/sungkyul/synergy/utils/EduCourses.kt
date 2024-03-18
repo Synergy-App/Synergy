@@ -70,7 +70,7 @@ class EduCourses {
                 dialog.contentGravity = Gravity.CENTER
                 dialog.contentBolds = listOf(Pair(6, 17))
                 dialog.top = 100.0f
-                dialog.bottom = 500.0f
+                dialog.bottom = 490.0f
 
                 cover.boxLeft = 0.0f
                 cover.boxTop = 5.0f
