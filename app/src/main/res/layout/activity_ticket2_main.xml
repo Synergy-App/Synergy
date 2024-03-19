@@ -7,6 +7,10 @@
     android:background="#DADADA"
     tools:context=".edu_space.ticket.Ticket2MainActivity">
 
+    <com.sungkyul.synergy.utils.edu.EduScreen
+        android:id="@+id/edu_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigationView"

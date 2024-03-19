@@ -1567,5 +1567,285 @@ class EduCourses {
 
             return result
         }
+
+        // for installMainActivity
+        fun installMainCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
+            val width = AnimUtils.pxToDp(context, widthDp)
+            val height = AnimUtils.pxToDp(context, heightDp)
+            val result = ArrayList<EduData>()
+
+            result.add(EduData().apply {
+                dialog.contentText = "넌 못 지나간다."
+                dialog.top = 300.0f
+                dialog.bottom = 300.0f
+                dialog.start = 50.0f
+                dialog.end = 50.0f
+                dialog.visibility = true
+
+                cover.visibility = true
+            })
+
+            return result
+        }
+
+        // for installActivity
+        fun installCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
+            val width = AnimUtils.pxToDp(context, widthDp)
+            val height = AnimUtils.pxToDp(context, heightDp)
+            val result = ArrayList<EduData>()
+
+            result.add(EduData().apply {
+                dialog.contentText = "넌 못 지나간다."
+                dialog.top = 300.0f
+                dialog.bottom = 300.0f
+                dialog.start = 50.0f
+                dialog.end = 50.0f
+                dialog.visibility = true
+
+                cover.visibility = true
+            })
+
+            return result
+        }
+
+        // for DlvMainActivity
+        fun dlvMainCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
+            val width = AnimUtils.pxToDp(context, widthDp)
+            val height = AnimUtils.pxToDp(context, heightDp)
+            val result = ArrayList<EduData>()
+
+            result.add(EduData().apply {
+                dialog.contentText = "넌 못 지나간다."
+                dialog.top = 300.0f
+                dialog.bottom = 300.0f
+                dialog.start = 50.0f
+                dialog.end = 50.0f
+                dialog.visibility = true
+
+                cover.visibility = true
+            })
+
+            return result
+        }
+
+        // for foodmenuActivity
+        fun foodmenuCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
+            val width = AnimUtils.pxToDp(context, widthDp)
+            val height = AnimUtils.pxToDp(context, heightDp)
+            val result = ArrayList<EduData>()
+
+            result.add(EduData().apply {
+                dialog.contentText = "넌 못 지나간다."
+                dialog.top = 300.0f
+                dialog.bottom = 300.0f
+                dialog.start = 50.0f
+                dialog.end = 50.0f
+                dialog.visibility = true
+
+                cover.visibility = true
+            })
+
+            return result
+        }
+
+        // for payDActivity
+        fun payDCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
+            val width = AnimUtils.pxToDp(context, widthDp)
+            val height = AnimUtils.pxToDp(context, heightDp)
+            val result = ArrayList<EduData>()
+
+            result.add(EduData().apply {
+                dialog.contentText = "넌 못 지나간다."
+                dialog.top = 300.0f
+                dialog.bottom = 300.0f
+                dialog.start = 50.0f
+                dialog.end = 50.0f
+                dialog.visibility = true
+
+                cover.visibility = true
+            })
+
+            return result
+        }
+
+        // for shopActivity
+        fun shopCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
+            val width = AnimUtils.pxToDp(context, widthDp)
+            val height = AnimUtils.pxToDp(context, heightDp)
+            val result = ArrayList<EduData>()
+
+            result.add(EduData().apply {
+                dialog.contentText = "넌 못 지나간다."
+                dialog.top = 300.0f
+                dialog.bottom = 300.0f
+                dialog.start = 50.0f
+                dialog.end = 50.0f
+                dialog.visibility = true
+
+                cover.visibility = true
+            })
+
+            return result
+        }
+
+        // for mapActivity
+        fun mapCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
+            val width = AnimUtils.pxToDp(context, widthDp)
+            val height = AnimUtils.pxToDp(context, heightDp)
+            val result = ArrayList<EduData>()
+
+            result.add(EduData().apply {
+                dialog.contentText = "넌 못 지나간다."
+                dialog.top = 300.0f
+                dialog.bottom = 300.0f
+                dialog.start = 50.0f
+                dialog.end = 50.0f
+                dialog.visibility = true
+
+                cover.visibility = true
+            })
+
+            return result
+        }
+
+        // for payActivity
+        fun payCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
+            val width = AnimUtils.pxToDp(context, widthDp)
+            val height = AnimUtils.pxToDp(context, heightDp)
+            val result = ArrayList<EduData>()
+
+            result.add(EduData().apply {
+                dialog.contentText = "넌 못 지나간다."
+                dialog.top = 300.0f
+                dialog.bottom = 300.0f
+                dialog.start = 50.0f
+                dialog.end = 50.0f
+                dialog.visibility = true
+
+                cover.visibility = true
+            })
+
+            return result
+        }
+
+        // for payMActivity
+        fun payMCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
+            val width = AnimUtils.pxToDp(context, widthDp)
+            val height = AnimUtils.pxToDp(context, heightDp)
+            val result = ArrayList<EduData>()
+
+            result.add(EduData().apply {
+                dialog.contentText = "넌 못 지나간다."
+                dialog.top = 300.0f
+                dialog.bottom = 300.0f
+                dialog.start = 50.0f
+                dialog.end = 50.0f
+                dialog.visibility = true
+
+                cover.visibility = true
+            })
+
+            return result
+        }
+
+        // for TaxiMainActivity
+        fun taxiMainCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
+            val width = AnimUtils.pxToDp(context, widthDp)
+            val height = AnimUtils.pxToDp(context, heightDp)
+            val result = ArrayList<EduData>()
+
+            result.add(EduData().apply {
+                dialog.contentText = "넌 못 지나간다."
+                dialog.top = 300.0f
+                dialog.bottom = 300.0f
+                dialog.start = 50.0f
+                dialog.end = 50.0f
+                dialog.visibility = true
+
+                cover.visibility = true
+            })
+
+            return result
+        }
+
+        // for Ticket2MainActivity
+        fun resCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
+            val width = AnimUtils.pxToDp(context, widthDp)
+            val height = AnimUtils.pxToDp(context, heightDp)
+            val result = ArrayList<EduData>()
+
+            result.add(EduData().apply {
+                dialog.contentText = "넌 못 지나간다."
+                dialog.top = 300.0f
+                dialog.bottom = 300.0f
+                dialog.start = 50.0f
+                dialog.end = 50.0f
+                dialog.visibility = true
+
+                cover.visibility = true
+            })
+
+            return result
+        }
+
+        // for installActivity
+        fun ticket2MainCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
+            val width = AnimUtils.pxToDp(context, widthDp)
+            val height = AnimUtils.pxToDp(context, heightDp)
+            val result = ArrayList<EduData>()
+
+            result.add(EduData().apply {
+                dialog.contentText = "넌 못 지나간다."
+                dialog.top = 300.0f
+                dialog.bottom = 300.0f
+                dialog.start = 50.0f
+                dialog.end = 50.0f
+                dialog.visibility = true
+
+                cover.visibility = true
+            })
+
+            return result
+        }
+
+        // for TicketMainActivity
+        fun ticketMainCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
+            val width = AnimUtils.pxToDp(context, widthDp)
+            val height = AnimUtils.pxToDp(context, heightDp)
+            val result = ArrayList<EduData>()
+
+            result.add(EduData().apply {
+                dialog.contentText = "넌 못 지나간다."
+                dialog.top = 300.0f
+                dialog.bottom = 300.0f
+                dialog.start = 50.0f
+                dialog.end = 50.0f
+                dialog.visibility = true
+
+                cover.visibility = true
+            })
+
+            return result
+        }
+
+        // for TpayActivity
+        fun TPayCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
+            val width = AnimUtils.pxToDp(context, widthDp)
+            val height = AnimUtils.pxToDp(context, heightDp)
+            val result = ArrayList<EduData>()
+
+            result.add(EduData().apply {
+                dialog.contentText = "넌 못 지나간다."
+                dialog.top = 300.0f
+                dialog.bottom = 300.0f
+                dialog.start = 50.0f
+                dialog.end = 50.0f
+                dialog.visibility = true
+
+                cover.visibility = true
+            })
+
+            return result
+        }
     }
 }

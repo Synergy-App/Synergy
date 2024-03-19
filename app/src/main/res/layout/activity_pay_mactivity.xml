@@ -7,6 +7,11 @@
     android:background="#CCCCCC"
     tools:context=".edu_space.kakaotaxi.payMActivity">
 
+    <com.sungkyul.synergy.utils.edu.EduScreen
+        android:id="@+id/edu_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="407dp"
