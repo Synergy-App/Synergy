@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.utils
+package com.sungkyul.synergy.utils.edu
 
 import android.animation.AnimatorSet
 import android.content.Context

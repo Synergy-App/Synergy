@@ -5,10 +5,8 @@ import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.MainActivity
-import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityGoogleMailAddBinding
-import com.sungkyul.synergy.databinding.ActivityGoogleMailBinding
-import com.sungkyul.synergy.utils.EduCourses
+import com.sungkyul.synergy.utils.edu.EduCourses
 
 class GoogleMailAddActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGoogleMailAddBinding

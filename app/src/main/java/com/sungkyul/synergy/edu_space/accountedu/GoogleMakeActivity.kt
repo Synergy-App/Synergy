@@ -8,8 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityGoogleMakeBinding
-import com.sungkyul.synergy.edu_space.accountedu.GoogleDefaultInfoActivity
-import com.sungkyul.synergy.utils.EduCourses
+import com.sungkyul.synergy.utils.edu.EduCourses
 
 class GoogleMakeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGoogleMakeBinding

@@ -2,7 +2,6 @@ package com.sungkyul.synergy.edu_space.accountedu
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -14,7 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityGoogleMailBinding
-import com.sungkyul.synergy.utils.EduCourses
+import com.sungkyul.synergy.utils.edu.EduCourses
 
 class GoogleMailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGoogleMailBinding

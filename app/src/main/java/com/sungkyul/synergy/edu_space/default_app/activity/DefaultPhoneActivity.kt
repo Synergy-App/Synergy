@@ -9,8 +9,6 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityDefaultPhoneBinding
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_DOWN_ALPHA
@@ -21,7 +19,7 @@ import com.sungkyul.synergy.edu_space.default_app.fragment.DefaultPhoneKeypadFra
 import com.sungkyul.synergy.edu_space.default_app.fragment.DefaultPhoneRecentHistoryFragment
 import com.sungkyul.synergy.utils.AnimUtils
 import com.sungkyul.synergy.utils.DynamicButton
-import com.sungkyul.synergy.utils.EduCourses
+import com.sungkyul.synergy.utils.edu.EduCourses
 
 class DefaultPhoneActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDefaultPhoneBinding

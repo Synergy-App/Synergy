@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityGoogleMainBinding
-import com.sungkyul.synergy.utils.EduCourses
+import com.sungkyul.synergy.utils.edu.EduCourses
 
 
 class GoogleMainActivity : AppCompatActivity() {

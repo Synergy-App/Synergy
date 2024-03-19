@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".utils.EduScreenFragment">
+    tools:context=".utils.edu.EduScreenFragment">
 
     <!-- Cover, Box, Arrow를 그릴 Canvas -->
     <ImageView
