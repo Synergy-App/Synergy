@@ -29,9 +29,8 @@ class EduCourses {
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
-                dialog.contentText = "이 부분은\n홈 화면입니다."
+                dialog.contentText = "이 부분은\n<b>홈 화면</b>입니다."
                 dialog.contentGravity = Gravity.CENTER
-                dialog.contentBolds = listOf(Pair(6, 10))
                 dialog.top = 300.0f
                 dialog.bottom = 300.0f
                 dialog.start = 50.0f
@@ -49,9 +48,8 @@ class EduCourses {
 
             result.add(EduData().apply {
                 dialog.titleText = "홈 화면"
-                dialog.contentText = "주로 배경화면이라고\n부릅니다."
+                dialog.contentText = "주로 <b>배경화면</b>이라고\n부릅니다."
                 dialog.contentGravity = Gravity.START
-                dialog.contentBolds = listOf(Pair(3, 7))
                 dialog.duration = 750
                 dialog.top = 275.0f
                 dialog.bottom = 275.0f
@@ -59,16 +57,14 @@ class EduCourses {
 
             result.add(EduData().apply {
                 dialog.contentText = "자주 사용하는 앱이\n화면에 배치되어\n있습니다."
-                dialog.contentBolds = listOf()
                 dialog.top = 250.0f
                 dialog.bottom = 250.0f
             })
 
             result.add(EduData().apply {
                 dialog.titleText = ""
-                dialog.contentText = "이 부분은\n상단바(상태 표시줄)\n입니다."
+                dialog.contentText = "이 부분은\n<b>상단바(상태 표시줄)</b>\n입니다."
                 dialog.contentGravity = Gravity.CENTER
-                dialog.contentBolds = listOf(Pair(6, 17))
                 dialog.top = 100.0f
                 dialog.bottom = 490.0f
 
@@ -84,20 +80,17 @@ class EduCourses {
 
             result.add(EduData().apply {
                 dialog.contentText = "주로 스마트폰의\n상태를 보여줍니다."
-                dialog.contentBolds = listOf()
             })
 
             result.add(EduData().apply {
-                dialog.contentText = "좌측 상단에는\n현재 시간이\n나타납니다."
-                dialog.contentBolds = listOf(Pair(8, 13))
+                dialog.contentText = "좌측 상단에는\n<b>현재 시간</b>이\n나타납니다."
 
                 cover.duration = 750
                 cover.boxRight = 100.0f
             })
 
             result.add(EduData().apply {
-                dialog.contentText = "우측 상단은\n스마트폰의 현재\n상태를 나타냅니다."
-                dialog.contentBolds = listOf(Pair(7, 18))
+                dialog.contentText = "우측 상단은\n<b>스마트폰의 현재\n상태</b>를 나타냅니다."
 
                 cover.boxLeft = width-150.0f
                 cover.boxRight = width
@@ -108,8 +101,7 @@ class EduCourses {
             // 대충 손가락이 위에서 아래로 내려오는 느낌
 
             result.add(EduData().apply {
-                dialog.contentText = "이 부분은\n하단바(내비게이션바)\n입니다."
-                dialog.contentBolds = listOf(Pair(6, 17))
+                dialog.contentText = "이 부분은\n<b>하단바(내비게이션바)</b>\n입니다."
                 dialog.duration = 1000
                 dialog.top = 500.0f
                 dialog.bottom = 100.0f
@@ -124,8 +116,7 @@ class EduCourses {
             })
 
             result.add(EduData().apply {
-                dialog.contentText = "이 버튼은\n최근 실행 앱을\n볼 수 있습니다."
-                dialog.contentBolds = listOf(Pair(6, 13))
+                dialog.contentText = "이 버튼은\n<b>최근 실행 앱</b>을\n볼 수 있습니다."
                 dialog.duration = 750
 
                 cover.duration = 750
@@ -136,24 +127,21 @@ class EduCourses {
             })
 
             result.add(EduData().apply {
-                dialog.contentText = "이 버튼은\n홈 화면으로\n돌아갈 수 있습니다."
-                dialog.contentBolds = listOf(Pair(6, 10))
+                dialog.contentText = "이 버튼은\n<b>홈 화면</b>으로\n돌아갈 수 있습니다."
 
                 cover.boxLeft = 175.0f
                 cover.boxRight = 235.0f
             })
 
             result.add(EduData().apply {
-                dialog.contentText = "이 버튼은\n뒤로(이전 화면)\n돌아갈 수 있습니다."
-                dialog.contentBolds = listOf(Pair(6, 15))
+                dialog.contentText = "이 버튼은\n<b>뒤로(이전 화면)</b>\n돌아갈 수 있습니다."
 
                 cover.boxLeft = width-110.0f
                 cover.boxRight = width-50.0f
             })
 
             result.add(EduData().apply {
-                dialog.contentText = "상단바(상태 표시줄)를\n한 번 내려볼까요?"
-                dialog.contentBolds = listOf(Pair(0, 11))
+                dialog.contentText = "<b>상단바(상태 표시줄)</b>를\n한 번 내려볼까요?"
                 dialog.top = 300.0f
                 dialog.bottom = 300.0f
 
@@ -191,15 +179,13 @@ class EduCourses {
             val data2 = EduData()
             data2.dialog.titleText = "교육"
             data2.dialog.titleGravity = Gravity.CENTER
-            data2.dialog.contentText = "제목과 내용 변경 테스트에요!"
+            data2.dialog.contentText = "<b>제목</b>과 <b>내용</b> 변경 테스트에요!"
             data2.dialog.contentGravity = Gravity.END
-            data2.dialog.contentBolds = listOf(Pair(0, 2), Pair(4, 6))
             result.add(data2)
 
             val data3 = EduData()
             data3.dialog.contentText = "사이즈 변경 테스트에요!"
             data3.dialog.contentGravity = Gravity.START
-            data3.dialog.contentBolds = listOf()
             data3.dialog.duration = 500
             data3.dialog.top = 320.0f
             data3.dialog.bottom = 320.0f
@@ -903,7 +889,7 @@ class EduCourses {
 
             // 0
             val data0 = EduData()
-            data0.dialog.contentText = "카카오톡의\n메인 화면입니다."
+            data0.dialog.contentText = "<span style=\"color:#E6C60D\"><b>카카오톡</b></span>의\n메인 화면입니다."
             data0.dialog.contentGravity = Gravity.CENTER
             data0.dialog.top = 300.0f
             data0.dialog.bottom = 300.0f
@@ -1193,8 +1179,7 @@ class EduCourses {
             result.add(data2)
 
             val data3 = EduData()
-            data3.dialog.contentText = "디스플레이는\n스마트폰의 다양한 설정을 할 수\n있습니다."
-            data3.dialog.contentBolds = listOf(Pair(0, 5))
+            data3.dialog.contentText = "<b>디스플레이</b>는\n스마트폰의 다양한 설정을 할 수\n있습니다."
             data3.dialog.top = 450.0f
             data3.dialog.bottom = 150.0f
             data3.cover.boxLeft = 20.0f
@@ -1433,9 +1418,8 @@ class EduCourses {
 
             // 0
             result.add(EduData().apply {
-                dialog.contentText = "계정 만들기를 \n클릭해주세요."
+                dialog.contentText = "<b>계정 만들기</b>를 \n클릭해주세요."
                 dialog.contentGravity = Gravity.CENTER
-                dialog.contentBolds = listOf(Pair(0, 6))
                 dialog.top = 300.0f
                 dialog.bottom = 300.0f
                 dialog.start = 50.0f

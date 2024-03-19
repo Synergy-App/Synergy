@@ -27,6 +27,8 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.toBitmap
+import androidx.core.text.parseAsHtml
+import androidx.core.text.toHtml
 import androidx.core.view.marginBottom
 import androidx.core.view.marginEnd
 import androidx.core.view.marginStart
@@ -298,15 +300,9 @@ class EduScreenFragment : Fragment() {
         binding.dialogSeparator.visibility = TextView.GONE
     }
 
-    fun setDialogContent(text: String, gravity: Int, bolds: List<Pair<Int, Int>>) {
-        binding.dialogContent.text = text
+    fun setDialogContent(text: String, gravity: Int) {
+        binding.dialogContent.text = text.parseAsHtml()
         binding.dialogContent.gravity = gravity
-
-        val spannableString = SpannableString(text)
-        for((start, end) in bolds) {
-            spannableString.setSpan(StyleSpan(android.graphics.Typeface.BOLD), start, end, 0)
-        }
-        binding.dialogContent.text = spannableString
     }
 
     fun showDialog() {
