@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E4E4E4"
     tools:context=".edu_space.delivery.DlvMainActivity">
+
+    <com.sungkyul.synergy.utils.edu.EduScreen
+        android:id="@+id/edu_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <!--검색어는 자장면으로 교육화면 구성부탁드립니다. !-->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigationView"

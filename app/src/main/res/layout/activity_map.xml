@@ -6,6 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".edu_space.kakaotaxi.mapActivity">
 
+    <com.sungkyul.synergy.utils.edu.EduScreen
+        android:id="@+id/edu_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
     <TextView
         android:id="@+id/resultTextView"

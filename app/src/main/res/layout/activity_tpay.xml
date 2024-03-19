@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".edu_space.ticket.TpayActivity">
 
+    <com.sungkyul.synergy.utils.edu.EduScreen
+        android:id="@+id/edu_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <View
         android:id="@+id/view32"
         android:layout_width="wrap_content"
