@@ -39,7 +39,6 @@ class IconEduActivity : AppCompatActivity() {
             Icon(R.drawable.ic_sound_black, "진동 모드"),
             Icon(R.drawable.ic_sound_black, "비행기 탑승 모드"),
             Icon(R.drawable.ic_sound_black, "배터리 양 표시"),
-            // 예시임. 변경해야됨.
         )
         iconAdapter = IconEduAdapter(this, iconList) // 여기에 생성한 아이템 리스트를 넣어줍니다.
         recyclerView.adapter = iconAdapter

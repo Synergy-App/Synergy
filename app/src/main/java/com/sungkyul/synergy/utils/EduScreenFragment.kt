@@ -177,6 +177,7 @@ class EduScreenFragment : Fragment() {
         val fromValue = 0.0f
         val toValue = 1.0f
 
+        // 스케일 확대
         val scaleSet = AnimatorSet().apply {
             duration = toggleHandDuration
             interpolator = toggleHandInterpolator
@@ -217,6 +218,7 @@ class EduScreenFragment : Fragment() {
         val fromValue = imageView.scaleX
         val toValue = 0.0f
 
+        // 스케일 축소
         val scaleSet = AnimatorSet().apply {
             duration = toggleHandDuration
             interpolator = toggleHandInterpolator

@@ -1,157 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <!-- Google 이미지 -->
-    <ImageView
-        android:id="@+id/defaultinfo_google_logo"
-        android:layout_width="95dp"
-        android:layout_height="60dp"
-        android:src="@drawable/googlelogo"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/google_defaultinfo_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="30dp"
-        />
-
-    <!-- "기본 정보" 텍스트 -->
-    <TextView
-        android:id="@+id/google_defaultinfo_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="기본 정보"
-        android:textSize="24sp"
-        android:textColor="#202022"
-        app:layout_constraintTop_toBottomOf="@+id/defaultinfo_google_logo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="0dp"/>
-
-    <!-- "생일과 성별을 입력하세요." 텍스트 -->
-    <TextView
-        android:id="@+id/birth_gender_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="생일과 성별을 입력하세요."
-        android:textSize="16sp"
-        android:textColor="#202022"
-        app:layout_constraintTop_toBottomOf="@+id/google_defaultinfo_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"/>
-
-    <!-- 연, 월, 일 입력창 -->
-    <LinearLayout
-        android:id="@+id/date_layout"
+    <com.sungkyul.synergy.utils.EduScreen
+        android:id="@+id/edu_screen"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="32dp"
-        app:layout_constraintTop_toBottomOf="@+id/birth_gender_text"
-        >
+        android:layout_height="match_parent"/>
 
-        <!-- 연(년) 입력 창 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Google 이미지 -->
+        <ImageView
+            android:id="@+id/defaultinfo_google_logo"
+            android:layout_width="95dp"
+            android:layout_height="60dp"
+            android:src="@drawable/googlelogo"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/google_defaultinfo_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="30dp"
+            />
+
+        <!-- "기본 정보" 텍스트 -->
+        <TextView
+            android:id="@+id/google_defaultinfo_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="기본 정보"
+            android:textSize="24sp"
+            android:textColor="#202022"
+            app:layout_constraintTop_toBottomOf="@+id/defaultinfo_google_logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="0dp"/>
+
+        <!-- "생일과 성별을 입력하세요." 텍스트 -->
+        <TextView
+            android:id="@+id/birth_gender_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="생일과 성별을 입력하세요."
+            android:textSize="16sp"
+            android:textColor="#202022"
+            app:layout_constraintTop_toBottomOf="@+id/google_defaultinfo_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"/>
+
+        <!-- 연, 월, 일 입력창 -->
+        <LinearLayout
+            android:id="@+id/date_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@+id/birth_gender_text"
+            >
+
+            <!-- 연(년) 입력 창 -->
+            <EditText
+                android:id="@+id/year_edittext"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="55dp"
+                android:hint="연"
+                android:background="@drawable/google_make_edit_background"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:inputType="number"/>
+
+
+            <!-- 월 입력 창 -->
+            <EditText
+                android:id="@+id/month_edittext"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="55dp"
+                android:hint="월"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/google_make_edit_background"
+                android:inputType="number"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:focusable="false"
+                android:clickable="true"/>
+
+
+            <!-- 일 입력 창 -->
+            <EditText
+                android:id="@+id/day_edittext"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="55dp"
+                android:hint="일"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/google_make_edit_background"
+                android:inputType="number"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"/>
+        </LinearLayout>
+
+        <!-- 성별 선택 칸 -->
         <EditText
-            android:id="@+id/year_edittext"
+            android:id="@+id/gender_edittext"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="55dp"
-            android:hint="연"
+            android:hint="성별"
+            android:inputType="textEmailAddress"
             android:background="@drawable/google_make_edit_background"
-            android:layout_marginEnd="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/date_layout"
             android:layout_marginStart="16dp"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:paddingTop="12dp"
-            android:paddingBottom="12dp"
-            android:inputType="number"/>
-
-
-        <!-- 월 입력 창 -->
-        <EditText
-            android:id="@+id/month_edittext"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="55dp"
-            android:hint="월"
             android:layout_marginEnd="16dp"
-            android:background="@drawable/google_make_edit_background"
-            android:inputType="number"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:paddingTop="12dp"
-            android:paddingBottom="12dp"
-            android:focusable="false"
-            android:clickable="true"/>
-
-
-        <!-- 일 입력 창 -->
-        <EditText
-            android:id="@+id/day_edittext"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="55dp"
-            android:hint="일"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/google_make_edit_background"
-            android:inputType="number"
+            android:layout_marginTop="24dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:paddingTop="12dp"
             android:paddingBottom="12dp"/>
-    </LinearLayout>
 
-    <!-- 성별 선택 칸 -->
-    <EditText
-        android:id="@+id/gender_edittext"
-        android:layout_width="0dp"
-        android:layout_height="55dp"
-        android:hint="성별"
-        android:inputType="textEmailAddress"
-        android:background="@drawable/google_make_edit_background"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date_layout"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="24dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp"/>
+        <!-- "안내멘트" 텍스트 -->
+        <TextView
+            android:id="@+id/reason_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Google에서 생년월일 및 성별 정보를 요청하는 이유"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#1B76EB"
+            app:layout_constraintTop_toBottomOf="@+id/gender_edittext"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="20dp"/>
 
-    <!-- "안내멘트" 텍스트 -->
-    <TextView
-        android:id="@+id/reason_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Google에서 생년월일 및 성별 정보를 요청하는 이유"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:textColor="#1B76EB"
-        app:layout_constraintTop_toBottomOf="@+id/gender_edittext"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="20dp"/>
+        <!-- "다음" 버튼 -->
+        <Button
+            android:id="@+id/defaultinfo_next_button"
+            android:layout_width="85dp"
+            android:layout_height="40dp"
+            android:text="다음"
+            android:background="@drawable/blue_rounded_button"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/reason_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="16dp"/>
 
-    <!-- "다음" 버튼 -->
-    <Button
-        android:id="@+id/defaultinfo_next_button"
-        android:layout_width="85dp"
-        android:layout_height="40dp"
-        android:text="다음"
-        android:background="@drawable/blue_rounded_button"
-        android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/reason_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="16dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

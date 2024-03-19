@@ -94,7 +94,7 @@ class LearningFragment : Fragment() {
             EduButtonItem("배달의 민족",R.drawable.ic_edubutton_delivery),
 
         )
-        val adapter = EduButtonAdapter(buttonItemList)
+        val adapter = EduButtonAdapter(requireContext(), buttonItemList)
         recyclerView.adapter = adapter
 
         recyclerView.setOnTouchListener { _, _ -> false }

@@ -1,12 +1,15 @@
 package com.sungkyul.synergy.edu_space.default_app.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.MotionEvent
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
+import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityDefaultPhoneCallBinding
 import com.sungkyul.synergy.edu_space.default_app.CALL_ENDED_DELAY
@@ -17,6 +20,7 @@ import com.sungkyul.synergy.edu_space.default_app.TOUCH_DURATION_SCALE
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_ALPHA
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_SCALE
 import com.sungkyul.synergy.utils.AnimUtils
+import com.sungkyul.synergy.utils.EduCourses
 
 class DefaultPhoneCallActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDefaultPhoneCallBinding
@@ -25,6 +29,36 @@ class DefaultPhoneCallActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDefaultPhoneCallBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // 교육을 정의해보자!
+        binding.eduScreen.post {
+            // 교육 코스 defaultPhoneCallCourse를 지정한다.
+            binding.eduScreen.course = EduCourses.defaultPhoneCallCourse(
+                binding.eduScreen.context,
+                binding.eduScreen.width.toFloat(),
+                binding.eduScreen.height.toFloat()
+            )
+            binding.eduScreen.setOnFinishedCourseListener {
+                // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
+
+                // DefaultAppActivity로 되돌아 간다.
+                val intent = Intent(binding.root.context, DefaultAppActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                startActivity(intent)
+            }
+            // 교육을 시작한다.
+            binding.eduScreen.start(this)
+        }
+
+        // 뒤로 가기 키를 눌렀을 때의 이벤트를 처리한다.
+        onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // DefaultAppActivity로 되돌아 간다.
+                val intent = Intent(binding.root.context, DefaultAppActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                startActivity(intent)
+            }
+        })
 
         val intent = intent
         binding.phoneNumText.text = "휴대전화 "+intent.getStringExtra("phone_num")
@@ -156,7 +190,9 @@ class DefaultPhoneCallActivity : AppCompatActivity() {
             MotionEvent.ACTION_UP -> {
                 AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
 
-                hangOut()
+                if(binding.eduScreen.onAction("click_hang_up_button")) {
+                    hangOut()
+                }
 
                 view.performClick()
             }
@@ -239,7 +275,9 @@ class DefaultPhoneCallActivity : AppCompatActivity() {
 
         // 몇 초 후에 화면을 종료한다.
         Handler(Looper.getMainLooper()).postDelayed({
-            finish()
+            val intent = Intent(this, DefaultPhoneActivity::class.java)
+            intent.putExtra("from", "call")
+            startActivity(intent)
         }, CALL_ENDED_DELAY)
     }
 }

@@ -8,6 +8,11 @@
     android:background="@drawable/bg_default_call"
     tools:context=".edu_space.default_app.activity.DefaultPhoneCallActivity">
 
+    <com.sungkyul.synergy.utils.EduScreen
+        android:id="@+id/edu_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <ImageView
         android:id="@+id/white_background"
         android:layout_width="match_parent"
@@ -67,7 +72,7 @@
             android:layout_width="160dp"
             android:layout_height="160dp"
             android:layout_marginTop="8dp"
-            android:src="@drawable/todo_circle"/>
+            android:src="@drawable/ic_call_profile_24"/>
 
     </LinearLayout>
 
@@ -85,7 +90,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:padding="20dp"
-            android:src="@drawable/todo_circle"
+            android:src="@drawable/ic_voicemail_white_24"
             android:scaleType="centerInside"
             android:background="@drawable/black_circle"/>
 
@@ -95,7 +100,7 @@
             android:layout_height="80dp"
             android:layout_marginStart="32dp"
             android:padding="20dp"
-            android:src="@drawable/todo_circle"
+            android:src="@drawable/ic_video_white_24dp"
             android:scaleType="centerInside"
             android:background="@drawable/black_circle"/>
 
@@ -105,7 +110,7 @@
             android:layout_height="80dp"
             android:layout_marginStart="32dp"
             android:padding="20dp"
-            android:src="@drawable/todo_circle"
+            android:src="@drawable/ic_bluetooth_white_91"
             android:scaleType="centerInside"
             android:background="@drawable/black_circle"/>
 
@@ -114,7 +119,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:padding="20dp"
-            android:src="@drawable/todo_circle"
+            android:src="@drawable/ic_profile"
             android:scaleType="centerInside"
             android:background="@drawable/black_circle"
             android:visibility="gone"/>
@@ -135,7 +140,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:padding="20dp"
-            android:src="@drawable/todo_circle"
+            android:src="@drawable/ic_sound_white"
             android:scaleType="centerInside"
             android:background="@drawable/black_circle"/>
 
@@ -145,7 +150,7 @@
             android:layout_height="80dp"
             android:layout_marginStart="32dp"
             android:padding="20dp"
-            android:src="@drawable/todo_circle"
+            android:src="@drawable/ic_micoff_white_24"
             android:scaleType="centerInside"
             android:background="@drawable/black_circle"/>
 
@@ -155,7 +160,7 @@
             android:layout_height="80dp"
             android:layout_marginStart="32dp"
             android:padding="20dp"
-            android:src="@drawable/todo_circle"
+            android:src="@drawable/ic_keypod_white"
             android:scaleType="centerInside"
             android:background="@drawable/black_circle"/>
 
@@ -164,7 +169,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:padding="20dp"
-            android:src="@drawable/todo_circle"
+            android:src="@drawable/ic_call_green_24"
             android:scaleType="centerInside"
             android:background="@drawable/black_circle"
             android:visibility="gone"/>
@@ -175,7 +180,7 @@
             android:layout_height="80dp"
             android:layout_marginStart="32dp"
             android:padding="20dp"
-            android:src="@drawable/todo_circle"
+            android:src="@drawable/ic_message_circle_blue_24"
             android:scaleType="centerInside"
             android:background="@drawable/black_circle"
             android:visibility="gone"/>
@@ -186,7 +191,7 @@
             android:layout_height="80dp"
             android:layout_marginStart="32dp"
             android:padding="20dp"
-            android:src="@drawable/todo_circle"
+            android:src="@drawable/ic_video_green_24"
             android:scaleType="centerInside"
             android:background="@drawable/black_circle"
             android:visibility="gone"/>
@@ -206,7 +211,7 @@
             android:id="@+id/hang_up_button"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@drawable/phone_call"
+            android:src="@drawable/ic_default_call_hangup"
             android:scaleType="centerInside"
             android:background="@drawable/black_circle"/>
 

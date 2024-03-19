@@ -2,13 +2,13 @@
 <!-- 환경설정-글자크기및스타일관련 임의파일-->
 
 <resources>
+    <dimen name="main_text_size_default">8sp</dimen>
     <dimen name="main_text_size_0">8sp</dimen>
-    <dimen name="main_text_size_1">12sp</dimen>
-    <dimen name="main_text_size_2">16sp</dimen>
-    <dimen name="main_text_size_3">20sp</dimen>
-    <dimen name="main_text_size_4">24sp</dimen>
-    <dimen name="main_text_size_5">28sp</dimen>
-    <dimen name="main_text_size_6">32sp</dimen>
-    <dimen name="main_text_size_7">36sp</dimen>
-
+    <dimen name="main_text_size_1">10sp</dimen>
+    <dimen name="main_text_size_2">12sp</dimen>
+    <dimen name="main_text_size_3">14sp</dimen>
+    <dimen name="main_text_size_4">16sp</dimen>
+    <dimen name="main_text_size_5">18sp</dimen>
+    <dimen name="main_text_size_6">20sp</dimen>
+    <dimen name="main_text_size_7">22sp</dimen>
 </resources>

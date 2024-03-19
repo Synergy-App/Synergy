@@ -191,7 +191,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/message_ic"
         app:layout_constraintTop_toTopOf="@id/message_ic"
-        android:text="문자메세지"
+        android:text="채팅 메시지"
         android:textSize="32sp"
         android:fontFamily="@font/pretendard_semibold"
         android:textColor="@color/black"

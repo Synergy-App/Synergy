@@ -1,5 +1,6 @@
 package com.sungkyul.synergy.edu_space.naver.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -24,6 +25,8 @@ class NaverSearchActivity : AppCompatActivity() {
         naverAutocompleteList.layoutManager = LinearLayoutManager(binding.root.context)
         naverAutocompleteList.adapter = NaverAutocompleteAdapter(naverAutocompleteArray, this)
 
+        binding.searchEditText.requestFocus()
+
         binding.searchEditText.addTextChangedListener(object: TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
@@ -47,6 +50,17 @@ class NaverSearchActivity : AppCompatActivity() {
             override fun afterTextChanged(s: Editable?) {
             }
         })
+        binding.previousButton.setOnClickListener {
+            finish()
+        }
+        binding.clearButton.setOnClickListener {
+            binding.searchEditText.setText("")
+        }
+        binding.searchButton.setOnClickListener {
+            val intent = Intent(this, NaverSearchResultActivity::class.java)
+            intent.putExtra("search_words", binding.searchEditText.text.toString())
+            this.startActivity(intent)
+        }
         binding.cancelButton.setOnClickListener {
             finish()
         }
