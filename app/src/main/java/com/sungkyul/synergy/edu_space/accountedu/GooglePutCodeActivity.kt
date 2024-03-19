@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityGooglePutCodeBinding
-import com.sungkyul.synergy.utils.EduCourses
+import com.sungkyul.synergy.utils.edu.EduCourses
 
 class GooglePutCodeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGooglePutCodeBinding

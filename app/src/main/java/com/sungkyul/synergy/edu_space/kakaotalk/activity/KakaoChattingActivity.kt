@@ -5,9 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import com.sungkyul.synergy.MainActivity
-import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityKakaoChattingBinding
-import com.sungkyul.synergy.utils.EduCourses
+import com.sungkyul.synergy.utils.edu.EduCourses
 
 /** 카카오톡 채팅 내부 화면 */
 class KakaoChattingActivity : AppCompatActivity() {

@@ -1,8 +1,10 @@
-package com.sungkyul.synergy.utils
+package com.sungkyul.synergy.utils.edu
 
 import android.content.Context
 import android.view.Gravity
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.utils.AnimUtils
+import com.sungkyul.synergy.utils.HandGestures
 
 class EduCourses {
     companion object {
@@ -289,7 +291,7 @@ class EduCourses {
                         50.0f,
                         75.0f,
                         -90.0f,
-                        HandGestures::tapGesture
+                        HandGestures.Companion::tapGesture
                     )
                 )
                 
@@ -307,7 +309,7 @@ class EduCourses {
                         50.0f,
                         75.0f,
                         0.0f,
-                        HandGestures::tapGesture
+                        HandGestures.Companion::tapGesture
                     )
                 )
                 
@@ -377,12 +379,14 @@ class EduCourses {
                 arrow.visibility = false
                 action.id = "click_key_button"
                 action.message = "0"
-                hands.add(EduHand(
+                hands.add(
+                    EduHand(
                     id = "tap",
                     x = 190.0f,
                     y = 580.0f,
-                    gesture = HandGestures::tapGesture
-                ))
+                    gesture = HandGestures.Companion::tapGesture
+                )
+                )
             })
 
             val phoneNumber = "1024683579"
@@ -404,23 +408,27 @@ class EduCourses {
                 result.add(EduData().apply {
                     action.id = "click_key_button"
                     action.message = i.toString()
-                    hands.add(EduHand(
+                    hands.add(
+                        EduHand(
                         id = "tap",
                         x = keyPosition[i]!!.first,
                         y = keyPosition[i]!!.second,
-                        gesture = HandGestures::tapGesture
-                    ))
+                        gesture = HandGestures.Companion::tapGesture
+                    )
+                    )
                 })
             }
 
             result.add(EduData().apply {
                 action.id = "click_call_button"
-                hands.add(EduHand(
+                hands.add(
+                    EduHand(
                     id = "tap",
                     x = 200.0f,
                     y = 670.0f,
-                    gesture = HandGestures::tapGesture
-                ))
+                    gesture = HandGestures.Companion::tapGesture
+                )
+                )
             })
 
             return result
@@ -462,13 +470,15 @@ class EduCourses {
                 cover.boxStrokeVisibility = false
                 arrow.visibility = false
                 action.id = "click_recent_history_button"
-                hands.add(EduHand(
+                hands.add(
+                    EduHand(
                     id = "tap",
                     x = 250.0f,
                     y = 670.0f,
                     rotation = 225.0f,
-                    gesture = HandGestures::tapGesture
-                ))
+                    gesture = HandGestures.Companion::tapGesture
+                )
+                )
             })
 
             result.add(EduData().apply {
@@ -534,12 +544,14 @@ class EduCourses {
 
                 action.id = "click_hang_up_button"
 
-                hands.add(EduHand(
+                hands.add(
+                    EduHand(
                     id = "tap",
                     x = 190.0f,
                     y = 700.0f,
-                    gesture = HandGestures::tapGesture
-                ))
+                    gesture = HandGestures.Companion::tapGesture
+                )
+                )
             })
 
             result.add(EduData())
@@ -640,13 +652,15 @@ class EduCourses {
                 cover.visibility = false
                 arrow.visibility = false
                 action.id = "click_shooting_button"
-                hands.add(EduHand(
+                hands.add(
+                    EduHand(
                     id = "tap",
                     x = 220.0f,
                     y = height-100.0f,
                     rotation = -90.0f,
-                    gesture = HandGestures::tapGesture
-                ))
+                    gesture = HandGestures.Companion::tapGesture
+                )
+                )
             })
 
             result.add(EduData().apply {
@@ -682,13 +696,15 @@ class EduCourses {
                 cover.boxStrokeVisibility = false
                 arrow.visibility = false
                 action.id = "click_gallery_view_button"
-                hands.add(EduHand(
+                hands.add(
+                    EduHand(
                     id = "tap",
                     x = 120.0f,
                     y = height-100.0f,
                     rotation = -90.0f,
-                    gesture = HandGestures::tapGesture
-                ))
+                    gesture = HandGestures.Companion::tapGesture
+                )
+                )
             })
 
             return result
@@ -750,13 +766,15 @@ class EduCourses {
                 cover.visibility = false
                 arrow.visibility = false
                 action.id = "click_message_edit_text"
-                hands.add(EduHand(
+                hands.add(
+                    EduHand(
                     id = "tap",
                     x = width/2,
                     y = height-110.0f,
                     rotation = 180.0f,
-                    gesture = HandGestures::tapGesture
-                ))
+                    gesture = HandGestures.Companion::tapGesture
+                )
+                )
             })
 
             result.add(EduData().apply {
@@ -865,12 +883,14 @@ class EduCourses {
                 arrow.visibility = false
                 action.id = "click_message_chatting_item"
                 action.message = "시너지"
-                hands.add(EduHand(
+                hands.add(
+                    EduHand(
                     id = "tap",
                     x = width/2,
                     y = 170.0f,
-                    gesture = HandGestures::tapGesture
-                ))
+                    gesture = HandGestures.Companion::tapGesture
+                )
+                )
             })
 
             return result
@@ -973,11 +993,12 @@ class EduCourses {
                 dialog.visibility = false
                 cover.visibility = false
                 arrow.visibility = false
-                hands.add(EduHand(
+                hands.add(
+                    EduHand(
                     id = "tap",
                     x = 100.0f,
                     y = 200.0f,
-                    gesture = HandGestures::tapGesture
+                    gesture = HandGestures.Companion::tapGesture
                 )
                 )
             })
@@ -1055,7 +1076,8 @@ class EduCourses {
                 cover.visibility = false
                 arrow.visibility = false
                 action.id = "click_chat11_button"
-                hands.add(EduHand(
+                hands.add(
+                    EduHand(
                     id = "tap",
                     source = R.drawable.hand,
                     x = 85.0f,
@@ -1063,8 +1085,9 @@ class EduCourses {
                     width = 50.0f,
                     height = 75.0f,
                     rotation = -90.0f,
-                    gesture = HandGestures::tapGesture
-                ))
+                    gesture = HandGestures.Companion::tapGesture
+                )
+                )
             })
 
             return result
@@ -1112,14 +1135,16 @@ class EduCourses {
                 cover.visibility = false
                 arrow.visibility = false
                 action.id = "click_message_edit_text"
-                hands.add(EduHand(
+                hands.add(
+                    EduHand(
                     id = "tap",
                     source = R.drawable.hand,
                     x = 200.0f,
                     y = 675.0f,
                     rotation = 180.0f,
-                    gesture = HandGestures::tapGesture
-                ))
+                    gesture = HandGestures.Companion::tapGesture
+                )
+                )
             })
 
             return result
@@ -1150,12 +1175,14 @@ class EduCourses {
                 dialog.visibility = false
                 cover.visibility = false
                 action.id = "scroll_to_bottom"
-                hands.add(EduHand(
+                hands.add(
+                    EduHand(
                     id = "drag",
                     x = 200.0f,
                     y = 650.0f,
-                    gesture = HandGestures::settingsScrollDownGesture
-                ))
+                    gesture = HandGestures.Companion::settingsScrollDownGesture
+                )
+                )
             })
 
             result.add(EduData().apply {
@@ -1182,12 +1209,14 @@ class EduCourses {
                 cover.boxVisibility = false
                 cover.boxStrokeVisibility = false
                 action.id = "tap_display_item"
-                hands.add(EduHand(
+                hands.add(
+                    EduHand(
                     id = "tap",
                     x = width/2,
                     y = 360.0f,
-                    gesture = HandGestures::tapGesture
-                ))
+                    gesture = HandGestures.Companion::tapGesture
+                )
+                )
             })
 
             return result
@@ -1218,12 +1247,14 @@ class EduCourses {
                 cover.visibility = false
                 action.id = "change_light_bar"
                 action.message = "100"
-                hands.add(EduHand(
+                hands.add(
+                    EduHand(
                     id = "drag",
                     x = 220.0f,
                     y = 510.0f,
-                    gesture = HandGestures::displayLightDragGesture
-                ))
+                    gesture = HandGestures.Companion::displayLightDragGesture
+                )
+                )
             })
 
             result.add(EduData().apply {
@@ -1240,25 +1271,29 @@ class EduCourses {
                 dialog.visibility = false
                 cover.visibility = false
                 action.id = "scroll_to_bottom"
-                hands.add(EduHand(
+                hands.add(
+                    EduHand(
                     id = "drag",
                     source = R.drawable.hand,
                     x = 200.0f,
                     y = 650.0f,
                     width = 50.0f,
                     height = 75.0f,
-                    gesture = HandGestures::displayScrollGesture
-                ))
+                    gesture = HandGestures.Companion::displayScrollGesture
+                )
+                )
             })
 
             result.add(EduData().apply {
                 action.id = "tap_font_item"
-                hands.add(EduHand(
+                hands.add(
+                    EduHand(
                     id = "tap",
                     x = 250.0f,
                     y = 475.0f,
-                    gesture = HandGestures::tapGesture
-                ))
+                    gesture = HandGestures.Companion::tapGesture
+                )
+                )
             })
 
             return result
@@ -1285,13 +1320,15 @@ class EduCourses {
                 cover.visibility = false
                 action.id = "change_text_size_bar"
                 action.message = "7"
-                hands.add(EduHand(
+                hands.add(
+                    EduHand(
                     id = "drag",
                     x = 40.0f,
                     y = 660.0f,
                     rotation = 180.0f,
-                    gesture = HandGestures::textSizeDragGesture
-                ))
+                    gesture = HandGestures.Companion::textSizeDragGesture
+                )
+                )
             })
 
             result.add(EduData().apply {
@@ -1323,12 +1360,14 @@ class EduCourses {
             result.add(EduData().apply {
                 dialog.visibility = false
                 cover.visibility = false
-                hands.add(EduHand(
+                hands.add(
+                    EduHand(
                     id = "tap",
                     x = width-60.0f,
                     y = 50.0f,
-                    gesture = HandGestures::tapGesture
-                ))
+                    gesture = HandGestures.Companion::tapGesture
+                )
+                )
             })
 
             return result
@@ -1404,12 +1443,14 @@ class EduCourses {
             result.add(EduData().apply {
                 dialog.visibility = false
                 cover.visibility = false
-                hands.add(EduHand(
+                hands.add(
+                    EduHand(
                     id = "tap",
                     x = 40.0f,
                     y = 520.0f,
-                    gesture = HandGestures::tapGesture
-                ))
+                    gesture = HandGestures.Companion::tapGesture
+                )
+                )
             })
 
             return result

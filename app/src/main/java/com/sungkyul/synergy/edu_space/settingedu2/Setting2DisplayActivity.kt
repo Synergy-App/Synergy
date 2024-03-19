@@ -11,9 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivitySetting2DisplayBinding
-import com.sungkyul.synergy.edu_space.settingedu2.Setting2FontActivity
-import com.sungkyul.synergy.edu_space.settingedu2.Setting2MainActivity
-import com.sungkyul.synergy.utils.EduCourses
+import com.sungkyul.synergy.utils.edu.EduCourses
 
 class Setting2DisplayActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySetting2DisplayBinding

@@ -12,9 +12,8 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.databinding.ActivityGoogleMailBinding
 import com.sungkyul.synergy.databinding.ActivityGooglePasswordBinding
-import com.sungkyul.synergy.utils.EduCourses
+import com.sungkyul.synergy.utils.edu.EduCourses
 
 class GooglePasswordActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGooglePasswordBinding

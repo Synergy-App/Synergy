@@ -8,7 +8,7 @@
     tools:context=".edu_space.default_app.activity.DefaultMessageActivity"
     android:background="@color/message_screen_bg">
 
-    <com.sungkyul.synergy.utils.EduScreen
+    <com.sungkyul.synergy.utils.edu.EduScreen
         android:id="@+id/edu_screen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

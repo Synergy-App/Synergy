@@ -3,14 +3,11 @@ package com.sungkyul.synergy.edu_space.settingedu2
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.Button
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.MainActivity
-import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivitySetting2MainBinding
-import com.sungkyul.synergy.utils.EduCourses
+import com.sungkyul.synergy.utils.edu.EduCourses
 
 class Setting2MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySetting2MainBinding

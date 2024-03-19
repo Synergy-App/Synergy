@@ -9,7 +9,6 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
-import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityDefaultPhoneCallBinding
 import com.sungkyul.synergy.edu_space.default_app.CALL_ENDED_DELAY
@@ -20,7 +19,7 @@ import com.sungkyul.synergy.edu_space.default_app.TOUCH_DURATION_SCALE
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_ALPHA
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_SCALE
 import com.sungkyul.synergy.utils.AnimUtils
-import com.sungkyul.synergy.utils.EduCourses
+import com.sungkyul.synergy.utils.edu.EduCourses
 
 class DefaultPhoneCallActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDefaultPhoneCallBinding

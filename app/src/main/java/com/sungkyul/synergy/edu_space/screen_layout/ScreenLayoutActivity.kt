@@ -3,14 +3,13 @@ package com.sungkyul.synergy.edu_space.screen_layout
 import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.databinding.ActivityScreenLayoutBinding
-import com.sungkyul.synergy.utils.EduCourses
+import com.sungkyul.synergy.utils.edu.EduCourses
 
 class ScreenLayoutActivity : AppCompatActivity() {
     private lateinit var binding: ActivityScreenLayoutBinding
