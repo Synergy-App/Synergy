@@ -37,11 +37,17 @@
             android:exported="false" /> <!-- 삭제할거 -->
         <!-- 아이콘 교육 -->
         <activity
-            android:name=".edu_space.icon_edu.activity.IconEduActivity"
+            android:name=".edu_space.icon_edu.activity.IconDetailActivity"
             android:exported="false" /> <!-- 아이콘 첫화면 -->
         <activity
-            android:name=".edu_space.icon_edu.activity.IconDetailActivity"
-            android:exported="false" /> <!-- 아이콘 설명 -->
+            android:name=".edu_space.icon_edu.activity.IconEduActivity"
+            android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+                          <category android:name="android.intent.category.LAUNCHER" />
+                       </intent-filter>
+        </activity>
+        <!-- 아이콘 설명 -->
         <!-- 화면구성 -->
         <activity
             android:name=".edu_space.screenEdu.activity.ScreenEduMainActivity"
@@ -166,11 +172,11 @@
         <!-- TODO : 수진 - backend TEST -->
         <activity
             android:name=".backend.BackendTest"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
 
 
