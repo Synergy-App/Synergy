@@ -9,61 +9,56 @@
 
     <LinearLayout
         android:id="@+id/learning_layout"
-        android:layout_width="148dp"
+        android:layout_width="160dp"
         android:layout_height="200dp"
         android:layout_margin="16dp"
+        android:gravity="center_vertical"
+        android:padding="12dp"
         android:background="@drawable/round_corner_white"
         android:orientation="vertical"
-        android:elevation="6dp"
-        >
+        android:elevation="6dp">
 
         <TextView
             android:id="@+id/learning_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:layout_marginStart="12dp"
             app:layout_constraintStart_toStartOf="@id/learning_layout"
             app:layout_constraintTop_toTopOf="@id/learning_layout"
             android:text="아이콘"
             android:letterSpacing="-0.08"
             android:fontFamily="@font/pretendard_semibold"
             android:textColor="@color/black"
-            android:textSize="34sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
         <TextView
             android:id="@+id/learning_tv2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-13dp"
-            android:layout_marginStart="12dp"
-            app:layout_constraintStart_toStartOf="@id/learning_layout"
-            app:layout_constraintTop_toTopOf="@id/learning_layout"
             android:text="교육"
             android:letterSpacing="-0.08"
             android:fontFamily="@font/pretendard_semibold"
             android:textColor="#919191"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/learning_layout"
+            app:layout_constraintTop_toTopOf="@id/learning_layout"/>
 
         <com.github.mikephil.charting.charts.HorizontalBarChart
             android:id="@+id/barChart"
             android:layout_width="match_parent"
-            android:layout_height="50dp" />
+            android:layout_height="40dp" />
 
         <ImageView
             android:id="@+id/edu_icon"
-            android:layout_width="58dp"
-            android:layout_height="58dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="end"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="16dp"
             android:src="@drawable/ic_edubotton_icon" />
     </LinearLayout>
 
     <com.sungkyul.synergy.utils.DynamicButton
         android:id="@+id/edu_button"
-        android:layout_width="148dp"
+        android:layout_width="160dp"
         android:layout_height="200dp"
         android:layout_margin="16dp"
         android:translationZ="25dp"/>

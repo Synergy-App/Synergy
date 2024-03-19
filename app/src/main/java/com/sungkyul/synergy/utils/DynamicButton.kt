@@ -23,6 +23,7 @@ class DynamicButton(context: Context, attrs: AttributeSet?): View(context, attrs
     private var circleRadius = 0.0f
     private val clipPath = Path()
     private val circlePaint = Paint()
+    private var toggle = false
 
     init {
         circlePaint.color = Color.BLACK
@@ -100,6 +101,8 @@ class DynamicButton(context: Context, attrs: AttributeSet?): View(context, attrs
 
             invalidate()
         }, 0.0f, 1.0f, 500, DecelerateInterpolator())
+
+        toggle = true
     }
 
     // 터치 업 애니메이션을 시작한다.
@@ -108,5 +111,10 @@ class DynamicButton(context: Context, attrs: AttributeSet?): View(context, attrs
             circlePaint.alpha = (51*it).toInt()
             invalidate()
         }, 1.0f, 0.0f, 500, DecelerateInterpolator())
+
+        toggle = false
     }
+
+    // 현재 터치 상태를 반환한다.
+    fun getToggle() = toggle
 }

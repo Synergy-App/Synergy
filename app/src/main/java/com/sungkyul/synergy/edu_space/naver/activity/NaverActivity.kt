@@ -12,6 +12,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityNaverBinding
 import com.sungkyul.synergy.edu_space.naver.adapter.NaverPostAdapter
 import com.sungkyul.synergy.edu_space.naver.adapter.NaverPostData
+import com.sungkyul.synergy.utils.AnimUtils
 
 class NaverActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNaverBinding
@@ -38,22 +39,71 @@ class NaverActivity : AppCompatActivity() {
         Log.i("all_height", "${naverPostList.layoutParams.height}")
 
         // 이벤트 리스너 설정
-        binding.searchBar.setOnTouchListener(onTouchSearchBarListener)
-    }
+        binding.searchBar.setOnTouchListener { view, event ->
+            when(event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                }
+                MotionEvent.ACTION_UP -> {
+                    // 네이버 검색 뷰로 이동
+                    val intent = Intent(this, NaverSearchActivity::class.java)
+                    startActivity(intent)
 
-    // 검색 바의 터치 이벤트 리스너
-    private val onTouchSearchBarListener = View.OnTouchListener { view, event ->
-        when(event.action) {
-            MotionEvent.ACTION_DOWN -> {
+                    view.performClick()
+                }
             }
-            MotionEvent.ACTION_UP -> {
-                // 네이버 검색 뷰로 이동
-                val intent = Intent(this, NaverSearchActivity::class.java)
-                startActivity(intent)
-
-                view.performClick()
-            }
+            true
         }
-        true
+        binding.shoppingButton.setOnTouchListener { view, event ->
+            when(event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    AnimUtils.startTouchDownSpringButtonAnimation(view)
+                }
+                MotionEvent.ACTION_UP -> {
+                    AnimUtils.startTouchUpSpringButtonAnimation(view)
+
+                    view.performClick()
+                }
+            }
+            true
+        }
+        binding.homeButton.setOnTouchListener { view, event ->
+            when(event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    AnimUtils.startTouchDownSpringButtonAnimation(view)
+                }
+                MotionEvent.ACTION_UP -> {
+                    AnimUtils.startTouchUpSpringButtonAnimation(view)
+
+                    view.performClick()
+                }
+            }
+            true
+        }
+        binding.contentsButton.setOnTouchListener { view, event ->
+            when(event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    AnimUtils.startTouchDownSpringButtonAnimation(view)
+                }
+                MotionEvent.ACTION_UP -> {
+                    AnimUtils.startTouchUpSpringButtonAnimation(view)
+
+                    view.performClick()
+                }
+            }
+            true
+        }
+        binding.clipButton.setOnTouchListener { view, event ->
+            when(event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    AnimUtils.startTouchDownSpringButtonAnimation(view)
+                }
+                MotionEvent.ACTION_UP -> {
+                    AnimUtils.startTouchUpSpringButtonAnimation(view)
+
+                    view.performClick()
+                }
+            }
+            true
+        }
     }
 }

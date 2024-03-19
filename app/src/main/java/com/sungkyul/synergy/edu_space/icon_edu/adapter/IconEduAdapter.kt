@@ -11,76 +11,115 @@ import com.sungkyul.synergy.edu_space.icon_edu.data.IconInfo
 import com.sungkyul.synergy.databinding.FragmentIconListBinding
 import com.sungkyul.synergy.edu_space.icon_edu.activity.IconDetailActivity
 
-/**교육공간 속 아이콘 리사이클러뷰 어뎁터 */
-class IconEduAdapter(val context: Context,  val iconList:ArrayList<Icon>):RecyclerView.Adapter<IconEduAdapter.CustomViewHolder>() {
-    //화면을 최초 로딩하여 만들어지는 View가 없는 경우 inflate 하여 뷰 홀더 생성
-    //CustomViewHolder를 생성하고 setOnClick 사용하자.
+/** 교육공간 속 아이콘 리사이클러뷰 어뎁터 */
+class IconEduAdapter(private val context: Context, private val iconList: ArrayList<Icon>) :
+    RecyclerView.Adapter<IconEduAdapter.CustomViewHolder>() {
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
-        viewType: Int,
+        viewType: Int
     ): CustomViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = FragmentIconListBinding.inflate(inflater, parent, false)
         return CustomViewHolder(binding)
     }
 
-    //생성된 Holder에서 보관중인 뷰(iconText)들을 데이터인 iconList 와 연결
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         val currentItem = iconList[position]
         holder.bind(currentItem)
+
+        // 클릭 이벤트 처리
+        holder.itemView.setOnClickListener {
+            val iconInfo = when (currentItem.iconText) {
+                "신호 없음" -> IconInfo(
+                    R.drawable.ic_sound_black,
+                    "신호 없음",
+                    "신호가 원활하지 않습니다. 핸드폰을 껐다가 다시 실행해 주세요."
+                )
+                "와이파이" -> IconInfo(
+                    R.drawable.ic_wifi_black,
+                    "와이파이",
+                    "무선 인터넷이에요. 와이파이를 켜면, 집이나 공공장소에서 무선으로 인터넷을 사용할 수 있어요. 덕분에 데이터를 아낄 수 있고, 더 빠르게 인터넷을 이용할 수 있답니다."
+                )
+                "데이터 모바일" -> IconInfo(
+                    R.drawable.ic_wifi_black,
+                    "데이터 모바일",
+                    "데이터 LTE, 5G, 3G에 연결됩니다. 와이파이없이 사용하실 수 있습니다."
+                )
+                "블루투스" -> IconInfo(
+                    R.drawable.ic_wifi_black,
+                    "블루투스",
+                    "블루투스에 연결합니다."
+                )
+                "비행기 탑승 모드" -> IconInfo(
+                    R.drawable.ic_wifi_black,
+                    "비행기 탑승 모드",
+                    "비행기에 탑승할 때 이 아이콘을 켜주세요."
+                )
+                "GPS" -> IconInfo(
+                    R.drawable.ic_wifi_black,
+                    "GPS",
+                    "위치 추적을 할 수 있는 아이콘입니다. 길찾기 기능이나 네비게이션기능을 사용하실 때 켜주세요."
+                )
+                "음성 전화" -> IconInfo(
+                    R.drawable.ic_wifi_black,
+                    "음성 전화",
+                    "음성 전화 아이콘입니다."
+                )
+                "부재중 전화" -> IconInfo(
+                    R.drawable.ic_wifi_black,
+                    "부재중 전화",
+                    "부재중 전화 아이콘입니다."
+                )
+                "문자" -> IconInfo(
+                    R.drawable.ic_wifi_black,
+                    "문자",
+                    "문자 아이콘입니다."
+                )
+                "알림" -> IconInfo(
+                    R.drawable.ic_wifi_black,
+                    "알림",
+                    "알림 아이콘입니다."
+                )
+                "무음 모드" -> IconInfo(
+                    R.drawable.ic_wifi_black,
+                    "무음 모드",
+                    "알림 및 모든 소리가 무음으로 되는 아이콘입니다."
+                )
+                "진동 모드" -> IconInfo(
+                    R.drawable.ic_wifi_black,
+                    "진동 모드",
+                    "알림 및 모든 소리가 진동으로 되는 아이콘입니다."
+                )"배터리 양 표시" -> IconInfo(
+                    R.drawable.ic_wifi_black,
+                    "배터리 양 표시",
+                    "배터리양을 표시하는 아이콘입니다."
+                )
+                else -> IconInfo(
+                    R.drawable.ic_sound_black,
+                    currentItem.iconText,
+                    "상세 설명이 없습니다."
+                )
+            }
+            val intent = Intent(context, IconDetailActivity::class.java)
+            intent.putExtra("iconInfo", iconInfo)
+            context.startActivity(intent)
+        }
     }
 
-    //아이템 리스트의 총 갯수 리턴
     override fun getItemCount(): Int {
         return iconList.size
     }
 
-    //holder에서 보관해야할 View(iconText)들을 변수에 담아둔다.
     inner class CustomViewHolder(private val binding: FragmentIconListBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
         fun bind(icon: Icon) {
             binding.apply {
-                iconIv.setImageResource(icon.iconImage) // 이미지 설정
-                iconTv.text = icon.iconText // 텍스트 설정
+                iconIv.setImageResource(icon.iconImage)
+                iconTv.text = icon.iconText
 
-                /*root.setOnClickListener {
-                    val iconInfo = when (icon.iconText)  {
-                        "음량 조절" -> IconInfo(R.drawable.ic_sound_black, "음량 조절", "음량을 조절합니다.")
-                        "와이파이" -> IconInfo(R.drawable.ic_sound_black, "와이파이", "와이파이를 설정합니다.")
-                        "손전등" -> IconInfo(R.drawable.ic_sound_black, "손전등", "손전등을 켭니다.")
-                        "블루투스" -> IconInfo(R.drawable.ic_sound_black, "블루투스", "블루투스에 대한 설명.")
-                        "비행기모드" -> IconInfo(R.drawable.ic_sound_black, "비행기모드", "비행기모드에 대한 설명.")
-                        "절전모드" -> IconInfo(R.drawable.ic_sound_black, "절전모드", "절전모드에 대한 설명.")
-                        "데이터모바일" -> IconInfo(R.drawable.ic_sound_black, "데이터모바일", "데이터모바일에 대한 설명.")
-                        "화면녹화" -> IconInfo(R.drawable.ic_sound_black, "화면녹화", "화면녹화에 대한 설명.")
-                        "다크모드" -> IconInfo(R.drawable.ic_sound_black, "다크모드", "다크모드에 대한 설명.")
-                        "빅스비 루틴" -> IconInfo(R.drawable.ic_sound_black, "빅스비 루틴", "빅스비 루틴에 대한 설명.")
-                        // 추가적인 아이콘 정보도 필요한 대로 추가하세요
-                        else -> IconInfo(R.drawable.ic_sound_black, icon.iconText, "상세 설명이 없습니다.")
-                    }
-
-                    val intent = Intent(context, IconDetailActivity::class.java)
-                    intent.putExtra("iconInfo", iconInfo)
-                    intent.putExtra("currentIconIndex", adapterPosition) // 현재 아이콘의 인덱스 전달
-                    context.startActivity(intent)
-                   /* val context = root.context
-
-                    // 음량 조절 아이템이 클릭되었을 때
-                    if (icon.iconText == "음량 조절") {
-                        // 다음 화면으로 전환하는 코드
-                        val intent = Intent(context, IconDetailActivity::class.java)
-                        context.startActivity(intent)
-                    } else {
-                        // 다른 아이템에 대한 클릭 처리
-
-                        Toast.makeText(context, "아이콘 텍스트: ${icon.iconText}", Toast.LENGTH_SHORT)
-                            .show()
-                        /**여기서 클릭했을 떄 토스트 메세지가 아닌 화면 전환!!*/
-                        *?/
-                    */
-
-                }*/
+                }
             }
         }
     }
-}

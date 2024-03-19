@@ -61,7 +61,7 @@ class DefaultAppActivity : AppCompatActivity() {
                     (view as DynamicButton).startTouchUpAnimation()
 
                     // 메시지 앱으로 이동한다.
-                    val intent = Intent(applicationContext, DefaultMessageActivity::class.java)
+                    val intent = Intent(applicationContext, DefaultMessageChattingActivity::class.java)
                     startActivity(intent)
                 }
             }

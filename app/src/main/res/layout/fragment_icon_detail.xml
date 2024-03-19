@@ -34,7 +34,6 @@
 
 
         <ImageView
-
             android:layout_width="320dp"
             android:layout_height="282dp"
             android:layout_marginTop="20dp"
@@ -45,7 +44,7 @@
             android:id="@+id/another_icon_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Your Text Here"
+            android:text="오예스"
             android:layout_gravity="center"
             android:layout_marginTop="-100dp"
         />

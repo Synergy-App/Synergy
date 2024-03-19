@@ -1,6 +1,7 @@
 package com.sungkyul.synergy.adapter
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.view.GestureDetector
@@ -15,10 +16,20 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.data.EduButtonItem
+import com.sungkyul.synergy.edu_space.accountedu.GoogleMainActivity
+import com.sungkyul.synergy.edu_space.appinstall.installMainActivity
+import com.sungkyul.synergy.edu_space.default_app.activity.DefaultAppActivity
 import com.sungkyul.synergy.edu_space.default_app.activity.DefaultPhoneActivity
+import com.sungkyul.synergy.edu_space.delivery.DlvMainActivity
+import com.sungkyul.synergy.edu_space.kakaotalk.activity.KakaoMainActivity
+import com.sungkyul.synergy.edu_space.kakaotaxi.TaxiMainActivity
+import com.sungkyul.synergy.edu_space.naver.activity.NaverActivity
+import com.sungkyul.synergy.edu_space.screen_layout.ScreenLayoutActivity
+import com.sungkyul.synergy.edu_space.settingedu2.Setting2MainActivity
+import com.sungkyul.synergy.edu_space.ticket.TicketMainActivity
 import com.sungkyul.synergy.utils.DynamicButton
 
-class EduButtonAdapter(private val buttonList: List<EduButtonItem>): RecyclerView.Adapter<EduButtonAdapter.ButtonViewHolder>() {
+class EduButtonAdapter(private val context: Context, private val buttonList: List<EduButtonItem>): RecyclerView.Adapter<EduButtonAdapter.ButtonViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ButtonViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.learning_item_button, parent, false)
@@ -54,6 +65,54 @@ class EduButtonAdapter(private val buttonList: List<EduButtonItem>): RecyclerVie
                     }
                     MotionEvent.ACTION_UP -> {
                         (view as DynamicButton).startTouchUpAnimation()
+
+                        // 버튼의 제목에 따라 해당 교육 액티비티로 이동한다.
+                        when(text1.text.toString()) {
+                            "아이콘" -> {
+                                /*val intent = Intent(context, DefaultAppActivity::class.java)
+                                context.startActivity(intent)*/
+                            }
+                            "화면구성" -> {
+                                val intent = Intent(context, ScreenLayoutActivity::class.java)
+                                context.startActivity(intent)
+                            }
+                            "기본앱" -> {
+                                val intent = Intent(context, DefaultAppActivity::class.java)
+                                context.startActivity(intent)
+                            }
+                            "환경 설정" -> {
+                                val intent = Intent(context, Setting2MainActivity::class.java)
+                                context.startActivity(intent)
+                            }
+                            "계정 생성" -> {
+                                val intent = Intent(context, GoogleMainActivity::class.java)
+                                context.startActivity(intent)
+                            }
+                            "앱 설치" -> {
+                                val intent = Intent(context, installMainActivity::class.java)
+                                context.startActivity(intent)
+                            }
+                            "카카오톡" -> {
+                                val intent = Intent(context, KakaoMainActivity::class.java)
+                                context.startActivity(intent)
+                            }
+                            "네이버" -> {
+                                val intent = Intent(context, NaverActivity::class.java)
+                                context.startActivity(intent)
+                            }
+                            "코레일" -> {
+                                val intent = Intent(context, TicketMainActivity::class.java)
+                                context.startActivity(intent)
+                            }
+                            "카카오택시" -> {
+                                val intent = Intent(context, TaxiMainActivity::class.java)
+                                context.startActivity(intent)
+                            }
+                            "배달의 민족" -> {
+                                val intent = Intent(context, DlvMainActivity::class.java)
+                                context.startActivity(intent)
+                            }
+                        }
                     }
                     MotionEvent.ACTION_CANCEL -> {
                         (view as DynamicButton).startTouchUpAnimation()

@@ -20,28 +20,27 @@ class IconEduActivity : AppCompatActivity() {
         binding = ActivityIconEduBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        /*val recyclerView: RecyclerView = binding.iconRv // XML에서 정의한 RecyclerView의 ID를 가져옵니다.
+        val recyclerView: RecyclerView = binding.iconRv // XML에서 정의한 RecyclerView의 ID를 가져옵니다.
 
         // RecyclerView에 레이아웃 매니저 설정
         recyclerView.layoutManager = LinearLayoutManager(this) // LinearLayoutManager 또는 필요한 레이아웃 매니저를 사용합니다.
 
-
-            // 데이터를 생성하거나 가져와서 리스트를 만듭니다. 여기서는 예시로 더미 데이터를 만듭니다.
         val iconList = arrayListOf(
-            Icon(R.drawable.ic_sound_black, "음량 조절"),
-            Icon(R.drawable.ic_sound_black, "와이파이"),
-            Icon(R.drawable.ic_sound_black, "손전등"),
-            Icon(R.drawable.ic_sound_black, "블루투스"),
-            Icon(R.drawable.ic_sound_black, "비행기모드"),
-            Icon(R.drawable.ic_sound_black, "절전모드"),
+            Icon(R.drawable.ic_sound_black, "신호 없음"),
             Icon(R.drawable.ic_sound_black, "데이터 모바일"),
-            Icon(R.drawable.ic_sound_black, "화면 녹화"),
-            Icon(R.drawable.ic_sound_black, "다크모드"),
-            Icon(R.drawable.ic_sound_black, "빅스비 루틴"),
-            // 예시임. 변경해야됨.
+            Icon(R.drawable.ic_sound_black, "와이파이"),
+            Icon(R.drawable.ic_sound_black, "블루투스"),
+            Icon(R.drawable.ic_sound_black, "GPS"),
+            Icon(R.drawable.ic_sound_black, "음성 전화"),
+            Icon(R.drawable.ic_sound_black, "부재중 전화"),
+            Icon(R.drawable.ic_sound_black, "문자"),
+            Icon(R.drawable.ic_sound_black, "알림"),
+            Icon(R.drawable.ic_sound_black, "무음 모드"),
+            Icon(R.drawable.ic_sound_black, "진동 모드"),
+            Icon(R.drawable.ic_sound_black, "비행기 탑승 모드"),
+            Icon(R.drawable.ic_sound_black, "배터리 양 표시"),
         )
-        // RecyclerView Adapter 생성 및 연결
         iconAdapter = IconEduAdapter(this, iconList) // 여기에 생성한 아이템 리스트를 넣어줍니다.
-        recyclerView.adapter = iconAdapter*/
+        recyclerView.adapter = iconAdapter
     }
 }
