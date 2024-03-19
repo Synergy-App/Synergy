@@ -21,6 +21,8 @@ import com.sungkyul.synergy.edu_space.appinstall.installMainActivity
 import com.sungkyul.synergy.edu_space.default_app.activity.DefaultAppActivity
 import com.sungkyul.synergy.edu_space.default_app.activity.DefaultPhoneActivity
 import com.sungkyul.synergy.edu_space.delivery.DlvMainActivity
+import com.sungkyul.synergy.edu_space.icon_edu.activity.IconDetailActivity
+import com.sungkyul.synergy.edu_space.icon_edu.activity.IconEduActivity
 import com.sungkyul.synergy.edu_space.kakaotalk.activity.KakaoMainActivity
 import com.sungkyul.synergy.edu_space.kakaotaxi.TaxiMainActivity
 import com.sungkyul.synergy.edu_space.naver.activity.NaverActivity
@@ -69,8 +71,8 @@ class EduButtonAdapter(private val context: Context, private val buttonList: Lis
                         // 버튼의 제목에 따라 해당 교육 액티비티로 이동한다.
                         when(text1.text.toString()) {
                             "아이콘" -> {
-                                /*val intent = Intent(context, DefaultAppActivity::class.java)
-                                context.startActivity(intent)*/
+                                val intent = Intent(context, IconEduActivity::class.java)
+                                context.startActivity(intent)
                             }
                             "화면구성" -> {
                                 val intent = Intent(context, ScreenLayoutActivity::class.java)
