@@ -19,7 +19,7 @@ class BackendTest : AppCompatActivity() {
 
         // 레트로핏 인스턴스 생성하기
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://172.30.58.1/")
+            .baseUrl("http://192.168.35.175/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
