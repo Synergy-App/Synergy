@@ -15,7 +15,6 @@ data class EduDialog(
     var titleGravity: Int? = null,
     var contentText: String? = null,
     var contentGravity: Int? = null,
-    var contentBolds: List<Pair<Int, Int>>? = null,
     var duration: Long? = null,
     var top: Float? = null,
     var bottom: Float? = null,
@@ -173,7 +172,6 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
             titleGravity = Gravity.START,
             contentText = "",
             contentGravity = Gravity.START,
-            contentBolds = listOf(),
             duration = 0,
             top = 0.0f,
             bottom = 0.0f,
@@ -292,7 +290,6 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         currentDialog.titleGravity = dialog.titleGravity ?: currentDialog.titleGravity
         currentDialog.contentText = dialog.contentText ?: currentDialog.contentText
         currentDialog.contentGravity = dialog.contentGravity ?: currentDialog.contentGravity
-        currentDialog.contentBolds = dialog.contentBolds ?: currentDialog.contentBolds
         currentDialog.duration = dialog.duration ?: currentDialog.duration
         currentDialog.top = dialog.top ?: currentDialog.top
         currentDialog.bottom = dialog.bottom ?: currentDialog.bottom
@@ -327,7 +324,7 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         */
         // 다이얼로그의 제목과 내용을 변경한다.
         eduScreenFragment.setDialogTitle(currentDialog.titleText!!, currentDialog.titleGravity!!)
-        eduScreenFragment.setDialogContent(currentDialog.contentText!!, currentDialog.contentGravity!!, currentDialog.contentBolds!!)
+        eduScreenFragment.setDialogContent(currentDialog.contentText!!, currentDialog.contentGravity!!)
         // 다이얼로그를 이동시킨다.
         eduScreenFragment.translateDialog(
             currentDialog.duration!!,
