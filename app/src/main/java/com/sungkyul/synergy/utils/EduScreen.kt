@@ -54,7 +54,7 @@ data class EduCover(
 )
 data class EduArrow(
     var duration: Long? = null,
-    var endTo: String? = null,
+    var endTo: Int? = null,
     var visibility: Boolean? = null
 )
 data class EduAction(
@@ -221,7 +221,7 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         ),
         EduArrow(
             duration = 0,
-            endTo = "dialog",
+            endTo = DIALOG,
             visibility = false
         ),
         EduAction(),
@@ -382,10 +382,10 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
 
         // 화살표를 이동시킨다.
         eduScreenFragment.translateArrowStart(currentArrow.duration!!)
-        if(currentArrow.endTo == "dialog") {
+        if(currentArrow.endTo == DIALOG) {
             eduScreenFragment.translateArrowEndToDialog(currentArrow.duration!!)
         }
-        if(currentArrow.endTo == "box") {
+        if(currentArrow.endTo == BOX) {
             eduScreenFragment.translateArrowEndToBox(currentArrow.duration!!)
         }
         // 화살표를 보여줄까 숨길까
@@ -429,5 +429,10 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
             num -= 2
             next()
         }
+    }
+
+    companion object {
+        val DIALOG = 0
+        val BOX = 1
     }
 }

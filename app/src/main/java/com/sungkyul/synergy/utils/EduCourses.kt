@@ -74,7 +74,7 @@ class EduCourses {
                 cover.boxBottom = 55.0f
 
                 arrow.duration = 750
-                arrow.endTo = "box"
+                arrow.endTo = EduScreen.BOX
                 arrow.visibility = true
             })
 
@@ -148,7 +148,7 @@ class EduCourses {
                 cover.boxVisibility = false
                 cover.boxStrokeVisibility = false
 
-                arrow.endTo = "dialog"
+                arrow.endTo = EduScreen.DIALOG
             })
 
             return result
@@ -222,7 +222,7 @@ class EduCourses {
             data7.cover.boxRight = width-50.0f
             data7.cover.boxBottom = 100.0f
             data7.arrow.duration = 500
-            data7.arrow.endTo = "box"
+            data7.arrow.endTo = EduScreen.BOX
             data7.arrow.visibility = true
             result.add(data7)
 
@@ -260,7 +260,7 @@ class EduCourses {
             val data13 = EduData()
             data13.cover.boxVisibility = false
             data13.cover.boxStrokeVisibility = false
-            data13.arrow.endTo = "dialog"
+            data13.arrow.endTo = EduScreen.DIALOG
             result.add(data13)
 
             val data14 = EduData()
@@ -332,7 +332,7 @@ class EduCourses {
             data0.cover.boxBottom = 600.0f
             data0.cover.boxVisibility = true
             data0.cover.boxStrokeVisibility = true
-            data0.arrow.endTo = "dialog"
+            data0.arrow.endTo = EduScreen.DIALOG
             data0.dialog.visibility = true
             data0.cover.visibility = true
             result.add(data0)
@@ -348,7 +348,7 @@ class EduCourses {
             data1.cover.boxTop = 620.0f
             data1.cover.boxRight = width-150.0f
             data1.cover.boxBottom = 720.0f
-            data1.arrow.endTo = "box"
+            data1.arrow.endTo = EduScreen.BOX
             data1.arrow.visibility = true
             data1.dialog.contentText = "전화를 거는 버튼입니다.\n이 버튼을 누르면\n상대방과 통화를\n할 수 있어요."
             result.add(data1)
@@ -358,7 +358,7 @@ class EduCourses {
             data2.dialog.contentText = "통화를 걸어볼까요?"
             data2.cover.boxVisibility = false
             data2.cover.boxStrokeVisibility = false
-            data2.arrow.endTo = "dialog"
+            data2.arrow.endTo = EduScreen.DIALOG
             result.add(data2)
 
             // 3
@@ -434,7 +434,7 @@ class EduCourses {
             data0.cover.boxTop = 730.0f
             data0.cover.boxRight = width-150.0f
             data0.cover.boxBottom = height
-            data0.arrow.endTo = "box"
+            data0.arrow.endTo = EduScreen.BOX
             data0.dialog.visibility = true
             data0.cover.visibility = true
             data0.cover.boxVisibility = true
@@ -473,7 +473,7 @@ class EduCourses {
             data3.dialog.end = 50.0f
             data3.dialog.visibility = true
             data3.cover.visibility = true
-            data3.arrow.endTo = "dialog"
+            data3.arrow.endTo = EduScreen.DIALOG
             data3.dialog.contentText = "최근기록을 보면\n전화 성공/실패 여부나\n영상 통화 여부 등을\n확인할 수 있어요."
             result.add(data3)
 
@@ -489,7 +489,7 @@ class EduCourses {
                 cover.boxTop = 730.0f
                 cover.boxRight = width-20.0f
                 cover.boxBottom = height
-                arrow.endTo = "box"
+                arrow.endTo = EduScreen.BOX
                 dialog.visibility = true
                 cover.visibility = true
                 cover.boxVisibility = true
@@ -558,7 +558,7 @@ class EduCourses {
                 cover.boxTop = 5.0f
                 cover.boxRight = width-20.0f
                 cover.boxBottom = 45.0f
-                arrow.endTo = "box"
+                arrow.endTo = EduScreen.BOX
                 dialog.visibility = true
                 cover.visibility = true
                 cover.boxStrokeVisibility = true
@@ -629,7 +629,7 @@ class EduCourses {
                 dialog.end = 50.0f
                 cover.boxStrokeVisibility = false
                 cover.boxVisibility = false
-                arrow.endTo = "dialog"
+                arrow.endTo = EduScreen.DIALOG
             })
 
             // 7
@@ -664,7 +664,7 @@ class EduCourses {
                 cover.boxTop = height-105.0f
                 cover.boxRight = 135.0f
                 cover.boxBottom = height-15.0f
-                arrow.endTo = "box"
+                arrow.endTo = EduScreen.BOX
                 dialog.visibility = true
                 cover.visibility = true
                 cover.boxVisibility = true
@@ -727,7 +727,7 @@ class EduCourses {
                 cover.boxTop = height-60.0f
                 cover.boxRight = width-90.0f
                 cover.boxBottom = height
-                arrow.endTo = "box"
+                arrow.endTo = EduScreen.BOX
                 cover.boxVisibility = true
                 cover.boxStrokeVisibility = true
                 arrow.visibility = true
@@ -746,7 +746,7 @@ class EduCourses {
                 dialog.contentText = "시너지에게\n메시지를 보내볼까요?"
                 dialog.top = 300.0f
                 dialog.bottom = 300.0f
-                arrow.endTo = "dialog"
+                arrow.endTo = EduScreen.DIALOG
                 cover.boxVisibility = false
                 cover.boxStrokeVisibility = false
             })
@@ -833,7 +833,7 @@ class EduCourses {
                 cover.boxTop = 630.0f
                 cover.boxRight = width-10.0f
                 cover.boxBottom = height-70.0f
-                arrow.endTo = "box"
+                arrow.endTo = EduScreen.BOX
                 arrow.visibility = true
             })
 
@@ -843,7 +843,7 @@ class EduCourses {
                 dialog.contentText = "메시지를 작성해볼까요?"
                 dialog.top = 300.0f
                 dialog.bottom = 300.0f
-                arrow.endTo = "dialog"
+                arrow.endTo = EduScreen.DIALOG
                 cover.boxVisibility = false
                 cover.boxStrokeVisibility = false
             })
@@ -857,7 +857,7 @@ class EduCourses {
                 cover.boxTop = 135.0f
                 cover.boxRight = width-0.0f
                 cover.boxBottom = 200.0f
-                arrow.endTo = "box"
+                arrow.endTo = EduScreen.BOX
                 cover.boxVisibility = true
                 cover.boxStrokeVisibility = true
                 arrow.visibility = true
@@ -911,7 +911,7 @@ class EduCourses {
             data1.cover.boxTop = 15.0f
             data1.cover.boxRight = 275.0f
             data1.cover.boxBottom = 65.0f
-            data1.arrow.endTo = "box"
+            data1.arrow.endTo = EduScreen.BOX
             data1.arrow.visibility = true
             data1.dialog.contentText = "이 버튼은 빠르게\n친구를 찾을 수 있는\n버튼이에요."
             result.add(data1)
@@ -945,7 +945,7 @@ class EduCourses {
             data5.dialog.bottom = 625.0f
             data5.cover.boxTop = 175.0f
             data5.cover.boxBottom = 700.0f
-            data5.arrow.endTo = "dialog"
+            data5.arrow.endTo = EduScreen.DIALOG
             result.add(data5)
 
             // 6
@@ -961,7 +961,7 @@ class EduCourses {
             data6.cover.boxTop = height-70.0f
             data6.cover.boxRight = 80.0f
             data6.cover.boxBottom = height-0.0f
-            data6.arrow.endTo = "box"
+            data6.arrow.endTo = EduScreen.BOX
             result.add(data6)
 
             // 7
@@ -981,7 +981,7 @@ class EduCourses {
             data8.dialog.end = 50.0f
             data8.cover.boxVisibility = false
             data8.cover.boxStrokeVisibility = false
-            data8.arrow.endTo = "dialog"
+            data8.arrow.endTo = EduScreen.DIALOG
             result.add(data8)
 
             // 9
@@ -1029,7 +1029,7 @@ class EduCourses {
             data1.cover.boxRight = 110.0f
             data1.cover.boxBottom = height-10.0f
             data1.arrow.duration = 750
-            data1.arrow.endTo = "box"
+            data1.arrow.endTo = EduScreen.BOX
             data1.arrow.visibility = true
             result.add(data1)
 
@@ -1063,7 +1063,7 @@ class EduCourses {
             data6.cover.duration = 0
             data6.cover.boxVisibility = false
             data6.cover.boxStrokeVisibility = false
-            data6.arrow.endTo = "dialog"
+            data6.arrow.endTo = EduScreen.DIALOG
             result.add(data6)
 
             val data7 = EduData()
