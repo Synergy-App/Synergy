@@ -27,13 +27,6 @@
             android:name=".edu_space.default_app.activity.DefaultAppActivity"
             android:exported="false" /> <!-- 기본 앱 화면 -->
         <activity
-            android:name=".edu_space.naver.activity.NaverSearchResultActivity"
-            android:exported="false" /> <!-- 교육공간 -->
-
-        <activity
-            android:name=".edu_space.default_app.activity.DefaultAppActivity"
-            android:exported="false" />
-        <activity
             android:name=".main.activity.DigitalStartActivity"
             android:exported="false" /> <!-- 디지털 나이 검사 -->
         <activity
@@ -62,11 +55,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-            android:name=".edu_space.icon_edu.activity.IconDetailActivity"
-            android:exported="false" /> <!-- 아이콘 첫화면 -->
-        <activity
-            android:name=".edu_space.icon_edu.activity.IconEduActivity"
-            android:exported="false" /> <!-- 아이콘 설명 -->
         <!-- 화면구성 -->
         <activity
             android:name=".edu_space.screen_layout.ScreenLayoutActivity"
@@ -77,8 +65,6 @@
 
             android:exported="false">
         </activity> <!-- 전화 화면 -->
-
-            android:exported="false" />
         <activity
             android:name=".edu_space.default_app.activity.DefaultPhoneCallActivity"
             android:exported="false" /> <!-- 전화 콜 화면 -->
@@ -90,8 +76,9 @@
             android:name=".edu_space.default_app.activity.DefaultCameraGalleryViewActivity"
             android:exported="false"/> <!-- 카메라 갤러리 뷰 화면 -->
         <!-- 환경설정2 -->
-            android:name=".edu_space.settingedu.activity.SettingEduActivity"
-            android:exported="true" /> <!-- 환경설정 시작 -->
+<!--        <activity-->
+<!--            android:name=".edu_space.settingedu.activity.SettingEduActivity"-->
+<!--            android:exported="true" /> &lt;!&ndash; 환경설정 시작 &ndash;&gt;-->
         <activity
             android:name=".edu_space.settingedu2.Setting2MainActivity"
             android:exported="false">
@@ -130,7 +117,6 @@
         <activity
             android:name=".edu_space.accountedu.GoogleMailAddActivity"
             android:exported="false" />
-            android:exported="false" /> <!-- 앱 설치 -->
         <!-- 이 부분 아래에 넣어주세요 -->
         <activity
             android:name=".edu_space.appinstall.installActivity"
@@ -142,7 +128,6 @@
             android:name=".edu_space.kakaotalk.activity.KakaoMainActivity"
             android:exported="false">
         </activity> <!-- 카카오톡 메인 화면 -->
-            android:exported="false" />
         <activity
             android:name=".edu_space.kakaotalk.activity.KakaoProfileDetailActivity"
             android:exported="false" />
@@ -157,10 +142,6 @@
             android:name=".edu_space.naver.activity.NaverActivity"
             android:exported="false"> <!-- 네이버 화면 -->
         </activity>
-            android:exported="false" />
-        <activity
-            android:name=".edu_space.naver.activity.NaverActivity"
-            android:exported="false" /> <!-- 코레일 -->
         <!-- 이 부분 아래에 넣어주세요 -->
         <activity
             android:name=".edu_space.ticket.TicketMainActivity"
@@ -197,25 +178,17 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.delivery.foodmenuActivity"
-            android:exported="false" /> <!-- TODO : 수진 - backend TEST -->
-        <activity
-            android:name=".backend.BackendTest"
             android:exported="false" />
-
-
-
-
-
 
         <!-- TODO : 수진 - backend TEST -->
         <activity
             android:name=".backend.BackendTest"
             android:exported="false" />
         <activity
-            android:name=".backend.CameraTest"
+            android:name=".learning_space.default_app.camera.CameraTest"
             android:exported="false"></activity>
         <activity
-            android:name=".backend.LearningDefaultAppCamera"
+            android:name=".learning_space.default_app.camera.LearningDefaultAppCamera"
             android:exported="false" />
         <activity
             android:name=".learning_space.intent.LearningScreenActivity"
