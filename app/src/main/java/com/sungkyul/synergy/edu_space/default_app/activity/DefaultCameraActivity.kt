@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityDefaultCameraBinding
@@ -12,6 +13,7 @@ import com.sungkyul.synergy.edu_space.default_app.TOUCH_DOWN_ALPHA
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_DURATION_ALPHA
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_ALPHA
 import com.sungkyul.synergy.utils.AnimUtils
+import com.sungkyul.synergy.utils.edu.EduCourses
 
 class DefaultCameraActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDefaultCameraBinding
@@ -20,6 +22,36 @@ class DefaultCameraActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDefaultCameraBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // 교육을 정의해보자!
+        binding.eduScreen.post {
+            // 교육 코스 cameraCourse를 지정한다.
+            binding.eduScreen.course = EduCourses.cameraCourse(
+                binding.eduScreen.context,
+                binding.eduScreen.width.toFloat(),
+                binding.eduScreen.height.toFloat()
+            )
+            binding.eduScreen.setOnFinishedCourseListener {
+                // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
+
+                // DefaultAppActivity로 되돌아 간다.
+                val intent = Intent(binding.root.context, DefaultAppActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                startActivity(intent)
+            }
+            // 교육을 시작한다.
+            binding.eduScreen.start(this)
+        }
+
+        // 뒤로 가기 키를 눌렀을 때의 이벤트를 처리한다.
+        onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // DefaultAppActivity로 되돌아 간다.
+                val intent = Intent(binding.root.context, DefaultAppActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                startActivity(intent)
+            }
+        })
 
         // 버튼의 배경 알파 값 초기화
         binding.settingsButton.background.alpha = TOUCH_UP_ALPHA
@@ -157,6 +189,8 @@ class DefaultCameraActivity : AppCompatActivity() {
 
                 // 찰칵하는 애니메이션
                 AnimUtils.startAlphaAnimation2(binding.cameraScreen.drawable, 25, 255, 0)
+
+                binding.eduScreen.onAction("click_shooting_button")
 
                 view.performClick()
             }

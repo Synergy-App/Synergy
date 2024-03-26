@@ -13,12 +13,14 @@ import android.view.animation.AnimationUtils
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.Interpolator
 import android.view.animation.LinearInterpolator
+import android.view.animation.OvershootInterpolator
 import android.view.animation.ScaleAnimation
-import android.widget.ImageView
 import androidx.core.view.updateLayoutParams
 import com.sungkyul.synergy.R
 
 const val TOUCH_DOWN_ELASTIC_BUTTON_DURATION = 250L
+const val SPRING_BUTTON_DURATION = 150L
+const val APPEARING_BUTTON_DURATION = 250L
 
 class AnimUtils {
     companion object {
@@ -59,6 +61,32 @@ class AnimUtils {
         // 탄성 있는 버튼의 터치 업 애니메이션을 시작하는 함수
         fun startTouchUpElasticButtonAnimation(context: Context, view: View) {
             startTouchUpButtonAnimation(context, view)
+        }
+
+        // 용수철 버튼의 터치 다운 애니메이션을 시작하는 함수
+        fun startTouchDownSpringButtonAnimation(view: View) {
+            startObjectAnimatorOfFloat(view, "scaleX", view.scaleX, 0.75f, SPRING_BUTTON_DURATION, DecelerateInterpolator())
+            startObjectAnimatorOfFloat(view, "scaleY", view.scaleY, 0.75f, SPRING_BUTTON_DURATION, DecelerateInterpolator())
+        }
+
+        // 용수철 버튼의 터치 업 애니메이션을 시작하는 함수
+        fun startTouchUpSpringButtonAnimation(view: View) {
+            startObjectAnimatorOfFloat(view, "scaleX", view.scaleX, 1.0f, SPRING_BUTTON_DURATION, OvershootInterpolator())
+            startObjectAnimatorOfFloat(view, "scaleY", view.scaleY, 1.0f, SPRING_BUTTON_DURATION, OvershootInterpolator())
+        }
+
+        // 버튼의 등장 애니메이션을 시작하는 함수
+        fun startAppearingButtonAnimation(view: View) {
+            startObjectAnimatorOfFloat(view, "scaleX", view.scaleX, 1.0f, APPEARING_BUTTON_DURATION, DecelerateInterpolator())
+            startObjectAnimatorOfFloat(view, "scaleY", view.scaleY, 1.0f, APPEARING_BUTTON_DURATION, DecelerateInterpolator())
+            startObjectAnimatorOfFloat(view, "alpha", view.alpha, 1.0f, APPEARING_BUTTON_DURATION, DecelerateInterpolator())
+        }
+
+        // 버튼의 퇴장 애니메이션을 시작하는 함수
+        fun startDisappearingButtonAnimation(view: View) {
+            startObjectAnimatorOfFloat(view, "scaleX", view.scaleX, 0.5f, APPEARING_BUTTON_DURATION, DecelerateInterpolator())
+            startObjectAnimatorOfFloat(view, "scaleY", view.scaleY, 0.5f, APPEARING_BUTTON_DURATION, DecelerateInterpolator())
+            startObjectAnimatorOfFloat(view, "alpha", view.alpha, 0.0f, APPEARING_BUTTON_DURATION, DecelerateInterpolator())
         }
 
         // (duration)ms 동안 drawable의 알파 값이 startAlpha에서 endAlpha로 바뀌는 함수

@@ -8,6 +8,11 @@
     tools:context=".edu_space.naver.activity.NaverSearchActivity"
     android:background="@color/naver_search_bg">
 
+    <com.sungkyul.synergy.utils.edu.EduScreen
+        android:id="@+id/edu_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <LinearLayout
         android:id="@+id/search_bar"
         android:orientation="horizontal"
@@ -18,10 +23,11 @@
         android:background="@color/white">
 
         <ImageButton
+            android:id="@+id/previous_button"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:padding="8dp"
-            android:src="@drawable/todo_circle"
+            android:padding="12dp"
+            android:src="@drawable/naver_previous_button"
             android:scaleType="centerInside"
             android:background="@null"/>
 
@@ -39,14 +45,16 @@
             android:layout_height="wrap_content">
 
             <ImageButton
+                android:id="@+id/clear_button"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:padding="8dp"
-                android:src="@drawable/todo_circle"
+                android:padding="12dp"
+                android:src="@drawable/naver_clear_button"
                 android:scaleType="centerInside"
                 android:background="@null"/>
 
             <ImageButton
+                android:id="@+id/search_button"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:padding="8dp"
@@ -155,7 +163,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:padding="8dp"
-                android:src="@drawable/todo_circle"
+                android:src="@drawable/naver_microphone"
                 android:scaleType="centerInside"
                 android:background="@null"/>
 
@@ -163,7 +171,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:padding="8dp"
-                android:src="@drawable/todo_circle"
+                android:src="@drawable/naver_camera"
                 android:scaleType="centerInside"
                 android:background="@null"/>
 
@@ -171,7 +179,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:padding="8dp"
-                android:src="@drawable/todo_circle"
+                android:src="@drawable/naver_map_point"
                 android:scaleType="centerInside"
                 android:background="@null"/>
 

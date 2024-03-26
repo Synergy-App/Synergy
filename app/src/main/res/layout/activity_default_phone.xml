@@ -9,7 +9,7 @@
     android:background="@color/phoneDeepBgColor"
     tools:context=".edu_space.default_app.activity.DefaultPhoneActivity">
 
-    <com.sungkyul.synergy.utils.EduScreen
+    <com.sungkyul.synergy.utils.edu.EduScreen
         android:id="@+id/edu_screen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
@@ -29,7 +29,7 @@
             android:gravity="center"
             android:text="@string/phone"
             android:textSize="16sp"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginStart="10dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -67,12 +67,81 @@
         android:layout_below="@+id/phone_app_bar"/>
 
     <!-- 하단 내비게이션 뷰 -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/phone_bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:menu="@menu/menu_phone"
-        style="@style/PhoneBottomNavView"/>
+        android:layout_alignParentBottom="true">
+
+        <FrameLayout
+            android:id="@+id/keypad_group"
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/recent_history_group">
+
+            <com.sungkyul.synergy.utils.DynamicButton
+                android:id="@+id/keypad_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:text="@string/keypad"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/recent_history_group"
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/keypad_group"
+            app:layout_constraintEnd_toStartOf="@id/contact_group">
+
+            <com.sungkyul.synergy.utils.DynamicButton
+                android:id="@+id/recent_history_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:text="@string/recent_history"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/contact_group"
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/recent_history_group"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.sungkyul.synergy.utils.DynamicButton
+                android:id="@+id/contact_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:text="@string/contact"/>
+
+        </FrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </RelativeLayout>

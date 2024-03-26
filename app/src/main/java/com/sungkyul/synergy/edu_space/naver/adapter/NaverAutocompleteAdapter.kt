@@ -17,13 +17,6 @@ data class NaverAutocompleteData(
 class NaverAutocompleteAdapter(private val dataSet: ArrayList<NaverAutocompleteData>, private val activity: AppCompatActivity): RecyclerView.Adapter<NaverAutocompleteAdapter.ViewHolder>() {
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val searchQuery: TextView = view.findViewById(R.id.search_query)
-
-        init {
-            view.rootView.setOnClickListener {
-                val intent = Intent(activity, NaverSearchResultActivity::class.java)
-                activity.startActivity(intent)
-            }
-        }
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
@@ -35,6 +28,12 @@ class NaverAutocompleteAdapter(private val dataSet: ArrayList<NaverAutocompleteD
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         viewHolder.searchQuery.text = dataSet[position].searchQuery
+
+        viewHolder.itemView.setOnClickListener {
+            val intent = Intent(activity, NaverSearchResultActivity::class.java)
+            intent.putExtra("search_words", dataSet[position].searchQuery)
+            activity.startActivity(intent)
+        }
     }
 
     override fun getItemCount() = dataSet.size

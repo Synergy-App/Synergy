@@ -8,10 +8,15 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.databinding.ActivityGooglePutCodeBinding
+import com.sungkyul.synergy.utils.edu.EduCourses
 
 class GooglePutCodeActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityGooglePutCodeBinding
 
     private lateinit var countdownText: TextView
     private lateinit var editText: EditText // 에딧텍스트 추가
@@ -21,7 +26,38 @@ class GooglePutCodeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_google_put_code)
+        binding = ActivityGooglePutCodeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        // 교육을 정의해보자!
+        binding.eduScreen.post {
+            // 교육 코스 customCourse를 지정한다.
+            binding.eduScreen.course = EduCourses.googlePutCodeCourse(
+                binding.eduScreen.context,
+                binding.eduScreen.width.toFloat(),
+                binding.eduScreen.height.toFloat()
+            )
+            binding.eduScreen.setOnFinishedCourseListener {
+                // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
+
+                // MainActivity로 되돌아 간다.
+                val intent = Intent(binding.root.context, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                startActivity(intent)
+            }
+            // 교육을 시작한다.
+            binding.eduScreen.start(this)
+        }
+
+        // 뒤로 가기 키를 눌렀을 때의 이벤트를 처리한다.
+        onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // MainActivity로 되돌아 간다.
+                val intent = Intent(binding.root.context, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                startActivity(intent)
+            }
+        })
 
         countdownText = findViewById(R.id.countdown_text)
         editText = findViewById(R.id.put_code_edittext) // 에딧텍스트 초기화

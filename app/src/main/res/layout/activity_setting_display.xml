@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.sungkyul.synergy.utils.EduScreen
+    <com.sungkyul.synergy.utils.edu.EduScreen
         android:id="@+id/edu_screen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

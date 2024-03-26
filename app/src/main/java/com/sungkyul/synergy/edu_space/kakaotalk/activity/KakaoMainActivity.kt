@@ -1,7 +1,6 @@
 package com.sungkyul.synergy.edu_space.kakaotalk.activity
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import com.sungkyul.synergy.R
@@ -9,15 +8,15 @@ import com.sungkyul.synergy.databinding.ActivityKakaoMainBinding
 import androidx.fragment.app.Fragment
 import com.sungkyul.synergy.edu_space.kakaotalk.fragment.ChatFragment
 import com.sungkyul.synergy.edu_space.kakaotalk.fragment.FriendsFragment
-import com.sungkyul.synergy.utils.EduCourses
+import com.sungkyul.synergy.utils.edu.EduCourses
 
 /** 카카오톡 메인화면 하단 네비게이션바 + fragment */
 
 private lateinit var binding: ActivityKakaoMainBinding
 private const val TAG_FRIENDS = "friends_fragment"
 private const val TAG_CHAT = "chat_fragment"
-//private const val TAG_OPENCHAT = "openChat_fragment"
-//private const val TAG_SHOPPING = "shopping_fragment"
+private const val TAG_OPENCHAT = "openChat_fragment"
+private const val TAG_SHOPPING = "shopping_fragment"
 private const val TAG_MORE = "more_fragment"
 
 class KakaoMainActivity : AppCompatActivity() {
@@ -28,13 +27,20 @@ class KakaoMainActivity : AppCompatActivity() {
 
         setFragment(TAG_FRIENDS, FriendsFragment())
 
-        binding.kakaoNavigationView.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.friendsFragment -> setFragment(TAG_FRIENDS, FriendsFragment())
-                R.id.chatFragment -> setFragment(TAG_CHAT, ChatFragment())
-                //  R.id.openChatFragment -> setFragment(TAG_OPENCHAT, OpenchatFragment())
-            }
-            true
+        binding.friendButton.setOnClickListener {
+            setFragment(TAG_FRIENDS, FriendsFragment())
+        }
+        binding.chattingButton.setOnClickListener {
+            setFragment(TAG_CHAT, ChatFragment())
+        }
+        binding.openchattingButton.setOnClickListener {
+            //setFragment(TAG_OPENCHAT, ())
+        }
+        binding.shoppingButton.setOnClickListener {
+            //setFragment(TAG_SHOPPING, ())
+        }
+        binding.moreButton.setOnClickListener {
+            //setFragment(TAG_MORE, ())
         }
 
         // 교육 추가

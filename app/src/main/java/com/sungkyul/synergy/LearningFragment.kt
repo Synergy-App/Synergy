@@ -1,12 +1,11 @@
 package com.sungkyul.synergy
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.mikephil.charting.charts.HorizontalBarChart
@@ -14,7 +13,7 @@ import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.sungkyul.synergy.adapter.EduButtonAdapter
-import com.sungkyul.synergy.data.EduButtonItem
+import com.sungkyul.synergy.adapter.EduButtonItem
 
 /** 학습하기 (교육공간) fragment
  * MPAndroidChart라이브러리 나중에 분리해야할듯 */
@@ -81,20 +80,20 @@ class LearningFragment : Fragment() {
         recyclerView.layoutManager = layoutManager
 
         val buttonItemList = listOf(
-            EduButtonItem("아이콘", R.drawable.ic_edubotton_icon),
-            EduButtonItem("화면구성",R.drawable.ic_edubutton_screen),
-            EduButtonItem("기본앱",R.drawable.ic_edubutton_default),
-            EduButtonItem("환경 설정",R.drawable.ic_edubutton_setting),
-            EduButtonItem("계정 생성",R.drawable.ic_edubutton_account),
-            EduButtonItem("앱 설치",R.drawable.ic_edubutton_download),
-            EduButtonItem("카카오톡",R.drawable.ic_edubutton_kakaotalk),
-            EduButtonItem("네이버",R.drawable.ic_edubutton_naver),
-            EduButtonItem("코레일",R.drawable.ic_edubutton_korail),
-            EduButtonItem("카카오택시",R.drawable.ic_edubutton_kakaotaxi),
-            EduButtonItem("배달의 민족",R.drawable.ic_edubutton_delivery),
-
+            EduButtonItem("아이콘", R.drawable.ic_edubotton_icon, 50.0f, 100.0f),
+            EduButtonItem("화면구성",R.drawable.ic_edubutton_screen, 70.0f, 100.0f),
+            EduButtonItem("기본앱",R.drawable.ic_edubutton_default, 80.0f, 100.0f),
+            EduButtonItem("환경 설정",R.drawable.ic_edubutton_setting, 90.0f, 100.0f),
+            EduButtonItem("계정 생성",R.drawable.ic_edubutton_account, 100.0f, 100.0f),
+            EduButtonItem("앱 설치",R.drawable.ic_edubutton_download, 30.0f, 100.0f),
+            EduButtonItem("카카오톡",R.drawable.ic_edubutton_kakaotalk, 0.0f, 100.0f),
+            EduButtonItem("네이버",R.drawable.ic_edubutton_naver, 0.0f, 100.0f),
+            EduButtonItem("코레일",R.drawable.ic_edubutton_korail, 0.0f, 100.0f),
+            EduButtonItem("카카오택시",R.drawable.ic_edubutton_kakaotaxi, 0.0f, 100.0f),
+            EduButtonItem("배달의 민족",R.drawable.ic_edubutton_delivery, 0.0f, 100.0f)
         )
-        val adapter = EduButtonAdapter(buttonItemList)
+
+        val adapter = EduButtonAdapter(requireContext(), buttonItemList)
         recyclerView.adapter = adapter
 
         recyclerView.setOnTouchListener { _, _ -> false }

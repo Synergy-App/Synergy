@@ -1,0 +1,719 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F6F6F6">
+
+    <com.sungkyul.synergy.utils.edu.EduScreen
+        android:id="@+id/edu_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".MainActivity">
+
+            <!-- "설정" 텍스트 -->
+            <TextView
+                android:id="@+id/setting_title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="설정"
+                android:textSize="35sp"
+                android:textColor="@color/black"
+                android:layout_marginTop="150dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+
+            <!-- 돋보기 이미지 -->
+            <ImageView
+                android:id="@+id/setting_search_image"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/setting_search"
+                android:layout_marginTop="300dp"
+                android:layout_marginEnd="18dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+
+            <!-- 1. 삼성 계정 레이아웃 -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/setting_main_layout"
+                android:layout_width="0dp"
+                android:layout_height="85dp"
+                android:background="@drawable/rounded_button"
+                app:layout_constraintTop_toBottomOf="@id/setting_title_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="150dp"
+                android:layout_marginBottom="16dp">
+
+                <!-- 삼성 계정 텍스트 -->
+                <TextView
+                    android:id="@+id/user_account_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="삼성 계정"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:layout_marginStart="26dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="0dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <!-- 사용자 이메일 텍스트 -->
+                <TextView
+                    android:id="@+id/user_account_info_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="삼성 계정 • syn****@gmail.com"
+                    android:textColor="#8C8C8C"
+                    android:textSize="12sp"
+                    android:layout_marginStart="26dp"
+                    android:layout_marginBottom="15dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <!-- 유저 이미지 -->
+                <ImageView
+                    android:id="@+id/setting_user_info_image"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/setting_user_info"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- 2. 연결+기기 간 연결 레이아웃 -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/setting_list1_layout"
+                android:layout_width="0dp"
+                android:layout_height="145dp"
+                android:background="@drawable/rounded_button"
+                app:layout_constraintTop_toBottomOf="@id/setting_main_layout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="16dp">
+
+                <!-- 와이파이 이미지 -->
+                <ImageView
+                    android:id="@+id/setting_wifi_image"
+                    android:layout_width="57dp"
+                    android:layout_height="56dp"
+                    android:src="@drawable/setting_wifi"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginTop="36dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/setting_connect_info_text"/>
+
+                <!-- 연결 텍스트 -->
+                <TextView
+                    android:id="@+id/setting_list_connect_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="연결"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:gravity="start"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="6dp"
+                    app:layout_constraintStart_toEndOf="@id/setting_wifi_image"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/setting_connect_info_text"/>
+
+                <!-- Wi-Fi 텍스트 -->
+                <TextView
+                    android:id="@+id/setting_connect_info_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Wi-Fi • 블루투스 • SIM 관리자"
+                    android:textColor="#8C8C8C"
+                    android:textSize="12sp"
+                    android:gravity="start"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginBottom="10dp"
+                    app:layout_constraintStart_toEndOf="@id/setting_wifi_image"
+                    app:layout_constraintTop_toBottomOf="@id/setting_list_connect_text"
+                    app:layout_constraintBottom_toTopOf="@id/setting_divider"/>
+
+                <!-- 회색 구분 선 -->
+                <View
+                    android:id="@+id/setting_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="75dp"
+                    android:layout_marginEnd="25dp"
+                    android:background="#E8E8E8"
+                    app:layout_constraintTop_toBottomOf="@id/setting_connect_info_text"
+                    app:layout_constraintBottom_toTopOf="@id/setting_connect_info_text"/>
+
+                <!-- 디바이스 이미지 -->
+                <ImageView
+                    android:id="@+id/setting_device_connect_image"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/setting_device_connect"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="125dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/setting_divider"
+                    app:layout_constraintBottom_toTopOf="parent"/>
+
+                <!-- 기기 간 연결 텍스트 -->
+                <TextView
+                    android:id="@+id/setting_list_device_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="기기 간 연결"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:gravity="start"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="9dp"
+                    app:layout_constraintStart_toEndOf="@id/setting_device_connect_image"
+                    app:layout_constraintTop_toBottomOf="@id/setting_connect_info_text"/>
+
+                <!-- Wi-Fi 텍스트 -->
+                <TextView
+                    android:id="@+id/setting_device_info_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Quick Share • Android Auto"
+                    android:textColor="#8C8C8C"
+                    android:textSize="12sp"
+                    android:gravity="start"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginStart="9dp"
+                    android:layout_marginBottom="10dp"
+                    app:layout_constraintStart_toEndOf="@id/setting_device_connect_image"
+                    app:layout_constraintTop_toBottomOf="@id/setting_list_device_text"/>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+
+            <!-- 3. 모드+소리+알림 간 연결 레이아웃 -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/setting_list2_layout"
+                android:layout_width="0dp"
+                android:layout_height="250dp"
+                android:background="@drawable/rounded_button"
+                app:layout_constraintTop_toBottomOf="@id/setting_list1_layout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="16dp">
+
+                <!-- 모드 이미지 -->
+                <ImageView
+                    android:id="@+id/setting_mode_image"
+                    android:layout_width="54dp"
+                    android:layout_height="54dp"
+                    android:src="@drawable/setting_mode"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="36dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/setting_mode_info_text"/>
+
+                <!-- 모드 텍스트 -->
+                <TextView
+                    android:id="@+id/setting_list_mode_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="모드"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:gravity="start"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="6dp"
+                    app:layout_constraintStart_toEndOf="@id/setting_mode_image"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/setting_mode_info_text"/>
+
+                <!-- 모드 인포 텍스트 -->
+                <TextView
+                    android:id="@+id/setting_mode_info_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="모드 • 루틴"
+                    android:textColor="#8C8C8C"
+                    android:textSize="12sp"
+                    android:gravity="start"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginBottom="10dp"
+                    app:layout_constraintStart_toEndOf="@id/setting_mode_image"
+                    app:layout_constraintTop_toBottomOf="@id/setting_list_mode_text"
+                    app:layout_constraintBottom_toTopOf="@id/setting_divider2"/>
+
+                <!-- 회색 구분 선2 -->
+                <View
+                    android:id="@+id/setting_divider2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="75dp"
+                    android:layout_marginEnd="25dp"
+                    android:background="#E8E8E8"
+                    app:layout_constraintTop_toBottomOf="@id/setting_mode_info_text"
+                    app:layout_constraintBottom_toTopOf="@id/setting_mode_info_text"/>
+
+                <!-- 사운드 이미지 -->
+                <ImageView
+                    android:id="@+id/setting_sound_image"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:src="@drawable/setting_sound"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginTop="142dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/setting_divider2"
+                    app:layout_constraintBottom_toTopOf="parent"/>
+
+                <!-- 소리 및 진동 텍스트 -->
+                <TextView
+                    android:id="@+id/setting_list_sound_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="소리 및 진동"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:gravity="start"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toEndOf="@id/setting_sound_image"
+                    app:layout_constraintTop_toBottomOf="@id/setting_mode_info_text"/>
+
+                <!-- 소리 인포 텍스트 -->
+                <TextView
+                    android:id="@+id/setting_sound_info_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="소리 모드 • 벨소리"
+                    android:textColor="#8C8C8C"
+                    android:textSize="12sp"
+                    android:gravity="start"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="10dp"
+                    app:layout_constraintStart_toEndOf="@id/setting_sound_image"
+                    app:layout_constraintTop_toBottomOf="@id/setting_list_sound_text"/>
+
+                <!-- 회색 구분 선3 -->
+                <View
+                    android:id="@+id/setting_divider3"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="75dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginTop="12dp"
+                    android:background="#E8E8E8"
+                    app:layout_constraintTop_toBottomOf="@id/setting_sound_info_text"
+                    />
+
+                <!-- 알림 이미지 -->
+                <ImageView
+                    android:id="@+id/setting_state_image"
+                    android:layout_width="48dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/setting_state"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="204dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/setting_divider3"
+                    app:layout_constraintBottom_toTopOf="parent"/>
+
+                <!-- 알림 텍스트 -->
+                <TextView
+                    android:id="@+id/setting_list_state_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="알림"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:gravity="start"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="11dp"
+                    app:layout_constraintStart_toEndOf="@id/setting_state_image"
+                    app:layout_constraintTop_toBottomOf="@id/setting_sound_info_text"/>
+
+                <!-- 알림 인포 텍스트 -->
+                <TextView
+                    android:id="@+id/setting_state_info_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="상태표시줄 • 방해 금지"
+                    android:textColor="#8C8C8C"
+                    android:textSize="12sp"
+                    android:gravity="start"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginBottom="10dp"
+                    app:layout_constraintStart_toEndOf="@id/setting_state_image"
+                    app:layout_constraintTop_toBottomOf="@id/setting_list_state_text"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+
+            <!-- 4. 디스플레이~커버화면 간 연결 레이아웃 -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/setting_list3_layout"
+                android:layout_width="0dp"
+                android:layout_height="460dp"
+                android:background="@drawable/rounded_button"
+                app:layout_constraintTop_toBottomOf="@id/setting_list2_layout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="16dp">
+
+                <!-- 디스플레이 이미지 -->
+                <ImageView
+                    android:id="@+id/setting_display_image"
+                    android:layout_width="49dp"
+                    android:layout_height="49dp"
+                    android:src="@drawable/setting_display"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="36dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/setting_display_info_text"/>
+
+                <!-- 디스플레이 텍스트 -->
+                <TextView
+                    android:id="@+id/setting_list_display_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="디스플레이"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:gravity="start"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    app:layout_constraintStart_toEndOf="@id/setting_display_image"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/setting_display_info_text"/>
+
+                <!-- 디스플레이 인포 텍스트 -->
+                <TextView
+                    android:id="@+id/setting_display_info_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="밝기 • 편안하게 화면 보기 • 내비게이션바"
+                    android:textColor="#8C8C8C"
+                    android:textSize="12sp"
+                    android:gravity="start"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginBottom="10dp"
+                    app:layout_constraintStart_toEndOf="@id/setting_display_image"
+                    app:layout_constraintTop_toBottomOf="@id/setting_list_display_text"
+                    app:layout_constraintBottom_toTopOf="@id/setting_divider4"/>
+
+                <!-- 회색 구분 선4 -->
+                <View
+                    android:id="@+id/setting_divider4"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="75dp"
+                    android:layout_marginEnd="25dp"
+                    android:background="#E8E8E8"
+                    app:layout_constraintTop_toBottomOf="@id/setting_display_info_text"
+                    app:layout_constraintBottom_toTopOf="@id/setting_display_info_text"/>
+
+                <!-- 배경화면 및 스타일 이미지 -->
+                <ImageView
+                    android:id="@+id/setting_backstyle_image"
+                    android:layout_width="57dp"
+                    android:layout_height="57dp"
+                    android:src="@drawable/setting_backstyle"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginTop="150dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/setting_divider4"
+                    app:layout_constraintBottom_toTopOf="parent"/>
+
+                <!-- 배경화면 및 스타일 텍스트 -->
+                <TextView
+                    android:id="@+id/setting_list_backstyle_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="배경화면 및 스타일"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:gravity="start"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="4dp"
+                    app:layout_constraintStart_toEndOf="@id/setting_backstyle_image"
+                    app:layout_constraintTop_toBottomOf="@id/setting_divider4"/>
+
+                <!-- 배경화면 및 스타일 인포 텍스트 -->
+                <TextView
+                    android:id="@+id/setting_backstyle_info_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="배경화면 • 컬러 팔레트"
+                    android:textColor="#8C8C8C"
+                    android:textSize="12sp"
+                    android:gravity="start"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginBottom="10dp"
+                    app:layout_constraintStart_toEndOf="@id/setting_backstyle_image"
+                    app:layout_constraintTop_toBottomOf="@id/setting_list_backstyle_text"/>
+
+                <!-- 회색 구분 선5 -->
+                <View
+                    android:id="@+id/setting_divider5"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="75dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginTop="12dp"
+                    android:background="#E8E8E8"
+                    app:layout_constraintTop_toBottomOf="@id/setting_backstyle_info_text"
+                    />
+
+                <!-- 테마 이미지 -->
+                <ImageView
+                    android:id="@+id/setting_theme_image"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:src="@drawable/setting_theme"
+                    android:layout_marginStart="17dp"
+                    android:layout_marginTop="218dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/setting_divider5"
+                    app:layout_constraintBottom_toTopOf="parent"/>
+
+                <!-- 테마 텍스트 -->
+                <TextView
+                    android:id="@+id/setting_list_theme_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="테마"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:gravity="start"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="12dp"
+                    app:layout_constraintStart_toEndOf="@id/setting_theme_image"
+                    app:layout_constraintTop_toBottomOf="@id/setting_divider5"/>
+
+                <!-- 테마 인포 텍스트 -->
+                <TextView
+                    android:id="@+id/setting_theme_info_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="테마 • 배경화면 • 아이콘"
+                    android:textColor="#8C8C8C"
+                    android:textSize="12sp"
+                    android:gravity="start"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginBottom="10dp"
+                    app:layout_constraintStart_toEndOf="@id/setting_theme_image"
+                    app:layout_constraintTop_toBottomOf="@id/setting_list_theme_text"/>
+
+                <!-- 회색 구분 선6 -->
+                <View
+                    android:id="@+id/setting_divider6"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="75dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginTop="12dp"
+                    android:background="#E8E8E8"
+                    app:layout_constraintTop_toBottomOf="@id/setting_theme_info_text"
+                    />
+
+                <!-- 홈 화면 이미지 -->
+                <ImageView
+                    android:id="@+id/setting_home_image"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/setting_home"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="294dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/setting_divider6"
+                    app:layout_constraintBottom_toTopOf="parent"/>
+
+                <!-- 홈 텍스트 -->
+                <TextView
+                    android:id="@+id/setting_list_home_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="홈"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:gravity="start"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toEndOf="@id/setting_home_image"
+                    app:layout_constraintTop_toBottomOf="@id/setting_divider6"/>
+
+                <!-- 홈 인포 텍스트 -->
+                <TextView
+                    android:id="@+id/setting_home_info_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="레이아웃 • 앱 아이콘 배지"
+                    android:textColor="#8C8C8C"
+                    android:textSize="12sp"
+                    android:gravity="start"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="10dp"
+                    app:layout_constraintStart_toEndOf="@id/setting_home_image"
+                    app:layout_constraintTop_toBottomOf="@id/setting_list_home_text"/>
+
+                <!-- 회색 구분 선7 -->
+                <View
+                    android:id="@+id/setting_divider7"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="75dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginTop="12dp"
+                    android:background="#E8E8E8"
+                    app:layout_constraintTop_toBottomOf="@id/setting_home_info_text"
+                    />
+
+                <!-- 잠금화면 이미지 -->
+                <ImageView
+                    android:id="@+id/setting_lock_image"
+                    android:layout_width="66dp"
+                    android:layout_height="66dp"
+                    android:src="@drawable/setting_lock"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="370dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/setting_divider7"
+                    app:layout_constraintBottom_toTopOf="parent"/>
+
+                <!-- 잠금화면 텍스트 -->
+                <TextView
+                    android:id="@+id/setting_list_lock_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="잠금화면"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:gravity="start"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="0dp"
+                    app:layout_constraintStart_toEndOf="@id/setting_lock_image"
+                    app:layout_constraintTop_toBottomOf="@id/setting_divider7"/>
+
+                <!-- 잠금화면 인포 텍스트 -->
+                <TextView
+                    android:id="@+id/setting_lock_info_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="화면 잠금 방식 • Always On Display"
+                    android:textColor="#8C8C8C"
+                    android:textSize="12sp"
+                    android:gravity="start"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginBottom="10dp"
+                    app:layout_constraintStart_toEndOf="@id/setting_lock_image"
+                    app:layout_constraintTop_toBottomOf="@id/setting_list_lock_text"/>
+
+                <!-- 회색 구분 선8 -->
+                <View
+                    android:id="@+id/setting_divider8"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="75dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginTop="12dp"
+                    android:background="#E8E8E8"
+                    app:layout_constraintTop_toBottomOf="@id/setting_lock_info_text"
+                    />
+
+                <!-- 커버화면 이미지 -->
+                <ImageView
+                    android:id="@+id/setting_cover_image"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:src="@drawable/setting_cover"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginTop="430dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/setting_divider8"
+                    app:layout_constraintBottom_toTopOf="parent"/>
+
+                <!-- 커버화면 텍스트 -->
+                <TextView
+                    android:id="@+id/setting_list_cover_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="커버화면"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:gravity="start"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="2dp"
+                    app:layout_constraintStart_toEndOf="@id/setting_cover_image"
+                    app:layout_constraintTop_toBottomOf="@id/setting_divider8"/>
+
+                <!-- 커버화면 인포 텍스트 -->
+                <TextView
+                    android:id="@+id/setting_cover_info_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="시계 스타일 • 위젯"
+                    android:textColor="#8C8C8C"
+                    android:textSize="12sp"
+                    android:gravity="start"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginBottom="10dp"
+                    app:layout_constraintStart_toEndOf="@id/setting_cover_image"
+                    app:layout_constraintTop_toBottomOf="@id/setting_list_cover_text"/>
+
+                <Button
+                    android:id="@+id/setting_display_btn"
+                    android:layout_width="398dp"
+                    android:layout_height="70dp"
+                    android:background="@android:color/transparent"
+                    android:text=""
+                    app:layout_constraintBottom_toBottomOf="@+id/setting_display_info_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</FrameLayout>

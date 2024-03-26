@@ -12,7 +12,6 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.sungkyul.synergy.databinding.FragmentDefaultPhoneKeypadBinding
@@ -24,8 +23,7 @@ import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_ALPHA
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_SCALE
 import com.sungkyul.synergy.edu_space.default_app.activity.DefaultPhoneCallActivity
 import com.sungkyul.synergy.utils.AnimUtils
-import com.sungkyul.synergy.utils.EduListener
-import com.sungkyul.synergy.utils.EduScreen
+import com.sungkyul.synergy.utils.edu.EduListener
 import com.sungkyul.synergy.utils.TextUtils
 
 class DefaultPhoneKeypadFragment(private val eduListener: EduListener) : Fragment() {
@@ -116,10 +114,11 @@ class DefaultPhoneKeypadFragment(private val eduListener: EduListener) : Fragmen
             }
             MotionEvent.ACTION_UP -> {
                 AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
-                TextUtils.extendText(binding.phoneNumText, (view as Button).text.toString())
-
-                eduListener.onAction("click_key_button", view.text.toString())
-
+                
+                if(eduListener.onAction("click_key_button", (view as Button).text.toString())) {
+                    TextUtils.extendText(binding.phoneNumText, view.text.toString())
+                }
+                
                 // 번호 입력 란이 비어 있지 않으면, '연락처 추가, 영상 통화, 지우기' 버튼이 나타난다.
                 if(binding.phoneNumText.text.toString().isNotEmpty() && !secondaryButtonsIsEnabled) {
                     setSecondaryButtonsVisibility(true, 0, 255)
@@ -155,13 +154,15 @@ class DefaultPhoneKeypadFragment(private val eduListener: EduListener) : Fragmen
             MotionEvent.ACTION_UP -> {
                 AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
 
-                if(binding.phoneNumText.text.toString().isNotEmpty()) {
-                    // 전화 화면으로 이동
-                    val intent = Intent(requireContext(), DefaultPhoneCallActivity::class.java)
-                    intent.putExtra("phone_num", binding.phoneNumText.text.toString())
-                    startActivity(intent)
+                if(eduListener.onAction("click_call_button")) {
+                    if (binding.phoneNumText.text.toString().isNotEmpty()) {
+                        // 전화 화면으로 이동
+                        val intent = Intent(requireContext(), DefaultPhoneCallActivity::class.java)
+                        intent.putExtra("phone_num", binding.phoneNumText.text.toString())
+                        startActivity(intent)
+                    }
                 }
-
+                
                 view.performClick()
             }
         }

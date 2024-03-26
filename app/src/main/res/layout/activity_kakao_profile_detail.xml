@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <com.sungkyul.synergy.utils.EduScreen
+    <com.sungkyul.synergy.utils.edu.EduScreen
         android:id="@+id/edu_screen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
@@ -106,7 +106,7 @@
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/baseline_chat_bubble_24" />
+                            android:src="@drawable/baseline_chat_bubble_white_24" />
 
                         <TextView
                             android:layout_width="match_parent"
