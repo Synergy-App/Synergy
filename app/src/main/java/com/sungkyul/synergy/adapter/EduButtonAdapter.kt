@@ -1,9 +1,6 @@
 package com.sungkyul.synergy.adapter
 
 import android.annotation.SuppressLint
-import android.content.Context
-import android.content.Intent
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -71,6 +68,7 @@ class EduButtonAdapter(private val context: Context, private val buttonList: Lis
                     MotionEvent.ACTION_DOWN -> {
                         (view as DynamicButton).startTouchDownAnimation(event.x, event.y, 100.0f)
                     }
+
                     MotionEvent.ACTION_UP -> {
                         (view as DynamicButton).startTouchUpAnimation()
 
@@ -122,6 +120,7 @@ class EduButtonAdapter(private val context: Context, private val buttonList: Lis
                             }
                         }
                     }
+
                     MotionEvent.ACTION_CANCEL -> {
                         (view as DynamicButton).startTouchUpAnimation()
                     }

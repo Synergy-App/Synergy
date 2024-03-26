@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -16,7 +15,7 @@
         android:theme="@style/Theme.Synergy"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
+      
         <activity
             android:name=".edu_space.default_app.activity.DefaultMessageChattingActivity"
             android:exported="false">
@@ -30,6 +29,7 @@
         <activity
             android:name=".edu_space.naver.activity.NaverSearchResultActivity"
             android:exported="false" /> <!-- 교육공간 -->
+
         <activity
             android:name=".edu_space.default_app.activity.DefaultAppActivity"
             android:exported="false" />
@@ -38,13 +38,13 @@
             android:exported="false" /> <!-- 디지털 나이 검사 -->
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"> <!-- 메인화면 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- 메인 화면 -->
+        </activity>
         <activity
             android:name=".edu_space.default_app.activity.DefaultMessageActivity"
             android:exported="false">
@@ -66,13 +66,7 @@
             android:exported="false" /> <!-- 아이콘 첫화면 -->
         <activity
             android:name=".edu_space.icon_edu.activity.IconEduActivity"
-            android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-                          <category android:name="android.intent.category.LAUNCHER" />
-                       </intent-filter>
-        </activity>
-        <!-- 아이콘 설명 -->
+            android:exported="false" /> <!-- 아이콘 설명 -->
         <!-- 화면구성 -->
         <activity
             android:name=".edu_space.screen_layout.ScreenLayoutActivity"
@@ -166,9 +160,7 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.naver.activity.NaverActivity"
-            android:exported="false">
-
-        </activity> <!-- 코레일 -->
+            android:exported="false" /> <!-- 코레일 -->
         <!-- 이 부분 아래에 넣어주세요 -->
         <activity
             android:name=".edu_space.ticket.TicketMainActivity"
@@ -211,14 +203,51 @@
             android:exported="false" />
 
 
+
+
+
+
         <!-- TODO : 수진 - backend TEST -->
         <activity
             android:name=".backend.BackendTest"
-            android:exported="false">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            android:exported="false" />
+        <activity
+            android:name=".backend.CameraTest"
+            android:exported="false"></activity>
+        <activity
+            android:name=".backend.LearningDefaultAppCamera"
+            android:exported="false" />
+        <activity
+            android:name=".learning_space.intent.LearningScreenActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".learning_space.intent.LearningDefaultAppActivity"
+            android:exported="false" />
+        <activity
+        android:name=".learning_space.intent.LearningSettingActivity"
+        android:exported="false" />
+        <activity
+            android:name=".learning_space.intent.LearningDeliveryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".learning_space.intent.LearningInstallActivity"
+            android:exported="false" />
+        <activity
+            android:name=".learning_space.intent.LearningKakaotalkActivity"
+            android:exported="false" />
+        <activity
+            android:name=".learning_space.intent.LearningKakaotaxiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".learning_space.intent.LearningNaverActivity"
+            android:exported="false" />
+        <activity
+            android:name=".learning_space.intent.LearningGoogleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".learning_space.intent.LearningIconActivity"
+            android:exported="false">          
         </activity>
 
     </application>
