@@ -1,21 +1,16 @@
 package com.sungkyul.synergy.adapter
 
 import android.annotation.SuppressLint
-import android.content.Intent
-import android.util.Log
-import android.view.GestureDetector
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.data.EduButtonItem
-import com.sungkyul.synergy.edu_space.default_app.activity.DefaultPhoneActivity
 import com.sungkyul.synergy.utils.DynamicButton
 
 class EduButtonAdapter(private val buttonList: List<EduButtonItem>): RecyclerView.Adapter<EduButtonAdapter.ButtonViewHolder>() {
@@ -47,14 +42,17 @@ class EduButtonAdapter(private val buttonList: List<EduButtonItem>): RecyclerVie
 
             // 교육 버튼의 터치 이벤트 설정
             // MotionEvent.ACTION_UP 안에 기능을 넣어주세요!
+            // 교육 버튼의 터치 이벤트 설정
             eduButton.setOnTouchListener { view, event ->
                 when (event.action) {
                     MotionEvent.ACTION_DOWN -> {
                         (view as DynamicButton).startTouchDownAnimation(event.x, event.y, 100.0f)
                     }
+
                     MotionEvent.ACTION_UP -> {
                         (view as DynamicButton).startTouchUpAnimation()
                     }
+
                     MotionEvent.ACTION_CANCEL -> {
                         (view as DynamicButton).startTouchUpAnimation()
                     }
@@ -63,7 +61,7 @@ class EduButtonAdapter(private val buttonList: List<EduButtonItem>): RecyclerVie
             }
         }
 
-        fun bind(buttonItem: EduButtonItem) {
+            fun bind(buttonItem: EduButtonItem) {
             text1.text = buttonItem.buttonText
             imageView.setImageResource(buttonItem.imageResId)
         }

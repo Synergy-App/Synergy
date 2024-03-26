@@ -1,59 +1,45 @@
 package com.sungkyul.synergy
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.sungkyul.synergy.data.EduButtonItem
+import com.sungkyul.synergy.learning_space.adapter.LearningButtonAdapter
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SolvingFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SolvingFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_solving, container, false)
-    }
+        val view = inflater.inflate(R.layout.fragment_solving, container, false)
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SolvingFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SolvingFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        val recyclerView: RecyclerView = view.findViewById(R.id.recyclerView)
+        val layoutManager =
+            GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
+        recyclerView.layoutManager = layoutManager
+
+        val buttonItemList = listOf(
+            EduButtonItem("아이콘", R.drawable.ic_edubotton_icon),
+            EduButtonItem("화면구성", R.drawable.ic_edubutton_screen),
+            EduButtonItem("기본앱", R.drawable.ic_edubutton_default),
+            EduButtonItem("환경 설정", R.drawable.ic_edubutton_setting),
+            EduButtonItem("계정 생성", R.drawable.ic_edubutton_account),
+            EduButtonItem("앱 설치", R.drawable.ic_edubutton_download),
+            EduButtonItem("카카오톡", R.drawable.ic_edubutton_kakaotalk),
+            EduButtonItem("네이버", R.drawable.ic_edubutton_naver),
+            EduButtonItem("코레일", R.drawable.ic_edubutton_korail),
+            EduButtonItem("카카오택시", R.drawable.ic_edubutton_kakaotaxi),
+            EduButtonItem("배달의 민족", R.drawable.ic_edubutton_delivery)
+        )
+        val adapter = LearningButtonAdapter(buttonItemList)
+        recyclerView.adapter = adapter
+
+        return view
     }
 }
