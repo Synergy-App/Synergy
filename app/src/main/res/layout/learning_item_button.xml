@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<!--learningFragment에 recyclerView Item 버튼-->
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,7 +7,7 @@
 
     <LinearLayout
         android:id="@+id/learning_layout"
-        android:layout_width="160dp"
+        android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_margin="16dp"
         android:gravity="center_vertical"
@@ -19,7 +17,7 @@
         android:elevation="6dp">
 
         <TextView
-            android:id="@+id/learning_tv"
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/learning_layout"
@@ -30,6 +28,7 @@
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
+
         <TextView
             android:id="@+id/learning_tv2"
             android:layout_width="wrap_content"
@@ -43,22 +42,24 @@
             app:layout_constraintStart_toStartOf="@id/learning_layout"
             app:layout_constraintTop_toTopOf="@id/learning_layout"/>
 
-        <com.github.mikephil.charting.charts.HorizontalBarChart
-            android:id="@+id/barChart"
-            android:layout_width="match_parent"
-            android:layout_height="40dp" />
-
         <ImageView
             android:id="@+id/edu_icon"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="end"
-            android:src="@drawable/ic_edubotton_icon" />
+            android:layout_marginTop="12dp"
+            android:src="@drawable/ic_edubotton_icon"/>
+
+        <com.github.mikephil.charting.charts.HorizontalBarChart
+            android:id="@+id/bar_chart"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="12dp"/>
     </LinearLayout>
 
     <com.sungkyul.synergy.utils.DynamicButton
         android:id="@+id/edu_button"
-        android:layout_width="160dp"
+        android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_margin="16dp"
         android:translationZ="25dp"/>

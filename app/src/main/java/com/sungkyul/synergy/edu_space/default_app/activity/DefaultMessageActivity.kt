@@ -4,28 +4,21 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.MotionEvent
 import android.view.View
-import android.view.Window
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityDefaultMessageBinding
 import com.sungkyul.synergy.edu_space.default_app.adapter.MessageAdapter
 import com.sungkyul.synergy.edu_space.default_app.adapter.MessageData
 import com.sungkyul.synergy.edu_space.default_app.adapter.MyMessageData
 import com.sungkyul.synergy.edu_space.default_app.adapter.YourMessageData
-import com.sungkyul.synergy.edu_space.naver.adapter.NaverAutocompleteAdapter
-import com.sungkyul.synergy.edu_space.naver.adapter.NaverAutocompleteData
 import com.sungkyul.synergy.utils.AnimUtils
 import com.sungkyul.synergy.utils.DateTimeUtils
-import com.sungkyul.synergy.utils.EduCourses
-import com.sungkyul.synergy.utils.TextUtils
+import com.sungkyul.synergy.utils.edu.EduCourses
 import java.time.LocalDateTime
 
 class DefaultMessageActivity : AppCompatActivity() {

@@ -4,31 +4,19 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.MotionEvent
-import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.databinding.ActivityDefaultMessageBinding
 import com.sungkyul.synergy.databinding.ActivityDefaultMessageChattingBinding
-import com.sungkyul.synergy.edu_space.default_app.TOUCH_DOWN_ALPHA
-import com.sungkyul.synergy.edu_space.default_app.TOUCH_DURATION_ALPHA
-import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_ALPHA
-import com.sungkyul.synergy.edu_space.default_app.adapter.MessageAdapter
 import com.sungkyul.synergy.edu_space.default_app.adapter.MessageChattingAdapter
 import com.sungkyul.synergy.edu_space.default_app.adapter.MessageChattingData
-import com.sungkyul.synergy.edu_space.default_app.adapter.MessageData
-import com.sungkyul.synergy.edu_space.default_app.adapter.MyMessageData
-import com.sungkyul.synergy.edu_space.default_app.adapter.YourMessageData
 import com.sungkyul.synergy.utils.AnimUtils
 import com.sungkyul.synergy.utils.DateTimeUtils
 import com.sungkyul.synergy.utils.DynamicButton
-import com.sungkyul.synergy.utils.EduCourses
+import com.sungkyul.synergy.utils.edu.EduCourses
 import java.time.LocalDate
-import java.time.LocalDateTime
 
 class DefaultMessageChattingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDefaultMessageChattingBinding

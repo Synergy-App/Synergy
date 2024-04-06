@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.utils
+package com.sungkyul.synergy.utils.edu
 
 interface EduListener {
     // 프래그먼트에서 binding.post가 처리되었을 때 실행되는 함수

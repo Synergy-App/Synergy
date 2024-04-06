@@ -3,15 +3,13 @@ package com.sungkyul.synergy.edu_space.kakaotalk.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityKakaoProfileDetailBinding
 import com.sungkyul.synergy.edu_space.default_app.activity.DefaultAppActivity
 import com.sungkyul.synergy.edu_space.kakaotalk.data.profileItem
-import com.sungkyul.synergy.utils.EduCourses
-import com.sungkyul.synergy.utils.EduScreen
+import com.sungkyul.synergy.utils.edu.EduCourses
 
 /** 카카오톡 프로필 디테일 액티비티 */
 class KakaoProfileDetailActivity : AppCompatActivity() {

@@ -12,7 +12,6 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.sungkyul.synergy.databinding.FragmentDefaultPhoneKeypadBinding
@@ -24,8 +23,7 @@ import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_ALPHA
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_SCALE
 import com.sungkyul.synergy.edu_space.default_app.activity.DefaultPhoneCallActivity
 import com.sungkyul.synergy.utils.AnimUtils
-import com.sungkyul.synergy.utils.EduListener
-import com.sungkyul.synergy.utils.EduScreen
+import com.sungkyul.synergy.utils.edu.EduListener
 import com.sungkyul.synergy.utils.TextUtils
 
 class DefaultPhoneKeypadFragment(private val eduListener: EduListener) : Fragment() {

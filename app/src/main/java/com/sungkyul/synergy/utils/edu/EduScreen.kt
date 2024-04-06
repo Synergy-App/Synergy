@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.utils
+package com.sungkyul.synergy.utils.edu
 
 import android.animation.AnimatorSet
 import android.content.Context
@@ -15,7 +15,6 @@ data class EduDialog(
     var titleGravity: Int? = null,
     var contentText: String? = null,
     var contentGravity: Int? = null,
-    var contentBolds: List<Pair<Int, Int>>? = null,
     var duration: Long? = null,
     var top: Float? = null,
     var bottom: Float? = null,
@@ -55,7 +54,7 @@ data class EduCover(
 )
 data class EduArrow(
     var duration: Long? = null,
-    var endTo: String? = null,
+    var endTo: Int? = null,
     var visibility: Boolean? = null
 )
 data class EduAction(
@@ -173,7 +172,6 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
             titleGravity = Gravity.START,
             contentText = "",
             contentGravity = Gravity.START,
-            contentBolds = listOf(),
             duration = 0,
             top = 0.0f,
             bottom = 0.0f,
@@ -223,7 +221,7 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         ),
         EduArrow(
             duration = 0,
-            endTo = "dialog",
+            endTo = DIALOG,
             visibility = false
         ),
         EduAction(),
@@ -292,7 +290,6 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         currentDialog.titleGravity = dialog.titleGravity ?: currentDialog.titleGravity
         currentDialog.contentText = dialog.contentText ?: currentDialog.contentText
         currentDialog.contentGravity = dialog.contentGravity ?: currentDialog.contentGravity
-        currentDialog.contentBolds = dialog.contentBolds ?: currentDialog.contentBolds
         currentDialog.duration = dialog.duration ?: currentDialog.duration
         currentDialog.top = dialog.top ?: currentDialog.top
         currentDialog.bottom = dialog.bottom ?: currentDialog.bottom
@@ -327,7 +324,7 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         */
         // 다이얼로그의 제목과 내용을 변경한다.
         eduScreenFragment.setDialogTitle(currentDialog.titleText!!, currentDialog.titleGravity!!)
-        eduScreenFragment.setDialogContent(currentDialog.contentText!!, currentDialog.contentGravity!!, currentDialog.contentBolds!!)
+        eduScreenFragment.setDialogContent(currentDialog.contentText!!, currentDialog.contentGravity!!)
         // 다이얼로그를 이동시킨다.
         eduScreenFragment.translateDialog(
             currentDialog.duration!!,
@@ -385,10 +382,10 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
 
         // 화살표를 이동시킨다.
         eduScreenFragment.translateArrowStart(currentArrow.duration!!)
-        if(currentArrow.endTo == "dialog") {
+        if(currentArrow.endTo == DIALOG) {
             eduScreenFragment.translateArrowEndToDialog(currentArrow.duration!!)
         }
-        if(currentArrow.endTo == "box") {
+        if(currentArrow.endTo == BOX) {
             eduScreenFragment.translateArrowEndToBox(currentArrow.duration!!)
         }
         // 화살표를 보여줄까 숨길까
@@ -432,5 +429,10 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
             num -= 2
             next()
         }
+    }
+
+    companion object {
+        val DIALOG = 0
+        val BOX = 1
     }
 }

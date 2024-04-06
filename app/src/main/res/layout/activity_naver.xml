@@ -8,6 +8,11 @@
     tools:context=".edu_space.naver.activity.NaverActivity"
     android:background="@color/naver_bg">
 
+    <com.sungkyul.synergy.utils.edu.EduScreen
+        android:id="@+id/edu_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

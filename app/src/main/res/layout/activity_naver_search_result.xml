@@ -7,6 +7,11 @@
     android:layout_height="match_parent"
     tools:context=".edu_space.naver.activity.NaverSearchResultActivity">
 
+    <com.sungkyul.synergy.utils.edu.EduScreen
+        android:id="@+id/edu_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <LinearLayout
         android:id="@+id/search_bar"
         android:orientation="horizontal"

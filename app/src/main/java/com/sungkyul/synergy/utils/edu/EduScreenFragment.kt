@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.utils
+package com.sungkyul.synergy.utils.edu
 
 import android.animation.Animator
 import android.animation.AnimatorSet
@@ -12,8 +12,6 @@ import android.graphics.Paint
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffXfermode
 import android.os.Bundle
-import android.text.SpannableString
-import android.text.style.StyleSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,6 +25,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.toBitmap
+import androidx.core.text.parseAsHtml
 import androidx.core.view.marginBottom
 import androidx.core.view.marginEnd
 import androidx.core.view.marginStart
@@ -34,6 +33,8 @@ import androidx.core.view.marginTop
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import com.sungkyul.synergy.databinding.FragmentEduScreenBinding
+import com.sungkyul.synergy.utils.AnimUtils
+import com.sungkyul.synergy.utils.GeometryUtils
 import kotlin.collections.set
 
 class EduScreenFragment : Fragment() {
@@ -141,11 +142,46 @@ class EduScreenFragment : Fragment() {
         startTranslationY: Float,
         endTranslationY: Float
     ) {
-        AnimUtils.startObjectAnimatorOfFloat(binding.dialog, "alpha", startAlpha, endAlpha, duration, interpolator)
-        AnimUtils.startObjectAnimatorOfFloat(binding.dialog, "scaleX", startScaleX, endScaleX, duration, interpolator)
-        AnimUtils.startObjectAnimatorOfFloat(binding.dialog, "scaleY", startScaleY, endScaleY, duration, interpolator)
-        AnimUtils.startObjectAnimatorOfFloat(binding.dialog, "translationX", startTranslationX, endTranslationX, duration, interpolator)
-        AnimUtils.startObjectAnimatorOfFloat(binding.dialog, "translationY", startTranslationY, endTranslationY, duration, interpolator)
+        AnimUtils.startObjectAnimatorOfFloat(
+            binding.dialog,
+            "alpha",
+            startAlpha,
+            endAlpha,
+            duration,
+            interpolator
+        )
+        AnimUtils.startObjectAnimatorOfFloat(
+            binding.dialog,
+            "scaleX",
+            startScaleX,
+            endScaleX,
+            duration,
+            interpolator
+        )
+        AnimUtils.startObjectAnimatorOfFloat(
+            binding.dialog,
+            "scaleY",
+            startScaleY,
+            endScaleY,
+            duration,
+            interpolator
+        )
+        AnimUtils.startObjectAnimatorOfFloat(
+            binding.dialog,
+            "translationX",
+            startTranslationX,
+            endTranslationX,
+            duration,
+            interpolator
+        )
+        AnimUtils.startObjectAnimatorOfFloat(
+            binding.dialog,
+            "translationY",
+            startTranslationY,
+            endTranslationY,
+            duration,
+            interpolator
+        )
     }
 
     private fun startValueAnimatorOfDialog(
@@ -163,10 +199,11 @@ class EduScreenFragment : Fragment() {
     ) {
         registerAnimator("dialog", AnimUtils.startValueAnimatorOfFloat({
             dialog.updateLayoutParams<FrameLayout.LayoutParams> {
-                topMargin = (startTopMargin+(endTopMargin-startTopMargin)*it).toInt()
-                bottomMargin = (startBottomMargin+(endBottomMargin-startBottomMargin)*it).toInt()
-                marginStart = (startLeftMargin+(endLeftMargin-startLeftMargin)*it).toInt()
-                marginEnd = (startRightMargin+(endRightMargin-startRightMargin)*it).toInt()
+                topMargin = (startTopMargin + (endTopMargin - startTopMargin) * it).toInt()
+                bottomMargin =
+                    (startBottomMargin + (endBottomMargin - startBottomMargin) * it).toInt()
+                marginStart = (startLeftMargin + (endLeftMargin - startLeftMargin) * it).toInt()
+                marginEnd = (startRightMargin + (endRightMargin - startRightMargin) * it).toInt()
             }
         }, 0.0f, 1.0f, duration, interpolator))
     }
@@ -298,15 +335,9 @@ class EduScreenFragment : Fragment() {
         binding.dialogSeparator.visibility = TextView.GONE
     }
 
-    fun setDialogContent(text: String, gravity: Int, bolds: List<Pair<Int, Int>>) {
-        binding.dialogContent.text = text
+    fun setDialogContent(text: String, gravity: Int) {
+        binding.dialogContent.text = text.parseAsHtml()
         binding.dialogContent.gravity = gravity
-
-        val spannableString = SpannableString(text)
-        for((start, end) in bolds) {
-            spannableString.setSpan(StyleSpan(android.graphics.Typeface.BOLD), start, end, 0)
-        }
-        binding.dialogContent.text = spannableString
     }
 
     fun showDialog() {
@@ -345,14 +376,14 @@ class EduScreenFragment : Fragment() {
 
     fun showCover() {
         AnimUtils.startValueAnimatorOfFloat({
-            coverPaint.alpha = (it*coverMaxAlpha).toInt()
+            coverPaint.alpha = (it * coverMaxAlpha).toInt()
             draw()
         }, 0.0f, 1.0f, toggleDuration)
     }
 
     fun hideCover() {
         AnimUtils.startValueAnimatorOfFloat({
-            coverPaint.alpha = (it*coverMaxAlpha).toInt()
+            coverPaint.alpha = (it * coverMaxAlpha).toInt()
             draw()
         }, 1.0f, 0.0f, toggleDuration)
     }
@@ -369,21 +400,21 @@ class EduScreenFragment : Fragment() {
 
     fun showBoxStroke() {
         AnimUtils.startValueAnimatorOfFloat({
-            boxStrokePaint.alpha = (it*255).toInt()
+            boxStrokePaint.alpha = (it * 255).toInt()
             draw()
         }, 0.0f, 1.0f, toggleDuration)
     }
 
     fun hideBoxStroke() {
         AnimUtils.startValueAnimatorOfFloat({
-            boxStrokePaint.alpha = (it*255).toInt()
+            boxStrokePaint.alpha = (it * 255).toInt()
             draw()
         }, 1.0f, 0.0f, toggleDuration)
     }
 
     fun showArrow() {
         AnimUtils.startValueAnimatorOfFloat({
-            arrowPaint.alpha = (it*255).toInt()
+            arrowPaint.alpha = (it * 255).toInt()
             draw()
         }, 0.0f, 1.0f, toggleDuration)
     }
@@ -494,7 +525,7 @@ class EduScreenFragment : Fragment() {
             arrowEndX = GeometryUtils.linear(startArrowEndX, currentBoxCenterX, it)
             arrowEndY = GeometryUtils.linear(
                 startArrowEndY,
-                if(currentDialogCenterY < currentBoxCenterY) currentBoxStrokeTopY else currentBoxStrokeBottomY,
+                if (currentDialogCenterY < currentBoxCenterY) currentBoxStrokeTopY else currentBoxStrokeBottomY,
                 it
             )
             draw()
