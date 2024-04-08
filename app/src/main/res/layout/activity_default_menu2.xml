@@ -17,29 +17,20 @@
 
         <!-- 메뉴 항목들을 담을 가로 방향 LinearLayout -->
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <!-- 메뉴 항목들을 추가 -->
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/sliderViewPager"
+                android:layout_width="390dp"
+                android:layout_height="170dp"
+                android:layout_marginBottom="304dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Menu 1" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Menu 2" />
+            </androidx.viewpager2.widget.ViewPager2>
 
-            <ImageView
-                android:id="@+id/imageView50"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@tools:sample/avatars"
-                app:srcCompat="@drawable/menu" />
 
             <!-- 추가적인 메뉴 항목들을 필요한 만큼 계속해서 추가 -->
 
