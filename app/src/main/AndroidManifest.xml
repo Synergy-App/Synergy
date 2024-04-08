@@ -15,6 +15,7 @@
         android:theme="@style/Theme.Synergy"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
         <activity
             android:name=".edu_space.default_app.activity.DefaultMenuActivity"
             android:exported="false" />
@@ -23,7 +24,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -32,7 +32,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -51,63 +50,45 @@
         <activity
             android:name=".MainActivity"
             android:exported="false">
-     <!-- 메인화면 -->
+            <!-- 메인화면 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".edu_space.default_app.activity.DefaultMessageActivity"
             android:exported="false" /> <!-- 메시지 화면 -->
-</activity> <!-- 메시지 화면 -->
-        <activity
-            android:name=".EduSpaceActivity"
-            android:exported="false" /> <!-- 삭제할 거 -->
         <!-- 아이콘 교육 -->
         <activity
             android:name=".edu_space.icon_edu.activity.IconEduActivity"
             android:exported="false"> <!-- 아이콘 첫 화면 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity> <!-- 아이콘 첫화면 -->
-        <activity
-            android:name=".edu_space.icon_edu.activity.IconEduActivity"
-            android:exported="false">
-        </activity> <!-- 화면구성 -->
+ <!-- 화면구성 -->
         <activity
             android:name=".edu_space.default_app.activity.MenusActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity> <!-- 아이콘 설명 -->
         <!-- 화면구성 -->
-        </activity>
         <activity
             android:name=".edu_space.screen_layout.ScreenLayoutActivity"
             android:exported="false" /> <!-- 기본앱 활용 -->
         <activity
             android:name=".edu_space.default_app.activity.DefaultPhoneActivity"
             android:exported="false" /> <!-- 전화 화면 -->
-            <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity> <!-- 전화 화면 -->
         <activity
             android:name=".edu_space.default_app.activity.DefaultPhoneCallActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity> <!-- 전화 콜 화면 -->
@@ -122,12 +103,6 @@
         <activity
             android:name=".edu_space.settingedu2.Setting2MainActivity"
             android:exported="false" />
-        <!-- <activity -->
-        <!-- android:name=".edu_space.settingedu.activity.SettingEduActivity" -->
-        <!-- android:exported="true" /> &lt;!&ndash; 환경설정 시작 &ndash;&gt; -->
-        <activity
-            android:name=".edu_space.settingedu2.Setting2MainActivity"
-            android:exported="false"></activity>
         <activity
             android:name=".edu_space.settingedu2.Setting2DisplayActivity"
             android:exported="false" />
@@ -182,10 +157,7 @@
         <activity
             android:name=".edu_space.naver.activity.NaverActivity"
             android:exported="false"> <!-- 네이버 화면 -->
-        </activity>
-        <activity
-            android:name=".edu_space.naver.activity.NaverActivity"
-            android:exported="false" /> <!-- 코레일 -->
+        </activity><!-- 코레일 -->
         <!-- 이 부분 아래에 넣어주세요 -->
         <activity
             android:name=".edu_space.ticket.TicketMainActivity"
@@ -227,16 +199,6 @@
             android:name=".backend.BackendTest"
             android:exported="false" /> <!-- TODO : 수진 - backend TEST -->
         <activity
-            android:name=".backend.BackendTest"
-            android:exported="false">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
-            android:exported="false" />
-        <activity
             android:name=".learning_space.default_app.camera.CameraTest"
             android:exported="false" />
         <activity
@@ -271,7 +233,7 @@
             android:exported="false" />
         <activity
             android:name=".learning_space.intent.LearningIconActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
     </application>
 
 </manifest>
