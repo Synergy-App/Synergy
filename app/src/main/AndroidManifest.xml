@@ -40,9 +40,6 @@
             android:name=".edu_space.default_app.activity.DefaultMessageChattingActivity"
             android:exported="false" /> <!-- 메시지 채팅 화면 -->
         <activity
-            android:name=".edu_space.default_app.activity.DefaultMessageChattingActivity"
-            android:exported="false"></activity> <!-- 메시지 채팅 화면 -->
-        <activity
             android:name=".edu_space.naver.activity.NaverSearchResultActivity"
             android:exported="false" /> <!-- 네이버 검색 결과 화면 -->
         <activity
@@ -54,7 +51,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="false">
-            android:exported="true"> <!-- 메인화면 -->
+     <!-- 메인화면 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -64,7 +61,7 @@
         <activity
             android:name=".edu_space.default_app.activity.DefaultMessageActivity"
             android:exported="false" /> <!-- 메시지 화면 -->
-            android:exported="false"></activity> <!-- 메시지 화면 -->
+</activity> <!-- 메시지 화면 -->
         <activity
             android:name=".EduSpaceActivity"
             android:exported="false" /> <!-- 삭제할 거 -->
@@ -99,7 +96,6 @@
         <activity
             android:name=".edu_space.default_app.activity.DefaultPhoneActivity"
             android:exported="false" /> <!-- 전화 화면 -->
-            android:exported="true">
             <intent-filter>
              <action android:name="android.intent.action.MAIN" />
 
@@ -118,7 +114,6 @@
         <activity
             android:name=".edu_space.default_app.activity.DefaultCameraActivity"
             android:exported="false" /> <!-- 카메라 화면 -->
-            android:exported="false"></activity> <!-- 카메라 화면 -->
         <activity
             android:name=".edu_space.default_app.activity.DefaultCameraGalleryViewActivity"
             android:exported="false" /> <!-- 카메라 갤러리 뷰 화면 -->
@@ -142,7 +137,6 @@
         <activity
             android:name=".edu_space.accountedu.GoogleMainActivity"
             android:exported="false" />
-            android:exported="false"></activity>
         <activity
             android:name=".edu_space.accountedu.GoogleLoginActivity"
             android:exported="false" />
@@ -167,8 +161,6 @@
         <activity
             android:name=".edu_space.accountedu.GoogleMailAddActivity"
             android:exported="false" /> <!-- 앱 설치 -->
-        <!-- 이 부분 아래에 넣어주세요 -->
-            android:exported="false" /> <!-- 이 부분 아래에 넣어주세요 -->
         <activity
             android:name=".edu_space.appinstall.installActivity"
             android:exported="false" />
@@ -177,15 +169,13 @@
             android:exported="false" /> <!-- 앱 설치 메인 화면 -->
         <activity
             android:name=".edu_space.kakaotalk.activity.KakaoMainActivity"
-            android:exported="false" /> <!-- 카카오톡 메인 화면 -->
-            android:exported="false"></activity> <!-- 카카오톡 메인 화면 -->
+            android:exported="false" /> <!-- 카카오톡 메인 화면 --><!-- 카카오톡 메인 화면 -->
         <activity
             android:name=".edu_space.kakaotalk.activity.KakaoProfileDetailActivity"
             android:exported="false" />
         <activity
             android:name=".edu_space.kakaotalk.activity.KakaoChattingActivity"
             android:exported="false" />
-            android:exported="false"></activity>
         <activity
             android:name=".edu_space.naver.activity.NaverSearchActivity"
             android:exported="false" /> <!-- 네이버 검색 화면 -->
@@ -197,7 +187,6 @@
             android:name=".edu_space.naver.activity.NaverActivity"
             android:exported="false" /> <!-- 코레일 -->
         <!-- 이 부분 아래에 넣어주세요 -->
-        </activity> <!-- 이 부분 아래에 넣어주세요 -->
         <activity
             android:name=".edu_space.ticket.TicketMainActivity"
             android:exported="false" />
