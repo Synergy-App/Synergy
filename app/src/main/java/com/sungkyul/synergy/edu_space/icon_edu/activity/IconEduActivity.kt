@@ -30,19 +30,34 @@ class IconEduActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this) // LinearLayoutManager 또는 필요한 레이아웃 매니저를 사용합니다.
 
         val iconSearchDict = listOf(
-            Pair(R.drawable.ic_sound_black, "신호 없음"),
-            Pair(R.drawable.ic_sound_black, "데이터 모바일"),
-            Pair(R.drawable.ic_sound_black, "와이파이"),
-            Pair(R.drawable.ic_sound_black, "블루투스"),
+            Pair(R.drawable.ic_word_wifi, "와이파이"),
+            Pair(R.drawable.ic_word_data, "모바일 데이터"),
+            Pair(R.drawable.ic_word_bluetooth, "블루투스"),
+            Pair(R.drawable.ic_sound_black, "모드"),
+            Pair(R.drawable.ic_word_airplane, "비행기 탑승 모드"),
+            Pair(R.drawable.ic_sound_black, "절전 모드"),
+            Pair(R.drawable.ic_sound_black, "캘린더"),
+            Pair(R.drawable.ic_word_qrcode, "QR코드"),
+            Pair(R.drawable.ic_sound_black, "이모티콘"),
             Pair(R.drawable.ic_sound_black, "GPS"),
-            Pair(R.drawable.ic_sound_black, "음성 전화"),
-            Pair(R.drawable.ic_sound_black, "부재중 전화"),
-            Pair(R.drawable.ic_sound_black, "문자"),
-            Pair(R.drawable.ic_sound_black, "알림"),
-            Pair(R.drawable.ic_sound_black, "무음 모드"),
-            Pair(R.drawable.ic_sound_black, "진동 모드"),
-            Pair(R.drawable.ic_sound_black, "비행기 탑승 모드"),
-            Pair(R.drawable.ic_sound_black, "배터리 양 표시")
+            Pair(R.drawable.ic_sound_black, "캡처"),
+            Pair(R.drawable.ic_word_volume, "볼륨"),
+            Pair(R.drawable.ic_sound_black, "셀카"),
+            Pair(R.drawable.ic_sound_black, "메일(이메일)"),
+            Pair(R.drawable.ic_sound_black, "이메일 주소"),
+            Pair(R.drawable.ic_word_profile, "프로필"),
+            Pair(R.drawable.ic_sound_black, "상태 메세지"),
+            Pair(R.drawable.ic_word_folder, "폴더"),
+            Pair(R.drawable.ic_word_map, "맵(지도)"),
+            Pair(R.drawable.ic_word_download, "다운로드(설치)"),
+            Pair(R.drawable.ic_word_chatting, "채팅"),
+            Pair(R.drawable.ic_sound_black, "키보드"),
+            Pair(R.drawable.ic_word_upload, "업데이트"),
+            Pair(R.drawable.ic_sound_black, "앱(어플)"),
+            Pair(R.drawable.ic_sound_black, "모바일뱅킹"),
+            Pair(R.drawable.ic_word_upload, "업로드"),
+            Pair(R.drawable.ic_word_alarm, "푸쉬 알림"),
+            Pair(R.drawable.ic_sound_black, "음성 메세지")
         )
 
         val iconList = ArrayList<Icon>()
