@@ -12,8 +12,7 @@
         android:layout_height="108dp"
         android:orientation="horizontal"
         android:background="@drawable/round_corner_white"
-        android:layout_gravity="center_vertical"
-        android:elevation="4dp">
+        android:layout_gravity="center_vertical">
 
         <ImageView
             android:id="@+id/icon_iv"
@@ -36,5 +35,6 @@
         android:id="@+id/edu_button"
         android:layout_width="match_parent"
         android:layout_height="108dp"
+        android:layout_marginTop="10dp"
         android:translationZ="25dp"/>
 </FrameLayout>
