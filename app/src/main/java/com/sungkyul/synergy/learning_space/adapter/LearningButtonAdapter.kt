@@ -11,7 +11,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.data.EduButtonItem
+import com.sungkyul.synergy.adapter.EduButtonItem
 import com.sungkyul.synergy.learning_space.intent.LearningDefaultAppActivity
 import com.sungkyul.synergy.learning_space.intent.LearningDeliveryActivity
 import com.sungkyul.synergy.learning_space.intent.LearningGoogleActivity
@@ -52,7 +52,7 @@ class LearningButtonAdapter(private val buttonList: List<EduButtonItem>): Recycl
     @SuppressLint("ClickableViewAccessibility")
     inner class ButtonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val layout1: LinearLayout = itemView.findViewById(R.id.learning_layout)
-        private val text1: TextView = itemView.findViewById(R.id.learning_tv) // 이 부분에 해당하는 TextView의 ID를 정확히 입력해야 합니다.
+        private val text1: TextView = itemView.findViewById(R.id.learning_tv2) // 이 부분에 해당하는 TextView의 ID를 정확히 입력해야 합니다.
         private val imageView: ImageView =itemView.findViewById(R.id.edu_icon)
         private val eduButton: DynamicButton = itemView.findViewById(R.id.edu_button)
 
