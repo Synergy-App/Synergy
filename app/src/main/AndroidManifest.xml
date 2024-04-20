@@ -15,6 +15,25 @@
         android:theme="@style/Theme.Synergy"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".edu_space.default_app.activity.DefaultMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".edu_space.default_app.activity.DefaultLockedScreenActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".edu_space.default_app.activity.DefaultHomeActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <!--        <activity-->
         <!--            android:name=".edu_space.default_app.activity.DefaultMenuActivity"-->
         <!--            android:exported="false" />-->
@@ -52,6 +71,10 @@
             android:name=".MainActivity"
             android:exported="false">
             <!-- 메인화면 -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
             <!--            <intent-filter>-->
             <!--                <action android:name="android.intent.action.MAIN" />-->
 
@@ -70,9 +93,18 @@
             android:exported="true"> <!-- 아이콘 첫 화면 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity> <!-- 아이콘 첫화면 -->
+ <!-- 화면구성 -->
+        <activity
+            android:name=".edu_space.default_app.activity.MenusActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> <!-- 아이콘 설명 -->
         </activity>
         <activity
             android:name=".edu_space.icon_edu.activity.IconDetailActivity"
@@ -102,7 +134,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity> <!-- 전화 콜 화면 -->
@@ -116,6 +147,7 @@
         <!-- 환경설정 시작 -->
         <activity
             android:name=".edu_space.settingedu2.Setting2MainActivity"
+            android:exported="false" />
             android:exported="false" /><!-- <activity -->
         <!-- android:name=".edu_space.settingedu.activity.SettingEduActivity" -->
         <!-- android:exported="true" /> &lt;!&ndash; 환경설정 시작 &ndash;&gt; -->
@@ -176,6 +208,7 @@
         <activity
             android:name=".edu_space.naver.activity.NaverActivity"
             android:exported="false"> <!-- 네이버 화면 -->
+        </activity><!-- 코레일 -->
         </activity>
 <!--        <activity-->
 <!--            android:name=".edu_space.naver.activity.NaverActivity"-->
@@ -220,6 +253,12 @@
         <activity
             android:name=".backend.BackendTest"
             android:exported="false" /> <!-- TODO : 수진 - backend TEST -->
+        <activity
+            android:name=".learning_space.default_app.camera.CameraTest"
+            android:exported="false" />
+        <activity
+            android:name=".learning_space.default_app.camera.LearningDefaultAppCamera"
+            android:exported="false" />
         <!-- <intent-filter> -->
         <!-- <action android:name="android.intent.action.MAIN" /> -->
         <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
@@ -259,6 +298,7 @@
             android:exported="false" />
         <activity
             android:name=".learning_space.intent.LearningIconActivity"
+            android:exported="false" />
             android:exported="false">
 
         </activity>
