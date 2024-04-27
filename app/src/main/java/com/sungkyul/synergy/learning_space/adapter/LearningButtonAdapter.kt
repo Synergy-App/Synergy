@@ -53,7 +53,7 @@ class LearningButtonAdapter(private val buttonList: List<EduButtonItem>): Recycl
     inner class ButtonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val layout1: LinearLayout = itemView.findViewById(R.id.learning_layout)
         private val text1: TextView = itemView.findViewById(R.id.learning_tv2) // 이 부분에 해당하는 TextView의 ID를 정확히 입력해야 합니다.
-        private val text1: TextView = itemView.findViewById(R.id.learning_tv2)
+        private val text2: TextView = itemView.findViewById(R.id.learning_tv2)
         private val imageView: ImageView =itemView.findViewById(R.id.edu_icon)
         private val eduButton: DynamicButton = itemView.findViewById(R.id.edu_button)
 
