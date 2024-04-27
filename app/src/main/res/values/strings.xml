@@ -95,6 +95,7 @@
     <string name="send_button">보내기 버튼</string>
     <string name="text_message">문자 메시지</string>
 
+    <string name="album">앨범</string>
     <string name="chatting">채팅</string>
     <string name="chatting_message">채팅+ 메시지</string>
     <string name="clip">클립</string>
@@ -106,5 +107,7 @@
     <string name="hungry">배고파 밥 사줘</string>
     <string name="new_category">새 카테고리</string>
     <string name="openchatting">오픈채팅</string>
+    <string name="picture">사진</string>
     <string name="shopping">쇼핑</string>
+    <string name="story">스토리</string>
 </resources>
