@@ -1,14 +1,16 @@
 
 package com.sungkyul.synergy.edu_space.default_app.activity
 import android.os.Bundle
+import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.appbar.AppBarLayout
 import com.sungkyul.synergy.R
 
 class DefaultAppBarActivity : AppCompatActivity() {
-
+    private lateinit var appBarLayout: AppBarLayout
     private lateinit var imageView45: ImageView
     private lateinit var imageButton1: ImageButton
     private lateinit var imageButton2: ImageButton
@@ -20,6 +22,7 @@ class DefaultAppBarActivity : AppCompatActivity() {
         setContentView(R.layout.activity_default_app_bar)
 
         // XML에서 정의한 뷰들을 참조합니다.
+        appBarLayout = findViewById(R.id.appBarLayout)
         imageView45 = findViewById(R.id.imageView45)
         imageButton3 = findViewById(R.id.imageButton3)
         imageButton2 = findViewById(R.id.imageButton2)
@@ -38,16 +41,30 @@ class DefaultAppBarActivity : AppCompatActivity() {
 
             linearLayout2.bringToFront()
 
+            // marginBottom 조정
+            val layoutParams = imageView45.layoutParams as ViewGroup.MarginLayoutParams
+            layoutParams.setMargins(
+                layoutParams.leftMargin,
+                layoutParams.topMargin,
+                layoutParams.rightMargin,
+                0 // marginBottom 값을 0으로 설정하여 linearLayout2와 겹치지 않도록 합니다.
+            )
+            imageView45.layoutParams = layoutParams
 
         }
 
-        imageButton2.setOnClickListener {//홈버튼
-
+        imageButton2.setOnClickListener {//홈버튼 동작 추가
+            imageView45.setImageResource(R.drawable.back1)
+            linearLayout2.bringToFront()
+            appBarLayout.bringToFront()
 
         }
 
         imageButton3.setOnClickListener {//뒤로가기버튼
 
+            imageView45.setImageResource(R.drawable.back1)
+            linearLayout2.bringToFront()
+            appBarLayout.bringToFront()
 
         }
     }
