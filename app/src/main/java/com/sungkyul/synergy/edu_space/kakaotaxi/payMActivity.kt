@@ -51,13 +51,9 @@ class payMActivity : AppCompatActivity() {
             }
         })
 
-        sliderViewPager = findViewById(R.id.sliderViewPager) // R.id.sliderViewPager는 XML 레이아웃에서 설정한 ID로 변경
-        sliderViewPager.adapter = ViewPagerAdapter(getPaymentList())
-        sliderViewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+
 
     }
 
-    private fun getPaymentList(): ArrayList<Int> {
-        return arrayListOf<Int>(R.drawable.card, R.drawable.card, R.drawable.pay)
-    }
+
 }
