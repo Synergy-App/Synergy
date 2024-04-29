@@ -23,7 +23,7 @@ class AlbumAdapter(private val dataSet: ArrayList<AlbumData>): RecyclerView.Adap
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.item_album_card, viewGroup, false)
+            .inflate(R.layout.item_gallery_album, viewGroup, false)
 
         return ViewHolder(view)
     }
