@@ -50,6 +50,7 @@
     <string name="gallery">갤러리</string>
     <string name="gallery_screen">갤러리 화면</string>
     <string name="go_to_top_menu_button">상위 메뉴로 이동 버튼</string>
+    <string name="grouping_similar_images_button">비슷한 이미지 묶기 버튼</string>
     <string name="help">도움말</string>
     <string name="home">홈</string>
     <string name="hungry">배고파 밥 사줘</string>
@@ -60,6 +61,7 @@
     <string name="init_time">오후 2:24</string>
     <string name="input_phone_num">전화번호 입력</string>
     <string name="keypad">키패드</string>
+    <string name="making_movie_button">영화 만들기 버튼</string>
     <string name="menu">메뉴</string>
     <string name="more">더보기</string>
     <string name="more_button">더보기 버튼</string>
