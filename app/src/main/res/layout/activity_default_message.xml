@@ -119,7 +119,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:padding="8dp"
-                android:src="@drawable/ic_gallery_gray_24"
+                android:src="@drawable/ic_gallery_icon_gray_24"
                 android:scaleType="centerInside"
                 android:background="@drawable/black_circle"
                 android:contentDescription="@string/image_button"/>
