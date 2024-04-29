@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:id="@+id/naver_album"
+    android:id="@+id/gallery_album"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginBottom="12dp"
     android:padding="12dp"
-    android:background="@drawable/naver_post">
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/album_image"
@@ -30,7 +30,7 @@
             android:layout_gravity="center"
             android:text="@string/synergy"
             android:textSize="16sp"
-            android:textColor="@color/naver_black"/>
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/album_num"
@@ -39,7 +39,7 @@
             android:layout_gravity="center"
             android:text="@string/one"
             android:textSize="12sp"
-            android:textColor="@color/naver_black"/>
+            android:textColor="@color/black"/>
 
     </LinearLayout>
 
