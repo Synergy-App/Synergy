@@ -19,9 +19,10 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/back1" />
 
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
@@ -72,8 +73,12 @@
                 app:titleTextColor="#000000" />
 
         </com.google.android.material.appbar.AppBarLayout>
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
     <!-- 이미지 버튼 레이아웃 -->
+
+
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="0dp"
@@ -86,6 +91,8 @@
         tools:visibility="visible">
 
         <!-- 이미지 버튼 추가 -->
+
+
         <ImageButton
             android:id="@+id/imageButton1"
             android:layout_width="0dp"
