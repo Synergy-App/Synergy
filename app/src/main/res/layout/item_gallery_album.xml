@@ -11,10 +11,12 @@
 
     <ImageView
         android:id="@+id/album_image"
-        android:layout_width="196dp"
-        android:layout_height="196dp"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
         android:layout_marginTop="12dp"
+        android:layout_gravity="center"
         android:src="@drawable/sample_screenshot2"
+        android:scaleType="centerInside"
         android:contentDescription="@string/synergy"/>
 
     <LinearLayout

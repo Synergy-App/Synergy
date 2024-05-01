@@ -8,13 +8,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-data class AlbumData(
+data class GalleryAlbumData(
     val image: Int,
     val name: String,
     val num: Int
 )
 
-class AlbumAdapter(private val dataSet: ArrayList<AlbumData>): RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
+class GalleryAlbumAdapter(private val dataSet: ArrayList<GalleryAlbumData>): RecyclerView.Adapter<GalleryAlbumAdapter.ViewHolder>() {
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val image: ImageView = view.findViewById(R.id.album_image)
         val name: TextView = view.findViewById(R.id.album_name)
