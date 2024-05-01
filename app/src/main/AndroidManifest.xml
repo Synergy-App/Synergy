@@ -17,35 +17,20 @@
         tools:targetApi="31" >
         <activity
             android:name=".edu_space.default_app.activity.DefaultAppBarActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
 
         <activity
             android:name=".edu_space.default_app.activity.DefaultMenuActivity"
             android:exported="false" />
         <activity
             android:name=".edu_space.default_app.activity.DefaultLockedScreenActivity"
-            android:exported="false" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".edu_space.default_app.activity.DefaultHomeActivity"
-            android:exported="false" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity> <!-- <activity -->
+            android:exported="false" />
+             <!-- <activity -->
+            <!-- <activity -->
         <!-- android:name=".edu_space.default_app.activity.DefaultMenuActivity" -->
         <!-- android:exported="false" /> -->
         <!-- <activity -->
@@ -78,19 +63,9 @@
             android:exported="false" /> <!-- 디지털 나이 검사 -->
         <activity
             android:name=".MainActivity"
-            android:exported="false" >
-
+            android:exported="false" />
             <!-- 메인화면 -->
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
         <activity
             android:name=".edu_space.default_app.activity.DefaultMessageActivity"
             android:exported="false" /> <!-- 메시지 화면 -->
@@ -100,24 +75,13 @@
         <!-- 아이콘 교육 -->
         <activity
             android:name=".edu_space.icon_edu.activity.IconEduActivity"
-            android:exported="true" > <!-- 아이콘 첫 화면 -->
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity> <!-- 아이콘 첫화면 -->
+            android:exported="false" /> <!-- 아이콘 첫 화면 -->
+             <!-- 아이콘 첫화면 -->
         <!-- 화면구성 -->
         <activity
-
             android:name=".edu_space.default_app.activity.MenusActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity> <!-- 아이콘 설명 -->
+            android:exported="false" />
+             <!-- 아이콘 설명 -->
         <activity
             android:name=".edu_space.icon_edu.activity.IconDetailActivity"
             android:exported="false" /> <!-- 아이콘 첫화면 -->
@@ -141,13 +105,8 @@
             android:exported="false" /> <!-- 전화 화면 -->
         <activity
             android:name=".edu_space.default_app.activity.DefaultPhoneCallActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity> <!-- 전화 콜 화면 -->
+            android:exported="false" />
+             <!-- 전화 콜 화면 -->
         <activity
             android:name=".edu_space.default_app.activity.DefaultCameraActivity"
             android:exported="false" /> <!-- 카메라 화면 -->
@@ -218,8 +177,16 @@
             android:exported="false" /> <!-- 네이버 검색 화면 -->
         <activity
             android:name=".edu_space.naver.activity.NaverActivity"
+            android:exported="true" > <!-- 네이버 화면 -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            android:exported="false" /> <!-- 네이버 화면 -->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".edu_space.naver.activity.NaverSearchInfoActivity"
+            android:exported="false" />
         <!-- 코레일 -->
         <!-- <activity -->
         <!-- android:name=".edu_space.naver.activity.NaverActivity" -->

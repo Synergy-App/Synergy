@@ -28,7 +28,7 @@
             android:padding="8dp"
             android:src="@drawable/naver_logo"
             android:scaleType="centerInside"
-            android:background="@color/black"
+            android:background="@color/white"
             android:contentDescription="@null"/>
 
         <EditText
@@ -60,7 +60,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:padding="8dp"
-                android:src="@drawable/todo_circle"
+                android:src="@drawable/naver_search_voice"
                 android:scaleType="centerInside"
                 android:background="@null"
                 android:contentDescription="@null"/>

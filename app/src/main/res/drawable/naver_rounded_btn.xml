@@ -1,0 +1,5 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="120dp" /> <!-- 원하는 둥근 모서리 반지름 설정 -->
+    <solid android:color="#F7F7F9" /> <!-- 배경 색상 설정 -->
+</shape>
