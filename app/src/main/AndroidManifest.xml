@@ -26,11 +26,11 @@
         <activity
             android:name=".edu_space.default_app.activity.DefaultLockedScreenActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.default_app.activity.DefaultHomeActivity"
             android:exported="false" />
              <!-- <activity -->
+            <!-- <activity -->
         <!-- android:name=".edu_space.default_app.activity.DefaultMenuActivity" -->
         <!-- android:exported="false" /> -->
         <!-- <activity -->
@@ -64,13 +64,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
-
             <!-- 메인화면 -->
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
 
         <activity
             android:name=".edu_space.default_app.activity.DefaultMessageActivity"
@@ -85,7 +79,6 @@
              <!-- 아이콘 첫화면 -->
         <!-- 화면구성 -->
         <activity
-
             android:name=".edu_space.default_app.activity.MenusActivity"
             android:exported="false" />
              <!-- 아이콘 설명 -->
