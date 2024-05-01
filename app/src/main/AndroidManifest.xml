@@ -39,7 +39,7 @@
         </activity>
         <activity
             android:name=".edu_space.default_app.activity.DefaultHomeActivity"
-            android:exported="true" >
+            android:exported="false" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
