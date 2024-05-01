@@ -2,11 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    android:id="@+id/rootLayout"
-    tools:context=".edu_space.default_app.activity.DefaultHomeActivity">
+    tools:context=".edu_space.default_app.activity.DefaultAppBarActivity">
 
     <ImageView
         android:id="@+id/imageView45"
@@ -19,11 +19,10 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/back1" />
 
-
     <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="wrap_content"
-        android:layout_height="0dp">
-
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!-- AppBarLayout -->
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
@@ -64,21 +63,37 @@
                     app:srcCompat="@drawable/toolbar" />
             </LinearLayout>
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
+            <View
+                android:id="@+id/View5"
+                android:layout_width="wrap_content"
                 android:layout_height="10dp"
-                android:background="#00FF0000"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                app:titleTextColor="#000000" />
+                android:layout_weight="1" />
+
 
         </com.google.android.material.appbar.AppBarLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
+    <FrameLayout
+        android:id="@+id/overlayLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80FAFAFA"
+        android:visibility="visible">
+
+        <!-- 추가할 뷰들을 여기에 배치합니다 -->
+        <ImageView
+            android:id="@+id/overlayImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/alarm" />
+
+        <!-- 원하는 버튼 등 다른 뷰들을 추가할 수 있습니다 -->
+
+    </FrameLayout>
+
     <!-- 이미지 버튼 레이아웃 -->
-
-
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="0dp"
@@ -91,7 +106,6 @@
         tools:visibility="visible">
 
         <!-- 이미지 버튼 추가 -->
-
 
         <ImageButton
             android:id="@+id/imageButton1"
@@ -120,5 +134,4 @@
     </LinearLayout>
 
     <!-- 이미지 -->
-
 </androidx.constraintlayout.widget.ConstraintLayout>

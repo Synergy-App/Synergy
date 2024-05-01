@@ -56,6 +56,7 @@ android {
 }
 
 dependencies {
+
     implementation ("com.squareup.retrofit2:converter-gson:2.7.1")
     // Retrofit
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
@@ -63,7 +64,8 @@ dependencies {
     // OkHttp
     implementation ("com.squareup.okhttp3:okhttp:4.10.0")
     implementation ("com.squareup.okhttp3:logging-interceptor:4.10.0")
-
+    //상단바
+    implementation ("com.github.skydoves:expandablelayout:1.0.7")
     implementation(platform("com.google.firebase:firebase-bom:32.7.2"))
     implementation("com.google.firebase:firebase-analytics")
     // ViewPager2 슬라이드
