@@ -88,8 +88,6 @@
             </intent-filter>
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
@@ -111,6 +109,7 @@
         </activity> <!-- 아이콘 첫화면 -->
         <!-- 화면구성 -->
         <activity
+
             android:name=".edu_space.default_app.activity.MenusActivity"
             android:exported="true" >
             <intent-filter>
@@ -219,6 +218,7 @@
             android:exported="false" /> <!-- 네이버 검색 화면 -->
         <activity
             android:name=".edu_space.naver.activity.NaverActivity"
+
             android:exported="false" /> <!-- 네이버 화면 -->
         <!-- 코레일 -->
         <!-- <activity -->
@@ -311,6 +311,7 @@
             android:exported="false" />
         <activity
             android:name=".learning_space.intent.LearningIconActivity"
+
             android:exported="false" />
     </application>
 
