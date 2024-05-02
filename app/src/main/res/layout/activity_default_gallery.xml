@@ -80,7 +80,7 @@
         <LinearLayout
             android:id="@+id/picture_button"
             android:orientation="vertical"
-            android:layout_width="60dp"
+            android:layout_width="80dp"
             android:layout_height="match_parent"
             android:gravity="center"
             android:background="@drawable/black_rounded_rect"
@@ -106,7 +106,7 @@
         <LinearLayout
             android:id="@+id/album_button"
             android:orientation="vertical"
-            android:layout_width="60dp"
+            android:layout_width="80dp"
             android:layout_height="match_parent"
             android:gravity="center"
             android:background="@drawable/black_rounded_rect"
@@ -132,7 +132,7 @@
         <LinearLayout
             android:id="@+id/story_button"
             android:orientation="vertical"
-            android:layout_width="60dp"
+            android:layout_width="80dp"
             android:layout_height="match_parent"
             android:gravity="center"
             android:background="@drawable/black_rounded_rect"
@@ -158,7 +158,7 @@
         <LinearLayout
             android:id="@+id/share_button"
             android:orientation="vertical"
-            android:layout_width="60dp"
+            android:layout_width="80dp"
             android:layout_height="match_parent"
             android:gravity="center"
             android:background="@drawable/black_rounded_rect"
