@@ -66,6 +66,8 @@
     <color name="message_chatting_bg">#F2F2F2</color>
     <color name="message_chatting_item_bg">#FCFCFC</color>
 
+    <color name="gallery_album_bg">#F2F2F2</color>
+
   <!-- 실습 공간 -->
     <color name="icon_learning_btn">#3DB2FF</color>
 
