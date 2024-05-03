@@ -94,7 +94,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".edu_space.move_edu.activity.MoveDetailActivity"
             android:exported="false"/>
         <!-- <activity -->
