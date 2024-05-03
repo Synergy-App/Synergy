@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".edu_space.icon_edu.activity.IconEduActivity"
+    android:background="@color/bgColor1">
+
+    <LinearLayout
+        android:layout_marginTop="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/icon_green"
+                android:layout_width="match_parent"
+                android:layout_height="167dp"
+                android:background="@color/eduColor1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/iconedu_tool"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendard_semibold"
+                android:text="1강 기본 동작 교육"
+                android:textSize="28sp"
+                android:textColor="@color/white"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="19dp"
+                android:layout_marginStart="32dp"/>
+
+            <TextView
+                android:id="@+id/iconedu_tool_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendard_semibold"
+                android:text="휴대폰의 기본 동작을 익혀보세요."
+                android:textSize="22sp"
+                android:textColor="#E1E1E1"
+                android:letterSpacing="-0.01"
+                app:layout_constraintTop_toBottomOf="@id/iconedu_tool"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="7dp"
+                android:layout_marginStart="32dp"/>
+
+            <ImageView
+                android:id="@+id/searchIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/search_bar"
+                app:layout_constraintTop_toBottomOf="@id/iconedu_tool_2"
+                app:layout_constraintStart_toStartOf="@id/iconedu_tool_2"
+                android:layout_marginTop="10dp"/>
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:src="@drawable/ic_search_black_24dp"
+                app:layout_constraintTop_toTopOf="@id/searchIcon"
+                app:layout_constraintStart_toStartOf="@id/searchIcon"
+                android:layout_marginTop="7dp"
+                android:layout_marginStart="23dp"/>
+
+            <EditText
+                android:id="@+id/search_edit_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/searchIcon"
+                app:layout_constraintStart_toStartOf="@id/searchIcon"
+                android:fontFamily="@font/pretendard_regular"
+                android:textSize="18sp"
+                android:textColor="#B3000000"
+                android:hint="검색해주세요"
+                android:layout_marginStart="64dp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/move_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="29dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>
