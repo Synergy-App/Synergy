@@ -7,14 +7,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.sungkyul.synergy.databinding.ActivityDefaultGalleryBinding
 import com.sungkyul.synergy.edu_space.default_app.fragment.DefaultGalleryAlbumFragment
+import com.sungkyul.synergy.edu_space.default_app.fragment.DefaultGalleryPictureFragment
+import com.sungkyul.synergy.edu_space.default_app.fragment.DefaultGalleryShareFragment
 import com.sungkyul.synergy.edu_space.default_app.fragment.DefaultGalleryStoryFragment
 import com.sungkyul.synergy.utils.AnimUtils
 import com.sungkyul.synergy.utils.DynamicButton
 
 class DefaultGalleryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDefaultGalleryBinding
+    private lateinit var pictureFragment: Fragment
     private lateinit var albumFragment: Fragment
     private lateinit var storyFragment: Fragment
+    private lateinit var shareFragment: Fragment
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,8 +27,10 @@ class DefaultGalleryActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // 프래그먼트들을 초기화한다.
+        pictureFragment = DefaultGalleryPictureFragment(binding.eduScreen)
         albumFragment = DefaultGalleryAlbumFragment(binding.eduScreen)
         storyFragment = DefaultGalleryStoryFragment(binding.eduScreen)
+        shareFragment = DefaultGalleryShareFragment(binding.eduScreen)
 
         // 각 버튼의 인터랙션을 초기화한다.
         AnimUtils.initTouchButtonAnimation(binding.groupingSimilarImagesButton)
@@ -126,7 +132,7 @@ class DefaultGalleryActivity : AppCompatActivity() {
             true
         }
 
-        replaceFragment(storyFragment)
+        replaceFragment(pictureFragment)
     }
 
     private fun replaceFragment(fragment: Fragment) {
