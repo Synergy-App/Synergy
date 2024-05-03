@@ -37,6 +37,7 @@
     <string name="contents">콘텐츠</string>
     <string name="conversation">대화</string>
     <string name="conversation_settings_button">대화 설정 버튼</string>
+    <string name="creating_shared_album">+ 공유 앨범 만들기</string>
     <string name="cuter_than_i_thought">생각보다 귀여움</string>
     <string name="delete">지우기</string>
     <string name="edit">편집</string>
@@ -61,6 +62,7 @@
     <string name="init_time">오후 2:24</string>
     <string name="input_phone_num">전화번호 입력</string>
     <string name="keypad">키패드</string>
+    <string name="shared_album_notice">가족과 친구들이 내가 공유한 사진과\n동영상을 각자의 기기에서 볼 수\n있습니다.</string>
     <string name="making_movie_button">영화 만들기 버튼</string>
     <string name="menu">메뉴</string>
     <string name="more">더보기</string>

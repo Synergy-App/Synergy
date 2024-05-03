@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
+    <color name="reddish_orange">#EF5650</color>
     <color name="white">#FFFFFF</color>
     <color name="light_grey">#C0C0C0</color>
     <color name="transparency">#00000000</color>
@@ -15,6 +16,8 @@
     <color name="screenLearning">#C4BAE0</color>
     <color name="naverLearning">#DFE0BA</color>
     <color name="kakaotalkLearning">#E0BAC8</color>
+
+    <color name="shared_album_notice_text">#787878</color>
     
     <!-- 배경 -->
     <color name="bgColor1">#EFEDE7</color>
