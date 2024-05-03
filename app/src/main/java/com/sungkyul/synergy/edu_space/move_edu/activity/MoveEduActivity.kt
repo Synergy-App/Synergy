@@ -28,11 +28,11 @@ class MoveEduActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this) // LinearLayoutManager 또는 필요한 레이아웃 매니저를 사용합니다.
 
         val iconSearchDict = listOf(
-            Pair(R.drawable.ic_word_wifi, "터치"),
-            Pair(R.drawable.ic_word_data, "스와이프"),
-            Pair(R.drawable.ic_word_bluetooth, "꾹 누르기"),
-            Pair(R.drawable.ic_sound_black, "드래그"),
-            Pair(R.drawable.ic_word_airplane, "확대&축소"),
+            Pair(R.drawable.ic_move_touch, "터치"),
+            Pair(R.drawable.ic_move_swipe, "스와이프"),
+            Pair(R.drawable.ic_move_push, "꾹 누르기"),
+            Pair(R.drawable.ic_move_drag, "드래그"),
+            Pair(R.drawable.ic_move_size, "확대&축소"),
             Pair(R.drawable.ic_sound_black, "캡처"),
         )
 

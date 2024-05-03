@@ -52,27 +52,27 @@ class MoveEduAdapter (private val context: Context, private val moveList: ArrayL
 
                         val moveInfo = when (binding.iconTv.text.toString()) {
                             "터치" -> MoveInfo(
-                                R.drawable.ic_word_wifi,
+                                R.drawable.ic_move_touch,
                                 "터치",
                                 "화면에 손가락을 한번 눌렀다가 떼는 동작을 의미해요."
                             )
                             "스와이프" -> MoveInfo(
-                                R.drawable.ic_word_data,
+                                R.drawable.ic_move_swipe,
                                 "스와이프",
                                 "화면에 손가락을 대고, 손가락을 움직여 화면을 이동시키는 것을 의미해요."
                             )
                             "꾹 누르기" -> MoveInfo(
-                                R.drawable.ic_word_bluetooth,
+                                R.drawable.ic_move_push,
                                 "꾹 누르기",
                                 "화면을 꾹 누르고 있는 것을 의미해요. 터치와는 달리 화면에서 손가락을 뗴지 않고 누르고 있는 상태를 의미해요."
                             )
                             "드래그" -> MoveInfo(
-                                R.drawable.ic_wifi_black,
+                                R.drawable.ic_move_drag,
                                 "드래그",
                                 "화면에서 특정 부분을 손가락으로 누르고 이동시키는 것을 의미행ㅅ, 스와이프와는 달리 화면에서 항목을 선택하고 움직이는 것이에요."
                             )
                             "확대&축소" -> MoveInfo(
-                                R.drawable.ic_word_airplane,
+                                R.drawable.ic_move_size,
                                 "확대&축소",
                                 "화면을 확대하거나 축소하고 싶을 때 사용할 수 있어요."
                             )
