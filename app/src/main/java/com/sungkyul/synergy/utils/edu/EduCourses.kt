@@ -170,7 +170,7 @@ class EduCourses {
                 dialog.start = 50.0f
                 dialog.end = 50.0f
                 dialog.visibility = true
-                
+
                 cover.visibility = true
             })
 
@@ -218,13 +218,13 @@ class EduCourses {
 
             result.add(EduData().apply {
                 dialog.contentText = "박스와 화살표 테스트에요!"
-                
+
                 cover.boxVisibility = true
                 cover.boxLeft = 50.0f
                 cover.boxTop = 50.0f
                 cover.boxRight = width-50.0f
                 cover.boxBottom = 100.0f
-                
+
                 arrow.duration = 500
                 arrow.endTo = EduScreen.BOX
                 arrow.visibility = true
@@ -249,25 +249,25 @@ class EduCourses {
             result.add(EduData().apply {
                 dialog.top = 275.0f
                 dialog.bottom = 325.0f
-                
+
                 cover.duration = 0
                 cover.boxTop = 500.0f
                 cover.boxBottom = 550.0f
-                
+
                 arrow.duration = 1000
             })
 
             result.add(EduData().apply {
                 cover.boxLeft = 150.0f
                 cover.boxRight = 200.0f
-                
+
                 arrow.duration = 500
             })
 
             result.add(EduData().apply {
                 cover.boxVisibility = false
                 cover.boxStrokeVisibility = false
-                
+
                 arrow.endTo = EduScreen.DIALOG
             })
 
@@ -277,11 +277,11 @@ class EduCourses {
 
             result.add(EduData().apply {
                 dialog.visibility = false
-                
+
                 cover.visibility = false
-                
+
                 arrow.visibility = false
-                
+
                 hands.add(
                     EduHand(
                         "touch",
@@ -294,7 +294,7 @@ class EduCourses {
                         HandGestures.Companion::tapGesture
                     )
                 )
-                
+
                 action.id = "click_key_button"
                 action.message = "1"
             })
@@ -312,7 +312,7 @@ class EduCourses {
                         HandGestures.Companion::tapGesture
                     )
                 )
-                
+
                 action.id = "click_key_button"
                 action.message = "2"
             })
@@ -320,7 +320,7 @@ class EduCourses {
             result.add(EduData().apply {
                 dialog.contentText = "테스트 완료입니다!"
                 dialog.visibility = true
-                
+
                 cover.visibility = true
             })
 
@@ -512,8 +512,34 @@ class EduCourses {
                 dialog.contentText = "이 부분은<br>전화번호를 저장해서<br>편리하게 전화를<br>걸 수 있어요."
             })
 
+            result.add(EduData().apply {
+                dialog.contentText = "연락처를 눌러주세요."
+            })
+
+            result.add(EduData().apply {
+                dialog.visibility = false
+                cover.visibility = false
+                cover.boxVisibility = false
+                cover.boxStrokeVisibility = false
+                arrow.visibility = false
+                action.id = "click_contact_button"
+                hands.add(
+                    EduHand(
+                        id = "tap",
+                        x = 250.0f,
+                        y = 670.0f,
+                        rotation = 225.0f,
+                        gesture = HandGestures.Companion::tapGesture
+                    )
+                )
+            })
+
             return result
         }
+
+        //for DefaultPhoneContactFragmentActivity
+
+
 
         // for DefaultPhoneCallActivity
         fun defaultPhoneCallCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {

@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--연락처 리스트-->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="12dp"
     android:gravity="center_vertical"
     android:background="@color/phoneBgColor">
+
+    <LinearLayout
+        android:id="@+id/item_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="@color/black">
 
     <ImageView
         android:id="@+id/profile"
@@ -20,5 +30,67 @@
         android:layout_marginLeft="12dp"
         android:text="@string/synergy"
         android:textSize="16sp"/>
+    </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/contact_hidden_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/phone_num_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="휴대전화: 010-1234-5678"
+            android:textSize="12sp"
+            android:textColor="@color/phoneGreen"
+            android:gravity="center"/>
+
+        <LinearLayout
+            android:id="@+id/button_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/call_button"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_call_green_24"
+                android:scaleType="centerInside"
+                android:background="@drawable/black_circle"/>
+
+            <ImageButton
+                android:id="@+id/message_button"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="32dp"
+                android:src="@drawable/ic_message_circle_blue_24"
+                android:scaleType="centerInside"
+                android:background="@drawable/black_circle"/>
+
+            <ImageButton
+                android:id="@+id/video_call_button"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="32dp"
+                android:src="@drawable/ic_video_green_24"
+                android:scaleType="centerInside"
+                android:background="@drawable/black_circle"/>
+
+            <ImageButton
+                android:id="@+id/info_button"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="32dp"
+                android:src="@drawable/ic_info_24"
+                android:scaleType="centerInside"
+                android:background="@drawable/black_circle"/>
+        </LinearLayout>
+        </LinearLayout>
 </LinearLayout>
