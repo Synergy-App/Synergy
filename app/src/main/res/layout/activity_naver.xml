@@ -108,7 +108,7 @@
                 android:id="@+id/search_bar"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="64dp"
                 android:layout_marginTop="96dp"
                 android:layout_marginHorizontal="12dp"
                 android:padding="12dp"
@@ -124,11 +124,12 @@
                         android:id="@+id/naver_logo"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:padding="8dp"
+                        android:padding="6dp"
                         android:src="@drawable/naver_logo"
                         android:scaleType="centerInside"
                         android:background="@null"
-                        android:contentDescription="@string/naver_logo"/>
+                        android:contentDescription="@string/naver_logo"
+                        android:layout_marginTop="-4dp"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -143,7 +144,8 @@
                             android:src="@drawable/naver_search_menu_button"
                             android:scaleType="centerInside"
                             android:background="@null"
-                            android:contentDescription="@string/search_menu"/>
+                            android:contentDescription="@string/search_menu"
+                            android:layout_marginTop="-4dp"/>
 
                     </LinearLayout>
 
@@ -161,9 +163,11 @@
                 app:layout_constraintTop_toBottomOf="@id/search_bar">
 
                 <ImageView
-                    android:layout_width="96dp"
-                    android:layout_height="48dp"
-                    android:src="@drawable/naver_ad1"/>
+                    android:layout_width="340dp"
+                    android:layout_height="90dp"
+                    android:src="@drawable/naver_ad_null1"
+                    android:layout_marginTop="-10dp"
+                    android:layout_marginEnd="-10dp"/>
 
             </LinearLayout>
 
@@ -178,9 +182,9 @@
                 app:layout_constraintTop_toBottomOf="@id/ad1">
 
                 <ImageView
-                    android:layout_width="256dp"
-                    android:layout_height="64dp"
-                    android:src="@drawable/naver_ad1"/>
+                    android:layout_width="400dp"
+                    android:layout_height="90dp"
+                    android:src="@drawable/naver_ad_null2"/>
 
             </LinearLayout>
 
@@ -196,7 +200,7 @@
                     android:id="@+id/weather_view"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="64dp"
+                    android:layout_height="74dp"
                     android:layout_weight="1"
                     android:padding="12dp"
                     android:gravity="center_vertical"
@@ -210,14 +214,17 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="12.5° 안양"
-                            android:textSize="16sp"/>
+                            android:text="12.5°"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="#1E1E22"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="어제보다 0.8° 높아요"
-                            android:textSize="12sp"/>
+                            android:textSize="12sp"
+                            android:textColor="#1E1E22"/>
 
                     </LinearLayout>
 
@@ -225,7 +232,7 @@
                         android:id="@+id/weather_image"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:layout_marginStart="16dp"
+                        android:layout_marginStart="22dp"
                         android:src="@drawable/naver_sun"/>
 
                 </LinearLayout>
@@ -234,7 +241,7 @@
                     android:id="@+id/stock_view"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="64dp"
+                    android:layout_height="74dp"
                     android:layout_weight="1"
                     android:layout_marginStart="8dp"
                     android:padding="12dp"
@@ -249,17 +256,25 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="871.97"
-                            android:textSize="16sp"/>
+                            android:text="31 보통"
+                            android:textSize="16sp"
+                            android:textColor="#5ECD43"
+                            android:textStyle="bold"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="코스닥 ▲ 1.04%"
-                            android:textSize="12sp"/>
+                            android:text="미세먼지"
+                            android:textSize="12sp"
+                            android:textColor="#1E1E22"/>
 
                     </LinearLayout>
-                    
+                    <ImageView
+                        android:id="@+id/dust_image"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:layout_marginStart="68dp"
+                        android:src="@drawable/naver_dust"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -295,8 +310,8 @@
 
             <ImageButton
                 android:id="@+id/shopping_button"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
                 android:padding="8dp"
                 android:src="@drawable/naver_shopping"
                 android:scaleType="centerInside"
@@ -324,8 +339,8 @@
 
             <ImageButton
                 android:id="@+id/home_button"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
                 android:layout_toEndOf="@id/home_button"
                 android:padding="0dp"
                 android:src="@drawable/naver_home"
@@ -354,8 +369,8 @@
 
             <ImageButton
                 android:id="@+id/contents_button"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
                 android:padding="8dp"
                 android:src="@drawable/naver_note"
                 android:scaleType="centerInside"
@@ -383,8 +398,8 @@
 
             <ImageButton
                 android:id="@+id/clip_button"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
                 android:padding="6dp"
                 android:src="@drawable/naver_play_circle"
                 android:scaleType="centerInside"

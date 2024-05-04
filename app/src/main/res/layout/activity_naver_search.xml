@@ -38,6 +38,7 @@
             android:textSize="16sp"
             android:textColor="@color/naver_search_black"
             android:autofillHints="@string/naver_search_hint"
+            android:background="@null"
             android:layout_weight="1"/>
 
         <LinearLayout
@@ -58,7 +59,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:padding="8dp"
-                android:src="@drawable/todo_circle"
+                android:src="@drawable/naver_search_btn"
                 android:scaleType="centerInside"
                 android:background="@null"/>
 
