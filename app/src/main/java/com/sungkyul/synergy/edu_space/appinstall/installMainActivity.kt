@@ -21,7 +21,7 @@ class installMainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityInstallMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+/*
         // 교육을 정의해보자!
         binding.eduScreen.post {
             // 교육 코스 customCourse를 지정한다.
@@ -85,5 +85,6 @@ class installMainActivity : AppCompatActivity() {
 
 
         return super.onOptionsItemSelected(item)
-    }
+    } */
+}
 }

@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".edu_space.appinstall.installMainActivity">
+
+    <com.sungkyul.synergy.utils.edu.EduScreen
+        android:id="@+id/edu_screen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <View
+        android:id="@+id/view52"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:background="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/search_layout"
+        android:layout_width="230dp"
+        android:layout_height="50dp"
+        android:background="@drawable/appinstall_rounded_edittext_background"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/view52"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.132"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.228">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_search_grey_24dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="1dp"/>
+
+        <EditText
+            android:id="@+id/searchview5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:hint="앱 및 게임 검색"
+            android:textColorHint="#464749"/>
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:src="@drawable/ic_mic_grey_24"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="-44dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginTop="1dp"/>
+
+    </LinearLayout>
+
+
+
+
+    <ImageView
+        android:id="@+id/imageView37"
+        android:layout_width="30dp"
+        android:layout_height="35dp"
+        android:background="#00FF0000"
+        app:layout_constraintBottom_toBottomOf="@+id/view52"
+        app:layout_constraintEnd_toEndOf="@+id/view52"
+        app:layout_constraintHorizontal_bias="0.841"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.261"
+        app:srcCompat="@drawable/alarm" />
+
+    <ImageView
+        android:id="@+id/imageView38"
+        android:layout_width="30dp"
+        android:layout_height="35dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view52"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.958"
+        app:layout_constraintStart_toStartOf="@+id/view52"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.258"
+        app:srcCompat="@drawable/myinfo" />
+
+    <TextView
+        android:id="@+id/textView157"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="추천"
+        android:textColor="#0064B3"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/view52"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.946" />
+
+    <TextView
+        android:id="@+id/textView169"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="인기 차트"
+        android:textColor="#444645"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/view52"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.272"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.946" />
+
+    <TextView
+        android:id="@+id/textView170"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="다른 기기"
+        android:textColor="#444645"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/view52"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.604"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.946" />
+
+    <TextView
+        android:id="@+id/textView171"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="카테고리"
+        android:textColor="#444645"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/view52"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.927"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.946" />
+
+    <View
+        android:id="@+id/recommend_blue_line"
+        android:layout_width="30dp"
+        android:layout_height="3dp"
+        android:background="#0064B3"
+        app:layout_constraintBottom_toBottomOf="@+id/view52"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <View
+        android:id="@+id/install_grey_line"
+        android:layout_width="match_parent"
+        android:layout_height="1.5dp"
+        android:background="#E4E4E4"
+        app:layout_constraintTop_toBottomOf="@id/recommend_blue_line"/>
+
+    <RelativeLayout
+        android:id="@+id/main_ad_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/install_grey_line"
+        android:layout_marginTop="12dp">
+
+        <!-- 광고 이미지 -->
+        <ImageView
+            android:id="@+id/install_ad_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/naver_ad_null2"
+            android:scaleType="fitCenter"/>
+
+        <!-- 왼쪽 이미지 -->
+        <ImageView
+            android:id="@+id/left_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/myinfo"
+            android:layout_below="@id/install_ad_image"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="10dp"/>
+
+        <!-- 가운데 텍스트 -->
+        <TextView
+            android:id="@+id/main_ad_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/install_ad_image"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="10dp"
+            android:text="시너지 - 노인 스마트폰 기초 교육 앱..."
+            android:textColor="#1F1F1F"
+            android:textSize="16sp" />
+
+        <!-- 오른쪽 버튼 -->
+        <Button
+            android:id="@+id/main_ad_install_btn"
+            android:layout_width="68dp"
+            android:layout_height="32dp"
+            android:text="설치"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_below="@id/install_ad_image"
+            android:background="@drawable/install_rounded_blue_btn_background"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="10dp"/>
+
+        <!-- 가운데 아래 텍스트 -->
+        <TextView
+            android:id="@+id/main_ad_info_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/main_ad_text"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="1dp"
+            android:text="Senergy • "
+            android:textColor="#1F1F1F"
+            android:textSize="16sp" />
+
+        <!-- 메인 광고 앱 연령 이미지 -->
+        <ImageView
+            android:id="@+id/main_ad_info_image"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/myinfo"
+            android:layout_below="@id/main_ad_info_text"
+            android:layout_alignTop="@id/main_ad_info_text"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="140dp"/>
+
+        <!-- 메인 광고 앱 연령 텍스트 -->
+        <TextView
+            android:id="@+id/main_ad_info_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/main_ad_text"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="1dp"
+            android:layout_toEndOf="@id/main_ad_info_image"
+            android:text="• 4.5"
+            android:textColor="#1F1F1F"
+            android:textSize="16sp" />
+
+        <!-- 메인 광고 앱 별 이미지 -->
+        <ImageView
+            android:id="@+id/main_ad_star_image"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/myinfo"
+            android:layout_below="@id/main_ad_info_text2"
+            android:layout_alignTop="@id/main_ad_info_text"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="200dp"/>
+
+        <!-- 설치 버튼 아래 텍스트 -->
+        <TextView
+            android:id="@+id/main_ad_install_btn_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/main_ad_install_btn"
+            android:layout_marginStart="335dp"
+            android:layout_marginTop="2dp"
+            android:text="인앱 구매"
+            android:textColor="#434746"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/main_ad_layout"
+        android:layout_marginTop="12dp">
+
+        <!-- 가운데 아래 텍스트 -->
+        <TextView
+            android:id="@+id/install_recommend_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="1dp"
+            android:text="스폰서  •  추천"
+            android:textColor="#1F1F1F"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_naver_add_grey_24"
+            android:layout_alignTop="@id/install_recommend_text"
+            android:layout_marginStart="380dp"
+            android:layout_marginTop="6dp"/>
+
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
