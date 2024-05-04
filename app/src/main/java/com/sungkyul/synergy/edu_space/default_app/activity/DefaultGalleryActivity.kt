@@ -15,7 +15,7 @@ import com.sungkyul.synergy.edu_space.default_app.fragment.DefaultGalleryShareFr
 import com.sungkyul.synergy.edu_space.default_app.fragment.DefaultGalleryStoryFragment
 import com.sungkyul.synergy.utils.AnimUtils
 
-data class BottomMenuItem(
+data class BottomNavItem(
     val fragment: Fragment,
     val text: TextView,
     val line: ImageView
@@ -27,7 +27,7 @@ class DefaultGalleryActivity : AppCompatActivity() {
     private lateinit var albumFragment: Fragment
     private lateinit var storyFragment: Fragment
     private lateinit var shareFragment: Fragment
-    private lateinit var bottomMenuItems: List<BottomMenuItem>
+    private lateinit var bottomNavItems: List<BottomNavItem>
 
     private val enabledColor = Color.parseColor("#252525")
     private val disabledColor = Color.parseColor("#858585")
@@ -44,11 +44,11 @@ class DefaultGalleryActivity : AppCompatActivity() {
         storyFragment = DefaultGalleryStoryFragment(binding.eduScreen)
         shareFragment = DefaultGalleryShareFragment(binding.eduScreen)
 
-        bottomMenuItems = listOf(
-            BottomMenuItem(pictureFragment, binding.pictureButtonText, binding.pictureButtonLine),
-            BottomMenuItem(albumFragment, binding.albumButtonText, binding.albumButtonLine),
-            BottomMenuItem(storyFragment, binding.storyButtonText, binding.storyButtonLine),
-            BottomMenuItem(shareFragment, binding.shareButtonText, binding.shareButtonLine),
+        bottomNavItems = listOf(
+            BottomNavItem(pictureFragment, binding.pictureButtonText, binding.pictureButtonLine),
+            BottomNavItem(albumFragment, binding.albumButtonText, binding.albumButtonLine),
+            BottomNavItem(storyFragment, binding.storyButtonText, binding.storyButtonLine),
+            BottomNavItem(shareFragment, binding.shareButtonText, binding.shareButtonLine),
         )
 
         // 각 버튼의 인터랙션을 초기화한다.
@@ -111,7 +111,7 @@ class DefaultGalleryActivity : AppCompatActivity() {
                 MotionEvent.ACTION_DOWN -> {
                     AnimUtils.startTouchDownButtonAnimation(this, view)
 
-                    selectBottomMenuItem(pictureFragment)
+                    selectBottomNavItem(pictureFragment)
                 }
                 MotionEvent.ACTION_UP -> {
                     AnimUtils.startTouchUpButtonAnimation(this, view)
@@ -126,7 +126,7 @@ class DefaultGalleryActivity : AppCompatActivity() {
                 MotionEvent.ACTION_DOWN -> {
                     AnimUtils.startTouchDownButtonAnimation(this, view)
 
-                    selectBottomMenuItem(albumFragment)
+                    selectBottomNavItem(albumFragment)
                 }
                 MotionEvent.ACTION_UP -> {
                     AnimUtils.startTouchUpButtonAnimation(this, view)
@@ -142,7 +142,7 @@ class DefaultGalleryActivity : AppCompatActivity() {
                 MotionEvent.ACTION_DOWN -> {
                     AnimUtils.startTouchDownButtonAnimation(this, view)
 
-                    selectBottomMenuItem(storyFragment)
+                    selectBottomNavItem(storyFragment)
                 }
                 MotionEvent.ACTION_UP -> {
                     AnimUtils.startTouchUpButtonAnimation(this, view)
@@ -157,7 +157,7 @@ class DefaultGalleryActivity : AppCompatActivity() {
                 MotionEvent.ACTION_DOWN -> {
                     AnimUtils.startTouchDownButtonAnimation(this, view)
 
-                    selectBottomMenuItem(shareFragment)
+                    selectBottomNavItem(shareFragment)
                 }
                 MotionEvent.ACTION_UP -> {
                     AnimUtils.startTouchUpButtonAnimation(this, view)
@@ -168,7 +168,7 @@ class DefaultGalleryActivity : AppCompatActivity() {
             true
         }
 
-        selectBottomMenuItem(pictureFragment)
+        selectBottomNavItem(pictureFragment)
         replaceFragment(pictureFragment)
     }
 
@@ -178,9 +178,9 @@ class DefaultGalleryActivity : AppCompatActivity() {
             .commit()
     }
 
-    private fun selectBottomMenuItem(fragment: Fragment) {
+    private fun selectBottomNavItem(fragment: Fragment) {
         // 각 아이템의 텍스트 색상과 밑줄 보여짐 여부를 변경한다.
-        for(i in bottomMenuItems) {
+        for(i in bottomNavItems) {
             if(i.fragment == fragment) {
                 i.text.setTextColor(enabledColor)
                 i.line.visibility = ImageView.VISIBLE
