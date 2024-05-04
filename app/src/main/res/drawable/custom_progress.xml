@@ -1,0 +1,27 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background Layer -->
+    <item android:id="@android:id/background">
+        <shape>
+            <solid android:color="#FFFFFF"/>
+            <corners android:radius="10dp"/> <!-- Background 둥근 모서리 조절 -->
+        </shape>
+    </item>
+    <!-- Progress Layer -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <solid android:color="#000000"/>
+                <corners android:radius="10dp"/> <!-- Progress 둥근 모서리 조절 -->
+            </shape>
+        </clip>
+    </item>
+    <!-- Stroke Layer (Overall Thickness) -->
+    <item>
+        <shape>
+            <solid android:color="@android:color/transparent"/> <!-- 투명한 배경 -->
+            <stroke
+                android:width="90dp"/> <!-- 전체 두께 조절 -->
+            <corners android:radius="10dp"/> <!-- Stroke의 둥근 모서리 조절 -->
+        </shape>
+    </item>
+</layer-list>
