@@ -89,6 +89,7 @@
         <activity
             android:name=".edu_space.move_edu.activity.MoveEduActivity"
             android:exported="false"/>
+
         <activity android:name=".edu_space.move_edu.activity.MoveDetailActivity"
             android:exported="false"/>
         <!-- <activity -->
@@ -124,7 +125,8 @@
             android:exported="false" /> <!-- 카메라 화면 -->
         <activity
             android:name=".edu_space.default_app.activity.DefaultCameraGalleryViewActivity"
-            android:exported="false" /> <!-- 카메라 갤러리 뷰 화면 -->
+            android:exported="false" /><!-- 카메라 갤러리 뷰 화면 -->
+
         <!-- 환경설정2 -->
         <!-- 환경설정 시작 -->
         <activity
@@ -133,8 +135,6 @@
         <!-- android:name=".edu_space.settingedu.activity.SettingEduActivity" -->
         <!-- android:exported="true" /> &lt;!&ndash; 환경설정 시작 &ndash;&gt; -->
         <!-- <activity -->
-        <!-- android:name=".edu_space.settingedu2.Setting2MainActivity" -->
-        <!-- android:exported="false"></activity> -->
         <activity
             android:name=".edu_space.settingedu2.Setting2DisplayActivity"
             android:exported="false" />
@@ -167,10 +167,17 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.accountedu.GoogleMailAddActivity"
-            android:exported="false" /> <!-- 앱 설치 -->
+            android:exported="false" /> 
+
         <activity
-            android:name=".edu_space.appinstall.installActivity"
-            android:exported="false" />
+            android:name=".edu_space.appinstall.installActivity" 
+            android:exported="true" > <!-- 앱 설치 -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".edu_space.appinstall.installMainActivity"
             android:exported="false" /> <!-- 앱 설치 메인 화면 -->
@@ -190,6 +197,7 @@
         <activity
             android:name=".edu_space.naver.activity.NaverActivity"
             android:exported="false" /> <!-- 네이버 화면 -->
+
         <activity
             android:name=".edu_space.naver.activity.NaverSearchInfoActivity"
             android:exported="false" />
