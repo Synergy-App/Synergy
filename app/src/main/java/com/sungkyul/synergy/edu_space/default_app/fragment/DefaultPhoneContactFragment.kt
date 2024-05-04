@@ -11,6 +11,7 @@ import com.sungkyul.synergy.databinding.FragmentDefaultPhoneContactBinding
 import com.sungkyul.synergy.edu_space.default_app.adapter.ContactAdapter
 import com.sungkyul.synergy.edu_space.default_app.adapter.ContactData
 
+//연락처
 class DefaultPhoneContactFragment : Fragment() {
     private lateinit var binding: FragmentDefaultPhoneContactBinding
 
@@ -21,10 +22,10 @@ class DefaultPhoneContactFragment : Fragment() {
         binding = FragmentDefaultPhoneContactBinding.inflate(inflater, container, false)
 
         val contactArray = ArrayList<ContactData>()
-        contactArray.add(ContactData(R.drawable.ic_person_black_24dp, "대장님"))
-        contactArray.add(ContactData(R.drawable.ic_person_black_24dp, "UX/UI 디자이너"))
-        contactArray.add(ContactData(R.drawable.ic_person_black_24dp, "기획자"))
-        contactArray.add(ContactData(R.drawable.ic_person_black_24dp, ":fearful:"))
+        contactArray.add(ContactData(R.drawable.ic_person_black_24dp, "대장님", "휴대전화: 010-1234-1234"))
+        contactArray.add(ContactData(R.drawable.ic_person_black_24dp, "UX/UI 디자이너","휴대전화: 010-1234-1234"))
+        contactArray.add(ContactData(R.drawable.ic_person_black_24dp, "기획자","휴대전화: 010-1234-1234"))
+        contactArray.add(ContactData(R.drawable.ic_person_black_24dp, ":fearful:","휴대전화: 010-1234-1234"))
 
         val contactList = binding.contactList
         contactList.layoutManager = LinearLayoutManager(binding.root.context)

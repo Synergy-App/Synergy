@@ -44,6 +44,7 @@ class MoveEduActivity : AppCompatActivity() {
         moveAdapter = MoveEduAdapter(this, moveList) // 여기에 생성한 아이템 리스트를 넣어줍니다.
         recyclerView.adapter = moveAdapter
 
+        //검색창 기능
         binding.searchEditText.addTextChangedListener(object: TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }

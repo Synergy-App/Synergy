@@ -88,13 +88,7 @@
             android:exported="false" /> <!-- 아이콘 첫화면 -->
         <activity
             android:name=".edu_space.move_edu.activity.MoveEduActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false"/>
         <activity android:name=".edu_space.move_edu.activity.MoveDetailActivity"
             android:exported="false"/>
         <!-- <activity -->
@@ -117,8 +111,14 @@
             android:exported="false" /> <!-- 전화 화면 -->
         <activity
             android:name=".edu_space.default_app.activity.DefaultPhoneCallActivity"
-            android:exported="false" />
-             <!-- 전화 콜 화면 -->
+            android:exported="true"> <!-- 전화 콜 화면 -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".edu_space.default_app.activity.DefaultCameraActivity"
             android:exported="false" /> <!-- 카메라 화면 -->
