@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityDefaultPhoneBinding
+import com.sungkyul.synergy.databinding.FragmentDefaultPhoneContactBinding
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_DOWN_ALPHA
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_DURATION_ALPHA
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_ALPHA
@@ -23,6 +24,7 @@ import com.sungkyul.synergy.utils.edu.EduCourses
 
 class DefaultPhoneActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDefaultPhoneBinding
+    private lateinit var fragmentbinding: FragmentDefaultPhoneContactBinding
     private lateinit var keypadFragment: Fragment
     private lateinit var recentHistoryFragment: Fragment
     private lateinit var contactFragment: Fragment
@@ -171,6 +173,7 @@ class DefaultPhoneActivity : AppCompatActivity() {
         }
         true
     }
+
 
     private fun updateMainBgColor(color: Int) {
         val drawable = ContextCompat.getDrawable(applicationContext, color)

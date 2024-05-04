@@ -59,14 +59,25 @@
                     android:id="@+id/imageView49"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_screenedu_bluethooth_white" />
+                <ImageView
+                    android:id="@+id/imageView55"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_screenedu_wifi_white" />
+                <ImageView
+                    android:id="@+id/imageView57"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
-                    app:srcCompat="@drawable/toolbar" />
+                    app:srcCompat="@drawable/ic_screenedu_data_white" />
+
             </LinearLayout>
 
             <View
                 android:id="@+id/View5"
                 android:layout_width="wrap_content"
-                android:layout_height="10dp"
+                android:layout_height="20dp"
                 android:layout_weight="1" />
 
 
@@ -74,20 +85,34 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
+
     <FrameLayout
         android:id="@+id/overlayLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#80FAFAFA"
-        android:visibility="visible">
+        android:background="#A6FFFFFF"
+        android:visibility="gone">
 
         <!-- 추가할 뷰들을 여기에 배치합니다 -->
+
         <ImageView
-            android:id="@+id/overlayImageView"
+            android:id="@+id/imageView52"
+            android:layout_width="wrap_content"
+            android:layout_height="110dp"
+            android:layout_marginTop="25dp"
+            android:src="@drawable/toolbar1" />
+
+
+        <SeekBar
+            android:id="@+id/brightnessSeekBar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/alarm" />
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="150dp"
+            android:max="255"
+            android:progressDrawable="@drawable/custom_progress"
+            android:thumb="@drawable/custom_thumb" />
+
 
         <!-- 원하는 버튼 등 다른 뷰들을 추가할 수 있습니다 -->
 
