@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools" >
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
     <application
         android:allowBackup="true"
@@ -223,7 +224,7 @@
             android:exported="false" /> <!-- 배달의 민족 -->
         <activity
             android:name=".edu_space.delivery.DlvMainActivity"
-            android:exported="false" />
+            android:exported="true"/>
         <activity
             android:name=".edu_space.delivery.shopActivity"
             android:exported="false" />
