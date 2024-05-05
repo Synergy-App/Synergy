@@ -11,18 +11,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.edu_space.icon_edu.data.Icon
 import com.sungkyul.synergy.edu_space.icon_edu.data.IconInfo
 import com.sungkyul.synergy.databinding.FragmentIconListBinding
-import com.sungkyul.synergy.edu_space.accountedu.GoogleMainActivity
-import com.sungkyul.synergy.edu_space.appinstall.installMainActivity
-import com.sungkyul.synergy.edu_space.default_app.activity.DefaultAppActivity
-import com.sungkyul.synergy.edu_space.delivery.DlvMainActivity
 import com.sungkyul.synergy.edu_space.icon_edu.activity.IconDetailActivity
-import com.sungkyul.synergy.edu_space.icon_edu.activity.IconEduActivity
-import com.sungkyul.synergy.edu_space.kakaotalk.activity.KakaoMainActivity
-import com.sungkyul.synergy.edu_space.kakaotaxi.TaxiMainActivity
-import com.sungkyul.synergy.edu_space.naver.activity.NaverActivity
-import com.sungkyul.synergy.edu_space.screen_layout.ScreenLayoutActivity
-import com.sungkyul.synergy.edu_space.settingedu2.Setting2MainActivity
-import com.sungkyul.synergy.edu_space.ticket.TicketMainActivity
 import com.sungkyul.synergy.utils.DynamicButton
 
 /** 교육공간 속 아이콘 리사이클러뷰 어뎁터 */

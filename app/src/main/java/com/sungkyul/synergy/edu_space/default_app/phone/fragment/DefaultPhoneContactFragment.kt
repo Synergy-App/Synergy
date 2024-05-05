@@ -1,0 +1,43 @@
+package com.sungkyul.synergy.edu_space.default_app.phone.fragment
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.sungkyul.synergy.R
+import com.sungkyul.synergy.databinding.FragmentDefaultPhoneContactBinding
+import com.sungkyul.synergy.edu_space.default_app.phone.adapter.ContactAdapter
+import com.sungkyul.synergy.edu_space.default_app.phone.adapter.ContactData
+
+class DefaultPhoneContactFragment(private val addedContact: ContactData? = null) : Fragment() {
+    private lateinit var binding: FragmentDefaultPhoneContactBinding
+    private lateinit var contactAdapter: ContactAdapter
+    private val contactArray = ArrayList<ContactData>()
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentDefaultPhoneContactBinding.inflate(inflater, container, false)
+
+        // 기존 연락처 목록 추가
+        contactArray.add(ContactData(R.drawable.ic_person_black_24dp, "대장님", "휴대전화: 010-1234-1234"))
+        contactArray.add(ContactData(R.drawable.ic_person_black_24dp, "UX/UI 디자이너","휴대전화: 010-1234-1234"))
+        contactArray.add(ContactData(R.drawable.ic_person_black_24dp, "기획자","휴대전화: 010-1234-1234"))
+        contactArray.add(ContactData(R.drawable.ic_person_black_24dp, ":fearful:","휴대전화: 010-1234-1234"))
+
+        // 새 연락처 추가
+        if(addedContact != null) {
+            contactArray.add(addedContact)
+        }
+
+        // 어댑터 설정
+        contactAdapter = ContactAdapter(contactArray)
+        binding.contactList.layoutManager = LinearLayoutManager(requireContext())
+        binding.contactList.adapter = contactAdapter
+
+        return binding.root
+    }
+}

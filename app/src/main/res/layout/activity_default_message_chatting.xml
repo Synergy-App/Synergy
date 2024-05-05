@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".edu_space.default_app.activity.DefaultMessageChattingActivity"
+    tools:context=".edu_space.default_app.message.activity.DefaultMessageChattingActivity"
     android:background="@color/message_chatting_bg">
 
     <com.sungkyul.synergy.utils.edu.EduScreen

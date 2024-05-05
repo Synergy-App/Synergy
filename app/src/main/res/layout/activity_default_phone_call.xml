@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_default_call"
-    tools:context=".edu_space.default_app.activity.DefaultPhoneCallActivity">
+    tools:context=".edu_space.default_app.phone.activity.DefaultPhoneCallActivity">
 
     <com.sungkyul.synergy.utils.edu.EduScreen
         android:id="@+id/edu_screen"

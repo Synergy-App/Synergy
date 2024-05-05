@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:id="@+id/rootLayout"
-    tools:context=".edu_space.default_app.activity.DefaultHomeActivity">
+    tools:context=".edu_space.default_app.todo.DefaultHomeActivity">
 
     <ImageView
         android:id="@+id/imageView45"
