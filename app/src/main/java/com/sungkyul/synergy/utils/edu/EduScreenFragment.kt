@@ -320,9 +320,10 @@ class EduScreenFragment : Fragment() {
         eduListener = l
     }
 
-    fun setDialogTitle(text: String, gravity: Int) {
+    fun setDialogTitle(text: String, gravity: Int, color: String) {
         binding.dialogTitle.text = text
         binding.dialogTitle.gravity = gravity
+        binding.dialogTitle.setTextColor(Color.parseColor(color))
     }
 
     fun showDialogTitle() {
@@ -335,9 +336,10 @@ class EduScreenFragment : Fragment() {
         binding.dialogSeparator.visibility = TextView.GONE
     }
 
-    fun setDialogContent(text: String, gravity: Int) {
+    fun setDialogContent(text: String, gravity: Int, color: String) {
         binding.dialogContent.text = text.parseAsHtml()
         binding.dialogContent.gravity = gravity
+        binding.dialogContent.setTextColor(Color.parseColor(color))
     }
 
     fun setDialogBackground(background: Int) {

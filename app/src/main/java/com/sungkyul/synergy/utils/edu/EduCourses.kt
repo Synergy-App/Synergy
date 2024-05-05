@@ -375,6 +375,7 @@ class EduCourses {
 
             result.add(EduData().apply {
                 dialog.contentText = "010-2468-3579로<br>전화를 걸어보세요."
+                dialog.contentColor = "#FFFFFF"
                 dialog.background = R.drawable.edu_dialog_green_bg
             })
 
