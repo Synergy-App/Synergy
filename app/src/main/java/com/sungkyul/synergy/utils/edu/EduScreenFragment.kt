@@ -340,6 +340,10 @@ class EduScreenFragment : Fragment() {
         binding.dialogContent.gravity = gravity
     }
 
+    fun setDialogBackground(background: Int) {
+        binding.dialog.setBackgroundResource(background)
+    }
+
     fun showDialog() {
         startObjectAnimatorOfDialog(
             toggleDuration,

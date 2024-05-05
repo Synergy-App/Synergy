@@ -2,6 +2,7 @@ package com.sungkyul.synergy.utils.edu
 
 import android.animation.AnimatorSet
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
 import android.util.Log
 import android.view.Gravity
@@ -20,6 +21,7 @@ data class EduDialog(
     var bottom: Float? = null,
     var start: Float? = null,
     var end: Float? = null,
+    var background: Int? = null,
     var visibility: Boolean? = null
 )
 data class EduImageDialog(
@@ -30,6 +32,7 @@ data class EduImageDialog(
     var bottom: Float? = null,
     var start: Float? = null,
     var end: Float? = null,
+    var background: Int? = null,
     var visibility: Boolean? = null
 )
 data class EduVerticalDialog(
@@ -40,6 +43,7 @@ data class EduVerticalDialog(
     var contentBolds: List<Pair<Int, Int>>? = null,
     var duration: Long? = null,
     var height: Int? = null,
+    var background: Int? = null,
     var visibility: Boolean? = null
 )
 data class EduCover(
@@ -177,6 +181,7 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
             bottom = 0.0f,
             start = 0.0f,
             end = 0.0f,
+            background = R.drawable.edu_dialog_bg,
             visibility = false
         ),
         EduImageDialog(
@@ -187,6 +192,7 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
             bottom = 0.0f,
             start = 0.0f,
             end = 0.0f,
+            background = R.drawable.edu_dialog_bg,
             visibility = false
         ),
         EduVerticalDialog(
@@ -197,6 +203,7 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
             contentBolds = listOf(),
             duration = 0,
             height = 0,
+            background = R.drawable.edu_dialog_bg,
             visibility = false
         ),
         EduVerticalDialog(
@@ -295,6 +302,7 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         currentDialog.bottom = dialog.bottom ?: currentDialog.bottom
         currentDialog.start = dialog.start ?: currentDialog.start
         currentDialog.end = dialog.end ?: currentDialog.end
+        currentDialog.background = dialog.background ?: currentDialog.background
 
         val currentCover = currentEduData.cover
         val cover = course[num].cover
@@ -339,6 +347,8 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         } else {
             eduScreenFragment.showDialogTitle()
         }
+        // 다이얼로그의 배경색을 변경한다.
+        eduScreenFragment.setDialogBackground(currentDialog.background!!)
         // 다이얼로그를 보여줄까 숨길까
         if(currentDialog.visibility == false && dialog.visibility == true) {
             eduScreenFragment.showDialog()
