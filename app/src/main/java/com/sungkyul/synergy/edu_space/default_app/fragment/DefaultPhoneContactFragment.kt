@@ -1,4 +1,5 @@
-import android.content.Intent
+package com.sungkyul.synergy.edu_space.default_app.fragment
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +11,6 @@ import com.sungkyul.synergy.databinding.FragmentDefaultPhoneContactBinding
 import com.sungkyul.synergy.edu_space.default_app.adapter.ContactAdapter
 import com.sungkyul.synergy.edu_space.default_app.adapter.ContactData
 
-// 연락처
 class DefaultPhoneContactFragment : Fragment() {
     private lateinit var binding: FragmentDefaultPhoneContactBinding
     private lateinit var contactAdapter: ContactAdapter
@@ -19,7 +19,7 @@ class DefaultPhoneContactFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentDefaultPhoneContactBinding.inflate(inflater, container, false)
 
         // 기존 연락처 목록 추가
@@ -33,15 +33,13 @@ class DefaultPhoneContactFragment : Fragment() {
         binding.contactList.layoutManager = LinearLayoutManager(requireContext())
         binding.contactList.adapter = contactAdapter
 
-
         return binding.root
     }
-    /*
 
+    /*
     // 연락처를 목록에 추가하는 메서드
     public fun addContact(contact: ContactData) {
         contactArray.add(contact)
         contactAdapter.notifyItemInserted(contactArray.size - 1)
     }*/
-
 }

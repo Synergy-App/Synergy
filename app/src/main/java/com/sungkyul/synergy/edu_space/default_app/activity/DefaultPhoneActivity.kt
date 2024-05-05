@@ -1,6 +1,6 @@
 package com.sungkyul.synergy.edu_space.default_app.activity
 
-import DefaultPhoneContactFragment
+import com.sungkyul.synergy.edu_space.default_app.fragment.DefaultPhoneContactFragment
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
@@ -12,7 +12,6 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityDefaultPhoneBinding
-import com.sungkyul.synergy.databinding.FragmentDefaultPhoneContactBinding
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_DOWN_ALPHA
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_DURATION_ALPHA
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_ALPHA
