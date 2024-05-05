@@ -60,21 +60,4 @@ class DefaultPhoneAddActivity : AppCompatActivity() {
             }
         }
     }
-
-    /*private fun saveContact() {
-        val name = binding.phoneNameEditText.text.toString()
-        val phoneNumber = binding.phoneNumEditText.text.toString()
-
-        // DefaultPhoneContactFragment를 동적으로 추가한다.
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-        val fragment = com.sungkyul.synergy.edu_space.default_app.phone.fragment.DefaultPhoneContactFragment()
-        fragmentTransaction.add(R.id.item_layout, fragment)
-        fragmentTransaction.commit()
-
-        // 추가한 Fragment에 연락처를 전달한다.
-        fragment.addContact(ContactData(R.drawable.ic_person_black_24dp, name, "휴대전화: $phoneNumber"))
-
-        // 다음 화면으로 이동하지 않고 현재 화면을 종료한다.
-        finish()
-    }*/
 }
