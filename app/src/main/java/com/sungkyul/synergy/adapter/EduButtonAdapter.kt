@@ -19,7 +19,7 @@ import com.github.mikephil.charting.data.BarEntry
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.edu_space.accountedu.GoogleMainActivity
 import com.sungkyul.synergy.edu_space.appinstall.installMainActivity
-import com.sungkyul.synergy.edu_space.default_app.activity.DefaultAppActivity
+import com.sungkyul.synergy.edu_space.default_app.DefaultAppActivity
 import com.sungkyul.synergy.edu_space.delivery.DlvMainActivity
 import com.sungkyul.synergy.edu_space.icon_edu.activity.IconEduActivity
 import com.sungkyul.synergy.edu_space.kakaotalk.activity.KakaoMainActivity

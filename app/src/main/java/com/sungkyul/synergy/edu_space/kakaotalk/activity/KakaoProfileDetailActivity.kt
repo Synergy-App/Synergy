@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityKakaoProfileDetailBinding
-import com.sungkyul.synergy.edu_space.default_app.activity.DefaultAppActivity
+import com.sungkyul.synergy.edu_space.default_app.DefaultAppActivity
 import com.sungkyul.synergy.edu_space.kakaotalk.data.profileItem
 import com.sungkyul.synergy.utils.edu.EduCourses
 

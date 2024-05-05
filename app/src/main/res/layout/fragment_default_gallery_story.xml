@@ -6,6 +6,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".edu_space.default_app.fragment.DefaultGalleryStoryFragment">
+    tools:context=".edu_space.default_app.gallery.fragment.DefaultGalleryStoryFragment">
 
 </androidx.recyclerview.widget.RecyclerView>
