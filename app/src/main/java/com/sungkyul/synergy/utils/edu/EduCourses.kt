@@ -374,6 +374,12 @@ class EduCourses {
             })
 
             result.add(EduData().apply {
+                dialog.contentText = "010-2468-3579로<br>전화를 걸어보세요."
+                dialog.contentColor = "#FFFFFF"
+                dialog.background = R.drawable.edu_dialog_green_bg
+            })
+
+            result.add(EduData().apply {
                 dialog.visibility = false
                 cover.visibility = false
                 arrow.visibility = false
@@ -560,15 +566,21 @@ class EduCourses {
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
-                dialog.contentText = "지금 현재 상대방에게<br>통화하고 있는 중이에요."
+                dialog.contentText = "전화 연결에 성공하였습니다!"
                 dialog.contentGravity = Gravity.CENTER
                 dialog.top = 300.0f
                 dialog.bottom = 300.0f
                 dialog.start = 50.0f
                 dialog.end = 50.0f
+                dialog.background = R.drawable.edu_dialog_yellow_bg
                 dialog.visibility = true
 
                 cover.visibility = true
+            })
+
+            result.add(EduData().apply {
+                dialog.contentText = "지금 현재 상대방에게<br>통화하고 있는 중이에요."
+                dialog.background = R.drawable.edu_dialog_bg
             })
 
             result.add(EduData().apply {
