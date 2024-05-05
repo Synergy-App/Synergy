@@ -11,7 +11,7 @@ import com.sungkyul.synergy.databinding.FragmentDefaultPhoneContactBinding
 import com.sungkyul.synergy.edu_space.default_app.adapter.ContactAdapter
 import com.sungkyul.synergy.edu_space.default_app.adapter.ContactData
 
-class DefaultPhoneContactFragment : Fragment() {
+class DefaultPhoneContactFragment(private val addedContact: ContactData? = null) : Fragment() {
     private lateinit var binding: FragmentDefaultPhoneContactBinding
     private lateinit var contactAdapter: ContactAdapter
     private val contactArray = ArrayList<ContactData>()
@@ -28,6 +28,11 @@ class DefaultPhoneContactFragment : Fragment() {
         contactArray.add(ContactData(R.drawable.ic_person_black_24dp, "기획자","휴대전화: 010-1234-1234"))
         contactArray.add(ContactData(R.drawable.ic_person_black_24dp, ":fearful:","휴대전화: 010-1234-1234"))
 
+        // 새 연락처 추가
+        if(addedContact != null) {
+            contactArray.add(addedContact)
+        }
+
         // 어댑터 설정
         contactAdapter = ContactAdapter(contactArray)
         binding.contactList.layoutManager = LinearLayoutManager(requireContext())
@@ -35,11 +40,4 @@ class DefaultPhoneContactFragment : Fragment() {
 
         return binding.root
     }
-
-    /*
-    // 연락처를 목록에 추가하는 메서드
-    public fun addContact(contact: ContactData) {
-        contactArray.add(contact)
-        contactAdapter.notifyItemInserted(contactArray.size - 1)
-    }*/
 }

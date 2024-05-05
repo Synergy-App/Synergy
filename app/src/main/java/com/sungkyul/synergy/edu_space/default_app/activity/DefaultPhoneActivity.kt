@@ -15,6 +15,7 @@ import com.sungkyul.synergy.databinding.ActivityDefaultPhoneBinding
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_DOWN_ALPHA
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_DURATION_ALPHA
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_ALPHA
+import com.sungkyul.synergy.edu_space.default_app.adapter.ContactData
 
 import com.sungkyul.synergy.edu_space.default_app.fragment.DefaultPhoneKeypadFragment
 import com.sungkyul.synergy.edu_space.default_app.fragment.DefaultPhoneRecentHistoryFragment
@@ -47,6 +48,14 @@ class DefaultPhoneActivity : AppCompatActivity() {
             if(intent.getStringExtra("from") == "call") {
                 // 교육 코스 defaultPhoneCourse2를 지정한다.
                 binding.eduScreen.course = EduCourses.defaultPhoneCourse2(
+                    binding.eduScreen.context,
+                    binding.eduScreen.width.toFloat(),
+                    binding.eduScreen.height.toFloat()
+                )
+            }
+            if(intent.getStringExtra("from") == "add_contact") {
+                // 교육 코스 defaultPhoneCourse3을 지정한다.
+                binding.eduScreen.course = EduCourses.defaultPhoneCourse3(
                     binding.eduScreen.context,
                     binding.eduScreen.width.toFloat(),
                     binding.eduScreen.height.toFloat()
@@ -108,7 +117,9 @@ class DefaultPhoneActivity : AppCompatActivity() {
                 MotionEvent.ACTION_UP -> {
                     (view as DynamicButton).startTouchUpAnimation()
 
-                    replaceFragment(keypadFragment)
+                    if(binding.eduScreen.onAction("click_keypad_button")) {
+                        replaceFragment(keypadFragment)
+                    }
                 }
             }
             true
@@ -136,13 +147,28 @@ class DefaultPhoneActivity : AppCompatActivity() {
                 MotionEvent.ACTION_UP -> {
                     (view as DynamicButton).startTouchUpAnimation()
 
-                    replaceFragment(contactFragment)
+                    if(binding.eduScreen.onAction("click_contact_button")) {
+                        replaceFragment(contactFragment)
+                    }
                 }
             }
             true
         }
 
         replaceFragment(keypadFragment)
+
+        if(intent.getStringExtra("from") == "add_contact") {
+            // 새 연락처를 프래그먼트로 넘긴다.
+            contactFragment = DefaultPhoneContactFragment(
+                ContactData(
+                    R.drawable.ic_person_black_24dp,
+                    intent.getStringExtra("name")!!,
+                    intent.getStringExtra("num")!!
+                )
+            )
+
+            replaceFragment(contactFragment)
+        }
     }
 
     // 돋보기 버튼의 터치 이벤트 리스너

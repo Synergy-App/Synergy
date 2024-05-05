@@ -537,6 +537,18 @@ class EduCourses {
             return result
         }
 
+        // for DefaultPhoneActivity (After ContactAddition)
+        fun defaultPhoneCourse3(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
+            val width = AnimUtils.pxToDp(context, widthDp)
+            val height = AnimUtils.pxToDp(context, heightDp)
+            val result = ArrayList<EduData>()
+
+            result.add(EduData().apply {
+            })
+
+            return result
+        }
+
         //for DefaultPhoneContactFragmentActivity
 
 

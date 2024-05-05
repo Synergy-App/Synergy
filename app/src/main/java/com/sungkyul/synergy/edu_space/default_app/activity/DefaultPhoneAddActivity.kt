@@ -1,6 +1,7 @@
 package com.sungkyul.synergy.edu_space.default_app.activity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
@@ -29,7 +30,7 @@ class DefaultPhoneAddActivity : AppCompatActivity() {
                 MotionEvent.ACTION_UP -> {
                     AnimUtils.startTouchUpButtonAnimation(this, view)
 
-                    finish()
+                    //finish()
                 }
             }
             true
@@ -41,6 +42,14 @@ class DefaultPhoneAddActivity : AppCompatActivity() {
                 }
                 MotionEvent.ACTION_UP -> {
                     AnimUtils.startTouchUpButtonAnimation(this, view)
+
+                    val intent = Intent(this, DefaultPhoneActivity::class.java)
+                    intent.putExtra("from", "add_contact")
+                    intent.putExtra("name", binding.phoneNameEditText.text.toString())
+                    intent.putExtra("num", binding.phoneNumEditText.text.toString())
+                    intent.putExtra("email", binding.phoneEmailEditText.text.toString())
+                    intent.putExtra("group", binding.phoneGroupEditText.text.toString())
+                    startActivity(intent)
                 }
             }
             true
