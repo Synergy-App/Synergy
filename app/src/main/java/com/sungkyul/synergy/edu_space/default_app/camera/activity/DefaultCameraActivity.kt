@@ -169,7 +169,7 @@ class DefaultCameraActivity : AppCompatActivity() {
             MotionEvent.ACTION_UP -> {
                 AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
 
-                // 갤러리 뷰로 이동
+                // 갤러리 뷰로 이동한다.
                 val intent = Intent(this, DefaultCameraGalleryViewActivity::class.java)
                 startActivity(intent)
 
@@ -188,8 +188,7 @@ class DefaultCameraActivity : AppCompatActivity() {
             MotionEvent.ACTION_UP -> {
                 view.background = ContextCompat.getDrawable(applicationContext, R.drawable.white_circle)
 
-                // 찰칵하는 애니메이션
-                AnimUtils.startAlphaAnimation2(binding.cameraScreen.drawable, 25, 255, 0)
+                AnimUtils.startShootingAnimation(this, binding.cameraScreen)
 
                 binding.eduScreen.onAction("click_shooting_button")
 

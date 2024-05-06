@@ -14,6 +14,7 @@ import android.view.animation.Interpolator
 import android.view.animation.LinearInterpolator
 import android.view.animation.OvershootInterpolator
 import android.view.animation.ScaleAnimation
+import android.widget.ImageView
 import androidx.core.view.updateLayoutParams
 import com.sungkyul.synergy.R
 
@@ -88,6 +89,13 @@ class AnimUtils {
             startObjectAnimatorOfFloat(view, "alpha", view.alpha, 0.0f, APPEARING_BUTTON_DURATION, DecelerateInterpolator())
         }
 
+        // 촬영 애니메이션을 시작한다.
+        fun startShootingAnimation(context: Context, view: ImageView) {
+            val animator = AnimatorInflater.loadAnimator(context, R.animator.shoot)
+            animator.setTarget(view.drawable)
+            animator.start()
+        }
+
         // (duration)ms 동안 drawable의 알파 값이 startAlpha에서 endAlpha로 바뀌는 함수이다.
         // startAlpha, endAlpha의 범위는 [0, 255]이다.
         fun startAlphaAnimation(
@@ -105,37 +113,7 @@ class AnimUtils {
             alphaAnimator.duration = duration
             alphaAnimator.start()
         }
-
-        // TODO(촬영 애니메이션 함수를 이렇게 만드는 것보다 animator xml로 만드는 게 나아 보임)
-        // (duration×2)ms 동안 drawable의 알파 값이 startAlpha → endAlpha → startAlpha로 바뀌는 함수이다.
-        // startAlpha, endAlpha의 범위는 [0, 255]이다.
-        fun startAlphaAnimation2(
-            drawable: Drawable,
-            duration: Long,
-            startAlpha: Int,
-            endAlpha: Int
-        ) {
-            val animator1 = ObjectAnimator.ofInt(
-                drawable,
-                "alpha",
-                startAlpha,
-                endAlpha
-            )
-            val animator2 = ObjectAnimator.ofInt(
-                drawable,
-                "alpha",
-                endAlpha,
-                startAlpha
-            )
-
-            animator1.duration = duration
-            animator2.duration = duration
-
-            val animatorSet = AnimatorSet()
-            animatorSet.playSequentially(animator1, animator2)
-            animatorSet.start()
-        }
-
+        
         // (duration)ms 동안 view의 스케일이 startScale에서 endScale로 바뀌는 함수이다.
         // startScale, endScale의 범위는 [0.0f, 1.0f]이다.
         fun startScaleAnimation(
