@@ -1,6 +1,9 @@
 package com.sungkyul.synergy.edu_space.default_app.phone.fragment
 
+import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,8 +11,11 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.FragmentDefaultPhoneContactBinding
+import com.sungkyul.synergy.edu_space.default_app.phone.activity.DefaultPhoneAddActivity
 import com.sungkyul.synergy.edu_space.default_app.phone.adapter.ContactAdapter
 import com.sungkyul.synergy.edu_space.default_app.phone.adapter.ContactData
+import com.sungkyul.synergy.edu_space.icon_edu.adapter.IconEduAdapter
+import com.sungkyul.synergy.edu_space.icon_edu.data.Icon
 
 class DefaultPhoneContactFragment(private val addedContact: ContactData? = null) : Fragment() {
     private lateinit var binding: FragmentDefaultPhoneContactBinding
@@ -38,6 +44,22 @@ class DefaultPhoneContactFragment(private val addedContact: ContactData? = null)
         binding.contactList.layoutManager = LinearLayoutManager(requireContext())
         binding.contactList.adapter = contactAdapter
 
+        // add_button 클릭 이벤트 처리
+        binding.addButton.setOnClickListener {
+            val intent = Intent(requireContext(), DefaultPhoneAddActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.searchButton.setOnTouchListener { _, _ ->
+            // searchEditText에 포커스를 줌으로써 키보드가 나타나고 활성화됩니다.
+            binding.searchEditText.requestFocus()
+
+            // true를 반환하여 이벤트가 소비되었음을 알립니다.
+            true
+        }
+
         return binding.root
     }
+
+
 }
