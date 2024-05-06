@@ -13,6 +13,7 @@ data class GalleryStoryData(
     val date: String
 )
 
+// 갤러리/스토리 어댑터
 class GalleryStoryAdapter(private val dataSet: ArrayList<GalleryStoryData>): RecyclerView.Adapter<GalleryStoryAdapter.ViewHolder>() {
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val image: ImageView = view.findViewById(R.id.story_image)

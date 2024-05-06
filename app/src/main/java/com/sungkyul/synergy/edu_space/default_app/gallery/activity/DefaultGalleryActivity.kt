@@ -44,6 +44,7 @@ class DefaultGalleryActivity : AppCompatActivity() {
         storyFragment = DefaultGalleryStoryFragment(binding.eduScreen)
         shareFragment = DefaultGalleryShareFragment(binding.eduScreen)
 
+        // 하단 바의 버튼들을 리스트로 묶는다.
         bottomNavItems = listOf(
             BottomNavItem(pictureFragment, binding.pictureButtonText, binding.pictureButtonLine),
             BottomNavItem(albumFragment, binding.albumButtonText, binding.albumButtonLine),
@@ -61,7 +62,7 @@ class DefaultGalleryActivity : AppCompatActivity() {
         AnimUtils.initTouchButtonAnimation(binding.storyButton)
         AnimUtils.initTouchButtonAnimation(binding.shareButton)
 
-        // 이벤트 리스너들을 추가한다.
+        // '비슷한 이미지 묶기' 버튼의 터치 리스너를 설정한다.
         binding.groupingSimilarImagesButton.setOnTouchListener { view, event ->
             when(event.action) {
                 MotionEvent.ACTION_DOWN -> {
@@ -73,6 +74,8 @@ class DefaultGalleryActivity : AppCompatActivity() {
             }
             true
         }
+
+        // '영화 만들기' 버튼의 터치 리스너를 설정한다.
         binding.makingMovieButton.setOnTouchListener { view, event ->
             when(event.action) {
                 MotionEvent.ACTION_DOWN -> {
@@ -84,6 +87,8 @@ class DefaultGalleryActivity : AppCompatActivity() {
             }
             true
         }
+
+        // '검색' 버튼의 터치 리스너를 설정한다.
         binding.searchButton.setOnTouchListener { view, event ->
             when(event.action) {
                 MotionEvent.ACTION_DOWN -> {
@@ -95,6 +100,8 @@ class DefaultGalleryActivity : AppCompatActivity() {
             }
             true
         }
+
+        // '더보기' 버튼의 터치 리스너를 설정한다.
         binding.moreButton.setOnTouchListener { view, event ->
             when(event.action) {
                 MotionEvent.ACTION_DOWN -> {
@@ -106,6 +113,8 @@ class DefaultGalleryActivity : AppCompatActivity() {
             }
             true
         }
+
+        // '사진' 버튼의 터치 리스너를 설정한다.
         binding.pictureButton.setOnTouchListener { view, event ->
             when(event.action) {
                 MotionEvent.ACTION_DOWN -> {
@@ -121,6 +130,8 @@ class DefaultGalleryActivity : AppCompatActivity() {
             }
             true
         }
+
+        // '앨범' 버튼의 터치 리스너를 설정한다.
         binding.albumButton.setOnTouchListener { view, event ->
             when(event.action) {
                 MotionEvent.ACTION_DOWN -> {
@@ -137,6 +148,8 @@ class DefaultGalleryActivity : AppCompatActivity() {
             }
             true
         }
+
+        // '스토리' 버튼의 터치 리스너를 설정한다.
         binding.storyButton.setOnTouchListener { view, event ->
             when(event.action) {
                 MotionEvent.ACTION_DOWN -> {
@@ -152,6 +165,8 @@ class DefaultGalleryActivity : AppCompatActivity() {
             }
             true
         }
+
+        // '공유' 버튼의 터치 리스너를 설정한다.
         binding.shareButton.setOnTouchListener { view, event ->
             when(event.action) {
                 MotionEvent.ACTION_DOWN -> {
@@ -172,6 +187,7 @@ class DefaultGalleryActivity : AppCompatActivity() {
         replaceFragment(pictureFragment)
     }
 
+    // 프래그먼트를 교체한다.
     private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(binding.container.id, fragment)

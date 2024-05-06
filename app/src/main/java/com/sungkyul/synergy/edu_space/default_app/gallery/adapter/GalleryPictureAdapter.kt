@@ -14,6 +14,7 @@ data class GalleryPictureData(
     val images: List<Int>
 )
 
+// 갤러리/사진 어댑터
 class GalleryPictureAdapter(private val context: Context, private val dataSet: ArrayList<GalleryPictureData>): RecyclerView.Adapter<GalleryPictureAdapter.ViewHolder>() {
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val date: TextView = view.findViewById(R.id.date)
