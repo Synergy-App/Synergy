@@ -82,7 +82,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/recent_history_group">
 
-            <com.sungkyul.synergy.utils.DynamicButton
+            <com.sungkyul.synergy.utils.GalaxyButton
                 android:id="@+id/keypad_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -105,7 +105,7 @@
             app:layout_constraintStart_toEndOf="@id/keypad_group"
             app:layout_constraintEnd_toStartOf="@id/contact_group">
 
-            <com.sungkyul.synergy.utils.DynamicButton
+            <com.sungkyul.synergy.utils.GalaxyButton
                 android:id="@+id/recent_history_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -128,7 +128,7 @@
             app:layout_constraintStart_toEndOf="@id/recent_history_group"
             app:layout_constraintEnd_toEndOf="parent">
 
-            <com.sungkyul.synergy.utils.DynamicButton
+            <com.sungkyul.synergy.utils.GalaxyButton
                 android:id="@+id/contact_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>

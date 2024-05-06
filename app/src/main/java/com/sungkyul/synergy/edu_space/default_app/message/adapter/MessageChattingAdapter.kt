@@ -12,7 +12,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.edu_space.default_app.message.activity.DefaultMessageActivity
-import com.sungkyul.synergy.utils.DynamicButton
+import com.sungkyul.synergy.utils.GalaxyButton
 
 data class MessageChattingData(
     val profileImage: Int,
@@ -23,7 +23,7 @@ data class MessageChattingData(
 
 class MessageChattingAdapter(private val context: Context, private val dataSet: ArrayList<MessageChattingData>): RecyclerView.Adapter<MessageChattingAdapter.ViewHolder>() {
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val dynamicButton: DynamicButton = view.findViewById(R.id.dynamic_button)
+        val galaxyButton: GalaxyButton = view.findViewById(R.id.dynamic_button)
         val profileImage: ImageView = view.findViewById(R.id.profile_image)
         val profileName: TextView = view.findViewById(R.id.profile_name)
         val date: TextView = view.findViewById(R.id.date)
@@ -44,15 +44,15 @@ class MessageChattingAdapter(private val context: Context, private val dataSet: 
         viewHolder.date.text = dataSet[position].date
         viewHolder.recentMessage.text = dataSet[position].recentMessage
 
-        viewHolder.dynamicButton.post { viewHolder.dynamicButton.clipToRect() }
+        viewHolder.galaxyButton.post { viewHolder.galaxyButton.clipToRect() }
 
-        viewHolder.dynamicButton.setOnTouchListener { view, event ->
+        viewHolder.galaxyButton.setOnTouchListener { view, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
-                    (view as DynamicButton).startTouchDownAnimation(event.x, event.y, 100.0f)
+                    (view as GalaxyButton).startTouchDownAnimation(event.x, event.y, 100.0f)
                 }
                 MotionEvent.ACTION_UP -> {
-                    (view as DynamicButton).startTouchUpAnimation()
+                    (view as GalaxyButton).startTouchUpAnimation()
 
                     // 메시지 방으로 이동한다.
                     val intent = Intent(context, DefaultMessageActivity::class.java)

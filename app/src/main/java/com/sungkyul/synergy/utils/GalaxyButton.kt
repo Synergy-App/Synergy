@@ -11,13 +11,17 @@ import android.view.animation.DecelerateInterpolator
 import kotlin.math.sqrt
 
 /*
-    ## 소개
-    터치 다운/업을 할 때 다이나믹한 인터렉션이 나오는 버튼이다.
+    터치 다운일 때 다음 인터랙션이 재생된다.
+        원의 위치: (x, y)
+        원의 투명도: 0% → 25%
+        원의 반지름: startRadius → 버튼의 중심점에서 꼭짓점까지의 거리
+    터치 업일 때 다음 인터랙션이 재생된다.
+        원의 투명도: 25% → 0%
 
-    ## 주의점
-    - `view.post {}` 내에서 `clipTo` 함수를 사용하자. 안 그러면 계산되지 않은 width, height를 사용하게 된다.
+    주의점:
+        `view.post {}` 내에서 `clipTo<shape>` 함수를 사용해야 한다. 안 그러면 함수 내에서 width/height를 사용하지 못한다.
 */
-class DynamicButton(context: Context, attrs: AttributeSet?): View(context, attrs) {
+class GalaxyButton(context: Context, attrs: AttributeSet?): View(context, attrs) {
     private var circleX = 0.0f
     private var circleY = 0.0f
     private var circleRadius = 0.0f
@@ -43,7 +47,6 @@ class DynamicButton(context: Context, attrs: AttributeSet?): View(context, attrs
         canvas.drawCircle(circleX, circleY, circleRadius, circlePaint)
     }
 
-    // 캔버스를 사각형으로 클리핑한다.
     fun clipToRect() {
         clipPath.reset()
         clipPath.addRect(
@@ -56,7 +59,6 @@ class DynamicButton(context: Context, attrs: AttributeSet?): View(context, attrs
         invalidate()
     }
 
-    // 캔버스를 둥근 사각형으로 클리핑한다.
     fun clipToRoundRect(cornerRadius: Float) {
         clipPath.reset()
         clipPath.addRoundRect(
@@ -71,7 +73,6 @@ class DynamicButton(context: Context, attrs: AttributeSet?): View(context, attrs
         invalidate()
     }
 
-    // 캔버스를 원으로 클리핑한다.
     fun clipToCircle() {
         clipPath.reset()
         clipPath.addCircle(
@@ -83,16 +84,15 @@ class DynamicButton(context: Context, attrs: AttributeSet?): View(context, attrs
         invalidate()
     }
 
-    // 원의 색을 설정한다.
     fun setColor(color: Int) {
         circlePaint.color = color
     }
 
-    // 터치 다운 애니메이션을 시작한다.
     fun startTouchDownAnimation(x: Float, y: Float, startRadius: Float) {
         circleX = x
         circleY = y
         circleRadius = startRadius
+
         AnimUtils.startValueAnimatorOfFloat({
             circlePaint.alpha = (51*it).toInt()
 
@@ -105,7 +105,6 @@ class DynamicButton(context: Context, attrs: AttributeSet?): View(context, attrs
         toggle = true
     }
 
-    // 터치 업 애니메이션을 시작한다.
     fun startTouchUpAnimation() {
         AnimUtils.startValueAnimatorOfFloat({
             circlePaint.alpha = (51*it).toInt()
@@ -115,6 +114,5 @@ class DynamicButton(context: Context, attrs: AttributeSet?): View(context, attrs
         toggle = false
     }
 
-    // 현재 터치 상태를 반환한다.
     fun getToggle() = toggle
 }

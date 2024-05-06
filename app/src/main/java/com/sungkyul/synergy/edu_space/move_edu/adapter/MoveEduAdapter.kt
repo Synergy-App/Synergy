@@ -12,7 +12,7 @@ import com.sungkyul.synergy.databinding.FragmentIconListBinding
 import com.sungkyul.synergy.edu_space.move_edu.activity.MoveDetailActivity
 import com.sungkyul.synergy.edu_space.move_edu.data.Move
 import com.sungkyul.synergy.edu_space.move_edu.data.MoveInfo
-import com.sungkyul.synergy.utils.DynamicButton
+import com.sungkyul.synergy.utils.GalaxyButton
 
 class MoveEduAdapter (private val context: Context, private val moveList: ArrayList<Move>) :
     RecyclerView.Adapter<MoveEduAdapter.CustomViewHolder>() {
@@ -45,10 +45,10 @@ class MoveEduAdapter (private val context: Context, private val moveList: ArrayL
             binding.eduButton.setOnTouchListener { view, event ->
                 when (event.action) {
                     MotionEvent.ACTION_DOWN -> {
-                        (view as DynamicButton).startTouchDownAnimation(event.x, event.y, 100.0f)
+                        (view as GalaxyButton).startTouchDownAnimation(event.x, event.y, 100.0f)
                     }
                     MotionEvent.ACTION_UP -> {
-                        (view as DynamicButton).startTouchUpAnimation()
+                        (view as GalaxyButton).startTouchUpAnimation()
 
                         val moveInfo = when (binding.iconTv.text.toString()) {
                             "터치" -> MoveInfo(
@@ -87,7 +87,7 @@ class MoveEduAdapter (private val context: Context, private val moveList: ArrayL
                         context.startActivity(intent)
                     }
                     MotionEvent.ACTION_CANCEL -> {
-                        (view as DynamicButton).startTouchUpAnimation()
+                        (view as GalaxyButton).startTouchUpAnimation()
                     }
                 }
                 true
