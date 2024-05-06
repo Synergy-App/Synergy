@@ -1,5 +1,74 @@
-<!-- res/drawable/custom_thumb.xml -->
-<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="oval">
-    <size android:width="20dp" android:height="20dp"/>
-    <solid android:color="#2B2B2B"/>
-</shape>
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- 작은 원 -->
+    <path
+        android:pathData="M12,7
+        C9.24,7 7,9.24 7,12
+        C7,14.76 9.24,17 12,17
+        C14.76,17 17,14.76 17,12
+        C17,9.24 14.76,7 12,7
+        Z"
+        android:fillColor="#808080"/>
+
+    <!-- 직선 1 -->
+    <path
+        android:pathData="M12,3
+        L12,5"
+        android:strokeColor="#808080"
+        android:strokeWidth="1"/>
+
+    <!-- 직선 2 -->
+    <path
+        android:pathData="M12,21
+        L12,23"
+        android:strokeColor="#808080"
+        android:strokeWidth="1"/>
+
+    <!-- 직선 3 -->
+    <path
+        android:pathData="M4,12
+        L2,12"
+        android:strokeColor="#808080"
+        android:strokeWidth="1"/>
+
+    <!-- 직선 4 -->
+    <path
+        android:pathData="M20,12
+        L22,12"
+        android:strokeColor="#808080"
+        android:strokeWidth="1"/>
+
+    <!-- 직선 5 -->
+    <path
+        android:pathData="M5.46,5.46
+        L7.07,7.07"
+        android:strokeColor="#808080"
+        android:strokeWidth="1"/>
+
+    <!-- 직선 6 -->
+    <path
+        android:pathData="M16.93,16.93
+        L18.54,18.54"
+        android:strokeColor="#808080"
+        android:strokeWidth="1"/>
+
+    <!-- 직선 7 -->
+    <path
+        android:pathData="M5.46,18.54
+        L7.07,16.93"
+        android:strokeColor="#808080"
+        android:strokeWidth="1"/>
+
+    <!-- 직선 8 -->
+    <path
+        android:pathData="M16.93,7.07
+        L18.54,5.46"
+        android:strokeColor="#808080"
+        android:strokeWidth="1"/>
+
+</vector>

@@ -2,7 +2,7 @@
     <!-- Background Layer -->
     <item android:id="@android:id/background">
         <shape>
-            <solid android:color="#FFFFFF"/>
+            <solid android:color="#000000"/> <!-- Background 채우기 색상을 검은색으로 설정 -->
             <corners android:radius="10dp"/> <!-- Background 둥근 모서리 조절 -->
         </shape>
     </item>
@@ -10,7 +10,7 @@
     <item android:id="@android:id/progress">
         <clip>
             <shape>
-                <solid android:color="#000000"/>
+                <solid android:color="#FFFFFF"/> <!-- Progress 채우기 색상을 흰색으로 설정 -->
                 <corners android:radius="10dp"/> <!-- Progress 둥근 모서리 조절 -->
             </shape>
         </clip>
