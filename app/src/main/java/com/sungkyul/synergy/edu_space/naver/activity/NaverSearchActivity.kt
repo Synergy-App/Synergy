@@ -57,9 +57,17 @@ class NaverSearchActivity : AppCompatActivity() {
             binding.searchEditText.setText("")
         }
         binding.searchButton.setOnClickListener {
-            val intent = Intent(this, NaverSearchResultActivity::class.java)
-            intent.putExtra("search_words", binding.searchEditText.text.toString())
-            this.startActivity(intent)
+            val searchQuery = binding.searchEditText.text.toString()
+            if (searchQuery == "된장찌개 만드는 법") {
+                val intent = Intent(this, NaverSearchInfoActivity::class.java)
+                intent.putExtra("search_query", searchQuery)
+                startActivity(intent)
+            } else {
+                // 기존의 검색 결과를 표시하는 코드
+                val intent = Intent(this, NaverSearchResultActivity::class.java)
+                intent.putExtra("search_words", searchQuery)
+                startActivity(intent)
+            }
         }
         binding.cancelButton.setOnClickListener {
             finish()
