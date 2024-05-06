@@ -91,9 +91,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#A6FFFFFF"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <!-- 추가할 뷰들을 여기에 배치합니다 -->
+
+        <Button
+            android:id="@+id/button44"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="100dp"
+            android:background="#00FF0000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageView52"

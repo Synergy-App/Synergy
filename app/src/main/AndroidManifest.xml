@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools" >
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
 
     <application
         android:allowBackup="true"
@@ -200,6 +201,7 @@
         <activity
             android:name=".edu_space.naver.activity.NaverActivity"
             android:exported="false" /> <!-- 네이버 화면 -->
+
 
         <activity
             android:name=".edu_space.naver.activity.NaverSearchInfoActivity"

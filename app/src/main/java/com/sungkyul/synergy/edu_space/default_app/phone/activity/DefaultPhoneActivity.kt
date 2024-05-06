@@ -3,6 +3,8 @@ package com.sungkyul.synergy.edu_space.default_app.phone.activity
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.MotionEvent
 import android.view.View
 import androidx.activity.OnBackPressedCallback
@@ -19,6 +21,12 @@ import com.sungkyul.synergy.edu_space.default_app.phone.adapter.ContactData
 import com.sungkyul.synergy.edu_space.default_app.phone.fragment.DefaultPhoneContactFragment
 import com.sungkyul.synergy.edu_space.default_app.phone.fragment.DefaultPhoneKeypadFragment
 import com.sungkyul.synergy.edu_space.default_app.phone.fragment.DefaultPhoneRecentHistoryFragment
+import com.sungkyul.synergy.edu_space.icon_edu.adapter.IconEduAdapter
+import com.sungkyul.synergy.edu_space.icon_edu.data.Icon
+import com.sungkyul.synergy.edu_space.move_edu.adapter.MoveEduAdapter
+import com.sungkyul.synergy.edu_space.move_edu.data.Move
+import com.sungkyul.synergy.edu_space.naver.adapter.NaverAutocompleteAdapter
+import com.sungkyul.synergy.edu_space.naver.adapter.NaverAutocompleteData
 
 import com.sungkyul.synergy.utils.AnimUtils
 import com.sungkyul.synergy.utils.GalaxyButton
@@ -109,6 +117,7 @@ class DefaultPhoneActivity : AppCompatActivity() {
             binding.contactButton.clipToRoundRect(20.0f)
         }
 
+
         // 하단 내비게이션 뷰에서 메뉴 아이템을 선택하면, 메인 레이아웃 배경을 변경하고 해당하는 프래그먼트로 교체한다.
         binding.keypadButton.setOnTouchListener { view, event ->
             when(event.action) {
@@ -170,6 +179,7 @@ class DefaultPhoneActivity : AppCompatActivity() {
 
             replaceFragment(contactFragment)
         }
+
     }
 
     // 돋보기 버튼의 터치 이벤트 리스너
@@ -212,4 +222,5 @@ class DefaultPhoneActivity : AppCompatActivity() {
             .replace(binding.phoneFragmentContainer.id, fragment)
             .commit()
     }
+
 }
