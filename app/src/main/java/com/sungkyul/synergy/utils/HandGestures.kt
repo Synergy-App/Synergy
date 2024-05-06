@@ -56,10 +56,10 @@ class HandGestures {
             waitingDuration: Long
         ): AnimatorSet {
             // dp -> px
-            val fromValueX = AnimUtils.dpToPx(context, fromValueXDp)
-            val fromValueY = AnimUtils.dpToPx(context, fromValueYDp)
-            val toValueX = AnimUtils.dpToPx(context, toValueXDp)
-            val toValueY = AnimUtils.dpToPx(context, toValueYDp)
+            val fromValueX = DisplayUtils.dpToPx(context, fromValueXDp)
+            val fromValueY = DisplayUtils.dpToPx(context, fromValueYDp)
+            val toValueX = DisplayUtils.dpToPx(context, toValueXDp)
+            val toValueY = DisplayUtils.dpToPx(context, toValueYDp)
 
             val set1 = AnimatorSet().apply {
                 duration = movingDuration
