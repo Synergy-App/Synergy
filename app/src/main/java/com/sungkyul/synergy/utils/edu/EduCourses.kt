@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.Gravity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.AnimUtils
+import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
 
 class EduCourses {
@@ -12,8 +13,8 @@ class EduCourses {
         ## 교육 코스를 추가해보자!
         ```
         fun nameCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -26,8 +27,8 @@ class EduCourses {
 
         // for ScreenLayoutActivity
         fun screenLayoutCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -156,8 +157,8 @@ class EduCourses {
 
         // for DefaultPhoneActivity (Test)
         fun defaultPhoneTestCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -329,8 +330,8 @@ class EduCourses {
 
         // for DefaultPhoneActivity (Before Call)
         fun defaultPhoneCourse1(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -442,8 +443,8 @@ class EduCourses {
 
         // for DefaultPhoneActivity (After Call)
         fun defaultPhoneCourse2(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -545,8 +546,8 @@ class EduCourses {
 
         // for DefaultPhoneActivity (After ContactAddition)
         fun defaultPhoneCourse3(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -561,8 +562,8 @@ class EduCourses {
 
         // for DefaultPhoneCallActivity
         fun defaultPhoneCallCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -611,8 +612,8 @@ class EduCourses {
 
         // for CameraActivity
         fun cameraCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -762,8 +763,8 @@ class EduCourses {
 
         // for DefaultMessageActivity
         fun defaultMessageCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -862,8 +863,8 @@ class EduCourses {
 
         // for DefaultMessageChattingActivity
         fun defaultMessageChattingCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -947,8 +948,8 @@ class EduCourses {
         }
 
         fun kakaoCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1057,8 +1058,8 @@ class EduCourses {
         }
 
         fun kakaoProfileCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1144,8 +1145,8 @@ class EduCourses {
         }
 
         fun kakaoChatCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1202,8 +1203,8 @@ class EduCourses {
 
         // activity_setting2_main
         fun settingsCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1273,8 +1274,8 @@ class EduCourses {
         }
 
         fun settingsDisplayCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1350,8 +1351,8 @@ class EduCourses {
         }
 
         fun settingsFontCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1392,8 +1393,8 @@ class EduCourses {
 
         // for GoogleMainActivity
         fun googleMainCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1425,8 +1426,8 @@ class EduCourses {
 
         // for GoogleDefaultInfoActivity
         fun googleDefaultInfoCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1450,8 +1451,8 @@ class EduCourses {
 
         // for GoogleGetCodeActivity
         fun googleGetCodeCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1475,8 +1476,8 @@ class EduCourses {
 
         // for GoogleLoginActivity
         fun googleLoginCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1508,8 +1509,8 @@ class EduCourses {
 
         // for GoogleMailActivity
         fun googleMailCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1533,8 +1534,8 @@ class EduCourses {
 
         // for GoogleMailAddActivity
         fun googleMailAddCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1545,8 +1546,8 @@ class EduCourses {
 
         // for GoogleMakeActivity
         fun googleMakeCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1570,8 +1571,8 @@ class EduCourses {
 
         // for GooglePasswordActivity
         fun googlePasswordCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1595,8 +1596,8 @@ class EduCourses {
 
         // for GooglePutCodeActivity
         fun googlePutCodeCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1620,8 +1621,8 @@ class EduCourses {
 
         // for installMainActivity
         fun installMainCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1640,8 +1641,8 @@ class EduCourses {
 
         // for installActivity
         fun installCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1660,8 +1661,8 @@ class EduCourses {
 
         // for DlvMainActivity
         fun dlvMainCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1680,8 +1681,8 @@ class EduCourses {
 
         // for foodmenuActivity
         fun foodmenuCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1700,8 +1701,8 @@ class EduCourses {
 
         // for payDActivity
         fun payDCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1720,8 +1721,8 @@ class EduCourses {
 
         // for shopActivity
         fun shopCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1740,8 +1741,8 @@ class EduCourses {
 
         // for mapActivity
         fun mapCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1760,8 +1761,8 @@ class EduCourses {
 
         // for payActivity
         fun payCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1780,8 +1781,8 @@ class EduCourses {
 
         // for payMActivity
         fun payMCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1800,8 +1801,8 @@ class EduCourses {
 
         // for TaxiMainActivity
         fun taxiMainCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1820,8 +1821,8 @@ class EduCourses {
 
         // for Ticket2MainActivity
         fun resCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1840,8 +1841,8 @@ class EduCourses {
 
         // for installActivity
         fun ticket2MainCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1860,8 +1861,8 @@ class EduCourses {
 
         // for TicketMainActivity
         fun ticketMainCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1880,8 +1881,8 @@ class EduCourses {
 
         // for TpayActivity
         fun TPayCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {

@@ -7,8 +7,8 @@ import java.util.Locale
 
 class DateTimeUtils {
     companion object {
-        val dateFormatter = DateTimeFormatter.ofPattern("yyyy년 M월 d일")
-        val timeFormatter = DateTimeFormatter.ofPattern("h:mm")
+        val dateFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy년 M월 d일")
+        val timeFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("h:mm")
 
         fun getKoreanDayOfWeek(dateTime: LocalDateTime): String {
             return when(dateTime.dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.getDefault())) {

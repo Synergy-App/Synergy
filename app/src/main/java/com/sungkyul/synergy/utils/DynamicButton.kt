@@ -64,8 +64,8 @@ class DynamicButton(context: Context, attrs: AttributeSet?): View(context, attrs
             0.0f,
             width.toFloat(),
             height.toFloat(),
-            AnimUtils.dpToPx(context, cornerRadius),
-            AnimUtils.dpToPx(context, cornerRadius),
+            DisplayUtils.dpToPx(context, cornerRadius),
+            DisplayUtils.dpToPx(context, cornerRadius),
             Path.Direction.CCW
         )
         invalidate()
