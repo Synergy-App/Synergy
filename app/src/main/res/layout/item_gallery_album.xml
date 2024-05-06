@@ -16,7 +16,7 @@
         android:layout_marginTop="12dp"
         android:layout_gravity="center"
         android:src="@drawable/sample_screenshot2"
-        android:scaleType="centerInside"
+        android:scaleType="centerCrop"
         android:contentDescription="@string/synergy"/>
 
     <LinearLayout

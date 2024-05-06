@@ -19,7 +19,7 @@
             android:layout_height="196dp"
             android:layout_gravity="center"
             android:src="@drawable/sample_screenshot2"
-            android:scaleType="centerInside"
+            android:scaleType="centerCrop"
             android:contentDescription="@string/synergy"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
