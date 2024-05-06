@@ -29,8 +29,7 @@ import com.sungkyul.synergy.edu_space.naver.adapter.NaverAutocompleteAdapter
 import com.sungkyul.synergy.edu_space.naver.adapter.NaverAutocompleteData
 
 import com.sungkyul.synergy.utils.AnimUtils
-import com.sungkyul.synergy.utils.DynamicButton
-import com.sungkyul.synergy.utils.TextUtils
+import com.sungkyul.synergy.utils.GalaxyButton
 import com.sungkyul.synergy.utils.edu.EduCourses
 
 class DefaultPhoneActivity : AppCompatActivity() {
@@ -123,10 +122,10 @@ class DefaultPhoneActivity : AppCompatActivity() {
         binding.keypadButton.setOnTouchListener { view, event ->
             when(event.action) {
                 MotionEvent.ACTION_DOWN -> {
-                    (view as DynamicButton).startTouchDownAnimation(event.x, event.y, 100.0f)
+                    (view as GalaxyButton).startTouchDownAnimation(event.x, event.y, 100.0f)
                 }
                 MotionEvent.ACTION_UP -> {
-                    (view as DynamicButton).startTouchUpAnimation()
+                    (view as GalaxyButton).startTouchUpAnimation()
 
                     if(binding.eduScreen.onAction("click_keypad_button")) {
                         replaceFragment(keypadFragment)
@@ -138,10 +137,10 @@ class DefaultPhoneActivity : AppCompatActivity() {
         binding.recentHistoryButton.setOnTouchListener { view, event ->
             when(event.action) {
                 MotionEvent.ACTION_DOWN -> {
-                    (view as DynamicButton).startTouchDownAnimation(event.x, event.y, 100.0f)
+                    (view as GalaxyButton).startTouchDownAnimation(event.x, event.y, 100.0f)
                 }
                 MotionEvent.ACTION_UP -> {
-                    (view as DynamicButton).startTouchUpAnimation()
+                    (view as GalaxyButton).startTouchUpAnimation()
 
                     if(binding.eduScreen.onAction("click_recent_history_button")) {
                         replaceFragment(recentHistoryFragment)
@@ -153,10 +152,10 @@ class DefaultPhoneActivity : AppCompatActivity() {
         binding.contactButton.setOnTouchListener { view, event ->
             when(event.action) {
                 MotionEvent.ACTION_DOWN -> {
-                    (view as DynamicButton).startTouchDownAnimation(event.x, event.y, 100.0f)
+                    (view as GalaxyButton).startTouchDownAnimation(event.x, event.y, 100.0f)
                 }
                 MotionEvent.ACTION_UP -> {
-                    (view as DynamicButton).startTouchUpAnimation()
+                    (view as GalaxyButton).startTouchUpAnimation()
 
                     if(binding.eduScreen.onAction("click_contact_button")) {
                         replaceFragment(contactFragment)

@@ -15,7 +15,7 @@ import com.sungkyul.synergy.edu_space.default_app.message.adapter.MessageChattin
 import com.sungkyul.synergy.edu_space.default_app.message.adapter.MessageChattingData
 import com.sungkyul.synergy.utils.AnimUtils
 import com.sungkyul.synergy.utils.DateTimeUtils
-import com.sungkyul.synergy.utils.DynamicButton
+import com.sungkyul.synergy.utils.GalaxyButton
 import com.sungkyul.synergy.utils.edu.EduCourses
 import java.time.LocalDate
 
@@ -175,9 +175,9 @@ class DefaultMessageChattingActivity : AppCompatActivity() {
                 // 모든 버튼의 터치 애니메이션을 원래대로 되돌린다.
                 if(newState == RecyclerView.SCROLL_STATE_DRAGGING) {
                     for(i in 0..<messageChattingArray.size) {
-                        val dynamicButton = messageChattingList.layoutManager?.findViewByPosition(i)?.findViewById<DynamicButton>(R.id.dynamic_button)
-                        if(dynamicButton != null && dynamicButton.getToggle()) {
-                            dynamicButton.startTouchUpAnimation()
+                        val galaxyButton = messageChattingList.layoutManager?.findViewByPosition(i)?.findViewById<GalaxyButton>(R.id.dynamic_button)
+                        if(galaxyButton != null && galaxyButton.getToggle()) {
+                            galaxyButton.startTouchUpAnimation()
                         }
                     }
                 }

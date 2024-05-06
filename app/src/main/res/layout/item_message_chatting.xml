@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:background="@color/message_chatting_item_bg">
 
-    <com.sungkyul.synergy.utils.DynamicButton
+    <com.sungkyul.synergy.utils.GalaxyButton
         android:id="@+id/dynamic_button"
         android:layout_width="match_parent"
         android:layout_height="64dp"/>

@@ -12,7 +12,7 @@ import com.sungkyul.synergy.edu_space.icon_edu.data.Icon
 import com.sungkyul.synergy.edu_space.icon_edu.data.IconInfo
 import com.sungkyul.synergy.databinding.FragmentIconListBinding
 import com.sungkyul.synergy.edu_space.icon_edu.activity.IconDetailActivity
-import com.sungkyul.synergy.utils.DynamicButton
+import com.sungkyul.synergy.utils.GalaxyButton
 
 /** 교육공간 속 아이콘 리사이클러뷰 어뎁터 */
 class IconEduAdapter(private val context: Context, private val iconList: ArrayList<Icon>) :
@@ -46,10 +46,10 @@ class IconEduAdapter(private val context: Context, private val iconList: ArrayLi
             binding.eduButton.setOnTouchListener { view, event ->
                 when (event.action) {
                     MotionEvent.ACTION_DOWN -> {
-                        (view as DynamicButton).startTouchDownAnimation(event.x, event.y, 100.0f)
+                        (view as GalaxyButton).startTouchDownAnimation(event.x, event.y, 100.0f)
                     }
                     MotionEvent.ACTION_UP -> {
-                        (view as DynamicButton).startTouchUpAnimation()
+                        (view as GalaxyButton).startTouchUpAnimation()
 
                         val iconInfo = when (binding.iconTv.text.toString()) {
                             "와이파이" -> IconInfo(
@@ -188,7 +188,7 @@ class IconEduAdapter(private val context: Context, private val iconList: ArrayLi
                         context.startActivity(intent)
                     }
                     MotionEvent.ACTION_CANCEL -> {
-                        (view as DynamicButton).startTouchUpAnimation()
+                        (view as GalaxyButton).startTouchUpAnimation()
                     }
                 }
                 true

@@ -22,7 +22,7 @@ import com.sungkyul.synergy.learning_space.intent.LearningKakaotaxiActivity
 import com.sungkyul.synergy.learning_space.intent.LearningNaverActivity
 import com.sungkyul.synergy.learning_space.intent.LearningScreenActivity
 import com.sungkyul.synergy.learning_space.intent.LearningSettingActivity
-import com.sungkyul.synergy.utils.DynamicButton
+import com.sungkyul.synergy.utils.GalaxyButton
 
 
 class LearningButtonAdapter(private val buttonList: List<EduButtonItem>): RecyclerView.Adapter<LearningButtonAdapter.ButtonViewHolder>() {
@@ -55,7 +55,7 @@ class LearningButtonAdapter(private val buttonList: List<EduButtonItem>): Recycl
         private val text1: TextView = itemView.findViewById(R.id.learning_tv2) // 이 부분에 해당하는 TextView의 ID를 정확히 입력해야 합니다.
         private val text2: TextView = itemView.findViewById(R.id.learning_tv2)
         private val imageView: ImageView =itemView.findViewById(R.id.edu_icon)
-        private val eduButton: DynamicButton = itemView.findViewById(R.id.edu_button)
+        private val eduButton: GalaxyButton = itemView.findViewById(R.id.edu_button)
 
         init {
             eduButton.post {
@@ -67,10 +67,10 @@ class LearningButtonAdapter(private val buttonList: List<EduButtonItem>): Recycl
             eduButton.setOnTouchListener { view, event ->
                 when (event.action) {
                     MotionEvent.ACTION_DOWN -> {
-                        (view as DynamicButton).startTouchDownAnimation(event.x, event.y, 100.0f)
+                        (view as GalaxyButton).startTouchDownAnimation(event.x, event.y, 100.0f)
                     }
                     MotionEvent.ACTION_UP -> {
-                        (view as DynamicButton).startTouchUpAnimation()
+                        (view as GalaxyButton).startTouchUpAnimation()
 
                         if (text1.text == "아이콘") {
                             val intent = Intent(itemView.context, LearningIconActivity::class.java)
@@ -120,7 +120,7 @@ class LearningButtonAdapter(private val buttonList: List<EduButtonItem>): Recycl
                         }
                     }
                     MotionEvent.ACTION_CANCEL -> {
-                        (view as DynamicButton).startTouchUpAnimation()
+                        (view as GalaxyButton).startTouchUpAnimation()
                     }
                 }
                 true

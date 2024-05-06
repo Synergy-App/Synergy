@@ -70,7 +70,7 @@
         android:layout_marginEnd="73dp"/>
 
     <!--카메라-->
-    <com.sungkyul.synergy.utils.DynamicButton
+    <com.sungkyul.synergy.utils.GalaxyButton
         android:id="@+id/camera_edu_box"
         android:layout_width="match_parent"
         android:layout_height="141dp"
@@ -117,7 +117,7 @@
         />
 
     <!--전화-->
-    <com.sungkyul.synergy.utils.DynamicButton
+    <com.sungkyul.synergy.utils.GalaxyButton
         android:id="@+id/call_edu_box"
         android:layout_width="match_parent"
         android:layout_height="141dp"
@@ -164,7 +164,7 @@
         />
 
     <!--문자메세지-->
-    <com.sungkyul.synergy.utils.DynamicButton
+    <com.sungkyul.synergy.utils.GalaxyButton
         android:id="@+id/message_edu_box"
         android:layout_width="match_parent"
         android:layout_height="141dp"

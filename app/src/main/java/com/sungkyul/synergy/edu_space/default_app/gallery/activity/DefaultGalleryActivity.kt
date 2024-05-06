@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import android.view.MotionEvent
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -126,6 +127,7 @@ class DefaultGalleryActivity : AppCompatActivity() {
                     AnimUtils.startTouchUpButtonAnimation(this, view)
 
                     replaceFragment(pictureFragment)
+                    setButtonsVisibility(pictureFragment)
                 }
             }
             true
@@ -143,7 +145,7 @@ class DefaultGalleryActivity : AppCompatActivity() {
                     AnimUtils.startTouchUpButtonAnimation(this, view)
 
                     replaceFragment(albumFragment)
-
+                    setButtonsVisibility(albumFragment)
                 }
             }
             true
@@ -161,6 +163,7 @@ class DefaultGalleryActivity : AppCompatActivity() {
                     AnimUtils.startTouchUpButtonAnimation(this, view)
 
                     replaceFragment(storyFragment)
+                    setButtonsVisibility(storyFragment)
                 }
             }
             true
@@ -178,6 +181,7 @@ class DefaultGalleryActivity : AppCompatActivity() {
                     AnimUtils.startTouchUpButtonAnimation(this, view)
 
                     replaceFragment(shareFragment)
+                    setButtonsVisibility(shareFragment)
                 }
             }
             true
@@ -192,6 +196,18 @@ class DefaultGalleryActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .replace(binding.container.id, fragment)
             .commit()
+    }
+
+    // 각 버튼의 보여짐 여부를 fragment에 따라 설정한다.
+    private fun setButtonsVisibility(fragment: Fragment) {
+        // 갤러리/사진 화면에 있을 때만 '비슷한 이미지 묶기', '영화 만들기' 버튼을 보여준다.
+        if(fragment == pictureFragment) {
+            binding.groupingSimilarImagesButton.visibility = ImageButton.VISIBLE
+            binding.makingMovieButton.visibility = ImageButton.VISIBLE
+        } else {
+            binding.groupingSimilarImagesButton.visibility = ImageButton.INVISIBLE
+            binding.makingMovieButton.visibility = ImageButton.INVISIBLE
+        }
     }
 
     private fun selectBottomNavItem(fragment: Fragment) {

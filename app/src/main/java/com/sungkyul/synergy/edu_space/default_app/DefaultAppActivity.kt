@@ -9,7 +9,7 @@ import com.sungkyul.synergy.databinding.ActivityDefaultAppBinding
 import com.sungkyul.synergy.edu_space.default_app.camera.activity.DefaultCameraActivity
 import com.sungkyul.synergy.edu_space.default_app.message.activity.DefaultMessageChattingActivity
 import com.sungkyul.synergy.edu_space.default_app.phone.activity.DefaultPhoneActivity
-import com.sungkyul.synergy.utils.DynamicButton
+import com.sungkyul.synergy.utils.GalaxyButton
 
 class DefaultAppActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDefaultAppBinding
@@ -27,10 +27,10 @@ class DefaultAppActivity : AppCompatActivity() {
         binding.callEduBox.setOnTouchListener { view, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
-                    (view as DynamicButton).startTouchDownAnimation(event.x, event.y, 100.0f)
+                    (view as GalaxyButton).startTouchDownAnimation(event.x, event.y, 100.0f)
                 }
                 MotionEvent.ACTION_UP -> {
-                    (view as DynamicButton).startTouchUpAnimation()
+                    (view as GalaxyButton).startTouchUpAnimation()
 
                     // 전화 앱으로 이동한다.
                     val intent = Intent(applicationContext, DefaultPhoneActivity::class.java)
@@ -42,10 +42,10 @@ class DefaultAppActivity : AppCompatActivity() {
         binding.cameraEduBox.setOnTouchListener { view, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
-                    (view as DynamicButton).startTouchDownAnimation(event.x, event.y, 100.0f)
+                    (view as GalaxyButton).startTouchDownAnimation(event.x, event.y, 100.0f)
                 }
                 MotionEvent.ACTION_UP -> {
-                    (view as DynamicButton).startTouchUpAnimation()
+                    (view as GalaxyButton).startTouchUpAnimation()
 
                     // 카메라 앱으로 이동한다.
                     val intent = Intent(applicationContext, DefaultCameraActivity::class.java)
@@ -57,10 +57,10 @@ class DefaultAppActivity : AppCompatActivity() {
         binding.messageEduBox.setOnTouchListener { view, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
-                    (view as DynamicButton).startTouchDownAnimation(event.x, event.y, 100.0f)
+                    (view as GalaxyButton).startTouchDownAnimation(event.x, event.y, 100.0f)
                 }
                 MotionEvent.ACTION_UP -> {
-                    (view as DynamicButton).startTouchUpAnimation()
+                    (view as GalaxyButton).startTouchUpAnimation()
 
                     // 메시지 앱으로 이동한다.
                     val intent = Intent(applicationContext, DefaultMessageChattingActivity::class.java)
