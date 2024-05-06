@@ -14,6 +14,7 @@ data class GalleryAlbumData(
     val num: Int
 )
 
+// 갤러리/앨범 어댑터
 class GalleryAlbumAdapter(private val dataSet: ArrayList<GalleryAlbumData>): RecyclerView.Adapter<GalleryAlbumAdapter.ViewHolder>() {
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val image: ImageView = view.findViewById(R.id.album_image)

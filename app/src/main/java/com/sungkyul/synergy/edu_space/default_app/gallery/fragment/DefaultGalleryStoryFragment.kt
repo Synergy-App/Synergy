@@ -21,6 +21,7 @@ class DefaultGalleryStoryFragment(private val eduListener: EduListener) : Fragme
     ): View {
         binding = FragmentDefaultGalleryStoryBinding.inflate(inflater, container, false)
 
+        // recyclerview에 들어갈 데이터 셋을 만든다.
         val dataSet = ArrayList<GalleryStoryData>()
         for(i in 1..10) {
             dataSet.add(

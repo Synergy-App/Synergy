@@ -7,6 +7,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
 
+// 날짜별 사진 그룹 어댑터
 class GroupPhotosByDateAdapter(private val dataSet: List<Int>): RecyclerView.Adapter<GroupPhotosByDateAdapter.ViewHolder>() {
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val photo: ImageView = view.findViewById(R.id.photo)
