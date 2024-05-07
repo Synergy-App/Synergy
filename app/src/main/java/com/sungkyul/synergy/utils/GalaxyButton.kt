@@ -42,7 +42,6 @@ class GalaxyButton(context: Context, attrs: AttributeSet?): View(context, attrs)
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        canvas.drawColor(Color.TRANSPARENT)
         canvas.clipPath(clipPath)
         canvas.drawCircle(circleX, circleY, circleRadius, circlePaint)
     }
