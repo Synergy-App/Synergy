@@ -1,15 +1,15 @@
 package com.sungkyul.synergy.utils
 
 import android.content.Context
-import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Rect
 import android.util.AttributeSet
 import android.view.View
+import androidx.core.content.ContextCompat
 
 data class MapPiece(
-    val bitmap: Bitmap,
+    val resId: Int,
     val rect: Rect
 )
 
@@ -25,10 +25,16 @@ class MapView(context: Context, attrs: AttributeSet?): View(context, attrs) {
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        canvas.drawColor(Color.TRANSPARENT)
+        canvas.drawColor(Color.WHITE)
 
         for(i in mapPieces) {
-            canvas.drawBitmap(i.bitmap, null, i.rect, null)
+            drawMapPiece(canvas, i)
         }
+    }
+
+    private fun drawMapPiece(canvas: Canvas, mapPiece: MapPiece) {
+        val drawable = ContextCompat.getDrawable(context, mapPiece.resId)
+        drawable?.bounds = mapPiece.rect
+        drawable?.draw(canvas)
     }
 }
