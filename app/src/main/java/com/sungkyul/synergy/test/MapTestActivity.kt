@@ -1,6 +1,5 @@
 package com.sungkyul.synergy.test
 
-import android.graphics.BitmapFactory
 import android.graphics.Rect
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -17,11 +16,11 @@ class MapTestActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val dataSet = ArrayList<MapPiece>()
-        for(y in 0..<10) {
-            for(x in 0..<10) {
+        for(y in 0..<100) {
+            for(x in 0..<100) {
                 dataSet.add(
                     MapPiece(
-                        if((x+y)%2 == 0) BitmapFactory.decodeResource(resources, R.drawable.card) else BitmapFactory.decodeResource(resources, R.drawable.charge),
+                        if((x+y)%2 == 0) R.drawable.card else R.drawable.charge,
                         Rect(x*400, y*400, (x+1)*400, (y+1)*400)
                     )
                 )
