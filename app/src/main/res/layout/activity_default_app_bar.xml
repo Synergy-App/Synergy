@@ -91,15 +91,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#A6FFFFFF"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <!-- 추가할 뷰들을 여기에 배치합니다 -->
 
         <Button
             android:id="@+id/button44"
             android:layout_width="100dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="25dp"
             android:background="#00FF0000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -110,7 +110,7 @@
             android:layout_width="wrap_content"
             android:layout_height="110dp"
             android:layout_marginTop="25dp"
-            android:src="@drawable/toolbar1" />
+            android:src="@drawable/toolbar2" />
 
 
         <SeekBar
