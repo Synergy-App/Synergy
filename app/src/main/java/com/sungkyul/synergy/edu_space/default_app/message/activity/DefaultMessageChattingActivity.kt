@@ -18,6 +18,8 @@ import com.sungkyul.synergy.utils.DateTimeUtils
 import com.sungkyul.synergy.utils.GalaxyButton
 import com.sungkyul.synergy.utils.edu.EduCourses
 import java.time.LocalDate
+import android.view.View
+
 
 class DefaultMessageChattingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDefaultMessageChattingBinding
@@ -188,6 +190,8 @@ class DefaultMessageChattingActivity : AppCompatActivity() {
         AnimUtils.initTouchButtonAnimation(binding.magnifyingGlassButton)
         AnimUtils.initTouchButtonAnimation(binding.moreButton)
 
+
+
         // 버튼의 터치 리스너를 설정한다.
         binding.magnifyingGlassButton.setOnTouchListener { view, event ->
             when (event.action) {
@@ -211,14 +215,38 @@ class DefaultMessageChattingActivity : AppCompatActivity() {
             }
             true
         }
-        binding.messageButton.setOnTouchListener { view, event ->
+        // hiddenLayout 초기화
+        binding.hiddenLayout.visibility = View.GONE
+        // hiddenLayout이 숨겨져 있는지 여부를 나타내는 변수
+        var isHidden = true
+
+        binding.messageButton.setOnClickListener {
+            if (isHidden) {
+                // hiddenLayout을 보이도록 설정합니다
+                binding.hiddenLayout.visibility = View.VISIBLE
+                isHidden = false
+            } else {
+                // hiddenLayout을 숨기도록 설정합니다
+                binding.hiddenLayout.visibility = View.GONE
+                isHidden = true
+            }
+        }
+
+
+        //1:1 채팅 눌렀을 때
+        binding.oneMessageButton.setOnTouchListener { view, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
+                    AnimUtils.startTouchDownButtonAnimation(this, view)
                 }
                 MotionEvent.ACTION_UP -> {
+                    // DefaultMessageSelectActivity로 이동
+                    val intent = Intent(this@DefaultMessageChattingActivity, DefaultMessageSelectActivity::class.java)
+                    startActivity(intent)
                 }
             }
             true
         }
+
     }
 }

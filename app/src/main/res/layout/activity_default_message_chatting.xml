@@ -113,19 +113,21 @@
             android:layout_marginBottom="16dp"
             android:layout_marginTop="13dp"
             android:background="@drawable/ic_call_message"/>
-    </RelativeLayout>
-
 
         <LinearLayout
             android:id="@+id/hidden_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_above="@+id/message_button"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="70dp"
+            android:gravity="end|bottom"
             android:orientation="vertical"
-            android:padding="20dp"
-            android:layout_marginBottom="120dp"
-            android:gravity="end|bottom">
+            android:padding="5dp">
 
-            <LinearLayout
+
+        <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -133,21 +135,21 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toTopOf="@id/one_message_button"
-                    app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginTop="13dp"
                     android:layout_marginEnd="8dp"
-                    android:text="1:1대화" />
+                    android:text="1:1대화"
+                    app:layout_constraintBottom_toTopOf="@id/one_message_button"
+                    app:layout_constraintEnd_toEndOf="parent" />
 
                 <ImageButton
-                android:id="@+id/one_message_button"
-                android:layout_width="46dp"
-                android:layout_height="46dp"
-                app:layout_constraintBottom_toTopOf="@id/group_message_button"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginBottom="16dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/ic_call_message"/>
+                    android:id="@+id/one_message_button"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/ic_call_message"
+                    app:layout_constraintBottom_toTopOf="@id/group_message_button"
+                    app:layout_constraintEnd_toEndOf="parent" />
             </LinearLayout>
 
             <LinearLayout
@@ -158,26 +160,30 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toTopOf="@id/one_message_button"
-                    app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginTop="13dp"
                     android:layout_marginEnd="8dp"
-                    android:text="그룹채팅" />
+                    android:text="그룹채팅"
+                    app:layout_constraintBottom_toTopOf="@id/one_message_button"
+                    app:layout_constraintEnd_toEndOf="parent" />
 
                 <ImageButton
                     android:id="@+id/group_message_button"
                     android:layout_width="46dp"
                     android:layout_height="46dp"
-                    app:layout_constraintBottom_toTopOf="@id/message_button"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginBottom="16dp"
                     android:layout_marginEnd="16dp"
-                    android:background="@drawable/ic_call_message"/>
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/ic_call_message"
+                    app:layout_constraintBottom_toTopOf="@id/message_button"
+                    app:layout_constraintEnd_toEndOf="parent" />
 
 
             </LinearLayout>
 
         </LinearLayout>
+    </RelativeLayout>
+
+
+
 
 
 

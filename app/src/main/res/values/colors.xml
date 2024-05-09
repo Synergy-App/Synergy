@@ -16,6 +16,7 @@
     <color name="screenLearning">#C4BAE0</color>
     <color name="naverLearning">#DFE0BA</color>
     <color name="kakaotalkLearning">#E0BAC8</color>
+    <color name="messageChatting">#80DBDBDB</color>
 
     <color name="shared_album_notice_text">#787878</color>
     
