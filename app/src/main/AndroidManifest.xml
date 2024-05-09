@@ -34,13 +34,7 @@
             android:exported="false"/> <!-- 메시지 화면 -->
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageChattingActivity"
-            android:exported="true"> <!-- 메시지 채팅 화면 -->
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false"/> <!-- 메시지 채팅 화면 -->
         <activity android:name=".edu_space.default_app.message.activity.DefaultMessageSelectActivity"
             android:exported="false"/>
         <activity
@@ -100,9 +94,16 @@
         <activity
             android:name=".edu_space.default_app.phone.activity.DefaultPhoneCallActivity"
             android:exported="false"/> <!-- 전화 콜 화면 -->
+
         <activity
             android:name=".edu_space.default_app.phone.activity.DefaultPhoneAddActivity"
-            android:exported="false"/> <!--전화 연락처 추가화면 -->
+            android:exported="true"> <!--전화 연락처 추가화면 -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
 "
 

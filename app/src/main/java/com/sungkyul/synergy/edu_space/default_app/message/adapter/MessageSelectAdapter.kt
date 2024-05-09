@@ -23,7 +23,7 @@ class MessageSelectAdapter (private val dataSet: ArrayList<MessageContactData>):
         init {
             Mprofile = view.findViewById(R.id.Mprofile)
             name = view.findViewById(R.id.name)
-            phoneNum = view.findViewById(R.id.phone_num_text)
+            phoneNum = view.findViewById(R.id.phoneNum)
         }
     }
 

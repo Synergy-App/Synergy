@@ -3,8 +3,6 @@ package com.sungkyul.synergy.edu_space.default_app.phone.activity
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.MotionEvent
 import android.view.View
 import androidx.activity.OnBackPressedCallback
@@ -21,12 +19,7 @@ import com.sungkyul.synergy.edu_space.default_app.phone.adapter.ContactData
 import com.sungkyul.synergy.edu_space.default_app.phone.fragment.DefaultPhoneContactFragment
 import com.sungkyul.synergy.edu_space.default_app.phone.fragment.DefaultPhoneKeypadFragment
 import com.sungkyul.synergy.edu_space.default_app.phone.fragment.DefaultPhoneRecentHistoryFragment
-import com.sungkyul.synergy.edu_space.icon_edu.adapter.IconEduAdapter
-import com.sungkyul.synergy.edu_space.icon_edu.data.Icon
-import com.sungkyul.synergy.edu_space.move_edu.adapter.MoveEduAdapter
-import com.sungkyul.synergy.edu_space.move_edu.data.Move
-import com.sungkyul.synergy.edu_space.naver.adapter.NaverAutocompleteAdapter
-import com.sungkyul.synergy.edu_space.naver.adapter.NaverAutocompleteData
+
 
 import com.sungkyul.synergy.utils.AnimUtils
 import com.sungkyul.synergy.utils.GalaxyButton
@@ -189,8 +182,8 @@ class DefaultPhoneActivity : AppCompatActivity() {
                 AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
             }
             MotionEvent.ACTION_UP -> {
-                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
-                view.performClick()
+                val intent = Intent(this@DefaultPhoneActivity, DefaultPhoneSearchActivity::class.java)
+                startActivity(intent)
             }
         }
         true
