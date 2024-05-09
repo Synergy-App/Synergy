@@ -187,7 +187,16 @@
 
         <activity
             android:name=".edu_space.appinstall.AppInstallMainActivity"
-            android:exported="false" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".edu_space.appinstall.AppInstallSearchActivity"
+            android:exported="false" /> <!-- 앱 설치 검색 화면 -->
         <activity
             android:name=".edu_space.kakaotalk.activity.KakaoMainActivity"
             android:exported="false" /> <!-- 카카오톡 메인 화면 -->
