@@ -2,6 +2,7 @@ package com.sungkyul.synergy.utils.edu
 
 import android.animation.AnimatorSet
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
 import android.util.Log
 import android.view.Gravity
@@ -13,33 +14,41 @@ import com.sungkyul.synergy.R
 data class EduDialog(
     var titleText: String? = null,
     var titleGravity: Int? = null,
+    var titleColor: String? = null,
     var contentText: String? = null,
     var contentGravity: Int? = null,
+    var contentColor: String? = null,
     var duration: Long? = null,
     var top: Float? = null,
     var bottom: Float? = null,
     var start: Float? = null,
     var end: Float? = null,
+    var background: Int? = null,
     var visibility: Boolean? = null
 )
 data class EduImageDialog(
     var titleText: String? = null,
+    var titleColor: String? = null,
     var source: Int? = null,
     var duration: Long? = null,
     var top: Float? = null,
     var bottom: Float? = null,
     var start: Float? = null,
     var end: Float? = null,
+    var background: Int? = null,
     var visibility: Boolean? = null
 )
 data class EduVerticalDialog(
     var titleText: String? = null,
     var titleGravity: Int? = null,
+    var titleColor: String? = null,
     var contentText: String? = null,
     var contentGravity: Int? = null,
+    var contentColor: String? = null,
     var contentBolds: List<Pair<Int, Int>>? = null,
     var duration: Long? = null,
     var height: Int? = null,
+    var background: Int? = null,
     var visibility: Boolean? = null
 )
 data class EduCover(
@@ -170,43 +179,54 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         EduDialog(
             titleText = "",
             titleGravity = Gravity.START,
+            titleColor = "#000000",
             contentText = "",
             contentGravity = Gravity.START,
+            contentColor = "#000000",
             duration = 0,
             top = 0.0f,
             bottom = 0.0f,
             start = 0.0f,
             end = 0.0f,
+            background = R.drawable.edu_dialog_bg,
             visibility = false
         ),
         EduImageDialog(
             titleText = "",
+            titleColor = "#000000",
             source = R.drawable.todo_rect,
             duration = 0,
             top = 0.0f,
             bottom = 0.0f,
             start = 0.0f,
             end = 0.0f,
+            background = R.drawable.edu_dialog_bg,
             visibility = false
         ),
         EduVerticalDialog(
             titleText = "",
             titleGravity = Gravity.START,
+            titleColor = "#000000",
             contentText = "",
             contentGravity = Gravity.START,
+            contentColor = "#000000",
             contentBolds = listOf(),
             duration = 0,
             height = 0,
+            background = R.drawable.edu_dialog_bg,
             visibility = false
         ),
         EduVerticalDialog(
             titleText = "",
             titleGravity = Gravity.START,
+            titleColor = "#000000",
             contentText = "",
             contentGravity = Gravity.START,
+            contentColor = "#000000",
             contentBolds = listOf(),
             duration = 0,
             height = 0,
+            background = R.drawable.edu_dialog_bg,
             visibility = false
         ),
         EduCover(
@@ -288,13 +308,16 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         val dialog = course[num].dialog
         currentDialog.titleText = dialog.titleText ?: currentDialog.titleText
         currentDialog.titleGravity = dialog.titleGravity ?: currentDialog.titleGravity
+        currentDialog.titleColor = dialog.titleColor ?: currentDialog.titleColor
         currentDialog.contentText = dialog.contentText ?: currentDialog.contentText
         currentDialog.contentGravity = dialog.contentGravity ?: currentDialog.contentGravity
+        currentDialog.contentColor = dialog.contentColor ?: currentDialog.contentColor
         currentDialog.duration = dialog.duration ?: currentDialog.duration
         currentDialog.top = dialog.top ?: currentDialog.top
         currentDialog.bottom = dialog.bottom ?: currentDialog.bottom
         currentDialog.start = dialog.start ?: currentDialog.start
         currentDialog.end = dialog.end ?: currentDialog.end
+        currentDialog.background = dialog.background ?: currentDialog.background
 
         val currentCover = currentEduData.cover
         val cover = course[num].cover
@@ -323,8 +346,8 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         현재 EduData(+ course[num]의 EduData)를 참고하여 교육 화면을 변경한다.
         */
         // 다이얼로그의 제목과 내용을 변경한다.
-        eduScreenFragment.setDialogTitle(currentDialog.titleText!!, currentDialog.titleGravity!!)
-        eduScreenFragment.setDialogContent(currentDialog.contentText!!, currentDialog.contentGravity!!)
+        eduScreenFragment.setDialogTitle(currentDialog.titleText!!, currentDialog.titleGravity!!, currentDialog.titleColor!!)
+        eduScreenFragment.setDialogContent(currentDialog.contentText!!, currentDialog.contentGravity!!, currentDialog.contentColor!!)
         // 다이얼로그를 이동시킨다.
         eduScreenFragment.translateDialog(
             currentDialog.duration!!,
@@ -339,6 +362,8 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         } else {
             eduScreenFragment.showDialogTitle()
         }
+        // 다이얼로그의 배경색을 변경한다.
+        eduScreenFragment.setDialogBackground(currentDialog.background!!)
         // 다이얼로그를 보여줄까 숨길까
         if(currentDialog.visibility == false && dialog.visibility == true) {
             eduScreenFragment.showDialog()

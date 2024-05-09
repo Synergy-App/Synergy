@@ -1,10 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--연락처 리스트-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/phoneBgColor">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="전화"
+        android:textSize="38dp"
+        android:gravity="center"
+        android:layout_marginBottom="130dp"
+        android:layout_marginTop="130dp"/>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="end">
+
+
+        <EditText
+            android:id="@+id/search_edit_text"
+            android:layout_width="100dp"
+            android:layout_height="48dp"
+            android:textSize="18sp"
+            android:background="@android:color/transparent"
+            android:layout_gravity="left"
+            />
+
+
+        <ImageButton
+            android:id="@+id/add_button"
+            android:layout_width="52dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_add_black_24"
+            android:background="@null"
+            android:padding="12dp"
+            android:scaleType="centerInside"/>
+
+        <ImageButton
+            android:id="@+id/search_button"
+            android:layout_width="52dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_search_black_24dp"
+            android:background="@null"
+            android:padding="12dp"
+            android:scaleType="centerInside"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_gallery_add_black_24"
+            android:layout_marginEnd="18dp"
+            android:background="@null"
+            android:padding="12dp"
+            android:scaleType="centerInside"/>
+    </LinearLayout>
+
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".edu_space.default_app.fragment.DefaultPhoneContactFragment">
+    tools:context=".edu_space.default_app.phone.fragment.DefaultPhoneContactFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/contact_list"
@@ -12,3 +77,4 @@
         android:layout_height="match_parent"/>
 
 </FrameLayout>
+</LinearLayout>

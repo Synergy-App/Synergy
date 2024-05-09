@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.Gravity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.AnimUtils
+import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
 
 class EduCourses {
@@ -12,8 +13,8 @@ class EduCourses {
         ## 교육 코스를 추가해보자!
         ```
         fun nameCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -26,8 +27,8 @@ class EduCourses {
 
         // for ScreenLayoutActivity
         fun screenLayoutCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -156,8 +157,8 @@ class EduCourses {
 
         // for DefaultPhoneActivity (Test)
         fun defaultPhoneTestCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -170,7 +171,7 @@ class EduCourses {
                 dialog.start = 50.0f
                 dialog.end = 50.0f
                 dialog.visibility = true
-                
+
                 cover.visibility = true
             })
 
@@ -218,13 +219,13 @@ class EduCourses {
 
             result.add(EduData().apply {
                 dialog.contentText = "박스와 화살표 테스트에요!"
-                
+
                 cover.boxVisibility = true
                 cover.boxLeft = 50.0f
                 cover.boxTop = 50.0f
                 cover.boxRight = width-50.0f
                 cover.boxBottom = 100.0f
-                
+
                 arrow.duration = 500
                 arrow.endTo = EduScreen.BOX
                 arrow.visibility = true
@@ -249,25 +250,25 @@ class EduCourses {
             result.add(EduData().apply {
                 dialog.top = 275.0f
                 dialog.bottom = 325.0f
-                
+
                 cover.duration = 0
                 cover.boxTop = 500.0f
                 cover.boxBottom = 550.0f
-                
+
                 arrow.duration = 1000
             })
 
             result.add(EduData().apply {
                 cover.boxLeft = 150.0f
                 cover.boxRight = 200.0f
-                
+
                 arrow.duration = 500
             })
 
             result.add(EduData().apply {
                 cover.boxVisibility = false
                 cover.boxStrokeVisibility = false
-                
+
                 arrow.endTo = EduScreen.DIALOG
             })
 
@@ -277,11 +278,11 @@ class EduCourses {
 
             result.add(EduData().apply {
                 dialog.visibility = false
-                
+
                 cover.visibility = false
-                
+
                 arrow.visibility = false
-                
+
                 hands.add(
                     EduHand(
                         "touch",
@@ -294,7 +295,7 @@ class EduCourses {
                         HandGestures.Companion::tapGesture
                     )
                 )
-                
+
                 action.id = "click_key_button"
                 action.message = "1"
             })
@@ -312,7 +313,7 @@ class EduCourses {
                         HandGestures.Companion::tapGesture
                     )
                 )
-                
+
                 action.id = "click_key_button"
                 action.message = "2"
             })
@@ -320,7 +321,7 @@ class EduCourses {
             result.add(EduData().apply {
                 dialog.contentText = "테스트 완료입니다!"
                 dialog.visibility = true
-                
+
                 cover.visibility = true
             })
 
@@ -329,8 +330,8 @@ class EduCourses {
 
         // for DefaultPhoneActivity (Before Call)
         fun defaultPhoneCourse1(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -371,6 +372,12 @@ class EduCourses {
                 cover.boxVisibility = false
                 cover.boxStrokeVisibility = false
                 arrow.endTo = EduScreen.DIALOG
+            })
+
+            result.add(EduData().apply {
+                dialog.contentText = "010-2468-3579로<br>전화를 걸어보세요."
+                dialog.contentColor = "#FFFFFF"
+                dialog.background = R.drawable.edu_dialog_green_bg
             })
 
             result.add(EduData().apply {
@@ -436,8 +443,8 @@ class EduCourses {
 
         // for DefaultPhoneActivity (After Call)
         fun defaultPhoneCourse2(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -512,25 +519,69 @@ class EduCourses {
                 dialog.contentText = "이 부분은<br>전화번호를 저장해서<br>편리하게 전화를<br>걸 수 있어요."
             })
 
+            result.add(EduData().apply {
+                dialog.contentText = "연락처를 눌러주세요."
+            })
+
+            result.add(EduData().apply {
+                dialog.visibility = false
+                cover.visibility = false
+                cover.boxVisibility = false
+                cover.boxStrokeVisibility = false
+                arrow.visibility = false
+                action.id = "click_contact_button"
+                hands.add(
+                    EduHand(
+                        id = "tap",
+                        x = 250.0f,
+                        y = 670.0f,
+                        rotation = 225.0f,
+                        gesture = HandGestures.Companion::tapGesture
+                    )
+                )
+            })
+
             return result
         }
 
-        // for DefaultPhoneCallActivity
-        fun defaultPhoneCallCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+        // for DefaultPhoneActivity (After ContactAddition)
+        fun defaultPhoneCourse3(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
-                dialog.contentText = "지금 현재 상대방에게<br>통화하고 있는 중이에요."
+            })
+
+            return result
+        }
+
+        //for DefaultPhoneContactFragmentActivity
+
+
+
+        // for DefaultPhoneCallActivity
+        fun defaultPhoneCallCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
+            val result = ArrayList<EduData>()
+
+            result.add(EduData().apply {
+                dialog.contentText = "전화 연결에 성공하였습니다!"
                 dialog.contentGravity = Gravity.CENTER
                 dialog.top = 300.0f
                 dialog.bottom = 300.0f
                 dialog.start = 50.0f
                 dialog.end = 50.0f
+                dialog.background = R.drawable.edu_dialog_yellow_bg
                 dialog.visibility = true
 
                 cover.visibility = true
+            })
+
+            result.add(EduData().apply {
+                dialog.contentText = "지금 현재 상대방에게<br>통화하고 있는 중이에요."
+                dialog.background = R.drawable.edu_dialog_bg
             })
 
             result.add(EduData().apply {
@@ -561,8 +612,8 @@ class EduCourses {
 
         // for CameraActivity
         fun cameraCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -712,8 +763,8 @@ class EduCourses {
 
         // for DefaultMessageActivity
         fun defaultMessageCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -812,8 +863,8 @@ class EduCourses {
 
         // for DefaultMessageChattingActivity
         fun defaultMessageChattingCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -897,8 +948,8 @@ class EduCourses {
         }
 
         fun kakaoCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1007,8 +1058,8 @@ class EduCourses {
         }
 
         fun kakaoProfileCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1094,8 +1145,8 @@ class EduCourses {
         }
 
         fun kakaoChatCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1152,8 +1203,8 @@ class EduCourses {
 
         // activity_setting2_main
         fun settingsCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1223,8 +1274,8 @@ class EduCourses {
         }
 
         fun settingsDisplayCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1300,8 +1351,8 @@ class EduCourses {
         }
 
         fun settingsFontCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1342,8 +1393,8 @@ class EduCourses {
 
         // for GoogleMainActivity
         fun googleMainCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1375,8 +1426,8 @@ class EduCourses {
 
         // for GoogleDefaultInfoActivity
         fun googleDefaultInfoCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1400,8 +1451,8 @@ class EduCourses {
 
         // for GoogleGetCodeActivity
         fun googleGetCodeCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1425,8 +1476,8 @@ class EduCourses {
 
         // for GoogleLoginActivity
         fun googleLoginCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1458,8 +1509,8 @@ class EduCourses {
 
         // for GoogleMailActivity
         fun googleMailCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1483,8 +1534,8 @@ class EduCourses {
 
         // for GoogleMailAddActivity
         fun googleMailAddCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1495,8 +1546,8 @@ class EduCourses {
 
         // for GoogleMakeActivity
         fun googleMakeCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1520,8 +1571,8 @@ class EduCourses {
 
         // for GooglePasswordActivity
         fun googlePasswordCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1545,8 +1596,8 @@ class EduCourses {
 
         // for GooglePutCodeActivity
         fun googlePutCodeCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1570,8 +1621,8 @@ class EduCourses {
 
         // for installMainActivity
         fun installMainCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1590,8 +1641,8 @@ class EduCourses {
 
         // for installActivity
         fun installCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1610,8 +1661,8 @@ class EduCourses {
 
         // for DlvMainActivity
         fun dlvMainCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1630,8 +1681,8 @@ class EduCourses {
 
         // for foodmenuActivity
         fun foodmenuCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1650,8 +1701,8 @@ class EduCourses {
 
         // for payDActivity
         fun payDCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1670,8 +1721,8 @@ class EduCourses {
 
         // for shopActivity
         fun shopCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1690,8 +1741,8 @@ class EduCourses {
 
         // for mapActivity
         fun mapCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1710,8 +1761,8 @@ class EduCourses {
 
         // for payActivity
         fun payCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1730,8 +1781,8 @@ class EduCourses {
 
         // for payMActivity
         fun payMCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1750,8 +1801,8 @@ class EduCourses {
 
         // for TaxiMainActivity
         fun taxiMainCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1770,8 +1821,8 @@ class EduCourses {
 
         // for Ticket2MainActivity
         fun resCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1790,8 +1841,8 @@ class EduCourses {
 
         // for installActivity
         fun ticket2MainCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1810,8 +1861,8 @@ class EduCourses {
 
         // for TicketMainActivity
         fun ticketMainCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {
@@ -1830,8 +1881,8 @@ class EduCourses {
 
         // for TpayActivity
         fun TPayCourse(context: Context, widthDp: Float, heightDp: Float): ArrayList<EduData> {
-            val width = AnimUtils.pxToDp(context, widthDp)
-            val height = AnimUtils.pxToDp(context, heightDp)
+            val width = DisplayUtils.pxToDp(context, widthDp)
+            val height = DisplayUtils.pxToDp(context, heightDp)
             val result = ArrayList<EduData>()
 
             result.add(EduData().apply {

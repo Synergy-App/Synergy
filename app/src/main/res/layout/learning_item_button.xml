@@ -57,7 +57,7 @@
             android:layout_marginTop="12dp"/>
     </LinearLayout>
 
-    <com.sungkyul.synergy.utils.DynamicButton
+    <com.sungkyul.synergy.utils.GalaxyButton
         android:id="@+id/edu_button"
         android:layout_width="match_parent"
         android:layout_height="200dp"

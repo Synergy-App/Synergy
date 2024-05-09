@@ -19,7 +19,7 @@ import com.github.mikephil.charting.data.BarEntry
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.edu_space.accountedu.GoogleMainActivity
 import com.sungkyul.synergy.edu_space.appinstall.installMainActivity
-import com.sungkyul.synergy.edu_space.default_app.activity.DefaultAppActivity
+import com.sungkyul.synergy.edu_space.default_app.DefaultAppActivity
 import com.sungkyul.synergy.edu_space.delivery.DlvMainActivity
 import com.sungkyul.synergy.edu_space.icon_edu.activity.IconEduActivity
 import com.sungkyul.synergy.edu_space.kakaotalk.activity.KakaoMainActivity
@@ -28,7 +28,7 @@ import com.sungkyul.synergy.edu_space.naver.activity.NaverActivity
 import com.sungkyul.synergy.edu_space.screen_layout.ScreenLayoutActivity
 import com.sungkyul.synergy.edu_space.settingedu2.Setting2MainActivity
 import com.sungkyul.synergy.edu_space.ticket.TicketMainActivity
-import com.sungkyul.synergy.utils.DynamicButton
+import com.sungkyul.synergy.utils.GalaxyButton
 
 data class EduButtonItem(
     val buttonText: String,
@@ -58,7 +58,7 @@ class EduButtonAdapter(private val context: Context, private val buttonList: Lis
         private val title: TextView = itemView.findViewById(R.id.title)
         private val icon: ImageView = itemView.findViewById(R.id.edu_icon)
         private val barChart: HorizontalBarChart = itemView.findViewById(R.id.bar_chart)
-        private val eduButton: DynamicButton = itemView.findViewById(R.id.edu_button)
+        private val eduButton: GalaxyButton = itemView.findViewById(R.id.edu_button)
 
         init {
             eduButton.post {
@@ -69,11 +69,11 @@ class EduButtonAdapter(private val context: Context, private val buttonList: Lis
             eduButton.setOnTouchListener { view, event ->
                 when (event.action) {
                     MotionEvent.ACTION_DOWN -> {
-                        (view as DynamicButton).startTouchDownAnimation(event.x, event.y, 100.0f)
+                        (view as GalaxyButton).startTouchDownAnimation(event.x, event.y, 100.0f)
                     }
 
                     MotionEvent.ACTION_UP -> {
-                        (view as DynamicButton).startTouchUpAnimation()
+                        (view as GalaxyButton).startTouchUpAnimation()
 
                         // 버튼의 제목에 따라 해당 교육 액티비티로 이동한다.
                         when(title.text.toString()) {
@@ -125,7 +125,7 @@ class EduButtonAdapter(private val context: Context, private val buttonList: Lis
                     }
 
                     MotionEvent.ACTION_CANCEL -> {
-                        (view as DynamicButton).startTouchUpAnimation()
+                        (view as GalaxyButton).startTouchUpAnimation()
                     }
                 }
                 true

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_vertical">
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/screenedu_back"/>
+
+    <EditText
+        android:id="@+id/search_edit_text"
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:textSize="18sp"
+        android:background="@android:color/transparent"
+        />
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="end">
+
+
+    <ImageView
+        android:id="@+id/more_button"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/naver_search_voice"
+        android:padding="12dp"
+        android:scaleType="centerInside" />
+    </LinearLayout>
+
+</LinearLayout>

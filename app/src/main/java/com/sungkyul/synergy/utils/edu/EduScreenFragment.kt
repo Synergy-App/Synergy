@@ -34,6 +34,7 @@ import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import com.sungkyul.synergy.databinding.FragmentEduScreenBinding
 import com.sungkyul.synergy.utils.AnimUtils
+import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.GeometryUtils
 import kotlin.collections.set
 
@@ -320,9 +321,10 @@ class EduScreenFragment : Fragment() {
         eduListener = l
     }
 
-    fun setDialogTitle(text: String, gravity: Int) {
+    fun setDialogTitle(text: String, gravity: Int, color: String) {
         binding.dialogTitle.text = text
         binding.dialogTitle.gravity = gravity
+        binding.dialogTitle.setTextColor(Color.parseColor(color))
     }
 
     fun showDialogTitle() {
@@ -335,9 +337,14 @@ class EduScreenFragment : Fragment() {
         binding.dialogSeparator.visibility = TextView.GONE
     }
 
-    fun setDialogContent(text: String, gravity: Int) {
+    fun setDialogContent(text: String, gravity: Int, color: String) {
         binding.dialogContent.text = text.parseAsHtml()
         binding.dialogContent.gravity = gravity
+        binding.dialogContent.setTextColor(Color.parseColor(color))
+    }
+
+    fun setDialogBackground(background: Int) {
+        binding.dialog.setBackgroundResource(background)
     }
 
     fun showDialog() {
@@ -350,10 +357,10 @@ class EduScreenFragment : Fragment() {
             1.0f,
             0.9f,
             1.0f,
-            AnimUtils.dpToPx(binding.root.context, 0.0f),
-            AnimUtils.dpToPx(binding.root.context, 0.0f),
-            AnimUtils.dpToPx(binding.root.context, 100.0f),
-            AnimUtils.dpToPx(binding.root.context, 0.0f)
+            DisplayUtils.dpToPx(binding.root.context, 0.0f),
+            DisplayUtils.dpToPx(binding.root.context, 0.0f),
+            DisplayUtils.dpToPx(binding.root.context, 100.0f),
+            DisplayUtils.dpToPx(binding.root.context, 0.0f)
         )
     }
 
@@ -367,10 +374,10 @@ class EduScreenFragment : Fragment() {
             0.9f,
             1.0f,
             0.9f,
-            AnimUtils.dpToPx(binding.root.context, 0.0f),
-            AnimUtils.dpToPx(binding.root.context, 0.0f),
-            AnimUtils.dpToPx(binding.root.context, 0.0f),
-            AnimUtils.dpToPx(binding.root.context, -100.0f)
+            DisplayUtils.dpToPx(binding.root.context, 0.0f),
+            DisplayUtils.dpToPx(binding.root.context, 0.0f),
+            DisplayUtils.dpToPx(binding.root.context, 0.0f),
+            DisplayUtils.dpToPx(binding.root.context, -100.0f)
         )
     }
 
@@ -436,10 +443,10 @@ class EduScreenFragment : Fragment() {
         endDp: Float
     ) {
         // dp -> px
-        val top = AnimUtils.dpToPx(binding.root.context, topDp)
-        val bottom = AnimUtils.dpToPx(binding.root.context, bottomDp)
-        val start = AnimUtils.dpToPx(binding.root.context, startDp)
-        val end = AnimUtils.dpToPx(binding.root.context, endDp)
+        val top = DisplayUtils.dpToPx(binding.root.context, topDp)
+        val bottom = DisplayUtils.dpToPx(binding.root.context, bottomDp)
+        val start = DisplayUtils.dpToPx(binding.root.context, startDp)
+        val end = DisplayUtils.dpToPx(binding.root.context, endDp)
 
         startValueAnimatorOfDialog(
             binding.dialog,
@@ -466,10 +473,10 @@ class EduScreenFragment : Fragment() {
         bottomDp: Float
     ) {
         // dp -> px
-        val left = AnimUtils.dpToPx(binding.root.context, leftDp)
-        val top = AnimUtils.dpToPx(binding.root.context, topDp)
-        val right = AnimUtils.dpToPx(binding.root.context, rightDp)
-        val bottom = AnimUtils.dpToPx(binding.root.context, bottomDp)
+        val left = DisplayUtils.dpToPx(binding.root.context, leftDp)
+        val top = DisplayUtils.dpToPx(binding.root.context, topDp)
+        val right = DisplayUtils.dpToPx(binding.root.context, rightDp)
+        val bottom = DisplayUtils.dpToPx(binding.root.context, bottomDp)
 
         val startLeft = boxLeft
         val startTop = boxTop
@@ -579,12 +586,12 @@ class EduScreenFragment : Fragment() {
 
         binding.gestureLayout.addView(imageView)
 
-        imageView.translationX = AnimUtils.dpToPx(binding.root.context, xDp)
-        imageView.translationY = AnimUtils.dpToPx(binding.root.context, yDp)
+        imageView.translationX = DisplayUtils.dpToPx(binding.root.context, xDp)
+        imageView.translationY = DisplayUtils.dpToPx(binding.root.context, yDp)
         imageView.rotation = rotation
         imageView.updateLayoutParams<ViewGroup.LayoutParams> {
-            this.width = AnimUtils.dpToPx(binding.root.context, widthDp).toInt()
-            this.height = AnimUtils.dpToPx(binding.root.context, heightDp).toInt()
+            this.width = DisplayUtils.dpToPx(binding.root.context, widthDp).toInt()
+            this.height = DisplayUtils.dpToPx(binding.root.context, heightDp).toInt()
         }
 
         hands[id] = Hand(imageView, startShowHandAnimationSet(imageView, gesture(binding.root.context, imageView)))
