@@ -67,7 +67,7 @@
             android:exported="false" /> <!-- 아이콘 첫화면 -->
         <activity
             android:name=".edu_space.move_edu.activity.MoveEduActivity"
-            android:exported="false">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
