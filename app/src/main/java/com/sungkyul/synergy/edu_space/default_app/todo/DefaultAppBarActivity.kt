@@ -9,11 +9,7 @@ import android.provider.Settings
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
-<<<<<<< HEAD:app/src/main/java/com/sungkyul/synergy/edu_space/default_app/todo/DefaultAppBarActivity.kt
-=======
 import android.widget.Button
-import android.view.animation.Animation
->>>>>>> taxi:app/src/main/java/com/sungkyul/synergy/edu_space/default_app/activity/DefaultAppBarActivity.kt
 import android.view.animation.TranslateAnimation
 import android.widget.LinearLayout
 import android.widget.SeekBar

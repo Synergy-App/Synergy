@@ -181,10 +181,10 @@ class DefaultPhoneActivity : AppCompatActivity() {
             MotionEvent.ACTION_DOWN -> {
                 AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
             }
-            MotionEvent.ACTION_UP -> {
-                val intent = Intent(this@DefaultPhoneActivity, DefaultPhoneSearchActivity::class.java)
-                startActivity(intent)
-            }
+//            MotionEvent.ACTION_UP -> {
+//                val intent = Intent(this@DefaultPhoneActivity, DefaultPhoneSearchActivity::class.java)
+//                startActivity(intent)
+//            }
         }
         true
     }
