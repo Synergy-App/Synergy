@@ -1,5 +1,6 @@
 package com.sungkyul.synergy
 
+import MyProfileFragment
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
