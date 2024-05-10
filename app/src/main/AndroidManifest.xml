@@ -48,7 +48,13 @@
             android:exported="false" /> <!-- 디지털 나이 검사 -->
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="true" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
             <!-- 메인화면 -->
 
         <activity
@@ -166,13 +172,8 @@
 
         <activity
             android:name=".edu_space.appinstall.AppInstallMainActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".edu_space.appinstall.AppInstallSearchActivity"
             android:exported="false" /> <!-- 앱 설치 검색 화면 -->
@@ -240,25 +241,8 @@
             android:exported="false" />
         <activity
             android:name=".backend.BackendTest"
-            android:exported="false" /> <!-- TODO : 수진 - backend TEST -->
-        <!--
-<activity
-            android:name=".learning_space.default_app.camera.CameraTest"
             android:exported="false" />
-        <activity
-            android:name=".learning_space.default_app.camera.LearningDefaultAppCamera"
-            android:exported="false" />
-        -->
-        <!-- <intent-filter> -->
-        <!-- <action android:name="android.intent.action.MAIN" /> -->
-        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-        <!-- </intent-filter> -->
-        <!-- <activity -->
-        <!-- android:name=".learning_space.default_app.camera.CameraTest" -->
-        <!-- android:exported="false" /> -->
-        <!-- <activity -->
-        <!-- android:name=".learning_space.default_app.camera.LearningDefaultAppCamera" -->
-        <!-- android:exported="false" /> -->
+
         <activity
             android:name=".learning_space.intent.LearningScreenActivity"
             android:exported="false" />
@@ -290,6 +274,7 @@
             android:name=".learning_space.intent.LearningIconActivity"
 
             android:exported="false" />
+
     </application>
 
 </manifest>
