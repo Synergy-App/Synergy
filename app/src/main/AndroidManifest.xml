@@ -167,6 +167,12 @@
             android:name=".edu_space.appinstall.AppInstallSearchActivity"
             android:exported="false" /> <!-- 앱 설치 검색 화면 -->
         <activity
+            android:name=".edu_space.appinstall.AppInstallLoadingActivity"
+            android:exported="false" /> <!-- 앱 설치 로딩 화면 -->
+        <activity
+            android:name=".edu_space.appinstall.AppInstallLoading2Activity"
+            android:exported="false" /> <!-- 앱 설치 로딩2 화면 -->
+        <activity
             android:name=".edu_space.kakaotalk.activity.KakaoMainActivity"
             android:exported="false" /> <!-- 카카오톡 메인 화면 -->
         <!-- 카카오톡 메인 화면 -->
