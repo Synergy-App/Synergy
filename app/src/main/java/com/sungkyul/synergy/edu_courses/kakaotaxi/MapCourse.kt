@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.edu_courses
+package com.sungkyul.synergy.edu_courses.kakaotaxi
 
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.edu.EduCourse

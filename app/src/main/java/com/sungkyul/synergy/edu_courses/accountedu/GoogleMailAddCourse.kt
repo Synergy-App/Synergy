@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.edu_courses.google
+package com.sungkyul.synergy.edu_courses.accountedu
 
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.edu.EduCourse

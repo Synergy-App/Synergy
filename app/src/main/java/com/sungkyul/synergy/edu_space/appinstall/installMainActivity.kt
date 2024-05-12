@@ -11,8 +11,6 @@ import androidx.activity.OnBackPressedCallback
 import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityInstallMainBinding
-import com.sungkyul.synergy.utils.edu.EduCourses
-
 
 class installMainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInstallMainBinding

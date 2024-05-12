@@ -17,7 +17,7 @@ import androidx.core.content.ContextCompat
 import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityGoogleDefaultinfoBinding
-import com.sungkyul.synergy.utils.edu.EduCourses
+import com.sungkyul.synergy.edu_courses.accountedu.GoogleDefaultInfoCourse
 
 class GoogleDefaultInfoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGoogleDefaultinfoBinding
@@ -32,12 +32,8 @@ class GoogleDefaultInfoActivity : AppCompatActivity() {
 
         // 교육을 정의해보자!
         binding.eduScreen.post {
-            // 교육 코스 customCourse를 지정한다.
-            binding.eduScreen.course = EduCourses.googleDefaultInfoCourse(
-                binding.eduScreen.context,
-                binding.eduScreen.width.toFloat(),
-                binding.eduScreen.height.toFloat()
-            )
+            binding.eduScreen.course = GoogleDefaultInfoCourse(binding.eduScreen)
+
             binding.eduScreen.setOnFinishedCourseListener {
                 // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
 
