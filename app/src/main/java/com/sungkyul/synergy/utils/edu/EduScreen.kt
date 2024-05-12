@@ -1,95 +1,12 @@
 package com.sungkyul.synergy.utils.edu
 
-import android.animation.AnimatorSet
 import android.content.Context
-import android.graphics.Color
 import android.util.AttributeSet
 import android.util.Log
 import android.view.Gravity
 import android.widget.FrameLayout
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.R
-
-data class EduDialog(
-    var titleText: String? = null,
-    var titleGravity: Int? = null,
-    var titleColor: String? = null,
-    var contentText: String? = null,
-    var contentGravity: Int? = null,
-    var contentColor: String? = null,
-    var duration: Long? = null,
-    var top: Float? = null,
-    var bottom: Float? = null,
-    var start: Float? = null,
-    var end: Float? = null,
-    var background: Int? = null,
-    var visibility: Boolean? = null
-)
-data class EduImageDialog(
-    var titleText: String? = null,
-    var titleColor: String? = null,
-    var source: Int? = null,
-    var duration: Long? = null,
-    var top: Float? = null,
-    var bottom: Float? = null,
-    var start: Float? = null,
-    var end: Float? = null,
-    var background: Int? = null,
-    var visibility: Boolean? = null
-)
-data class EduVerticalDialog(
-    var titleText: String? = null,
-    var titleGravity: Int? = null,
-    var titleColor: String? = null,
-    var contentText: String? = null,
-    var contentGravity: Int? = null,
-    var contentColor: String? = null,
-    var contentBolds: List<Pair<Int, Int>>? = null,
-    var duration: Long? = null,
-    var height: Int? = null,
-    var background: Int? = null,
-    var visibility: Boolean? = null
-)
-data class EduCover(
-    var duration: Long? = null,
-    var boxLeft: Float? = null,
-    var boxTop: Float? = null,
-    var boxRight: Float? = null,
-    var boxBottom: Float? = null,
-    var boxVisibility: Boolean? = null,
-    var boxStrokeVisibility: Boolean? = null,
-    var visibility: Boolean? = null
-)
-data class EduArrow(
-    var duration: Long? = null,
-    var endTo: Int? = null,
-    var visibility: Boolean? = null
-)
-data class EduAction(
-    var id: String? = null,
-    var message: String? = null
-)
-data class EduHand(
-    var id: String,
-    var source: Int = R.drawable.hand,
-    var x: Float = 0.0f,
-    var y: Float = 0.0f,
-    var width: Float = 50.0f,
-    var height: Float = 75.0f,
-    var rotation: Float = 0.0f,
-    var gesture: ((Context, ImageView) -> AnimatorSet)
-)
-data class EduData(
-    val dialog: EduDialog = EduDialog(),
-    val imageDialog: EduImageDialog = EduImageDialog(),
-    val topDialog: EduVerticalDialog = EduVerticalDialog(),
-    val bottomDialog: EduVerticalDialog = EduVerticalDialog(),
-    val cover: EduCover = EduCover(),
-    val arrow: EduArrow = EduArrow(),
-    val action: EduAction = EduAction(),
-    val hands: ArrayList<EduHand> = ArrayList()
-)
 
 /*
     ## 소개
@@ -248,7 +165,7 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         arrayListOf()
     )
     private var num = -1
-    var course = ArrayList<EduData>()
+    var course: EduCourse? = null
 
     init {
         eduScreenFragment.setEduListener(this)
@@ -260,9 +177,9 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
 
     override fun onAction(id: String, message: String?): Boolean {
         // 교육 코스가 시작하지 않았거나 끝났으면, 모든 액션을 다시 사용할 수 있게 된다.
-        if(num < 0 || num >= course.size) return true
+        if(num < 0 || num >= course!!.list.size) return true
 
-        val eduData = course[num]
+        val eduData = course!!.list[num]
         Log.i(id, message ?: "null")
         if(id == eduData.action.id && (eduData.action.message == null || message == eduData.action.message)) {
             next()
@@ -296,16 +213,16 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
     fun next() {
         num++
 
-        if(num >= course.size) {
+        if(num >= course!!.list.size) {
             onFinishedCourseListener?.invoke()
             return
         }
 
         /*
-        현재 EduData를 course[num]에 해당하는 EduData로 갱신하는 작업이다.
+        현재 EduData를 course!!.list[num]에 해당하는 EduData로 갱신하는 작업이다.
         */
         val currentDialog = currentEduData.dialog
-        val dialog = course[num].dialog
+        val dialog = course!!.list[num].dialog
         currentDialog.titleText = dialog.titleText ?: currentDialog.titleText
         currentDialog.titleGravity = dialog.titleGravity ?: currentDialog.titleGravity
         currentDialog.titleColor = dialog.titleColor ?: currentDialog.titleColor
@@ -320,7 +237,7 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         currentDialog.background = dialog.background ?: currentDialog.background
 
         val currentCover = currentEduData.cover
-        val cover = course[num].cover
+        val cover = course!!.list[num].cover
         currentCover.duration = cover.duration ?: currentCover.duration
         currentCover.boxLeft = cover.boxLeft ?: currentCover.boxLeft
         currentCover.boxTop = cover.boxTop ?: currentCover.boxTop
@@ -328,22 +245,22 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         currentCover.boxBottom = cover.boxBottom ?: currentCover.boxBottom
 
         val currentArrow = currentEduData.arrow
-        val arrow = course[num].arrow
+        val arrow = course!!.list[num].arrow
         currentArrow.duration = arrow.duration ?: currentArrow.duration
         currentArrow.endTo = arrow.endTo ?: currentArrow.endTo
 
         val currentAction = currentEduData.action
-        val action = course[num].action
+        val action = course!!.list[num].action
         currentAction.id = action.id
         currentAction.message = action.message
 
         val currentHands = currentEduData.hands
-        val hands = course[num].hands
+        val hands = course!!.list[num].hands
         currentHands.clear()
         currentHands.addAll(hands)
 
         /*
-        현재 EduData(+ course[num]의 EduData)를 참고하여 교육 화면을 변경한다.
+        현재 EduData(+ course!!.list[num]의 EduData)를 참고하여 교육 화면을 변경한다.
         */
         // 다이얼로그의 제목과 내용을 변경한다.
         eduScreenFragment.setDialogTitle(currentDialog.titleText!!, currentDialog.titleGravity!!, currentDialog.titleColor!!)
@@ -422,7 +339,7 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         }
 
         /*
-        현재 EduData에 있는 손들을 제거하고, course[num]에 있는 손들을 추가한다.
+        현재 EduData에 있는 손들을 제거하고, course!!.list[num]에 있는 손들을 추가한다.
         손 제스처를 화면에 보여준다.
         */
         eduScreenFragment.clearHands()

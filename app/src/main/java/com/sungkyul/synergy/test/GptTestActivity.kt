@@ -14,12 +14,11 @@ import retrofit2.http.POST
 
 interface ApiService {
     @POST("data")
-    fun post(@Body data: Data): Call<Data>
+    fun post(@Body data: Data): Call<String>
 }
 
 data class Data(
-    var id: Int,
-    var name: String
+    var prompt: String
 )
 
 object RetrofitClient {
@@ -37,16 +36,16 @@ object RetrofitClient {
 
 // 데이터를 서버에 POST로 보낸다.
 fun postData(data: Data) {
-    RetrofitClient.instance.post(data).enqueue(object: Callback<Data> {
-        override fun onResponse(call: Call<Data>, response: Response<Data>) {
+    RetrofitClient.instance.post(data).enqueue(object: Callback<String> {
+        override fun onResponse(call: Call<String>, response: Response<String>) {
             if(response.isSuccessful) {
-                Log.i("Response", response.body()!!.name)
+                Log.i("Response", response.body()!!)
             } else {
                 Log.i("Response", response.errorBody()!!.string())
             }
         }
 
-        override fun onFailure(call: Call<Data>, t: Throwable) {
+        override fun onFailure(call: Call<String>, t: Throwable) {
             Log.i("Response", t.message!!)
         }
     })
@@ -60,6 +59,6 @@ class GPTTestActivity : AppCompatActivity() {
         binding = ActivityGptTestBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        postData(Data(2024, "Synergy"))
+        postData(Data("Synergy"))
     }
 }

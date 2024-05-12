@@ -7,7 +7,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.databinding.ActivitySetting2MainBinding
-import com.sungkyul.synergy.utils.edu.EduCourses
+import com.sungkyul.synergy.edu_courses.settings.SettingsCourse
 
 class Setting2MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySetting2MainBinding
@@ -20,12 +20,8 @@ class Setting2MainActivity : AppCompatActivity() {
 
         // 교육을 정의해보자!
         binding.eduScreen.post {
-            // 교육 코스 settingsCourse를 지정한다.
-            binding.eduScreen.course = EduCourses.settingsCourse(
-                binding.eduScreen.context,
-                binding.eduScreen.width.toFloat(),
-                binding.eduScreen.height.toFloat()
-            )
+            binding.eduScreen.course = SettingsCourse(binding.eduScreen)
+
             binding.eduScreen.setOnFinishedCourseListener {
                 // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
 

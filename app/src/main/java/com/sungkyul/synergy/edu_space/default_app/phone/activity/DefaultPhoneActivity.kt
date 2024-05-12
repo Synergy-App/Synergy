@@ -11,6 +11,9 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityDefaultPhoneBinding
+import com.sungkyul.synergy.edu_courses.default_app.phone.DefaultPhoneCourse1
+import com.sungkyul.synergy.edu_courses.default_app.phone.DefaultPhoneCourse2
+import com.sungkyul.synergy.edu_courses.default_app.phone.DefaultPhoneCourse3
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_DOWN_ALPHA
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_DURATION_ALPHA
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_ALPHA
@@ -19,11 +22,8 @@ import com.sungkyul.synergy.edu_space.default_app.phone.adapter.ContactData
 import com.sungkyul.synergy.edu_space.default_app.phone.fragment.DefaultPhoneContactFragment
 import com.sungkyul.synergy.edu_space.default_app.phone.fragment.DefaultPhoneKeypadFragment
 import com.sungkyul.synergy.edu_space.default_app.phone.fragment.DefaultPhoneRecentHistoryFragment
-
-
 import com.sungkyul.synergy.utils.AnimUtils
 import com.sungkyul.synergy.utils.GalaxyButton
-import com.sungkyul.synergy.utils.edu.EduCourses
 
 class DefaultPhoneActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDefaultPhoneBinding
@@ -40,29 +40,15 @@ class DefaultPhoneActivity : AppCompatActivity() {
         // 교육을 정의해보자!
         binding.eduScreen.post {
             if(intent.getStringExtra("from") == null) {
-                // 교육 코스 defaultPhoneCourse1을 지정한다.
-                binding.eduScreen.course = EduCourses.defaultPhoneCourse1(
-                    binding.eduScreen.context,
-                    binding.eduScreen.width.toFloat(),
-                    binding.eduScreen.height.toFloat()
-                )
+                binding.eduScreen.course = DefaultPhoneCourse1(binding.eduScreen)
             }
             if(intent.getStringExtra("from") == "call") {
-                // 교육 코스 defaultPhoneCourse2를 지정한다.
-                binding.eduScreen.course = EduCourses.defaultPhoneCourse2(
-                    binding.eduScreen.context,
-                    binding.eduScreen.width.toFloat(),
-                    binding.eduScreen.height.toFloat()
-                )
+                binding.eduScreen.course = DefaultPhoneCourse2(binding.eduScreen)
             }
             if(intent.getStringExtra("from") == "add_contact") {
-                // 교육 코스 defaultPhoneCourse3을 지정한다.
-                binding.eduScreen.course = EduCourses.defaultPhoneCourse3(
-                    binding.eduScreen.context,
-                    binding.eduScreen.width.toFloat(),
-                    binding.eduScreen.height.toFloat()
-                )
+                binding.eduScreen.course = DefaultPhoneCourse3(binding.eduScreen)
             }
+
             binding.eduScreen.setOnFinishedCourseListener {
                 // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
 
@@ -109,7 +95,6 @@ class DefaultPhoneActivity : AppCompatActivity() {
         binding.contactButton.post {
             binding.contactButton.clipToRoundRect(20.0f)
         }
-
 
         // 하단 내비게이션 뷰에서 메뉴 아이템을 선택하면, 메인 레이아웃 배경을 변경하고 해당하는 프래그먼트로 교체한다.
         binding.keypadButton.setOnTouchListener { view, event ->
@@ -172,7 +157,6 @@ class DefaultPhoneActivity : AppCompatActivity() {
 
             replaceFragment(contactFragment)
         }
-
     }
 
     // 돋보기 버튼의 터치 이벤트 리스너
@@ -215,5 +199,4 @@ class DefaultPhoneActivity : AppCompatActivity() {
             .replace(binding.phoneFragmentContainer.id, fragment)
             .commit()
     }
-
 }

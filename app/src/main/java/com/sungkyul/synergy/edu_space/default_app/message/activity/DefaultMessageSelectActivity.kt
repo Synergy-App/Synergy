@@ -14,10 +14,6 @@ import com.sungkyul.synergy.databinding.ActivityDefaultMessageSelectBinding
 import com.sungkyul.synergy.edu_space.default_app.DefaultAppActivity
 import com.sungkyul.synergy.edu_space.default_app.message.adapter.MessageContactData
 import com.sungkyul.synergy.edu_space.default_app.message.adapter.MessageSelectAdapter
-import com.sungkyul.synergy.edu_space.default_app.phone.activity.DefaultPhoneActivity
-import com.sungkyul.synergy.utils.AnimUtils
-import com.sungkyul.synergy.utils.GalaxyButton
-import com.sungkyul.synergy.utils.edu.EduCourses
 
 class DefaultMessageSelectActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDefaultMessageSelectBinding
@@ -32,12 +28,8 @@ class DefaultMessageSelectActivity : AppCompatActivity() {
 
         // 교육을 정의해보자!
         binding.eduScreen.post {
-            // 교육 코스 customCourse를 지정한다.
-            binding.eduScreen.course = EduCourses.defaultMessageCourse(
-                binding.eduScreen.context,
-                binding.eduScreen.width.toFloat(),
-                binding.eduScreen.height.toFloat()
-            )
+            //binding.eduScreen.course =
+
             binding.eduScreen.setOnFinishedCourseListener {
                 // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
 

@@ -15,7 +15,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.R
 
 class AppInstallMainActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_appinstall_main)
