@@ -1,12 +1,15 @@
 package com.sungkyul.synergy.utils.edu
 
 import android.content.Context
+import android.content.Intent
 import android.util.AttributeSet
 import android.util.Log
 import android.view.Gravity
 import android.widget.FrameLayout
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.edu_space.default_app.DefaultAppActivity
 
 /*
     ## 소개
@@ -374,7 +377,17 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
     }
 
     companion object {
-        val DIALOG = 0
-        val BOX = 1
+        const val DIALOG = 0
+        const val BOX = 1
+
+        fun navigateBackWithSingleTop(from: AppCompatActivity, to: Class<out AppCompatActivity>) {
+            from.onBackPressedDispatcher.addCallback(from, object: OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    val intent = Intent(from, to)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                    from.startActivity(intent)
+                }
+            })
+        }
     }
 }
