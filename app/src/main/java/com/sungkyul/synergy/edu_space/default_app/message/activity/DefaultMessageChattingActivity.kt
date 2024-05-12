@@ -20,6 +20,7 @@ import com.sungkyul.synergy.utils.DateTimeUtils
 import com.sungkyul.synergy.utils.GalaxyButton
 import java.time.LocalDate
 
+
 class DefaultMessageChattingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDefaultMessageChattingBinding
 
@@ -181,6 +182,8 @@ class DefaultMessageChattingActivity : AppCompatActivity() {
             }
         })
 
+
+
         // 버튼의 터치 애니메이션을 초기화한다.
         AnimUtils.initTouchButtonAnimation(binding.magnifyingGlassButton)
         AnimUtils.initTouchButtonAnimation(binding.moreButton)
@@ -227,8 +230,7 @@ class DefaultMessageChattingActivity : AppCompatActivity() {
             }
         }
 
-
-        //1:1 채팅 눌렀을 때
+       //1:1 채팅 눌렀을 때
         binding.oneMessageButton.setOnTouchListener { view, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
@@ -243,5 +245,7 @@ class DefaultMessageChattingActivity : AppCompatActivity() {
             true
         }
 
-    }
+
+
+}
 }

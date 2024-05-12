@@ -9,6 +9,7 @@ import android.provider.Settings
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.Button
 import android.view.animation.TranslateAnimation
 import android.widget.LinearLayout
 import android.widget.SeekBar
@@ -26,12 +27,15 @@ class DefaultAppBarActivity : AppCompatActivity() {
     private lateinit var imageButton3: ImageButton
     private lateinit var linearLayout2: LinearLayout
     private lateinit var overlayLayout: ViewGroup
+    private lateinit var imageView52: ImageView
     private lateinit var rootView: View // 전체 화면을 기준으로 설정
+    private var toolbar1Visible = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_default_app_bar)
 
+        imageView52 = findViewById(R.id.imageView52)
         appBarLayout = findViewById(R.id.appBarLayout)
         imageView45 = findViewById(R.id.imageView45)
         imageButton3 = findViewById(R.id.imageButton3)
@@ -40,6 +44,7 @@ class DefaultAppBarActivity : AppCompatActivity() {
         linearLayout2 = findViewById(R.id.linearLayout2)
         overlayLayout = findViewById(R.id.overlayLayout)
         rootView = findViewById(android.R.id.content) // 전체 화면을 가져옴
+
 
         val brightnessSeekBar = findViewById<SeekBar>(R.id.brightnessSeekBar)
 
@@ -115,6 +120,16 @@ class DefaultAppBarActivity : AppCompatActivity() {
                 return false
             }
         })
+
+        findViewById<Button>(R.id.button44).setOnClickListener {
+            // Toggle between toolbar1 and toolbar2
+            if (toolbar1Visible) {
+                imageView52.setImageResource(R.drawable.toolbar2)
+            } else {
+                imageView52.setImageResource(R.drawable.toolbar1)
+            }
+            toolbar1Visible = !toolbar1Visible
+        }
     }
 
     private fun slideOverlayLayout() {

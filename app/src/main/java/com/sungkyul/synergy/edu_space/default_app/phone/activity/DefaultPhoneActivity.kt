@@ -22,7 +22,6 @@ import com.sungkyul.synergy.edu_space.default_app.phone.adapter.ContactData
 import com.sungkyul.synergy.edu_space.default_app.phone.fragment.DefaultPhoneContactFragment
 import com.sungkyul.synergy.edu_space.default_app.phone.fragment.DefaultPhoneKeypadFragment
 import com.sungkyul.synergy.edu_space.default_app.phone.fragment.DefaultPhoneRecentHistoryFragment
-
 import com.sungkyul.synergy.utils.AnimUtils
 import com.sungkyul.synergy.utils.GalaxyButton
 
@@ -166,10 +165,10 @@ class DefaultPhoneActivity : AppCompatActivity() {
             MotionEvent.ACTION_DOWN -> {
                 AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
             }
-            MotionEvent.ACTION_UP -> {
-                AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
-                view.performClick()
-            }
+//            MotionEvent.ACTION_UP -> {
+//                val intent = Intent(this@DefaultPhoneActivity, DefaultPhoneSearchActivity::class.java)
+//                startActivity(intent)
+//            }
         }
         true
     }
