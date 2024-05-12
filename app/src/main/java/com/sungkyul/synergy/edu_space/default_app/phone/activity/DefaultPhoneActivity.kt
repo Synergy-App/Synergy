@@ -24,6 +24,7 @@ import com.sungkyul.synergy.edu_space.default_app.phone.fragment.DefaultPhoneKey
 import com.sungkyul.synergy.edu_space.default_app.phone.fragment.DefaultPhoneRecentHistoryFragment
 import com.sungkyul.synergy.utils.AnimUtils
 import com.sungkyul.synergy.utils.GalaxyButton
+import com.sungkyul.synergy.utils.edu.EduScreen
 
 class DefaultPhoneActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDefaultPhoneBinding
@@ -62,14 +63,7 @@ class DefaultPhoneActivity : AppCompatActivity() {
         }
 
         // 뒤로 가기 키를 눌렀을 때의 이벤트를 처리한다.
-        onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                // DefaultAppActivity로 되돌아 간다.
-                val intent = Intent(binding.root.context, DefaultAppActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-                startActivity(intent)
-            }
-        })
+        EduScreen.navigateBackWithSingleTop(this, DefaultAppActivity::class.java)
 
         // Fragments
         keypadFragment = DefaultPhoneKeypadFragment(binding.eduScreen)
