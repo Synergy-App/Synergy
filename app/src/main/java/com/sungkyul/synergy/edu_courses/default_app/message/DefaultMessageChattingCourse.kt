@@ -9,13 +9,13 @@ import com.sungkyul.synergy.utils.edu.EduHand
 import com.sungkyul.synergy.utils.edu.EduScreen
 
 data class DefaultMessageChattingCourse(val eduScreen: EduScreen): EduCourse {
-    override val eduDataList = ArrayList<EduData>()
+    override val list = ArrayList<EduData>()
     override val width = DisplayUtils.pxToDp(eduScreen.context, eduScreen.width.toFloat())
     override val height = DisplayUtils.pxToDp(eduScreen.context, eduScreen.height.toFloat())
 
     // 교육 코스를 만든다.
     init {
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.contentText = "여기는 그동안<br>주고받은 메시지를<br>확인할 수 있어요."
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 50.0f
@@ -32,7 +32,7 @@ data class DefaultMessageChattingCourse(val eduScreen: EduScreen): EduCourse {
             cover.boxVisibility = true
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.duration = 1000
             cover.duration = 750
             arrow.duration = 1000
@@ -48,7 +48,7 @@ data class DefaultMessageChattingCourse(val eduScreen: EduScreen): EduCourse {
             arrow.visibility = true
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.duration = 750
             arrow.duration = 750
             dialog.contentText = "메시지를 작성해볼까요?"
@@ -59,7 +59,7 @@ data class DefaultMessageChattingCourse(val eduScreen: EduScreen): EduCourse {
             cover.boxStrokeVisibility = false
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             cover.duration = 0
             dialog.contentText = "시너지를 클릭해주세요."
             dialog.top = 250.0f
@@ -74,7 +74,7 @@ data class DefaultMessageChattingCourse(val eduScreen: EduScreen): EduCourse {
             arrow.visibility = true
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.visibility = false
             cover.visibility = false
             cover.boxVisibility = false

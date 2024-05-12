@@ -10,13 +10,13 @@ import com.sungkyul.synergy.utils.edu.EduHand
 import com.sungkyul.synergy.utils.edu.EduScreen
 
 data class DefaultPhoneCallCourse(val eduScreen: EduScreen): EduCourse {
-    override val eduDataList = ArrayList<EduData>()
+    override val list = ArrayList<EduData>()
     override val width = DisplayUtils.pxToDp(eduScreen.context, eduScreen.width.toFloat())
     override val height = DisplayUtils.pxToDp(eduScreen.context, eduScreen.height.toFloat())
 
     // 교육 코스를 만든다.
     init {
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.contentText = "전화 연결에 성공하였습니다!"
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 300.0f
@@ -29,16 +29,16 @@ data class DefaultPhoneCallCourse(val eduScreen: EduScreen): EduCourse {
             cover.visibility = true
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.contentText = "지금 현재 상대방에게<br>통화하고 있는 중이에요."
             dialog.background = R.drawable.edu_dialog_bg
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.contentText = "근데 상대방이 전화를<br>안 받는 것 같아요.<br>통화를 끊어볼까요?"
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.visibility = false
 
             cover.visibility = false
@@ -55,6 +55,6 @@ data class DefaultPhoneCallCourse(val eduScreen: EduScreen): EduCourse {
             )
         })
 
-        eduDataList.add(EduData())
+        list.add(EduData())
     }
 }

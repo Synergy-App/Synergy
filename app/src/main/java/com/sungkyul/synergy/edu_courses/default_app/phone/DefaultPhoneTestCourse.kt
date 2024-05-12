@@ -10,13 +10,13 @@ import com.sungkyul.synergy.utils.edu.EduHand
 import com.sungkyul.synergy.utils.edu.EduScreen
 
 data class DefaultPhoneTestCourse(val eduScreen: EduScreen): EduCourse {
-    override val eduDataList = ArrayList<EduData>()
+    override val list = ArrayList<EduData>()
     override val width = DisplayUtils.pxToDp(eduScreen.context, eduScreen.width.toFloat())
     override val height = DisplayUtils.pxToDp(eduScreen.context, eduScreen.height.toFloat())
 
     // 교육 코스를 만든다.
     init {
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.titleText = ""
             dialog.contentText = "안녕하세요!"
             dialog.contentGravity = Gravity.CENTER
@@ -30,18 +30,18 @@ data class DefaultPhoneTestCourse(val eduScreen: EduScreen): EduCourse {
             cover.visibility = true
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.contentText = "교육 진행을<br>테스트 해 볼 거에요!"
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.titleText = "교육"
             dialog.titleGravity = Gravity.CENTER
             dialog.contentText = "<b>제목</b>과 <b>내용</b> 변경 테스트에요!"
             dialog.contentGravity = Gravity.END
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.contentText = "사이즈 변경 테스트에요!"
             dialog.contentGravity = Gravity.START
             dialog.duration = 500
@@ -51,28 +51,28 @@ data class DefaultPhoneTestCourse(val eduScreen: EduScreen): EduCourse {
             dialog.end = 60.0f
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.top = 300.0f
             dialog.bottom = 300.0f
             dialog.start = 0.0f
             dialog.end = width/2
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.top = 0.0f
             dialog.bottom = height/2
             dialog.start = 50.0f
             dialog.end = 50.0f
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.top = 300.0f
             dialog.bottom = 300.0f
             dialog.start = 50.0f
             dialog.end = 50.0f
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.contentText = "박스와 화살표 테스트에요!"
 
             cover.boxVisibility = true
@@ -86,23 +86,23 @@ data class DefaultPhoneTestCourse(val eduScreen: EduScreen): EduCourse {
             arrow.visibility = true
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             cover.duration = 500
             cover.boxRight = 100.0f
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             cover.boxLeft = 75.0f
             cover.boxRight = 125.0f
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             cover.boxLeft = 100.0f
             cover.boxRight = 150.0f
             cover.boxStrokeVisibility = true
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.top = 275.0f
             dialog.bottom = 325.0f
 
@@ -113,25 +113,25 @@ data class DefaultPhoneTestCourse(val eduScreen: EduScreen): EduCourse {
             arrow.duration = 1000
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             cover.boxLeft = 150.0f
             cover.boxRight = 200.0f
 
             arrow.duration = 500
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             cover.boxVisibility = false
             cover.boxStrokeVisibility = false
 
             arrow.endTo = EduScreen.DIALOG
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.contentText = "다음에 나타날 손가락이<br>가리키는 곳을 누르세요!"
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.visibility = false
 
             cover.visibility = false
@@ -155,7 +155,7 @@ data class DefaultPhoneTestCourse(val eduScreen: EduScreen): EduCourse {
             action.message = "1"
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             hands.add(
                 EduHand(
                     "touch",
@@ -173,7 +173,7 @@ data class DefaultPhoneTestCourse(val eduScreen: EduScreen): EduCourse {
             action.message = "2"
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.contentText = "테스트 완료입니다!"
             dialog.visibility = true
 

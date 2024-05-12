@@ -8,13 +8,13 @@ import com.sungkyul.synergy.utils.edu.EduScreen
 
 // 연결된 액티비티는 GoogleDefaultInfoActivity이다.
 data class GoogleDefaultInfoCourse(val eduScreen: EduScreen): EduCourse {
-    override val eduDataList = ArrayList<EduData>()
+    override val list = ArrayList<EduData>()
     override val width = DisplayUtils.pxToDp(eduScreen.context, eduScreen.width.toFloat())
     override val height = DisplayUtils.pxToDp(eduScreen.context, eduScreen.height.toFloat())
 
     // 교육 코스를 만든다.
     init {
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.contentText = "기본 정보를<br>입력해주세요."
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 300.0f
@@ -25,7 +25,7 @@ data class GoogleDefaultInfoCourse(val eduScreen: EduScreen): EduCourse {
             cover.visibility = true
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.visibility = false
             cover.visibility = false
         })

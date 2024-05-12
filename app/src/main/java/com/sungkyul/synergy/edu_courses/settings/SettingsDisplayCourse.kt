@@ -10,13 +10,13 @@ import com.sungkyul.synergy.utils.edu.EduHand
 import com.sungkyul.synergy.utils.edu.EduScreen
 
 data class SettingsDisplayCourse(val eduScreen: EduScreen): EduCourse {
-    override val eduDataList = ArrayList<EduData>()
+    override val list = ArrayList<EduData>()
     override val width = DisplayUtils.pxToDp(eduScreen.context, eduScreen.width.toFloat())
     override val height = DisplayUtils.pxToDp(eduScreen.context, eduScreen.height.toFloat())
 
     // 교육 코스를 만든다.
     init {
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.contentText = "먼저 스마트폰<br>밝기 조절을<br>배워보겠습니다."
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 300.0f
@@ -27,11 +27,11 @@ data class SettingsDisplayCourse(val eduScreen: EduScreen): EduCourse {
             cover.visibility = true
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.contentText = "손가락을 따라<br>움직여주세요."
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.visibility = false
             cover.visibility = false
             action.id = "change_light_bar"
@@ -46,17 +46,17 @@ data class SettingsDisplayCourse(val eduScreen: EduScreen): EduCourse {
             )
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.contentText = "이번엔 글자 크기를<br>조절해보겠습니다."
             dialog.visibility = true
             cover.visibility = true
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.contentText = "맨 아래까지 스크롤해주세요."
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.visibility = false
             cover.visibility = false
             action.id = "scroll_to_bottom"
@@ -73,7 +73,7 @@ data class SettingsDisplayCourse(val eduScreen: EduScreen): EduCourse {
             )
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             action.id = "tap_font_item"
             hands.add(
                 EduHand(

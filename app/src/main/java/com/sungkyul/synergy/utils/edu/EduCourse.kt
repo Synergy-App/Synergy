@@ -86,7 +86,7 @@ data class EduData(
 )
 
 interface EduCourse {
-    val eduDataList: ArrayList<EduData>
+    val list: ArrayList<EduData>
     val width: Float
     val height: Float
 }

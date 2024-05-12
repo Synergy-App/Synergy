@@ -10,13 +10,13 @@ import com.sungkyul.synergy.utils.edu.EduHand
 import com.sungkyul.synergy.utils.edu.EduScreen
 
 data class KakaoChatCourse(val eduScreen: EduScreen): EduCourse {
-    override val eduDataList = ArrayList<EduData>()
+    override val list = ArrayList<EduData>()
     override val width = DisplayUtils.pxToDp(eduScreen.context, eduScreen.width.toFloat())
     override val height = DisplayUtils.pxToDp(eduScreen.context, eduScreen.height.toFloat())
 
     // 교육 코스를 만든다.
     init {
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.contentText = "이 공간은<br>친구와 채팅을<br>할 수 있습니다."
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 300.0f
@@ -42,13 +42,13 @@ data class KakaoChatCourse(val eduScreen: EduScreen): EduCourse {
         ))
         */
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.contentText = "메시지를 보내볼까요?"
             dialog.visibility = true
             cover.visibility = true
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.visibility = false
             cover.visibility = false
             arrow.visibility = false

@@ -9,13 +9,13 @@ import com.sungkyul.synergy.utils.edu.EduHand
 import com.sungkyul.synergy.utils.edu.EduScreen
 
 data class KakaoCourse(val eduScreen: EduScreen): EduCourse {
-    override val eduDataList = ArrayList<EduData>()
+    override val list = ArrayList<EduData>()
     override val width = DisplayUtils.pxToDp(eduScreen.context, eduScreen.width.toFloat())
     override val height = DisplayUtils.pxToDp(eduScreen.context, eduScreen.height.toFloat())
 
     // 교육 코스를 만든다.
     init {
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.contentText = "<span style=\"color:#E6C60D\"><b>카카오톡</b></span>의<br>메인 화면입니다."
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 300.0f
@@ -26,7 +26,7 @@ data class KakaoCourse(val eduScreen: EduScreen): EduCourse {
             cover.visibility = true
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.duration = 750
             arrow.duration = 750
             dialog.top = 200.0f
@@ -42,11 +42,11 @@ data class KakaoCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentText = "이 버튼은 빠르게<br>친구를 찾을 수 있는<br>버튼이에요."
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.contentText = "친구를 빠르게 찾고<br>싶을 때 이 버튼을 눌러<br>찾고 싶은 친구의 이름을<br>입력하면 돼요."
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             cover.boxLeft = 10.0f
             cover.boxTop = 75.0f
             cover.boxRight = width-10.0f
@@ -54,13 +54,13 @@ data class KakaoCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentText = "내 프로필입니다."
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.titleText = "프로필이란?"
             dialog.contentText = "카카오톡을 사용할 때<br>다른 사람들에게<br>여러분을 알리는데<br>도움을 줄 수 있는<br>간단한 자기소개입니다."
             dialog.bottom = 300.0f
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.titleText = ""
             dialog.contentText = "친구들의 목록을 볼 수 있어요."
             dialog.top = 25.0f
@@ -70,7 +70,7 @@ data class KakaoCourse(val eduScreen: EduScreen): EduCourse {
             arrow.endTo = EduScreen.DIALOG
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.contentText = "친구를 찾을 수 있는<br>버튼입니다."
             dialog.duration = 750
             arrow.duration = 750
@@ -85,14 +85,14 @@ data class KakaoCourse(val eduScreen: EduScreen): EduCourse {
             arrow.endTo = EduScreen.BOX
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.duration = 750
             arrow.duration = 750
             dialog.contentText = "방금까지 살펴본<br>카카오톡의 화면이<br>이 버튼을 누르면<br>보이는 화면입니다."
             dialog.top = 425.0f
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.contentText = "카카오톡으로<br>친구와 연락을<br>주고 받아 볼까요?"
             dialog.top = 300.0f
             dialog.bottom = 300.0f
@@ -103,7 +103,7 @@ data class KakaoCourse(val eduScreen: EduScreen): EduCourse {
             arrow.endTo = EduScreen.DIALOG
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.visibility = false
             cover.visibility = false
             arrow.visibility = false

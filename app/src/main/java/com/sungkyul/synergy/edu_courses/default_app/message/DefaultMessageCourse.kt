@@ -9,13 +9,13 @@ import com.sungkyul.synergy.utils.edu.EduHand
 import com.sungkyul.synergy.utils.edu.EduScreen
 
 data class DefaultMessageCourse(val eduScreen: EduScreen): EduCourse {
-    override val eduDataList = ArrayList<EduData>()
+    override val list = ArrayList<EduData>()
     override val width = DisplayUtils.pxToDp(eduScreen.context, eduScreen.width.toFloat())
     override val height = DisplayUtils.pxToDp(eduScreen.context, eduScreen.height.toFloat())
 
     // 교육 코스를 만든다.
     init {
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.contentText = "여기는 채팅방으로<br>상대방과 메시지를<br>주고받을 수 있어요."
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 300.0f
@@ -26,7 +26,7 @@ data class DefaultMessageCourse(val eduScreen: EduScreen): EduCourse {
             cover.visibility = true
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.duration = 750
             arrow.duration = 750
             dialog.contentText = "여기서 문자 메시지를<br>입력할 수 있어요."
@@ -42,7 +42,7 @@ data class DefaultMessageCourse(val eduScreen: EduScreen): EduCourse {
             arrow.visibility = true
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.duration = 750
             cover.duration = 750
             arrow.duration = 750
@@ -51,7 +51,7 @@ data class DefaultMessageCourse(val eduScreen: EduScreen): EduCourse {
             cover.boxRight = width
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.contentText = "시너지에게<br>메시지를 보내볼까요?"
             dialog.top = 300.0f
             dialog.bottom = 300.0f
@@ -60,7 +60,7 @@ data class DefaultMessageCourse(val eduScreen: EduScreen): EduCourse {
             cover.boxStrokeVisibility = false
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.visibility = false
             cover.visibility = false
             arrow.visibility = false
@@ -76,11 +76,11 @@ data class DefaultMessageCourse(val eduScreen: EduScreen): EduCourse {
             )
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             action.id = "click_send_button"
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.duration = 0
             cover.duration = 0
             dialog.contentText = "문자 메시지를<br>성공적으로 보냈습니다!"
@@ -94,7 +94,7 @@ data class DefaultMessageCourse(val eduScreen: EduScreen): EduCourse {
             cover.visibility = true
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.duration = 750
             cover.duration = 750
             dialog.contentText = "자신이 보낸 메시지는<br>아래에 보이는 것처럼<br>확인할 수 있어요."

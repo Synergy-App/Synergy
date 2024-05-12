@@ -10,13 +10,13 @@ import com.sungkyul.synergy.utils.edu.EduHand
 import com.sungkyul.synergy.utils.edu.EduScreen
 
 data class DefaultPhoneCourse1(val eduScreen: EduScreen): EduCourse {
-    override val eduDataList = ArrayList<EduData>()
+    override val list = ArrayList<EduData>()
     override val width = DisplayUtils.pxToDp(eduScreen.context, eduScreen.width.toFloat())
     override val height = DisplayUtils.pxToDp(eduScreen.context, eduScreen.height.toFloat())
 
     // 교육 코스를 만든다.
     init {
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.contentText = "해당 부분은 다른<br>사람의 전화번호를<br>입력하는 버튼이에요."
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 100.0f
@@ -34,7 +34,7 @@ data class DefaultPhoneCourse1(val eduScreen: EduScreen): EduCourse {
             cover.visibility = true
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.duration = 750
             cover.duration = 750
             arrow.duration = 750
@@ -49,20 +49,20 @@ data class DefaultPhoneCourse1(val eduScreen: EduScreen): EduCourse {
             dialog.contentText = "전화를 거는 버튼입니다.<br>이 버튼을 누르면<br>상대방과 통화를<br>할 수 있어요."
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.contentText = "통화를 걸어볼까요?"
             cover.boxVisibility = false
             cover.boxStrokeVisibility = false
             arrow.endTo = EduScreen.DIALOG
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.contentText = "010-2468-3579로<br>전화를 걸어보세요."
             dialog.contentColor = "#FFFFFF"
             dialog.background = R.drawable.edu_dialog_green_bg
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.visibility = false
             cover.visibility = false
             arrow.visibility = false
@@ -94,7 +94,7 @@ data class DefaultPhoneCourse1(val eduScreen: EduScreen): EduCourse {
             '#' to Pair(300.0f, 580.0f)
         )
         for(i in phoneNumber) {
-            eduDataList.add(EduData().apply {
+            list.add(EduData().apply {
                 action.id = "click_key_button"
                 action.message = i.toString()
                 hands.add(
@@ -108,7 +108,7 @@ data class DefaultPhoneCourse1(val eduScreen: EduScreen): EduCourse {
             })
         }
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             action.id = "click_call_button"
             hands.add(
                 EduHand(

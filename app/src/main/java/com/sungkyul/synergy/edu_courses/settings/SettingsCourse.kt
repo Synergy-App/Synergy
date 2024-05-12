@@ -9,13 +9,13 @@ import com.sungkyul.synergy.utils.edu.EduHand
 import com.sungkyul.synergy.utils.edu.EduScreen
 
 data class SettingsCourse(val eduScreen: EduScreen): EduCourse {
-    override val eduDataList = ArrayList<EduData>()
+    override val list = ArrayList<EduData>()
     override val width = DisplayUtils.pxToDp(eduScreen.context, eduScreen.width.toFloat())
     override val height = DisplayUtils.pxToDp(eduScreen.context, eduScreen.height.toFloat())
 
     // 교육 코스를 만든다.
     init {
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.contentText = "화면 밝기와<br>글자 크기에 대해서<br>배워보겠습니다."
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 300.0f
@@ -26,11 +26,11 @@ data class SettingsCourse(val eduScreen: EduScreen): EduCourse {
             cover.visibility = true
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.contentText = "맨 아래까지 스크롤해주세요."
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.visibility = false
             cover.visibility = false
             action.id = "scroll_to_bottom"
@@ -44,7 +44,7 @@ data class SettingsCourse(val eduScreen: EduScreen): EduCourse {
             )
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.contentText = "<b>디스플레이</b>는<br>스마트폰의 다양한 설정을 할 수<br>있습니다."
             dialog.top = 450.0f
             dialog.bottom = 150.0f
@@ -58,11 +58,11 @@ data class SettingsCourse(val eduScreen: EduScreen): EduCourse {
             cover.boxStrokeVisibility = true
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.contentText = "디스플레이를 클릭해주세요."
         })
 
-        eduDataList.add(EduData().apply {
+        list.add(EduData().apply {
             dialog.visibility = false
             cover.visibility = false
             cover.boxVisibility = false
