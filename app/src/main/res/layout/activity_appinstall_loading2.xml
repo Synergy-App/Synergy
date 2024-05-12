@@ -90,12 +90,14 @@
 
         <!-- 앱 이미지 -->
         <ImageView
-            android:id="@+id/kakao_app_image"
+            android:id="@+id/l2_kakao_app_image"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/ic_install_logo_kakaotalk"
+            android:src="@drawable/ic_install_kakao_down"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="10dp"/>
+            android:layout_marginStart="9.9dp"
+            android:layout_marginTop="-1dp"/>
+
 
 
         <!-- 앱 이름 텍스트 -->
@@ -105,20 +107,20 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="20dp"
-            android:layout_toEndOf="@id/kakao_app_image"
+            android:layout_toEndOf="@id/l2_kakao_app_image"
             android:text="카카오톡 KakaoTalk"
             android:textColor="#1F1F1F"
             android:textSize="16sp" />
 
         <!-- 설치 버튼 -->
         <Button
-            android:id="@+id/kakao_install_btn"
+            android:id="@+id/kakao_cancel_btn"
             android:layout_width="68dp"
             android:layout_height="44dp"
-            android:text="설치"
-            android:textColor="@color/white"
+            android:text="취소"
+            android:textColor="#0B57CF"
             android:textSize="16sp"
-            android:background="@drawable/install_kakao_rounded_blue_btn_background"
+            android:background="@drawable/install_kakao_rounded_white_btn_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginStart="330dp"
@@ -126,20 +128,6 @@
             android:layout_marginTop="4dp"
             android:layout_alignParentEnd="true"/>
 
-
-        <!-- 설치 버튼 아래 텍스트 -->
-        <TextView
-            android:id="@+id/kakao_install_btn_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="인앱 구매"
-            android:textColor="#434746"
-            android:textSize="10sp"
-            app:layout_constraintTop_toBottomOf="@id/kakao_install_btn"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="50dp"
-            android:layout_marginStart="348dp"
-            android:layout_marginEnd="10dp"/>
 
         <!-- 앱 설명 텍스트 -->
         <TextView
@@ -149,30 +137,18 @@
             android:layout_below="@id/kakao_app_text"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:layout_toEndOf="@id/kakao_app_image"
-            android:text="Kakao Corp."
+            android:layout_toEndOf="@id/l2_kakao_app_image"
+            android:text="89.89MB 중 4%"
             android:textColor="#1F1F1F"
             android:textSize="15sp" />
 
-        <!-- 앱 설명 텍스트2 -->
-        <TextView
-            android:id="@+id/kakao_info_text2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/kakao_info_text"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_toEndOf="@id/kakao_app_image"
-            android:text="광고 포함"
-            android:textColor="#454746"
-            android:textSize="14sp" />
 
         <RelativeLayout
             android:id="@+id/kakao_review_layout"
             android:layout_width="100dp"
             android:layout_height="74dp"
             android:layout_alignParentStart="true"
-            android:layout_below="@id/kakao_app_image"
+            android:layout_below="@id/l2_kakao_app_image"
             android:layout_marginTop="50dp"
             android:layout_marginStart="0dp">
 
@@ -238,7 +214,7 @@
             android:layout_height="74dp"
             android:layout_toEndOf="@id/kakao_review_layout"
             android:layout_marginStart="4dp"
-            android:layout_below="@id/kakao_app_image"
+            android:layout_below="@id/l2_kakao_app_image"
             android:layout_marginTop="50dp"
             android:layout_marginEnd="0dp">
 
@@ -282,7 +258,7 @@
             android:layout_height="74dp"
             android:layout_toEndOf="@id/kakao_review_layout2"
             android:layout_marginStart="4dp"
-            android:layout_below="@id/kakao_app_image"
+            android:layout_below="@id/l2_kakao_app_image"
             android:layout_marginTop="50dp"
             android:layout_marginEnd="0dp"
             android:layout_alignParentEnd="true">
