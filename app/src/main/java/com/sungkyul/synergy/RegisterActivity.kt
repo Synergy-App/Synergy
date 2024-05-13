@@ -7,11 +7,17 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
-import com.sungkyul.synergy.backend.DBHelper
-import java.util.regex.Pattern
+import com.sungkyul.synergy.backend.ApiResponse
+import com.sungkyul.synergy.backend.auth.AuthAPI
+import com.sungkyul.synergy.backend.auth.CheckIdBody
+import com.sungkyul.synergy.backend.auth.CheckNicknameBody
+import com.sungkyul.synergy.backend.auth.CheckResult
+import com.sungkyul.synergy.backend.auth.SignUpBody
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+
 class RegisterActivity : AppCompatActivity() {
 
-    var DB: DBHelper?=null
     lateinit var editTextId: EditText
     lateinit var editTextPassword: EditText
     lateinit var editTextRePassword: EditText
@@ -23,11 +29,43 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var btnCheckNick: Button
     var CheckNick:Boolean=false
 
+    private val authApi: AuthAPI
+
+    init {
+        // API 호출하기 위한 세팅
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://synergy.hyeonwoo.com/") // 기본 URL 설정
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        this.authApi = retrofit.create(AuthAPI::class.java)
+    }
+
+    // POST /user/signup api를 실제로 호출하는 곳
+    fun callSignUpAPI(request: SignUpBody): ApiResponse<Nothing>? {
+        val call = this.authApi.signup(request)
+        val response = call.execute()
+        return response.body()
+    }
+
+    // POST /user/check-id api를 실제로 호출하는 곳
+    fun callCheckIdAPI(request: CheckIdBody): ApiResponse<CheckResult>? {
+        val call = this.authApi.checkId(request)
+        val response = call.execute()
+        return response.body()
+    }
+
+    // POST /user/check-nickname api를 실제로 호출하는 곳
+    fun callCheckNicknameAPI(request: CheckNicknameBody): ApiResponse<CheckResult>? {
+        val call = this.authApi.checkNickname(request)
+        val response = call.execute()
+        return response.body()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        DB = DBHelper(this)
         editTextId = findViewById(R.id.editTextId_Reg)
         editTextPassword = findViewById(R.id.editTextPass_Reg)
         editTextRePassword = findViewById(R.id.editTextRePass_Reg)
@@ -40,7 +78,6 @@ class RegisterActivity : AppCompatActivity() {
 
         btnCheckId.setOnClickListener {
             val user = editTextId.text.toString()
-            val idPattern = "^(?=.*[A-Za-z])(?=.*[0-9])[A-Za-z[0-9]]{6,15}$"
 
             if (user == "") {
                 Toast.makeText(
@@ -50,26 +87,28 @@ class RegisterActivity : AppCompatActivity() {
                 ).show()
             }
             else {
-                if (Pattern.matches(idPattern, user)) {
-                    val checkUsername = DB!!.checkUser(user)
-                    if(checkUsername == false){
-                        CheckId = true
-                        Toast.makeText(this@RegisterActivity, "사용 가능한 아이디입니다.", Toast.LENGTH_SHORT).show()
-                    }
-                    else {
-                        Toast.makeText(this@RegisterActivity, "이미 존재하는 아이디입니다.", Toast.LENGTH_SHORT).show()
-                    }
+
+                // POST /user/check-id api 연동
+
+                // api에 전달할 데이터
+                val body = CheckIdBody(user)
+                // api 호출 -> res에 응답데이터 저장
+                val res = callCheckIdAPI(body)
+
+                if (res?.success == true && res.data.available) {
+                    CheckId = true
+                    Toast.makeText(this@RegisterActivity, "사용 가능한 아이디입니다.", Toast.LENGTH_SHORT)
+                        .show()
+                } else {
+                    Toast.makeText(this@RegisterActivity, res?.err?.msg, Toast.LENGTH_SHORT).show()
                 }
-                else {
-                    Toast.makeText(this@RegisterActivity, "아이디 형식이 옳지 않습니다.", Toast.LENGTH_SHORT).show()
-                }
+
             }
         }
 
         // 닉네임 중복확인
         btnCheckNick.setOnClickListener {
             val nick = editTextNick.text.toString()
-            val nickPattern = "^[ㄱ-ㅣ가-힣]*$"
 
             if (nick == "") {
                 Toast.makeText(
@@ -79,19 +118,22 @@ class RegisterActivity : AppCompatActivity() {
                 ).show()
             }
             else {
-                if (Pattern.matches(nickPattern, nick)) {
-                    val checkNick = DB!!.checkNick(nick)
-                    if(checkNick == false){
-                        CheckNick = true
-                        Toast.makeText(this@RegisterActivity, "사용 가능한 닉네임입니다.", Toast.LENGTH_SHORT).show()
-                    }
-                    else {
-                        Toast.makeText(this@RegisterActivity, "이미 존재하는 닉네임입니다.", Toast.LENGTH_SHORT).show()
-                    }
+
+                // POST /user/check-nickname api 연동
+
+                // api에 전달할 데이터
+                val body = CheckNicknameBody(nick)
+                // api 호출 -> res에 응답데이터 저장
+                val res = callCheckNicknameAPI(body)
+
+                if (res?.success == true && res.data.available) {
+                    CheckNick = true
+                    Toast.makeText(this@RegisterActivity, "사용 가능한 닉네임입니다.", Toast.LENGTH_SHORT)
+                        .show()
+                } else {
+                    Toast.makeText(this@RegisterActivity, res?.err?.msg, Toast.LENGTH_SHORT).show()
                 }
-                else {
-                    Toast.makeText(this@RegisterActivity, "닉네임 형식이 옳지 않습니다.", Toast.LENGTH_SHORT).show()
-                }
+
             }
         }
 
@@ -102,8 +144,7 @@ class RegisterActivity : AppCompatActivity() {
             val repass = editTextRePassword.text.toString()
             val nick = editTextNick.text.toString()
             val phone = editTextPhone.text.toString()
-            val pwPattern = "^(?=.*[A-Za-z])(?=.*[0-9])[A-Za-z[0-9]]{8,15}$"
-            val phonePattern = "^(\\+[0-9]+)?[0-9]{10,15}$"
+
             // 사용자 입력이 비었을 때
             if (user == "" || pass == "" || repass == "" || nick == "" || phone == "") Toast.makeText(
                 this@RegisterActivity,
@@ -112,43 +153,38 @@ class RegisterActivity : AppCompatActivity() {
             ).show()
             else {
                 // 아이디 중복 확인이 됐을 때
-                if (CheckId == true) {
-                    // 비밀번호 형식이 맞을 때
-                    if (Pattern.matches(pwPattern, pass)) {
-                        // 비밀번호 재확인 성공
-                        if (pass == repass) {
-                            // 닉네임 중복확인
-                            if (CheckNick == true) {
-                                // 번호 형식
-                                if (Pattern.matches(phonePattern, phone)) {
-                                    val insert = DB!!.insertData(user, pass, nick, phone)
-                                    // 가입 성공 시 Toast를 띄우고 메인 화면으로 전환
-                                    if (insert == true) {
-                                        Toast.makeText(
-                                            this@RegisterActivity,
-                                            "가입되었습니다.",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                        val intent =
-                                            Intent(applicationContext, MainActivity::class.java)
-                                        startActivity(intent)
-                                    }
-                                    // 가입 실패 시
-                                    else {
-                                        Toast.makeText(
-                                            this@RegisterActivity,
-                                            "가입 실패하였습니다.",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                    }
+                if (CheckId) {
+                            // 닉네임 중복확인이 됐을 때
+                            if (CheckNick) {
 
-                                } else {
+                                // POST /user/signup api 호출
+
+                                // api에 전달할 데이터
+                                val body = SignUpBody(user, pass, repass, nick, phone)
+                                // api 호출 -> res에 응답데이터 저장
+                                val res = callSignUpAPI(body)
+
+                                // 가입 성공 시 Toast를 띄우고 메인 화면으로 전환
+                                if (res?.success == true) {
                                     Toast.makeText(
                                         this@RegisterActivity,
-                                        "전화번호 형식이 옳지 않습니다.",
+                                        "가입되었습니다.",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                    val intent =
+                                        Intent(applicationContext, MainActivity::class.java)
+                                    startActivity(intent)
+                                }
+                                // 가입 실패 시
+                                else {
+                                    Toast.makeText(
+                                        this@RegisterActivity,
+                                        res?.err?.msg,
                                         Toast.LENGTH_SHORT
                                     ).show()
                                 }
+
+
                             }
                             // 닉네임 중복확인 하지 않았을 때
                             else {
@@ -158,24 +194,8 @@ class RegisterActivity : AppCompatActivity() {
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
-                        }
-                        // 비밀번호 재확인 실패
-                        else {
-                            Toast.makeText(
-                                this@RegisterActivity,
-                                "비밀번호가 일치하지 않습니다.",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    }
-                    // 비밀번호 형식이 맞지 않을 때
-                    else {
-                        Toast.makeText(
-                            this@RegisterActivity,
-                            "비밀번호 형식이 옳지 않습니다.",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
+
+
                 }
                 // 아이디 중복확인이 되지 않았을 때
                 else {

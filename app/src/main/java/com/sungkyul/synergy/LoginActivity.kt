@@ -7,20 +7,40 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
-import com.sungkyul.synergy.backend.DBHelper
+import com.sungkyul.synergy.backend.ApiResponse
+import com.sungkyul.synergy.backend.auth.AuthAPI
+import com.sungkyul.synergy.backend.auth.SignInBody
+import com.sungkyul.synergy.backend.auth.SignInResult
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class LoginActivity : AppCompatActivity() {
     lateinit var btnLogin: ImageButton
     lateinit var editTextId: EditText
     lateinit var editTextPassword: EditText
     lateinit var btnRegister: Button
-    var DB: DBHelper?=null
+
+    private val authApi: AuthAPI
+
+    init {
+        // API 호출하기 위한 세팅
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://synergy.hyeonwoo.com/") // 기본 URL 설정
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        this.authApi = retrofit.create(AuthAPI::class.java)
+    }
+
+    fun callSignInAPI(request: SignInBody): ApiResponse<SignInResult>? {
+        val call = this.authApi.signin(request)
+        val response = call.execute()
+        return response.body()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
-        DB = DBHelper(this)
 
         btnLogin = findViewById(R.id.btnLogin)
         editTextId = findViewById(R.id.editTextId)
@@ -29,24 +49,34 @@ class LoginActivity : AppCompatActivity() {
 
         // 로그인 버튼 클릭
         btnLogin!!.setOnClickListener {
-            val user = editTextId!!.text.toString()
-            val pass = editTextPassword!!.text.toString()
+            val authId = editTextId!!.text.toString()
+            val pw = editTextPassword!!.text.toString()
 
             // 빈칸 제출시 Toast
-            if (user == "" || pass == "") {
+            if (authId == "" || pw == "") {
                 Toast.makeText(this@LoginActivity, "아이디와 비밀번호를 모두 입력해주세요.", Toast.LENGTH_SHORT).show()
             }
             else {
-                val checkUserpass = DB!!.checkUserpass(user, pass)
-                // id 와 password 일치시
-                if (checkUserpass == true) {
+
+                // POST /user/signin api 호출
+
+                // api에 전달할 데이터
+                val body = SignInBody(authId, pw)
+                // api 호출 -> res에 응답데이터 저장
+                val res = callSignInAPI(body)
+
+                // 로그인 성공 시
+                if (res?.success == true) {
+                    // TODO: 앱 안에 영구적으로 저장할 수 있는 곳에 res.data.accessToken을 저장해야함. 나중에 다른 API 호출할 때 이 accessToken을 함께 서버에 넘겨주기 때문.
+
                     Toast.makeText(this@LoginActivity, "로그인 되었습니다.", Toast.LENGTH_SHORT).show()
 
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }
+                // 로그인 실패 시
                 else {
-                    Toast.makeText(this@LoginActivity, "아이디와 비밀번호를 확인해 주세요.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@LoginActivity, res?.err?.msg, Toast.LENGTH_SHORT).show()
                 }
             }
         }
