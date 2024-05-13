@@ -7,9 +7,11 @@ import com.sungkyul.synergy.R
 
 data class EduDialog(
     var titleText: String? = null,
+    var titleFont: Int? = null,
     var titleGravity: Int? = null,
     var titleColor: String? = null,
     var contentText: String? = null,
+    var contentFont: Int? = null,
     var contentGravity: Int? = null,
     var contentColor: String? = null,
     var duration: Long? = null,

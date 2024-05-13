@@ -9,88 +9,9 @@ import android.widget.FrameLayout
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.edu_space.default_app.DefaultAppActivity
 
 /*
-    ## 소개
-    교육 화면이다.
-
-    ## 주의점
-    - 단위는 dp이다.
-
-    ## 사용법
-    0. 교육을 진행할 액티비티 이름은 Target이라 가정한다.
-
-    1. activity_target.xml 안에 EduScreen을 추가한다.
-    ```
-    <com.sungkyul.synergy.utils.EduScreen
-        android:id="@+id/edu_screen"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-    ```
-
-    2. EduCourses 안에 원하는 교육 코스 함수를 만들고, TargetActivity의 onCreate 함수 안에 아래 코드를 작성한다.
-    ```
-    // 교육을 진행해보자!
-    binding.eduScreen.post {
-        binding.eduScreen.course = EduCourses.customCourse(
-            binding.eduScreen.context,
-            binding.eduScreen.width.toFloat(),
-            binding.eduScreen.height.toFloat()
-        )
-        binding.eduScreen.setOnFinishedCourseListener {
-            // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳
-        }
-        binding.eduScreen.start(this)
-    }
-    ```
-
-    3. TargetActivity의 onCreate 함수 안에 뒤로 가기 이벤트에 대한 코드를 작성한다.
-    ```
-    // 뒤로 가기 키를 눌렀을 때의 이벤트를 처리한다.
-    onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
-        override fun handleOnBackPressed() {
-            // MainActivity로 되돌아 간다.
-            val intent = Intent(binding.root.context, MainActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-            startActivity(intent)
-        }
-    })
-    ```
-
-    ### 프래그먼트에서 eduListener.onAction 함수 사용
-    0. EduScreen에 액션을 보낼 프래그먼트 이름은 Target이라 가정한다.
-
-    1. TargetFragment의 생성자를 다음과 같이 작성한다.
-    ```
-    class TargetFragment(private val eduListener: EduListener) : Fragment() {
-        ...
-    }
-    ```
-
-    2. TargetFragment 안의 원하는 이벤트 리스너에 eduListener.onAction을 호출한다. 다음은 button의 클릭 리스너 안에 호출하는 예시이다.
-    ```
-    binding.button.setOnClickListener {
-        if(binding.eduScreen.onAction("click_button")) {
-            // 보낸 액션이 현재 교육 진행에서 요구하는 액션이라면, 이 부분이 실행된다.
-        }
-    }
-    ```
-
-    3. 액티비티에서 사용할 때 다음과 같이 TargetFragment를 선언하고 사용하면 된다.
-    ```
-    var targetFragment = TargetFragment(binding.eduScreen)
-    ```
-
-    ## Members
-    - course: 교육 코스이다.
-    - onPosted()
-    - onAction(id, message)
-    - getAction()
-    - setOnFinishedCourseListener(l): 교육 코스가 끝났을 때 이벤트 리스너 l이 호출된다.
-    - start(activity): 교육을 시작한다.
-    - next()
-    - prev()
+    교육 화면 레이아웃이다.
 */
 class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, attrs), EduListener {
     private val eduScreenFragment = EduScreenFragment()
@@ -98,9 +19,11 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
     private val currentEduData = EduData(
         EduDialog(
             titleText = "",
+            titleFont = R.font.pretendard_semibold,
             titleGravity = Gravity.START,
             titleColor = "#000000",
             contentText = "",
+            contentFont = R.font.pretendard_regular,
             contentGravity = Gravity.START,
             contentColor = "#000000",
             duration = 0,
@@ -130,7 +53,6 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
             contentText = "",
             contentGravity = Gravity.START,
             contentColor = "#000000",
-            contentBolds = listOf(),
             duration = 0,
             height = 0,
             background = R.drawable.edu_dialog_bg,
@@ -143,7 +65,6 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
             contentText = "",
             contentGravity = Gravity.START,
             contentColor = "#000000",
-            contentBolds = listOf(),
             duration = 0,
             height = 0,
             background = R.drawable.edu_dialog_bg,
@@ -227,9 +148,11 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         val currentDialog = currentEduData.dialog
         val dialog = course!!.list[num].dialog
         currentDialog.titleText = dialog.titleText ?: currentDialog.titleText
+        currentDialog.titleFont = dialog.titleFont ?: currentDialog.titleFont
         currentDialog.titleGravity = dialog.titleGravity ?: currentDialog.titleGravity
         currentDialog.titleColor = dialog.titleColor ?: currentDialog.titleColor
         currentDialog.contentText = dialog.contentText ?: currentDialog.contentText
+        currentDialog.contentFont = dialog.contentFont ?: currentDialog.contentFont
         currentDialog.contentGravity = dialog.contentGravity ?: currentDialog.contentGravity
         currentDialog.contentColor = dialog.contentColor ?: currentDialog.contentColor
         currentDialog.duration = dialog.duration ?: currentDialog.duration
@@ -265,9 +188,12 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         /*
         현재 EduData(+ course!!.list[num]의 EduData)를 참고하여 교육 화면을 변경한다.
         */
-        // 다이얼로그의 제목과 내용을 변경한다.
+        // 다이얼로그의 제목/내용 텍스트를 변경한다.
         eduScreenFragment.setDialogTitle(currentDialog.titleText!!, currentDialog.titleGravity!!, currentDialog.titleColor!!)
         eduScreenFragment.setDialogContent(currentDialog.contentText!!, currentDialog.contentGravity!!, currentDialog.contentColor!!)
+        // 다이얼로그의 제목/내용 폰트를 변경한다.
+        eduScreenFragment.setDialogTitleFont(currentDialog.titleFont!!)
+        eduScreenFragment.setDialogContentFont(currentDialog.contentFont!!)
         // 다이얼로그를 이동시킨다.
         eduScreenFragment.translateDialog(
             currentDialog.duration!!,
