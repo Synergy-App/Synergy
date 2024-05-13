@@ -380,12 +380,16 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         const val DIALOG = 0
         const val BOX = 1
 
-        fun navigateBackWithSingleTop(from: AppCompatActivity, to: Class<out AppCompatActivity>) {
+        fun toTop(from: AppCompatActivity, to: Class<out AppCompatActivity>) {
+            val intent = Intent(from, to)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            from.startActivity(intent)
+        }
+
+        fun navigateBackToTop(from: AppCompatActivity, to: Class<out AppCompatActivity>) {
             from.onBackPressedDispatcher.addCallback(from, object: OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
-                    val intent = Intent(from, to)
-                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-                    from.startActivity(intent)
+                    toTop(from, to)
                 }
             })
         }
