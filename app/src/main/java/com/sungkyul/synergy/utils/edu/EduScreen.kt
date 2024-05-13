@@ -10,6 +10,9 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.R
 
+/*
+    교육 화면 레이아웃이다.
+*/
 class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, attrs), EduListener {
     private val eduScreenFragment = EduScreenFragment()
     private var onFinishedCourseListener: (() -> Unit)? = null
@@ -48,7 +51,6 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
             contentText = "",
             contentGravity = Gravity.START,
             contentColor = "#000000",
-            contentBolds = listOf(),
             duration = 0,
             height = 0,
             background = R.drawable.edu_dialog_bg,
@@ -61,7 +63,6 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
             contentText = "",
             contentGravity = Gravity.START,
             contentColor = "#000000",
-            contentBolds = listOf(),
             duration = 0,
             height = 0,
             background = R.drawable.edu_dialog_bg,
