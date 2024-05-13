@@ -343,6 +343,14 @@ class EduScreenFragment : Fragment() {
         binding.dialogContent.setTextColor(Color.parseColor(color))
     }
 
+    fun setDialogTitleFont(font: Int) {
+        binding.dialogTitle.typeface = resources.getFont(font)
+    }
+
+    fun setDialogContentFont(font: Int) {
+        binding.dialogContent.typeface = resources.getFont(font)
+    }
+
     fun setDialogBackground(background: Int) {
         binding.dialog.setBackgroundResource(background)
     }

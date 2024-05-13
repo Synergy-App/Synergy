@@ -19,9 +19,11 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
     private val currentEduData = EduData(
         EduDialog(
             titleText = "",
+            titleFont = R.font.pretendard_semibold,
             titleGravity = Gravity.START,
             titleColor = "#000000",
             contentText = "",
+            contentFont = R.font.pretendard_regular,
             contentGravity = Gravity.START,
             contentColor = "#000000",
             duration = 0,
@@ -146,9 +148,11 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         val currentDialog = currentEduData.dialog
         val dialog = course!!.list[num].dialog
         currentDialog.titleText = dialog.titleText ?: currentDialog.titleText
+        currentDialog.titleFont = dialog.titleFont ?: currentDialog.titleFont
         currentDialog.titleGravity = dialog.titleGravity ?: currentDialog.titleGravity
         currentDialog.titleColor = dialog.titleColor ?: currentDialog.titleColor
         currentDialog.contentText = dialog.contentText ?: currentDialog.contentText
+        currentDialog.contentFont = dialog.contentFont ?: currentDialog.contentFont
         currentDialog.contentGravity = dialog.contentGravity ?: currentDialog.contentGravity
         currentDialog.contentColor = dialog.contentColor ?: currentDialog.contentColor
         currentDialog.duration = dialog.duration ?: currentDialog.duration
@@ -184,9 +188,12 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         /*
         현재 EduData(+ course!!.list[num]의 EduData)를 참고하여 교육 화면을 변경한다.
         */
-        // 다이얼로그의 제목과 내용을 변경한다.
+        // 다이얼로그의 제목/내용 텍스트를 변경한다.
         eduScreenFragment.setDialogTitle(currentDialog.titleText!!, currentDialog.titleGravity!!, currentDialog.titleColor!!)
         eduScreenFragment.setDialogContent(currentDialog.contentText!!, currentDialog.contentGravity!!, currentDialog.contentColor!!)
+        // 다이얼로그의 제목/내용 폰트를 변경한다.
+        eduScreenFragment.setDialogTitleFont(currentDialog.titleFont!!)
+        eduScreenFragment.setDialogContentFont(currentDialog.contentFont!!)
         // 다이얼로그를 이동시킨다.
         eduScreenFragment.translateDialog(
             currentDialog.duration!!,
