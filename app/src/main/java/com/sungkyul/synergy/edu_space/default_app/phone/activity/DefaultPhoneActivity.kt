@@ -51,19 +51,11 @@ class DefaultPhoneActivity : AppCompatActivity() {
             }
 
             binding.eduScreen.setOnFinishedCourseListener {
-                // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
-
-                // DefaultAppActivity로 되돌아 간다.
-                val intent = Intent(binding.root.context, DefaultAppActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-                startActivity(intent)
+                EduScreen.toTop(this, DefaultAppActivity::class.java)
             }
-            // 교육을 시작한다.
             binding.eduScreen.start(this)
         }
-
-        // 뒤로 가기 키를 눌렀을 때의 이벤트를 처리한다.
-        EduScreen.navigateBackWithSingleTop(this, DefaultAppActivity::class.java)
+        EduScreen.navigateBackToTop(this, DefaultAppActivity::class.java)
 
         // Fragments
         keypadFragment = DefaultPhoneKeypadFragment(binding.eduScreen)
