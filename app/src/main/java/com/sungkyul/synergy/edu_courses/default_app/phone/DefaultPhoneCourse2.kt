@@ -33,6 +33,8 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
+            dialog.duration = 750
+            dialog.contentGravity = Gravity.CENTER
             dialog.contentText = "최근기록 버튼은<br>전화 기록을<br>확인할 수 있습니다."
             dialog.top = 500.0f
             dialog.bottom = 100.0f
@@ -54,7 +56,7 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
             dialog.bottom = 430.0f
             dialog.start = 24.0f
             dialog.end = 24.0f
-            dialog.contentColor = "#FFFFFF"
+            dialog.contentColor = R.color.white
             dialog.background = R.drawable.edu_dialog_green_bg
 
             dialog.visibility = true
