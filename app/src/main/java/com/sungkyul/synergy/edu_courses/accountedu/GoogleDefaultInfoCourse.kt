@@ -14,6 +14,7 @@ data class GoogleDefaultInfoCourse(val eduScreen: EduScreen): EduCourse {
     // 교육 코스를 만든다.
     init {
         list.add(EduData().apply {
+            cover.isClickable = true
             dialog.contentText = "기본 정보를<br>입력해주세요."
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 300.0f

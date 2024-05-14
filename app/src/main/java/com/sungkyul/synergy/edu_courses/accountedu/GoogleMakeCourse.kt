@@ -14,6 +14,7 @@ data class GoogleMakeCourse(val eduScreen: EduScreen): EduCourse {
     // 교육 코스를 만든다.
     init {
         list.add(EduData().apply {
+            cover.isClickable = true
             dialog.contentText = "자신의 이름을<br>작성해주세요."
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 300.0f

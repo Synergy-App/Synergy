@@ -14,6 +14,7 @@ data class GooglePutCodeCourse(val eduScreen: EduScreen): EduCourse {
     // 교육 코스를 만든다.
     init {
         list.add(EduData().apply {
+            cover.isClickable = true
             dialog.contentText = "보안문자가 올 때까지<br>기다려볼까요?"
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 300.0f

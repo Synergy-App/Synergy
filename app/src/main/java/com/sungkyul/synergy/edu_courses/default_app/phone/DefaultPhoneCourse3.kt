@@ -13,6 +13,7 @@ data class DefaultPhoneCourse3(val eduScreen: EduScreen): EduCourse {
     // 교육 코스를 만든다.
     init {
         list.add(EduData().apply {
+            cover.isClickable = true
         })
     }
 }
