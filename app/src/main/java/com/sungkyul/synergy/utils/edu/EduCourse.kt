@@ -10,12 +10,12 @@ data class EduDialog(
     var titleFont: Int? = null,
     var titleSize: Float? = null,
     var titleGravity: Int? = null,
-    var titleColor: String? = null,
+    var titleColor: Int? = null,
     var contentText: String? = null,
     var contentFont: Int? = null,
     var contentSize: Float? = null,
     var contentGravity: Int? = null,
-    var contentColor: String? = null,
+    var contentColor: Int? = null,
     var duration: Long? = null,
     var top: Float? = null,
     var bottom: Float? = null,
@@ -57,7 +57,7 @@ data class EduCover(
     var boxBottom: Float? = null,
     var boxVisibility: Boolean? = null,
     var boxStrokeVisibility: Boolean? = null,
-    var backgroundColor: String? = null,
+    var backgroundColor: Int? = null,
     var visibility: Boolean? = null,
     var isClickable: Boolean? = null
 )
