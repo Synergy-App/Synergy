@@ -11,6 +11,10 @@ import com.sungkyul.synergy.backend.ApiResponse
 import com.sungkyul.synergy.backend.auth.AuthAPI
 import com.sungkyul.synergy.backend.auth.SignInBody
 import com.sungkyul.synergy.backend.auth.SignInResult
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -32,10 +36,13 @@ class LoginActivity : AppCompatActivity() {
         this.authApi = retrofit.create(AuthAPI::class.java)
     }
 
-    fun callSignInAPI(request: SignInBody): ApiResponse<SignInResult>? {
-        val call = this.authApi.signin(request)
-        val response = call.execute()
-        return response.body()
+    // POST /user/signin api를 실제로 호출하는 곳
+    private suspend fun callSignInAPI(request: SignInBody): ApiResponse<SignInResult>? {
+        return withContext(Dispatchers.IO) {
+            val call = authApi.signin(request)
+            val response = call.execute()
+            response.body()
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,44 +55,40 @@ class LoginActivity : AppCompatActivity() {
         btnRegister = findViewById(R.id.btnRegister)
 
         // 로그인 버튼 클릭
-        btnLogin!!.setOnClickListener {
-            val authId = editTextId!!.text.toString()
-            val pw = editTextPassword!!.text.toString()
+        btnLogin.setOnClickListener {
+            val authId = editTextId.text.toString()
+            val pw = editTextPassword.text.toString()
 
             // 빈칸 제출시 Toast
-            if (authId == "" || pw == "") {
+            if (authId.isEmpty() || pw.isEmpty()) {
                 Toast.makeText(this@LoginActivity, "아이디와 비밀번호를 모두 입력해주세요.", Toast.LENGTH_SHORT).show()
-            }
-            else {
+            } else {
+                // 코루틴을 사용하여 네트워크 작업 실행
+                CoroutineScope(Dispatchers.Main).launch {
+                    val body = SignInBody(authId, pw)
+                    val res = callSignInAPI(body)
 
-                // POST /user/signin api 호출
+                    // 로그인 성공 시
+                    if (res?.success == true) {
+                        // TODO: 앱 안에 영구적으로 저장할 수 있는 곳에 res.data.accessToken을 저장해야함. 나중에 다른 API 호출할 때 이 accessToken을 함께 서버에 넘겨주기 때문.
 
-                // api에 전달할 데이터
-                val body = SignInBody(authId, pw)
-                // api 호출 -> res에 응답데이터 저장
-                val res = callSignInAPI(body)
+                        Toast.makeText(this@LoginActivity, "로그인 되었습니다.", Toast.LENGTH_SHORT).show()
 
-                // 로그인 성공 시
-                if (res?.success == true) {
-                    // TODO: 앱 안에 영구적으로 저장할 수 있는 곳에 res.data.accessToken을 저장해야함. 나중에 다른 API 호출할 때 이 accessToken을 함께 서버에 넘겨주기 때문.
-
-                    Toast.makeText(this@LoginActivity, "로그인 되었습니다.", Toast.LENGTH_SHORT).show()
-
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                }
-                // 로그인 실패 시
-                else {
-                    Toast.makeText(this@LoginActivity, res?.err?.msg, Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                        startActivity(intent)
+                    }
+                    // 로그인 실패 시
+                    else {
+                        Toast.makeText(this@LoginActivity, res?.err?.msg ?: "로그인에 실패하였습니다.", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }
+
         // 회원가입 버튼 클릭시
         btnRegister.setOnClickListener {
             val loginIntent = Intent(this@LoginActivity, RegisterActivity::class.java)
             startActivity(loginIntent)
         }
-
-
     }
 }
