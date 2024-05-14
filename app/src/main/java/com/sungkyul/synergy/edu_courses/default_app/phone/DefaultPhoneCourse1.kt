@@ -17,7 +17,6 @@ data class DefaultPhoneCourse1(val eduScreen: EduScreen): EduCourse {
     // 교육 코스를 만든다.
     init {
         list.add(EduData().apply {
-            cover.isClickable = true
             dialog.contentText = "전화 화면 입니다."
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 26.0f
@@ -48,6 +47,7 @@ data class DefaultPhoneCourse1(val eduScreen: EduScreen): EduCourse {
             arrow.endTo = EduScreen.DIALOG
             dialog.visibility = true
             cover.visibility = true
+            cover.isClickable = true
         })
 
         list.add(EduData().apply {
@@ -81,6 +81,7 @@ data class DefaultPhoneCourse1(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.visibility = false
             cover.visibility = false
+            cover.isClickable = false
             arrow.visibility = false
             action.id = "click_key_button"
             action.message = "0"

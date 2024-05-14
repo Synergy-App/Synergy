@@ -16,7 +16,6 @@ data class SettingsFontCourse(val eduScreen: EduScreen): EduCourse {
     // 교육 코스를 만든다.
     init {
         list.add(EduData().apply {
-            cover.isClickable = true
             dialog.contentText = "손가락을 따라<br>움직여주세요."
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 300.0f
@@ -25,11 +24,13 @@ data class SettingsFontCourse(val eduScreen: EduScreen): EduCourse {
             dialog.end = 50.0f
             dialog.visibility = true
             cover.visibility = true
+            cover.isClickable = true
         })
 
         list.add(EduData().apply {
             dialog.visibility = false
             cover.visibility = false
+            cover.isClickable = false
             action.id = "change_text_size_bar"
             action.message = "7"
             hands.add(
@@ -46,6 +47,7 @@ data class SettingsFontCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.visibility = true
             cover.visibility = true
+            cover.isClickable = true
             dialog.contentText = "이것으로<br>환경 설정 교육을<br>마치겠습니다.<br>수고하셨습니다!"
         })
     }

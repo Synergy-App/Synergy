@@ -17,7 +17,6 @@ data class KakaoChatCourse(val eduScreen: EduScreen): EduCourse {
     // 교육 코스를 만든다.
     init {
         list.add(EduData().apply {
-            cover.isClickable = true
             dialog.contentText = "이 공간은<br>친구와 채팅을<br>할 수 있습니다."
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 300.0f
@@ -26,11 +25,13 @@ data class KakaoChatCourse(val eduScreen: EduScreen): EduCourse {
             dialog.end = 50.0f
             dialog.visibility = true
             cover.visibility = true
+            cover.isClickable = true
         })
 
         /*
         dialog.visibility = false
         cover.visibility = false
+            cover.isClickable = false
         arrow.visibility = false
         action.id = "click_message_edit_text"
         hands.add(EduHand(
@@ -47,11 +48,13 @@ data class KakaoChatCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentText = "메시지를 보내볼까요?"
             dialog.visibility = true
             cover.visibility = true
+            cover.isClickable = true
         })
 
         list.add(EduData().apply {
             dialog.visibility = false
             cover.visibility = false
+            cover.isClickable = false
             arrow.visibility = false
             action.id = "click_message_edit_text"
             hands.add(
