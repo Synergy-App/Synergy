@@ -123,8 +123,7 @@ class EduScreenFragment : Fragment() {
         return binding.root
     }
 
-    // 애니메이터를 등록한다.
-    // 화면을 연속으로 빠르게 눌렀을 때, 애니메이션이 끊기는 현상을 해결할 수 있다.
+    // 이 함수로 Animator를 등록하여 사용하면, 화면을 연속으로 빠르게 눌렀을 때 애니메이션이 끊기는 현상을 해결할 수 있다.
     private fun registerAnimator(id: String, animator: ValueAnimator) {
         animatorMap[id]?.cancel()
         animatorMap[id] = animator
@@ -210,13 +209,11 @@ class EduScreenFragment : Fragment() {
         }, 0.0f, 1.0f, duration, interpolator))
     }
 
-    // 손이 등장하는 애니메이션을 시작한다.
-    // 등장 이후에는 nextAnimator가 무한 반복된다.
     private fun startShowHandAnimationSet(imageView: ImageView, nextAnimator: AnimatorSet): AnimatorSet {
         val fromValue = 0.0f
         val toValue = 1.0f
 
-        // 스케일 확대
+        // 스케일을 확대한다.
         val scaleSet = AnimatorSet().apply {
             duration = toggleHandDuration
             interpolator = toggleHandInterpolator
@@ -252,7 +249,6 @@ class EduScreenFragment : Fragment() {
         return animatorSet
     }
 
-    // 손이 사라지는 애니메이션을 시작한다.
     private fun startHideHandAnimationSet(imageView: ImageView): AnimatorSet {
         val fromValue = imageView.scaleX
         val toValue = 0.0f
@@ -273,10 +269,10 @@ class EduScreenFragment : Fragment() {
     }
 
     private fun draw() {
-        // Clear Canvas
+        // Clear canvas
         canvas.drawRect(0.0f, 0.0f, binding.root.width.toFloat(), binding.root.height.toFloat(), clearPaint)
 
-        // Cover
+        // Draw cover
         canvas.drawRect(
             0.0f,
             0.0f,
@@ -284,7 +280,7 @@ class EduScreenFragment : Fragment() {
             binding.root.height.toFloat(),
             coverPaint
         )
-        // Box
+        // Draw box
         if(boxPaint.alpha > 0) {
             canvas.drawRoundRect(
                 boxLeft,
@@ -296,7 +292,7 @@ class EduScreenFragment : Fragment() {
                 boxPaint
             )
         }
-        // BoxStroke
+        // Draw box border
         canvas.drawRoundRect(
             boxLeft-boxPadding,
             boxTop-boxPadding,
@@ -307,12 +303,12 @@ class EduScreenFragment : Fragment() {
             boxStrokePaint
         )
 
-        // Arrow
+        // Draw arrow
         canvas.drawLine(arrowStartX, arrowStartY, arrowEndX, arrowEndY, arrowPaint)
-        // ArrowEnd
+        // Draw arrow end
         canvas.drawCircle(arrowEndX, arrowEndY, arrowEndSize, arrowPaint)
 
-        // Apply Canvas
+        // Apply canvas
         if(::bitmap.isInitialized) {
             binding.canvas.setImageBitmap(bitmap)
         }
