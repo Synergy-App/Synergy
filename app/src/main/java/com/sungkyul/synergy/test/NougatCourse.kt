@@ -16,8 +16,7 @@ data class NougatCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.titleText = "제목인 것"
             dialog.contentText = "내용인 것"
-            dialog.titleFont = R.font.mini_handwriting
-            dialog.contentFont = R.font.mini_handwriting
+            dialog.titleSize = 30.0f
             dialog.visibility = true
             dialog.top = 300.0f
             dialog.bottom = 300.0f
