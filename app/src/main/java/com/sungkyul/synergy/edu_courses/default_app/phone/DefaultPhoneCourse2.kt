@@ -1,6 +1,7 @@
 package com.sungkyul.synergy.edu_courses.default_app.phone
 
 import android.view.Gravity
+import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
 import com.sungkyul.synergy.utils.edu.EduCourse
@@ -12,9 +13,25 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
     override val list = ArrayList<EduData>()
     override val width = DisplayUtils.pxToDp(eduScreen.context, eduScreen.width.toFloat())
     override val height = DisplayUtils.pxToDp(eduScreen.context, eduScreen.height.toFloat())
-
+    //전화3_전화 목록 확인
     // 교육 코스를 만든다.
     init {
+
+        list.add(EduData().apply {
+            dialog.contentText = "전화가 종료되었습니다!"
+            dialog.contentGravity = Gravity.CENTER
+            dialog.contentFont = R.font.pretendard_medium
+            dialog.contentSize = 28.0f
+            dialog.top = 300.0f
+            dialog.bottom = 430.0f
+            dialog.start = 24.0f
+            dialog.end = 24.0f
+            dialog.background = R.drawable.edu_dialog_yellow_bg
+            dialog.visibility = true
+            cover.visibility = true
+            cover.isClickable = true
+        })
+
         list.add(EduData().apply {
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 500.0f
@@ -32,7 +49,23 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
             cover.boxVisibility = true
             cover.boxStrokeVisibility = true
             arrow.visibility = true
-            dialog.contentText = "이 부분을 통해<br>방금 전화를 건<br>통화 목록을<br>확인할 수 있어요."
+            dialog.contentText = "최근기록 버튼은<br>전화 기록을<br>확인할 수 있습니다."
+        })
+
+        list.add(EduData().apply {
+            dialog.contentText = "전화 기록을 확인해 보세요."
+            dialog.contentGravity = Gravity.CENTER
+            dialog.contentSize = 28.0f
+            dialog.top = 300.0f
+            dialog.bottom = 430.0f
+            dialog.start = 24.0f
+            dialog.end = 24.0f
+            dialog.contentColor = "#FFFFFF"
+            dialog.background = R.drawable.edu_dialog_green_bg
+
+            dialog.visibility = true
+            cover.visibility = true
+            cover.isClickable = true
         })
 
         list.add(EduData().apply {

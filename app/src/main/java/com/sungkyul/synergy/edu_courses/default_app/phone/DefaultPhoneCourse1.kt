@@ -13,11 +13,13 @@ data class DefaultPhoneCourse1(val eduScreen: EduScreen): EduCourse {
     override val list = ArrayList<EduData>()
     override val width = DisplayUtils.pxToDp(eduScreen.context, eduScreen.width.toFloat())
     override val height = DisplayUtils.pxToDp(eduScreen.context, eduScreen.height.toFloat())
-
+    //전화1_전화 키패드 화면
     // 교육 코스를 만든다.
     init {
         list.add(EduData().apply {
             dialog.contentText = "전화 화면 입니다."
+            dialog.contentFont = R.font.pretendard_medium
+            dialog.contentSize = 26.0f
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 26.0f
             dialog.bottom = 700.0f
@@ -25,6 +27,7 @@ data class DefaultPhoneCourse1(val eduScreen: EduScreen): EduCourse {
             dialog.end = 24.0f
             cover.boxVisibility = true
             cover.visibility = false
+            cover.isClickable = true
             arrow.endTo = EduScreen.DIALOG
             dialog.visibility = true
             dialog.contentColor = "#FFFFFF"
@@ -32,56 +35,54 @@ data class DefaultPhoneCourse1(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "해당 부분은 다른<br>사람의 전화번호를<br>입력하는 버튼이에요."
+            dialog.contentText = "이 부분은 키패드라고 불리며,<br>전화하고 싶은 상대의 전화번호를<br>입력하는 버튼입니다. "
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = 100.0f
-            dialog.bottom = 500.0f
-            dialog.start = 50.0f
-            dialog.end = 50.0f
-            cover.boxLeft = 50.0f
-            cover.boxTop = 300.0f
-            cover.boxRight = width-50.0f
-            cover.boxBottom = 600.0f
+            dialog.top = 50.0f
+            dialog.bottom = 550.0f /*커질수록 다이얼로그 크기가 작아짐*/
+            dialog.start = 24.0f
+            dialog.end = 24.0f
+
+            cover.boxLeft = 10.0f
+            cover.boxRight = width-10.0f
+            cover.boxTop = 350.0f
+            cover.boxBottom = 700.0f /*크기가 커질 수록 박스가 커짐 */
             cover.boxVisibility = true
             cover.boxStrokeVisibility = true
-            arrow.endTo = EduScreen.DIALOG
+
             dialog.visibility = true
             cover.visibility = true
-            cover.isClickable = true
+            dialog.contentColor = "#000000"
+            dialog.background = R.drawable.edu_dialog_bg
         })
 
         list.add(EduData().apply {
             dialog.duration = 750
             cover.duration = 750
-            arrow.duration = 750
-            dialog.top = 300.0f
-            dialog.bottom = 300.0f
-            cover.boxLeft = 150.0f
-            cover.boxTop = 620.0f
-            cover.boxRight = width-150.0f
-            cover.boxBottom = 720.0f
-            arrow.endTo = EduScreen.BOX
-            arrow.visibility = true
-            dialog.contentText = "전화를 거는 버튼입니다.<br>이 버튼을 누르면<br>상대방과 통화를<br>할 수 있어요."
-        })
 
-        list.add(EduData().apply {
-            dialog.contentText = "통화를 걸어볼까요?"
-            cover.boxVisibility = false
-            cover.boxStrokeVisibility = false
-            arrow.endTo = EduScreen.DIALOG
+            dialog.top = 450.0f
+            dialog.bottom = 200.0f
+
+            cover.boxLeft = 150.0f
+            cover.boxRight = width-150.0f
+            cover.boxTop = 680.0f
+            cover.boxBottom = 800.0f
+            dialog.contentText = "전화를 거는 버튼으로<br>전화번호를 입력하고<br>버튼을 누르면<br>상대방과 전화를<br>할 수 있어요."
         })
 
         list.add(EduData().apply {
             dialog.contentText = "010-2468-3579로<br>전화를 걸어보세요."
+            dialog.top = 300.0f
+            dialog.bottom = 400.0f
             dialog.contentColor = "#FFFFFF"
             dialog.background = R.drawable.edu_dialog_green_bg
+            cover.boxVisibility = false
+            cover.boxStrokeVisibility = false
+
         })
 
         list.add(EduData().apply {
             dialog.visibility = false
             cover.visibility = false
-            cover.isClickable = false
             arrow.visibility = false
             action.id = "click_key_button"
             action.message = "0"
@@ -89,7 +90,7 @@ data class DefaultPhoneCourse1(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 190.0f,
-                    y = 580.0f,
+                    y = 630.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
@@ -97,18 +98,18 @@ data class DefaultPhoneCourse1(val eduScreen: EduScreen): EduCourse {
 
         val phoneNumber = "1024683579"
         val keyPosition = hashMapOf(
-            '1' to Pair(80.0f, 340.0f),
-            '2' to Pair(190.0f, 340.0f),
-            '3' to Pair(300.0f, 340.0f),
-            '4' to Pair(80.0f, 420.0f),
-            '5' to Pair(190.0f, 420.0f),
-            '6' to Pair(300.0f, 420.0f),
-            '7' to Pair(80.0f, 500.0f),
-            '8' to Pair(190.0f, 500.0f),
-            '9' to Pair(300.0f, 500.0f),
-            '*' to Pair(80.0f, 580.0f),
-            '0' to Pair(190.0f, 580.0f),
-            '#' to Pair(300.0f, 580.0f)
+            '1' to Pair(80.0f, 390.0f),
+            '2' to Pair(190.0f, 390.0f),
+            '3' to Pair(300.0f, 390.0f),
+            '4' to Pair(80.0f, 480.0f),
+            '5' to Pair(190.0f, 480.0f),
+            '6' to Pair(300.0f, 480.0f),
+            '7' to Pair(80.0f, 560.0f),
+            '8' to Pair(190.0f, 560.0f),
+            '9' to Pair(300.0f, 560.0f),
+            '*' to Pair(80.0f, 630.0f),
+            '0' to Pair(190.0f, 630.0f),
+            '#' to Pair(300.0f, 630.0f)
         )
         for(i in phoneNumber) {
             list.add(EduData().apply {
@@ -130,8 +131,8 @@ data class DefaultPhoneCourse1(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = 200.0f,
-                    y = 670.0f,
+                    x = 180.0f,
+                    y = 750.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

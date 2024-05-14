@@ -89,10 +89,16 @@
             android:exported="false" /> <!-- 기본앱 활용 -->
         <activity
             android:name=".edu_space.default_app.phone.activity.DefaultPhoneActivity"
-            android:exported="false" /> <!-- 전화 화면 -->
+            android:exported="false"/> <!-- 전화 화면 -->
         <activity
             android:name=".edu_space.default_app.phone.activity.DefaultPhoneCallActivity"
-            android:exported="false" /> <!-- 전화 콜 화면 -->
+            android:exported="true" > <!-- 전화 콜 화면 -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".edu_space.default_app.phone.activity.DefaultPhoneAddActivity"
             android:exported="false"/> <!-- 전화 연락처 추가화면 -->
@@ -152,13 +158,7 @@
             android:exported="false" /> <!-- 병윤님 앱 설치 메인 화면 -->
         <activity
             android:name=".edu_space.appinstall.AppInstallMainActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".edu_space.appinstall.AppInstallSearchActivity"
             android:exported="false" /> <!-- 앱 설치 검색 화면 -->

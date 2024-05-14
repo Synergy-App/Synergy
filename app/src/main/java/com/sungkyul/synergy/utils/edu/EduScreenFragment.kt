@@ -65,7 +65,7 @@ class EduScreenFragment : Fragment() {
     private val boxStrokePaint = Paint().apply {
         style = Paint.Style.STROKE
         strokeWidth = 15.0f
-        color = Color.rgb(69, 232, 188)
+        color = Color.rgb(51, 255, 0)
         alpha = 0
     }
     private val arrowPaint = Paint().apply {
