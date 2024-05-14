@@ -16,7 +16,6 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
     // 교육 코스를 만든다.
     init {
         list.add(EduData().apply {
-            cover.isClickable = true
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 500.0f
             dialog.bottom = 100.0f
@@ -29,6 +28,7 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
             arrow.endTo = EduScreen.BOX
             dialog.visibility = true
             cover.visibility = true
+            cover.isClickable = true
             cover.boxVisibility = true
             cover.boxStrokeVisibility = true
             arrow.visibility = true
@@ -42,6 +42,7 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.visibility = false
             cover.visibility = false
+            cover.isClickable = false
             cover.boxVisibility = false
             cover.boxStrokeVisibility = false
             arrow.visibility = false
@@ -64,6 +65,7 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
             dialog.end = 50.0f
             dialog.visibility = true
             cover.visibility = true
+            cover.isClickable = true
             arrow.endTo = EduScreen.DIALOG
             dialog.contentText = "최근기록을 보면<br>전화 성공/실패 여부나<br>영상 통화 여부 등을<br>확인할 수 있어요."
         })
@@ -82,6 +84,7 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
             arrow.endTo = EduScreen.BOX
             dialog.visibility = true
             cover.visibility = true
+            cover.isClickable = true
             cover.boxVisibility = true
             cover.boxStrokeVisibility = true
             arrow.visibility = true
@@ -95,6 +98,7 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.visibility = false
             cover.visibility = false
+            cover.isClickable = false
             cover.boxVisibility = false
             cover.boxStrokeVisibility = false
             arrow.visibility = false

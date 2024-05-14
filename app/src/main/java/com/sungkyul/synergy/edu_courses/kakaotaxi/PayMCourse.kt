@@ -13,7 +13,6 @@ data class PayMCourse(val eduScreen: EduScreen): EduCourse {
     // 교육 코스를 만든다.
     init {
         list.add(EduData().apply {
-            cover.isClickable = true
             dialog.contentText = "넌 못 지나간다."
             dialog.top = 300.0f
             dialog.bottom = 300.0f
@@ -22,6 +21,7 @@ data class PayMCourse(val eduScreen: EduScreen): EduCourse {
             dialog.visibility = true
 
             cover.visibility = true
+            cover.isClickable = true
         })
     }
 }

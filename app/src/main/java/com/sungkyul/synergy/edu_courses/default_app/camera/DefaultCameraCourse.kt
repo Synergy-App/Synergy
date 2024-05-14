@@ -16,7 +16,6 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
     // 교육 코스를 만든다.
     init {
         list.add(EduData().apply {
-            cover.isClickable = true
             dialog.contentText = "위 메뉴는 카메라의<br>플래시, 타이머 등을<br>설정할 수 있어요."
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 200.0f
@@ -30,6 +29,7 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
             arrow.endTo = EduScreen.BOX
             dialog.visibility = true
             cover.visibility = true
+            cover.isClickable = true
             cover.boxStrokeVisibility = true
             cover.boxVisibility = true
             arrow.visibility = true
@@ -101,6 +101,7 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.visibility = false
             cover.visibility = false
+            cover.isClickable = false
             arrow.visibility = false
             action.id = "click_shooting_button"
             hands.add(
@@ -128,6 +129,7 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
             arrow.endTo = EduScreen.BOX
             dialog.visibility = true
             cover.visibility = true
+            cover.isClickable = true
             cover.boxVisibility = true
             cover.boxStrokeVisibility = true
             arrow.visibility = true
@@ -143,6 +145,7 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.visibility = false
             cover.visibility = false
+            cover.isClickable = false
             cover.boxVisibility = false
             cover.boxStrokeVisibility = false
             arrow.visibility = false

@@ -17,7 +17,6 @@ data class SettingsDisplayCourse(val eduScreen: EduScreen): EduCourse {
     // 교육 코스를 만든다.
     init {
         list.add(EduData().apply {
-            cover.isClickable = true
             dialog.contentText = "먼저 스마트폰<br>밝기 조절을<br>배워보겠습니다."
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 300.0f
@@ -26,6 +25,7 @@ data class SettingsDisplayCourse(val eduScreen: EduScreen): EduCourse {
             dialog.end = 50.0f
             dialog.visibility = true
             cover.visibility = true
+            cover.isClickable = true
         })
 
         list.add(EduData().apply {
@@ -35,6 +35,7 @@ data class SettingsDisplayCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.visibility = false
             cover.visibility = false
+            cover.isClickable = false
             action.id = "change_light_bar"
             action.message = "100"
             hands.add(
@@ -51,6 +52,7 @@ data class SettingsDisplayCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentText = "이번엔 글자 크기를<br>조절해보겠습니다."
             dialog.visibility = true
             cover.visibility = true
+            cover.isClickable = true
         })
 
         list.add(EduData().apply {
@@ -60,6 +62,7 @@ data class SettingsDisplayCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.visibility = false
             cover.visibility = false
+            cover.isClickable = false
             action.id = "scroll_to_bottom"
             hands.add(
                 EduHand(

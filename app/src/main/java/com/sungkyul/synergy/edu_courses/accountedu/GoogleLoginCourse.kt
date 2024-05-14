@@ -16,7 +16,6 @@ data class GoogleLoginCourse(val eduScreen: EduScreen): EduCourse {
     // 교육 코스를 만든다.
     init {
         list.add(EduData().apply {
-            cover.isClickable = true
             dialog.contentText = "<b>계정 만들기</b>를 <br>클릭해주세요."
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 300.0f
@@ -25,11 +24,13 @@ data class GoogleLoginCourse(val eduScreen: EduScreen): EduCourse {
             dialog.end = 50.0f
             dialog.visibility = true
             cover.visibility = true
+            cover.isClickable = true
         })
 
         list.add(EduData().apply {
             dialog.visibility = false
             cover.visibility = false
+            cover.isClickable = false
             hands.add(
                 EduHand(
                     id = "tap",
