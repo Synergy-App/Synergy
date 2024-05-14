@@ -17,6 +17,21 @@ data class DefaultPhoneCourse1(val eduScreen: EduScreen): EduCourse {
     // 교육 코스를 만든다.
     init {
         list.add(EduData().apply {
+            dialog.contentText = "전화 화면 입니다."
+            dialog.contentGravity = Gravity.CENTER
+            dialog.top = 26.0f
+            dialog.bottom = 700.0f
+            dialog.start = 24.0f
+            dialog.end = 24.0f
+            cover.boxVisibility = true
+            cover.visibility = false
+            arrow.endTo = EduScreen.DIALOG
+            dialog.visibility = true
+            dialog.contentColor = "#FFFFFF"
+            dialog.background = R.drawable.edu_dialog_black_bg
+        })
+
+        list.add(EduData().apply {
             dialog.contentText = "해당 부분은 다른<br>사람의 전화번호를<br>입력하는 버튼이에요."
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 100.0f
