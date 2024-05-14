@@ -17,6 +17,7 @@ data class SettingsDisplayCourse(val eduScreen: EduScreen): EduCourse {
     // 교육 코스를 만든다.
     init {
         list.add(EduData().apply {
+            cover.isClickable = true
             dialog.contentText = "먼저 스마트폰<br>밝기 조절을<br>배워보겠습니다."
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 300.0f

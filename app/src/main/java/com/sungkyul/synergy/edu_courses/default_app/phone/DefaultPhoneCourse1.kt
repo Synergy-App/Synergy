@@ -17,6 +17,7 @@ data class DefaultPhoneCourse1(val eduScreen: EduScreen): EduCourse {
     // 교육 코스를 만든다.
     init {
         list.add(EduData().apply {
+            cover.isClickable = true
             dialog.contentText = "해당 부분은 다른<br>사람의 전화번호를<br>입력하는 버튼이에요."
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 100.0f

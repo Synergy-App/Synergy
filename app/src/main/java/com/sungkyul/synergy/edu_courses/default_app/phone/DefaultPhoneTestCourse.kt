@@ -17,6 +17,7 @@ data class DefaultPhoneTestCourse(val eduScreen: EduScreen): EduCourse {
     // 교육 코스를 만든다.
     init {
         list.add(EduData().apply {
+            cover.isClickable = true
             dialog.titleText = ""
             dialog.contentText = "안녕하세요!"
             dialog.contentGravity = Gravity.CENTER

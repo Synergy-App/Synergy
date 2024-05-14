@@ -14,6 +14,7 @@ data class ScreenLayoutCourse(val eduScreen: EduScreen): EduCourse {
     // 교육 코스를 만든다.
     init {
         list.add(EduData().apply {
+            cover.isClickable = true
             dialog.contentText = "이 부분은<br><b>홈 화면</b>입니다."
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 300.0f

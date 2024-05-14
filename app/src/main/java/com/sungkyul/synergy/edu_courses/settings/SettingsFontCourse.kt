@@ -16,6 +16,7 @@ data class SettingsFontCourse(val eduScreen: EduScreen): EduCourse {
     // 교육 코스를 만든다.
     init {
         list.add(EduData().apply {
+            cover.isClickable = true
             dialog.contentText = "손가락을 따라<br>움직여주세요."
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 300.0f

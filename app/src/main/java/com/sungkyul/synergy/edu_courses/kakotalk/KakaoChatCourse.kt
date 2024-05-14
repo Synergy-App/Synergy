@@ -17,6 +17,7 @@ data class KakaoChatCourse(val eduScreen: EduScreen): EduCourse {
     // 교육 코스를 만든다.
     init {
         list.add(EduData().apply {
+            cover.isClickable = true
             dialog.contentText = "이 공간은<br>친구와 채팅을<br>할 수 있습니다."
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 300.0f

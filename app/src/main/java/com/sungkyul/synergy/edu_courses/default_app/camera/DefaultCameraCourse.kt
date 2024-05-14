@@ -16,6 +16,7 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
     // 교육 코스를 만든다.
     init {
         list.add(EduData().apply {
+            cover.isClickable = true
             dialog.contentText = "위 메뉴는 카메라의<br>플래시, 타이머 등을<br>설정할 수 있어요."
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 200.0f
