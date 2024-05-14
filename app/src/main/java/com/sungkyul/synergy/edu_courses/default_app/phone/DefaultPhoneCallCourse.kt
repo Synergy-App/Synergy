@@ -172,7 +172,6 @@ data class DefaultPhoneCallCourse(val eduScreen: EduScreen): EduCourse {
             dialog.visibility = false
             cover.visibility = false
             cover.isClickable = false
-
             action.id = "click_hang_up_button"
             hands.add(
                 EduHand(
