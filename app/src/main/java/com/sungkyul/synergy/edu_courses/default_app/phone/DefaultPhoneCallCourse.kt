@@ -161,7 +161,7 @@ data class DefaultPhoneCallCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentText = "전화를 끊어보세요."
             dialog.top = 300.0f
             dialog.bottom = 400.0f
-            dialog.contentColor = "#FFFFFF"
+            dialog.contentColor = R.color.white
             dialog.background = R.drawable.edu_dialog_green_bg
             cover.boxVisibility = false
             cover.boxStrokeVisibility = false
