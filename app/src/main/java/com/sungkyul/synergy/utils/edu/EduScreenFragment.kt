@@ -351,6 +351,14 @@ class EduScreenFragment : Fragment() {
         binding.dialogContent.typeface = resources.getFont(font)
     }
 
+    fun setDialogTitleSize(size: Float) {
+        binding.dialogTitle.textSize = size
+    }
+
+    fun setDialogContentSize(size: Float) {
+        binding.dialogContent.textSize = size
+    }
+
     fun setDialogBackground(background: Int) {
         binding.dialog.setBackgroundResource(background)
     }
