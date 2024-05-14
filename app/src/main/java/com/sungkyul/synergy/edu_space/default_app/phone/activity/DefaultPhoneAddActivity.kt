@@ -4,8 +4,12 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.MotionEvent
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.databinding.ActivityDefaultPhoneAddBinding
+import com.sungkyul.synergy.edu_courses.default_app.phone.DefaultPhoneCallCourse
+import com.sungkyul.synergy.edu_courses.default_app.phone.DefaultPhoneCourse3
+import com.sungkyul.synergy.edu_space.default_app.DefaultAppActivity
 import com.sungkyul.synergy.utils.AnimUtils
 
 class DefaultPhoneAddActivity : AppCompatActivity() {
@@ -16,6 +20,32 @@ class DefaultPhoneAddActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDefaultPhoneAddBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // 교육을 정의해보자!
+        binding.eduScreen.post {
+            binding.eduScreen.course = DefaultPhoneCourse3(binding.eduScreen)
+
+            binding.eduScreen.setOnFinishedCourseListener {
+                // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
+
+                // DefaultAppActivity로 되돌아 간다.
+                val intent = Intent(binding.root.context, DefaultAppActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                startActivity(intent)
+            }
+            // 교육을 시작한다.
+            binding.eduScreen.start(this)
+        }
+
+        // 뒤로 가기 키를 눌렀을 때의 이벤트를 처리한다.
+        onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // DefaultAppActivity로 되돌아 간다.
+                val intent = Intent(binding.root.context, DefaultAppActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                startActivity(intent)
+            }
+        })
 
         // 각 버튼의 터치 애니메이션을 초기화한다.
         AnimUtils.initTouchButtonAnimation(binding.cancelButton)
