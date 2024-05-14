@@ -57,6 +57,7 @@ data class EduCover(
     var boxBottom: Float? = null,
     var boxVisibility: Boolean? = null,
     var boxStrokeVisibility: Boolean? = null,
+    var backgroundColor: String? = null,
     var visibility: Boolean? = null
 )
 data class EduArrow(

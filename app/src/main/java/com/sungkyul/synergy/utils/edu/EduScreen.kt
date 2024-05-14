@@ -80,6 +80,7 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
             boxBottom = 0.0f,
             boxVisibility = false,
             boxStrokeVisibility = false,
+            backgroundColor = "#000000",
             visibility = false
         ),
         EduArrow(
@@ -173,6 +174,7 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         currentCover.boxTop = cover.boxTop ?: currentCover.boxTop
         currentCover.boxRight = cover.boxRight ?: currentCover.boxRight
         currentCover.boxBottom = cover.boxBottom ?: currentCover.boxBottom
+        currentCover.backgroundColor = cover.backgroundColor ?: currentCover.backgroundColor
 
         val currentArrow = currentEduData.arrow
         val arrow = course!!.list[num].arrow
@@ -247,6 +249,8 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         if(currentCover.boxStrokeVisibility == true && cover.boxStrokeVisibility == false) {
             eduScreenFragment.hideBoxStroke()
         }
+        // 커버의 배경색을 변경한다.
+        eduScreenFragment.setCoverBackgroundColor(currentCover.backgroundColor!!)
         // 커버를 보여줄까 숨길까
         // 커버가 있으면 교육 화면을 클릭할 수 있게 된다.
         if(currentCover.visibility == false && cover.visibility == true) {

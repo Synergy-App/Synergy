@@ -435,6 +435,12 @@ class EduScreenFragment : Fragment() {
         }, 1.0f, 0.0f, toggleDuration)
     }
 
+    fun setCoverBackgroundColor(color: String) {
+        val alpha = coverPaint.alpha
+        coverPaint.color = Color.parseColor(color)
+        coverPaint.alpha = alpha
+    }
+
     fun showArrow() {
         AnimUtils.startValueAnimatorOfFloat({
             arrowPaint.alpha = (it * 255).toInt()

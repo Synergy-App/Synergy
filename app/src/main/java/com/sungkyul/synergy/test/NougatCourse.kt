@@ -23,6 +23,21 @@ data class NougatCourse(val eduScreen: EduScreen): EduCourse {
             dialog.start = 100.0f
             dialog.end = 100.0f
             dialog.background = R.drawable.edu_dialog_bg
+            cover.visibility = true
+        })
+
+        list.add(EduData().apply {
+            cover.visibility = false
+        })
+
+        list.add(EduData().apply {
+            cover.visibility = true
+            cover.backgroundColor = "#f88379"
+        })
+
+        list.add(EduData().apply {
+            cover.visibility = false
+            cover.backgroundColor = "#c154c1"
         })
     }
 }
