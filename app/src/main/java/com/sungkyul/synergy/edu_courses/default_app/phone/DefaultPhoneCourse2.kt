@@ -33,23 +33,17 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.contentGravity = Gravity.CENTER
+            dialog.contentText = "최근기록 버튼은<br>전화 기록을<br>확인할 수 있습니다."
             dialog.top = 500.0f
             dialog.bottom = 100.0f
-            dialog.start = 50.0f
-            dialog.end = 50.0f
+
             cover.boxLeft = 150.0f
             cover.boxTop = 730.0f
             cover.boxRight = width-150.0f
             cover.boxBottom = height
-            arrow.endTo = EduScreen.BOX
-            dialog.visibility = true
-            cover.visibility = true
-            cover.isClickable = true
+            dialog.background = R.drawable.edu_dialog_bg
             cover.boxVisibility = true
             cover.boxStrokeVisibility = true
-            arrow.visibility = true
-            dialog.contentText = "최근기록 버튼은<br>전화 기록을<br>확인할 수 있습니다."
         })
 
         list.add(EduData().apply {

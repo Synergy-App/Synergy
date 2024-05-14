@@ -115,6 +115,7 @@ data class DefaultPhoneCourse1(val eduScreen: EduScreen): EduCourse {
         for(i in phoneNumber) {
             list.add(EduData().apply {
                 action.id = "click_key_button"
+                cover.isClickable = false
                 action.message = i.toString()
                 hands.add(
                     EduHand(
@@ -129,6 +130,7 @@ data class DefaultPhoneCourse1(val eduScreen: EduScreen): EduCourse {
 
         list.add(EduData().apply {
             action.id = "click_call_button"
+            cover.isClickable = false
             hands.add(
                 EduHand(
                     id = "tap",
