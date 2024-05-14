@@ -23,6 +23,7 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.text.parseAsHtml
@@ -321,10 +322,10 @@ class EduScreenFragment : Fragment() {
         eduListener = l
     }
 
-    fun setDialogTitle(text: String, gravity: Int, color: String) {
+    fun setDialogTitle(text: String, gravity: Int, color: Int) {
         binding.dialogTitle.text = text
         binding.dialogTitle.gravity = gravity
-        binding.dialogTitle.setTextColor(Color.parseColor(color))
+        binding.dialogTitle.setTextColor(ContextCompat.getColor(requireContext(), color))
     }
 
     fun showDialogTitle() {
@@ -337,10 +338,10 @@ class EduScreenFragment : Fragment() {
         binding.dialogSeparator.visibility = TextView.GONE
     }
 
-    fun setDialogContent(text: String, gravity: Int, color: String) {
+    fun setDialogContent(text: String, gravity: Int, color: Int) {
         binding.dialogContent.text = text.parseAsHtml()
         binding.dialogContent.gravity = gravity
-        binding.dialogContent.setTextColor(Color.parseColor(color))
+        binding.dialogContent.setTextColor(ContextCompat.getColor(requireContext(), color))
     }
 
     fun setDialogTitleFont(font: Int) {
@@ -435,9 +436,9 @@ class EduScreenFragment : Fragment() {
         }, 1.0f, 0.0f, toggleDuration)
     }
 
-    fun setCoverBackgroundColor(color: String) {
+    fun setCoverBackgroundColor(color: Int) {
         val alpha = coverPaint.alpha
-        coverPaint.color = Color.parseColor(color)
+        coverPaint.color = ContextCompat.getColor(requireContext(), color)
         coverPaint.alpha = alpha
     }
 
