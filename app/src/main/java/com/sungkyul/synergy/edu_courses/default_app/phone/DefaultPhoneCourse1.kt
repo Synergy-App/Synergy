@@ -83,6 +83,7 @@ data class DefaultPhoneCourse1(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.visibility = false
             cover.visibility = false
+            cover.isClickable = false
             arrow.visibility = false
             action.id = "click_key_button"
             action.message = "0"
