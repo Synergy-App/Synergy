@@ -29,8 +29,7 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
     }
 
     override fun onAction(id: String, message: String?): Boolean {
-        // 교육 코스가 시작하지 않았거나 끝났으면, 모든 액션을 다시 사용할 수 있게 된다.
-        if(num < 0 || num >= course!!.list.size) return true
+        if(!(0 <= num && num < course!!.list.size)) return true
 
         val eduData = course!!.list[num]
         Log.i(id, message ?: "null")
@@ -100,7 +99,6 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
                 contentSize = 18.0f,
                 contentGravity = Gravity.START,
                 contentColor = R.color.black,
-                duration = 0,
                 top = 0.0f,
                 bottom = 0.0f,
                 start = 0.0f,
@@ -112,7 +110,6 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
                 titleText = "",
                 titleColor = "#000000",
                 source = R.drawable.todo_rect,
-                duration = 0,
                 top = 0.0f,
                 bottom = 0.0f,
                 start = 0.0f,
@@ -127,7 +124,6 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
                 contentText = "",
                 contentGravity = Gravity.START,
                 contentColor = "#000000",
-                duration = 0,
                 height = 0,
                 background = R.drawable.edu_dialog_bg,
                 visibility = false
@@ -139,13 +135,11 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
                 contentText = "",
                 contentGravity = Gravity.START,
                 contentColor = "#000000",
-                duration = 0,
                 height = 0,
                 background = R.drawable.edu_dialog_bg,
                 visibility = false
             ),
             EduCover(
-                duration = 0,
                 boxLeft = 0.0f,
                 boxTop = 0.0f,
                 boxRight = 0.0f,
@@ -157,7 +151,6 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
                 isClickable = false
             ),
             EduArrow(
-                duration = 0,
                 endTo = DIALOG,
                 visibility = false
             ),
@@ -180,7 +173,6 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         currentDialog.contentSize = dialog.contentSize ?: currentDialog.contentSize
         currentDialog.contentGravity = dialog.contentGravity ?: currentDialog.contentGravity
         currentDialog.contentColor = dialog.contentColor ?: currentDialog.contentColor
-        currentDialog.duration = dialog.duration ?: currentDialog.duration
         currentDialog.top = dialog.top ?: currentDialog.top
         currentDialog.bottom = dialog.bottom ?: currentDialog.bottom
         currentDialog.start = dialog.start ?: currentDialog.start
@@ -192,7 +184,6 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         val currentCover = currentEduData.cover
         val cover = course!!.list[num].cover
 
-        currentCover.duration = cover.duration ?: currentCover.duration
         currentCover.boxLeft = cover.boxLeft ?: currentCover.boxLeft
         currentCover.boxTop = cover.boxTop ?: currentCover.boxTop
         currentCover.boxRight = cover.boxRight ?: currentCover.boxRight
@@ -205,7 +196,6 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         val currentArrow = currentEduData.arrow
         val arrow = course!!.list[num].arrow
 
-        currentArrow.duration = arrow.duration ?: currentArrow.duration
         currentArrow.endTo = arrow.endTo ?: currentArrow.endTo
     }
 
@@ -239,11 +229,11 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         eduScreenFragment.setDialogContentSize(currentDialog.contentSize!!)
 
         eduScreenFragment.translateDialog(
-            currentDialog.duration!!,
             currentDialog.top!!,
             currentDialog.bottom!!,
             currentDialog.start!!,
-            currentDialog.end!!
+            currentDialog.end!!,
+            if(hasChangedDialogVisibility(from = false, to = true)) 0 else EduScreenFragment.DIALOG_MOVEMENT_DURATION
         )
 
         if(currentDialog.titleText == "") {
@@ -254,14 +244,21 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
 
         eduScreenFragment.setDialogBackground(currentDialog.background!!)
 
-        if(currentDialog.visibility == false && dialog.visibility == true) {
+        if(hasChangedDialogVisibility(from = false, to = true)) {
             eduScreenFragment.showDialog()
         }
-        if(currentDialog.visibility == true && dialog.visibility == false) {
+        if(hasChangedDialogVisibility(from = true, to = false)) {
             eduScreenFragment.hideDialog()
         }
 
         currentDialog.visibility = dialog.visibility ?: currentDialog.visibility
+    }
+
+    private fun hasChangedDialogVisibility(from: Boolean, to: Boolean): Boolean {
+        val currentDialog = currentEduData.dialog
+        val dialog = course!!.list[num].dialog
+
+        return currentDialog.visibility == from && dialog.visibility == to
     }
 
     private fun configureEduScreenFragmentCover() {
@@ -269,17 +266,17 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         val cover = course!!.list[num].cover
 
         eduScreenFragment.translateBox(
-            currentCover.duration!!,
             currentCover.boxLeft!!,
             currentCover.boxTop!!,
             currentCover.boxRight!!,
-            currentCover.boxBottom!!
+            currentCover.boxBottom!!,
+            if(hasChangedBoxVisibility(from = false, to = true)) 0 else EduScreenFragment.BOX_MOVEMENT_DURATION
         )
 
-        if(currentCover.boxVisibility == false && cover.boxVisibility == true) {
+        if(hasChangedBoxVisibility(from = false, to = true)) {
             eduScreenFragment.showBox()
         }
-        if(currentCover.boxVisibility == true && cover.boxVisibility == false) {
+        if(hasChangedBoxVisibility(from = true, to = false)) {
             eduScreenFragment.hideBox()
         }
 
@@ -306,16 +303,23 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         currentCover.visibility = cover.visibility ?: currentCover.visibility
     }
 
+    private fun hasChangedBoxVisibility(from: Boolean, to: Boolean): Boolean {
+        val currentCover = currentEduData.cover
+        val cover = course!!.list[num].cover
+
+        return currentCover.boxVisibility == from && cover.boxVisibility == to
+    }
+
     private fun configureEduScreenFragmentArrow() {
         val currentArrow = currentEduData.arrow
         val arrow = course!!.list[num].arrow
 
-        eduScreenFragment.translateArrowStart(currentArrow.duration!!)
+        eduScreenFragment.translateArrowStart()
         if(currentArrow.endTo == DIALOG) {
-            eduScreenFragment.translateArrowEndToDialog(currentArrow.duration!!)
+            eduScreenFragment.translateArrowEndToDialog()
         }
         if(currentArrow.endTo == BOX) {
-            eduScreenFragment.translateArrowEndToBox(currentArrow.duration!!)
+            eduScreenFragment.translateArrowEndToBox()
         }
 
         if(currentArrow.visibility == false && arrow.visibility == true) {
@@ -330,7 +334,6 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
 
     private fun configureEduScreenFragmentHands() {
         val currentHands = currentEduData.hands
-        val hands = course!!.list[num].hands
 
         eduScreenFragment.clearHands()
 

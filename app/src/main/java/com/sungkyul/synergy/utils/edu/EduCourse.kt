@@ -16,7 +16,6 @@ data class EduDialog(
     var contentSize: Float? = null,
     var contentGravity: Int? = null,
     var contentColor: Int? = null,
-    var duration: Long? = null,
     var top: Float? = null,
     var bottom: Float? = null,
     var start: Float? = null,
@@ -28,7 +27,6 @@ data class EduImageDialog(
     var titleText: String? = null,
     var titleColor: String? = null,
     var source: Int? = null,
-    var duration: Long? = null,
     var top: Float? = null,
     var bottom: Float? = null,
     var start: Float? = null,
@@ -44,13 +42,11 @@ data class EduVerticalDialog(
     var contentGravity: Int? = null,
     var contentColor: String? = null,
     var contentBolds: List<Pair<Int, Int>>? = null,
-    var duration: Long? = null,
     var height: Int? = null,
     var background: Int? = null,
     var visibility: Boolean? = null
 )
 data class EduCover(
-    var duration: Long? = null,
     var boxLeft: Float? = null,
     var boxTop: Float? = null,
     var boxRight: Float? = null,
@@ -62,7 +58,6 @@ data class EduCover(
     var isClickable: Boolean? = null
 )
 data class EduArrow(
-    var duration: Long? = null,
     var endTo: Int? = null,
     var visibility: Boolean? = null
 )

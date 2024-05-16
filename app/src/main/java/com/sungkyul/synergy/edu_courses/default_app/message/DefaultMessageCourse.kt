@@ -28,8 +28,6 @@ data class DefaultMessageCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.duration = 750
-            arrow.duration = 750
             dialog.contentText = "여기서 문자 메시지를<br>입력할 수 있어요."
             dialog.top = 450.0f
             dialog.bottom = 150.0f
@@ -44,9 +42,6 @@ data class DefaultMessageCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.duration = 750
-            cover.duration = 750
-            arrow.duration = 750
             dialog.contentText = "이 버튼을 누르면<br>메시지가 전송돼요."
             cover.boxLeft = width-55.0f
             cover.boxRight = width
@@ -83,8 +78,6 @@ data class DefaultMessageCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.duration = 0
-            cover.duration = 0
             dialog.contentText = "문자 메시지를<br>성공적으로 보냈습니다!"
             dialog.top = 250.0f
             dialog.bottom = 350.0f
@@ -98,8 +91,6 @@ data class DefaultMessageCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.duration = 750
-            cover.duration = 750
             dialog.contentText = "자신이 보낸 메시지는<br>아래에 보이는 것처럼<br>확인할 수 있어요."
             dialog.top = 150.0f
             dialog.bottom = 450.0f
