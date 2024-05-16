@@ -457,7 +457,8 @@ class EduScreenFragment : Fragment() {
         topDp: Float,
         bottomDp: Float,
         startDp: Float,
-        endDp: Float
+        endDp: Float,
+        duration: Long = DIALOG_MOVEMENT_DURATION
     ) {
         // dp -> px
         val top = DisplayUtils.dpToPx(binding.root.context, topDp)
@@ -467,7 +468,7 @@ class EduScreenFragment : Fragment() {
 
         startValueAnimatorOfDialog(
             binding.dialog,
-            DIALOG_MOVEMENT_DURATION,
+            duration,
             AccelerateDecelerateInterpolator(),
             binding.dialog.marginTop.toFloat(),
             top,
@@ -486,7 +487,8 @@ class EduScreenFragment : Fragment() {
         leftDp: Float,
         topDp: Float,
         rightDp: Float,
-        bottomDp: Float
+        bottomDp: Float,
+        duration: Long = BOX_MOVEMENT_DURATION
     ) {
         // dp -> px
         val left = DisplayUtils.dpToPx(binding.root.context, leftDp)
@@ -505,7 +507,7 @@ class EduScreenFragment : Fragment() {
             boxRight = GeometryUtils.linear(startRight, right, it)
             boxBottom = GeometryUtils.linear(startBottom, bottom, it)
             draw()
-        }, 0.0f, 1.0f, BOX_MOVEMENT_DURATION, AccelerateDecelerateInterpolator()))
+        }, 0.0f, 1.0f, duration, AccelerateDecelerateInterpolator()))
 
         currentBoxCenterX = GeometryUtils.linear(left, right, 0.5f)
         currentBoxCenterY = GeometryUtils.linear(top, bottom, 0.5f)
@@ -632,17 +634,17 @@ class EduScreenFragment : Fragment() {
     }
 
     companion object {
-        private const val DIALOG_TOGGLE_DURATION = 250L
-        private const val COVER_TOGGLE_DURATION = 250L
-        private const val BOX_BORDER_TOGGLE_DURATION = 250L
-        private const val ARROW_TOGGLE_DURATION = 250L
+        const val DIALOG_TOGGLE_DURATION = 250L
+        const val COVER_TOGGLE_DURATION = 250L
+        const val BOX_BORDER_TOGGLE_DURATION = 250L
+        const val ARROW_TOGGLE_DURATION = 250L
 
         // TODO(visibility → color)
-        private const val COVER_COLOR_TRANSFORMATION_DURATION = 250L
-        private const val BOX_BORDER_COLOR_TRANSFORMATION_DURATION = 250L
+        const val COVER_COLOR_TRANSFORMATION_DURATION = 250L
+        const val BOX_BORDER_COLOR_TRANSFORMATION_DURATION = 250L
 
-        private const val DIALOG_MOVEMENT_DURATION = 750L
-        private const val BOX_MOVEMENT_DURATION = 750L
-        private const val ARROW_MOVEMENT_DURATION = 750L
+        const val DIALOG_MOVEMENT_DURATION = 750L
+        const val BOX_MOVEMENT_DURATION = 750L
+        const val ARROW_MOVEMENT_DURATION = 750L
     }
 }
