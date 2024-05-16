@@ -29,7 +29,7 @@ data class DefaultMessageChattingCourse(val eduScreen: EduScreen): EduCourse {
             dialog.visibility = true
             cover.visibility = true
             cover.isClickable = true
-            cover.boxStrokeVisibility = true
+            cover.boxBorderVisibility = true
             cover.boxVisibility = true
         })
 
@@ -52,7 +52,7 @@ data class DefaultMessageChattingCourse(val eduScreen: EduScreen): EduCourse {
             dialog.bottom = 300.0f
             arrow.endTo = EduScreen.DIALOG
             cover.boxVisibility = false
-            cover.boxStrokeVisibility = false
+            cover.boxBorderVisibility = false
         })
 
         list.add(EduData().apply {
@@ -65,7 +65,7 @@ data class DefaultMessageChattingCourse(val eduScreen: EduScreen): EduCourse {
             cover.boxBottom = 200.0f
             arrow.endTo = EduScreen.BOX
             cover.boxVisibility = true
-            cover.boxStrokeVisibility = true
+            cover.boxBorderVisibility = true
             arrow.visibility = true
         })
 
@@ -74,7 +74,7 @@ data class DefaultMessageChattingCourse(val eduScreen: EduScreen): EduCourse {
             cover.visibility = false
             cover.isClickable = false
             cover.boxVisibility = false
-            cover.boxStrokeVisibility = false
+            cover.boxBorderVisibility = false
             arrow.visibility = false
             action.id = "click_message_chatting_item"
             action.message = "시너지"

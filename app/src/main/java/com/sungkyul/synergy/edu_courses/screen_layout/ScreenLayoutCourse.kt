@@ -29,7 +29,7 @@ data class ScreenLayoutCourse(val eduScreen: EduScreen): EduCourse {
             cover.visibility = true
             cover.isClickable = true
             cover.boxVisibility = true
-            cover.boxStrokeVisibility = true
+            cover.boxBorderVisibility = true
         })
 
         list.add(EduData().apply {
@@ -118,7 +118,7 @@ data class ScreenLayoutCourse(val eduScreen: EduScreen): EduCourse {
             dialog.bottom = 300.0f
 
             cover.boxVisibility = false
-            cover.boxStrokeVisibility = false
+            cover.boxBorderVisibility = false
 
             arrow.endTo = EduScreen.DIALOG
         })

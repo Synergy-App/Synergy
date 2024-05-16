@@ -96,7 +96,7 @@ data class DefaultPhoneTestCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             cover.boxLeft = 100.0f
             cover.boxRight = 150.0f
-            cover.boxStrokeVisibility = true
+            cover.boxBorderVisibility = true
         })
 
         list.add(EduData().apply {
@@ -114,7 +114,7 @@ data class DefaultPhoneTestCourse(val eduScreen: EduScreen): EduCourse {
 
         list.add(EduData().apply {
             cover.boxVisibility = false
-            cover.boxStrokeVisibility = false
+            cover.boxBorderVisibility = false
 
             arrow.endTo = EduScreen.DIALOG
         })

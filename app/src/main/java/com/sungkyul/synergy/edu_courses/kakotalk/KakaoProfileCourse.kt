@@ -33,7 +33,7 @@ data class KakaoProfileCourse(val eduScreen: EduScreen): EduCourse {
             dialog.top = 400.0f
             dialog.bottom = 200.0f
             cover.boxVisibility = true
-            cover.boxStrokeVisibility = true
+            cover.boxBorderVisibility = true
             cover.boxLeft = 25.0f
             cover.boxTop = height-95.0f
             cover.boxRight = 110.0f
@@ -69,7 +69,7 @@ data class KakaoProfileCourse(val eduScreen: EduScreen): EduCourse {
             dialog.start = 50.0f
             dialog.end = 50.0f
             cover.boxVisibility = false
-            cover.boxStrokeVisibility = false
+            cover.boxBorderVisibility = false
             arrow.endTo = EduScreen.DIALOG
         })
 

@@ -37,7 +37,7 @@ data class DefaultMessageCourse(val eduScreen: EduScreen): EduCourse {
             cover.boxBottom = height
             arrow.endTo = EduScreen.BOX
             cover.boxVisibility = true
-            cover.boxStrokeVisibility = true
+            cover.boxBorderVisibility = true
             arrow.visibility = true
         })
 
@@ -53,7 +53,7 @@ data class DefaultMessageCourse(val eduScreen: EduScreen): EduCourse {
             dialog.bottom = 300.0f
             arrow.endTo = EduScreen.DIALOG
             cover.boxVisibility = false
-            cover.boxStrokeVisibility = false
+            cover.boxBorderVisibility = false
         })
 
         list.add(EduData().apply {
@@ -97,7 +97,7 @@ data class DefaultMessageCourse(val eduScreen: EduScreen): EduCourse {
             cover.boxTop = 360.0f
             cover.boxBottom = height-60.0f
             cover.boxVisibility = true
-            cover.boxStrokeVisibility = true
+            cover.boxBorderVisibility = true
         })
     }
 }

@@ -42,7 +42,7 @@ data class DefaultPhoneCallCourse(val eduScreen: EduScreen): EduCourse {
             cover.boxTop = 500.0f
             cover.boxBottom = 700.0f /*크기가 커질 수록 박스가 커짐 */
             cover.boxVisibility = true
-            cover.boxStrokeVisibility = true
+            cover.boxBorderVisibility = true
 
             dialog.visibility = true
             cover.visibility = true
@@ -133,7 +133,7 @@ data class DefaultPhoneCallCourse(val eduScreen: EduScreen): EduCourse {
             cover.boxTop = 500.0f
             cover.boxBottom = 700.0f /*크기가 커질 수록 박스가 커짐 */
             cover.boxVisibility = true
-            cover.boxStrokeVisibility = true
+            cover.boxBorderVisibility = true
             dialog.visibility = true
             cover.visibility = true
             dialog.background = R.drawable.edu_dialog_bg
@@ -157,7 +157,7 @@ data class DefaultPhoneCallCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentColor = R.color.white
             dialog.background = R.drawable.edu_dialog_green_bg
             cover.boxVisibility = false
-            cover.boxStrokeVisibility = false
+            cover.boxBorderVisibility = false
 
         })
 
