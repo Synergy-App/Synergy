@@ -28,8 +28,6 @@ data class KakaoCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.duration = 750
-            arrow.duration = 750
             dialog.top = 200.0f
             dialog.bottom = 400.0f
             cover.boxVisibility = true
@@ -73,8 +71,6 @@ data class KakaoCourse(val eduScreen: EduScreen): EduCourse {
 
         list.add(EduData().apply {
             dialog.contentText = "친구를 찾을 수 있는<br>버튼입니다."
-            dialog.duration = 750
-            arrow.duration = 750
             dialog.top = 450.0f
             dialog.bottom = 150.0f
             dialog.start = 25.0f
@@ -87,8 +83,6 @@ data class KakaoCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.duration = 750
-            arrow.duration = 750
             dialog.contentText = "방금까지 살펴본<br>카카오톡의 화면이<br>이 버튼을 누르면<br>보이는 화면입니다."
             dialog.top = 425.0f
         })

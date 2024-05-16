@@ -75,7 +75,6 @@ class EduScreenFragment : Fragment() {
         alpha = 0
     }
 
-    private val toggleDuration = 250L
     private val toggleHandDuration = 350L
     private val toggleHandInterpolator = DecelerateInterpolator()
     private val coverMaxAlpha = 128
@@ -362,7 +361,7 @@ class EduScreenFragment : Fragment() {
 
     fun showDialog() {
         startObjectAnimatorOfDialog(
-            toggleDuration,
+            DIALOG_TOGGLE_DURATION,
             DecelerateInterpolator(),
             0.0f,
             1.0f,
@@ -379,7 +378,7 @@ class EduScreenFragment : Fragment() {
 
     fun hideDialog() {
         startObjectAnimatorOfDialog(
-            toggleDuration,
+            DIALOG_TOGGLE_DURATION,
             DecelerateInterpolator(),
             1.0f,
             0.0f,
@@ -398,14 +397,14 @@ class EduScreenFragment : Fragment() {
         AnimUtils.startValueAnimatorOfFloat({
             coverPaint.alpha = (it * coverMaxAlpha).toInt()
             draw()
-        }, 0.0f, 1.0f, toggleDuration)
+        }, 0.0f, 1.0f, COVER_TOGGLE_DURATION)
     }
 
     fun hideCover() {
         AnimUtils.startValueAnimatorOfFloat({
             coverPaint.alpha = (it * coverMaxAlpha).toInt()
             draw()
-        }, 1.0f, 0.0f, toggleDuration)
+        }, 1.0f, 0.0f, COVER_TOGGLE_DURATION)
     }
 
     fun showBox() {
@@ -422,14 +421,14 @@ class EduScreenFragment : Fragment() {
         AnimUtils.startValueAnimatorOfFloat({
             boxStrokePaint.alpha = (it * 255).toInt()
             draw()
-        }, 0.0f, 1.0f, toggleDuration)
+        }, 0.0f, 1.0f, BOX_BORDER_TOGGLE_DURATION)
     }
 
     fun hideBoxStroke() {
         AnimUtils.startValueAnimatorOfFloat({
             boxStrokePaint.alpha = (it * 255).toInt()
             draw()
-        }, 1.0f, 0.0f, toggleDuration)
+        }, 1.0f, 0.0f, BOX_BORDER_TOGGLE_DURATION)
     }
 
     fun setCoverBackgroundColor(color: Int) {
@@ -442,7 +441,7 @@ class EduScreenFragment : Fragment() {
         AnimUtils.startValueAnimatorOfFloat({
             arrowPaint.alpha = (it * 255).toInt()
             draw()
-        }, 0.0f, 1.0f, toggleDuration)
+        }, 0.0f, 1.0f, ARROW_TOGGLE_DURATION)
     }
 
     fun hideArrow() {
@@ -455,7 +454,6 @@ class EduScreenFragment : Fragment() {
     }
 
     fun translateDialog(
-        duration: Long,
         topDp: Float,
         bottomDp: Float,
         startDp: Float,
@@ -469,7 +467,7 @@ class EduScreenFragment : Fragment() {
 
         startValueAnimatorOfDialog(
             binding.dialog,
-            duration,
+            DIALOG_MOVEMENT_DURATION,
             AccelerateDecelerateInterpolator(),
             binding.dialog.marginTop.toFloat(),
             top,
@@ -485,7 +483,6 @@ class EduScreenFragment : Fragment() {
         currentDialogCenterY = top+(binding.root.height-top-bottom)/2
     }
     fun translateBox(
-        duration: Long,
         leftDp: Float,
         topDp: Float,
         rightDp: Float,
@@ -508,7 +505,7 @@ class EduScreenFragment : Fragment() {
             boxRight = GeometryUtils.linear(startRight, right, it)
             boxBottom = GeometryUtils.linear(startBottom, bottom, it)
             draw()
-        }, 0.0f, 1.0f, duration, AccelerateDecelerateInterpolator()))
+        }, 0.0f, 1.0f, BOX_MOVEMENT_DURATION, AccelerateDecelerateInterpolator()))
 
         currentBoxCenterX = GeometryUtils.linear(left, right, 0.5f)
         currentBoxCenterY = GeometryUtils.linear(top, bottom, 0.5f)
@@ -517,7 +514,7 @@ class EduScreenFragment : Fragment() {
     }
 
     // 화살표의 시작점이 다이얼로그의 중심을 향해 이동하도록 만든다.
-    fun translateArrowStart(duration: Long) {
+    fun translateArrowStart() {
         val startArrowStartX = arrowStartX
         val startArrowStartY = arrowStartY
 
@@ -525,11 +522,11 @@ class EduScreenFragment : Fragment() {
             arrowStartX = GeometryUtils.linear(startArrowStartX, currentDialogCenterX, it)
             arrowStartY = GeometryUtils.linear(startArrowStartY, currentDialogCenterY, it)
             draw()
-        }, 0.0f, 1.0f, duration, AccelerateDecelerateInterpolator()))
+        }, 0.0f, 1.0f, ARROW_MOVEMENT_DURATION, AccelerateDecelerateInterpolator()))
     }
 
     // 화살표의 끝점이 다이얼로그의 중심을 향해 이동하도록 만든다.
-    fun translateArrowEndToDialog(duration: Long) {
+    fun translateArrowEndToDialog() {
         val startArrowEndX = arrowEndX
         val startArrowEndY = arrowEndY
 
@@ -537,13 +534,13 @@ class EduScreenFragment : Fragment() {
             arrowEndX = GeometryUtils.linear(startArrowEndX, currentDialogCenterX, it)
             arrowEndY = GeometryUtils.linear(startArrowEndY, currentDialogCenterY, it)
             draw()
-        }, 0.0f, 1.0f, duration, AccelerateDecelerateInterpolator()))
+        }, 0.0f, 1.0f, ARROW_MOVEMENT_DURATION, AccelerateDecelerateInterpolator()))
     }
 
     // 화살표의 끝점이 박스를 향해 이동하도록 만든다.
     // 화살표 끝점의 x좌표는 박스 중심의 x좌표로 이동한다.
     // 화살표 끝점의 y좌표는 만일 '다이얼로그 중심의 y좌표 < 박스 중심의 y좌표'이면 박스 테두리의 top y좌표로 이동하고, 아니면 bottom y좌표로 이동한다.
-    fun translateArrowEndToBox(duration: Long) {
+    fun translateArrowEndToBox() {
         val startArrowEndX = arrowEndX
         val startArrowEndY = arrowEndY
 
@@ -555,7 +552,7 @@ class EduScreenFragment : Fragment() {
                 it
             )
             draw()
-        }, 0.0f, 1.0f, duration, OvershootInterpolator(0.5f)))
+        }, 0.0f, 1.0f, ARROW_MOVEMENT_DURATION, OvershootInterpolator(0.5f)))
     }
 
     // 오른쪽 아래에 그림자가 적용된 비트맵을 만든다.
@@ -632,5 +629,20 @@ class EduScreenFragment : Fragment() {
         hands.forEach {
             removeHand(it.key)
         }
+    }
+
+    companion object {
+        private const val DIALOG_TOGGLE_DURATION = 250L
+        private const val COVER_TOGGLE_DURATION = 250L
+        private const val BOX_BORDER_TOGGLE_DURATION = 250L
+        private const val ARROW_TOGGLE_DURATION = 250L
+
+        // TODO(visibility → color)
+        private const val COVER_COLOR_TRANSFORMATION_DURATION = 250L
+        private const val BOX_BORDER_COLOR_TRANSFORMATION_DURATION = 250L
+
+        private const val DIALOG_MOVEMENT_DURATION = 750L
+        private const val BOX_MOVEMENT_DURATION = 750L
+        private const val ARROW_MOVEMENT_DURATION = 750L
     }
 }

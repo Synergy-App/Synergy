@@ -33,7 +33,6 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.duration = 750
             dialog.contentGravity = Gravity.CENTER
             dialog.contentText = "최근기록 버튼은<br>전화 기록을<br>확인할 수 있습니다."
             dialog.top = 500.0f
@@ -143,6 +142,25 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
                     id = "tap",
                     x = 380.0f,
                     y = 770.0f,
+                    rotation = 180.0f,
+                    gesture = HandGestures.Companion::tapGesture
+                )
+            )
+        })
+
+        list.add(EduData().apply {
+            dialog.visibility = false
+            cover.visibility = false
+            cover.isClickable = false
+            cover.boxVisibility = false
+            cover.boxStrokeVisibility = false
+            arrow.visibility = false
+            action.id = "click_captain_contact_item"
+            hands.add(
+                EduHand(
+                    id = "tap",
+                    x = 0.0f,
+                    y = 0.0f,
                     rotation = 180.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )

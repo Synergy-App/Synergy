@@ -36,7 +36,6 @@ data class ScreenLayoutCourse(val eduScreen: EduScreen): EduCourse {
             dialog.titleText = "홈 화면"
             dialog.contentText = "주로 <b>배경화면</b>이라고<br>부릅니다."
             dialog.contentGravity = Gravity.START
-            dialog.duration = 750
             dialog.top = 275.0f
             dialog.bottom = 275.0f
         })
@@ -59,7 +58,6 @@ data class ScreenLayoutCourse(val eduScreen: EduScreen): EduCourse {
             cover.boxRight = width
             cover.boxBottom = 55.0f
 
-            arrow.duration = 750
             arrow.endTo = EduScreen.BOX
             arrow.visibility = true
         })
@@ -71,7 +69,6 @@ data class ScreenLayoutCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.contentText = "좌측 상단에는<br><b>현재 시간</b>이<br>나타납니다."
 
-            cover.duration = 750
             cover.boxRight = 100.0f
         })
 
@@ -84,28 +81,21 @@ data class ScreenLayoutCourse(val eduScreen: EduScreen): EduCourse {
 
         list.add(EduData().apply {
             dialog.contentText = "이 부분은<br><b>하단바(내비게이션바)</b><br>입니다."
-            dialog.duration = 1000
             dialog.top = 500.0f
             dialog.bottom = 100.0f
 
-            cover.duration = 0
             cover.boxLeft = 0.0f
             cover.boxTop = height-55.0f
             cover.boxRight = width
             cover.boxBottom = height-5.0f
 
-            arrow.duration = 1000
         })
 
         list.add(EduData().apply {
             dialog.contentText = "이 버튼은<br><b>최근 실행 앱</b>을<br>볼 수 있습니다."
-            dialog.duration = 750
 
-            cover.duration = 750
             cover.boxLeft = 50.0f
             cover.boxRight = 110.0f
-
-            arrow.duration = 750
         })
 
         list.add(EduData().apply {

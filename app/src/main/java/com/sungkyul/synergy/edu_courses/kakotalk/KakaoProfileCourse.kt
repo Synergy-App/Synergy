@@ -30,7 +30,6 @@ data class KakaoProfileCourse(val eduScreen: EduScreen): EduCourse {
 
         list.add(EduData().apply {
             dialog.contentText = "'1:1 채팅'은 친구와<br>대화할 수 있는 기능입니다."
-            dialog.duration = 750
             dialog.top = 400.0f
             dialog.bottom = 200.0f
             cover.boxVisibility = true
@@ -39,14 +38,12 @@ data class KakaoProfileCourse(val eduScreen: EduScreen): EduCourse {
             cover.boxTop = height-95.0f
             cover.boxRight = 110.0f
             cover.boxBottom = height-10.0f
-            arrow.duration = 750
             arrow.endTo = EduScreen.BOX
             arrow.visibility = true
         })
 
         list.add(EduData().apply {
             dialog.contentText = "'보이스톡'은 친구의<br>전화 번호가 없어도<br>전화를 할 수 있습니다."
-            cover.duration = 750
             cover.boxLeft = 165.0f
             cover.boxRight = 250.0f
         })
@@ -71,7 +68,6 @@ data class KakaoProfileCourse(val eduScreen: EduScreen): EduCourse {
             dialog.bottom = 300.0f
             dialog.start = 50.0f
             dialog.end = 50.0f
-            cover.duration = 0
             cover.boxVisibility = false
             cover.boxStrokeVisibility = false
             arrow.endTo = EduScreen.DIALOG

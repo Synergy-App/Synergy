@@ -59,8 +59,6 @@ data class DefaultPhoneCallCourse(val eduScreen: EduScreen): EduCourse {
             dialog.bottom = 380.0f /*커질수록 다이얼로그 크기가 작아짐*/
             dialog.start = 24.0f
             dialog.end = 24.0f
-            dialog.duration = 750
-            cover.duration = 750
 
             cover.boxLeft = 50.0f
             cover.boxRight = width-250.0f
@@ -96,8 +94,6 @@ data class DefaultPhoneCallCourse(val eduScreen: EduScreen): EduCourse {
             dialog.bottom = 280.0f /*커질수록 다이얼로그 크기가 작아짐*/
             dialog.start = 24.0f
             dialog.end = 24.0f
-            dialog.duration = 750
-            cover.duration = 750
 
             cover.boxLeft = 50.0f
             cover.boxRight = width-250.0f
@@ -144,9 +140,6 @@ data class DefaultPhoneCallCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.duration = 750
-            cover.duration = 750
-
             dialog.top = 450.0f
             dialog.bottom = 200.0f
 

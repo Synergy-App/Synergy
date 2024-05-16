@@ -34,9 +34,6 @@ data class DefaultMessageChattingCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.duration = 1000
-            cover.duration = 750
-            arrow.duration = 1000
             dialog.contentText = "이 버튼은 새로운<br>메시지를 작성할 수 있어요."
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 350.0f
@@ -50,8 +47,6 @@ data class DefaultMessageChattingCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.duration = 750
-            arrow.duration = 750
             dialog.contentText = "메시지를 작성해볼까요?"
             dialog.top = 300.0f
             dialog.bottom = 300.0f
@@ -61,7 +56,6 @@ data class DefaultMessageChattingCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            cover.duration = 0
             dialog.contentText = "시너지를 클릭해주세요."
             dialog.top = 250.0f
             dialog.bottom = 350.0f

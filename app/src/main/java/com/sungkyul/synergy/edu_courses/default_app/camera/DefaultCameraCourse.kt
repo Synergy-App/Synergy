@@ -36,8 +36,6 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.duration = 750
-            arrow.duration = 750
             dialog.contentText = "아래 버튼은 사진,<br>동영상 등 자신이<br>원하는 촬영을<br>선택할 수 있어요."
             dialog.top = 300.0f
             dialog.bottom = 300.0f
@@ -48,7 +46,6 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            cover.duration = 750
             dialog.contentText = "촬영할 수 있는<br>버튼이에요.<br>버튼을 클릭하면<br>사진 저장이 돼요."
             dialog.top = 400.0f
             dialog.bottom = 200.0f
@@ -116,9 +113,6 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.duration = 0
-            cover.duration = 0
-            arrow.duration = 0
             dialog.contentText = "방금 찍은 사진은<br>여기에서 확인할 수<br>있어요."
             dialog.top = 400.0f
             dialog.bottom = 200.0f
@@ -136,8 +130,6 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.duration = 750
-            arrow.duration = 750
             dialog.contentText = "클릭해주세요."
             dialog.top = 450.0f
         })

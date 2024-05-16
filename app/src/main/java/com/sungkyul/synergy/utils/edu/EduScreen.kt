@@ -100,7 +100,6 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
                 contentSize = 18.0f,
                 contentGravity = Gravity.START,
                 contentColor = R.color.black,
-                duration = 0,
                 top = 0.0f,
                 bottom = 0.0f,
                 start = 0.0f,
@@ -112,7 +111,6 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
                 titleText = "",
                 titleColor = "#000000",
                 source = R.drawable.todo_rect,
-                duration = 0,
                 top = 0.0f,
                 bottom = 0.0f,
                 start = 0.0f,
@@ -127,7 +125,6 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
                 contentText = "",
                 contentGravity = Gravity.START,
                 contentColor = "#000000",
-                duration = 0,
                 height = 0,
                 background = R.drawable.edu_dialog_bg,
                 visibility = false
@@ -139,13 +136,11 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
                 contentText = "",
                 contentGravity = Gravity.START,
                 contentColor = "#000000",
-                duration = 0,
                 height = 0,
                 background = R.drawable.edu_dialog_bg,
                 visibility = false
             ),
             EduCover(
-                duration = 0,
                 boxLeft = 0.0f,
                 boxTop = 0.0f,
                 boxRight = 0.0f,
@@ -157,7 +152,6 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
                 isClickable = false
             ),
             EduArrow(
-                duration = 0,
                 endTo = DIALOG,
                 visibility = false
             ),
@@ -180,7 +174,6 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         currentDialog.contentSize = dialog.contentSize ?: currentDialog.contentSize
         currentDialog.contentGravity = dialog.contentGravity ?: currentDialog.contentGravity
         currentDialog.contentColor = dialog.contentColor ?: currentDialog.contentColor
-        currentDialog.duration = dialog.duration ?: currentDialog.duration
         currentDialog.top = dialog.top ?: currentDialog.top
         currentDialog.bottom = dialog.bottom ?: currentDialog.bottom
         currentDialog.start = dialog.start ?: currentDialog.start
@@ -192,7 +185,6 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         val currentCover = currentEduData.cover
         val cover = course!!.list[num].cover
 
-        currentCover.duration = cover.duration ?: currentCover.duration
         currentCover.boxLeft = cover.boxLeft ?: currentCover.boxLeft
         currentCover.boxTop = cover.boxTop ?: currentCover.boxTop
         currentCover.boxRight = cover.boxRight ?: currentCover.boxRight
@@ -205,7 +197,6 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         val currentArrow = currentEduData.arrow
         val arrow = course!!.list[num].arrow
 
-        currentArrow.duration = arrow.duration ?: currentArrow.duration
         currentArrow.endTo = arrow.endTo ?: currentArrow.endTo
     }
 
@@ -239,7 +230,6 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         eduScreenFragment.setDialogContentSize(currentDialog.contentSize!!)
 
         eduScreenFragment.translateDialog(
-            currentDialog.duration!!,
             currentDialog.top!!,
             currentDialog.bottom!!,
             currentDialog.start!!,
@@ -269,7 +259,6 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         val cover = course!!.list[num].cover
 
         eduScreenFragment.translateBox(
-            currentCover.duration!!,
             currentCover.boxLeft!!,
             currentCover.boxTop!!,
             currentCover.boxRight!!,
@@ -310,12 +299,12 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         val currentArrow = currentEduData.arrow
         val arrow = course!!.list[num].arrow
 
-        eduScreenFragment.translateArrowStart(currentArrow.duration!!)
+        eduScreenFragment.translateArrowStart()
         if(currentArrow.endTo == DIALOG) {
-            eduScreenFragment.translateArrowEndToDialog(currentArrow.duration!!)
+            eduScreenFragment.translateArrowEndToDialog()
         }
         if(currentArrow.endTo == BOX) {
-            eduScreenFragment.translateArrowEndToBox(currentArrow.duration!!)
+            eduScreenFragment.translateArrowEndToBox()
         }
 
         if(currentArrow.visibility == false && arrow.visibility == true) {
@@ -330,7 +319,6 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
 
     private fun configureEduScreenFragmentHands() {
         val currentHands = currentEduData.hands
-        val hands = course!!.list[num].hands
 
         eduScreenFragment.clearHands()
 

@@ -20,7 +20,6 @@ data class DefaultPhoneTestCourse(val eduScreen: EduScreen): EduCourse {
             dialog.titleText = ""
             dialog.contentText = "안녕하세요!"
             dialog.contentGravity = Gravity.CENTER
-            dialog.duration = 0
             dialog.top = 300.0f
             dialog.bottom = 300.0f
             dialog.start = 50.0f
@@ -45,7 +44,6 @@ data class DefaultPhoneTestCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.contentText = "사이즈 변경 테스트에요!"
             dialog.contentGravity = Gravity.START
-            dialog.duration = 500
             dialog.top = 320.0f
             dialog.bottom = 320.0f
             dialog.start = 60.0f
@@ -82,13 +80,11 @@ data class DefaultPhoneTestCourse(val eduScreen: EduScreen): EduCourse {
             cover.boxRight = width-50.0f
             cover.boxBottom = 100.0f
 
-            arrow.duration = 500
             arrow.endTo = EduScreen.BOX
             arrow.visibility = true
         })
 
         list.add(EduData().apply {
-            cover.duration = 500
             cover.boxRight = 100.0f
         })
 
@@ -107,18 +103,13 @@ data class DefaultPhoneTestCourse(val eduScreen: EduScreen): EduCourse {
             dialog.top = 275.0f
             dialog.bottom = 325.0f
 
-            cover.duration = 0
             cover.boxTop = 500.0f
             cover.boxBottom = 550.0f
-
-            arrow.duration = 1000
         })
 
         list.add(EduData().apply {
             cover.boxLeft = 150.0f
             cover.boxRight = 200.0f
-
-            arrow.duration = 500
         })
 
         list.add(EduData().apply {

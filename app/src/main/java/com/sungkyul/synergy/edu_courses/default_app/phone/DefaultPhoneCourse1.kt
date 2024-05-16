@@ -56,9 +56,6 @@ data class DefaultPhoneCourse1(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.duration = 750
-            cover.duration = 750
-
             dialog.top = 450.0f
             dialog.bottom = 200.0f
 
