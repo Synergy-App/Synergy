@@ -16,8 +16,10 @@ import com.sungkyul.synergy.edu_space.default_app.phone.adapter.ContactAdapter
 import com.sungkyul.synergy.edu_space.default_app.phone.adapter.ContactData
 import com.sungkyul.synergy.edu_space.icon_edu.adapter.IconEduAdapter
 import com.sungkyul.synergy.edu_space.icon_edu.data.Icon
+import com.sungkyul.synergy.utils.edu.EduListener
+import com.sungkyul.synergy.utils.edu.EduScreen
 
-class DefaultPhoneContactFragment(private val addedContact: ContactData? = null) : Fragment() {
+class DefaultPhoneContactFragment(private val addedContact: ContactData? = null, private val eduListener: EduListener) : Fragment() {
     private lateinit var binding: FragmentDefaultPhoneContactBinding
     private lateinit var contactAdapter: ContactAdapter
     private val contactArray = ArrayList<ContactData>()
@@ -40,7 +42,7 @@ class DefaultPhoneContactFragment(private val addedContact: ContactData? = null)
         }
 
         // 어댑터 설정
-        contactAdapter = ContactAdapter(contactArray)
+        contactAdapter = ContactAdapter(contactArray, eduListener)
         binding.contactList.layoutManager = LinearLayoutManager(requireContext())
         binding.contactList.adapter = contactAdapter
 
