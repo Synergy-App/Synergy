@@ -27,7 +27,7 @@ data class DefaultPhoneCourse3(val eduScreen: EduScreen): EduCourse {
             cover.boxTop = 350.0f
             cover.boxBottom = 700.0f /*크기가 커질 수록 박스가 커짐 */
             cover.boxVisibility = true
-            cover.boxStrokeVisibility = true
+            cover.boxBorderVisibility = true
 
             dialog.visibility = true
             cover.visibility = true

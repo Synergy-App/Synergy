@@ -44,7 +44,7 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
             cover.boxBottom = height
             dialog.background = R.drawable.edu_dialog_bg
             cover.boxVisibility = true
-            cover.boxStrokeVisibility = true
+            cover.boxBorderVisibility = true
         })
 
         list.add(EduData().apply {
@@ -61,7 +61,7 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
             dialog.visibility = true
             cover.visibility = true
             cover.boxVisibility = false
-            cover.boxStrokeVisibility = false
+            cover.boxBorderVisibility = false
         })
 
         list.add(EduData().apply {
@@ -69,7 +69,7 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
             cover.visibility = false
             cover.isClickable = false
             cover.boxVisibility = false
-            cover.boxStrokeVisibility = false
+            cover.boxBorderVisibility = false
             arrow.visibility = false
             action.id = "click_recent_history_button"
             hands.add(
@@ -99,7 +99,7 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
             cover.boxBottom = height-50.0f
             dialog.background = R.drawable.edu_dialog_bg
             cover.boxVisibility = true
-            cover.boxStrokeVisibility = true
+            cover.boxBorderVisibility = true
         })
 
         list.add(EduData().apply {
@@ -126,7 +126,7 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
             dialog.visibility = true
             cover.visibility = true
             cover.boxVisibility = false
-            cover.boxStrokeVisibility = false
+            cover.boxBorderVisibility = false
         })
 
         list.add(EduData().apply {
@@ -134,7 +134,7 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
             cover.visibility = false
             cover.isClickable = false
             cover.boxVisibility = false
-            cover.boxStrokeVisibility = false
+            cover.boxBorderVisibility = false
             arrow.visibility = false
             action.id = "click_contact_button"
             hands.add(

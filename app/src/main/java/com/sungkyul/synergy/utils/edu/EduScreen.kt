@@ -77,6 +77,8 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         configureEduScreenFragmentCover()
         configureEduScreenFragmentArrow()
         configureEduScreenFragmentHands()
+
+        eduScreenFragment.draw()
     }
 
     fun prev() {
@@ -145,10 +147,13 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
                 boxRight = 0.0f,
                 boxBottom = 0.0f,
                 boxVisibility = false,
-                boxStrokeVisibility = false,
+                boxBorderVisibility = false,
                 backgroundColor = R.color.black,
                 visibility = false,
-                isClickable = false
+                isClickable = false,
+                boxPadding = 0.0f,
+                boxBorderColor = R.color.lime,
+                boxBorderWidth = 15.0f
             ),
             EduArrow(
                 endTo = DIALOG,
@@ -190,6 +195,9 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         currentCover.boxBottom = cover.boxBottom ?: currentCover.boxBottom
         currentCover.backgroundColor = cover.backgroundColor ?: currentCover.backgroundColor
         currentCover.isClickable = cover.isClickable ?: currentCover.isClickable
+        currentCover.boxPadding = cover.boxPadding ?: currentCover.boxPadding
+        currentCover.boxBorderColor = cover.boxBorderColor ?: currentCover.boxBorderColor
+        currentCover.boxBorderWidth = cover.boxBorderWidth ?: currentCover.boxBorderWidth
     }
 
     private fun updateCurrentArrow() {
@@ -273,6 +281,18 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
             if(hasChangedBoxVisibility(from = false, to = true)) 0 else EduScreenFragment.BOX_MOVEMENT_DURATION
         )
 
+        // TODO(박스 테두리 애니메이션을 따로 만들어야 할까? 박스 등장/숨김을 하면 박스 테두리 애니메이션이 끊기는데)
+
+        eduScreenFragment.setBoxPadding(currentCover.boxPadding!!)
+        eduScreenFragment.setBoxBorderWidth(currentCover.boxBorderWidth!!)
+
+        if(cover.boxBorderVisibility == true || (cover.boxBorderVisibility == null && currentCover.boxBorderVisibility == true)) {
+            eduScreenFragment.setBoxBorderColor(currentCover.boxBorderColor!!)
+        }
+        if(cover.visibility == true || (cover.visibility == null && currentCover.visibility == true)) {
+            eduScreenFragment.setCoverBackgroundColor(currentCover.backgroundColor!!)
+        }
+
         if(hasChangedBoxVisibility(from = false, to = true)) {
             eduScreenFragment.showBox()
         }
@@ -280,14 +300,12 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
             eduScreenFragment.hideBox()
         }
 
-        if(currentCover.boxStrokeVisibility == false && cover.boxStrokeVisibility == true) {
-            eduScreenFragment.showBoxStroke()
+        if(currentCover.boxBorderVisibility == false && cover.boxBorderVisibility == true) {
+            eduScreenFragment.showBoxBorder()
         }
-        if(currentCover.boxStrokeVisibility == true && cover.boxStrokeVisibility == false) {
-            eduScreenFragment.hideBoxStroke()
+        if(currentCover.boxBorderVisibility == true && cover.boxBorderVisibility == false) {
+            eduScreenFragment.hideBoxBorder()
         }
-
-        eduScreenFragment.setCoverBackgroundColor(currentCover.backgroundColor!!)
 
         if(currentCover.visibility == false && cover.visibility == true) {
             eduScreenFragment.showCover()
@@ -299,7 +317,7 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         isClickable = currentCover.isClickable!!
 
         currentCover.boxVisibility = cover.boxVisibility ?: currentCover.boxVisibility
-        currentCover.boxStrokeVisibility = cover.boxStrokeVisibility ?: currentCover.boxStrokeVisibility
+        currentCover.boxBorderVisibility = cover.boxBorderVisibility ?: currentCover.boxBorderVisibility
         currentCover.visibility = cover.visibility ?: currentCover.visibility
     }
 

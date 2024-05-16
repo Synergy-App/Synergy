@@ -6,6 +6,7 @@ import android.widget.ImageView
 import com.sungkyul.synergy.R
 
 data class EduDialog(
+    var visibility: Boolean? = null,
     var titleText: String? = null,
     var titleFont: Int? = null,
     var titleSize: Float? = null,
@@ -20,10 +21,10 @@ data class EduDialog(
     var bottom: Float? = null,
     var start: Float? = null,
     var end: Float? = null,
-    var background: Int? = null,
-    var visibility: Boolean? = null
+    var background: Int? = null
 )
 data class EduImageDialog(
+    var visibility: Boolean? = null,
     var titleText: String? = null,
     var titleColor: String? = null,
     var source: Int? = null,
@@ -31,10 +32,10 @@ data class EduImageDialog(
     var bottom: Float? = null,
     var start: Float? = null,
     var end: Float? = null,
-    var background: Int? = null,
-    var visibility: Boolean? = null
+    var background: Int? = null
 )
 data class EduVerticalDialog(
+    var visibility: Boolean? = null,
     var titleText: String? = null,
     var titleGravity: Int? = null,
     var titleColor: String? = null,
@@ -43,27 +44,29 @@ data class EduVerticalDialog(
     var contentColor: String? = null,
     var contentBolds: List<Pair<Int, Int>>? = null,
     var height: Int? = null,
-    var background: Int? = null,
-    var visibility: Boolean? = null
+    var background: Int? = null
 )
 data class EduCover(
+    var visibility: Boolean? = null,
+    var boxVisibility: Boolean? = null,
+    var boxBorderVisibility: Boolean? = null,
+    var isClickable: Boolean? = null,
+    var backgroundColor: Int? = null,
     var boxLeft: Float? = null,
     var boxTop: Float? = null,
     var boxRight: Float? = null,
     var boxBottom: Float? = null,
-    var boxVisibility: Boolean? = null,
-    var boxStrokeVisibility: Boolean? = null,
-    var backgroundColor: Int? = null,
-    var visibility: Boolean? = null,
-    var isClickable: Boolean? = null
+    var boxPadding: Float? = null,
+    var boxBorderColor: Int? = null,
+    var boxBorderWidth: Float? = null
 )
 data class EduArrow(
-    var endTo: Int? = null,
-    var visibility: Boolean? = null
+    var visibility: Boolean? = null,
+    var endTo: Int? = null
 )
 data class EduAction(
     var id: String? = null,
-    var message: String? = null
+    var message: String? = null // TODO(message는 필요 없을 듯)
 )
 data class EduHand(
     var id: String,

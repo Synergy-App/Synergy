@@ -58,7 +58,7 @@ data class SettingsCourse(val eduScreen: EduScreen): EduCourse {
             cover.visibility = true
             cover.isClickable = true
             cover.boxVisibility = true
-            cover.boxStrokeVisibility = true
+            cover.boxBorderVisibility = true
         })
 
         list.add(EduData().apply {
@@ -70,7 +70,7 @@ data class SettingsCourse(val eduScreen: EduScreen): EduCourse {
             cover.visibility = false
             cover.isClickable = false
             cover.boxVisibility = false
-            cover.boxStrokeVisibility = false
+            cover.boxBorderVisibility = false
             action.id = "tap_display_item"
             hands.add(
                 EduHand(

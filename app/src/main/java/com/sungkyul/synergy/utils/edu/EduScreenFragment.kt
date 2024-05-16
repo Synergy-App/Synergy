@@ -63,10 +63,8 @@ class EduScreenFragment : Fragment() {
         xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
         alpha = 0
     }
-    private val boxStrokePaint = Paint().apply {
+    private val boxBorderPaint = Paint().apply {
         style = Paint.Style.STROKE
-        strokeWidth = 15.0f
-        color = Color.rgb(51, 255, 0)
         alpha = 0
     }
     private val arrowPaint = Paint().apply {
@@ -79,9 +77,10 @@ class EduScreenFragment : Fragment() {
     private val toggleHandInterpolator = DecelerateInterpolator()
     private val coverMaxAlpha = 128
     private val boxCornerRadius = 75.0f
-    private val boxStrokeCornerRadius = 100.0f
-    private val boxPadding = 35.0f
+    private val boxBorderCornerRadius = 100.0f
     private val arrowEndSize = 30.0f
+
+    private var boxPadding = 35.0f
 
     private var boxLeft = 0.0f
     private var boxTop = 0.0f
@@ -98,8 +97,8 @@ class EduScreenFragment : Fragment() {
     private var currentDialogCenterY = 0.0f
     private var currentBoxCenterX = 0.0f
     private var currentBoxCenterY = 0.0f
-    private var currentBoxStrokeTopY = 0.0f
-    private var currentBoxStrokeBottomY = 0.0f
+    private var currentBoxBorderTopY = 0.0f
+    private var currentBoxBorderBottomY = 0.0f
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -267,7 +266,7 @@ class EduScreenFragment : Fragment() {
         return scaleSet
     }
 
-    private fun draw() {
+    fun draw() {
         // Clear canvas
         canvas.drawRect(0.0f, 0.0f, binding.root.width.toFloat(), binding.root.height.toFloat(), clearPaint)
 
@@ -297,9 +296,9 @@ class EduScreenFragment : Fragment() {
             boxTop-boxPadding,
             boxRight+boxPadding,
             boxBottom+boxPadding,
-            boxStrokeCornerRadius,
-            boxStrokeCornerRadius,
-            boxStrokePaint
+            boxBorderCornerRadius,
+            boxBorderCornerRadius,
+            boxBorderPaint
         )
 
         // Draw arrow
@@ -359,6 +358,18 @@ class EduScreenFragment : Fragment() {
         binding.dialog.setBackgroundResource(background)
     }
 
+    fun setBoxPadding(boxPadding: Float) {
+        this.boxPadding = boxPadding
+    }
+
+    fun setBoxBorderColor(color: Int) {
+        boxBorderPaint.color = ContextCompat.getColor(requireContext(), color)
+    }
+
+    fun setBoxBorderWidth(boxBorderWidth: Float) {
+        boxBorderPaint.strokeWidth = boxBorderWidth
+    }
+
     fun showDialog() {
         startObjectAnimatorOfDialog(
             DIALOG_TOGGLE_DURATION,
@@ -409,24 +420,22 @@ class EduScreenFragment : Fragment() {
 
     fun showBox() {
         boxPaint.alpha = 255
-        draw()
     }
 
     fun hideBox() {
         boxPaint.alpha = 0
-        draw()
     }
 
-    fun showBoxStroke() {
+    fun showBoxBorder() {
         AnimUtils.startValueAnimatorOfFloat({
-            boxStrokePaint.alpha = (it * 255).toInt()
+            boxBorderPaint.alpha = (it * 255).toInt()
             draw()
         }, 0.0f, 1.0f, BOX_BORDER_TOGGLE_DURATION)
     }
 
-    fun hideBoxStroke() {
+    fun hideBoxBorder() {
         AnimUtils.startValueAnimatorOfFloat({
-            boxStrokePaint.alpha = (it * 255).toInt()
+            boxBorderPaint.alpha = (it * 255).toInt()
             draw()
         }, 1.0f, 0.0f, BOX_BORDER_TOGGLE_DURATION)
     }
@@ -511,8 +520,8 @@ class EduScreenFragment : Fragment() {
 
         currentBoxCenterX = GeometryUtils.linear(left, right, 0.5f)
         currentBoxCenterY = GeometryUtils.linear(top, bottom, 0.5f)
-        currentBoxStrokeTopY = top-boxPadding
-        currentBoxStrokeBottomY = bottom+boxPadding
+        currentBoxBorderTopY = top-boxPadding
+        currentBoxBorderBottomY = bottom+boxPadding
     }
 
     // 화살표의 시작점이 다이얼로그의 중심을 향해 이동하도록 만든다.
@@ -550,7 +559,7 @@ class EduScreenFragment : Fragment() {
             arrowEndX = GeometryUtils.linear(startArrowEndX, currentBoxCenterX, it)
             arrowEndY = GeometryUtils.linear(
                 startArrowEndY,
-                if (currentDialogCenterY < currentBoxCenterY) currentBoxStrokeTopY else currentBoxStrokeBottomY,
+                if (currentDialogCenterY < currentBoxCenterY) currentBoxBorderTopY else currentBoxBorderBottomY,
                 it
             )
             draw()

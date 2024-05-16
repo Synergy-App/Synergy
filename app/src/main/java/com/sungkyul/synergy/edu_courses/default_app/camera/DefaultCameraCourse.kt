@@ -30,7 +30,7 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
             dialog.visibility = true
             cover.visibility = true
             cover.isClickable = true
-            cover.boxStrokeVisibility = true
+            cover.boxBorderVisibility = true
             cover.boxVisibility = true
             arrow.visibility = true
         })
@@ -86,7 +86,7 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
             dialog.bottom = 300.0f
             dialog.start = 50.0f
             dialog.end = 50.0f
-            cover.boxStrokeVisibility = false
+            cover.boxBorderVisibility = false
             cover.boxVisibility = false
             arrow.endTo = EduScreen.DIALOG
         })
@@ -125,7 +125,7 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
             cover.visibility = true
             cover.isClickable = true
             cover.boxVisibility = true
-            cover.boxStrokeVisibility = true
+            cover.boxBorderVisibility = true
             arrow.visibility = true
         })
 
@@ -139,7 +139,7 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
             cover.visibility = false
             cover.isClickable = false
             cover.boxVisibility = false
-            cover.boxStrokeVisibility = false
+            cover.boxBorderVisibility = false
             arrow.visibility = false
             action.id = "click_gallery_view_button"
             hands.add(
