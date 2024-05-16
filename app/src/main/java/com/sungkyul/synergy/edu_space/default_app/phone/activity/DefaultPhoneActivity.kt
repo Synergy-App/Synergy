@@ -60,7 +60,7 @@ class DefaultPhoneActivity : AppCompatActivity() {
         // Fragments
         keypadFragment = DefaultPhoneKeypadFragment(binding.eduScreen)
         recentHistoryFragment = DefaultPhoneRecentHistoryFragment()
-        contactFragment = DefaultPhoneContactFragment()
+        contactFragment = DefaultPhoneContactFragment(eduListener = binding.eduScreen)
 
         // 돋보기, 더보기 버튼의 배경 알파 값 초기화
         binding.magnifyingGlassButton.background.alpha = TOUCH_UP_ALPHA
@@ -138,7 +138,8 @@ class DefaultPhoneActivity : AppCompatActivity() {
                     R.drawable.ic_person_black_24dp,
                     intent.getStringExtra("name")!!,
                     intent.getStringExtra("num")!!
-                )
+                ),
+                binding.eduScreen
             )
 
             replaceFragment(contactFragment)
