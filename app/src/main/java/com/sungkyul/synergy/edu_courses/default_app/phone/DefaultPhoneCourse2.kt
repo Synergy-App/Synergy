@@ -227,30 +227,31 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
             dialog.top = 360.0f
             dialog.bottom = 320.0f
 
-            cover.boxLeft = 40.0f
+            cover.boxLeft = 30.0f
             cover.boxRight = width-280.0f
-            cover.boxTop = 400.0f
-            cover.boxBottom = height-180.0f
+            cover.boxTop = 530.0f
+            cover.boxBottom = 650.0f
 
         })
 
         list.add(EduData().apply {
             dialog.contentText = "상대방에게 메세지를<br>보내는 버튼입니다."
 
-            cover.boxLeft = 100.0f
-            cover.boxTop = 570.0f
-            cover.boxRight = width-280.0f
-            cover.boxBottom = height-150.0f
+            cover.boxLeft = 120.0f
+            cover.boxRight = width-190.0f
+            cover.boxTop = 530.0f
+            cover.boxBottom = 650.0f
+
 
         })
 
         list.add(EduData().apply {
             dialog.contentText = "상대방에게 영상통화를<br>거는 버튼입니다."
 
-            cover.boxLeft = 180.0f
-            cover.boxTop = 570.0f
-            cover.boxRight = width-280.0f
-            cover.boxBottom = height-80.0f
+            cover.boxLeft = 200.0f
+            cover.boxRight = width-120.0f
+            cover.boxTop = 530.0f
+            cover.boxBottom = 650.0f
 
         })
 
