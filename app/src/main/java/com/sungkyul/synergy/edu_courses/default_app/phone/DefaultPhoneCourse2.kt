@@ -134,18 +134,125 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
             cover.visibility = false
             cover.isClickable = false
             cover.boxVisibility = false
-            cover.boxBorderVisibility = false
             arrow.visibility = false
             action.id = "click_contact_button"
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = 380.0f,
+                    x = 330.0f,
                     y = 770.0f,
                     rotation = 180.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
         })
+
+        list.add(EduData().apply {
+            dialog.contentText = "연락처에서는<br>상대방의 전화번호를 저장할 수 있고<br>상대방에게 전화를<br>걸 수 있습니다."
+            dialog.top = 350.0f
+            dialog.bottom = 270.0f
+
+            dialog.visibility = true
+            cover.visibility = true
+            cover.isClickable = true
+            dialog.contentColor = R.color.black
+            dialog.background = R.drawable.edu_dialog_bg
+        })
+
+        list.add(EduData().apply {
+            dialog.contentText = "저장되어 있는<br>상대방의 연락처 목록이<br>나열됩니다."
+
+            dialog.top = 250.0f
+            dialog.bottom = 450.0f
+
+            cover.boxLeft = 10.0f
+            cover.boxTop = 430.0f
+            cover.boxRight = width-10.0f
+            cover.boxBottom = height-50.0f
+
+            cover.boxVisibility = true
+            cover.boxBorderVisibility = true
+        })
+
+        list.add(EduData().apply {
+            dialog.contentText = "'시너지'연락처를<br>눌러보세요"
+            dialog.contentGravity = Gravity.CENTER
+            dialog.contentSize = 28.0f
+            dialog.top = 300.0f
+            dialog.bottom = 430.0f
+            dialog.contentColor = R.color.white
+            dialog.background = R.drawable.edu_dialog_green_bg
+
+            cover.boxVisibility = false
+            cover.boxBorderVisibility = false
+        })
+
+        list.add(EduData().apply {
+            dialog.visibility = false
+            cover.visibility = false
+            cover.isClickable = false
+
+            action.id = "click_captain_contact_item"
+            hands.add(
+                EduHand(
+                    id = "tap",
+                    x = 100.0f,
+                    y = 450.0f,
+                    gesture = HandGestures.Companion::tapGesture
+                )
+            )
+        })
+
+        list.add(EduData().apply {
+            dialog.contentText = "다음과 같이 뜨게 됩니다."
+            dialog.top = 300.0f
+            dialog.bottom = 430.0f /*커질수록 다이얼로그 크기가 작아짐*/
+
+            cover.boxLeft = 10.0f
+            cover.boxTop = 430.0f
+            cover.boxRight = width-10.0f
+            cover.boxBottom = height-180.0f
+
+            cover.boxVisibility = true
+            cover.boxBorderVisibility = true
+            cover.visibility = true
+            dialog.visibility = true
+            dialog.background = R.drawable.edu_dialog_bg
+            dialog.contentColor = R.color.black
+            cover.isClickable = true
+        })
+
+        list.add(EduData().apply {
+            dialog.contentText = "상대방에게 전화를<br>거는 버튼입니다."
+            dialog.top = 360.0f
+            dialog.bottom = 320.0f
+
+            cover.boxLeft = 40.0f
+            cover.boxRight = width-280.0f
+            cover.boxTop = 400.0f
+            cover.boxBottom = height-180.0f
+
+        })
+
+        list.add(EduData().apply {
+            dialog.contentText = "상대방에게 메세지를<br>보내는 버튼입니다."
+
+            cover.boxLeft = 100.0f
+            cover.boxTop = 570.0f
+            cover.boxRight = width-280.0f
+            cover.boxBottom = height-150.0f
+
+        })
+
+        list.add(EduData().apply {
+            dialog.contentText = "상대방에게 영상통화를<br>거는 버튼입니다."
+
+            cover.boxLeft = 180.0f
+            cover.boxTop = 570.0f
+            cover.boxRight = width-280.0f
+            cover.boxBottom = height-80.0f
+
+        })
+
     }
 }
