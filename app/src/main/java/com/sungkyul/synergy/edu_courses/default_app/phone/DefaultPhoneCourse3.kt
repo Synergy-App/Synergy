@@ -50,9 +50,7 @@ data class DefaultPhoneCourse3(val eduScreen: EduScreen): EduCourse {
             dialog.visibility = false
             cover.visibility = false
             cover.isClickable = false
-            arrow.visibility = false
             action.id = "phone_name_edit_text"
-            action.message = "0"
             hands.add(
                 EduHand(
                     id = "tap",
@@ -64,7 +62,7 @@ data class DefaultPhoneCourse3(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "이름에 '시너지'를 입력하세요."
+            dialog.contentText = "전화번호에 '010-1234-5678'를 입력하세요."
             dialog.top = 300.0f
             dialog.bottom = 400.0f
             dialog.contentColor = R.color.white
