@@ -88,6 +88,13 @@ class DefaultPhoneAddActivity : AppCompatActivity() {
             if(hasFocus) {
                 binding.eduScreen.onAction("phone_name_edit_text")
             }
+
+        }
+
+        binding.phoneNameEditText.setOnClickListener {
+            if(binding.eduScreen.onAction("phone_name_edit_text")) {
+                // id가 서로 일치하면 이 부분이 실행된다.
+            }
         }
     }
 }
