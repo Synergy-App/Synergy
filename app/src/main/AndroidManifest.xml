@@ -93,7 +93,11 @@
 
         <activity
             android:name=".edu_space.default_app.phone.activity.DefaultPhoneCallActivity"
-            android:exported="false"/> <!-- 전화 콜 화면 -->
+            android:exported="false" /> <!-- 전화 콜 화면 -->
+
+        <activity
+            android:name=".edu_space.default_app.phone.activity.DefaultPhoneAddActivity"
+            android:exported="false"/> <!-- 전화 연락처 추가화면 -->
 
         <activity
             android:name=".edu_space.default_app.phone.activity.DefaultPhoneAddActivity"
@@ -104,7 +108,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".edu_space.default_app.camera.activity.DefaultCameraActivity"
             android:exported="false" /> <!-- 카메라 화면 -->
@@ -115,17 +118,21 @@
         <!-- 환경설정 시작 -->
         <activity
             android:name=".edu_space.settingedu2.Setting2MainActivity"
-            android:exported="false"/> <!-- <activity -->
-        <!-- android:name=".edu_space.settingedu.activity.SettingEduActivity" -->
-        <!-- android:exported="true" /> &lt;!&ndash; 환경설정 시작 &ndash;&gt; -->
-        <!-- <activity -->
+            android:exported="false"/> > <!-- <activity -->
 
         <activity
             android:name=".edu_space.settingedu2.Setting2DisplayActivity"
             android:exported="false" />
+
         <activity
             android:name=".edu_space.settingedu2.Setting2FontActivity"
-            android:exported="false" /> <!-- 계정생성 교육 -->
+            android:exported="true" > <!-- 계정생성 교육 -->
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
         <activity
             android:name=".edu_space.accountedu.GoogleMainActivity"
             android:exported="false" />
