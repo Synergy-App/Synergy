@@ -17,6 +17,8 @@ data class EduDialog(
     var contentSize: Float? = null,
     var contentGravity: Int? = null,
     var contentColor: Int? = null,
+    var separatorColor: Int? = null,
+    var separatorWidth: Int? = null,
     var top: Float? = null,
     var bottom: Float? = null,
     var start: Float? = null,

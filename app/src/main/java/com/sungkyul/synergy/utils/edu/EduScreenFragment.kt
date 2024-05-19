@@ -76,8 +76,8 @@ class EduScreenFragment : Fragment() {
     private val toggleHandDuration = 350L
     private val toggleHandInterpolator = DecelerateInterpolator()
     private val coverMaxAlpha = 128
-    private val boxCornerRadius = 75.0f
-    private val boxBorderCornerRadius = 100.0f
+    private val boxCornerRadius = 50.0f
+    private val boxBorderCornerRadius = 50.0f
     private val arrowEndSize = 30.0f
 
     private var boxPadding = 35.0f
@@ -352,6 +352,16 @@ class EduScreenFragment : Fragment() {
 
     fun setDialogContentSize(size: Float) {
         binding.dialogContent.textSize = size
+    }
+
+    fun setDialogSeparatorColor(color: Int) {
+        binding.dialogSeparator.setBackgroundColor(ContextCompat.getColor(requireContext(), color))
+    }
+
+    fun setDialogSeparatorWidth(width: Int) {
+        binding.dialogSeparator.updateLayoutParams {
+            height = width
+        }
     }
 
     fun setDialogBackground(background: Int) {

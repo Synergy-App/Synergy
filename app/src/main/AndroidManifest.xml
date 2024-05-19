@@ -90,6 +90,7 @@
         <activity
             android:name=".edu_space.default_app.phone.activity.DefaultPhoneActivity"
             android:exported="false"/> <!-- 전화 화면 -->
+
         <activity
             android:name=".edu_space.default_app.phone.activity.DefaultPhoneCallActivity"
             android:exported="false" /> <!-- 전화 콜 화면 -->
@@ -98,6 +99,15 @@
             android:name=".edu_space.default_app.phone.activity.DefaultPhoneAddActivity"
             android:exported="false"/> <!-- 전화 연락처 추가화면 -->
 
+        <activity
+            android:name=".edu_space.default_app.phone.activity.DefaultPhoneAddActivity"
+            android:exported="true"> <!-- 전화 연락처 추가화면 -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".edu_space.default_app.camera.activity.DefaultCameraActivity"
             android:exported="false" /> <!-- 카메라 화면 -->
