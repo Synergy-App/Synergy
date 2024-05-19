@@ -17,4 +17,14 @@ interface AuthAPI {
 
     @POST("user/signin")
     fun signin(@Body requestBody: SignInBody): Call<ApiResponse<SignInResult>>
+
+    @POST("user/find-id")
+    fun findIdByPhone(@Body requestBody: FindIdBody): Call<ApiResponse<FindIdResult>>
+
+    @POST("user/verify-user")
+    fun verifyUser(@Body requestBody: VerifyUserBody): Call<ApiResponse<VerifyUserResult>>
+
+    @POST("user/change-password")
+    fun changePassword(@Body requestBody: ChangePasswordBody): Call<ApiResponse<ChangePasswordResult>>
+
 }

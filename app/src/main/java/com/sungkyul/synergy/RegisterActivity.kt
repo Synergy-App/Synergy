@@ -1,11 +1,10 @@
 package com.sungkyul.synergy
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.content.Intent
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageButton
 import android.widget.Toast
 import com.sungkyul.synergy.backend.ApiResponse
 import com.sungkyul.synergy.backend.auth.AuthAPI
@@ -27,11 +26,11 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var editTextRePassword: EditText
     lateinit var editTextNick: EditText
     lateinit var editTextPhone: EditText
-    lateinit var btnRegister: ImageButton
+    lateinit var btnRegister: Button // ImageButton을 Button으로 변경
     lateinit var btnCheckId: Button
-    var CheckId:Boolean=false
+    var checkId: Boolean = false
     lateinit var btnCheckNick: Button
-    var CheckNick:Boolean=false
+    var checkNick: Boolean = false
 
     private val authApi: AuthAPI
 
@@ -72,7 +71,6 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -82,10 +80,9 @@ class RegisterActivity : AppCompatActivity() {
         editTextRePassword = findViewById(R.id.editTextRePass_Reg)
         editTextNick = findViewById(R.id.editTextNick_Reg)
         editTextPhone = findViewById(R.id.editTextPhone_Reg)
-        btnRegister = findViewById(R.id.btnRegister_Reg)
+        btnRegister = findViewById(R.id.btnRegister_Reg) // ImageButton을 Button으로 변경
         btnCheckId = findViewById(R.id.btnCheckId_Reg)
         btnCheckNick = findViewById(R.id.btnCheckNick_Reg)
-
 
         btnCheckId.setOnClickListener {
             val user = editTextId.text.toString()
@@ -98,7 +95,7 @@ class RegisterActivity : AppCompatActivity() {
                     val res = callCheckIdAPI(body)
 
                     if (res?.success == true && res.data.available) {
-                        CheckId = true
+                        checkId = true
                         Toast.makeText(this@RegisterActivity, "사용 가능한 아이디입니다.", Toast.LENGTH_SHORT).show()
                     } else {
                         Toast.makeText(this@RegisterActivity, res?.err?.msg, Toast.LENGTH_SHORT).show()
@@ -118,7 +115,7 @@ class RegisterActivity : AppCompatActivity() {
                     val res = callCheckNicknameAPI(body)
 
                     if (res?.success == true && res.data.available) {
-                        CheckNick = true
+                        checkNick = true
                         Toast.makeText(this@RegisterActivity, "사용 가능한 닉네임입니다.", Toast.LENGTH_SHORT).show()
                     } else {
                         Toast.makeText(this@RegisterActivity, res?.err?.msg, Toast.LENGTH_SHORT).show()
@@ -137,8 +134,8 @@ class RegisterActivity : AppCompatActivity() {
             if (user.isEmpty() || pass.isEmpty() || repass.isEmpty() || nick.isEmpty() || phone.isEmpty()) {
                 Toast.makeText(this@RegisterActivity, "회원정보를 모두 입력해주세요.", Toast.LENGTH_SHORT).show()
             } else {
-                if (CheckId) {
-                    if (CheckNick) {
+                if (checkId) {
+                    if (checkNick) {
                         CoroutineScope(Dispatchers.Main).launch {
                             val body = SignUpBody(user, pass, repass, nick, phone)
                             val res = callSignUpAPI(body)
@@ -149,7 +146,7 @@ class RegisterActivity : AppCompatActivity() {
                                     "가입되었습니다.",
                                     Toast.LENGTH_SHORT
                                 ).show()
-                                val intent = Intent(applicationContext, MainActivity::class.java)
+                                val intent = Intent(applicationContext, LoginActivity::class.java)
                                 startActivity(intent)
                             } else {
                                 Toast.makeText(
@@ -169,6 +166,5 @@ class RegisterActivity : AppCompatActivity() {
                 }
             }
         }
-
     }
 }

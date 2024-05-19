@@ -19,10 +19,11 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class LoginActivity : AppCompatActivity() {
-    lateinit var btnLogin: ImageButton
+    lateinit var btnLogin: Button // ImageButton을 Button으로 변경
     lateinit var editTextId: EditText
     lateinit var editTextPassword: EditText
     lateinit var btnRegister: Button
+    lateinit var btnFind: Button
 
     private val authApi: AuthAPI
 
@@ -49,10 +50,11 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        btnLogin = findViewById(R.id.btnLogin)
+        btnLogin = findViewById(R.id.btnLogin) // ImageButton을 Button으로 변경
         editTextId = findViewById(R.id.editTextId)
         editTextPassword = findViewById(R.id.editTextPassword)
         btnRegister = findViewById(R.id.btnRegister)
+        btnFind = findViewById(R.id.btnFindIdPassword)
 
         // 로그인 버튼 클릭
         btnLogin.setOnClickListener {
@@ -89,6 +91,12 @@ class LoginActivity : AppCompatActivity() {
         btnRegister.setOnClickListener {
             val loginIntent = Intent(this@LoginActivity, RegisterActivity::class.java)
             startActivity(loginIntent)
+        }
+
+        // 아이디/비밀번호 찾기 버튼 클릭시
+        btnFind.setOnClickListener {
+            val findIntent = Intent(this@LoginActivity, FindIdPasswordActivity::class.java)
+            startActivity(findIntent)
         }
     }
 }

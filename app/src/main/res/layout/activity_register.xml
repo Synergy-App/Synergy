@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0E5BDF"
+    android:background="#DADADA"
     tools:context=".RegisterActivity">
 
     <TextView
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text="회원가입"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,6 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="341dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -45,22 +46,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|left"
-                    android:layout_marginBottom="34dp"
                     android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="34dp"
                     android:text="아이디"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#000000"
                     android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/editTextId_Reg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
+                    android:layout_gravity="bottom"
                     android:backgroundTint="#FFFFFF"
                     android:ems="10"
-                    android:layout_gravity="bottom"
                     android:hint="@string/editId_hint"
                     android:inputType="text"
+                    android:paddingLeft="8dp"
                     android:textColor="#FFFFFF"
                     android:textColorHint="#8DFFFFFF" />
 
@@ -70,11 +71,11 @@
                     android:layout_height="30dp"
                     android:layout_gravity="right|top"
                     android:backgroundTint="#FFFFFF"
+                    android:padding="1dp"
                     android:text="중복확인"
                     android:textAlignment="center"
-                    android:textColor="#1C26FF"
-                    android:padding="1dp"
-                    android:textSize="12sp"/>
+                    android:textColor="#000000"
+                    android:textSize="12sp" />
             </FrameLayout>
 
         </LinearLayout>
@@ -94,22 +95,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|left"
-                    android:layout_marginBottom="34dp"
                     android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="34dp"
                     android:text="비밀번호"
-                    android:textColor="#FFFFFF"
-                    android:textSize="18sp"  />
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/editTextPass_Reg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
+                    android:layout_gravity="bottom"
                     android:backgroundTint="#FFFFFF"
                     android:ems="10"
-                    android:layout_gravity="bottom"
                     android:hint="@string/editPass_hint"
                     android:inputType="textPassword"
+                    android:paddingLeft="8dp"
                     android:textColor="#FFFFFF"
                     android:textColorHint="#8DFFFFFF" />
             </FrameLayout>
@@ -131,21 +132,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|left"
-                    android:layout_marginBottom="34dp"
                     android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="34dp"
                     android:text="비밀번호 확인"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#000000"
                     android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/editTextRePass_Reg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
+                    android:layout_gravity="bottom"
                     android:backgroundTint="#FFFFFF"
                     android:ems="10"
-                    android:layout_gravity="bottom"
                     android:inputType="textPassword"
+                    android:paddingLeft="8dp"
                     android:textColor="#FFFFFF"
                     android:textColorHint="#8DFFFFFF" />
 
@@ -162,28 +163,29 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|left"
-                    android:layout_marginBottom="34dp"
                     android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="34dp"
                     android:text="닉네임"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#000000"
                     android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/editTextNick_Reg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
+                    android:layout_gravity="bottom"
                     android:backgroundTint="#FFFFFF"
                     android:ems="10"
-                    android:layout_gravity="bottom"
                     android:hint="@string/editNick_hint"
                     android:inputType="text"
                     android:maxLength="20"
+                    android:paddingLeft="8dp"
                     android:textColor="#FFFFFF"
                     android:textColorHint="#8DFFFFFF" />
 
@@ -193,11 +195,11 @@
                     android:layout_height="30dp"
                     android:layout_gravity="right|top"
                     android:backgroundTint="#FFFFFF"
+                    android:padding="1dp"
                     android:text="중복확인"
                     android:textAlignment="center"
-                    android:textColor="#1C26FF"
-                    android:padding="1dp"
-                    android:textSize="12sp"/>
+                    android:textColor="#000000"
+                    android:textSize="12sp" />
             </FrameLayout>
 
         </LinearLayout>
@@ -217,22 +219,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|left"
-                    android:layout_marginBottom="34dp"
                     android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="34dp"
                     android:text="휴대폰"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#000000"
                     android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/editTextPhone_Reg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
+                    android:layout_gravity="bottom"
                     android:backgroundTint="#FFFFFF"
                     android:ems="10"
-                    android:layout_gravity="bottom"
                     android:hint="@string/editPhone_hint"
                     android:inputType="number"
+                    android:paddingLeft="8dp"
                     android:textColor="#FFFFFF"
                     android:textColorHint="#8DFFFFFF" />
 
@@ -241,16 +243,17 @@
         </LinearLayout>
     </LinearLayout>
 
-    <ImageButton
+    <Button
         android:id="@+id/btnRegister_Reg"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="45dp"
-        android:background="#00FF0000"
-        android:src="@drawable/ic_wifi_black"
+        android:layout_height="50dp"
+        android:background="#FFFFFF"
+        android:padding="5dp"
+        android:text="회원가입"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
