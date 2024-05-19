@@ -14,7 +14,7 @@ data class NougatCourse(val eduScreen: EduScreen): EduCourse {
     // 교육 코스를 만든다.
     init {
         list.add(EduData().apply {
-            //dialog.visibility = true
+            dialog.visibility = true
             cover.visibility = true
             //cover.backgroundColor = R.color.coral
             cover.boxVisibility = true
@@ -25,6 +25,8 @@ data class NougatCourse(val eduScreen: EduScreen): EduCourse {
             dialog.titleText = "제목인 것"
             dialog.contentText = "내용인 것"
             dialog.titleSize = 30.0f
+            dialog.separatorColor = R.color.lime
+            dialog.separatorWidth = 30
             dialog.top = 300.0f
             dialog.bottom = 300.0f
             dialog.start = 100.0f

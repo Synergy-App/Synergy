@@ -101,6 +101,8 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
                 contentSize = 18.0f,
                 contentGravity = Gravity.START,
                 contentColor = R.color.black,
+                separatorColor = R.color.light_grey,
+                separatorWidth = 5,
                 top = 0.0f,
                 bottom = 0.0f,
                 start = 0.0f,
@@ -178,6 +180,8 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         currentDialog.contentSize = dialog.contentSize ?: currentDialog.contentSize
         currentDialog.contentGravity = dialog.contentGravity ?: currentDialog.contentGravity
         currentDialog.contentColor = dialog.contentColor ?: currentDialog.contentColor
+        currentDialog.separatorColor = dialog.separatorColor ?: currentDialog.separatorColor
+        currentDialog.separatorWidth = dialog.separatorWidth ?: currentDialog.separatorWidth
         currentDialog.top = dialog.top ?: currentDialog.top
         currentDialog.bottom = dialog.bottom ?: currentDialog.bottom
         currentDialog.start = dialog.start ?: currentDialog.start
@@ -249,6 +253,9 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         } else {
             eduScreenFragment.showDialogTitle()
         }
+
+        eduScreenFragment.setDialogSeparatorColor(currentDialog.separatorColor!!)
+        eduScreenFragment.setDialogSeparatorWidth(currentDialog.separatorWidth!!)
 
         eduScreenFragment.setDialogBackground(currentDialog.background!!)
 
