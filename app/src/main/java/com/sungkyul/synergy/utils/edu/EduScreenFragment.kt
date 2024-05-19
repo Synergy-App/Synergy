@@ -354,6 +354,16 @@ class EduScreenFragment : Fragment() {
         binding.dialogContent.textSize = size
     }
 
+    fun setDialogSeparatorColor(color: Int) {
+        binding.dialogSeparator.setBackgroundColor(ContextCompat.getColor(requireContext(), color))
+    }
+
+    fun setDialogSeparatorWidth(width: Int) {
+        binding.dialogSeparator.updateLayoutParams {
+            height = width
+        }
+    }
+
     fun setDialogBackground(background: Int) {
         binding.dialog.setBackgroundResource(background)
     }
