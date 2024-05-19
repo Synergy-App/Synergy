@@ -444,6 +444,7 @@
                     app:layout_constraintTop_toBottomOf="@id/setting_display_info_text"
                     app:layout_constraintBottom_toTopOf="@id/setting_display_info_text"/>
 
+
                 <!-- 배경화면 및 스타일 이미지 -->
                 <ImageView
                     android:id="@+id/setting_backstyle_image"

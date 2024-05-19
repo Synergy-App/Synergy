@@ -17,22 +17,24 @@ data class SettingsDisplayCourse(val eduScreen: EduScreen): EduCourse {
     // 교육 코스를 만든다.
     init {
         list.add(EduData().apply {
-            dialog.contentText = "먼저 스마트폰<br>밝기 조절을<br>배워보겠습니다."
+            dialog.contentText = "아래 \"글자 크기와 스타일\"을 눌러보세요."
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = 300.0f
-            dialog.bottom = 300.0f
-            dialog.start = 50.0f
-            dialog.end = 50.0f
+            dialog.contentFont = R.font.pretendard_medium
+            dialog.contentSize = 26.0f
+            dialog.top = 40.0f
+            dialog.bottom = 450.0f
+            dialog.start = 24.0f
+            dialog.end = 24.0f
             dialog.visibility = true
             cover.visibility = true
             cover.isClickable = true
+            dialog.contentColor = R.color.white
+            dialog.background = R.drawable.edu_dialog_green_bg
         })
 
-        list.add(EduData().apply {
-            dialog.contentText = "손가락을 따라<br>움직여주세요."
-        })
 
-        list.add(EduData().apply {
+
+        /*list.add(EduData().apply {
             dialog.visibility = false
             cover.visibility = false
             cover.isClickable = false
@@ -46,18 +48,8 @@ data class SettingsDisplayCourse(val eduScreen: EduScreen): EduCourse {
                     gesture = HandGestures.Companion::displayLightDragGesture
                 )
             )
-        })
+        }) */
 
-        list.add(EduData().apply {
-            dialog.contentText = "이번엔 글자 크기를<br>조절해보겠습니다."
-            dialog.visibility = true
-            cover.visibility = true
-            cover.isClickable = true
-        })
-
-        list.add(EduData().apply {
-            dialog.contentText = "맨 아래까지 스크롤해주세요."
-        })
 
         list.add(EduData().apply {
             dialog.visibility = false
@@ -72,18 +64,26 @@ data class SettingsDisplayCourse(val eduScreen: EduScreen): EduCourse {
                     y = 650.0f,
                     width = 50.0f,
                     height = 75.0f,
-                    gesture = HandGestures.Companion::displayScrollGesture
+                    gesture = HandGestures.Companion::verticalScrollGesture
                 )
             )
         })
 
         list.add(EduData().apply {
+
+            cover.boxLeft = 10.0f
+            cover.boxRight = width-10.0f
+            cover.boxTop = 280.0f
+            cover.boxBottom = 340.0f /*크기가 커질 수록 박스가 커짐 */
+            cover.boxVisibility = true
+            cover.boxBorderVisibility = true
+
             action.id = "tap_font_item"
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = 250.0f,
-                    y = 475.0f,
+                    x = 200.0f,
+                    y = 300.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

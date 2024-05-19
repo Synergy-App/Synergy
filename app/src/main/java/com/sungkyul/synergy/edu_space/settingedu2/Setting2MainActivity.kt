@@ -59,6 +59,8 @@ class Setting2MainActivity : AppCompatActivity() {
                 val intent = Intent(this, Setting2DisplayActivity::class.java)
                 startActivity(intent)
             }
+
+
         }
     }
 }
