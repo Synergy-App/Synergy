@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".utils.edu.EduScreenFragment">
 
-    <!-- Cover, Box, Arrow를 그릴 Canvas -->
+    <!-- Canvas -->
     <ImageView
         android:id="@+id/canvas"
         android:layout_width="match_parent"
@@ -132,7 +132,7 @@
             android:id="@+id/bottom_dialog"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="200dp"
             android:layout_alignParentBottom="true"
             android:paddingTop="24dp"
             android:paddingHorizontal="24dp"

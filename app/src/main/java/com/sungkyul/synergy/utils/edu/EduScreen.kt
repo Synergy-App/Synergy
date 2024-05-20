@@ -68,12 +68,14 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         }
 
         updateCurrentDialog()
+        updateCurrentBottomDialog()
         updateCurrentCover()
         updateCurrentArrow()
         updateCurrentAction()
         updateCurrentHands()
 
         configureEduScreenFragmentDialog()
+        configureEduScreenFragmentBottomDialog()
         configureEduScreenFragmentCover()
         configureEduScreenFragmentArrow()
         configureEduScreenFragmentHands()
@@ -123,24 +125,36 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
             ),
             EduVerticalDialog(
                 titleText = "",
+                titleFont = R.font.pretendard_semibold,
+                titleSize = 20.0f,
                 titleGravity = Gravity.START,
-                titleColor = "#000000",
+                titleColor = R.color.black,
                 contentText = "",
+                contentFont = R.font.pretendard_regular,
+                contentSize = 18.0f,
                 contentGravity = Gravity.START,
-                contentColor = "#000000",
-                height = 0,
-                background = R.drawable.edu_dialog_bg,
+                contentColor = R.color.black,
+                separatorColor = R.color.light_grey,
+                separatorWidth = 5,
+                height = 0.0f,
+                background = R.drawable.edu_top_dialog_bg,
                 visibility = false
             ),
             EduVerticalDialog(
                 titleText = "",
+                titleFont = R.font.pretendard_semibold,
+                titleSize = 20.0f,
                 titleGravity = Gravity.START,
-                titleColor = "#000000",
+                titleColor = R.color.black,
                 contentText = "",
+                contentFont = R.font.pretendard_regular,
+                contentSize = 18.0f,
                 contentGravity = Gravity.START,
-                contentColor = "#000000",
-                height = 0,
-                background = R.drawable.edu_dialog_bg,
+                contentColor = R.color.black,
+                separatorColor = R.color.light_grey,
+                separatorWidth = 5,
+                height = 0.0f,
+                background = R.drawable.edu_bottom_dialog_bg,
                 visibility = false
             ),
             EduCover(
@@ -186,6 +200,26 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         currentDialog.bottom = dialog.bottom ?: currentDialog.bottom
         currentDialog.start = dialog.start ?: currentDialog.start
         currentDialog.end = dialog.end ?: currentDialog.end
+        currentDialog.background = dialog.background ?: currentDialog.background
+    }
+
+    private fun updateCurrentBottomDialog() {
+        val currentDialog = currentEduData.bottomDialog
+        val dialog = course!!.list[num].bottomDialog
+
+        currentDialog.titleText = dialog.titleText ?: currentDialog.titleText
+        currentDialog.titleFont = dialog.titleFont ?: currentDialog.titleFont
+        currentDialog.titleSize = dialog.titleSize ?: currentDialog.titleSize
+        currentDialog.titleGravity = dialog.titleGravity ?: currentDialog.titleGravity
+        currentDialog.titleColor = dialog.titleColor ?: currentDialog.titleColor
+        currentDialog.contentText = dialog.contentText ?: currentDialog.contentText
+        currentDialog.contentFont = dialog.contentFont ?: currentDialog.contentFont
+        currentDialog.contentSize = dialog.contentSize ?: currentDialog.contentSize
+        currentDialog.contentGravity = dialog.contentGravity ?: currentDialog.contentGravity
+        currentDialog.contentColor = dialog.contentColor ?: currentDialog.contentColor
+        currentDialog.separatorColor = dialog.separatorColor ?: currentDialog.separatorColor
+        currentDialog.separatorWidth = dialog.separatorWidth ?: currentDialog.separatorWidth
+        currentDialog.height = dialog.height ?: currentDialog.height
         currentDialog.background = dialog.background ?: currentDialog.background
     }
 
@@ -269,9 +303,55 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         currentDialog.visibility = dialog.visibility ?: currentDialog.visibility
     }
 
+    private fun configureEduScreenFragmentBottomDialog() {
+        val currentDialog = currentEduData.bottomDialog
+        val dialog = course!!.list[num].bottomDialog
+
+        eduScreenFragment.setBottomDialogTitle(currentDialog.titleText!!, currentDialog.titleGravity!!, currentDialog.titleColor!!)
+        eduScreenFragment.setBottomDialogContent(currentDialog.contentText!!, currentDialog.contentGravity!!, currentDialog.contentColor!!)
+
+        eduScreenFragment.setBottomDialogTitleFont(currentDialog.titleFont!!)
+        eduScreenFragment.setBottomDialogContentFont(currentDialog.contentFont!!)
+
+        eduScreenFragment.setBottomDialogTitleSize(currentDialog.titleSize!!)
+        eduScreenFragment.setBottomDialogContentSize(currentDialog.contentSize!!)
+
+        eduScreenFragment.translateBottomDialog(
+            currentDialog.height!!,
+            if(hasChangedBottomDialogVisibility(from = false, to = true)) 0 else EduScreenFragment.DIALOG_MOVEMENT_DURATION
+        )
+
+        if(currentDialog.titleText == "") {
+            eduScreenFragment.hideBottomDialogTitle()
+        } else {
+            eduScreenFragment.showBottomDialogTitle()
+        }
+
+        eduScreenFragment.setBottomDialogSeparatorColor(currentDialog.separatorColor!!)
+        eduScreenFragment.setBottomDialogSeparatorWidth(currentDialog.separatorWidth!!)
+
+        eduScreenFragment.setBottomDialogBackground(currentDialog.background!!)
+
+        if(hasChangedBottomDialogVisibility(from = false, to = true)) {
+            eduScreenFragment.showBottomDialog()
+        }
+        if(hasChangedBottomDialogVisibility(from = true, to = false)) {
+            eduScreenFragment.hideBottomDialog()
+        }
+
+        currentDialog.visibility = dialog.visibility ?: currentDialog.visibility
+    }
+
     private fun hasChangedDialogVisibility(from: Boolean, to: Boolean): Boolean {
         val currentDialog = currentEduData.dialog
         val dialog = course!!.list[num].dialog
+
+        return currentDialog.visibility == from && dialog.visibility == to
+    }
+
+    private fun hasChangedBottomDialogVisibility(from: Boolean, to: Boolean): Boolean {
+        val currentDialog = currentEduData.bottomDialog
+        val dialog = course!!.list[num].bottomDialog
 
         return currentDialog.visibility == from && dialog.visibility == to
     }
