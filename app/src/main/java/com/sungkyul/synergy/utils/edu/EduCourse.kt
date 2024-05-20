@@ -39,13 +39,18 @@ data class EduImageDialog(
 data class EduVerticalDialog(
     var visibility: Boolean? = null,
     var titleText: String? = null,
+    var titleFont: Int? = null,
+    var titleSize: Float? = null,
     var titleGravity: Int? = null,
-    var titleColor: String? = null,
+    var titleColor: Int? = null,
     var contentText: String? = null,
+    var contentFont: Int? = null,
+    var contentSize: Float? = null,
     var contentGravity: Int? = null,
-    var contentColor: String? = null,
-    var contentBolds: List<Pair<Int, Int>>? = null,
-    var height: Int? = null,
+    var contentColor: Int? = null,
+    var separatorColor: Int? = null,
+    var separatorWidth: Int? = null,
+    var height: Float? = null,
     var background: Int? = null
 )
 data class EduCover(

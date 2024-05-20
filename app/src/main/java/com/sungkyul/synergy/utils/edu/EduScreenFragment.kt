@@ -22,6 +22,7 @@ import android.view.animation.OvershootInterpolator
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
@@ -108,6 +109,9 @@ class EduScreenFragment : Fragment() {
 
         binding.dialog.alpha = 0.0f
         binding.imageDialog.alpha = 0.0f
+
+        binding.topDialog.visibility = LinearLayout.INVISIBLE
+        binding.bottomDialog.visibility = LinearLayout.INVISIBLE
 
         binding.root.post {
             // 캔버스를 생성한다.
@@ -368,6 +372,58 @@ class EduScreenFragment : Fragment() {
         binding.dialog.setBackgroundResource(background)
     }
 
+    fun setBottomDialogTitle(text: String, gravity: Int, color: Int) {
+        binding.bottomDialogTitle.text = text
+        binding.bottomDialogTitle.gravity = gravity
+        binding.bottomDialogTitle.setTextColor(ContextCompat.getColor(requireContext(), color))
+    }
+
+    fun showBottomDialogTitle() {
+        binding.bottomDialogTitle.visibility = TextView.VISIBLE
+        binding.bottomDialogSeparator.visibility = TextView.VISIBLE
+    }
+
+    fun hideBottomDialogTitle() {
+        binding.bottomDialogTitle.visibility = TextView.GONE
+        binding.bottomDialogSeparator.visibility = TextView.GONE
+    }
+
+    fun setBottomDialogContent(text: String, gravity: Int, color: Int) {
+        binding.bottomDialogContent.text = text.parseAsHtml()
+        binding.bottomDialogContent.gravity = gravity
+        binding.bottomDialogContent.setTextColor(ContextCompat.getColor(requireContext(), color))
+    }
+
+    fun setBottomDialogTitleFont(font: Int) {
+        binding.bottomDialogTitle.typeface = resources.getFont(font)
+    }
+
+    fun setBottomDialogContentFont(font: Int) {
+        binding.bottomDialogContent.typeface = resources.getFont(font)
+    }
+
+    fun setBottomDialogTitleSize(size: Float) {
+        binding.bottomDialogTitle.textSize = size
+    }
+
+    fun setBottomDialogContentSize(size: Float) {
+        binding.bottomDialogContent.textSize = size
+    }
+
+    fun setBottomDialogSeparatorColor(color: Int) {
+        binding.bottomDialogSeparator.setBackgroundColor(ContextCompat.getColor(requireContext(), color))
+    }
+
+    fun setBottomDialogSeparatorWidth(width: Int) {
+        binding.bottomDialogSeparator.updateLayoutParams {
+            height = width
+        }
+    }
+
+    fun setBottomDialogBackground(background: Int) {
+        binding.bottomDialog.setBackgroundResource(background)
+    }
+
     fun setBoxPadding(boxPadding: Float) {
         this.boxPadding = boxPadding
     }
@@ -412,6 +468,15 @@ class EduScreenFragment : Fragment() {
             DisplayUtils.dpToPx(binding.root.context, 0.0f),
             DisplayUtils.dpToPx(binding.root.context, -100.0f)
         )
+    }
+
+    // TODO(하단 다이얼로그에 넣을 등장/숨김 인터렉션이 있나?)
+    fun showBottomDialog() {
+        binding.bottomDialog.visibility = LinearLayout.VISIBLE
+    }
+
+    fun hideBottomDialog() {
+        binding.bottomDialog.visibility = LinearLayout.INVISIBLE
     }
 
     fun showCover() {
@@ -502,6 +567,22 @@ class EduScreenFragment : Fragment() {
         currentDialogCenterX = start+(binding.root.width-start-end)/2
         currentDialogCenterY = top+(binding.root.height-top-bottom)/2
     }
+
+    fun translateBottomDialog(
+        heightDp: Float,
+        duration: Long = VERTICAL_DIALOG_MOVEMENT_DURATION
+    ) {
+        val startHeight = binding.bottomDialog.height.toFloat()
+        val endHeight = DisplayUtils.dpToPx(binding.root.context, heightDp)
+        val interpolator = AccelerateDecelerateInterpolator()
+
+        registerAnimator("bottom_dialog", AnimUtils.startValueAnimatorOfFloat({
+            binding.bottomDialog.updateLayoutParams<RelativeLayout.LayoutParams> {
+                height = (startHeight + (endHeight - startHeight) * it).toInt()
+            }
+        }, 0.0f, 1.0f, duration, interpolator))
+    }
+
     fun translateBox(
         leftDp: Float,
         topDp: Float,
@@ -663,6 +744,7 @@ class EduScreenFragment : Fragment() {
         const val BOX_BORDER_COLOR_TRANSFORMATION_DURATION = 250L
 
         const val DIALOG_MOVEMENT_DURATION = 750L
+        const val VERTICAL_DIALOG_MOVEMENT_DURATION = 750L
         const val BOX_MOVEMENT_DURATION = 750L
         const val ARROW_MOVEMENT_DURATION = 750L
     }
