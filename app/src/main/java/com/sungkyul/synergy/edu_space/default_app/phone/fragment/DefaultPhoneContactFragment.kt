@@ -36,7 +36,7 @@ class DefaultPhoneContactFragment(private val addedContact: ContactData? = null,
         contactArray.add(ContactData(R.drawable.ic_person_black_24dp, "대장님", "휴대전화: 010-1234-1234"))
         contactArray.add(ContactData(R.drawable.ic_person_black_24dp, "UX/UI 디자이너","휴대전화: 010-1234-1234"))
         contactArray.add(ContactData(R.drawable.ic_person_black_24dp, "기획자","휴대전화: 010-1234-1234"))
-        contactArray.add(ContactData(R.drawable.ic_person_black_24dp, ":fearful:","휴대전화: 010-1234-1234"))
+
 
         // 새 연락처 추가
         if(addedContact != null) {
