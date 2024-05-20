@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityDefaultMessageBinding
-import com.sungkyul.synergy.edu_courses.default_app.message.DefaultMessageCourse
+import com.sungkyul.synergy.edu_courses.default_app.message.DefaultMessageCourse1
 import com.sungkyul.synergy.edu_space.default_app.DefaultAppActivity
 import com.sungkyul.synergy.edu_space.default_app.message.adapter.MessageAdapter
 import com.sungkyul.synergy.edu_space.default_app.message.adapter.MessageData
@@ -33,7 +33,7 @@ class DefaultMessageActivity : AppCompatActivity() {
 
         // 교육을 정의해보자!
         binding.eduScreen.post {
-            binding.eduScreen.course = DefaultMessageCourse(binding.eduScreen)
+            binding.eduScreen.course = DefaultMessageCourse1(binding.eduScreen)
 
             binding.eduScreen.setOnFinishedCourseListener {
                 // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
