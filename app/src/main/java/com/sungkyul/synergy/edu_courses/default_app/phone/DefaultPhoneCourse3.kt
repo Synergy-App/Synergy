@@ -1,6 +1,9 @@
 package com.sungkyul.synergy.edu_courses.default_app.phone
 
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.Gravity
+import android.widget.EditText
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
@@ -35,7 +38,7 @@ data class DefaultPhoneCourse3(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "이름에 '시너지'를 입력하세요."
+            dialog.contentText = "이름과 전화번호를 입력하고 저장 버튼을 눌러주세요."
             dialog.top = 300.0f
             dialog.bottom = 400.0f
             dialog.contentColor = R.color.white
@@ -62,23 +65,16 @@ data class DefaultPhoneCourse3(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "전화번호에 '010-1234-5678'를 입력하세요."
-            dialog.top = 300.0f
-            dialog.bottom = 400.0f
-            dialog.contentColor = R.color.white
-            dialog.background = R.drawable.edu_dialog_green_bg
-            cover.boxVisibility = false
-            cover.boxBorderVisibility = false
+            action.id = "add_contact"
 
         })
 
+
         list.add(EduData().apply {
-            dialog.contentText = "연락처에서는<br>상대방의 전화번호를 저장할 수 있고<br>상대방에게 전화를<br>걸 수 있습니다."
+            dialog.contentText = "연락처 저장에<br>성공하였습니다."
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 50.0f
             dialog.bottom = 550.0f
-            dialog.start = 24.0f
-            dialog.end = 24.0f
 
             cover.boxLeft = 10.0f
             cover.boxRight = width-10.0f
@@ -90,28 +86,7 @@ data class DefaultPhoneCourse3(val eduScreen: EduScreen): EduCourse {
             dialog.visibility = true
             cover.visibility = true
             dialog.contentColor = R.color.black
-            dialog.background = R.drawable.edu_dialog_bg
-        })
-
-        list.add(EduData().apply {
-            dialog.contentText = "연락처에서는<br>상대방의 전화번호를 저장할 수 있고<br>상대방에게 전화를<br>걸 수 있습니다."
-            dialog.contentGravity = Gravity.CENTER
-            dialog.top = 50.0f
-            dialog.bottom = 550.0f
-            dialog.start = 24.0f
-            dialog.end = 24.0f
-
-            cover.boxLeft = 10.0f
-            cover.boxRight = width-10.0f
-            cover.boxTop = 350.0f
-            cover.boxBottom = 700.0f /*크기가 커질 수록 박스가 커짐 */
-            cover.boxVisibility = true
-            cover.boxBorderVisibility = true
-
-            dialog.visibility = true
-            cover.visibility = true
-            dialog.contentColor = R.color.black
-            dialog.background = R.drawable.edu_dialog_bg
+            dialog.background = R.drawable.edu_dialog_yellow_bg
         })
     }
 }

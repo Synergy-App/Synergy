@@ -38,7 +38,7 @@ class DefaultPhoneAddActivity : AppCompatActivity() {
         }
 
         // 뒤로 가기 키를 눌렀을 때의 이벤트를 처리한다.
-        onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 // DefaultAppActivity로 되돌아 간다.
                 val intent = Intent(binding.root.context, DefaultAppActivity::class.java)
@@ -53,10 +53,11 @@ class DefaultPhoneAddActivity : AppCompatActivity() {
 
         // 이벤트 리스너들을 추가한다.
         binding.cancelButton.setOnTouchListener { view, event ->
-            when(event.action) {
+            when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
                     AnimUtils.startTouchDownButtonAnimation(this, view)
                 }
+
                 MotionEvent.ACTION_UP -> {
                     AnimUtils.startTouchUpButtonAnimation(this, view)
 
@@ -66,10 +67,11 @@ class DefaultPhoneAddActivity : AppCompatActivity() {
             true
         }
         binding.saveButton.setOnTouchListener { view, event ->
-            when(event.action) {
+            when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
                     AnimUtils.startTouchDownButtonAnimation(this, view)
                 }
+
                 MotionEvent.ACTION_UP -> {
                     AnimUtils.startTouchUpButtonAnimation(this, view)
 
@@ -85,16 +87,31 @@ class DefaultPhoneAddActivity : AppCompatActivity() {
             true
         }
         binding.phoneNameEditText.setOnFocusChangeListener { _, hasFocus ->
-            if(hasFocus) {
+            if (hasFocus) {
                 binding.eduScreen.onAction("phone_name_edit_text")
             }
 
         }
-
+        //이름 적는 칸
         binding.phoneNameEditText.setOnClickListener {
-            if(binding.eduScreen.onAction("phone_name_edit_text")) {
+            if (binding.eduScreen.onAction("phone_name_edit_text")) {
                 // id가 서로 일치하면 이 부분이 실행된다.
             }
+        }
+        //전화번호 적는 칸
+        binding.phoneNumEditText.setOnClickListener {
+
+            val inputText = binding.phoneNameEditText.text.toString()
+            if (inputText == "시너지") {
+                binding.eduScreen.onAction("phone_num_edit_text")
+            }
+
+           /* if (binding.eduScreen.onAction("phone_name_edit_text")) {
+                // id가 서로 일치하면 이 부분이 실행된다.
+            }
+
+            */
+
         }
     }
 }
