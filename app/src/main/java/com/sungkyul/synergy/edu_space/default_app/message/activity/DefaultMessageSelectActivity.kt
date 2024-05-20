@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityDefaultMessageSelectBinding
+import com.sungkyul.synergy.edu_courses.default_app.message.DefaultMessageCourse2
 import com.sungkyul.synergy.edu_space.default_app.DefaultAppActivity
 import com.sungkyul.synergy.edu_space.default_app.message.adapter.MessageContactData
 import com.sungkyul.synergy.edu_space.default_app.message.adapter.MessageSelectAdapter
@@ -28,7 +29,7 @@ class DefaultMessageSelectActivity : AppCompatActivity() {
 
         // 교육을 정의해보자!
         binding.eduScreen.post {
-            //binding.eduScreen.course =
+            binding.eduScreen.course = DefaultMessageCourse2(binding.eduScreen)
 
             binding.eduScreen.setOnFinishedCourseListener {
                 // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
@@ -43,7 +44,7 @@ class DefaultMessageSelectActivity : AppCompatActivity() {
         }
 
         // 뒤로 가기 키를 눌렀을 때의 이벤트를 처리한다.
-        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+        onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 // DefaultAppActivity로 되돌아 간다.
                 val intent = Intent(binding.root.context, DefaultAppActivity::class.java)

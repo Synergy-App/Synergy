@@ -24,6 +24,7 @@ class MessageSelectAdapter (private val dataSet: ArrayList<MessageContactData>):
             Mprofile = view.findViewById(R.id.Mprofile)
             name = view.findViewById(R.id.name)
             phoneNum = view.findViewById(R.id.phoneNum)
+
         }
     }
 

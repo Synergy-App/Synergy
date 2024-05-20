@@ -223,6 +223,7 @@ class DefaultMessageChattingActivity : AppCompatActivity() {
                 // hiddenLayout을 보이도록 설정합니다
                 binding.hiddenLayout.visibility = View.VISIBLE
                 isHidden = false
+                binding.eduScreen.onAction("message_button")
             } else {
                 // hiddenLayout을 숨기도록 설정합니다
                 binding.hiddenLayout.visibility = View.GONE
