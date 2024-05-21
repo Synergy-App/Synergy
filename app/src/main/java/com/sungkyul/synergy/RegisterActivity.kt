@@ -3,6 +3,7 @@ package com.sungkyul.synergy
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -26,7 +27,7 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var editTextRePassword: EditText
     lateinit var editTextNick: EditText
     lateinit var editTextPhone: EditText
-    lateinit var btnRegister: Button // ImageButton을 Button으로 변경
+    lateinit var btnRegister: Button
     lateinit var btnCheckId: Button
     var checkId: Boolean = false
     lateinit var btnCheckNick: Button
@@ -47,27 +48,57 @@ class RegisterActivity : AppCompatActivity() {
     // POST /user/signup api를 실제로 호출하는 곳
     private suspend fun callSignUpAPI(request: SignUpBody): ApiResponse<Nothing>? {
         return withContext(Dispatchers.IO) {
-            val call = authApi.signup(request)
-            val response = call.execute()
-            response.body()
+            try {
+                val call = authApi.signup(request)
+                val response = call.execute()
+                if (response.isSuccessful) {
+                    Log.d("RegisterActivity", "callSignUpAPI Success: ${response.body()}")
+                } else {
+                    Log.e("RegisterActivity", "callSignUpAPI Failed: ${response.errorBody()?.string()}")
+                }
+                response.body()
+            } catch (e: Exception) {
+                Log.e("RegisterActivity", "callSignUpAPI Exception: ${e.message}")
+                null
+            }
         }
     }
 
     // POST /user/check-id api를 실제로 호출하는 곳
     private suspend fun callCheckIdAPI(request: CheckIdBody): ApiResponse<CheckResult>? {
         return withContext(Dispatchers.IO) {
-            val call = authApi.checkId(request)
-            val response = call.execute()
-            response.body()
+            try {
+                val call = authApi.checkId(request)
+                val response = call.execute()
+                if (response.isSuccessful) {
+                    Log.d("RegisterActivity", "callCheckIdAPI Success: ${response.body()}")
+                } else {
+                    Log.e("RegisterActivity", "callCheckIdAPI Failed: ${response.errorBody()?.string()}")
+                }
+                response.body()
+            } catch (e: Exception) {
+                Log.e("RegisterActivity", "callCheckIdAPI Exception: ${e.message}")
+                null
+            }
         }
     }
 
     // POST /user/check-nickname api를 실제로 호출하는 곳
     private suspend fun callCheckNicknameAPI(request: CheckNicknameBody): ApiResponse<CheckResult>? {
         return withContext(Dispatchers.IO) {
-            val call = authApi.checkNickname(request)
-            val response = call.execute()
-            response.body()
+            try {
+                val call = authApi.checkNickname(request)
+                val response = call.execute()
+                if (response.isSuccessful) {
+                    Log.d("RegisterActivity", "callCheckNicknameAPI Success: ${response.body()}")
+                } else {
+                    Log.e("RegisterActivity", "callCheckNicknameAPI Failed: ${response.errorBody()?.string()}")
+                }
+                response.body()
+            } catch (e: Exception) {
+                Log.e("RegisterActivity", "callCheckNicknameAPI Exception: ${e.message}")
+                null
+            }
         }
     }
 
@@ -80,7 +111,7 @@ class RegisterActivity : AppCompatActivity() {
         editTextRePassword = findViewById(R.id.editTextRePass_Reg)
         editTextNick = findViewById(R.id.editTextNick_Reg)
         editTextPhone = findViewById(R.id.editTextPhone_Reg)
-        btnRegister = findViewById(R.id.btnRegister_Reg) // ImageButton을 Button으로 변경
+        btnRegister = findViewById(R.id.btnRegister_Reg)
         btnCheckId = findViewById(R.id.btnCheckId_Reg)
         btnCheckNick = findViewById(R.id.btnCheckNick_Reg)
 
@@ -93,12 +124,14 @@ class RegisterActivity : AppCompatActivity() {
                 CoroutineScope(Dispatchers.Main).launch {
                     val body = CheckIdBody(user)
                     val res = callCheckIdAPI(body)
+                    Log.d("RegisterActivity", "CheckId Response: $res")
 
                     if (res?.success == true && res.data.available) {
                         checkId = true
                         Toast.makeText(this@RegisterActivity, "사용 가능한 아이디입니다.", Toast.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(this@RegisterActivity, res?.err?.msg, Toast.LENGTH_SHORT).show()
+                        Log.e("RegisterActivity", "CheckId Error: ${res?.err?.msg}")
+                        Toast.makeText(this@RegisterActivity, res?.err?.msg ?: "아이디 확인에 실패하였습니다.", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -113,12 +146,14 @@ class RegisterActivity : AppCompatActivity() {
                 CoroutineScope(Dispatchers.Main).launch {
                     val body = CheckNicknameBody(nick)
                     val res = callCheckNicknameAPI(body)
+                    Log.d("RegisterActivity", "CheckNickname Response: $res")
 
                     if (res?.success == true && res.data.available) {
                         checkNick = true
                         Toast.makeText(this@RegisterActivity, "사용 가능한 닉네임입니다.", Toast.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(this@RegisterActivity, res?.err?.msg, Toast.LENGTH_SHORT).show()
+                        Log.e("RegisterActivity", "CheckNickname Error: ${res?.err?.msg}")
+                        Toast.makeText(this@RegisterActivity, res?.err?.msg ?: "닉네임 확인에 실패하였습니다.", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -139,30 +174,22 @@ class RegisterActivity : AppCompatActivity() {
                         CoroutineScope(Dispatchers.Main).launch {
                             val body = SignUpBody(user, pass, repass, nick, phone)
                             val res = callSignUpAPI(body)
+                            Log.d("RegisterActivity", "SignUp Response: $res")
 
                             if (res?.success == true) {
-                                Toast.makeText(
-                                    this@RegisterActivity,
-                                    "가입되었습니다.",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Toast.makeText(this@RegisterActivity, "가입되었습니다.", Toast.LENGTH_SHORT).show()
                                 val intent = Intent(applicationContext, LoginActivity::class.java)
                                 startActivity(intent)
                             } else {
-                                Toast.makeText(
-                                    this@RegisterActivity,
-                                    res?.err?.msg,
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Log.e("RegisterActivity", "SignUp Error: ${res?.err?.msg}")
+                                Toast.makeText(this@RegisterActivity, res?.err?.msg ?: "회원가입에 실패하였습니다.", Toast.LENGTH_SHORT).show()
                             }
                         }
                     } else {
-                        Toast.makeText(this@RegisterActivity, "닉네임 중복확인을 해주세요.", Toast.LENGTH_SHORT)
-                            .show()
+                        Toast.makeText(this@RegisterActivity, "닉네임 중복확인을 해주세요.", Toast.LENGTH_SHORT).show()
                     }
                 } else {
-                    Toast.makeText(this@RegisterActivity, "아이디 중복확인을 해주세요.", Toast.LENGTH_SHORT)
-                        .show()
+                    Toast.makeText(this@RegisterActivity, "아이디 중복확인을 해주세요.", Toast.LENGTH_SHORT).show()
                 }
             }
         }

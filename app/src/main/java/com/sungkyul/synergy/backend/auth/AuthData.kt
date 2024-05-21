@@ -54,7 +54,7 @@ data class FindIdBody (
 
 /** POST /user/find-id 응답데이터 */
 data class FindIdResult (
-    val userId: String
+    val authId: String?
 )
 
 /** POST /user/verify-user 요청데이터 */

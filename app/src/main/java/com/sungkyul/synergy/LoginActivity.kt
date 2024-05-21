@@ -3,9 +3,9 @@ package com.sungkyul.synergy
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageButton
 import android.widget.Toast
 import com.sungkyul.synergy.backend.ApiResponse
 import com.sungkyul.synergy.backend.auth.AuthAPI
@@ -19,7 +19,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class LoginActivity : AppCompatActivity() {
-    lateinit var btnLogin: Button // ImageButton을 Button으로 변경
+    lateinit var btnLogin: Button
     lateinit var editTextId: EditText
     lateinit var editTextPassword: EditText
     lateinit var btnRegister: Button
@@ -40,9 +40,19 @@ class LoginActivity : AppCompatActivity() {
     // POST /user/signin api를 실제로 호출하는 곳
     private suspend fun callSignInAPI(request: SignInBody): ApiResponse<SignInResult>? {
         return withContext(Dispatchers.IO) {
-            val call = authApi.signin(request)
-            val response = call.execute()
-            response.body()
+            try {
+                val call = authApi.signin(request)
+                val response = call.execute()
+                if (response.isSuccessful) {
+                    Log.d("LoginActivity", "callSignInAPI Success: ${response.body()}")
+                } else {
+                    Log.e("LoginActivity", "callSignInAPI Failed: ${response.errorBody()?.string()}")
+                }
+                response.body()
+            } catch (e: Exception) {
+                Log.e("LoginActivity", "callSignInAPI Exception: ${e.message}")
+                null
+            }
         }
     }
 
@@ -50,7 +60,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        btnLogin = findViewById(R.id.btnLogin) // ImageButton을 Button으로 변경
+        btnLogin = findViewById(R.id.btnLogin)
         editTextId = findViewById(R.id.editTextId)
         editTextPassword = findViewById(R.id.editTextPassword)
         btnRegister = findViewById(R.id.btnRegister)
@@ -69,6 +79,7 @@ class LoginActivity : AppCompatActivity() {
                 CoroutineScope(Dispatchers.Main).launch {
                     val body = SignInBody(authId, pw)
                     val res = callSignInAPI(body)
+                    Log.d("LoginActivity", "SignIn Response: $res")
 
                     // 로그인 성공 시
                     if (res?.success == true) {
@@ -81,6 +92,7 @@ class LoginActivity : AppCompatActivity() {
                     }
                     // 로그인 실패 시
                     else {
+                        Log.e("LoginActivity", "SignIn Error: ${res?.err?.msg}")
                         Toast.makeText(this@LoginActivity, res?.err?.msg ?: "로그인에 실패하였습니다.", Toast.LENGTH_SHORT).show()
                     }
                 }
