@@ -63,6 +63,8 @@ class DefaultMessageActivity : AppCompatActivity() {
         val now = LocalDateTime.now()
 
         val messageArray = ArrayList<MessageData>()
+
+        /*
         messageArray.add(
             YourMessageData(
             R.drawable.ic_call_profile_24,
@@ -71,6 +73,9 @@ class DefaultMessageActivity : AppCompatActivity() {
             "${DateTimeUtils.getKoreanPeriod(dateTime1)} ${dateTime1.format(DateTimeUtils.timeFormatter)}"
         )
         )
+
+
+
         messageArray.add(
             MyMessageData(
             "?",
@@ -86,6 +91,10 @@ class DefaultMessageActivity : AppCompatActivity() {
             "${DateTimeUtils.getKoreanPeriod(dateTime3)} ${dateTime3.format(DateTimeUtils.timeFormatter)}"
         )
         )
+
+
+         */
+
 
         val messages = binding.messages
         messages.layoutManager = LinearLayoutManager(binding.root.context)

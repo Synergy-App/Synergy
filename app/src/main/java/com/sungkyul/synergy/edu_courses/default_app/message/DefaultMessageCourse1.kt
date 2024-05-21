@@ -1,6 +1,7 @@
 package com.sungkyul.synergy.edu_courses.default_app.message
 
 import android.view.Gravity
+import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
 import com.sungkyul.synergy.utils.edu.EduCourse
@@ -16,44 +17,73 @@ data class DefaultMessageCourse1(val eduScreen: EduScreen): EduCourse {
     // 교육 코스를 만든다.
     init {
         list.add(EduData().apply {
-            dialog.contentText = "여기는 채팅방으로<br>상대방과 메시지를<br>주고받을 수 있어요."
+            dialog.contentText = "메세지를 작성하는<br>화면입니다."
+            dialog.contentFont = R.font.pretendard_medium
+            dialog.contentSize = 26.0f
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = 300.0f
-            dialog.bottom = 300.0f
-            dialog.start = 50.0f
-            dialog.end = 50.0f
-            dialog.visibility = true
-            cover.visibility = true
+            dialog.top = 55.0f
+            dialog.bottom = 600.0f
+            dialog.start = 24.0f
+            dialog.end = 24.0f
+            cover.boxVisibility = true
+            cover.visibility = false
             cover.isClickable = true
+            dialog.visibility = true
+            dialog.contentColor = R.color.white
+            dialog.background = R.drawable.edu_dialog_black_bg
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "여기서 문자 메시지를<br>입력할 수 있어요."
-            dialog.top = 450.0f
-            dialog.bottom = 150.0f
+            dialog.contentText = "상대방에게 보낼 글을<br>작성하는 곳입니다."
+            dialog.top = 630.0f
+            dialog.bottom = 100.0f
             cover.boxLeft = 90.0f
             cover.boxTop = height-60.0f
             cover.boxRight = width-90.0f
             cover.boxBottom = height
-            arrow.endTo = EduScreen.BOX
-            cover.boxVisibility = true
+            cover.visibility = true
             cover.boxBorderVisibility = true
-            arrow.visibility = true
+            dialog.contentColor = R.color.black
+            dialog.background = R.drawable.edu_dialog_bg
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "이 버튼을 누르면<br>메시지가 전송돼요."
-            cover.boxLeft = width-55.0f
+            dialog.contentText = "메세지를 전송하는<br>버튼입니다."
+            cover.boxLeft = width-60.0f
             cover.boxRight = width
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "시너지에게<br>메시지를 보내볼까요?"
+            dialog.contentText = "글을 다 작성하고<br>이 버튼을 눌러야만<br>메세지가 전송됩니다."
+            dialog.top = 580.0f
+            dialog.bottom = 100.0f
+
+        })
+
+        list.add(EduData().apply {
+            dialog.contentText = "메시지를 보내볼까요?"
             dialog.top = 300.0f
-            dialog.bottom = 300.0f
-            arrow.endTo = EduScreen.DIALOG
+            dialog.bottom = 400.0f
+            dialog.contentColor = R.color.white
+            dialog.background = R.drawable.edu_dialog_green_bg
             cover.boxVisibility = false
             cover.boxBorderVisibility = false
+        })
+
+        list.add(EduData().apply {
+            dialog.visibility = false
+            cover.visibility = false
+            cover.isClickable = false
+            action.id = "message_button"
+            hands.add(
+                EduHand(
+                    id = "tap",
+                    rotation = 180.0f,
+                    x = 190.0f,
+                    y = 700.0f,
+                    gesture = HandGestures.Companion::tapGesture
+                )
+            )
         })
 
         list.add(EduData().apply {
