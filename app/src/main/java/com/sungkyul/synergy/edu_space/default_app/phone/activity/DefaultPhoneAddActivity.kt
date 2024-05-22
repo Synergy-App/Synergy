@@ -76,7 +76,7 @@ class DefaultPhoneAddActivity : AppCompatActivity() {
                     AnimUtils.startTouchUpButtonAnimation(this, view)
 
                     val intent = Intent(this, DefaultPhoneActivity::class.java)
-                    intent.putExtra("from", "add_contact")
+                    intent.putExtra("from", "save_contact") // id 값 바꾸기 - 연락처 저장 눌렀을 때 변화하는 화면을 알아야 하기 때문
                     intent.putExtra("name", binding.phoneNameEditText.text.toString())
                     intent.putExtra("num", binding.phoneNumEditText.text.toString())
                     intent.putExtra("email", binding.phoneEmailEditText.text.toString())
