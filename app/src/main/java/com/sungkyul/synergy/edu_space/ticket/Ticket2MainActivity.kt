@@ -1,14 +1,14 @@
 package com.sungkyul.synergy.edu_space.ticket
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityTicket2MainBinding
-import com.sungkyul.synergy.utils.edu.EduCourses
+import com.sungkyul.synergy.edu_courses.ticket.Ticket2MainCourse
 
 class Ticket2MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTicket2MainBinding
@@ -20,12 +20,8 @@ class Ticket2MainActivity : AppCompatActivity() {
 
         // 교육을 정의해보자!
         binding.eduScreen.post {
-            // 교육 코스 customCourse를 지정한다.
-            binding.eduScreen.course = EduCourses.ticket2MainCourse(
-                binding.eduScreen.context,
-                binding.eduScreen.width.toFloat(),
-                binding.eduScreen.height.toFloat()
-            )
+            binding.eduScreen.course = Ticket2MainCourse(binding.eduScreen)
+
             binding.eduScreen.setOnFinishedCourseListener {
                 // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
 

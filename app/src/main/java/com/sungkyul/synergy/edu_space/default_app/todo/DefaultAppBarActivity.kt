@@ -9,9 +9,9 @@ import android.provider.Settings
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
-
 import android.widget.Button
 import android.view.animation.Animation
+import android.widget.Button
 import android.view.animation.TranslateAnimation
 import android.widget.LinearLayout
 import android.widget.SeekBar

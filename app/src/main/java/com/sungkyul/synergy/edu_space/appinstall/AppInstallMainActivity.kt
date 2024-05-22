@@ -7,13 +7,14 @@ import android.text.Spannable
 import android.text.SpannableString
 import android.text.TextWatcher
 import android.text.style.AbsoluteSizeSpan
+import android.view.KeyEvent
+import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.R
 
 class AppInstallMainActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_appinstall_main)
@@ -30,7 +31,6 @@ class AppInstallMainActivity : AppCompatActivity() {
         spannable.setSpan(AbsoluteSizeSpan(20, true), index, index + 2, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
         recommendTextView.text = spannable
 
-        // EditText에 대한 참조 가져오기
         val appInstallEdit: EditText = findViewById(R.id.app_install_edit)
 
         // EditText에 텍스트 변경 이벤트 리스너 추가
@@ -40,12 +40,19 @@ class AppInstallMainActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
             override fun afterTextChanged(s: Editable?) {
-                val searchText = s.toString().trim()
-
-                // 입력된 텍스트가 "카카오톡"일 경우 새로운 액티비티로 이동
-                if (searchText.equals("카카오톡", ignoreCase = true)) {
-                    val intent = Intent(this@AppInstallMainActivity, AppInstallSearchActivity::class.java)
-                    startActivity(intent)
+                // 입력된 텍스트가 "카카오톡"이면 검색을 활성화
+                if (s.toString().equals("카카오톡", ignoreCase = true)) {
+                    appInstallEdit.setOnEditorActionListener { _, actionId, event ->
+                        if (actionId == EditorInfo.IME_ACTION_SEARCH ||
+                            (event != null && event.keyCode == KeyEvent.KEYCODE_ENTER)
+                        ) {
+                            // 검색 버튼(엔터)을 눌렀을 때만 검색 화면으로 이동
+                            val intent = Intent(this@AppInstallMainActivity, AppInstallSearchActivity::class.java)
+                            startActivity(intent)
+                            return@setOnEditorActionListener true
+                        }
+                        return@setOnEditorActionListener false
+                    }
                 }
             }
         })

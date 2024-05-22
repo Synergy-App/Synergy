@@ -12,14 +12,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityDefaultMessageBinding
+import com.sungkyul.synergy.edu_courses.default_app.message.DefaultMessageCourse2
+import com.sungkyul.synergy.edu_courses.default_app.message.DefaultMessageCourse3
 import com.sungkyul.synergy.edu_space.default_app.DefaultAppActivity
 import com.sungkyul.synergy.edu_space.default_app.message.adapter.MessageAdapter
 import com.sungkyul.synergy.edu_space.default_app.message.adapter.MessageData
 import com.sungkyul.synergy.edu_space.default_app.message.adapter.MyMessageData
 import com.sungkyul.synergy.edu_space.default_app.message.adapter.YourMessageData
+import com.sungkyul.synergy.edu_space.default_app.phone.activity.DefaultPhoneActivity
 import com.sungkyul.synergy.utils.AnimUtils
 import com.sungkyul.synergy.utils.DateTimeUtils
-import com.sungkyul.synergy.utils.edu.EduCourses
 import java.time.LocalDateTime
 
 class DefaultMessageActivity : AppCompatActivity() {
@@ -31,14 +33,12 @@ class DefaultMessageActivity : AppCompatActivity() {
         binding = ActivityDefaultMessageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         // 교육을 정의해보자!
         binding.eduScreen.post {
-            // 교육 코스 customCourse를 지정한다.
-            binding.eduScreen.course = EduCourses.defaultMessageCourse(
-                binding.eduScreen.context,
-                binding.eduScreen.width.toFloat(),
-                binding.eduScreen.height.toFloat()
-            )
+
+            binding.eduScreen.course = DefaultMessageCourse2(binding.eduScreen)
+
             binding.eduScreen.setOnFinishedCourseListener {
                 // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
 
@@ -67,6 +67,8 @@ class DefaultMessageActivity : AppCompatActivity() {
         val now = LocalDateTime.now()
 
         val messageArray = ArrayList<MessageData>()
+
+
         messageArray.add(
             YourMessageData(
             R.drawable.ic_call_profile_24,
@@ -75,6 +77,9 @@ class DefaultMessageActivity : AppCompatActivity() {
             "${DateTimeUtils.getKoreanPeriod(dateTime1)} ${dateTime1.format(DateTimeUtils.timeFormatter)}"
         )
         )
+
+
+
         messageArray.add(
             MyMessageData(
             "?",
@@ -90,6 +95,10 @@ class DefaultMessageActivity : AppCompatActivity() {
             "${DateTimeUtils.getKoreanPeriod(dateTime3)} ${dateTime3.format(DateTimeUtils.timeFormatter)}"
         )
         )
+
+
+
+
 
         val messages = binding.messages
         messages.layoutManager = LinearLayoutManager(binding.root.context)
@@ -176,16 +185,19 @@ class DefaultMessageActivity : AppCompatActivity() {
             }
             true
         }
+
     }
 
     private val onTouchGoToTopMenuButtonListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
                 AnimUtils.startTouchDownButtonAnimation(this, view)
+
             }
             MotionEvent.ACTION_UP -> {
                 AnimUtils.startTouchUpButtonAnimation(this, view)
                 view.performClick()
+
             }
         }
         true

@@ -19,59 +19,59 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/search_layout"
-        android:layout_width="404dp"
-        android:layout_height="50dp"
-        android:background="@null"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.132"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.228"
         android:layout_marginTop="10dp">
 
-
-    <ImageView
+        <ImageView
+            android:id="@+id/back_button"
             android:layout_width="26dp"
             android:layout_height="26dp"
             android:src="@drawable/ic_install_arrow_back"
-            android:layout_gravity="center_vertical"
             android:layout_marginStart="18dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="1dp"/>
+            android:layout_marginTop="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <EditText
             android:id="@+id/app_install_edit"
-            android:layout_width="230dp"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
             android:background="@android:color/transparent"
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:hint="카카오톡"
-            android:layout_marginStart="10dp"
-            android:textColorHint="#1F1F1F"/>
+            android:textColorHint="#1F1F1F"
+            app:layout_constraintEnd_toStartOf="@+id/search_button"
+            app:layout_constraintStart_toEndOf="@+id/back_button"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="24dp"/>
 
         <ImageView
+            android:id="@+id/search_button"
             android:layout_width="26dp"
             android:layout_height="26dp"
             android:src="@drawable/ic_search_grey_24dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="18dp"
-            android:layout_marginTop="1dp"/>
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toStartOf="@+id/mic_button"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <ImageView
+            android:id="@+id/mic_button"
             android:layout_width="26dp"
             android:layout_height="26dp"
             android:src="@drawable/ic_mic_grey_24"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="10dp"
             android:layout_marginEnd="18dp"
-            android:layout_marginTop="1dp"/>
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <View
         android:id="@+id/install_search_grey_line"
@@ -91,12 +91,12 @@
         <!-- 앱 이미지 -->
         <ImageView
             android:id="@+id/kakao_app_image"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/myinfo"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="18dp"
-            android:layout_marginTop="6dp"/>
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_install_logo_kakaotalk"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="10dp"/>
+
 
         <!-- 앱 이름 텍스트 -->
         <TextView
@@ -117,25 +117,29 @@
             android:layout_height="44dp"
             android:text="설치"
             android:textColor="@color/white"
-            android:textStyle="bold"
             android:textSize="16sp"
             android:background="@drawable/install_kakao_rounded_blue_btn_background"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="12dp"
-            android:layout_marginTop="4dp"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="330dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="4dp"
+            android:layout_alignParentEnd="true"/>
+
 
         <!-- 설치 버튼 아래 텍스트 -->
         <TextView
             android:id="@+id/kakao_install_btn_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/kakao_install_btn"
-            android:layout_marginStart="345dp"
-            android:layout_marginTop="2dp"
             android:text="인앱 구매"
             android:textColor="#434746"
             android:textSize="10sp"
-            android:textStyle="bold" />
+            app:layout_constraintTop_toBottomOf="@id/kakao_install_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="348dp"
+            android:layout_marginEnd="10dp"/>
 
         <!-- 앱 설명 텍스트 -->
         <TextView
@@ -143,10 +147,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/kakao_app_text"
-            android:layout_alignParentStart="true"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="70dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
+            android:layout_toEndOf="@id/kakao_app_image"
             android:text="Kakao Corp."
             android:textColor="#1F1F1F"
             android:textSize="15sp" />
@@ -157,21 +160,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/kakao_info_text"
-            android:layout_alignParentStart="true"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@id/kakao_app_image"
             android:text="광고 포함"
             android:textColor="#454746"
             android:textSize="14sp" />
 
         <RelativeLayout
             android:id="@+id/kakao_review_layout"
-            android:layout_width="150dp"
+            android:layout_width="100dp"
             android:layout_height="74dp"
+            android:layout_alignParentStart="true"
             android:layout_below="@id/kakao_app_image"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="50dp">
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="0dp">
 
             <TextView
                 android:id="@+id/kakao_grade_text"
@@ -179,7 +182,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
                 android:text="3.9"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="34dp"
                 android:textColor="#1F1F1F"
                 android:textSize="17sp"
                 android:textStyle="bold" />
@@ -198,7 +201,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/kakao_grade_text"
-                android:layout_marginStart="38dp"
+                android:layout_marginStart="40dp"
                 android:layout_marginTop="2dp"
                 android:text="리뷰"
                 android:textColor="#454746"
@@ -212,7 +215,7 @@
                 android:textColor="#454746"
                 android:textSize="14sp"
                 android:layout_below="@id/kakao_review_text"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="22dp"
                 android:layout_marginTop="0dp" />
 
             <ImageView
@@ -225,25 +228,27 @@
                 android:layout_marginBottom="2dp"
                 android:layout_alignBottom="@id/kakao_review_cnt_text" />
 
-            <View
-                android:id="@+id/kakao_info_grey_line"
-                android:layout_width="1.5dp"
-                android:layout_height="28dp"
-                android:background="#C6C6C6"
-                android:layout_toEndOf="@id/kakao_review_image"
-                android:layout_marginStart="36dp"
-                android:layout_marginTop="20dp" />
+
 
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/kakao_review_layout2"
-            android:layout_width="150dp"
+            android:layout_width="104dp"
             android:layout_height="74dp"
+            android:layout_toEndOf="@id/kakao_review_layout"
+            android:layout_marginStart="4dp"
             android:layout_below="@id/kakao_app_image"
-            android:layout_marginStart="0dp"
             android:layout_marginTop="50dp"
-            android:layout_toEndOf="@id/kakao_review_layout">
+            android:layout_marginEnd="0dp">
+
+            <View
+                android:id="@+id/kakao_info_grey_line"
+                android:layout_width="1.5dp"
+                android:layout_height="28dp"
+                android:background="#C6C6C6"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="20dp" />
 
             <TextView
                 android:id="@+id/kakao_down_cnt_text"
@@ -251,7 +256,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
                 android:text="1억회 이상"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="14dp"
                 android:textColor="#1F1F1F"
                 android:textSize="17sp"
                 android:textStyle="bold" />
@@ -261,37 +266,40 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/kakao_down_cnt_text"
-                android:layout_marginStart="22dp"
+                android:layout_marginStart="26dp"
                 android:layout_marginTop="2dp"
                 android:text="다운로드"
                 android:textColor="#454746"
                 android:textSize="14sp" />
+
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/kakao_review_layout3"
+            android:layout_width="100dp"
+            android:layout_height="74dp"
+            android:layout_toEndOf="@id/kakao_review_layout2"
+            android:layout_marginStart="4dp"
+            android:layout_below="@id/kakao_app_image"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="0dp"
+            android:layout_alignParentEnd="true">
 
             <View
                 android:id="@+id/kakao_info_grey_line2"
                 android:layout_width="1.5dp"
                 android:layout_height="28dp"
                 android:background="#C6C6C6"
-                android:layout_toEndOf="@id/kakao_down_text"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="0dp"
                 android:layout_marginTop="20dp" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/kakao_review_layout3"
-            android:layout_width="150dp"
-            android:layout_height="74dp"
-            android:layout_below="@id/kakao_app_image"
-            android:layout_marginStart="-1dp"
-            android:layout_marginTop="50dp"
-            android:layout_toEndOf="@id/kakao_review_layout2">
 
             <ImageView
                 android:id="@+id/kakao_review_age_image"
                 android:layout_width="26dp"
                 android:layout_height="26dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="28dp"
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="0dp"
                 android:src="@drawable/ic_install_age" />
@@ -301,7 +309,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/kakao_review_age_image"
-                android:layout_marginStart="0dp"
+                android:layout_marginStart="12dp"
                 android:layout_marginTop="2dp"
                 android:text="12세 이상"
                 android:textColor="#454746"
@@ -318,22 +326,25 @@
                 android:src="@drawable/ic_install_info" />
         </RelativeLayout>
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/kakao_ads_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/kakao_review_layout3"
-            android:orientation="horizontal"
             android:layout_marginTop="12dp">
 
             <!-- 첫 번째 광고 이미지 -->
             <androidx.cardview.widget.CardView
-                android:layout_width="60dp"
+                android:id="@+id/first_ad_card"
+                android:layout_width="0dp"
                 android:layout_height="200dp"
-                android:layout_weight="1"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginEnd="5dp"
-                app:cardCornerRadius="10dp">
+                app:cardCornerRadius="10dp"
+                app:layout_constraintEnd_toStartOf="@id/second_ad_card"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
                     android:id="@+id/kakao_ad_image1"
@@ -345,12 +356,16 @@
 
             <!-- 두 번째 광고 이미지 -->
             <androidx.cardview.widget.CardView
-                android:layout_width="60dp"
+                android:id="@+id/second_ad_card"
+                android:layout_width="0dp"
                 android:layout_height="200dp"
-                android:layout_weight="1"
-                android:layout_marginStart="15dp"
                 android:layout_marginEnd="5dp"
-                app:cardCornerRadius="10dp">
+                android:layout_marginStart="5dp"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintEnd_toStartOf="@id/third_ad_card"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@id/first_ad_card"
+                app:layout_constraintTop_toTopOf="@id/first_ad_card">
 
                 <ImageView
                     android:id="@+id/kakao_ad_image2"
@@ -362,12 +377,16 @@
 
             <!-- 세 번째 광고 이미지 -->
             <androidx.cardview.widget.CardView
-                android:layout_width="60dp"
+                android:id="@+id/third_ad_card"
+                android:layout_width="0dp"
                 android:layout_height="200dp"
-                android:layout_weight="1"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="20dp"
-                app:cardCornerRadius="10dp">
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="5dp"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@id/second_ad_card"
+                app:layout_constraintTop_toTopOf="@id/first_ad_card">
 
                 <ImageView
                     android:id="@+id/kakao_ad_image3"
@@ -376,7 +395,10 @@
                     android:src="@drawable/appinstall_kakaotalk_ad3"
                     android:scaleType="fitXY"/>
             </androidx.cardview.widget.CardView>
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 
         <TextView
             android:id="@+id/kakao_under_info"
@@ -433,11 +455,11 @@
         <!-- 앱 이미지 -->
         <ImageView
             android:id="@+id/app_image1"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/myinfo"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_install_logo_kakaostory"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="18dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"/>
 
         <!-- 앱 이름 텍스트 -->
@@ -445,12 +467,10 @@
             android:id="@+id/app_text1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/app_image1"
-            android:layout_alignParentStart="true"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="-46dp"
-            android:text="시너지 - 노인 스마트폰 기초 교육 앱..."
+            android:layout_toEndOf="@id/app_image1"
+            android:layout_alignTop="@id/app_image1"
+            android:layout_marginStart="10dp"
+            android:text="카카오스토리 KakaoStory"
             android:textColor="#1F1F1F"
             android:textSize="16sp" />
 
@@ -461,36 +481,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/app_text1"
-            android:layout_alignParentStart="true"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="1dp"
-            android:text="Senergy • "
-            android:textColor="#1F1F1F"
-            android:textSize="16sp" />
-
-        <!-- 앱 연령 이미지 -->
-        <ImageView
-            android:id="@+id/app_age_image1"
-            android:layout_width="17dp"
-            android:layout_height="17dp"
-            android:src="@drawable/ic_install_age"
-            android:layout_below="@id/app_text1"
-            android:layout_alignTop="@id/app_info_text1"
-            android:layout_marginTop="3dp"
-            android:layout_marginStart="142dp"/>
+            android:layout_alignStart="@id/app_text1"
+            android:layout_marginTop="4dp"
+            android:text="Kakao Corp. • 커뮤니케이션"
+            android:textColor="#444645"
+            android:textSize="14sp" />
 
         <!-- 앱 평점 텍스트 -->
         <TextView
             android:id="@+id/app_ad_grade_text1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/app_text1"
+            android:layout_below="@id/app_info_text1"
+            android:layout_alignStart="@id/app_info_text1"
             android:layout_centerInParent="true"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="1dp"
-            android:layout_toEndOf="@id/app_age_image1"
-            android:text="• 4.5"
+            android:layout_marginTop="2dp"
+            android:text="3.6"
             android:textColor="#1F1F1F"
             android:textSize="16sp" />
 
@@ -500,36 +506,36 @@
             android:layout_width="12dp"
             android:layout_height="12dp"
             android:src="@drawable/ic_install_star_black"
-            android:layout_below="@id/app_text1"
             android:layout_alignTop="@id/app_ad_grade_text1"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="200dp"/>
+            android:layout_toEndOf="@id/app_ad_grade_text1"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="5dp"/>
+
 
         <!-- 앱 이미지 2 -->
         <ImageView
             android:id="@+id/app_image2"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/myinfo"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_install_logo_kakaotaxi"
             android:layout_below="@id/app_image1"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="18dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="34dp"/>
+
 
         <!-- 앱 이름 텍스트2 -->
         <TextView
             android:id="@+id/app_text2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/app_image2"
-            android:layout_alignParentStart="true"
+            android:layout_alignTop="@id/app_image2"
             android:layout_centerInParent="true"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="-46dp"
-            android:text="시너지 - 노인 스마트폰 기초 교육 앱..."
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/app_image2"
+            android:text="카카오 T - 택시"
             android:textColor="#1F1F1F"
             android:textSize="16sp" />
-
 
         <!-- 앱 설명 텍스트2 -->
         <TextView
@@ -537,36 +543,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/app_text2"
-            android:layout_alignParentStart="true"
+            android:layout_alignStart="@id/app_text2"
             android:layout_centerInParent="true"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="1dp"
-            android:text="Senergy • "
-            android:textColor="#1F1F1F"
-            android:textSize="16sp" />
+            android:layout_marginTop="4dp"
+            android:text="Kakao Corp. • 여행 및 지역정보"
+            android:textColor="#444645"
+            android:textSize="14sp" />
 
-        <!-- 앱 연령 이미지2 -->
-        <ImageView
-            android:id="@+id/app_age_image2"
-            android:layout_width="17dp"
-            android:layout_height="17dp"
-            android:src="@drawable/ic_install_age"
-            android:layout_below="@id/app_text2"
-            android:layout_alignTop="@id/app_info_text2"
-            android:layout_marginTop="3dp"
-            android:layout_marginStart="142dp"/>
 
         <!-- 앱 평점 텍스트2 -->
         <TextView
             android:id="@+id/app_ad_grade_text2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/app_text2"
+            android:layout_below="@id/app_info_text2"
+            android:layout_alignStart="@id/app_info_text2"
             android:layout_centerInParent="true"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="1dp"
-            android:layout_toEndOf="@id/app_age_image2"
-            android:text="• 4.5"
+            android:layout_marginTop="2dp"
+            android:text="4.1"
             android:textColor="#1F1F1F"
             android:textSize="16sp" />
 
@@ -576,20 +570,21 @@
             android:layout_width="12dp"
             android:layout_height="12dp"
             android:src="@drawable/ic_install_star_black"
-            android:layout_below="@id/app_text2"
             android:layout_alignTop="@id/app_ad_grade_text2"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="200dp"/>
+            android:layout_toEndOf="@id/app_ad_grade_text2"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="5dp"/>
+
 
         <!-- 앱 이미지 3 -->
         <ImageView
             android:id="@+id/app_image3"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/myinfo"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_install_logo_band"
             android:layout_below="@id/app_image2"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="18dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="34dp"/>
 
         <!-- 앱 이름 텍스트3 -->
@@ -597,12 +592,11 @@
             android:id="@+id/app_text3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/app_image3"
-            android:layout_alignParentStart="true"
+            android:layout_alignTop="@id/app_image3"
             android:layout_centerInParent="true"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="-46dp"
-            android:text="시너지 - 노인 스마트폰 기초 교육 앱..."
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/app_image3"
+            android:text="밴드"
             android:textColor="#1F1F1F"
             android:textSize="16sp" />
 
@@ -613,36 +607,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/app_text3"
-            android:layout_alignParentStart="true"
+            android:layout_alignStart="@id/app_text3"
             android:layout_centerInParent="true"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="1dp"
-            android:text="Senergy • "
-            android:textColor="#1F1F1F"
-            android:textSize="16sp" />
+            android:layout_marginTop="4dp"
+            android:text="Naver Corp. • 소셜"
+            android:textColor="#444645"
+            android:textSize="14sp" />
 
-        <!-- 앱 연령 이미지3 -->
-        <ImageView
-            android:id="@+id/app_age_image3"
-            android:layout_width="17dp"
-            android:layout_height="17dp"
-            android:src="@drawable/ic_install_age"
-            android:layout_below="@id/app_text2"
-            android:layout_alignTop="@id/app_info_text3"
-            android:layout_marginTop="3dp"
-            android:layout_marginStart="142dp"/>
 
         <!-- 앱 평점 텍스트3 -->
         <TextView
             android:id="@+id/app_ad_grade_text3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/app_text3"
+            android:layout_below="@id/app_info_text3"
+            android:layout_alignStart="@id/app_info_text3"
             android:layout_centerInParent="true"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="1dp"
-            android:layout_toEndOf="@id/app_age_image3"
-            android:text="• 4.5"
+            android:layout_marginTop="2dp"
+            android:text="4.3"
             android:textColor="#1F1F1F"
             android:textSize="16sp" />
 
@@ -652,10 +634,10 @@
             android:layout_width="12dp"
             android:layout_height="12dp"
             android:src="@drawable/ic_install_star_black"
-            android:layout_below="@id/app_text2"
             android:layout_alignTop="@id/app_ad_grade_text3"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="200dp"/>
+            android:layout_toEndOf="@id/app_ad_grade_text3"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="5dp"/>
 
     </RelativeLayout>
 

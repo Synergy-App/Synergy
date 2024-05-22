@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivitySetting2FontBinding
-import com.sungkyul.synergy.utils.edu.EduCourses
+import com.sungkyul.synergy.edu_courses.settings.SettingsFontCourse
 
 class Setting2FontActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySetting2FontBinding
@@ -21,12 +21,8 @@ class Setting2FontActivity : AppCompatActivity() {
 
         // 교육을 정의해보자!
         binding.eduScreen.post {
-            // 교육 코스 settingsFontCourse를 지정한다.
-            binding.eduScreen.course = EduCourses.settingsFontCourse(
-                binding.eduScreen.context,
-                binding.eduScreen.width.toFloat(),
-                binding.eduScreen.height.toFloat()
-            )
+            binding.eduScreen.course = SettingsFontCourse(binding.eduScreen)
+
             binding.eduScreen.setOnFinishedCourseListener {
                 // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
 
@@ -72,15 +68,26 @@ class Setting2FontActivity : AppCompatActivity() {
                     7 -> resources.getDimension(R.dimen.main_text_size_7)
                     else -> resources.getDimension(R.dimen.main_text_size_default)
                 }
+
                 binding.mainText.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize)
 
-                binding.eduScreen.onAction("change_text_size_bar", progress.toString())
+                //binding.eduScreen.onAction("change_text_size_bar", progress.toString())
+
+                //이부분이안된다고 시크바가 7일때 넘어가야하는데 건들기만해도 왜 다음으로 넘어가냐고
+                if (progress == 7 && fromUser) { // 사용자 조작에 의한 경우에만 실행
+                    binding.eduScreen.onAction("clear_ment")
+                } else {
+                    binding.eduScreen.onAction("change_text_size_bar")
+                }
+
             }
 
-
-            override fun onStartTrackingTouch(seekBar: SeekBar) {}
+                override fun onStartTrackingTouch(seekBar: SeekBar) {}
 
             override fun onStopTrackingTouch(seekBar: SeekBar) {}
         })
+
+
+
     }
 }

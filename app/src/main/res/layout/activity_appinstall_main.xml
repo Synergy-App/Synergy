@@ -27,7 +27,7 @@
 
     <LinearLayout
         android:id="@+id/search_layout"
-        android:layout_width="230dp"
+        android:layout_width="215dp"
         android:layout_height="50dp"
         android:background="@drawable/appinstall_rounded_edittext_background"
         android:orientation="horizontal"
@@ -39,12 +39,12 @@
         app:layout_constraintVertical_bias="0.228">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@drawable/ic_search_grey_24dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginStart="18dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="14dp"
             android:layout_marginTop="1dp"/>
 
         <EditText
@@ -58,43 +58,42 @@
             android:textColorHint="#464749"/>
 
         <ImageView
-            android:layout_width="26dp"
-            android:layout_height="26dp"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
             android:src="@drawable/ic_mic_grey_24"
             android:layout_gravity="center_vertical"
-            android:layout_marginStart="-44dp"
+            android:layout_marginStart="-40dp"
             android:layout_marginEnd="18dp"
             android:layout_marginTop="1dp"/>
 
     </LinearLayout>
 
 
-
-
     <ImageView
         android:id="@+id/imageView37"
-        android:layout_width="30dp"
-        android:layout_height="35dp"
+        android:layout_width="26dp"
+        android:layout_height="31dp"
         android:background="#00FF0000"
         app:layout_constraintBottom_toBottomOf="@+id/install_main_top"
-        app:layout_constraintEnd_toEndOf="@+id/install_main_top"
-        app:layout_constraintHorizontal_bias="0.841"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView38"
+        app:layout_constraintStart_toEndOf="@+id/search_layout"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.261"
-        app:srcCompat="@drawable/ic_install_alarm" />
+        android:layout_marginBottom="40dp"
+        app:srcCompat="@drawable/ic_install_alarm"
+        android:layout_alignParentEnd="true"/>
 
     <ImageView
         android:id="@+id/imageView38"
-        android:layout_width="30dp"
-        android:layout_height="35dp"
+        android:layout_width="26dp"
+        android:layout_height="31dp"
         app:layout_constraintBottom_toBottomOf="@+id/install_main_top"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.958"
         app:layout_constraintStart_toStartOf="@+id/install_main_top"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.258"
-        app:srcCompat="@drawable/myinfo" />
+        app:srcCompat="@drawable/ic_circle_profile"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:id="@+id/textView157"
@@ -180,7 +179,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/install_grey_line"
-        android:layout_marginTop="6dp">
+        android:layout_marginTop="0dp">
 
         <!-- 광고 이미지 -->
         <ImageView
@@ -188,17 +187,18 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:src="@drawable/appinstall_main_ad_image"
-            android:scaleType="fitCenter"/>
+            android:scaleType="fitCenter"
+            android:layout_marginTop="-20dp" />
 
         <!-- 왼쪽 이미지 -->
         <ImageView
             android:id="@+id/left_image"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/myinfo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_install_logo_naver"
             android:layout_below="@id/install_ad_image"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="18dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"/>
 
         <!-- 가운데 텍스트 -->
@@ -207,28 +207,41 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/install_ad_image"
-            android:layout_alignParentStart="true"
             android:layout_centerInParent="true"
-            android:layout_marginStart="70dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:text="시너지 - 노인 스마트폰 기초 교육 앱..."
+            android:layout_toEndOf="@id/left_image"
+            android:text="시너지"
             android:textColor="#1F1F1F"
             android:textSize="16sp" />
 
-        <!-- 오른쪽 버튼 -->
+        <!-- 설치 버튼 -->
         <Button
             android:id="@+id/main_ad_install_btn"
             android:layout_width="68dp"
             android:layout_height="32dp"
+            android:layout_below="@id/install_ad_image"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/install_rounded_blue_btn_background"
             android:text="설치"
             android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:layout_below="@id/install_ad_image"
-            android:background="@drawable/install_rounded_blue_btn_background"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="12dp"
-            android:layout_marginTop="10dp"/>
+            android:textSize="16sp" />
+
+        <!-- 설치 버튼 아래 텍스트 -->
+        <TextView
+            android:id="@+id/main_ad_install_btn_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/main_ad_install_btn"
+            android:layout_marginStart="246dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="24dp"
+            android:text="인앱 구매"
+            android:textColor="#434746"
+            android:textSize="10sp"
+            android:layout_alignParentEnd="true"/>
 
         <!-- 가운데 아래 텍스트 -->
         <TextView
@@ -236,9 +249,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/main_ad_text"
-            android:layout_alignParentStart="true"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="70dp"
+            android:layout_toEndOf="@id/left_image"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="1dp"
             android:text="Senergy • "
             android:textColor="#1F1F1F"
@@ -253,7 +265,7 @@
             android:layout_below="@id/main_ad_info_text"
             android:layout_alignTop="@id/main_ad_info_text"
             android:layout_marginTop="3dp"
-            android:layout_marginStart="142dp"/>
+            android:layout_toEndOf="@id/main_ad_info_text" />
 
         <!-- 메인 광고 앱 연령 텍스트 -->
         <TextView
@@ -261,10 +273,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/main_ad_text"
-            android:layout_centerInParent="true"
+            android:layout_toEndOf="@id/main_ad_info_image"
             android:layout_marginStart="4dp"
             android:layout_marginTop="1dp"
-            android:layout_toEndOf="@id/main_ad_info_image"
             android:text="• 4.5"
             android:textColor="#1F1F1F"
             android:textSize="16sp" />
@@ -276,22 +287,10 @@
             android:layout_height="12dp"
             android:src="@drawable/ic_install_star_black"
             android:layout_below="@id/main_ad_age_text1"
-            android:layout_alignTop="@id/main_ad_info_text"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="200dp"/>
+            android:layout_toEndOf="@id/main_ad_age_text1"
+            android:layout_marginTop="-17dp"
+            android:layout_marginStart="3dp"/>
 
-        <!-- 설치 버튼 아래 텍스트 -->
-        <TextView
-            android:id="@+id/main_ad_install_btn_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/main_ad_install_btn"
-            android:layout_marginStart="330dp"
-            android:layout_marginTop="2dp"
-            android:text="인앱 구매"
-            android:textColor="#434746"
-            android:textSize="10sp"
-            android:textStyle="bold" />
 
     </RelativeLayout>
 
@@ -300,7 +299,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/main_ad_layout"
-        android:layout_marginTop="40dp">
+        android:layout_marginTop="30dp">
 
         <!-- 가운데 아래 텍스트 -->
         <TextView
@@ -336,11 +335,11 @@
         <!-- 앱 이미지 -->
         <ImageView
             android:id="@+id/app_image1"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/myinfo"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_install_logo_naver"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="18dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"/>
 
         <!-- 앱 이름 텍스트 -->
@@ -348,12 +347,10 @@
             android:id="@+id/app_text1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/app_image1"
-            android:layout_alignParentStart="true"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="-46dp"
-            android:text="시너지 - 노인 스마트폰 기초 교육 앱..."
+            android:layout_toEndOf="@id/app_image1"
+            android:layout_alignTop="@id/app_image1"
+            android:layout_marginStart="10dp"
+            android:text="네이버 - NAVER"
             android:textColor="#1F1F1F"
             android:textSize="16sp" />
 
@@ -364,36 +361,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/app_text1"
-            android:layout_alignParentStart="true"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="1dp"
-            android:text="Senergy • "
-            android:textColor="#1F1F1F"
-            android:textSize="16sp" />
-
-        <!-- 앱 연령 이미지 -->
-        <ImageView
-            android:id="@+id/app_age_image1"
-            android:layout_width="17dp"
-            android:layout_height="17dp"
-            android:src="@drawable/ic_install_age"
-            android:layout_below="@id/app_text1"
-            android:layout_alignTop="@id/app_info_text1"
-            android:layout_marginTop="3dp"
-            android:layout_marginStart="142dp"/>
+            android:layout_alignStart="@id/app_text1"
+            android:layout_marginTop="4dp"
+            android:text="도서/참고자료 • 도구"
+            android:textColor="#444645"
+            android:textSize="14sp" />
 
         <!-- 앱 평점 텍스트 -->
         <TextView
             android:id="@+id/app_ad_grade_text1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/app_text1"
+            android:layout_below="@id/app_info_text1"
+            android:layout_alignStart="@id/app_info_text1"
             android:layout_centerInParent="true"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="1dp"
-            android:layout_toEndOf="@id/app_age_image1"
-            android:text="• 4.5"
+            android:layout_marginTop="2dp"
+            android:text="3.7"
             android:textColor="#1F1F1F"
             android:textSize="16sp" />
 
@@ -403,36 +386,36 @@
             android:layout_width="12dp"
             android:layout_height="12dp"
             android:src="@drawable/ic_install_star_black"
-            android:layout_below="@id/app_text1"
             android:layout_alignTop="@id/app_ad_grade_text1"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="200dp"/>
+            android:layout_toEndOf="@id/app_ad_grade_text1"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="5dp"/>
+
 
         <!-- 앱 이미지 2 -->
         <ImageView
             android:id="@+id/app_image2"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/myinfo"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_install_logo_navermap"
             android:layout_below="@id/app_image1"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="18dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="34dp"/>
+
 
         <!-- 앱 이름 텍스트2 -->
         <TextView
             android:id="@+id/app_text2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/app_image2"
-            android:layout_alignParentStart="true"
+            android:layout_alignTop="@id/app_image2"
             android:layout_centerInParent="true"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="-46dp"
-            android:text="시너지 - 노인 스마트폰 기초 교육 앱..."
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/app_image2"
+            android:text="네이버 지도, 내비게이션"
             android:textColor="#1F1F1F"
             android:textSize="16sp" />
-
 
         <!-- 앱 설명 텍스트2 -->
         <TextView
@@ -440,36 +423,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/app_text2"
-            android:layout_alignParentStart="true"
+            android:layout_alignStart="@id/app_text2"
             android:layout_centerInParent="true"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="1dp"
-            android:text="Senergy • "
-            android:textColor="#1F1F1F"
-            android:textSize="16sp" />
+            android:layout_marginTop="4dp"
+            android:text="지도 및 내비게이션"
+            android:textColor="#444645"
+            android:textSize="14sp" />
 
-        <!-- 앱 연령 이미지2 -->
-        <ImageView
-            android:id="@+id/app_age_image2"
-            android:layout_width="17dp"
-            android:layout_height="17dp"
-            android:src="@drawable/ic_install_age"
-            android:layout_below="@id/app_text2"
-            android:layout_alignTop="@id/app_info_text2"
-            android:layout_marginTop="3dp"
-            android:layout_marginStart="142dp"/>
 
         <!-- 앱 평점 텍스트2 -->
         <TextView
             android:id="@+id/app_ad_grade_text2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/app_text2"
+            android:layout_below="@id/app_info_text2"
+            android:layout_alignStart="@id/app_info_text2"
             android:layout_centerInParent="true"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="1dp"
-            android:layout_toEndOf="@id/app_age_image2"
-            android:text="• 4.5"
+            android:layout_marginTop="2dp"
+            android:text="3.6"
             android:textColor="#1F1F1F"
             android:textSize="16sp" />
 
@@ -479,20 +450,21 @@
             android:layout_width="12dp"
             android:layout_height="12dp"
             android:src="@drawable/ic_install_star_black"
-            android:layout_below="@id/app_text2"
             android:layout_alignTop="@id/app_ad_grade_text2"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="200dp"/>
+            android:layout_toEndOf="@id/app_ad_grade_text2"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="5dp"/>
+
 
         <!-- 앱 이미지 3 -->
         <ImageView
             android:id="@+id/app_image3"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/myinfo"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_install_logo_insta"
             android:layout_below="@id/app_image2"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="18dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="34dp"/>
 
         <!-- 앱 이름 텍스트3 -->
@@ -500,12 +472,11 @@
             android:id="@+id/app_text3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/app_image3"
-            android:layout_alignParentStart="true"
+            android:layout_alignTop="@id/app_image3"
             android:layout_centerInParent="true"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="-46dp"
-            android:text="시너지 - 노인 스마트폰 기초 교육 앱..."
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/app_image3"
+            android:text="Instagram"
             android:textColor="#1F1F1F"
             android:textSize="16sp" />
 
@@ -516,36 +487,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/app_text3"
-            android:layout_alignParentStart="true"
+            android:layout_alignStart="@id/app_text3"
             android:layout_centerInParent="true"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="1dp"
-            android:text="Senergy • "
-            android:textColor="#1F1F1F"
-            android:textSize="16sp" />
+            android:layout_marginTop="4dp"
+            android:text="소셜 • 네트워킹"
+            android:textColor="#444645"
+            android:textSize="14sp" />
 
-        <!-- 앱 연령 이미지3 -->
-        <ImageView
-            android:id="@+id/app_age_image3"
-            android:layout_width="17dp"
-            android:layout_height="17dp"
-            android:src="@drawable/ic_install_age"
-            android:layout_below="@id/app_text2"
-            android:layout_alignTop="@id/app_info_text3"
-            android:layout_marginTop="3dp"
-            android:layout_marginStart="142dp"/>
 
         <!-- 앱 평점 텍스트3 -->
         <TextView
             android:id="@+id/app_ad_grade_text3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/app_text3"
+            android:layout_below="@id/app_info_text3"
+            android:layout_alignStart="@id/app_info_text3"
             android:layout_centerInParent="true"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="1dp"
-            android:layout_toEndOf="@id/app_age_image3"
-            android:text="• 4.5"
+            android:layout_marginTop="2dp"
+            android:text="3.9"
             android:textColor="#1F1F1F"
             android:textSize="16sp" />
 
@@ -555,10 +514,10 @@
             android:layout_width="12dp"
             android:layout_height="12dp"
             android:src="@drawable/ic_install_star_black"
-            android:layout_below="@id/app_text2"
             android:layout_alignTop="@id/app_ad_grade_text3"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="200dp"/>
+            android:layout_toEndOf="@id/app_ad_grade_text3"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="5dp"/>
 
     </RelativeLayout>
 
