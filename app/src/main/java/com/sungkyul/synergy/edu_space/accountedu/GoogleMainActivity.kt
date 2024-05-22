@@ -11,7 +11,8 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityGoogleMainBinding
 import com.sungkyul.synergy.edu_courses.accountedu.GoogleMainCourse
 
-class GoogleMainActivity : AppCompatActivity() {
+class
+GoogleMainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGoogleMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

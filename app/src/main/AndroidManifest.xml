@@ -104,28 +104,22 @@
         <activity
             android:name=".edu_space.default_app.camera.activity.DefaultCameraGalleryViewActivity"
             android:exported="false" /> <!-- 카메라 갤러리 뷰 화면 -->
+
         <!-- 환경설정2 -->
-        <!-- 환경설정 시작 -->
         <activity
             android:name=".edu_space.settingedu2.Setting2MainActivity"
-            android:exported="false"/> > <!-- <activity -->
-
+            android:exported="false"/>
         <activity
             android:name=".edu_space.settingedu2.Setting2DisplayActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.settingedu2.Setting2FontActivity"
-            android:exported="true" > <!-- 계정생성 교육 -->
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            android:exported="false"/>
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
+        <!-- 계정생성 -->
         <activity
             android:name=".edu_space.accountedu.GoogleMainActivity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".edu_space.accountedu.GoogleLoginActivity"
             android:exported="false" />
@@ -134,7 +128,7 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.accountedu.GoogleDefaultInfoActivity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".edu_space.accountedu.GoogleMailActivity"
             android:exported="false" />
@@ -146,7 +140,13 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.accountedu.GooglePutCodeActivity"
-            android:exported="false" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".edu_space.accountedu.GoogleMailAddActivity"
             android:exported="false" />

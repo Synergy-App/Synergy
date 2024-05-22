@@ -2,31 +2,28 @@ package com.sungkyul.synergy.edu_space.accountedu
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.EditText
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.MainActivity
-import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityGooglePasswordBinding
 import com.sungkyul.synergy.edu_courses.accountedu.GooglePasswordCourse
 
 class GooglePasswordActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGooglePasswordBinding
 
-    private lateinit var passwordEditText: EditText
-    private lateinit var confirmPasswordEditText: EditText
-    private lateinit var showPasswordCheckBox: CheckBox
-    private lateinit var nextButton: Button
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityGooglePasswordBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // 초기화 시 비밀번호 필드를 가림
+        togglePasswordVisibility(false)
 
         // 교육을 정의해보자!
         binding.eduScreen.post {
@@ -54,23 +51,14 @@ class GooglePasswordActivity : AppCompatActivity() {
             }
         })
 
-        passwordEditText = findViewById(R.id.google_pw_edittext)
-        confirmPasswordEditText = findViewById(R.id.google_pw_check_edittext)
-        showPasswordCheckBox = findViewById(R.id.show_password_checkbox)
-        nextButton = findViewById(R.id.google_pw_next_button)
-
-        // 비밀번호 및 확인 에딧창의 내용을 숨김
-        passwordEditText.transformationMethod = PasswordTransformationMethod.getInstance()
-        confirmPasswordEditText.transformationMethod = PasswordTransformationMethod.getInstance()
-
-        // 체크박스 클릭 리스너 설정
-        showPasswordCheckBox.setOnCheckedChangeListener { _, isChecked ->
+        // 뷰 초기화
+        binding.showPasswordCheckbox.setOnCheckedChangeListener { _, isChecked ->
             togglePasswordVisibility(isChecked)
         }
 
-        nextButton.setOnClickListener {
-            val password = passwordEditText.text.toString()
-            val confirmPassword = confirmPasswordEditText.text.toString()
+        binding.googlePwNextButton.setOnClickListener {
+            val password = binding.googlePwEdittext.text.toString()
+            val confirmPassword = binding.googlePwCheckEdittext.text.toString()
 
             if (password == confirmPassword) {
                 // 비밀번호 일치 시 다음 화면으로 이동
@@ -86,17 +74,54 @@ class GooglePasswordActivity : AppCompatActivity() {
                 Toast.makeText(this, "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
             }
         }
+
+        // passwordEditText의 텍스트 변경 감지
+        binding.googlePwEdittext.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // 필요시 구현
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                Log.i("test", "onTextChanged")
+                if (s.toString().isNotEmpty()) {
+                    // 사용자가 텍스트를 입력한 경우
+                    binding.eduScreen.onAction("pw_input")
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                // 필요시 구현
+            }
+        })
+        // confirmPasswordEditText의 텍스트 변경 감지
+        binding.googlePwCheckEdittext.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // 필요시 구현
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                Log.i("test", "onTextChanged")
+                if (s.toString().isNotEmpty()) {
+                    // 사용자가 텍스트를 입력한 경우
+                    binding.eduScreen.onAction("pw_check_input")
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                // 필요시 구현
+            }
+        })
     }
 
     private fun togglePasswordVisibility(visible: Boolean) {
         if (visible) {
             // 체크박스 체크 시 비밀번호 및 확인 에딧창의 내용을 보여줌
-            passwordEditText.transformationMethod = HideReturnsTransformationMethod.getInstance()
-            confirmPasswordEditText.transformationMethod = HideReturnsTransformationMethod.getInstance()
+            binding.googlePwEdittext.transformationMethod = HideReturnsTransformationMethod.getInstance()
+            binding.googlePwCheckEdittext.transformationMethod = HideReturnsTransformationMethod.getInstance()
         } else {
             // 체크박스 해제 시 비밀번호 및 확인 에딧창의 내용을 숨김
-            passwordEditText.transformationMethod = PasswordTransformationMethod.getInstance()
-            confirmPasswordEditText.transformationMethod = PasswordTransformationMethod.getInstance()
+            binding.googlePwEdittext.transformationMethod = PasswordTransformationMethod.getInstance()
+            binding.googlePwCheckEdittext.transformationMethod = PasswordTransformationMethod.getInstance()
         }
     }
 }

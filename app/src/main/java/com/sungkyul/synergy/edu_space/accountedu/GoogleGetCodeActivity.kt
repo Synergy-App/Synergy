@@ -2,6 +2,9 @@ package com.sungkyul.synergy.edu_space.accountedu
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.widget.Button
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
@@ -54,6 +57,25 @@ class GoogleGetCodeActivity : AppCompatActivity() {
 
             startActivity(nextIntent)
         }
+        // phoneEdittext의 텍스트 변경 감지
+        binding.phoneEdittext.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // 필요시 구현
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                Log.i("test", "onTextChanged")
+                if (s.toString().isNotEmpty()) {
+                    // 사용자가 텍스트를 입력한 경우
+                    binding.eduScreen.onAction("phone_input")
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                // 필요시 구현
+            }
+        })
     }
-}
+    }
+
 
