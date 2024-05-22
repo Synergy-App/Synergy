@@ -20,7 +20,7 @@ data class DefaultPhoneCallCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentText = "전화 연결에 성공하였습니다!"
             dialog.contentGravity = Gravity.CENTER
             dialog.contentFont = R.font.pretendard_medium
-            dialog.contentSize = 28.0f
+            dialog.contentSize = 26.0f
             dialog.top = 300.0f
             dialog.bottom = 430.0f
             dialog.start = 24.0f

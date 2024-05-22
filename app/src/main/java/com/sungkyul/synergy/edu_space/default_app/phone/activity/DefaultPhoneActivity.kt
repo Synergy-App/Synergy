@@ -14,6 +14,7 @@ import com.sungkyul.synergy.databinding.ActivityDefaultPhoneBinding
 import com.sungkyul.synergy.edu_courses.default_app.phone.DefaultPhoneCourse1
 import com.sungkyul.synergy.edu_courses.default_app.phone.DefaultPhoneCourse2
 import com.sungkyul.synergy.edu_courses.default_app.phone.DefaultPhoneCourse3
+import com.sungkyul.synergy.edu_courses.default_app.phone.DefaultPhoneCourse4
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_DOWN_ALPHA
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_DURATION_ALPHA
 import com.sungkyul.synergy.edu_space.default_app.TOUCH_UP_ALPHA
@@ -48,6 +49,10 @@ class DefaultPhoneActivity : AppCompatActivity() {
             }
             if(intent.getStringExtra("from") == "add_contact") {
                 binding.eduScreen.course = DefaultPhoneCourse3(binding.eduScreen)
+            }
+            if(intent.getStringExtra("from") == "save_contact") {
+                binding.eduScreen.course = DefaultPhoneCourse4(binding.eduScreen)
+                replaceFragment(contactFragment)//연락처 프레그먼트로 간다는 의미
             }
 
             binding.eduScreen.setOnFinishedCourseListener {
@@ -131,7 +136,7 @@ class DefaultPhoneActivity : AppCompatActivity() {
 
         replaceFragment(keypadFragment)
 
-        if(intent.getStringExtra("from") == "add_contact") {
+        if(intent.getStringExtra("from") == "save_contact") {
             // 새 연락처를 프래그먼트로 넘긴다.
             contactFragment = DefaultPhoneContactFragment(
                 ContactData(

@@ -100,6 +100,7 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
             dialog.background = R.drawable.edu_dialog_bg
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
+            cover.boxBorderColor = R.color.black
         })
 
         list.add(EduData().apply {
@@ -110,6 +111,7 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
             cover.boxRight = width-20.0f
             cover.boxBottom = height
             dialog.contentText = "연락처는<br>나의 휴대폰에 저장된<br>사람들의 전화목록입니다."
+            cover.boxBorderColor = R.color.lime
         })
 
         list.add(EduData().apply {
@@ -172,6 +174,7 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
 
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
+            cover.boxBorderColor = R.color.black
         })
 
         list.add(EduData().apply {
@@ -231,7 +234,7 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
             cover.boxRight = width-280.0f
             cover.boxTop = 530.0f
             cover.boxBottom = 650.0f
-
+            cover.boxBorderColor = R.color.lime
         })
 
         list.add(EduData().apply {
@@ -255,5 +258,44 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
 
         })
 
+        list.add(EduData().apply {
+            dialog.contentText = "연락처를 추가하는<br>버튼입니다."
+            dialog.top = 170.0f
+            dialog.bottom = 510.0f
+
+            cover.boxLeft = 230.0f
+            cover.boxTop = 360.0f
+            cover.boxRight = width- 100.0f
+            cover.boxBottom = 440.0f
+
+        })
+
+        list.add(EduData().apply {
+            dialog.contentText = "연락처를<br>추가해 보세요."
+            dialog.contentGravity = Gravity.CENTER
+            dialog.contentSize = 28.0f
+            dialog.top = 300.0f
+            dialog.bottom = 430.0f
+            dialog.contentColor = R.color.white
+            dialog.background = R.drawable.edu_dialog_green_bg
+
+            cover.boxVisibility = false
+            cover.boxBorderVisibility = false
+        })
+
+        list.add(EduData().apply {
+            dialog.visibility = false
+            cover.visibility = false
+            cover.isClickable = false
+
+            hands.add(
+                EduHand(
+                    id = "tap",
+                    x = 250.0f,
+                    y = 330.0f,
+                    gesture = HandGestures.Companion::tapGesture
+                )
+            )
+        })
     }
 }
