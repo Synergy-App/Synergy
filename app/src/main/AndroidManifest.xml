@@ -19,6 +19,33 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".FindIdPasswordActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".edu_space.default_app.todo.DefaultAppBarActivity"
             android:exported="false" />
         <activity
@@ -32,8 +59,7 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageActivity"
-            android:exported="false"/> <!-- 메시지채팅 화면 -->
-
+            android:exported="false" /> <!-- 메시지 화면 -->
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageChattingActivity"
             android:exported="true"> <!-- 메시지 화면 -->
@@ -44,6 +70,8 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".edu_space.default_app.message.activity.DefaultMessageSelectActivity"
+            android:exported="false" />
             android:name=".edu_space.default_app.message.activity.DefaultMessageFristActivity"
             android:exported="false"/> <!-- 메시지채팅 화면 -->
         <activity
@@ -60,8 +88,7 @@
             android:exported="false" /> <!-- 디지털 나이 검사 -->
         <activity
             android:name=".MainActivity"
-            android:exported="false"/>
-             <!-- 메인화면 -->
+            android:exported="false" /> <!-- 메인화면 -->
         <activity
             android:name=".EduSpaceActivity"
             android:exported="false" /> <!-- 삭제할 거 -->
@@ -103,11 +130,12 @@
         <activity
             android:name=".edu_space.default_app.phone.activity.DefaultPhoneCallActivity"
             android:exported="false" /> <!-- 전화 콜 화면 -->
-
+        <activity
+            android:name=".edu_space.default_app.phone.activity.DefaultPhoneAddActivity"
+            android:exported="false" /> <!-- 전화 연락처 추가화면 -->
         <activity
             android:name=".edu_space.default_app.phone.activity.DefaultPhoneAddActivity"
             android:exported="false"/> <!-- 전화 연락처 추가화면 -->
-
         <activity
             android:name=".edu_space.default_app.camera.activity.DefaultCameraActivity"
             android:exported="false" /> <!-- 카메라 화면 -->
@@ -165,6 +193,16 @@
             android:exported="false" /> <!-- 앱 설치 -->
         <activity
             android:name=".edu_space.appinstall.installMainActivity"
+            android:exported="false" /> <!-- 앱 설치 메인 화면 -->
+        <activity
+            android:name=".edu_space.appinstall.AppInstallMainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
             android:exported="false" /> <!-- 병윤님 앱 설치 메인 화면 -->
         <activity
             android:name=".edu_space.appinstall.AppInstallMainActivity"
