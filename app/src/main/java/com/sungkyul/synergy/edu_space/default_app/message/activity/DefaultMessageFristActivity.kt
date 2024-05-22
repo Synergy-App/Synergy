@@ -151,14 +151,11 @@ class DefaultMessageFristActivity: AppCompatActivity() {
             true
         }
 
-
-        binding.goToTopMenuButton.setOnFocusChangeListener { _, hasFocus ->
-            if(hasFocus) {
-                binding.eduScreen.onAction("menu_button")
-
+        binding.goToTopMenuButton.setOnClickListener {
+            if(binding.eduScreen.onAction("menu_button")) {
+                // id가 서로 일치하면 이 부분이 실행된다.
             }
         }
-
 
     }
 
@@ -170,8 +167,11 @@ class DefaultMessageFristActivity: AppCompatActivity() {
             MotionEvent.ACTION_UP -> {
                 AnimUtils.startTouchUpButtonAnimation(this, view)
                 view.performClick()
-                val intent = Intent(this, DefaultMessageChattingActivity::class.java)
-                startActivity(intent)
+                if(binding.eduScreen.onAction("menu_button")) {
+                    val intent = Intent(this, DefaultMessageChattingActivity::class.java)
+                    startActivity(intent)
+                }
+
             }
         }
         true
