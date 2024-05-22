@@ -3,15 +3,12 @@ package com.sungkyul.synergy.edu_space.default_app.message.activity
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.view.MotionEvent
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityDefaultMessageSelectBinding
-import com.sungkyul.synergy.edu_courses.default_app.message.DefaultMessageCourse2
+import com.sungkyul.synergy.edu_courses.default_app.message.DefaultMessageCourse1
 import com.sungkyul.synergy.edu_space.default_app.DefaultAppActivity
 import com.sungkyul.synergy.edu_space.default_app.message.adapter.MessageContactData
 import com.sungkyul.synergy.edu_space.default_app.message.adapter.MessageSelectAdapter
@@ -29,7 +26,7 @@ class DefaultMessageSelectActivity : AppCompatActivity() {
 
         // 교육을 정의해보자!
         binding.eduScreen.post {
-            binding.eduScreen.course = DefaultMessageCourse2(binding.eduScreen)
+            binding.eduScreen.course = DefaultMessageCourse1(binding.eduScreen)
 
             binding.eduScreen.setOnFinishedCourseListener {
                 // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
@@ -59,7 +56,8 @@ class DefaultMessageSelectActivity : AppCompatActivity() {
         contactArray.add(MessageContactData(R.drawable.ic_person_black_24dp, ":fearful:","휴대전화: 010-1234-1234"))
 
 
-        contactAdapter = MessageSelectAdapter(contactArray)
+
+        contactAdapter = MessageSelectAdapter(contactArray, binding.eduScreen, this)
         binding.messageContactList.layoutManager = LinearLayoutManager(this)
         binding.messageContactList.adapter = contactAdapter
 

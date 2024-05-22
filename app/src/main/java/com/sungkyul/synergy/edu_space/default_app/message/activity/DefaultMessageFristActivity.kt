@@ -10,21 +10,17 @@ import android.view.inputmethod.InputMethodManager
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityDefaultMessageBinding
 import com.sungkyul.synergy.edu_courses.default_app.message.DefaultMessageCourse2
-import com.sungkyul.synergy.edu_courses.default_app.message.DefaultMessageCourse3
 import com.sungkyul.synergy.edu_space.default_app.DefaultAppActivity
 import com.sungkyul.synergy.edu_space.default_app.message.adapter.MessageAdapter
 import com.sungkyul.synergy.edu_space.default_app.message.adapter.MessageData
 import com.sungkyul.synergy.edu_space.default_app.message.adapter.MyMessageData
-import com.sungkyul.synergy.edu_space.default_app.message.adapter.YourMessageData
-import com.sungkyul.synergy.edu_space.default_app.phone.activity.DefaultPhoneActivity
 import com.sungkyul.synergy.utils.AnimUtils
 import com.sungkyul.synergy.utils.DateTimeUtils
 import java.time.LocalDateTime
 
-class DefaultMessageActivity : AppCompatActivity() {
+class DefaultMessageFristActivity: AppCompatActivity() {
     private lateinit var binding: ActivityDefaultMessageBinding
 
     @SuppressLint("ClickableViewAccessibility")
@@ -33,11 +29,11 @@ class DefaultMessageActivity : AppCompatActivity() {
         binding = ActivityDefaultMessageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         // 교육을 정의해보자!
         binding.eduScreen.post {
-
             binding.eduScreen.course = DefaultMessageCourse2(binding.eduScreen)
+
+
 
             binding.eduScreen.setOnFinishedCourseListener {
                 // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
@@ -67,37 +63,6 @@ class DefaultMessageActivity : AppCompatActivity() {
         val now = LocalDateTime.now()
 
         val messageArray = ArrayList<MessageData>()
-
-
-        messageArray.add(
-            YourMessageData(
-            R.drawable.ic_call_profile_24,
-            "스위트허니너겟님",
-            "${dateTime1.format(DateTimeUtils.dateFormatter)} ${DateTimeUtils.getKoreanDayOfWeek(dateTime1)}",
-            "${DateTimeUtils.getKoreanPeriod(dateTime1)} ${dateTime1.format(DateTimeUtils.timeFormatter)}"
-        )
-        )
-
-
-
-        messageArray.add(
-            MyMessageData(
-            "?",
-            "${dateTime2.format(DateTimeUtils.dateFormatter)} ${DateTimeUtils.getKoreanDayOfWeek(dateTime2)}",
-            "${DateTimeUtils.getKoreanPeriod(dateTime2)} ${dateTime2.format(DateTimeUtils.timeFormatter)}"
-        )
-        )
-        messageArray.add(
-            YourMessageData(
-            R.drawable.ic_call_profile_24,
-            "파인애플 피자 드실래요?",
-            "${dateTime3.format(DateTimeUtils.dateFormatter)} ${DateTimeUtils.getKoreanDayOfWeek(dateTime3)}",
-            "${DateTimeUtils.getKoreanPeriod(dateTime3)} ${dateTime3.format(DateTimeUtils.timeFormatter)}"
-        )
-        )
-
-
-
 
 
         val messages = binding.messages
@@ -186,18 +151,27 @@ class DefaultMessageActivity : AppCompatActivity() {
             true
         }
 
+
+        binding.goToTopMenuButton.setOnFocusChangeListener { _, hasFocus ->
+            if(hasFocus) {
+                binding.eduScreen.onAction("menu_button")
+
+            }
+        }
+
+
     }
 
     private val onTouchGoToTopMenuButtonListener = View.OnTouchListener { view, event ->
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
                 AnimUtils.startTouchDownButtonAnimation(this, view)
-
             }
             MotionEvent.ACTION_UP -> {
                 AnimUtils.startTouchUpButtonAnimation(this, view)
                 view.performClick()
-
+                val intent = Intent(this, DefaultMessageChattingActivity::class.java)
+                startActivity(intent)
             }
         }
         true
