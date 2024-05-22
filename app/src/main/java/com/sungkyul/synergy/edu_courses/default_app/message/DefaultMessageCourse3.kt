@@ -9,25 +9,26 @@ import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
 import com.sungkyul.synergy.utils.edu.EduScreen
 
-data class DefaultMessageChattingCourse(val eduScreen: EduScreen): EduCourse {
+class DefaultMessageCourse3 (val eduScreen: EduScreen): EduCourse {
     override val list = ArrayList<EduData>()
     override val width = DisplayUtils.pxToDp(eduScreen.context, eduScreen.width.toFloat())
     override val height = DisplayUtils.pxToDp(eduScreen.context, eduScreen.height.toFloat())
 
-    //문자 첫 화면~1:1채팅 누르는거까지
+    //메세지
     // 교육 코스를 만든다.
     init {
+
         list.add(EduData().apply {
-            dialog.contentText = "문자 화면 입니다."
+            dialog.contentText = "만약 메세지를 보낼 상대방이<br>문자 내역 목록에 보인다면"
             dialog.contentFont = R.font.pretendard_medium
             dialog.contentSize = 26.0f
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = 26.0f
-            dialog.bottom = 700.0f
+            dialog.top = 300.0f
+            dialog.bottom = 400.0f
             dialog.start = 24.0f
             dialog.end = 24.0f
-            cover.boxVisibility = true
-            cover.visibility = false
+            cover.boxVisibility = false
+            cover.visibility = true
             cover.isClickable = true
             dialog.visibility = true
             dialog.contentColor = R.color.white
@@ -35,22 +36,7 @@ data class DefaultMessageChattingCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "이 부분을 통해<br>이전에 주고 받은 메세지 내역을<br>확인할 수 있습니다."
-            dialog.top = 50.0f
-            dialog.bottom = 600.0f
-            cover.boxLeft = 0.0f
-            cover.boxTop = 280.0f
-            cover.boxRight = width-0.0f
-            cover.boxBottom = height-60.0f
-            cover.visibility = true
-            cover.boxBorderVisibility = true
-            cover.boxBorderColor = R.color.black
-            dialog.contentColor = R.color.black
-            dialog.background = R.drawable.edu_dialog_bg
-        })
-
-        list.add(EduData().apply {
-            dialog.contentText = "메세지를 보내는<br>버튼입니다."
+            dialog.contentText = "이 버튼을 눌러<br>작성할 필요 없이"
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 380.0f
             dialog.bottom = 200.0f
@@ -62,7 +48,21 @@ data class DefaultMessageChattingCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "메시지를 보내볼까요?"
+            dialog.contentText = "내역을 클릭하여<br>쉽게 이동할 수 있습니다."
+            dialog.top = 200.0f
+            dialog.bottom = 500.0f
+            cover.boxTop = 80.0f
+            cover.boxLeft = 400.0f
+            cover.boxBottom = height-680.0f
+            cover.boxRight = width
+            cover.boxVisibility = true
+            cover.boxBorderVisibility = true
+            dialog.background = R.drawable.edu_dialog_bg
+
+        })
+
+        list.add(EduData().apply {
+            dialog.contentText = "000과의 메세지 내역을<br>클릭해보세요"
             dialog.top = 300.0f
             dialog.bottom = 400.0f
             dialog.contentColor = R.color.white
@@ -72,35 +72,15 @@ data class DefaultMessageChattingCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.visibility = false
             cover.visibility = false
-            cover.isClickable = false
-            action.id = "message_button"
-            hands.add(
-                EduHand(
-                    id = "tap",
-                    x = 350.0f,
-                    y = 700.0f,
-                    gesture = HandGestures.Companion::tapGesture
-                )
+            dialog.visibility = false
+            EduHand(
+                id = "tap",
+                x = 300.0f,
+                y = height-110.0f,
+                gesture = HandGestures.Companion::tapGesture
             )
         })
-
-        list.add(EduData().apply {
-            dialog.visibility = false
-            cover.visibility = false
-            cover.isClickable = false
-            action.id = "one_message_button"
-            hands.add(
-                EduHand(
-                    id = "tap",
-                    x = 350.0f,
-                    y = 550.0f,
-                    gesture = HandGestures.Companion::tapGesture
-                )
-            )
-        })
-
 
     }
 }

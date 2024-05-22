@@ -32,10 +32,20 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageActivity"
-            android:exported="false" /> <!-- 메시지 화면 -->
+            android:exported="false"/> <!-- 메시지채팅 화면 -->
+
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageChattingActivity"
-            android:exported="false" /> <!-- 메시지 채팅 화면 -->
+            android:exported="true"> <!-- 메시지 화면 -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".edu_space.default_app.message.activity.DefaultMessageFristActivity"
+            android:exported="false"/> <!-- 메시지채팅 화면 -->
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageSelectActivity"
             android:exported="false" /><!--채팅 방법 선택-->

@@ -66,34 +66,4 @@ class DefaultPhoneContactFragment(private val addedContact: ContactData? = null,
         return binding.root
     }
 
-    /* 검색기능
-    binding.searchEditText.addTextChangedListener(object: TextWatcher {
-        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-        }
-        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            val adapter = recyclerView.adapter as IconEduAdapter
-
-            // 모든 아이템들을 삭제한다.
-            adapter.notifyItemRangeRemoved(0, iconList.size)
-
-            // 자동 완성
-            iconList.clear()
-            if(s.toString().isNotEmpty()) {
-                for (i in iconSearchDict.filter { it.second.contains(s.toString()) }) {
-                    iconList.add(Icon(i.first, i.second))
-                }
-            } else {
-                // 검색 창이 비어 있으면, 모든 아이템들을 채운다.
-                for(i in iconSearchDict) {
-                    iconList.add(Icon(i.first, i.second))
-                }
-            }
-
-            // 아이템들을 추가한다.
-            adapter.notifyItemRangeInserted(0, iconList.size)
-        }
-        override fun afterTextChanged(s: Editable?) {
-        }
-*/
-
 }

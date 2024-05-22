@@ -165,6 +165,8 @@ class DefaultPhoneActivity : AppCompatActivity() {
         true
     }
 
+
+
     // 더보기 버튼의 터치 이벤트 리스너
     private val onTouchMoreListener = View.OnTouchListener { view, event ->
         when(event.action) {
