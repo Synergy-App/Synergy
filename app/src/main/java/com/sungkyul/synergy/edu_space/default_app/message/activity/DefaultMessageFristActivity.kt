@@ -12,12 +12,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sungkyul.synergy.databinding.ActivityDefaultMessageBinding
 import com.sungkyul.synergy.edu_courses.default_app.message.DefaultMessageCourse2
+import com.sungkyul.synergy.edu_courses.default_app.phone.DefaultPhoneCourse1
+import com.sungkyul.synergy.edu_courses.default_app.phone.DefaultPhoneCourse2
 import com.sungkyul.synergy.edu_space.default_app.DefaultAppActivity
 import com.sungkyul.synergy.edu_space.default_app.message.adapter.MessageAdapter
 import com.sungkyul.synergy.edu_space.default_app.message.adapter.MessageData
 import com.sungkyul.synergy.edu_space.default_app.message.adapter.MyMessageData
 import com.sungkyul.synergy.utils.AnimUtils
 import com.sungkyul.synergy.utils.DateTimeUtils
+import com.sungkyul.synergy.utils.GalaxyButton
 import java.time.LocalDateTime
 
 class DefaultMessageFristActivity: AppCompatActivity() {
@@ -32,7 +35,6 @@ class DefaultMessageFristActivity: AppCompatActivity() {
         // 교육을 정의해보자!
         binding.eduScreen.post {
             binding.eduScreen.course = DefaultMessageCourse2(binding.eduScreen)
-
 
 
             binding.eduScreen.setOnFinishedCourseListener {
@@ -151,12 +153,23 @@ class DefaultMessageFristActivity: AppCompatActivity() {
             true
         }
 
-        binding.goToTopMenuButton.setOnClickListener {
-            if(binding.eduScreen.onAction("menu_button")) {
-                // id가 서로 일치하면 이 부분이 실행된다.
-            }
-        }
+        //메뉴 돌아가는 버튼
+        binding.goToTopMenuButton.setOnTouchListener { view, event ->
+            when(event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    (view as GalaxyButton).startTouchDownAnimation(event.x, event.y, 100.0f)
+                }
+                MotionEvent.ACTION_UP -> {
+                    (view as GalaxyButton).startTouchUpAnimation()
 
+                    if(binding.eduScreen.onAction("menu_button")) {
+                        val intent = Intent(this, DefaultMessageChattingActivity::class.java)
+                        startActivity(intent)
+                    }
+                }
+            }
+            true
+        }
     }
 
     private val onTouchGoToTopMenuButtonListener = View.OnTouchListener { view, event ->
@@ -167,15 +180,12 @@ class DefaultMessageFristActivity: AppCompatActivity() {
             MotionEvent.ACTION_UP -> {
                 AnimUtils.startTouchUpButtonAnimation(this, view)
                 view.performClick()
-                if(binding.eduScreen.onAction("menu_button")) {
-                    val intent = Intent(this, DefaultMessageChattingActivity::class.java)
-                    startActivity(intent)
-                }
 
             }
         }
         true
     }
+
 
     private val onTouchCallButtonListener = View.OnTouchListener { view, event ->
         when(event.action) {
