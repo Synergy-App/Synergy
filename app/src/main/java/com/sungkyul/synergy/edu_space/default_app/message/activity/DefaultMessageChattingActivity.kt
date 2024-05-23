@@ -14,6 +14,8 @@ import com.sungkyul.synergy.databinding.ActivityDefaultMessageChattingBinding
 import com.sungkyul.synergy.edu_courses.default_app.message.DefaultMessageChattingCourse
 import com.sungkyul.synergy.edu_courses.default_app.message.DefaultMessageCourse2
 import com.sungkyul.synergy.edu_courses.default_app.message.DefaultMessageCourse3
+import com.sungkyul.synergy.edu_courses.default_app.phone.DefaultPhoneCourse1
+import com.sungkyul.synergy.edu_courses.default_app.phone.DefaultPhoneCourse2
 import com.sungkyul.synergy.edu_space.default_app.DefaultAppActivity
 import com.sungkyul.synergy.edu_space.default_app.message.adapter.MessageChattingAdapter
 import com.sungkyul.synergy.edu_space.default_app.message.adapter.MessageChattingData
@@ -36,12 +38,23 @@ class DefaultMessageChattingActivity : AppCompatActivity() {
 
         // 교육을 정의해보자!
         binding.eduScreen.post {
-            binding.eduScreen.course = DefaultMessageChattingCourse(binding.eduScreen)
+            if (intent.getStringExtra("from") == "menu_button") {
+                binding.eduScreen.course = DefaultMessageCourse3(binding.eduScreen)
+            } else {
+                binding.eduScreen.course = DefaultMessageChattingCourse(binding.eduScreen)
+            }
+            /*
+            if(intent.getStringExtra("from") == null) {
+                binding.eduScreen.course = DefaultMessageChattingCourse(binding.eduScreen)
+            }
+
+           // binding.eduScreen.course = DefaultMessageChattingCourse(binding.eduScreen)
 
             if(intent.getStringExtra("from") == "menu_button") {
                 binding.eduScreen.course = DefaultMessageCourse3(binding.eduScreen)
-            }
+            }*/
 
+            binding.eduScreen.start(this)
 
             binding.eduScreen.setOnFinishedCourseListener {
                 // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
