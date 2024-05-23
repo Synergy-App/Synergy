@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -157,13 +158,15 @@ class DefaultMessageFristActivity: AppCompatActivity() {
         binding.goToTopMenuButton.setOnTouchListener { view, event ->
             when(event.action) {
                 MotionEvent.ACTION_DOWN -> {
-                    (view as GalaxyButton).startTouchDownAnimation(event.x, event.y, 100.0f)
+                    AnimUtils.startTouchDownButtonAnimation(this, view)
+
                 }
                 MotionEvent.ACTION_UP -> {
-                    (view as GalaxyButton).startTouchUpAnimation()
+                    AnimUtils.startTouchUpButtonAnimation(this, view)
 
                     if(binding.eduScreen.onAction("menu_button")) {
                         val intent = Intent(this, DefaultMessageChattingActivity::class.java)
+                        intent.putExtra("from", "menu_button")
                         startActivity(intent)
                     }
                 }
