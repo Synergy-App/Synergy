@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<!-- nav_graph.xml -->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/myProfileFragment">
+
+    <fragment
+        android:id="@+id/myProfileFragment"
+        android:name="com.sungkyul.synergy.MyProfileFragment"
+        android:label="My Profile"
+        tools:layout="@layout/fragment_my_fra">
+
+        <!-- 다음 Fragment로 이동할 action 정의 -->
+        <action
+            android:id="@+id/action_myProfileFragment_to_secondFragment"
+            app:destination="@id/secondFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/secondFragment"
+        android:name="com.sungkyul.synergy.my_profile.ResultExamFragment"
+        android:label="Second Fragment"
+        tools:layout="@layout/fragment_result_exam" />
+</navigation>
+
+
+

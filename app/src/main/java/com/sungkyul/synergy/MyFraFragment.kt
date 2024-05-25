@@ -28,9 +28,7 @@ class MyProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.examResultCardView.setOnClickListener {
-
+            findNavController().navigate(R.id.action_myProfileFragment_to_secondFragment)
         }
-
     }
 }
-
