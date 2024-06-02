@@ -8,7 +8,7 @@
     <LinearLayout
         android:id="@+id/learning_layout"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:layout_margin="16dp"
         android:gravity="center_vertical"
         android:padding="12dp"
@@ -50,17 +50,16 @@
             android:layout_marginTop="12dp"
             android:src="@drawable/ic_edubotton_icon"/>
 
-        <com.github.mikephil.charting.charts.HorizontalBarChart
-            android:id="@+id/bar_chart"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="12dp"/>
+<!--        <com.github.mikephil.charting.charts.HorizontalBarChart-->
+<!--            android:id="@+id/bar_chart"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_marginTop="12dp"/>-->
     </LinearLayout>
 
     <com.sungkyul.synergy.utils.GalaxyButton
         android:id="@+id/edu_button"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_margin="16dp"
+        android:layout_height="match_parent"
         android:translationZ="25dp"/>
 </FrameLayout>
