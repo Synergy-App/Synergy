@@ -25,130 +25,85 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="아이콘 실습"
+                android:text="유형별 실습"
                 android:textColor="@color/white"
                 android:textSize="36dp"
                 android:textStyle="bold" />
 
         </LinearLayout>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="312dp"
-            android:layout_height="529dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="38dp"
-            android:background="@color/white"
-            app:cardCornerRadius="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="34dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="250dp"
+                android:layout_gravity="center"
+                android:src="@drawable/sibug" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="34dp"
-                android:orientation="vertical">
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/learning_info_tv2"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="34dp"
-                    android:gravity="center"
-                    android:text="아이콘 실습하기"
+                    android:layout_marginRight="30dp"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="문제 수"
                     android:textColor="@color/black"
-                    android:textSize="28dp"
+                    android:textSize="25dp"
                     android:textStyle="bold" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/black" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="28dp"
-                        android:layout_marginTop="36dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="문제 수 :"
-                            android:textColor="@color/black"
-                            android:textSize="28dp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/exam_number_tv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp"
-                            android:text="10"
-                            android:textColor="@color/black"
-                            android:textSize="28dp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="28dp"
-                        android:layout_marginTop="36dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="난이도 :"
-                            android:textColor="@color/black"
-                            android:textSize="28dp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/level_number_tv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp"
-                            android:text="5"
-                            android:textColor="@color/black"
-                            android:textSize="28dp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/iconStart_btn"
-                        android:layout_width="200dp"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="38dp"
-                        app:cardBackgroundColor="#D25A5A"
-                        app:cardCornerRadius="16dp"
-                        app:cardElevation="0dp"
-                        app:cardUseCompatPadding="true"
-                        app:cardPreventCornerOverlap="true">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="시작하기"
-                            android:textStyle="bold"
-                            android:textColor="@android:color/white" />
-                    </androidx.cardview.widget.CardView>
-
-
-                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="문제"
+                    android:textColor="@color/black"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/iconStart_btn"
+                android:layout_width="200dp"
+                android:layout_height="75dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="38dp"
+                app:cardBackgroundColor="#D25A5A"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true">
 
-        </androidx.cardview.widget.CardView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="30dp"
+                    android:text="문제풀기"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+            </androidx.cardview.widget.CardView>
 
+
+        </LinearLayout>
 
     </LinearLayout>
 
