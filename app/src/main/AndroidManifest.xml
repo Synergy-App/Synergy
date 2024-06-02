@@ -76,6 +76,15 @@
             android:name=".EduSpaceActivity"
             android:exported="false" /> <!-- 삭제할 거 -->
         <!-- 아이콘 교육 -->
+      <activity
+            android:name=".edu_space.icon_edu.activity.BasicEduMainActivity"
+            android:exported="true" > <!-- 기초교육 선택창 -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".edu_space.icon_edu.activity.IconEduActivity"
             android:exported="true" /> <!-- 2강 사전 설명 -->
