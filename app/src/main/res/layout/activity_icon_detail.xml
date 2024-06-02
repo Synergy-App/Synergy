@@ -89,7 +89,7 @@
             android:orientation="vertical"
             android:gravity="center_horizontal"
             android:background="@drawable/round_corner_white_2"
-            android:layout_marginTop="7dp">
+            android:layout_margin="24dp">
 
             <TextView
                 android:id="@+id/icon_tv_2"
@@ -129,4 +129,5 @@
 
         </LinearLayout>
     </LinearLayout>
+
 </LinearLayout>
