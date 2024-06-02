@@ -47,13 +47,8 @@
             android:exported="false" /> <!-- 메시지 화면 -->
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageChattingActivity"
-            android:exported="true"> <!-- 메시지 화면 -->
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false"/> <!-- 메시지 화면 -->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageFristActivity"
             android:exported="false"/> <!-- 메시지채팅 화면 -->
@@ -79,8 +74,16 @@
         <activity
             android:name=".edu_space.icon_edu.activity.IconEduActivity"
             android:exported="false" /> <!-- 아이콘 첫 화면 -->
-        <!-- 아이콘 첫화면 -->
-        <!-- 화면구성 -->
+
+        <activity
+            android:name=".edu_space.icon_edu.activity.BasicEduMainActivity"
+            android:exported="true" > <!-- 기초교육 선택창 -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".edu_space.default_app.todo.MenusActivity"
             android:exported="false" /> <!-- 아이콘 설명 -->
