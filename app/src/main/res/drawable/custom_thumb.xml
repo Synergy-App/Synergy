@@ -13,62 +13,62 @@
         C14.76,17 17,14.76 17,12
         C17,9.24 14.76,7 12,7
         Z"
-        android:fillColor="#808080"/>
+        android:fillColor="@color/black"/>
 
     <!-- 직선 1 -->
     <path
         android:pathData="M12,3
         L12,5"
-        android:strokeColor="#808080"
+        android:strokeColor="@color/black"
         android:strokeWidth="1"/>
 
     <!-- 직선 2 -->
     <path
         android:pathData="M12,21
         L12,23"
-        android:strokeColor="#808080"
+        android:strokeColor="@color/black"
         android:strokeWidth="1"/>
 
     <!-- 직선 3 -->
     <path
         android:pathData="M4,12
         L2,12"
-        android:strokeColor="#808080"
+        android:strokeColor="@color/black"
         android:strokeWidth="1"/>
 
     <!-- 직선 4 -->
     <path
         android:pathData="M20,12
         L22,12"
-        android:strokeColor="#808080"
+        android:strokeColor="@color/black"
         android:strokeWidth="1"/>
 
     <!-- 직선 5 -->
     <path
         android:pathData="M5.46,5.46
         L7.07,7.07"
-        android:strokeColor="#808080"
+        android:strokeColor="@color/black"
         android:strokeWidth="1"/>
 
     <!-- 직선 6 -->
     <path
         android:pathData="M16.93,16.93
         L18.54,18.54"
-        android:strokeColor="#808080"
+        android:strokeColor="@color/black"
         android:strokeWidth="1"/>
 
     <!-- 직선 7 -->
     <path
         android:pathData="M5.46,18.54
         L7.07,16.93"
-        android:strokeColor="#808080"
+        android:strokeColor="@color/black"
         android:strokeWidth="1"/>
 
     <!-- 직선 8 -->
     <path
         android:pathData="M16.93,7.07
         L18.54,5.46"
-        android:strokeColor="#808080"
+        android:strokeColor="@color/black"
         android:strokeWidth="1"/>
 
 </vector>
