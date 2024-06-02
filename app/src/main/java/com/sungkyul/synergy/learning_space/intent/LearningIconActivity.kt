@@ -47,9 +47,9 @@ class LearningIconActivity : AppCompatActivity() {
                         val firstLearningInfo = learningInfo[0]
                         with(binding) {
                             learningInfoTv.text = firstLearningInfo.learningInfo
-                            learningInfoTv2.text = firstLearningInfo.learningInfo
-                            examNumberTv.text = firstLearningInfo.option1
-                            levelNumberTv.text = firstLearningInfo.option2
+//                            learningInfoTv2.text = firstLearningInfo.learningInfo
+//                            examNumberTv.text = firstLearningInfo.option1
+//                            levelNumberTv.text = firstLearningInfo.option2
                         }
                     } else {
                         // learningInfo가 비어있을 때 처리
