@@ -2,24 +2,27 @@ package com.sungkyul.synergy.edu_space.default_app.message.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
+import android.view.View
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityDefaultMessageChattingBinding
+import com.sungkyul.synergy.edu_courses.default_app.message.DefaultMessageChattingCourse
+import com.sungkyul.synergy.edu_courses.default_app.message.DefaultMessageCourse2
+import com.sungkyul.synergy.edu_courses.default_app.message.DefaultMessageCourse3
+import com.sungkyul.synergy.edu_courses.default_app.phone.DefaultPhoneCourse1
+import com.sungkyul.synergy.edu_courses.default_app.phone.DefaultPhoneCourse2
 import com.sungkyul.synergy.edu_space.default_app.DefaultAppActivity
 import com.sungkyul.synergy.edu_space.default_app.message.adapter.MessageChattingAdapter
 import com.sungkyul.synergy.edu_space.default_app.message.adapter.MessageChattingData
 import com.sungkyul.synergy.utils.AnimUtils
 import com.sungkyul.synergy.utils.DateTimeUtils
 import com.sungkyul.synergy.utils.GalaxyButton
-import com.sungkyul.synergy.utils.edu.EduCourses
 import java.time.LocalDate
-import android.view.View
-
 
 
 class DefaultMessageChattingActivity : AppCompatActivity() {
@@ -35,12 +38,24 @@ class DefaultMessageChattingActivity : AppCompatActivity() {
 
         // 교육을 정의해보자!
         binding.eduScreen.post {
-            // 교육 코스 customCourse를 지정한다.
-            binding.eduScreen.course = EduCourses.defaultMessageChattingCourse(
-                binding.eduScreen.context,
-                binding.eduScreen.width.toFloat(),
-                binding.eduScreen.height.toFloat()
-            )
+            if (intent.getStringExtra("from") == "menu_button") {
+                binding.eduScreen.course = DefaultMessageCourse3(binding.eduScreen)
+            } else {
+                binding.eduScreen.course = DefaultMessageChattingCourse(binding.eduScreen)
+            }
+            /*
+            if(intent.getStringExtra("from") == null) {
+                binding.eduScreen.course = DefaultMessageChattingCourse(binding.eduScreen)
+            }
+
+           // binding.eduScreen.course = DefaultMessageChattingCourse(binding.eduScreen)
+
+            if(intent.getStringExtra("from") == "menu_button") {
+                binding.eduScreen.course = DefaultMessageCourse3(binding.eduScreen)
+            }*/
+
+            binding.eduScreen.start(this)
+
             binding.eduScreen.setOnFinishedCourseListener {
                 // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
 
@@ -228,6 +243,7 @@ class DefaultMessageChattingActivity : AppCompatActivity() {
                 // hiddenLayout을 보이도록 설정합니다
                 binding.hiddenLayout.visibility = View.VISIBLE
                 isHidden = false
+                binding.eduScreen.onAction("message_button")
             } else {
                 // hiddenLayout을 숨기도록 설정합니다
                 binding.hiddenLayout.visibility = View.GONE

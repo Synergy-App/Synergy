@@ -1,25 +1,18 @@
 package com.sungkyul.synergy.edu_space.ticket
+
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-import android.view.View
 import android.widget.Button
-import android.widget.SearchView
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityTicketMainBinding
-import com.sungkyul.synergy.edu_space.kakaotaxi.mapActivity
-import com.sungkyul.synergy.utils.edu.EduCourses
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
-
+import com.sungkyul.synergy.edu_courses.ticket.TicketMainCourse
 
 class TicketMainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTicketMainBinding
@@ -33,12 +26,8 @@ class TicketMainActivity : AppCompatActivity() {
 
         // 교육을 정의해보자!
         binding.eduScreen.post {
-            // 교육 코스 customCourse를 지정한다.
-            binding.eduScreen.course = EduCourses.ticketMainCourse(
-                binding.eduScreen.context,
-                binding.eduScreen.width.toFloat(),
-                binding.eduScreen.height.toFloat()
-            )
+            binding.eduScreen.course = TicketMainCourse(binding.eduScreen)
+
             binding.eduScreen.setOnFinishedCourseListener {
                 // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
 

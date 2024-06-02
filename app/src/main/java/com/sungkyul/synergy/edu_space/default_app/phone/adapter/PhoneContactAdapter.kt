@@ -9,6 +9,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.AnimUtils
+import com.sungkyul.synergy.utils.edu.EduListener
+import com.sungkyul.synergy.utils.edu.EduScreen
 
 //연락처 목록을 표시하는 부분
 data class ContactData(
@@ -17,8 +19,8 @@ data class ContactData(
     val phoneNum: String
 )
 
-class ContactAdapter(private val dataSet: ArrayList<ContactData>): RecyclerView.Adapter<ContactAdapter.ViewHolder>() {
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class ContactAdapter(private val dataSet: ArrayList<ContactData>, private val eduListener: EduListener): RecyclerView.Adapter<ContactAdapter.ViewHolder>() {
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val profile : ImageView//프로필 표시하는 부분
         val name : TextView//이름
         val phoneNum:TextView
@@ -26,6 +28,7 @@ class ContactAdapter(private val dataSet: ArrayList<ContactData>): RecyclerView.
         val hiddenLayout : LinearLayout
         var maxHeight: Int = 0 // 히든 레이아웃의 최대 높이
         var toggle: Boolean = false // 히든 레이아웃 토글 (false이면 접기, true이면 펼치기)
+
         init {
             profile = view.findViewById(R.id.profile)
             name = view.findViewById(R.id.name)
@@ -43,6 +46,10 @@ class ContactAdapter(private val dataSet: ArrayList<ContactData>): RecyclerView.
 
             // 아이템 선택 이벤트
             itemLayout.setOnClickListener {
+                when(name.text) {
+                    "대장님" -> eduListener.onAction("click_captain_contact_item")
+                }
+
                 // 히든 레이아웃을 펼쳤다 접었다 할 수 있다.
                 if(toggle) {
                     AnimUtils.startHeightAnimation(hiddenLayout, 250L, hiddenLayout.height, 0)

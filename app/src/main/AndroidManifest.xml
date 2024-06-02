@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-feature android:name="android.hardware.camera"
-        android:required="true" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission
         android:name="android.permission.WRITE_SETTINGS"
         tools:ignore="ProtectedPermissions" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -20,49 +18,21 @@
         android:theme="@style/Theme.Synergy"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="com.sungkyul.synergy.fileprovider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths" />
-        </provider>
-        <activity android:name=".learning_space.default_app.default_app_bar.DefaultAppBar"
-            android:exported="true">
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
-        </activity>
         <activity
-            android:name=".learning_space.default_app.RealCameraActivity"
-            android:exported="false" >
-        </activity>
+            android:name=".FindIdPasswordActivity"
+            android:exported="false" />
         <activity
-            android:name=".edu_space.default_app.todo.DefaultMenuActivity"
-            android:exported="false">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
+            android:name=".RegisterActivity"
+            android:exported="false" />
         <activity
-            android:name=".edu_space.default_app.todo.RecentRunsAppActivity"
-            android:exported="false"></activity>
-        <activity
-            android:name=".edu_space.default_app.todo.DefaultAppAddActivity"
-            android:exported="false" /> <!-- 상단바 -->
-        <!-- android:name=".my_profile.ExamResultActivity" -->
-        <!-- android:exported="false" /> -->
-        <!-- <activity -->
-        <!-- android:name=".edu_space.default_app.todo.DefaultAppBarActivity" -->
-        <!-- android:exported="false" /> -->
+            android:name=".LoginActivity"
+            android:exported="false" />
         <activity
             android:name=".edu_space.default_app.todo.DefaultAppBarActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
+        <activity
+            android:name=".edu_space.default_app.todo.DefaultMenuActivity"
+            android:exported="false" />
         <activity
             android:name=".edu_space.default_app.todo.DefaultLockedScreenActivity"
             android:exported="false" />
@@ -74,10 +44,13 @@
             android:exported="false" /> <!-- 메시지 화면 -->
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageChattingActivity"
-            android:exported="false" /> <!-- 메시지 채팅 화면 -->
+            android:exported="false" /> <!-- 메시지 화면 -->
+        <activity
+            android:name=".edu_space.default_app.message.activity.DefaultMessageFristActivity"
+            android:exported="false" /> <!-- 메시지채팅 화면 -->
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageSelectActivity"
-            android:exported="false" />
+            android:exported="false" /> <!-- 채팅 방법 선택 -->
         <activity
             android:name=".edu_space.naver.activity.NaverSearchResultActivity"
             android:exported="false" /> <!-- 네이버 검색 결과 화면 -->
@@ -89,57 +62,39 @@
             android:exported="false" /> <!-- 디지털 나이 검사 -->
         <activity
             android:name=".MainActivity"
-            android:exported="false">
+            android:exported="true"> <!-- 메인화면 -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity> <!-- 메인화면 -->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".EduSpaceActivity"
             android:exported="false" /> <!-- 삭제할 거 -->
         <!-- 아이콘 교육 -->
         <activity
+            android:name=".edu_space.icon_edu.activity.BasicEduMainActivity"
+            android:exported="false"> <!-- 기초교육 선택창 -->
+        </activity>
+        <activity
             android:name=".edu_space.icon_edu.activity.IconEduActivity"
-            android:exported="false" /> <!-- 아이콘 첫 화면 -->
-        <!-- 아이콘 첫화면 -->
-        <!-- 화면구성 -->
+            android:exported="false" /> <!-- 2강 사전 설명 -->
         <activity
             android:name=".edu_space.default_app.todo.MenusActivity"
-            android:exported="false" /> <!-- 아이콘 설명 -->
+            android:exported="false" /> <!-- 2강 사전 설명 -->
         <activity
             android:name=".edu_space.icon_edu.activity.IconDetailActivity"
-            android:exported="false" /> <!-- 아이콘 첫화면 -->
+            android:exported="false" /> <!-- 2강 사전 설명 -->
         <activity
             android:name=".edu_space.move_edu.activity.MoveEduActivity"
-            android:exported="false" />
+            android:exported="false" /> <!-- 1강 기본 동작 설명 -->
         <activity
             android:name=".edu_space.move_edu.activity.MoveDetailActivity"
-            android:exported="false" /> <!-- <activity -->
-        <!-- android:name=".edu_space.icon_edu.activity.IconEduActivity" -->
-        <!-- android:exported="false" /> -->
-        <!-- <activity -->
-        <!-- android:name=".edu_space.default_app.activity.MenusActivity" -->
-        <!-- android:exported="true"> -->
-        <!-- <intent-filter> -->
-        <!-- <action android:name="android.intent.action.MAIN" /> -->
-        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-        <!-- </intent-filter> -->
-        <!-- </activity> &lt;!&ndash; 아이콘 설명 &ndash;&gt; -->
+            android:exported="false" /> <!-- 1강 기본 동작 설명 -->
         <activity
             android:name=".edu_space.screen_layout.ScreenLayoutActivity"
-            android:exported="false">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
+            android:exported="false" /> <!-- 기본앱 활용 -->
         <activity
             android:name=".edu_space.default_app.phone.activity.DefaultPhoneActivity"
             android:exported="false" /> <!-- 전화 화면 -->
@@ -148,14 +103,7 @@
             android:exported="false" /> <!-- 전화 콜 화면 -->
         <activity
             android:name=".edu_space.default_app.phone.activity.DefaultPhoneAddActivity"
-            android:exported="false"> <!-- 전화 연락처 추가화면 -->
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
+            android:exported="false" /> <!-- 전화 연락처 추가화면 -->
         <activity
             android:name=".edu_space.default_app.camera.activity.DefaultCameraActivity"
             android:exported="false" /> <!-- 카메라 화면 -->
@@ -163,19 +111,15 @@
             android:name=".edu_space.default_app.camera.activity.DefaultCameraGalleryViewActivity"
             android:exported="false" /> <!-- 카메라 갤러리 뷰 화면 -->
         <!-- 환경설정2 -->
-        <!-- 환경설정 시작 -->
         <activity
             android:name=".edu_space.settingedu2.Setting2MainActivity"
-            android:exported="false" /> <!-- <activity -->
-        <!-- android:name=".edu_space.settingedu.activity.SettingEduActivity" -->
-        <!-- android:exported="true" /> &lt;!&ndash; 환경설정 시작 &ndash;&gt; -->
-        <!-- <activity -->
+            android:exported="false" />
         <activity
             android:name=".edu_space.settingedu2.Setting2DisplayActivity"
             android:exported="false" />
         <activity
             android:name=".edu_space.settingedu2.Setting2FontActivity"
-            android:exported="false" /> <!-- 계정생성 교육 -->
+            android:exported="false" /> <!-- 계정생성 -->
         <activity
             android:name=".edu_space.accountedu.GoogleMainActivity"
             android:exported="false" />
@@ -211,10 +155,14 @@
             android:exported="false" /> <!-- 앱 설치 메인 화면 -->
         <activity
             android:name=".edu_space.appinstall.AppInstallMainActivity"
-            android:exported="false" />
+            android:exported="false"> <!-- 병윤님 앱 설치 메인 화면 -->
+        </activity> <!-- 병윤님 앱 설치 메인 화면 -->
         <activity
             android:name=".edu_space.appinstall.AppInstallSearchActivity"
             android:exported="false" /> <!-- 앱 설치 검색 화면 -->
+        <activity
+            android:name=".edu_space.appinstall.AppInstallLoadingActivity"
+            android:exported="false" /> <!-- 앱 설치 로딩 화면 -->
         <activity
             android:name=".edu_space.kakaotalk.activity.KakaoMainActivity"
             android:exported="false" /> <!-- 카카오톡 메인 화면 -->
@@ -264,7 +212,7 @@
             android:exported="false" /> <!-- 배달의 민족 -->
         <activity
             android:name=".edu_space.delivery.DlvMainActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".edu_space.delivery.shopActivity"
             android:exported="false" />
@@ -273,10 +221,9 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.delivery.foodmenuActivity"
-            android:exported="false" />
-        <activity
-            android:name=".backend.BackendTest"
-            android:exported="false" />
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".backend.BackendTest" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".learning_space.intent.LearningScreenActivity"
             android:exported="false" />
@@ -307,10 +254,6 @@
         <activity
             android:name=".learning_space.intent.LearningIconActivity"
             android:exported="false" />
-        <activity
-            android:name=".learning_space.default_app.camera.CameraTest"
-            android:exported="false">
-
-        </activity>
     </application>
+
 </manifest>

@@ -1,15 +1,15 @@
 package com.sungkyul.synergy.edu_space.kakaotalk.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityKakaoProfileDetailBinding
+import com.sungkyul.synergy.edu_courses.kakotalk.KakaoProfileCourse
 import com.sungkyul.synergy.edu_space.default_app.DefaultAppActivity
 import com.sungkyul.synergy.edu_space.kakaotalk.data.profileItem
-import com.sungkyul.synergy.utils.edu.EduCourses
 
 /** 카카오톡 프로필 디테일 액티비티 */
 class KakaoProfileDetailActivity : AppCompatActivity() {
@@ -45,11 +45,8 @@ class KakaoProfileDetailActivity : AppCompatActivity() {
 
         // 교육 추가
         binding.eduScreen.post {
-            binding.eduScreen.course = EduCourses.kakaoProfileCourse(
-                binding.eduScreen.context,
-                binding.eduScreen.width.toFloat(),
-                binding.eduScreen.height.toFloat()
-            )
+            binding.eduScreen.course = KakaoProfileCourse(binding.eduScreen)
+
             binding.eduScreen.start(this)
         }
 

@@ -1,26 +1,25 @@
 package com.sungkyul.synergy.edu_space.kakaotaxi
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.KeyEvent
-import android.view.View
-import android.view.inputmethod.EditorInfo
-import android.widget.EditText
-import android.widget.TextView
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.inputmethod.EditorInfo
+import android.widget.EditText
+import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityMapBinding
-import com.sungkyul.synergy.edu_space.kakaotaxi.TaxiMainActivity
-import com.sungkyul.synergy.utils.edu.EduCourses
+import com.sungkyul.synergy.edu_courses.kakaotaxi.MapCourse
 
 private lateinit var staEditText: EditText
 private lateinit var desEditText: EditText
 private lateinit var resultTextView: TextView
+
 class mapActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMapBinding
 
@@ -31,12 +30,8 @@ class mapActivity : AppCompatActivity() {
 
         // 교육을 정의해보자!
         binding.eduScreen.post {
-            // 교육 코스 customCourse를 지정한다.
-            binding.eduScreen.course = EduCourses.mapCourse(
-                binding.eduScreen.context,
-                binding.eduScreen.width.toFloat(),
-                binding.eduScreen.height.toFloat()
-            )
+            binding.eduScreen.course = MapCourse(binding.eduScreen)
+
             binding.eduScreen.setOnFinishedCourseListener {
                 // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
 

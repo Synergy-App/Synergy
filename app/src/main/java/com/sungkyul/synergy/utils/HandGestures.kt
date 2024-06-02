@@ -100,24 +100,32 @@ class HandGestures {
             return createTapGesture(context, imageView, 1.0f, 1.2f, 1000)
         }
 
-        // 설정 스크롤 다운
-        fun settingsScrollDownGesture(context: Context, imageView: ImageView): AnimatorSet {
-            return createDragGesture(context, imageView, 200.0f, 650.0f, 200.0f, 400.0f, 1500, 500)
+        // 세로 스크롤 다운
+        fun verticalScrollGesture(context: Context, imageView: ImageView): AnimatorSet {
+            return createDragGesture(context, imageView, 200.0f, 550.0f, 200.0f, 300.0f, 1500, 500)
         }
 
-        // 디스플레이 밝기 조절
-        fun displayLightDragGesture(context: Context, imageView: ImageView): AnimatorSet {
-            return createDragGesture(context, imageView, 220.0f, 510.0f, 360.0f, 510.0f, 1500, 500)
+        // 가로 스크롤 다운
+        fun horizontalDragGesture(context: Context, imageView: ImageView): AnimatorSet {
+            return createDragGesture(context, imageView, 30.0f, 550.0f, 310.0f, 550.0f, 1500, 500)
         }
 
-        // 디스플레이 스크롤 다운
-        fun displayScrollGesture(context: Context, imageView: ImageView): AnimatorSet {
-            return createDragGesture(context, imageView, 200.0f, 650.0f, 200.0f, 400.0f, 1500, 500)
-        }
 
-        // 텍스트 크기 조절
-        fun textSizeDragGesture(context: Context, imageView: ImageView): AnimatorSet {
-            return createDragGesture(context, imageView, 40.0f, 660.0f, 335.0f, 660.0f, 2000, 500)
-        }
+
+        /*
+                // 설정 스크롤 다운
+                fun settingsScrollDownGesture(context: Context, imageView: ImageView): AnimatorSet {
+                    return createDragGesture(context, imageView, 200.0f, 650.0f, 200.0f, 400.0f, 1500, 500)
+                }
+                // 텍스트 크기 조절
+                fun textSizeDragGesture(context: Context, imageView: ImageView): AnimatorSet {
+                    return createDragGesture(context, imageView, 40.0f, 660.0f, 335.0f, 660.0f, 2000, 500)
+                }
+                // 디스플레이 밝기 조절
+                fun displayLightDragGesture(context: Context, imageView: ImageView): AnimatorSet {
+                    return createDragGesture(context, imageView, 220.0f, 510.0f, 360.0f, 510.0f, 1500, 500)
+                }
+                */
+
     }
 }

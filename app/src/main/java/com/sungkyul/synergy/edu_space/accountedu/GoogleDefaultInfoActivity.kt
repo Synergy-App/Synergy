@@ -4,6 +4,9 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -17,7 +20,7 @@ import androidx.core.content.ContextCompat
 import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityGoogleDefaultinfoBinding
-import com.sungkyul.synergy.utils.edu.EduCourses
+import com.sungkyul.synergy.edu_courses.accountedu.GoogleDefaultInfoCourse
 
 class GoogleDefaultInfoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGoogleDefaultinfoBinding
@@ -32,12 +35,8 @@ class GoogleDefaultInfoActivity : AppCompatActivity() {
 
         // 교육을 정의해보자!
         binding.eduScreen.post {
-            // 교육 코스 customCourse를 지정한다.
-            binding.eduScreen.course = EduCourses.googleDefaultInfoCourse(
-                binding.eduScreen.context,
-                binding.eduScreen.width.toFloat(),
-                binding.eduScreen.height.toFloat()
-            )
+            binding.eduScreen.course = GoogleDefaultInfoCourse(binding.eduScreen)
+
             binding.eduScreen.setOnFinishedCourseListener {
                 // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
 
@@ -76,7 +75,6 @@ class GoogleDefaultInfoActivity : AppCompatActivity() {
             startActivity(nextIntent)
         }
 
-
         // 다이얼로그를 표시하기 위한 에딧텍스트 가져오기
         val showMonthSelectionDialogEditText = findViewById<EditText>(R.id.month_edittext)
         val showGenderSelectionDialogEditText = findViewById<EditText>(R.id.gender_edittext)
@@ -95,13 +93,88 @@ class GoogleDefaultInfoActivity : AppCompatActivity() {
         // 성별 입력 칸에 포커스를 주지 않음
         showGenderSelectionDialogEditText.isFocusable = false
         showGenderSelectionDialogEditText.isClickable = true
+
+        // yearEdittext의 텍스트 변경 감지
+        binding.yearEdittext.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // 필요시 구현
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                Log.i("test", "onTextChanged")
+                if (s.toString().isNotEmpty()) {
+                    // 사용자가 텍스트를 입력한 경우
+                    binding.eduScreen.onAction("year_input")
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                // 필요시 구현
+            }
+        })
+
+        // monthEdittext의 텍스트 변경 감지
+        binding.monthEdittext.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // 필요시 구현
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (s.toString().isNotEmpty()) {
+                    // 사용자가 텍스트를 입력한 경우
+                    binding.eduScreen.onAction("month_input")
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                // 필요시 구현
+            }
+        })
+
+        // dayEdittext의 텍스트 변경 감지
+        binding.dayEdittext.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // 필요시 구현
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                Log.i("test", "onTextChanged")
+                if (s.toString().isNotEmpty()) {
+                    // 사용자가 텍스트를 입력한 경우
+                    binding.eduScreen.onAction("day_input")
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                // 필요시 구현
+            }
+        })
+
+        // genderEdittext의 텍스트 변경 감지
+        binding.genderEdittext.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // 필요시 구현
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                Log.i("test", "onTextChanged")
+                if (s.toString().isNotEmpty()) {
+                    // 사용자가 텍스트를 입력한 경우
+                    binding.eduScreen.onAction("gender_input")
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                // 필요시 구현
+            }
+        })
+
     }
 
     // 새로운 함수 - 월 선택 다이얼로그 표시
     private fun showMonthSelectionDialog() {
         val builder = AlertDialog.Builder(this)
-        val dialogView =
-            LayoutInflater.from(this).inflate(R.layout.activity_google_month_selection_dialog, null)
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.activity_google_month_selection_dialog, null)
         builder.setView(dialogView)
 
         // 다이얼로그 내의 라디오 그룹 가져오기
@@ -110,9 +183,9 @@ class GoogleDefaultInfoActivity : AppCompatActivity() {
         // 1월부터 12월까지 반복하여 라디오 버튼 추가
         for (i in 1..12) {
             val radioButton = RadioButton(this)
-            radioButton.text = "${i}월" // 문자열 템플릿 사용
-            radioButton.id = View.generateViewId() // View 클래스의 메소드를 사용하기 위해 import 추가해야 함
-            monthRadioGroup.addView(radioButton) // 라디오 그룹에 라디오 버튼 추가
+            radioButton.text = "${i}월"
+            radioButton.id = View.generateViewId()
+            monthRadioGroup.addView(radioButton)
         }
 
         // 다이얼로그 생성 및 표시
@@ -128,11 +201,12 @@ class GoogleDefaultInfoActivity : AppCompatActivity() {
         // 완료 버튼 클릭 리스너 설정
         val completeButton = dialogView.findViewById<Button>(R.id.m_di_complete_button)
         completeButton.setOnClickListener {
+
             // 선택된 월을 에딧 텍스트에 적용
             val monthEditText = findViewById<EditText>(R.id.month_edittext)
             monthEditText.setText(selectedMonth)
-            // 키보드를 자동으로 올리기
-            showKeyboard(monthEditText)
+            // 키보드를 자동으로 내리기
+            hideKeyboard(monthEditText)
             // 팝업 창 닫기
             alertDialog.dismiss()
         }
@@ -143,8 +217,8 @@ class GoogleDefaultInfoActivity : AppCompatActivity() {
             // 일 에딧텍스트에 포커스 주기
             val dayEditText = findViewById<EditText>(R.id.day_edittext)
             dayEditText.requestFocus()
-            // 키보드를 자동으로 올리기
-            showKeyboard(dayEditText)
+            // 키보드를 자동으로 내리기
+            hideKeyboard(dayEditText)
             // 선택된 월을 에딧 텍스트에 적용
             val monthEditText = findViewById<EditText>(R.id.month_edittext)
             monthEditText.setText(selectedMonth)
@@ -157,8 +231,8 @@ class GoogleDefaultInfoActivity : AppCompatActivity() {
             // 연 에딧텍스트에 포커스 주기
             val yearEditText = findViewById<EditText>(R.id.year_edittext)
             yearEditText.requestFocus()
-            // 키보드를 자동으로 올리기
-            showKeyboard(yearEditText)
+            // 키보드를 자동으로 내리기
+            hideKeyboard(yearEditText)
             // 선택된 월을 에딧 텍스트에 적용
             val monthEditText = findViewById<EditText>(R.id.month_edittext)
             monthEditText.setText(selectedMonth)
@@ -167,11 +241,9 @@ class GoogleDefaultInfoActivity : AppCompatActivity() {
         }
     }
 
-    // 새로운 함수 - 성별 선택 다이얼로그 표시
     private fun showGenderSelectionDialog() {
         val builder = AlertDialog.Builder(this)
-        val dialogView =
-            LayoutInflater.from(this).inflate(R.layout.activity_google_gender_selection_dialog, null)
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.activity_google_gender_selection_dialog, null)
         builder.setView(dialogView)
 
         // 팝업창 배경 설정
@@ -197,8 +269,19 @@ class GoogleDefaultInfoActivity : AppCompatActivity() {
             // 선택된 성별을 에딧 텍스트에 적용
             val genderEditText = findViewById<EditText>(R.id.gender_edittext)
             genderEditText.setText(selectedGender)
-            // 키보드를 자동으로 올리기
-            showKeyboard(genderEditText)
+            // 키보드를 자동으로 내리기
+            hideKeyboard(genderEditText)
+            // 팝업 창 닫기
+            alertDialog.dismiss()
+        }
+        // 다음 버튼 클릭 리스너 설정
+        val gnextButton = dialogView.findViewById<Button>(R.id.g_di_next_button)
+        gnextButton.setOnClickListener {
+            // 선택된 성별을 에딧 텍스트에 적용
+            val genderEditText = findViewById<EditText>(R.id.gender_edittext)
+            genderEditText.setText(selectedGender)
+            // 키보드를 자동으로 내리기
+            hideKeyboard(genderEditText)
             // 팝업 창 닫기
             alertDialog.dismiss()
         }
@@ -209,8 +292,8 @@ class GoogleDefaultInfoActivity : AppCompatActivity() {
             // 일 에딧텍스트에 포커스 주기
             val dayEditText = findViewById<EditText>(R.id.day_edittext)
             dayEditText.requestFocus()
-            // 키보드를 자동으로 올리기
-            showKeyboard(dayEditText)
+            // 키보드를 자동으로 내리기
+            hideKeyboard(dayEditText)
             // 선택된 성별을 에딧 텍스트에 적용
             val genderEditText = findViewById<EditText>(R.id.gender_edittext)
             genderEditText.setText(selectedGender)
@@ -220,8 +303,9 @@ class GoogleDefaultInfoActivity : AppCompatActivity() {
     }
 
     // 키보드를 자동으로 열어주는 함수
-    private fun showKeyboard(editText: EditText) {
+    private fun hideKeyboard(editText: EditText) {
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT)
+        imm.hideSoftInputFromWindow(editText.windowToken, 0)
     }
+
 }

@@ -1,254 +1,24 @@
 package com.sungkyul.synergy.utils.edu
 
-import android.animation.AnimatorSet
 import android.content.Context
-import android.graphics.Color
+import android.content.Intent
 import android.util.AttributeSet
 import android.util.Log
 import android.view.Gravity
 import android.widget.FrameLayout
-import android.widget.ImageView
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.R
 
-data class EduDialog(
-    var titleText: String? = null,
-    var titleGravity: Int? = null,
-    var titleColor: String? = null,
-    var contentText: String? = null,
-    var contentGravity: Int? = null,
-    var contentColor: String? = null,
-    var duration: Long? = null,
-    var top: Float? = null,
-    var bottom: Float? = null,
-    var start: Float? = null,
-    var end: Float? = null,
-    var background: Int? = null,
-    var visibility: Boolean? = null
-)
-data class EduImageDialog(
-    var titleText: String? = null,
-    var titleColor: String? = null,
-    var source: Int? = null,
-    var duration: Long? = null,
-    var top: Float? = null,
-    var bottom: Float? = null,
-    var start: Float? = null,
-    var end: Float? = null,
-    var background: Int? = null,
-    var visibility: Boolean? = null
-)
-data class EduVerticalDialog(
-    var titleText: String? = null,
-    var titleGravity: Int? = null,
-    var titleColor: String? = null,
-    var contentText: String? = null,
-    var contentGravity: Int? = null,
-    var contentColor: String? = null,
-    var contentBolds: List<Pair<Int, Int>>? = null,
-    var duration: Long? = null,
-    var height: Int? = null,
-    var background: Int? = null,
-    var visibility: Boolean? = null
-)
-data class EduCover(
-    var duration: Long? = null,
-    var boxLeft: Float? = null,
-    var boxTop: Float? = null,
-    var boxRight: Float? = null,
-    var boxBottom: Float? = null,
-    var boxVisibility: Boolean? = null,
-    var boxStrokeVisibility: Boolean? = null,
-    var visibility: Boolean? = null
-)
-data class EduArrow(
-    var duration: Long? = null,
-    var endTo: Int? = null,
-    var visibility: Boolean? = null
-)
-data class EduAction(
-    var id: String? = null,
-    var message: String? = null
-)
-data class EduHand(
-    var id: String,
-    var source: Int = R.drawable.hand,
-    var x: Float = 0.0f,
-    var y: Float = 0.0f,
-    var width: Float = 50.0f,
-    var height: Float = 75.0f,
-    var rotation: Float = 0.0f,
-    var gesture: ((Context, ImageView) -> AnimatorSet)
-)
-data class EduData(
-    val dialog: EduDialog = EduDialog(),
-    val imageDialog: EduImageDialog = EduImageDialog(),
-    val topDialog: EduVerticalDialog = EduVerticalDialog(),
-    val bottomDialog: EduVerticalDialog = EduVerticalDialog(),
-    val cover: EduCover = EduCover(),
-    val arrow: EduArrow = EduArrow(),
-    val action: EduAction = EduAction(),
-    val hands: ArrayList<EduHand> = ArrayList()
-)
-
 /*
-    ## 소개
-    교육 화면이다.
-
-    ## 주의점
-    - 단위는 dp이다.
-
-    ## 사용법
-    0. 교육을 진행할 액티비티 이름은 Target이라 가정한다.
-
-    1. activity_target.xml 안에 EduScreen을 추가한다.
-    ```
-    <com.sungkyul.synergy.utils.EduScreen
-        android:id="@+id/edu_screen"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-    ```
-
-    2. EduCourses 안에 원하는 교육 코스 함수를 만들고, TargetActivity의 onCreate 함수 안에 아래 코드를 작성한다.
-    ```
-    // 교육을 진행해보자!
-    binding.eduScreen.post {
-        binding.eduScreen.course = EduCourses.customCourse(
-            binding.eduScreen.context,
-            binding.eduScreen.width.toFloat(),
-            binding.eduScreen.height.toFloat()
-        )
-        binding.eduScreen.setOnFinishedCourseListener {
-            // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳
-        }
-        binding.eduScreen.start(this)
-    }
-    ```
-
-    3. TargetActivity의 onCreate 함수 안에 뒤로 가기 이벤트에 대한 코드를 작성한다.
-    ```
-    // 뒤로 가기 키를 눌렀을 때의 이벤트를 처리한다.
-    onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
-        override fun handleOnBackPressed() {
-            // MainActivity로 되돌아 간다.
-            val intent = Intent(binding.root.context, MainActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-            startActivity(intent)
-        }
-    })
-    ```
-
-    ### 프래그먼트에서 eduListener.onAction 함수 사용
-    0. EduScreen에 액션을 보낼 프래그먼트 이름은 Target이라 가정한다.
-
-    1. TargetFragment의 생성자를 다음과 같이 작성한다.
-    ```
-    class TargetFragment(private val eduListener: EduListener) : Fragment() {
-        ...
-    }
-    ```
-
-    2. TargetFragment 안의 원하는 이벤트 리스너에 eduListener.onAction을 호출한다. 다음은 button의 클릭 리스너 안에 호출하는 예시이다.
-    ```
-    binding.button.setOnClickListener {
-        if(binding.eduScreen.onAction("click_button")) {
-            // 보낸 액션이 현재 교육 진행에서 요구하는 액션이라면, 이 부분이 실행된다.
-        }
-    }
-    ```
-
-    3. 액티비티에서 사용할 때 다음과 같이 TargetFragment를 선언하고 사용하면 된다.
-    ```
-    var targetFragment = TargetFragment(binding.eduScreen)
-    ```
-
-    ## Members
-    - course: 교육 코스이다.
-    - onPosted()
-    - onAction(id, message)
-    - getAction()
-    - setOnFinishedCourseListener(l): 교육 코스가 끝났을 때 이벤트 리스너 l이 호출된다.
-    - start(activity): 교육을 시작한다.
-    - next()
-    - prev()
+    교육 화면 레이아웃이다.
 */
 class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, attrs), EduListener {
+    var course: EduCourse? = null
     private val eduScreenFragment = EduScreenFragment()
     private var onFinishedCourseListener: (() -> Unit)? = null
-    private val currentEduData = EduData(
-        EduDialog(
-            titleText = "",
-            titleGravity = Gravity.START,
-            titleColor = "#000000",
-            contentText = "",
-            contentGravity = Gravity.START,
-            contentColor = "#000000",
-            duration = 0,
-            top = 0.0f,
-            bottom = 0.0f,
-            start = 0.0f,
-            end = 0.0f,
-            background = R.drawable.edu_dialog_bg,
-            visibility = false
-        ),
-        EduImageDialog(
-            titleText = "",
-            titleColor = "#000000",
-            source = R.drawable.todo_rect,
-            duration = 0,
-            top = 0.0f,
-            bottom = 0.0f,
-            start = 0.0f,
-            end = 0.0f,
-            background = R.drawable.edu_dialog_bg,
-            visibility = false
-        ),
-        EduVerticalDialog(
-            titleText = "",
-            titleGravity = Gravity.START,
-            titleColor = "#000000",
-            contentText = "",
-            contentGravity = Gravity.START,
-            contentColor = "#000000",
-            contentBolds = listOf(),
-            duration = 0,
-            height = 0,
-            background = R.drawable.edu_dialog_bg,
-            visibility = false
-        ),
-        EduVerticalDialog(
-            titleText = "",
-            titleGravity = Gravity.START,
-            titleColor = "#000000",
-            contentText = "",
-            contentGravity = Gravity.START,
-            contentColor = "#000000",
-            contentBolds = listOf(),
-            duration = 0,
-            height = 0,
-            background = R.drawable.edu_dialog_bg,
-            visibility = false
-        ),
-        EduCover(
-            duration = 0,
-            boxLeft = 0.0f,
-            boxTop = 0.0f,
-            boxRight = 0.0f,
-            boxBottom = 0.0f,
-            boxVisibility = false,
-            boxStrokeVisibility = false,
-            visibility = false
-        ),
-        EduArrow(
-            duration = 0,
-            endTo = DIALOG,
-            visibility = false
-        ),
-        EduAction(),
-        arrayListOf()
-    )
+    private val currentEduData = initEduData()
     private var num = -1
-    var course = ArrayList<EduData>()
 
     init {
         eduScreenFragment.setEduListener(this)
@@ -259,10 +29,9 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
     }
 
     override fun onAction(id: String, message: String?): Boolean {
-        // 교육 코스가 시작하지 않았거나 끝났으면, 모든 액션을 다시 사용할 수 있게 된다.
-        if(num < 0 || num >= course.size) return true
+        if(!(0 <= num && num < course!!.list.size)) return true
 
-        val eduData = course[num]
+        val eduData = course!!.list[num]
         Log.i(id, message ?: "null")
         if(id == eduData.action.id && (eduData.action.message == null || message == eduData.action.message)) {
             next()
@@ -287,133 +56,377 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         }
         isClickable = false
 
-        // fragment_edu_screen.xml 화면으로 전환한다.
-        activity.supportFragmentManager.beginTransaction()
-            .replace(id, eduScreenFragment)
-            .commit()
+        replaceToEduScreenFragment(activity)
     }
 
     fun next() {
         num++
 
-        if(num >= course.size) {
+        if(num >= course!!.list.size) {
             onFinishedCourseListener?.invoke()
             return
         }
 
-        /*
-        현재 EduData를 course[num]에 해당하는 EduData로 갱신하는 작업이다.
-        */
+        updateCurrentDialog()
+        updateCurrentBottomDialog()
+        updateCurrentCover()
+        updateCurrentArrow()
+        updateCurrentAction()
+        updateCurrentHands()
+
+        configureEduScreenFragmentDialog()
+        configureEduScreenFragmentBottomDialog()
+        configureEduScreenFragmentCover()
+        configureEduScreenFragmentArrow()
+        configureEduScreenFragmentHands()
+
+        eduScreenFragment.draw()
+    }
+
+    fun prev() {
+        if(num > 0) {
+            num -= 2
+            next()
+        }
+    }
+
+    private fun initEduData(): EduData {
+        return EduData(
+            EduDialog(
+                titleText = "",
+                titleFont = R.font.pretendard_semibold,
+                titleSize = 20.0f,
+                titleGravity = Gravity.START,
+                titleColor = R.color.black,
+                contentText = "",
+                contentFont = R.font.pretendard_regular,
+                contentSize = 18.0f,
+                contentGravity = Gravity.START,
+                contentColor = R.color.black,
+                separatorColor = R.color.light_grey,
+                separatorWidth = 5,
+                top = 0.0f,
+                bottom = 0.0f,
+                start = 0.0f,
+                end = 0.0f,
+                background = R.drawable.edu_dialog_bg,
+                visibility = false
+            ),
+            EduImageDialog(
+                titleText = "",
+                titleColor = "#000000",
+                source = R.drawable.todo_rect,
+                top = 0.0f,
+                bottom = 0.0f,
+                start = 0.0f,
+                end = 0.0f,
+                background = R.drawable.edu_dialog_bg,
+                visibility = false
+            ),
+            EduVerticalDialog(
+                titleText = "",
+                titleFont = R.font.pretendard_semibold,
+                titleSize = 20.0f,
+                titleGravity = Gravity.START,
+                titleColor = R.color.black,
+                contentText = "",
+                contentFont = R.font.pretendard_regular,
+                contentSize = 18.0f,
+                contentGravity = Gravity.START,
+                contentColor = R.color.black,
+                separatorColor = R.color.light_grey,
+                separatorWidth = 5,
+                height = 0.0f,
+                background = R.drawable.edu_top_dialog_bg,
+                visibility = false
+            ),
+            EduVerticalDialog(
+                titleText = "",
+                titleFont = R.font.pretendard_semibold,
+                titleSize = 20.0f,
+                titleGravity = Gravity.START,
+                titleColor = R.color.black,
+                contentText = "",
+                contentFont = R.font.pretendard_regular,
+                contentSize = 18.0f,
+                contentGravity = Gravity.START,
+                contentColor = R.color.black,
+                separatorColor = R.color.light_grey,
+                separatorWidth = 5,
+                height = 0.0f,
+                background = R.drawable.edu_bottom_dialog_bg,
+                visibility = false
+            ),
+            EduCover(
+                boxLeft = 0.0f,
+                boxTop = 0.0f,
+                boxRight = 0.0f,
+                boxBottom = 0.0f,
+                boxVisibility = false,
+                boxBorderVisibility = false,
+                backgroundColor = R.color.black,
+                visibility = false,
+                isClickable = false,
+                boxPadding = 0.0f,
+                boxBorderColor = R.color.lime,
+                boxBorderWidth = 15.0f
+            ),
+            EduArrow(
+                endTo = DIALOG,
+                visibility = false
+            ),
+            EduAction(),
+            arrayListOf()
+        )
+    }
+
+    private fun updateCurrentDialog() {
         val currentDialog = currentEduData.dialog
-        val dialog = course[num].dialog
+        val dialog = course!!.list[num].dialog
+
         currentDialog.titleText = dialog.titleText ?: currentDialog.titleText
+        currentDialog.titleFont = dialog.titleFont ?: currentDialog.titleFont
+        currentDialog.titleSize = dialog.titleSize ?: currentDialog.titleSize
         currentDialog.titleGravity = dialog.titleGravity ?: currentDialog.titleGravity
         currentDialog.titleColor = dialog.titleColor ?: currentDialog.titleColor
         currentDialog.contentText = dialog.contentText ?: currentDialog.contentText
+        currentDialog.contentFont = dialog.contentFont ?: currentDialog.contentFont
+        currentDialog.contentSize = dialog.contentSize ?: currentDialog.contentSize
         currentDialog.contentGravity = dialog.contentGravity ?: currentDialog.contentGravity
         currentDialog.contentColor = dialog.contentColor ?: currentDialog.contentColor
-        currentDialog.duration = dialog.duration ?: currentDialog.duration
+        currentDialog.separatorColor = dialog.separatorColor ?: currentDialog.separatorColor
+        currentDialog.separatorWidth = dialog.separatorWidth ?: currentDialog.separatorWidth
         currentDialog.top = dialog.top ?: currentDialog.top
         currentDialog.bottom = dialog.bottom ?: currentDialog.bottom
         currentDialog.start = dialog.start ?: currentDialog.start
         currentDialog.end = dialog.end ?: currentDialog.end
         currentDialog.background = dialog.background ?: currentDialog.background
+    }
 
+    private fun updateCurrentBottomDialog() {
+        val currentDialog = currentEduData.bottomDialog
+        val dialog = course!!.list[num].bottomDialog
+
+        currentDialog.titleText = dialog.titleText ?: currentDialog.titleText
+        currentDialog.titleFont = dialog.titleFont ?: currentDialog.titleFont
+        currentDialog.titleSize = dialog.titleSize ?: currentDialog.titleSize
+        currentDialog.titleGravity = dialog.titleGravity ?: currentDialog.titleGravity
+        currentDialog.titleColor = dialog.titleColor ?: currentDialog.titleColor
+        currentDialog.contentText = dialog.contentText ?: currentDialog.contentText
+        currentDialog.contentFont = dialog.contentFont ?: currentDialog.contentFont
+        currentDialog.contentSize = dialog.contentSize ?: currentDialog.contentSize
+        currentDialog.contentGravity = dialog.contentGravity ?: currentDialog.contentGravity
+        currentDialog.contentColor = dialog.contentColor ?: currentDialog.contentColor
+        currentDialog.separatorColor = dialog.separatorColor ?: currentDialog.separatorColor
+        currentDialog.separatorWidth = dialog.separatorWidth ?: currentDialog.separatorWidth
+        currentDialog.height = dialog.height ?: currentDialog.height
+        currentDialog.background = dialog.background ?: currentDialog.background
+    }
+
+    private fun updateCurrentCover() {
         val currentCover = currentEduData.cover
-        val cover = course[num].cover
-        currentCover.duration = cover.duration ?: currentCover.duration
+        val cover = course!!.list[num].cover
+
         currentCover.boxLeft = cover.boxLeft ?: currentCover.boxLeft
         currentCover.boxTop = cover.boxTop ?: currentCover.boxTop
         currentCover.boxRight = cover.boxRight ?: currentCover.boxRight
         currentCover.boxBottom = cover.boxBottom ?: currentCover.boxBottom
+        currentCover.backgroundColor = cover.backgroundColor ?: currentCover.backgroundColor
+        currentCover.isClickable = cover.isClickable ?: currentCover.isClickable
+        currentCover.boxPadding = cover.boxPadding ?: currentCover.boxPadding
+        currentCover.boxBorderColor = cover.boxBorderColor ?: currentCover.boxBorderColor
+        currentCover.boxBorderWidth = cover.boxBorderWidth ?: currentCover.boxBorderWidth
+    }
 
+    private fun updateCurrentArrow() {
         val currentArrow = currentEduData.arrow
-        val arrow = course[num].arrow
-        currentArrow.duration = arrow.duration ?: currentArrow.duration
-        currentArrow.endTo = arrow.endTo ?: currentArrow.endTo
+        val arrow = course!!.list[num].arrow
 
+        currentArrow.endTo = arrow.endTo ?: currentArrow.endTo
+    }
+
+    private fun updateCurrentAction() {
         val currentAction = currentEduData.action
-        val action = course[num].action
+        val action = course!!.list[num].action
+
         currentAction.id = action.id
         currentAction.message = action.message
+    }
 
+    private fun updateCurrentHands() {
         val currentHands = currentEduData.hands
-        val hands = course[num].hands
+        val hands = course!!.list[num].hands
+
         currentHands.clear()
         currentHands.addAll(hands)
+    }
 
-        /*
-        현재 EduData(+ course[num]의 EduData)를 참고하여 교육 화면을 변경한다.
-        */
-        // 다이얼로그의 제목과 내용을 변경한다.
+    private fun configureEduScreenFragmentDialog() {
+        val currentDialog = currentEduData.dialog
+        val dialog = course!!.list[num].dialog
+
         eduScreenFragment.setDialogTitle(currentDialog.titleText!!, currentDialog.titleGravity!!, currentDialog.titleColor!!)
         eduScreenFragment.setDialogContent(currentDialog.contentText!!, currentDialog.contentGravity!!, currentDialog.contentColor!!)
-        // 다이얼로그를 이동시킨다.
+
+        eduScreenFragment.setDialogTitleFont(currentDialog.titleFont!!)
+        eduScreenFragment.setDialogContentFont(currentDialog.contentFont!!)
+
+        eduScreenFragment.setDialogTitleSize(currentDialog.titleSize!!)
+        eduScreenFragment.setDialogContentSize(currentDialog.contentSize!!)
+
         eduScreenFragment.translateDialog(
-            currentDialog.duration!!,
             currentDialog.top!!,
             currentDialog.bottom!!,
             currentDialog.start!!,
-            currentDialog.end!!
+            currentDialog.end!!,
+            if(hasChangedDialogVisibility(from = false, to = true)) 0 else EduScreenFragment.DIALOG_MOVEMENT_DURATION
         )
-        // 제목 텍스트가 없으면 숨기고, 있으면 보여준다.
+
         if(currentDialog.titleText == "") {
             eduScreenFragment.hideDialogTitle()
         } else {
             eduScreenFragment.showDialogTitle()
         }
-        // 다이얼로그의 배경색을 변경한다.
+
+        eduScreenFragment.setDialogSeparatorColor(currentDialog.separatorColor!!)
+        eduScreenFragment.setDialogSeparatorWidth(currentDialog.separatorWidth!!)
+
         eduScreenFragment.setDialogBackground(currentDialog.background!!)
-        // 다이얼로그를 보여줄까 숨길까
-        if(currentDialog.visibility == false && dialog.visibility == true) {
+
+        if(hasChangedDialogVisibility(from = false, to = true)) {
             eduScreenFragment.showDialog()
         }
-        if(currentDialog.visibility == true && dialog.visibility == false) {
+        if(hasChangedDialogVisibility(from = true, to = false)) {
             eduScreenFragment.hideDialog()
         }
 
-        // 박스를 이동시킨다.
+        currentDialog.visibility = dialog.visibility ?: currentDialog.visibility
+    }
+
+    private fun configureEduScreenFragmentBottomDialog() {
+        val currentDialog = currentEduData.bottomDialog
+        val dialog = course!!.list[num].bottomDialog
+
+        eduScreenFragment.setBottomDialogTitle(currentDialog.titleText!!, currentDialog.titleGravity!!, currentDialog.titleColor!!)
+        eduScreenFragment.setBottomDialogContent(currentDialog.contentText!!, currentDialog.contentGravity!!, currentDialog.contentColor!!)
+
+        eduScreenFragment.setBottomDialogTitleFont(currentDialog.titleFont!!)
+        eduScreenFragment.setBottomDialogContentFont(currentDialog.contentFont!!)
+
+        eduScreenFragment.setBottomDialogTitleSize(currentDialog.titleSize!!)
+        eduScreenFragment.setBottomDialogContentSize(currentDialog.contentSize!!)
+
+        eduScreenFragment.translateBottomDialog(
+            currentDialog.height!!,
+            if(hasChangedBottomDialogVisibility(from = false, to = true)) 0 else EduScreenFragment.DIALOG_MOVEMENT_DURATION
+        )
+
+        if(currentDialog.titleText == "") {
+            eduScreenFragment.hideBottomDialogTitle()
+        } else {
+            eduScreenFragment.showBottomDialogTitle()
+        }
+
+        eduScreenFragment.setBottomDialogSeparatorColor(currentDialog.separatorColor!!)
+        eduScreenFragment.setBottomDialogSeparatorWidth(currentDialog.separatorWidth!!)
+
+        eduScreenFragment.setBottomDialogBackground(currentDialog.background!!)
+
+        if(hasChangedBottomDialogVisibility(from = false, to = true)) {
+            eduScreenFragment.showBottomDialog()
+        }
+        if(hasChangedBottomDialogVisibility(from = true, to = false)) {
+            eduScreenFragment.hideBottomDialog()
+        }
+
+        currentDialog.visibility = dialog.visibility ?: currentDialog.visibility
+    }
+
+    private fun hasChangedDialogVisibility(from: Boolean, to: Boolean): Boolean {
+        val currentDialog = currentEduData.dialog
+        val dialog = course!!.list[num].dialog
+
+        return currentDialog.visibility == from && dialog.visibility == to
+    }
+
+    private fun hasChangedBottomDialogVisibility(from: Boolean, to: Boolean): Boolean {
+        val currentDialog = currentEduData.bottomDialog
+        val dialog = course!!.list[num].bottomDialog
+
+        return currentDialog.visibility == from && dialog.visibility == to
+    }
+
+    private fun configureEduScreenFragmentCover() {
+        val currentCover = currentEduData.cover
+        val cover = course!!.list[num].cover
+
         eduScreenFragment.translateBox(
-            currentCover.duration!!,
             currentCover.boxLeft!!,
             currentCover.boxTop!!,
             currentCover.boxRight!!,
-            currentCover.boxBottom!!
+            currentCover.boxBottom!!,
+            if(hasChangedBoxVisibility(from = false, to = true)) 0 else EduScreenFragment.BOX_MOVEMENT_DURATION
         )
-        // 박스를 보여줄까 숨길까
-        if(currentCover.boxVisibility == false && cover.boxVisibility == true) {
+
+        // TODO(박스 테두리 애니메이션을 따로 만들어야 할까? 박스 등장/숨김을 하면 박스 테두리 애니메이션이 끊기는데)
+
+        eduScreenFragment.setBoxPadding(currentCover.boxPadding!!)
+        eduScreenFragment.setBoxBorderWidth(currentCover.boxBorderWidth!!)
+
+        if(cover.boxBorderVisibility == true || (cover.boxBorderVisibility == null && currentCover.boxBorderVisibility == true)) {
+            eduScreenFragment.setBoxBorderColor(currentCover.boxBorderColor!!)
+        }
+        if(cover.visibility == true || (cover.visibility == null && currentCover.visibility == true)) {
+            eduScreenFragment.setCoverBackgroundColor(currentCover.backgroundColor!!)
+        }
+
+        if(hasChangedBoxVisibility(from = false, to = true)) {
             eduScreenFragment.showBox()
         }
-        if(currentCover.boxVisibility == true && cover.boxVisibility == false) {
+        if(hasChangedBoxVisibility(from = true, to = false)) {
             eduScreenFragment.hideBox()
         }
-        // 박스 선을 보여줄까 숨길까
-        if(currentCover.boxStrokeVisibility == false && cover.boxStrokeVisibility == true) {
-            eduScreenFragment.showBoxStroke()
+
+        if(currentCover.boxBorderVisibility == false && cover.boxBorderVisibility == true) {
+            eduScreenFragment.showBoxBorder()
         }
-        if(currentCover.boxStrokeVisibility == true && cover.boxStrokeVisibility == false) {
-            eduScreenFragment.hideBoxStroke()
+        if(currentCover.boxBorderVisibility == true && cover.boxBorderVisibility == false) {
+            eduScreenFragment.hideBoxBorder()
         }
-        // 커버를 보여줄까 숨길까
-        // 커버가 있으면 교육 화면을 클릭할 수 있게 된다.
+
         if(currentCover.visibility == false && cover.visibility == true) {
-            isClickable = true
             eduScreenFragment.showCover()
         }
         if(currentCover.visibility == true && cover.visibility == false) {
-            isClickable = false
             eduScreenFragment.hideCover()
         }
 
-        // 화살표를 이동시킨다.
-        eduScreenFragment.translateArrowStart(currentArrow.duration!!)
+        isClickable = currentCover.isClickable!!
+
+        currentCover.boxVisibility = cover.boxVisibility ?: currentCover.boxVisibility
+        currentCover.boxBorderVisibility = cover.boxBorderVisibility ?: currentCover.boxBorderVisibility
+        currentCover.visibility = cover.visibility ?: currentCover.visibility
+    }
+
+    private fun hasChangedBoxVisibility(from: Boolean, to: Boolean): Boolean {
+        val currentCover = currentEduData.cover
+        val cover = course!!.list[num].cover
+
+        return currentCover.boxVisibility == from && cover.boxVisibility == to
+    }
+
+    private fun configureEduScreenFragmentArrow() {
+        val currentArrow = currentEduData.arrow
+        val arrow = course!!.list[num].arrow
+
+        eduScreenFragment.translateArrowStart()
         if(currentArrow.endTo == DIALOG) {
-            eduScreenFragment.translateArrowEndToDialog(currentArrow.duration!!)
+            eduScreenFragment.translateArrowEndToDialog()
         }
         if(currentArrow.endTo == BOX) {
-            eduScreenFragment.translateArrowEndToBox(currentArrow.duration!!)
+            eduScreenFragment.translateArrowEndToBox()
         }
-        // 화살표를 보여줄까 숨길까
+
         if(currentArrow.visibility == false && arrow.visibility == true) {
             eduScreenFragment.showArrow()
         }
@@ -421,11 +434,14 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
             eduScreenFragment.hideArrow()
         }
 
-        /*
-        현재 EduData에 있는 손들을 제거하고, course[num]에 있는 손들을 추가한다.
-        손 제스처를 화면에 보여준다.
-        */
+        currentArrow.visibility = arrow.visibility ?: currentArrow.visibility
+    }
+
+    private fun configureEduScreenFragmentHands() {
+        val currentHands = currentEduData.hands
+
         eduScreenFragment.clearHands()
+
         for(i in currentHands) {
             eduScreenFragment.addHand(
                 id = i.id,
@@ -438,26 +454,30 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
                 gesture = i.gesture
             )
         }
-
-        /*
-        교육 화면 변경 이후에 현재 EduData를 갱신해야 하는 작업은 마지막에 한다.
-        */
-        currentDialog.visibility = dialog.visibility ?: currentDialog.visibility
-        currentCover.boxVisibility = cover.boxVisibility ?: currentCover.boxVisibility
-        currentCover.boxStrokeVisibility = cover.boxStrokeVisibility ?: currentCover.boxStrokeVisibility
-        currentCover.visibility = cover.visibility ?: currentCover.visibility
-        currentArrow.visibility = arrow.visibility ?: currentArrow.visibility
     }
 
-    fun prev() {
-        if(num > 0) {
-            num -= 2
-            next()
-        }
+    private fun replaceToEduScreenFragment(activity: AppCompatActivity) {
+        activity.supportFragmentManager.beginTransaction()
+            .replace(id, eduScreenFragment)
+            .commit()
     }
 
     companion object {
-        val DIALOG = 0
-        val BOX = 1
+        const val DIALOG = 0
+        const val BOX = 1
+
+        fun toTop(from: AppCompatActivity, to: Class<out AppCompatActivity>) {
+            val intent = Intent(from, to)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            from.startActivity(intent)
+        }
+
+        fun navigateBackToTop(from: AppCompatActivity, to: Class<out AppCompatActivity>) {
+            from.onBackPressedDispatcher.addCallback(from, object: OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    toTop(from, to)
+                }
+            })
+        }
     }
 }

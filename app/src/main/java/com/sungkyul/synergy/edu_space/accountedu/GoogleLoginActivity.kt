@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityGoogleLoginBinding
-import com.sungkyul.synergy.utils.edu.EduCourses
+import com.sungkyul.synergy.edu_courses.accountedu.GoogleLoginCourse
 
 class GoogleLoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGoogleLoginBinding
@@ -26,12 +26,8 @@ class GoogleLoginActivity : AppCompatActivity() {
 
         // 교육을 정의해보자!
         binding.eduScreen.post {
-            // 교육 코스 customCourse를 지정한다.
-            binding.eduScreen.course = EduCourses.googleLoginCourse(
-                binding.eduScreen.context,
-                binding.eduScreen.width.toFloat(),
-                binding.eduScreen.height.toFloat()
-            )
+            binding.eduScreen.course = GoogleLoginCourse(binding.eduScreen)
+
             binding.eduScreen.setOnFinishedCourseListener {
                 // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
 
@@ -63,19 +59,21 @@ class GoogleLoginActivity : AppCompatActivity() {
         // SpannableStringBuilder를 사용하여 텍스트의 일부분의 색상을 변경합니다.
         val builder = SpannableStringBuilder(textData)
 
-        // "내 컴퓨터가" 부분을 회색으로 변경
+        // "게스트 코드 사용 방법 자세히 알아보기" 부분을 파란색으로 변경
+        val startIndex = textData.indexOf("게스트 코드 사용 방법 자세히 알아보기")
+        val endIndex = startIndex + "게스트 코드 사용 방법 자세히 알아보기".length
         builder.setSpan(
-            ForegroundColorSpan(grayColor),
-            0,
-            textData.indexOf("로그인하세요.") + 39, // "로그인하세요." 까지의 길이에 + 6을 해주어야 합니다.
+            ForegroundColorSpan(blueColor),
+            startIndex,
+            endIndex,
             SpannableStringBuilder.SPAN_EXCLUSIVE_EXCLUSIVE
         )
 
-        // "로그인하세요." 이후의 부분을 파란색으로 변경
+        // 나머지 텍스트를 회색으로 변경
         builder.setSpan(
-            ForegroundColorSpan(blueColor),
-            textData.indexOf("로그인하세요.") + 39, // "로그인하세요." 이후의 인덱스부터 시작
-            textData.length,
+            ForegroundColorSpan(grayColor),
+            0,
+            startIndex,
             SpannableStringBuilder.SPAN_EXCLUSIVE_EXCLUSIVE
         )
 

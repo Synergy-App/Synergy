@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -16,8 +17,11 @@ import com.sungkyul.synergy.edu_space.default_app.phone.adapter.ContactAdapter
 import com.sungkyul.synergy.edu_space.default_app.phone.adapter.ContactData
 import com.sungkyul.synergy.edu_space.icon_edu.adapter.IconEduAdapter
 import com.sungkyul.synergy.edu_space.icon_edu.data.Icon
+import com.sungkyul.synergy.utils.GalaxyButton
+import com.sungkyul.synergy.utils.edu.EduListener
+import com.sungkyul.synergy.utils.edu.EduScreen
 
-class DefaultPhoneContactFragment(private val addedContact: ContactData? = null) : Fragment() {
+class DefaultPhoneContactFragment(private val addedContact: ContactData? = null, private val eduListener: EduListener) : Fragment() {
     private lateinit var binding: FragmentDefaultPhoneContactBinding
     private lateinit var contactAdapter: ContactAdapter
     private val contactArray = ArrayList<ContactData>()
@@ -32,7 +36,7 @@ class DefaultPhoneContactFragment(private val addedContact: ContactData? = null)
         contactArray.add(ContactData(R.drawable.ic_person_black_24dp, "대장님", "휴대전화: 010-1234-1234"))
         contactArray.add(ContactData(R.drawable.ic_person_black_24dp, "UX/UI 디자이너","휴대전화: 010-1234-1234"))
         contactArray.add(ContactData(R.drawable.ic_person_black_24dp, "기획자","휴대전화: 010-1234-1234"))
-        contactArray.add(ContactData(R.drawable.ic_person_black_24dp, ":fearful:","휴대전화: 010-1234-1234"))
+
 
         // 새 연락처 추가
         if(addedContact != null) {
@@ -40,7 +44,7 @@ class DefaultPhoneContactFragment(private val addedContact: ContactData? = null)
         }
 
         // 어댑터 설정
-        contactAdapter = ContactAdapter(contactArray)
+        contactAdapter = ContactAdapter(contactArray, eduListener)
         binding.contactList.layoutManager = LinearLayoutManager(requireContext())
         binding.contactList.adapter = contactAdapter
 
@@ -48,6 +52,7 @@ class DefaultPhoneContactFragment(private val addedContact: ContactData? = null)
         binding.addButton.setOnClickListener {
             val intent = Intent(requireContext(), DefaultPhoneAddActivity::class.java)
             startActivity(intent)
+
         }
 
         binding.searchButton.setOnTouchListener { _, _ ->
@@ -60,6 +65,5 @@ class DefaultPhoneContactFragment(private val addedContact: ContactData? = null)
 
         return binding.root
     }
-
 
 }

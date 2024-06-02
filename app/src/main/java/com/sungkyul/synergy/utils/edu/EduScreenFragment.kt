@@ -22,7 +22,9 @@ import android.view.animation.OvershootInterpolator
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.text.parseAsHtml
@@ -62,10 +64,8 @@ class EduScreenFragment : Fragment() {
         xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
         alpha = 0
     }
-    private val boxStrokePaint = Paint().apply {
+    private val boxBorderPaint = Paint().apply {
         style = Paint.Style.STROKE
-        strokeWidth = 15.0f
-        color = Color.rgb(69, 232, 188)
         alpha = 0
     }
     private val arrowPaint = Paint().apply {
@@ -74,14 +74,14 @@ class EduScreenFragment : Fragment() {
         alpha = 0
     }
 
-    private val toggleDuration = 250L
     private val toggleHandDuration = 350L
     private val toggleHandInterpolator = DecelerateInterpolator()
     private val coverMaxAlpha = 128
-    private val boxCornerRadius = 75.0f
-    private val boxStrokeCornerRadius = 100.0f
-    private val boxPadding = 35.0f
+    private val boxCornerRadius = 50.0f
+    private val boxBorderCornerRadius = 50.0f
     private val arrowEndSize = 30.0f
+
+    private var boxPadding = 35.0f
 
     private var boxLeft = 0.0f
     private var boxTop = 0.0f
@@ -98,8 +98,8 @@ class EduScreenFragment : Fragment() {
     private var currentDialogCenterY = 0.0f
     private var currentBoxCenterX = 0.0f
     private var currentBoxCenterY = 0.0f
-    private var currentBoxStrokeTopY = 0.0f
-    private var currentBoxStrokeBottomY = 0.0f
+    private var currentBoxBorderTopY = 0.0f
+    private var currentBoxBorderBottomY = 0.0f
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -109,6 +109,9 @@ class EduScreenFragment : Fragment() {
 
         binding.dialog.alpha = 0.0f
         binding.imageDialog.alpha = 0.0f
+
+        binding.topDialog.visibility = LinearLayout.INVISIBLE
+        binding.bottomDialog.visibility = LinearLayout.INVISIBLE
 
         binding.root.post {
             // 캔버스를 생성한다.
@@ -122,8 +125,7 @@ class EduScreenFragment : Fragment() {
         return binding.root
     }
 
-    // 애니메이터를 등록한다.
-    // 화면을 연속으로 빠르게 눌렀을 때, 애니메이션이 끊기는 현상을 해결할 수 있다.
+    // 이 함수로 Animator를 등록하여 사용하면, 화면을 연속으로 빠르게 눌렀을 때 애니메이션이 끊기는 현상을 해결할 수 있다.
     private fun registerAnimator(id: String, animator: ValueAnimator) {
         animatorMap[id]?.cancel()
         animatorMap[id] = animator
@@ -209,13 +211,11 @@ class EduScreenFragment : Fragment() {
         }, 0.0f, 1.0f, duration, interpolator))
     }
 
-    // 손이 등장하는 애니메이션을 시작한다.
-    // 등장 이후에는 nextAnimator가 무한 반복된다.
     private fun startShowHandAnimationSet(imageView: ImageView, nextAnimator: AnimatorSet): AnimatorSet {
         val fromValue = 0.0f
         val toValue = 1.0f
 
-        // 스케일 확대
+        // 스케일을 확대한다.
         val scaleSet = AnimatorSet().apply {
             duration = toggleHandDuration
             interpolator = toggleHandInterpolator
@@ -251,7 +251,6 @@ class EduScreenFragment : Fragment() {
         return animatorSet
     }
 
-    // 손이 사라지는 애니메이션을 시작한다.
     private fun startHideHandAnimationSet(imageView: ImageView): AnimatorSet {
         val fromValue = imageView.scaleX
         val toValue = 0.0f
@@ -271,11 +270,11 @@ class EduScreenFragment : Fragment() {
         return scaleSet
     }
 
-    private fun draw() {
-        // Clear Canvas
+    fun draw() {
+        // Clear canvas
         canvas.drawRect(0.0f, 0.0f, binding.root.width.toFloat(), binding.root.height.toFloat(), clearPaint)
 
-        // Cover
+        // Draw cover
         canvas.drawRect(
             0.0f,
             0.0f,
@@ -283,7 +282,7 @@ class EduScreenFragment : Fragment() {
             binding.root.height.toFloat(),
             coverPaint
         )
-        // Box
+        // Draw box
         if(boxPaint.alpha > 0) {
             canvas.drawRoundRect(
                 boxLeft,
@@ -295,23 +294,23 @@ class EduScreenFragment : Fragment() {
                 boxPaint
             )
         }
-        // BoxStroke
+        // Draw box border
         canvas.drawRoundRect(
             boxLeft-boxPadding,
             boxTop-boxPadding,
             boxRight+boxPadding,
             boxBottom+boxPadding,
-            boxStrokeCornerRadius,
-            boxStrokeCornerRadius,
-            boxStrokePaint
+            boxBorderCornerRadius,
+            boxBorderCornerRadius,
+            boxBorderPaint
         )
 
-        // Arrow
+        // Draw arrow
         canvas.drawLine(arrowStartX, arrowStartY, arrowEndX, arrowEndY, arrowPaint)
-        // ArrowEnd
+        // Draw arrow end
         canvas.drawCircle(arrowEndX, arrowEndY, arrowEndSize, arrowPaint)
 
-        // Apply Canvas
+        // Apply canvas
         if(::bitmap.isInitialized) {
             binding.canvas.setImageBitmap(bitmap)
         }
@@ -321,10 +320,10 @@ class EduScreenFragment : Fragment() {
         eduListener = l
     }
 
-    fun setDialogTitle(text: String, gravity: Int, color: String) {
+    fun setDialogTitle(text: String, gravity: Int, color: Int) {
         binding.dialogTitle.text = text
         binding.dialogTitle.gravity = gravity
-        binding.dialogTitle.setTextColor(Color.parseColor(color))
+        binding.dialogTitle.setTextColor(ContextCompat.getColor(requireContext(), color))
     }
 
     fun showDialogTitle() {
@@ -337,19 +336,109 @@ class EduScreenFragment : Fragment() {
         binding.dialogSeparator.visibility = TextView.GONE
     }
 
-    fun setDialogContent(text: String, gravity: Int, color: String) {
+    fun setDialogContent(text: String, gravity: Int, color: Int) {
         binding.dialogContent.text = text.parseAsHtml()
         binding.dialogContent.gravity = gravity
-        binding.dialogContent.setTextColor(Color.parseColor(color))
+        binding.dialogContent.setTextColor(ContextCompat.getColor(requireContext(), color))
+    }
+
+    fun setDialogTitleFont(font: Int) {
+        binding.dialogTitle.typeface = resources.getFont(font)
+    }
+
+    fun setDialogContentFont(font: Int) {
+        binding.dialogContent.typeface = resources.getFont(font)
+    }
+
+    fun setDialogTitleSize(size: Float) {
+        binding.dialogTitle.textSize = size
+    }
+
+    fun setDialogContentSize(size: Float) {
+        binding.dialogContent.textSize = size
+    }
+
+    fun setDialogSeparatorColor(color: Int) {
+        binding.dialogSeparator.setBackgroundColor(ContextCompat.getColor(requireContext(), color))
+    }
+
+    fun setDialogSeparatorWidth(width: Int) {
+        binding.dialogSeparator.updateLayoutParams {
+            height = width
+        }
     }
 
     fun setDialogBackground(background: Int) {
         binding.dialog.setBackgroundResource(background)
     }
 
+    fun setBottomDialogTitle(text: String, gravity: Int, color: Int) {
+        binding.bottomDialogTitle.text = text
+        binding.bottomDialogTitle.gravity = gravity
+        binding.bottomDialogTitle.setTextColor(ContextCompat.getColor(requireContext(), color))
+    }
+
+    fun showBottomDialogTitle() {
+        binding.bottomDialogTitle.visibility = TextView.VISIBLE
+        binding.bottomDialogSeparator.visibility = TextView.VISIBLE
+    }
+
+    fun hideBottomDialogTitle() {
+        binding.bottomDialogTitle.visibility = TextView.GONE
+        binding.bottomDialogSeparator.visibility = TextView.GONE
+    }
+
+    fun setBottomDialogContent(text: String, gravity: Int, color: Int) {
+        binding.bottomDialogContent.text = text.parseAsHtml()
+        binding.bottomDialogContent.gravity = gravity
+        binding.bottomDialogContent.setTextColor(ContextCompat.getColor(requireContext(), color))
+    }
+
+    fun setBottomDialogTitleFont(font: Int) {
+        binding.bottomDialogTitle.typeface = resources.getFont(font)
+    }
+
+    fun setBottomDialogContentFont(font: Int) {
+        binding.bottomDialogContent.typeface = resources.getFont(font)
+    }
+
+    fun setBottomDialogTitleSize(size: Float) {
+        binding.bottomDialogTitle.textSize = size
+    }
+
+    fun setBottomDialogContentSize(size: Float) {
+        binding.bottomDialogContent.textSize = size
+    }
+
+    fun setBottomDialogSeparatorColor(color: Int) {
+        binding.bottomDialogSeparator.setBackgroundColor(ContextCompat.getColor(requireContext(), color))
+    }
+
+    fun setBottomDialogSeparatorWidth(width: Int) {
+        binding.bottomDialogSeparator.updateLayoutParams {
+            height = width
+        }
+    }
+
+    fun setBottomDialogBackground(background: Int) {
+        binding.bottomDialog.setBackgroundResource(background)
+    }
+
+    fun setBoxPadding(boxPadding: Float) {
+        this.boxPadding = boxPadding
+    }
+
+    fun setBoxBorderColor(color: Int) {
+        boxBorderPaint.color = ContextCompat.getColor(requireContext(), color)
+    }
+
+    fun setBoxBorderWidth(boxBorderWidth: Float) {
+        boxBorderPaint.strokeWidth = boxBorderWidth
+    }
+
     fun showDialog() {
         startObjectAnimatorOfDialog(
-            toggleDuration,
+            DIALOG_TOGGLE_DURATION,
             DecelerateInterpolator(),
             0.0f,
             1.0f,
@@ -366,7 +455,7 @@ class EduScreenFragment : Fragment() {
 
     fun hideDialog() {
         startObjectAnimatorOfDialog(
-            toggleDuration,
+            DIALOG_TOGGLE_DURATION,
             DecelerateInterpolator(),
             1.0f,
             0.0f,
@@ -381,49 +470,62 @@ class EduScreenFragment : Fragment() {
         )
     }
 
+    // TODO(하단 다이얼로그에 넣을 등장/숨김 인터렉션이 있나?)
+    fun showBottomDialog() {
+        binding.bottomDialog.visibility = LinearLayout.VISIBLE
+    }
+
+    fun hideBottomDialog() {
+        binding.bottomDialog.visibility = LinearLayout.INVISIBLE
+    }
+
     fun showCover() {
         AnimUtils.startValueAnimatorOfFloat({
             coverPaint.alpha = (it * coverMaxAlpha).toInt()
             draw()
-        }, 0.0f, 1.0f, toggleDuration)
+        }, 0.0f, 1.0f, COVER_TOGGLE_DURATION)
     }
 
     fun hideCover() {
         AnimUtils.startValueAnimatorOfFloat({
             coverPaint.alpha = (it * coverMaxAlpha).toInt()
             draw()
-        }, 1.0f, 0.0f, toggleDuration)
+        }, 1.0f, 0.0f, COVER_TOGGLE_DURATION)
     }
 
     fun showBox() {
         boxPaint.alpha = 255
-        draw()
     }
 
     fun hideBox() {
         boxPaint.alpha = 0
-        draw()
     }
 
-    fun showBoxStroke() {
+    fun showBoxBorder() {
         AnimUtils.startValueAnimatorOfFloat({
-            boxStrokePaint.alpha = (it * 255).toInt()
+            boxBorderPaint.alpha = (it * 255).toInt()
             draw()
-        }, 0.0f, 1.0f, toggleDuration)
+        }, 0.0f, 1.0f, BOX_BORDER_TOGGLE_DURATION)
     }
 
-    fun hideBoxStroke() {
+    fun hideBoxBorder() {
         AnimUtils.startValueAnimatorOfFloat({
-            boxStrokePaint.alpha = (it * 255).toInt()
+            boxBorderPaint.alpha = (it * 255).toInt()
             draw()
-        }, 1.0f, 0.0f, toggleDuration)
+        }, 1.0f, 0.0f, BOX_BORDER_TOGGLE_DURATION)
+    }
+
+    fun setCoverBackgroundColor(color: Int) {
+        val alpha = coverPaint.alpha
+        coverPaint.color = ContextCompat.getColor(requireContext(), color)
+        coverPaint.alpha = alpha
     }
 
     fun showArrow() {
         AnimUtils.startValueAnimatorOfFloat({
             arrowPaint.alpha = (it * 255).toInt()
             draw()
-        }, 0.0f, 1.0f, toggleDuration)
+        }, 0.0f, 1.0f, ARROW_TOGGLE_DURATION)
     }
 
     fun hideArrow() {
@@ -436,11 +538,11 @@ class EduScreenFragment : Fragment() {
     }
 
     fun translateDialog(
-        duration: Long,
         topDp: Float,
         bottomDp: Float,
         startDp: Float,
-        endDp: Float
+        endDp: Float,
+        duration: Long = DIALOG_MOVEMENT_DURATION
     ) {
         // dp -> px
         val top = DisplayUtils.dpToPx(binding.root.context, topDp)
@@ -465,12 +567,28 @@ class EduScreenFragment : Fragment() {
         currentDialogCenterX = start+(binding.root.width-start-end)/2
         currentDialogCenterY = top+(binding.root.height-top-bottom)/2
     }
+
+    fun translateBottomDialog(
+        heightDp: Float,
+        duration: Long = VERTICAL_DIALOG_MOVEMENT_DURATION
+    ) {
+        val startHeight = binding.bottomDialog.height.toFloat()
+        val endHeight = DisplayUtils.dpToPx(binding.root.context, heightDp)
+        val interpolator = AccelerateDecelerateInterpolator()
+
+        registerAnimator("bottom_dialog", AnimUtils.startValueAnimatorOfFloat({
+            binding.bottomDialog.updateLayoutParams<RelativeLayout.LayoutParams> {
+                height = (startHeight + (endHeight - startHeight) * it).toInt()
+            }
+        }, 0.0f, 1.0f, duration, interpolator))
+    }
+
     fun translateBox(
-        duration: Long,
         leftDp: Float,
         topDp: Float,
         rightDp: Float,
-        bottomDp: Float
+        bottomDp: Float,
+        duration: Long = BOX_MOVEMENT_DURATION
     ) {
         // dp -> px
         val left = DisplayUtils.dpToPx(binding.root.context, leftDp)
@@ -493,12 +611,12 @@ class EduScreenFragment : Fragment() {
 
         currentBoxCenterX = GeometryUtils.linear(left, right, 0.5f)
         currentBoxCenterY = GeometryUtils.linear(top, bottom, 0.5f)
-        currentBoxStrokeTopY = top-boxPadding
-        currentBoxStrokeBottomY = bottom+boxPadding
+        currentBoxBorderTopY = top-boxPadding
+        currentBoxBorderBottomY = bottom+boxPadding
     }
 
     // 화살표의 시작점이 다이얼로그의 중심을 향해 이동하도록 만든다.
-    fun translateArrowStart(duration: Long) {
+    fun translateArrowStart() {
         val startArrowStartX = arrowStartX
         val startArrowStartY = arrowStartY
 
@@ -506,11 +624,11 @@ class EduScreenFragment : Fragment() {
             arrowStartX = GeometryUtils.linear(startArrowStartX, currentDialogCenterX, it)
             arrowStartY = GeometryUtils.linear(startArrowStartY, currentDialogCenterY, it)
             draw()
-        }, 0.0f, 1.0f, duration, AccelerateDecelerateInterpolator()))
+        }, 0.0f, 1.0f, ARROW_MOVEMENT_DURATION, AccelerateDecelerateInterpolator()))
     }
 
     // 화살표의 끝점이 다이얼로그의 중심을 향해 이동하도록 만든다.
-    fun translateArrowEndToDialog(duration: Long) {
+    fun translateArrowEndToDialog() {
         val startArrowEndX = arrowEndX
         val startArrowEndY = arrowEndY
 
@@ -518,13 +636,13 @@ class EduScreenFragment : Fragment() {
             arrowEndX = GeometryUtils.linear(startArrowEndX, currentDialogCenterX, it)
             arrowEndY = GeometryUtils.linear(startArrowEndY, currentDialogCenterY, it)
             draw()
-        }, 0.0f, 1.0f, duration, AccelerateDecelerateInterpolator()))
+        }, 0.0f, 1.0f, ARROW_MOVEMENT_DURATION, AccelerateDecelerateInterpolator()))
     }
 
     // 화살표의 끝점이 박스를 향해 이동하도록 만든다.
     // 화살표 끝점의 x좌표는 박스 중심의 x좌표로 이동한다.
     // 화살표 끝점의 y좌표는 만일 '다이얼로그 중심의 y좌표 < 박스 중심의 y좌표'이면 박스 테두리의 top y좌표로 이동하고, 아니면 bottom y좌표로 이동한다.
-    fun translateArrowEndToBox(duration: Long) {
+    fun translateArrowEndToBox() {
         val startArrowEndX = arrowEndX
         val startArrowEndY = arrowEndY
 
@@ -532,11 +650,11 @@ class EduScreenFragment : Fragment() {
             arrowEndX = GeometryUtils.linear(startArrowEndX, currentBoxCenterX, it)
             arrowEndY = GeometryUtils.linear(
                 startArrowEndY,
-                if (currentDialogCenterY < currentBoxCenterY) currentBoxStrokeTopY else currentBoxStrokeBottomY,
+                if (currentDialogCenterY < currentBoxCenterY) currentBoxBorderTopY else currentBoxBorderBottomY,
                 it
             )
             draw()
-        }, 0.0f, 1.0f, duration, OvershootInterpolator(0.5f)))
+        }, 0.0f, 1.0f, ARROW_MOVEMENT_DURATION, OvershootInterpolator(0.5f)))
     }
 
     // 오른쪽 아래에 그림자가 적용된 비트맵을 만든다.
@@ -613,5 +731,21 @@ class EduScreenFragment : Fragment() {
         hands.forEach {
             removeHand(it.key)
         }
+    }
+
+    companion object {
+        const val DIALOG_TOGGLE_DURATION = 250L
+        const val COVER_TOGGLE_DURATION = 250L
+        const val BOX_BORDER_TOGGLE_DURATION = 250L
+        const val ARROW_TOGGLE_DURATION = 250L
+
+        // TODO(visibility → color)
+        const val COVER_COLOR_TRANSFORMATION_DURATION = 250L
+        const val BOX_BORDER_COLOR_TRANSFORMATION_DURATION = 250L
+
+        const val DIALOG_MOVEMENT_DURATION = 750L
+        const val VERTICAL_DIALOG_MOVEMENT_DURATION = 750L
+        const val BOX_MOVEMENT_DURATION = 750L
+        const val ARROW_MOVEMENT_DURATION = 750L
     }
 }
