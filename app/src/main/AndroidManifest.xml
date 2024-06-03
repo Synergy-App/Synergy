@@ -19,6 +19,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".my_profile.CheckMyResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".my_profile.MyExamResultActivity"
+            android:exported="false" />
+        <activity
             android:name=".learning_space.NewScreenPracticeActivity"
             android:exported="false" />
         <activity
