@@ -36,12 +36,23 @@
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
+        <!-- 화면구성-->
+        <activity
+            android:name=".edu_space.screen_layout.ScreenRecentlyActivity"
+            android:exported="true" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity
             android:name=".edu_space.default_app.todo.DefaultAppBarActivity"
             android:exported="false" />
         <activity
             android:name=".edu_space.default_app.todo.DefaultMenuActivity"
             android:exported="false" />
+
         <activity
             android:name=".edu_space.default_app.todo.DefaultLockedScreenActivity"
             android:exported="false" />
