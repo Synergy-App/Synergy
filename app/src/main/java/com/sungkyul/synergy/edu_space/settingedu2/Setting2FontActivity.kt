@@ -75,9 +75,8 @@ class Setting2FontActivity : AppCompatActivity() {
 
                 //이부분이안된다고 시크바가 7일때 넘어가야하는데 건들기만해도 왜 다음으로 넘어가냐고
                 if (progress == 7 && fromUser) { // 사용자 조작에 의한 경우에만 실행
-                    binding.eduScreen.onAction("clear_ment")
-                } else {
                     binding.eduScreen.onAction("change_text_size_bar")
+
                 }
 
             }

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EFEDE7">
+
+    <!-- 상단 구역 -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:background="#089156"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.2"> <!-- 높이를 화면의 20%로 설정 -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="기초 교육"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="휴대폰의 다양한 기능을 만나보세요."
+            android:textColor="#E1E1E1"
+            android:textSize="17sp" />
+    </LinearLayout>
+
+    <!-- 버튼 영역 -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/basic_move_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="1강    기본 동작 교육"
+            android:textAlignment="textStart"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:background="@drawable/round_corner_white_basicbtn"
+            android:padding="20dp" /> <!-- 패딩을 16dp에서 20dp로 증가 -->
+
+        <Button
+            android:id="@+id/word_dic_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="2강    용어 사전"
+            android:textAlignment="textStart"
+            android:textSize="20sp"
+            android:background="@drawable/round_corner_white_basicbtn"
+            android:textColor="#000000"
+            android:padding="20dp" /> <!-- 패딩을 16dp에서 20dp로 증가 -->
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

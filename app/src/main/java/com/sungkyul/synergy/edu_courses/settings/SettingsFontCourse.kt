@@ -100,6 +100,8 @@ data class SettingsFontCourse(val eduScreen: EduScreen): EduCourse {
             cover.boxBottom = 280.0f /*크기가 커질 수록 박스가 커짐 */
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
+            cover.isClickable = true
+
         })
 
         list.add(EduData().apply {

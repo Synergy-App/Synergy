@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Button
+import android.view.animation.Animation
+
 import android.view.animation.TranslateAnimation
 import android.widget.LinearLayout
 import android.widget.SeekBar
@@ -35,7 +37,7 @@ class DefaultAppBarActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_default_app_bar)
 
-        imageView52 = findViewById(R.id.imageView52)
+        //imageView52 = findViewById(R.id.imageView52)
         appBarLayout = findViewById(R.id.appBarLayout)
         imageView45 = findViewById(R.id.imageView45)
         imageButton3 = findViewById(R.id.imageButton3)
@@ -121,15 +123,15 @@ class DefaultAppBarActivity : AppCompatActivity() {
             }
         })
 
-        findViewById<Button>(R.id.button44).setOnClickListener {
-            // Toggle between toolbar1 and toolbar2
-            if (toolbar1Visible) {
-                imageView52.setImageResource(R.drawable.toolbar2)
-            } else {
-                imageView52.setImageResource(R.drawable.toolbar1)
-            }
-            toolbar1Visible = !toolbar1Visible
-        }
+//        findViewById<Button>(R.id.button44).setOnClickListener {
+//            // Toggle between toolbar1 and toolbar2
+//            if (toolbar1Visible) {
+//                imageView52.setImageResource(R.drawable.toolbar2)
+//            } else {
+//                imageView52.setImageResource(R.drawable.toolbar1)
+//            }
+//            toolbar1Visible = !toolbar1Visible
+//        }
     }
 
     private fun slideOverlayLayout() {

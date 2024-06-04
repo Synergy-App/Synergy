@@ -143,6 +143,7 @@ data class DefaultMessageCourse2(val eduScreen: EduScreen): EduCourse {
 
         list.add(EduData().apply {
             cover.visibility = false
+            cover.isClickable = false
             dialog.visibility = false
             action.id = "menu_button"
             EduHand(
