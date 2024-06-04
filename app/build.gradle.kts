@@ -57,6 +57,7 @@ android {
 
 dependencies {
     implementation ("com.squareup.retrofit2:converter-gson:2.7.1")
+    implementation ("com.google.android.material:material:1.3.0")
 
     //background 실행
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1")

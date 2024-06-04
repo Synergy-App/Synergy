@@ -7,66 +7,112 @@
     android:background="#DADADA"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/face"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView177"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="시너지 교육에 오신걸 환영합니다."
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="360dp"
+        android:layout_marginTop="20dp"
         android:orientation="vertical"
         android:paddingLeft="40dp"
         android:paddingRight="40dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/textView177"
+        android:gravity="center_horizontal">
 
-        <EditText
-            android:id="@+id/editTextId"
+        <!-- 아이디 입력 레이아웃 -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
             android:layout_marginTop="20dp"
             android:background="@drawable/border_background13"
-            android:ems="10"
-            android:hint="아이디를 입력해주세요."
-            android:inputType="text"
-            android:paddingLeft="9dp"
-            android:scrollbarAlwaysDrawHorizontalTrack="true"
-            android:textColor="#8D838383"
-            android:textColorHint="#8D838383"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:padding="10dp">
 
-        <EditText
-            android:id="@+id/editTextPassword"
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/user1"
+                android:tint="#8D838383" />
+
+            <EditText
+                android:id="@+id/editTextId"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:hint="아이디를 입력해주세요."
+                android:inputType="text"
+                android:paddingLeft="9dp"
+                android:textColor="#8D838383"
+                android:textColorHint="#8D838383" />
+        </LinearLayout>
+
+        <!-- 비밀번호 입력 레이아웃 -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
             android:layout_marginTop="11dp"
-            android:layout_marginBottom="10dp"
             android:background="@drawable/border_background13"
-            android:ems="10"
-            android:hint="비밀번호를 입력해주세요."
-            android:inputType="textPassword"
-            android:paddingLeft="8dp"
-            android:textColor="#8D838383"
-            android:textColorHint="#8D838383"
-            app:layout_constraintBottom_toTopOf="@+id/btnLogin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextId" />
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/lock1"
+                android:tint="#8D838383" />
+
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:hint="비밀번호를 입력해주세요."
+                android:inputType="textPassword"
+                android:paddingLeft="9dp"
+                android:textColor="#8D838383"
+                android:textColorHint="#8D838383" />
+        </LinearLayout>
 
         <Button
-            android:id="@+id/btnFindIdPassword"
+            android:id="@+id/btnLogin"
+            android:layout_width="280dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/border_background15"
+            android:padding="5dp"
+            android:text="로그인" />
+        <CheckBox
+            android:id="@+id/checkBoxAutoLogin"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="0dp"
-            android:layout_marginBottom="10dp"
-            android:backgroundTint="#B3B3B3"
-            android:text="아이디/비밀번호 찾기" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="자동 로그인" />
+
+
     </LinearLayout>
 
     <LinearLayout
@@ -82,34 +128,22 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
         app:layout_constraintVertical_bias="0.228">
 
-
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:background="#FFFFFF"
-            android:padding="5dp"
-            android:text="로그인" />
-
         <Button
             android:id="@+id/btnRegister"
+            android:layout_width="280dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/border_background14"
+            android:padding="5dp"
+            android:text="회원가입" />
+        <Button
+            android:id="@+id/btnFindIdPassword"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginTop="10dp"
-            android:background="#FFFFFF"
-            android:padding="5dp"
-            android:text="회원가입" />
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="#B3B3B3"
+            android:text="아이디/비밀번호 찾기" />
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/ic_launcher_foreground"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
