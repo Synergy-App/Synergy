@@ -14,11 +14,11 @@ data class SignUpBody (
     val authId: String,
     /** 패스워드 */
     val pw: String,
-    /** 패스워드 재입력 */
+ /*   * 패스워드 재입력 */
     val pwRe: String,
     /** 닉네임 */
     val nickname: String,
-    /** 휴대폰번호 */
+/*    * 휴대폰번호 */
     val phone: String
 )
 
