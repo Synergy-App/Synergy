@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission
@@ -17,7 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Synergy"
         android:usesCleartextTraffic="true"
-        tools:targetApi="31">
+        tools:targetApi="31" >
+        <!-- 아이디찾기/비밀번호변경 화면 -->
         <activity
             android:name=".my_profile.CheckMyResultActivity"
             android:exported="false" />
@@ -29,6 +30,29 @@
             android:exported="false" />
         <activity
             android:name=".FindIdPasswordActivity"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- 회원가입 화면 -->
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- 로그인 화면 -->
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"
@@ -36,6 +60,16 @@
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
+        <!-- 화면구성-->
+        <activity
+            android:name=".edu_space.screen_layout.ScreenRecentlyActivity"
+            android:exported="true" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity
             android:name=".edu_space.default_app.todo.DefaultAppBarActivity"
             android:exported="false" />
@@ -63,6 +97,17 @@
         </activity>
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageChattingActivity"
+            android:exported="true" > <!-- 메시지 화면 -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".edu_space.default_app.message.activity.DefaultMessageSelectActivity"
+            android:exported="false" /> <!-- 메시지채팅 화면 -->
+        <!-- 채팅 방법 선택 -->
             android:exported="false" /> <!-- 메시지 화면 -->
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageFristActivity"
@@ -82,11 +127,6 @@
         <activity
             android:name=".MainActivity"
             android:exported="false"> <!-- 메인화면 -->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".EduSpaceActivity"
@@ -132,12 +172,20 @@
         <!-- 환경설정2 -->
         <activity
             android:name=".edu_space.settingedu2.Setting2MainActivity"
+            android:exported="false" /> <!-- <activity -->
             android:exported="false" />
         <activity
             android:name=".edu_space.settingedu2.Setting2DisplayActivity"
             android:exported="false" />
         <activity
             android:name=".edu_space.settingedu2.Setting2FontActivity"
+            android:exported="true" > <!-- 계정생성 교육 -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
             android:exported="false" /> <!-- 계정생성 -->
         <activity
             android:name=".edu_space.accountedu.GoogleMainActivity"
@@ -174,8 +222,13 @@
             android:exported="false" /> <!-- 앱 설치 메인 화면 -->
         <activity
             android:name=".edu_space.appinstall.AppInstallMainActivity"
-            android:exported="false"> <!-- 병윤님 앱 설치 메인 화면 -->
-        </activity> <!-- 병윤님 앱 설치 메인 화면 -->
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".edu_space.appinstall.AppInstallSearchActivity"
             android:exported="false" /> <!-- 앱 설치 검색 화면 -->

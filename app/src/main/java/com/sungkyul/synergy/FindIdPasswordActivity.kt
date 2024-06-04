@@ -15,6 +15,7 @@ import com.sungkyul.synergy.backend.auth.FindIdBody
 import com.sungkyul.synergy.backend.auth.FindIdResult
 import com.sungkyul.synergy.backend.auth.VerifyUserBody
 import com.sungkyul.synergy.backend.auth.VerifyUserResult
+
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -53,7 +54,6 @@ class FindIdPasswordActivity : AppCompatActivity() {
 
         this.authApi = retrofit.create(AuthAPI::class.java)
     }
-
     // POST /user/find-id api를 실제로 호출하는 곳
     private suspend fun callFindIdAPI(request: FindIdBody): ApiResponse<FindIdResult>? {
         return withContext(Dispatchers.IO) {
@@ -110,6 +110,7 @@ class FindIdPasswordActivity : AppCompatActivity() {
             }
         }
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
