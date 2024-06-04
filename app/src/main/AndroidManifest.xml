@@ -37,31 +37,19 @@
         <!-- 회원가입 화면 -->
         <activity
             android:name=".RegisterActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity>
 
         <!-- 로그인 화면 -->
         <activity
             android:name=".LoginActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity>
 
         <!-- 화면구성 -->
         <activity
             android:name=".edu_space.screen_layout.ScreenRecentlyActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity>
         <activity
             android:name=".edu_space.default_app.todo.DefaultAppBarActivity"
@@ -83,11 +71,7 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageChattingActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity>
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageSelectActivity"
@@ -106,7 +90,12 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".EduSpaceActivity"
             android:exported="false" />
@@ -154,11 +143,7 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.settingedu2.Setting2FontActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity>
         <activity
             android:name=".edu_space.accountedu.GoogleMainActivity"
@@ -195,11 +180,7 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.appinstall.AppInstallMainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity>
         <activity
             android:name=".edu_space.appinstall.AppInstallSearchActivity"
