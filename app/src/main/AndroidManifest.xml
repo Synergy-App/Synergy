@@ -41,7 +41,16 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.default_app.todo.DefaultMenuActivity"
-            android:exported="false" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".edu_space.default_app.todo.DefaultAppAddActivity"
+            android:exported="false">
+        </activity>
         <activity
             android:name=".edu_space.default_app.todo.DefaultLockedScreenActivity"
             android:exported="false" />
@@ -50,7 +59,8 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageActivity"
-            android:exported="false" /> <!-- 메시지 화면 -->
+            android:exported="false" > <!-- 메시지 화면 -->
+        </activity>
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageChattingActivity"
             android:exported="false" /> <!-- 메시지 화면 -->
@@ -71,12 +81,12 @@
             android:exported="false" /> <!-- 디지털 나이 검사 -->
         <activity
             android:name=".MainActivity"
-            android:exported="true"> <!-- 메인화면 -->
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false"> <!-- 메인화면 -->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".EduSpaceActivity"
