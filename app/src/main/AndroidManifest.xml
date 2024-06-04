@@ -7,6 +7,7 @@
         android:name="android.permission.WRITE_SETTINGS"
         tools:ignore="ProtectedPermissions" />
 
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -37,20 +38,17 @@
         <!-- 회원가입 화면 -->
         <activity
             android:name=".RegisterActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"/>
 
         <!-- 로그인 화면 -->
         <activity
             android:name=".LoginActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"/>
 
         <!-- 화면구성 -->
         <activity
             android:name=".edu_space.screen_layout.ScreenRecentlyActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"/>
         <activity
             android:name=".edu_space.default_app.todo.DefaultAppBarActivity"
             android:exported="false" />
@@ -71,8 +69,7 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageChattingActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"/>
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageSelectActivity"
             android:exported="false" />
@@ -90,33 +87,34 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="false" />
+        <activity
+            android:name=".EduSpaceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".edu_space.icon_edu.activity.BasicEduMainActivity"
+            android:exported="false" /> <!--1,2강 선택하는거-->
+        <activity
+            android:name=".edu_space.icon_edu.activity.IconEduActivity"
+            android:exported="true" ><!--1강-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".EduSpaceActivity"
-            android:exported="false" />
+            android:name=".edu_space.icon_edu.activity.IconDetailActivity"
+            android:exported="false" /><!--1강-->
         <activity
-            android:name=".edu_space.icon_edu.activity.BasicEduMainActivity"
-            android:exported="false" />
+            android:name=".edu_space.move_edu.activity.MoveEduActivity"
+            android:exported="false" /><!--2강-->
         <activity
-            android:name=".edu_space.icon_edu.activity.IconEduActivity"
-            android:exported="false" />
+            android:name=".edu_space.move_edu.activity.MoveDetailActivity"
+            android:exported="false" /><!--2강-->
         <activity
             android:name=".edu_space.default_app.todo.MenusActivity"
             android:exported="false" />
-        <activity
-            android:name=".edu_space.icon_edu.activity.IconDetailActivity"
-            android:exported="false" />
-        <activity
-            android:name=".edu_space.move_edu.activity.MoveEduActivity"
-            android:exported="false" />
-        <activity
-            android:name=".edu_space.move_edu.activity.MoveDetailActivity"
-            android:exported="false" />
+
         <activity
             android:name=".edu_space.screen_layout.ScreenLayoutActivity"
             android:exported="false" />
@@ -143,7 +141,11 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.settingedu2.Setting2FontActivity"
-            android:exported="false">
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".edu_space.accountedu.GoogleMainActivity"
@@ -180,8 +182,7 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.appinstall.AppInstallMainActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"/>
         <activity
             android:name=".edu_space.appinstall.AppInstallSearchActivity"
             android:exported="false" />
