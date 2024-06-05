@@ -6,8 +6,8 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.sungkyul.synergy.databinding.ActivityMainBinding
+import com.sungkyul.synergy.my_profile.Time
 import com.sungkyul.synergy.learning_space.fragment.ExamResultFragment
-
 
 /** 시너지 앱 메인 네비게이션 바 + fragment */
 
@@ -24,6 +24,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Start the time counter
+        Time.startTimeCounter()
+
+        setFragment(Tag_learning, LearningFragment())
         //setFragment(Tag_learning, LearningFragment())
         setFragment(Tag_examResult, ExamResultFragment())
         binding.mainNavigationView.setOnItemSelectedListener { item ->
@@ -42,10 +46,10 @@ class MainActivity : AppCompatActivity() {
         val fragTransaction = manager.beginTransaction()
         if (manager.findFragmentByTag(tag) == null) {
             fragTransaction.add(R.id.mainMainFrameLayout, fragment, tag)
-
         }
         val learning = manager.findFragmentByTag(Tag_learning)
         val solving = manager.findFragmentByTag(Tag_solving)
+        // val review = manager.findFragmentByTag(Tag_review)
        // val review = manager.findFragmentByTag(Tag_review)
         val examResult = manager.findFragmentByTag(Tag_examResult)
         val myProfile = manager.findFragmentByTag(Tag_myProfile)
@@ -64,6 +68,13 @@ class MainActivity : AppCompatActivity() {
                 fragTransaction.hide(solving)
             }
         }
+        // if (review != null) {
+        //     if (tag == Tag_review) {
+        //         fragTransaction.show(review)
+        //     } else {
+        //         fragTransaction.hide(review)
+        //     }
+        // }
         if (examResult != null) {
             if (tag == Tag_examResult) {
                 fragTransaction.show(examResult)
@@ -88,4 +99,5 @@ class MainActivity : AppCompatActivity() {
         }
         fragTransaction.commitAllowingStateLoss()
     }
+
 }

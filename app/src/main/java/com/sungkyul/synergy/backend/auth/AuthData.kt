@@ -14,11 +14,11 @@ data class SignUpBody (
     val authId: String,
     /** 패스워드 */
     val pw: String,
- /*   * 패스워드 재입력 */
+    /** 패스워드 재입력 */
     val pwRe: String,
     /** 닉네임 */
     val nickname: String,
-/*    * 휴대폰번호 */
+    /** 휴대폰번호 */
     val phone: String
 )
 
@@ -29,7 +29,6 @@ data class CheckNicknameBody (
 data class CheckIdBody (
     val authId: String
 )
-
 
 /** POST /user/check-id, POST /user/check-nickname 응답데이터 */
 data class CheckResult (
@@ -44,7 +43,6 @@ data class SignInResult (
     /** 로그인한 유저 정보 */
     val user: User
 )
-
 
 /**아이디와 비밀번호 찾기 */
 /** POST /user/find-id 요청데이터 */
@@ -79,3 +77,4 @@ data class ChangePasswordResult(
     val success: Boolean,
     val message: String
 )
+

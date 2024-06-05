@@ -13,15 +13,12 @@ import com.sungkyul.synergy.backend.ApiResponse
 import com.sungkyul.synergy.backend.auth.AuthAPI
 import com.sungkyul.synergy.backend.auth.SignInBody
 import com.sungkyul.synergy.backend.auth.SignInResult
-import com.sungkyul.synergy.databinding.ActivityEduSpaceBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
-private lateinit var binding: ActivityEduSpaceBinding
 
 class LoginActivity : AppCompatActivity() {
     lateinit var btnLogin: Button
@@ -37,6 +34,8 @@ class LoginActivity : AppCompatActivity() {
     private val PREFS_NAME = "SynergyPrefs"
     private val PREF_ID = "SavedId"
     private val PREF_AUTOLOGIN = "AutoLogin"
+    private val PREF_TOKEN = "Token"
+    private val PREF_NICKNAME = "Nickname"
 
     init {
         // API 호출하기 위한 세팅
@@ -56,13 +55,11 @@ class LoginActivity : AppCompatActivity() {
                 val response = call.execute()
                 if (response.isSuccessful) {
                     Log.d("LoginActivity", "callSignInAPI Success: ${response.body()}")
+                    response.body()
                 } else {
-                    Log.e(
-                        "LoginActivity",
-                        "callSignInAPI Failed: ${response.errorBody()?.string()}"
-                    )
+                    Log.e("LoginActivity", "callSignInAPI Failed: ${response.errorBody()?.string()}")
+                    null
                 }
-                response.body()
             } catch (e: Exception) {
                 Log.e("LoginActivity", "callSignInAPI Exception: ${e.message}")
                 null
@@ -107,7 +104,8 @@ class LoginActivity : AppCompatActivity() {
 
                     // 로그인 성공 시
                     if (res?.success == true) {
-                        // TODO: 앱 안에 영구적으로 저장할 수 있는 곳에 res.data.accessToken을 저장해야함. 나중에 다른 API 호출할 때 이 accessToken을 함께 서버에 넘겨주기 때문.
+                        // 로그인 성공 시 닉네임과 토큰을 SharedPreferences에 저장
+                        saveLoginInfo(res.data)
 
                         if (checkBoxAutoLogin.isChecked) {
                             // Save ID and auto-login preference
@@ -129,6 +127,7 @@ class LoginActivity : AppCompatActivity() {
 
                         val intent = Intent(this@LoginActivity, MainActivity::class.java)
                         startActivity(intent)
+                        finish()  // 로그인 후 액티비티 종료
                     }
                     // 로그인 실패 시
                     else {
@@ -150,9 +149,19 @@ class LoginActivity : AppCompatActivity() {
         }
 
         // 아이디/비밀번호 찾기 버튼 클릭시
-       /* btnFind.setOnClickListener {
+        btnFind.setOnClickListener {
             val findIntent = Intent(this@LoginActivity, FindIdPasswordActivity::class.java)
             startActivity(findIntent)
-        }*/
+        }
+    }
+
+    private fun saveLoginInfo(signInResult: SignInResult?) {
+        signInResult?.let {
+            with(sharedPreferences.edit()) {
+                putString(PREF_TOKEN, it.accessToken)
+                putString(PREF_NICKNAME, it.user.nickname)
+                apply()
+            }
+        }
     }
 }
