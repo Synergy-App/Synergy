@@ -60,8 +60,9 @@ data class SettingsDisplayCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "drag",
                     source = R.drawable.hand,
-                    x = 200.0f,
-                    y = 650.0f,
+                    //x = 200.0f,
+                    //y = 650.0f,
+                    target = null,
                     width = 50.0f,
                     height = 75.0f,
                     gesture = HandGestures.Companion::verticalScrollGesture
@@ -82,8 +83,9 @@ data class SettingsDisplayCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = 200.0f,
-                    y = 300.0f,
+                    //x = 200.0f,
+                    //y = 300.0f,
+                    target = null,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

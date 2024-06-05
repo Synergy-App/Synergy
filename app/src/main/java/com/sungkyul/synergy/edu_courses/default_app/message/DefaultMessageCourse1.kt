@@ -53,8 +53,9 @@ class DefaultMessageCourse1 (val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = 150.0f,
-                    y = height/2,
+                    //x = 150.0f,
+                    //y = height/2,
+                    target = null,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

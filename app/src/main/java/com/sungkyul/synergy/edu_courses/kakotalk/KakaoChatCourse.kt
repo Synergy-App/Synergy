@@ -61,8 +61,9 @@ data class KakaoChatCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     source = R.drawable.hand,
-                    x = 200.0f,
-                    y = 675.0f,
+                    //x = 200.0f,
+                    //y = 675.0f,
+                    target = null,
                     rotation = 180.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )

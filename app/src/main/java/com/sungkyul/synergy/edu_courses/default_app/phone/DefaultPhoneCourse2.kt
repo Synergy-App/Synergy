@@ -75,8 +75,9 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = 180.0f,
-                    y = 750.0f,
+                    //x = 180.0f,
+                    //y = 750.0f,
+                    target = null,
                     rotation = 180.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )
@@ -141,8 +142,9 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = 330.0f,
-                    y = 770.0f,
+                    //x = 330.0f,
+                    //y = 770.0f,
+                    target = null,
                     rotation = 180.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )
@@ -199,8 +201,9 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = 100.0f,
-                    y = 450.0f,
+                    //x = 100.0f,
+                    //y = 450.0f,
+                    target = null,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
@@ -291,8 +294,9 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = 250.0f,
-                    y = 330.0f,
+                    //x = 250.0f,
+                    //y = 330.0f,
+                    target = null,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

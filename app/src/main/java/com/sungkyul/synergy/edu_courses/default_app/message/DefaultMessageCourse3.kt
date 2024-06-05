@@ -76,8 +76,9 @@ class DefaultMessageCourse3 (val eduScreen: EduScreen): EduCourse {
             dialog.visibility = false
             EduHand(
                 id = "tap",
-                x = 300.0f,
-                y = height-110.0f,
+                //x = 300.0f,
+                //y = height-110.0f,
+                target = null,
                 gesture = HandGestures.Companion::tapGesture
             )
         })
