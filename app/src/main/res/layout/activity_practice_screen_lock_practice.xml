@@ -23,7 +23,7 @@
         <TextView
             android:id="@+id/timerTextView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_weight="0.5"
             android:text="00:00"
             android:textSize="20dp"
@@ -56,9 +56,8 @@
         layout="@layout/included_screen_layout_tool_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/ll"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <!-- 시간 텍스트뷰 -->
     <TextView
