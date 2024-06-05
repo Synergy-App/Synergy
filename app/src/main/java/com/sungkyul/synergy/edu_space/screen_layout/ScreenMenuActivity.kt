@@ -4,6 +4,7 @@ import android.app.ActivityOptions
 import android.content.ClipData
 import android.content.Intent
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
 import android.view.View.DragShadowBuilder
 import androidx.appcompat.app.AppCompatActivity
@@ -34,6 +35,29 @@ class ScreenMenuActivity : AppCompatActivity() {
             startActivity(intent, options.toBundle())
             true
         }
+
+        // 투명한 뷰 터치 이벤트 처리
+        findViewById<View>(R.id.transparent_view_2).setOnTouchListener { _, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> true
+                MotionEvent.ACTION_UP -> {
+                    returnToHomeScreen()
+                    true
+                }
+                else -> false
+            }
+        }
+
+        findViewById<View>(R.id.transparent_view_3).setOnTouchListener { _, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> true
+                MotionEvent.ACTION_UP -> {
+                    onBackPressed()
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     private fun hideSystemUI() {
@@ -45,5 +69,11 @@ class ScreenMenuActivity : AppCompatActivity() {
                         or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         or View.SYSTEM_UI_FLAG_FULLSCREEN
                 )
+    }
+
+    private fun returnToHomeScreen() {
+        val intent = Intent(this, ScreenHomeActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.stay, R.anim.stay)
     }
 }

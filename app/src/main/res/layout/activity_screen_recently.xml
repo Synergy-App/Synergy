@@ -426,4 +426,39 @@
         app:layout_constraintBottom_toTopOf="@id/include_navi_bar"
         app:layout_constraintStart_toEndOf="@+id/icon_image_3"
         app:layout_constraintEnd_toEndOf="parent"/>
+    <!-- 첫 번째 투명한 뷰 -->
+    <View
+        android:id="@+id/transparent_view_1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/transparent_view_2"
+        app:layout_constraintTop_toTopOf="@id/include_navi_bar"
+        app:layout_constraintBottom_toBottomOf="@id/include_navi_bar"
+        app:layout_constraintWidth_percent="0.33" />
+
+    <!-- 두 번째 투명한 뷰 -->
+    <View
+        android:id="@+id/transparent_view_2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toEndOf="@id/transparent_view_1"
+        app:layout_constraintEnd_toStartOf="@id/transparent_view_3"
+        app:layout_constraintTop_toTopOf="@id/include_navi_bar"
+        app:layout_constraintBottom_toBottomOf="@id/include_navi_bar"
+        app:layout_constraintWidth_percent="0.34" />
+
+    <!-- 세 번째 투명한 뷰 -->
+    <View
+        android:id="@+id/transparent_view_3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toEndOf="@id/transparent_view_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/include_navi_bar"
+        app:layout_constraintBottom_toBottomOf="@id/include_navi_bar"
+        app:layout_constraintWidth_percent="0.33" />
 </androidx.constraintlayout.widget.ConstraintLayout>
