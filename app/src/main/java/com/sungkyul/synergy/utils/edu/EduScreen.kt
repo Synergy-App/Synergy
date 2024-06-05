@@ -446,8 +446,7 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
             eduScreenFragment.addHand(
                 id = i.id,
                 source = i.source,
-                xDp = i.x,
-                yDp = i.y,
+                target = i.target,
                 widthDp = i.width,
                 heightDp = i.height,
                 rotation = i.rotation,

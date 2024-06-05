@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back1"
+    tools:context=".edu_space.screen_layout.ScreenMoveHomeActivity">
+
+    <include
+        android:id="@+id/include_toolbar"
+        layout="@layout/included_screen_layout_tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/include_navi_bar"
+        layout="@layout/included_screen_layout_navi_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <!-- 드래그 앤 드롭을 받을 투명 뷰 -->
+    <View
+        android:id="@+id/drop_target"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

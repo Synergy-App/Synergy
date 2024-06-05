@@ -4,6 +4,7 @@ import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
+import android.app.Activity
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -12,6 +13,7 @@ import android.graphics.Paint
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffXfermode
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +26,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.toBitmap
@@ -684,8 +687,7 @@ class EduScreenFragment : Fragment() {
     fun addHand(
         id: String,
         source: Int,
-        xDp: Float,
-        yDp: Float,
+        target: View?,
         widthDp: Float,
         heightDp: Float,
         rotation: Float,
@@ -704,8 +706,18 @@ class EduScreenFragment : Fragment() {
 
         binding.gestureLayout.addView(imageView)
 
-        imageView.translationX = DisplayUtils.dpToPx(binding.root.context, xDp)
-        imageView.translationY = DisplayUtils.dpToPx(binding.root.context, yDp)
+        var x: Float = 0.0f
+        if(target != null) {
+            x = target.x+target.width/2
+            Log.i("hand_x", x.toString())
+        }
+        var y: Float = 0.0f
+        if(target != null) {
+            y = target.x+target.width/2
+            Log.i("hand_y", y.toString())
+        }
+        imageView.translationX = x
+        imageView.translationY = y
         imageView.rotation = rotation
         imageView.updateLayoutParams<ViewGroup.LayoutParams> {
             this.width = DisplayUtils.dpToPx(binding.root.context, widthDp).toInt()

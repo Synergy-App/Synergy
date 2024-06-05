@@ -23,7 +23,7 @@ data class MessageChattingData(
 
 class MessageChattingAdapter(private val context: Context, private val dataSet: ArrayList<MessageChattingData>): RecyclerView.Adapter<MessageChattingAdapter.ViewHolder>() {
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val galaxyButton: GalaxyButton = view.findViewById(R.id.dynamic_button)
+        val galaxyButton: GalaxyButton = view.findViewById(R.id.galaxy_button)
         val profileImage: ImageView = view.findViewById(R.id.profile_image)
         val profileName: TextView = view.findViewById(R.id.profile_name)
         val date: TextView = view.findViewById(R.id.date)
