@@ -12,7 +12,6 @@ import com.sungkyul.synergy.LoginActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.FragmentMyProfileBinding
 import com.sungkyul.synergy.my_profile.CheckMyResultActivity
-import com.sungkyul.synergy.my_profile.MyExamResultActivity
 
 class MyProfileFragment : Fragment() {
 
@@ -32,8 +31,8 @@ class MyProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.examResultCardView.setOnClickListener {
-            val intent = Intent(requireActivity(), MyExamResultActivity::class.java)
-            startActivity(intent)
+//            val intent = Intent(requireActivity(), MyExamResultActivity::class.java)
+//            startActivity(intent)
         }
 
         binding.CheckResultCardView.setOnClickListener {

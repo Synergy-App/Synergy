@@ -18,247 +18,215 @@
         android:theme="@style/Theme.Synergy"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
-        <!-- Main Activity -->
+        <activity
+            android:name=".learning_space.screen.PracticeScreenLock2Activity"
+            android:exported="false" />
         <activity
             android:name=".APItestActivity"
+            android:exported="false">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".learning_space.screen.PracticeScreenLockActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!-- Other Activities -->
         <activity
             android:name=".my_profile.CheckMyResultActivity"
-            android:exported="true" />
-        <!--        <activity-->
-        <!--            android:name=".my_profile.MyExamResultActivity"-->
-        <!--            android:exported="true" />-->
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".my_profile.MyExamResultActivity" -->
+        <!-- android:exported="true" /> -->
         <activity
             android:name=".learning_space.NewScreenPracticeActivity"
             android:exported="false" />
-
         <activity
             android:name=".FindIdPasswordActivity"
             android:exported="false" />
-
         <activity
             android:name=".RegisterActivity"
             android:exported="true" />
-
         <activity
             android:name=".LoginActivity"
             android:exported="true" />
-
         <activity
             android:name=".edu_space.screen_layout.ScreenRecentlyActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".edu_space.screen_layout.ScreenHomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".edu_space.screen_layout.ScreenTopBarActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.screen_layout.ScreenLockActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.screen_layout.ScreenMenuActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".edu_space.screen_layout.ScreenMoveHomeActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.default_app.todo.DefaultAppBarActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.default_app.todo.DefaultMenuActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.default_app.todo.DefaultAppAddActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.default_app.todo.DefaultLockedScreenActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.default_app.todo.DefaultHomeActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageChattingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageSelectActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageFristActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.naver.activity.NaverSearchResultActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.default_app.DefaultAppActivity"
             android:exported="false" />
-
         <activity
             android:name=".main.activity.DigitalStartActivity"
             android:exported="false" />
-
         <activity
             android:name=".MainActivity"
             android:exported="false" />
-
         <activity
             android:name=".EduSpaceActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.icon_edu.activity.BasicEduMainActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.icon_edu.activity.IconEduActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".edu_space.default_app.todo.MenusActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.icon_edu.activity.IconDetailActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.move_edu.activity.MoveEduActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.move_edu.activity.MoveDetailActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.screen_layout.ScreenLayoutActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".edu_space.default_app.phone.activity.DefaultPhoneActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.default_app.phone.activity.DefaultPhoneCallActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.default_app.phone.activity.DefaultPhoneAddActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.default_app.camera.activity.DefaultCameraActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.default_app.camera.activity.DefaultCameraGalleryViewActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.settingedu2.Setting2MainActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.settingedu2.Setting2DisplayActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.settingedu2.Setting2FontActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".edu_space.accountedu.GoogleMainActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.accountedu.GoogleLoginActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.accountedu.GoogleMakeActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.accountedu.GoogleDefaultInfoActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.accountedu.GoogleMailActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.accountedu.GooglePasswordActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.accountedu.GoogleGetCodeActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.accountedu.GooglePutCodeActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.accountedu.GoogleMailAddActivity"
             android:exported="false" />
