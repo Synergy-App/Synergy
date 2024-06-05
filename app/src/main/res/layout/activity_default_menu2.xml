@@ -16,93 +16,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
+    <include
+        android:id="@+id/include_toolbar"
+        layout="@layout/included_screen_layout_tool_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#00FF0000"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="16dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:visibility="invisible">
-
-            <!-- TextView -->
-            <TextView
-                android:id="@+id/textView176"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="4:19"
-                android:textStyle="bold" />
-
-            <!-- 공간을 균등하게 차지하는 빈 뷰 -->
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-
-            <!-- ImageView -->
-            <ImageView
-                android:id="@+id/imageView49"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                app:srcCompat="@drawable/toolbar" />
-        </LinearLayout>
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:background="#00FF0000"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:titleTextColor="#000000" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <!-- 이미지 버튼 레이아웃 -->
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="0dp"
+    <include
+        android:id="@+id/include_navi_bar"
+        layout="@layout/included_screen_layout_navi_bar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:visibility="visible">
-
-        <!-- 이미지 버튼 추가 -->
-        <ImageButton
-            android:id="@+id/imageButton1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#00FF0000"
-            android:src="@drawable/ic_kakao_chat_menu_black_24dp" />
-
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#00FF0000"
-            android:src="@drawable/ic_screen_home_black" />
-
-        <ImageButton
-            android:id="@+id/imageButton3"
-            android:layout_width="0dp"
-            android:layout_height="35dp"
-            android:layout_weight="1"
-            android:background="#00FF0000"
-            android:src="@drawable/screenedu_back" />
-
-    </LinearLayout>
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <LinearLayout
         android:id="@+id/icon_moa_ll"
@@ -110,7 +36,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_margin="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:layout_constraintTop_toBottomOf="@+id/include_toolbar"
         tools:layout_editor_absoluteX="0dp">
 
         <LinearLayout
@@ -300,10 +226,12 @@
             android:padding="5dp">
 
             <ImageView
+                android:id="@+id/naver_image"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_gravity="start"
-                android:src="@drawable/menu3" />
+                android:src="@drawable/ic_naver" />
+
 
         </LinearLayout>
     </LinearLayout>
