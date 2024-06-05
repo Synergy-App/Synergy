@@ -193,7 +193,7 @@ class DefaultMessageChattingActivity : AppCompatActivity() {
                 // 모든 버튼의 터치 애니메이션을 원래대로 되돌린다.
                 if(newState == RecyclerView.SCROLL_STATE_DRAGGING) {
                     for(i in 0..<messageChattingArray.size) {
-                        val galaxyButton = messageChattingList.layoutManager?.findViewByPosition(i)?.findViewById<GalaxyButton>(R.id.dynamic_button)
+                        val galaxyButton = messageChattingList.layoutManager?.findViewByPosition(i)?.findViewById<GalaxyButton>(R.id.galaxy_button)
                         if(galaxyButton != null && galaxyButton.getToggle()) {
                             galaxyButton.startTouchUpAnimation()
                         }

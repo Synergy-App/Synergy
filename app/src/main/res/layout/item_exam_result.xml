@@ -3,25 +3,30 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/message_chatting_item_bg">
+    android:padding="12dp">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/white_rounded_rect"/>
 
     <com.sungkyul.synergy.utils.GalaxyButton
         android:id="@+id/galaxy_button"
         android:layout_width="match_parent"
-        android:layout_height="64dp"/>
+        android:layout_height="74dp"/>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:padding="12dp"
         android:gravity="center_vertical">
 
         <ImageView
-            android:id="@+id/profile_image"
+            android:id="@+id/ox_image"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/usercircle"/>
+            android:src="@drawable/todo_circle"/>
 
         <LinearLayout
             android:orientation="vertical"
@@ -36,36 +41,13 @@
                 android:gravity="center_vertical">
 
                 <TextView
-                    android:id="@+id/profile_name"
+                    android:id="@+id/name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/synergy"
+                    android:text="1. 문제"
                     android:textSize="16sp"/>
 
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="end">
-
-                    <TextView
-                        android:id="@+id/date"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:text="@string/init_date_mini"
-                        android:textSize="12sp"/>
-
-                </LinearLayout>
-
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/recent_message"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/hungry"
-                android:textSize="12sp"/>
 
         </LinearLayout>
 
