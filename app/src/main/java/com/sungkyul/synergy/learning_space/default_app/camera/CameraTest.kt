@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.backend
+package com.sungkyul.synergy.learning_space.default_app.camera
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,8 +7,7 @@ import android.widget.Toast
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityDefaultCameraBinding
 
-/**카메라 실습 테스트입니다.
- * */
+/**카메라 실습 테스트입니다.* */
 class CameraTest : AppCompatActivity() {
     private lateinit var binding: ActivityDefaultCameraBinding
 

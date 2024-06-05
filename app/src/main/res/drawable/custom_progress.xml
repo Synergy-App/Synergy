@@ -2,7 +2,7 @@
     <!-- Background Layer -->
     <item android:id="@android:id/background">
         <shape>
-            <solid android:color="#000000"/> <!-- Background 채우기 색상을 검은색으로 설정 -->
+            <solid android:color="#40000000"/> <!-- Background 채우기 색상을 검은색으로 설정 -->
             <corners android:radius="10dp"/> <!-- Background 둥근 모서리 조절 -->
         </shape>
     </item>
@@ -20,7 +20,7 @@
         <shape>
             <solid android:color="@android:color/transparent"/> <!-- 투명한 배경 -->
             <stroke
-                android:width="90dp"/> <!-- 전체 두께 조절 -->
+                android:width="100dp"/> <!-- 전체 두께 조절 -->
             <corners android:radius="10dp"/> <!-- Stroke의 둥근 모서리 조절 -->
         </shape>
     </item>
