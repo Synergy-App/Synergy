@@ -179,6 +179,7 @@ class PracticeTopBarActivity : AppCompatActivity() {
         intent.data = Uri.parse("package:$packageName")
         startActivityForResult(intent, REQUEST_WRITE_SETTINGS)
     }
+
     private fun showNextProblemDialog() {
         // 예: 새로운 문제를 보여주는 다이얼로그 또는 새로운 액티비티로 이동하는 코드
         val dialogBuilder = AlertDialog.Builder(this)
@@ -193,19 +194,26 @@ class PracticeTopBarActivity : AppCompatActivity() {
         numberTextView.text = "문제 4."
 
         val messageTextView = dialogView.findViewById<TextView>(R.id.dialogMessage)
-        messageTextView.text = "시너지 앱을 실행한 후 홈 화면으로 이동하세요."
+        messageTextView.text = "'플레이스토어' 앱을 실행한 후 홈 화면으로 이동하세요."
         messageTextView.textSize = 20f
 
         // 확인 버튼 설정
         val confirmButton = dialogView.findViewById<Button>(R.id.confirmButton)
         confirmButton.setOnClickListener {
             alertDialog.dismiss() // 다이얼로그 닫기
-            startTimer(remainingTimeInMillis) // 타이머 다시 시작
-            // 추가 작업 수행
+
+//            val homeIntent = Intent(Intent.ACTION_MAIN)
+//            homeIntent.addCategory(Intent.CATEGORY_HOME)
+//            homeIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+//            startActivity(homeIntent)
+
+            val intent = Intent(this, PracticeAppMoveActivity::class.java)
+            startActivity(intent)
         }
 
         alertDialog.show()
     }
+
     companion object {
         private const val REQUEST_WRITE_SETTINGS = 200
     }
