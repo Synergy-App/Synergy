@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back1"
-    tools:context=".edu_space.default_app.todo.DefaultAppAddActivity">
+    tools:context=".edu_space.screen_layout.ScreenMoveHomeActivity">
 
     <include
         android:id="@+id/include_toolbar"
@@ -22,33 +22,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
-
-
-    <LinearLayout
-        android:id="@+id/icon_moa_ll"
+    <!-- 드래그 앤 드롭을 받을 투명 뷰 -->
+    <View
+        android:id="@+id/drop_target"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/include_toolbar">
-
-        <LinearLayout
-            android:id="@+id/setting_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:gravity="start"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
-            android:padding="5dp">
-
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_gravity="start"
-                android:src="@drawable/ic_naver" />
-
-        </LinearLayout>
-    </LinearLayout>
-
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

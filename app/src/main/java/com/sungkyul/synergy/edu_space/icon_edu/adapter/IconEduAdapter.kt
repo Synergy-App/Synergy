@@ -3,10 +3,13 @@ package com.sungkyul.synergy.edu_space.icon_edu.adapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams
 import androidx.recyclerview.widget.RecyclerView
+import com.github.mikephil.charting.utils.Utils.init
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.edu_space.icon_edu.data.Icon
 import com.sungkyul.synergy.edu_space.icon_edu.data.IconInfo
@@ -34,12 +37,15 @@ class IconEduAdapter(
         holder.bind(iconList[position])
     }
 
+
     override fun getItemCount(): Int {
         return iconList.size
     }
 
     @SuppressLint("ClickableViewAccessibility")
     inner class CustomViewHolder(private val binding: FragmentIconListBinding) : RecyclerView.ViewHolder(binding.root) {
+
+
         init {
             binding.eduButton.post {
                 binding.eduButton.clipToRoundRect(27.0f)
@@ -195,6 +201,7 @@ class IconEduAdapter(
                                 "음성 메세지",
                                 "통화 기능과는 별개로 짧은 음성 정보를 보낼 수 있는 기능"
                             )
+                            // 다른 아이콘 정보 추가...
                             else -> IconInfo(
                                 R.drawable.ic_sound_black,
                                 "?",
@@ -219,6 +226,27 @@ class IconEduAdapter(
                 iconTv.text = icon.iconText
 
                 // 텍스트 크기 설정
+                iconTv.textSize = (standardSize_X / 15).toFloat()
+
+                // 아이콘 크기 조정
+                // standardSize_X를 기준으로 이미지의 크기를 조정하여 모든 기기에서 동일한 비율로 보이게 함
+                val newWidth = standardSize_X / 5.5 // 기기의 가로 크기의 5.5
+                val newHeight = standardSize_X / 5.5 // 기기의 가로 크기의 5.5 (세로도 동일하게 설정)
+
+                // 레이아웃 파라미터를 ViewGroup.LayoutParams로 캐스팅
+                val params = iconIv.layoutParams as LayoutParams
+                params.width = (newWidth * context.resources.displayMetrics.density).toInt()
+                params.height = (newHeight * context.resources.displayMetrics.density).toInt()
+                iconIv.layoutParams = params
+
+
+                // 박스 크기 조정
+                val displayMetrics: DisplayMetrics = context.resources.displayMetrics
+                val boxHeight = standardSize_X / 3.5 // 기기의 가로 크기의 1/10
+                val layoutParams = itemView.layoutParams
+                layoutParams.height = (boxHeight * displayMetrics.density).toInt()
+                itemView.layoutParams = layoutParams
+
                 iconTv.textSize = (standardSize_X / 20).toFloat()
             }
         }
