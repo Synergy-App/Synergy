@@ -174,7 +174,6 @@ class PracticeTopBarActivity : AppCompatActivity() {
         }
     }
 
-
     private fun requestWriteSettingsPermission() {
         val intent = Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS)
         intent.data = Uri.parse("package:$packageName")
@@ -207,9 +206,7 @@ class PracticeTopBarActivity : AppCompatActivity() {
 
         alertDialog.show()
     }
-
     companion object {
         private const val REQUEST_WRITE_SETTINGS = 200
     }
-
 }
