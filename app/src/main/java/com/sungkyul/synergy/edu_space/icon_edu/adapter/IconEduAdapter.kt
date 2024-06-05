@@ -247,6 +247,7 @@ class IconEduAdapter(
                 layoutParams.height = (boxHeight * displayMetrics.density).toInt()
                 itemView.layoutParams = layoutParams
 
+                iconTv.textSize = (standardSize_X / 20).toFloat()
             }
         }
     }

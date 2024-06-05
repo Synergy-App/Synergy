@@ -78,8 +78,9 @@ data class GooglePasswordCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = 150.0f,
-                    y = 210.0f,
+                    //x = 150.0f,
+                    //y = 210.0f,
+                    target = null,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
@@ -95,8 +96,9 @@ data class GooglePasswordCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = 150.0f,
-                    y = 280.0f,
+                    //x = 150.0f,
+                    //y = 280.0f,
+                    target = null,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
@@ -109,8 +111,9 @@ data class GooglePasswordCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = 270.0f,
-                    y = 425.0f,
+                    //x = 270.0f,
+                    //y = 425.0f,
+                    target = null,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

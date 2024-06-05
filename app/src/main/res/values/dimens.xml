@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 기본 텍스트 크기 -->
+    <dimen name="text_size_large">28sp</dimen>
+    <dimen name="text_size_small">22sp</dimen>
+</resources>

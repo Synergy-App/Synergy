@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.sungkyul.synergy.databinding.ActivityMainBinding
+import com.sungkyul.synergy.learning_space.fragment.ExamResultFragment
 
 
 /** 시너지 앱 메인 네비게이션 바 + fragment */
@@ -13,6 +14,7 @@ import com.sungkyul.synergy.databinding.ActivityMainBinding
 private const val Tag_learning = "learn_fragment"
 private const val Tag_solving = "solving_fragment"
 private const val Tag_review = "review_fragment"
+private const val Tag_examResult = "examResult_fragment"
 private const val Tag_myProfile = "myProfile_fragment"
 private lateinit var binding: ActivityMainBinding
 
@@ -22,7 +24,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setFragment(Tag_learning, LearningFragment())
+        //setFragment(Tag_learning, LearningFragment())
+        setFragment(Tag_examResult, ExamResultFragment())
         binding.mainNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.learingFragment -> setFragment(Tag_learning, LearningFragment())
@@ -44,6 +47,7 @@ class MainActivity : AppCompatActivity() {
         val learning = manager.findFragmentByTag(Tag_learning)
         val solving = manager.findFragmentByTag(Tag_solving)
        // val review = manager.findFragmentByTag(Tag_review)
+        val examResult = manager.findFragmentByTag(Tag_examResult)
         val myProfile = manager.findFragmentByTag(Tag_myProfile)
 
         if (learning != null) {
@@ -60,6 +64,14 @@ class MainActivity : AppCompatActivity() {
                 fragTransaction.hide(solving)
             }
         }
+        if (examResult != null) {
+            if (tag == Tag_examResult) {
+                fragTransaction.show(examResult)
+            } else {
+                fragTransaction.hide(examResult)
+            }
+        }
+
 //        if (review != null) {
 //            if (tag == Tag_review) {
 //                fragTransaction.show(review)
