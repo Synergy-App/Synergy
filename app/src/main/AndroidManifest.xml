@@ -47,23 +47,57 @@
 
         <!-- 화면구성 -->
         <activity
+            android:name=".edu_space.screen_layout.ScreenHomeActivity"
+            android:exported="true"> <!-- 화면구성 | 홈화면-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".edu_space.screen_layout.ScreenTopBarActivity"
+            android:exported="false"/> <!-- 화면구성 | 상단바 내린화면 -->
+
+        <activity
             android:name=".edu_space.screen_layout.ScreenRecentlyActivity"
-            android:exported="false"/>
+            android:exported="false"/> <!-- 화면구성 | 최근실행한앱목록-->
+
+        <activity
+            android:name=".edu_space.screen_layout.ScreenLockActivity"
+            android:exported="false"/> <!-- 화면구성 | 잠금화면-->
+
+        <activity
+            android:name=".edu_space.screen_layout.ScreenMenuActivity"
+            android:exported="true"> <!-- 화면구성 | 메뉴화면-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".edu_space.screen_layout.ScreenMoveHomeActivity"
+            android:exported="false"/> <!-- 화면구성 | 메뉴에서 홈으로 앱옮긴화면-->
         <activity
             android:name=".edu_space.default_app.todo.DefaultAppBarActivity"
-            android:exported="false" />
+            android:exported="false" /> <!-- 병윤님|화면구성 상단바내린화면-->
+
         <activity
             android:name=".edu_space.default_app.todo.DefaultMenuActivity"
-            android:exported="false" />
+            android:exported="false" /><!-- 병윤님|화면구성 메뉴화면-->
+
         <activity
             android:name=".edu_space.default_app.todo.DefaultAppAddActivity"
-            android:exported="false" />
+            android:exported="false" /><!-- 병윤님|화면구성 메뉴화면에서 홈으로 앱옮긴화면-->
+
         <activity
             android:name=".edu_space.default_app.todo.DefaultLockedScreenActivity"
-            android:exported="false" />
+            android:exported="false" /><!-- 병윤님|화면구성 잠금화면-->
+
         <activity
             android:name=".edu_space.default_app.todo.DefaultHomeActivity"
-            android:exported="false" />
+            android:exported="false" /><!-- 병윤님|화면구성 홈화면-->
+
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageActivity"
             android:exported="false" />
@@ -87,7 +121,8 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="false"/>
+
         <activity
             android:name=".EduSpaceActivity"
             android:exported="false" />
@@ -102,10 +137,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".edu_space.default_app.todo.MenusActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".edu_space.icon_edu.activity.IconDetailActivity"
+            android:exported="false" />
         <activity
             android:name=".edu_space.icon_edu.activity.IconDetailActivity"
             android:exported="false" /><!--1강-->
-        <activity
+
+      <activity
             android:name=".edu_space.move_edu.activity.MoveEduActivity"
             android:exported="false" /><!--2강-->
         <activity
@@ -117,7 +161,12 @@
 
         <activity
             android:name=".edu_space.screen_layout.ScreenLayoutActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".edu_space.default_app.phone.activity.DefaultPhoneActivity"
             android:exported="false" />

@@ -1,6 +1,7 @@
-<!-- Auto layout, variables, and unit scale are not yet supported -->
-<RelativeLayout
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/screenedu_toolbar"
     android:layout_width="match_parent"
     android:layout_height="70dp">
@@ -9,48 +10,59 @@
         android:id="@+id/textViewNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="27dp"
-        android:layout_marginTop="17dp"
         android:text="4:19"
         android:textColor="@color/white"
-        android:textSize="20sp" />
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="27dp"
+        app:layout_constraintVertical_bias="0.2"/>
 
     <ImageView
+        android:id="@+id/battery_icon"
         android:layout_width="21dp"
         android:layout_height="23dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="286dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/ic_wifi_white" />
+        android:src="@drawable/ic_screen_battery_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.4"
+        android:layout_marginEnd="16dp" />
 
     <ImageView
-        android:layout_width="21dp"
-        android:layout_height="23dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="310dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/ic_sound_white" />
-
-    <ImageView
+        android:id="@+id/signal_icon"
         android:layout_width="40dp"
-        android:layout_height="43dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="320dp"
-        android:layout_marginTop="13dp"
-        android:src="@drawable/signal_white" />
+        android:layout_height="40dp"
+        android:src="@drawable/signal_white"
+        app:layout_constraintEnd_toStartOf="@id/battery_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0"
+        android:layout_marginEnd="-8dp" />
+
 
     <ImageView
+        android:id="@+id/wifi_icon"
         android:layout_width="21dp"
         android:layout_height="23dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="350dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/ic_screen_battery_white" />
+        android:src="@drawable/ic_wifi_white"
+        app:layout_constraintEnd_toStartOf="@id/signal_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.4"
+        android:layout_marginEnd="-8dp"  />
 
-</RelativeLayout>
+    <ImageView
+        android:id="@+id/sound_icon"
+        android:layout_width="21dp"
+        android:layout_height="23dp"
+        android:src="@drawable/ic_sound_white"
+        app:layout_constraintEnd_toStartOf="@id/wifi_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.4"
+        android:layout_marginEnd="4dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

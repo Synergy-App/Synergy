@@ -246,7 +246,6 @@ class IconEduAdapter(
                 val layoutParams = itemView.layoutParams
                 layoutParams.height = (boxHeight * displayMetrics.density).toInt()
                 itemView.layoutParams = layoutParams
-
             }
         }
     }

@@ -77,15 +77,14 @@
 
             <Button
                 android:id="@+id/key3"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginStart="32dp"
-                android:text="@string/three"
-                android:textSize="24sp"
-                android:textColor="@color/black"
                 android:background="@drawable/black_circle"
-                style="?android:attr/buttonBarButtonStyle">
-            </Button>
+                android:text="@string/three"
+                android:textColor="@color/black"
+                android:textSize="24sp"></Button>
 
         </LinearLayout>
 

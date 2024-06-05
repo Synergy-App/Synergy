@@ -62,8 +62,9 @@ data class GoogleMailAddCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = 210.0f,
-                    y = 370.0f,
+                    //x = 210.0f,
+                    //y = 370.0f,
+                    target = null,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

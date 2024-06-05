@@ -52,8 +52,9 @@ data class GoogleDefaultInfoCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = 55.0f,
-                    y = 225.0f,
+                    //x = 55.0f,
+                    //y = 225.0f,
+                    target = null,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
@@ -67,8 +68,9 @@ data class GoogleDefaultInfoCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = 150.0f,
-                    y = 225.0f,
+                    //x = 150.0f,
+                    //y = 225.0f,
+                    target = null,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
@@ -82,8 +84,9 @@ data class GoogleDefaultInfoCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = 250.0f,
-                    y = 225.0f,
+                    //x = 250.0f,
+                    //y = 225.0f,
+                    target = null,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
@@ -97,8 +100,9 @@ data class GoogleDefaultInfoCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = 70.0f,
-                    y = 305.0f,
+                    //x = 70.0f,
+                    //y = 305.0f,
+                    target = null,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
@@ -112,8 +116,9 @@ data class GoogleDefaultInfoCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = 270.0f,
-                    y = 425.0f,
+                    //x = 270.0f,
+                    //y = 425.0f,
+                    target = null,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
