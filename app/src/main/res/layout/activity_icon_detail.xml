@@ -1,146 +1,143 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgColor1">
 
+    <View
+        android:id="@+id/icon_green"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/eduColor1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintDimensionRatio="H,12:6" />
+
     <TextView
-        android:id="@+id/textView177"
+        android:id="@+id/iconedu_tool"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="android:background=&quot;@null" />
+        android:fontFamily="@font/pretendard_semibold"
+        android:text="2강 용어사전"
+        android:textColor="@color/white"
+        android:paddingTop="19dp"
+        android:paddingStart="24dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="0dp"
-        android:orientation="vertical">
+    <TextView
+        android:id="@+id/iconedu_tool_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/pretendard_semibold"
+        android:text="모르는 용어에 대해 학습해보세요."
+        android:textColor="@color/white"
+        android:alpha="0.90"
+        android:letterSpacing="-0.01"
+        android:paddingStart="24dp"
+        android:paddingTop="6dp"
+        app:layout_constraintTop_toBottomOf="@id/iconedu_tool"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+    <ImageView
+        android:id="@+id/searchIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingStart="24dp"
+        android:layout_marginEnd="0dp"
+        android:paddingEnd="24dp"
+        android:src="@drawable/search_bar"
+        app:layout_constraintTop_toBottomOf="@id/iconedu_tool_2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="7dp"
+        android:src="@drawable/ic_search_black_24dp"
+        app:layout_constraintStart_toStartOf="@id/searchIcon"
+        app:layout_constraintTop_toTopOf="@id/searchIcon" />
+
+    <EditText
+        android:id="@+id/search_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="7dp"
+        android:background="@null"
+        android:fontFamily="@font/pretendard_regular"
+        android:hint="검색해주세요"
+        android:textColor="#B3000000"
+        app:layout_constraintStart_toStartOf="@id/searchIcon"
+        app:layout_constraintTop_toTopOf="@id/searchIcon" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rounded_bg_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/round_corner_white_2"
+        app:layout_constraintWidth_percent="0.90"
+        app:layout_constraintHeight_percent="0.65"
+        app:layout_constraintTop_toBottomOf="@id/icon_green"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.1"
+        android:layout_marginTop="7dp">
+
+        <TextView
+            android:id="@+id/icon_tv_2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <View
-                android:id="@+id/icon_green"
-                android:layout_width="match_parent"
-                android:layout_height="170dp"
-                android:background="@color/eduColor1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/iconedu_tool"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/pretendard_semibold"
-                android:paddingStart="24dp"
-                android:paddingTop="19dp"
-                android:text="2강 용어사전"
-                android:textColor="@color/white"
-                android:textSize="28sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/pretendard_semibold"
+            android:letterSpacing="-0.05"
+            android:text="와이파이(WIFI)"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
 
-                />
+        <ImageView
+            android:id="@+id/icon_detail_iv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/icon_tv_2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.4"
+            app:layout_constraintHeight_percent="0.3" />
 
-            <TextView
-                android:id="@+id/iconedu_tool_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/pretendard_semibold"
-                android:letterSpacing="-0.01"
-                android:paddingStart="24dp"
-                android:paddingTop="6dp"
-                android:text="모르는 용어에 대해 학습해보세요."
-                android:textColor="#E1E1E1"
-                android:textSize="22sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iconedu_tool" />
+        <!--원형 넣고 싶으면 이거 바로 위 코드에 넣기 android:background="@drawable/ic_basic_circle"-->
 
-            <ImageView
-                android:id="@+id/searchIcon"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingStart="24dp"
-                android:paddingEnd="24dp"
-                android:src="@drawable/search_bar"
-                app:layout_constraintStart_toStartOf="@id/iconedu_tool_2"
-                app:layout_constraintTop_toBottomOf="@id/iconedu_tool_2" />
 
-            <ImageView
-                android:layout_width="26dp"
-                android:layout_height="26dp"
-                android:layout_marginStart="34dp"
-                android:layout_marginTop="7dp"
-                android:src="@drawable/ic_search_black_24dp"
-                app:layout_constraintStart_toStartOf="@id/searchIcon"
-                app:layout_constraintTop_toTopOf="@id/searchIcon" />
-
-            <EditText
-                android:id="@+id/search_edit_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="64dp"
-                android:layout_marginTop="7dp"
-                android:background="@null"
-                android:fontFamily="@font/pretendard_regular"
-                android:hint="검색해주세요"
-                android:textColor="#B3000000"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@id/searchIcon"
-                app:layout_constraintTop_toTopOf="@id/searchIcon" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <LinearLayout
-            android:id="@+id/itemView"
-            android:layout_width="match_parent"
-            android:layout_height="550dp"
-            android:layout_margin="24dp"
-            android:background="@drawable/round_corner_white_2"
-            android:baselineAligned="false"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/icon_tv_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/pretendard_semibold"
-                android:letterSpacing="-0.05"
-                android:text="와이파이(WIFI)"
-                android:textColor="@color/black"
-                android:textSize="36dp" />
-
-            <ImageView
-                android:id="@+id/icon_detail_iv"
-                android:layout_width="147dp"
-                android:layout_height="147dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/light_grey"
-                app:layout_constraintTop_toBottomOf="@id/icon_tv_2" />
-
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/icon_detail_iv"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@color/bgColor3"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="10dp"
+            app:layout_constraintWidth_percent="0.938"
+            app:layout_constraintHeight_percent="0.5">
 
             <TextView
                 android:id="@+id/another_icon_iv"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:background="@color/bgColor3"
-                android:fontFamily="@font/pretendard_regular"
-                android:letterSpacing="-0.03"
-                android:padding="10dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/pretendard_medium"
+                android:padding="8dp"
                 android:text="text"
-                android:textColor="@color/black"
-                android:textSize="30sp" />
-
-
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+                android:textColor="@color/black" />
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

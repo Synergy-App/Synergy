@@ -3,32 +3,35 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="24dp"
-    android:layout_marginBottom="8dp">
+    android:layout_marginBottom="18dp">
 
     <LinearLayout
         android:id="@+id/itemView"
         android:layout_width="match_parent"
-        android:layout_height="108dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="@drawable/round_corner_white"
-        android:layout_gravity="center_vertical">
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="24dp"
+      >
 
         <ImageView
             android:id="@+id/icon_iv"
-            android:layout_width="91dp"
-            android:layout_height="91dp"
-            android:layout_gravity="center" />
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"/>
 
         <TextView
             android:id="@+id/icon_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:paddingLeft="33dp"
-            android:textSize="32dp"
+            android:paddingLeft="20dp"
             android:fontFamily="@font/pretendard_semibold"
-            android:text="음량 조절"/>
+            android:text="음량 조절"
+            android:textColor="#333333"
+           />
     </LinearLayout>
 
     <com.sungkyul.synergy.utils.GalaxyButton

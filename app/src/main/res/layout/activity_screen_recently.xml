@@ -37,7 +37,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/rounded_bg_layout"
         android:translationX="-100dp"
-        android:layout_marginBottom="70dp"/>
+        app:layout_constraintVertical_bias="0.1"
+        android:layout_marginTop="82dp"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/rounded_bg_layout"
@@ -280,7 +281,7 @@
             android:id="@+id/ic_call_image"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:src="@drawable/ic_call"
+            android:src="@drawable/phone_call"
             android:layout_marginTop="2dp"
             app:layout_constraintTop_toBottomOf="@id/btn_0"
             app:layout_constraintStart_toStartOf="parent"
@@ -297,7 +298,7 @@
             android:textStyle="bold"
             android:layout_marginTop="0dp"
             app:layout_constraintWidth_percent="0.3"
-            app:layout_constraintTop_toBottomOf="@id/ic_call_image"
+            app:layout_constraintBottom_toBottomOf="@id/rounded_bg_layout"
             app:layout_constraintStart_toStartOf="parent"/>
 
         <TextView
@@ -310,7 +311,7 @@
             android:textColor="#999999"
             android:layout_marginTop="0dp"
             app:layout_constraintWidth_percent="0.3"
-            app:layout_constraintTop_toBottomOf="@id/ic_call_image"
+            app:layout_constraintBottom_toBottomOf="@id/rounded_bg_layout"
             app:layout_constraintStart_toEndOf="@id/keypad_text"
             app:layout_constraintEnd_toStartOf="@id/contact_text"/>
 
@@ -324,7 +325,7 @@
             android:textColor="#999999"
             android:layout_marginTop="0dp"
             app:layout_constraintWidth_percent="0.3"
-            app:layout_constraintTop_toBottomOf="@id/ic_call_image"
+            app:layout_constraintBottom_toBottomOf="@id/rounded_bg_layout"
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <View
@@ -334,7 +335,8 @@
             app:layout_constraintWidth_percent="0.15"
             app:layout_constraintTop_toBottomOf="@id/keypad_text"
             app:layout_constraintStart_toStartOf="@id/keypad_text"
-            app:layout_constraintEnd_toEndOf="@id/keypad_text"/>
+            app:layout_constraintEnd_toEndOf="@id/keypad_text"
+            android:layout_marginTop="0dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
