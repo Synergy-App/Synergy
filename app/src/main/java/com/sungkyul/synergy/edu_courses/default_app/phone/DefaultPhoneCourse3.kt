@@ -57,8 +57,9 @@ data class DefaultPhoneCourse3(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = 190.0f,
-                    y = 300.0f,
+                    //x = 190.0f,
+                    //y = 300.0f,
+                    target = null,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

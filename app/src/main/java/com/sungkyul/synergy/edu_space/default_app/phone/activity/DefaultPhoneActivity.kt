@@ -42,7 +42,7 @@ class DefaultPhoneActivity : AppCompatActivity() {
         // 교육을 정의해보자!
         binding.eduScreen.post {
             if(intent.getStringExtra("from") == null) {
-                binding.eduScreen.course = DefaultPhoneCourse1(binding.eduScreen)
+                binding.eduScreen.course = DefaultPhoneCourse1(binding.eduScreen, this)
             }
             if(intent.getStringExtra("from") == "call") {
                 binding.eduScreen.course = DefaultPhoneCourse2(binding.eduScreen)

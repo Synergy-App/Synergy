@@ -101,8 +101,9 @@ data class GoogleMailCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = 25.0f,
-                    y = 335.0f,
+                    //x = 25.0f,
+                    //y = 335.0f,
+                    target = null,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
@@ -114,8 +115,9 @@ data class GoogleMailCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = 135.0f,
-                    y = 435.0f,
+                    //x = 135.0f,
+                    //y = 435.0f,
+                    target = null,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
@@ -127,8 +129,9 @@ data class GoogleMailCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = 270.0f,
-                    y = 555.0f,
+                    //x = 270.0f,
+                    //y = 555.0f,
+                    target = null,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

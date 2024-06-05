@@ -60,8 +60,9 @@ data class GoogleMainCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = width-60.0f,
-                    y = 50.0f,
+                    //x = width-60.0f,
+                    //y = 50.0f,
+                    target = null,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

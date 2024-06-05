@@ -2,6 +2,7 @@ package com.sungkyul.synergy.utils.edu
 
 import android.animation.AnimatorSet
 import android.content.Context
+import android.view.View
 import android.widget.ImageView
 import com.sungkyul.synergy.R
 
@@ -78,8 +79,7 @@ data class EduAction(
 data class EduHand(
     var id: String,
     var source: Int = R.drawable.hand,
-    var x: Float = 0.0f,
-    var y: Float = 0.0f,
+    var target: View?,
     var width: Float = 50.0f,
     var height: Float = 75.0f,
     var rotation: Float = 0.0f,

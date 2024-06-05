@@ -52,8 +52,9 @@ data class GoogleMakeCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = 150.0f,
-                    y = 200.0f,
+                    //x = 150.0f,
+                    //y = 200.0f,
+                    target = null,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
@@ -67,8 +68,9 @@ data class GoogleMakeCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = 150.0f,
-                    y = 270.0f,
+                    //x = 150.0f,
+                    //y = 270.0f,
+                    target = null,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
@@ -82,8 +84,9 @@ data class GoogleMakeCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = 250.0f,
-                    y = 380.0f,
+                    //x = 250.0f,
+                    //y = 380.0f,
+                    target = null,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
