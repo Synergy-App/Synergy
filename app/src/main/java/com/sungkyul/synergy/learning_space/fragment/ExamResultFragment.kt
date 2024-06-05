@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.learning_space.activity
+package com.sungkyul.synergy.learning_space.fragment
 
 import android.annotation.SuppressLint
 import android.content.Intent

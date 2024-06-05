@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.sungkyul.synergy.databinding.ActivityMainBinding
-import com.sungkyul.synergy.learning_space.activity.ExamResultListActivity
+import com.sungkyul.synergy.learning_space.fragment.ExamResultFragment
 
 
 /** 시너지 앱 메인 네비게이션 바 + fragment */
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         //setFragment(Tag_learning, LearningFragment())
-        //setFragment(Tag_examResult, ExamResultFragment())
+        setFragment(Tag_examResult, ExamResultFragment())
         binding.mainNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.learingFragment -> setFragment(Tag_learning, LearningFragment())
