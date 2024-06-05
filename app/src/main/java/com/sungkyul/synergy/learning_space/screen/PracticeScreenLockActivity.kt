@@ -7,7 +7,9 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.MotionEvent
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityExamStartBinding
@@ -24,11 +26,61 @@ class PracticeScreenLockActivity : AppCompatActivity() {
     private var remainingTimeInMillis: Long = 10000 // 초기 카운트 다운 시간 (10초)
     private var pausedTimeInMillis: Long = 0 // 타이머가 일시정지된 시간
 
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPracticeScreenLockPracticeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // 하단바 숨기기 설정
+        hideSystemUI()
+
+        lockIcon = findViewById(R.id.lock_icon)
+
+        lockIcon.setOnTouchListener { _, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    startY = event.rawY
+                    true
+                }
+
+                MotionEvent.ACTION_MOVE -> {
+                    val endY = event.rawY
+                    if (Math.abs(endY - startY) > lockIcon.height / 2) { // 드래그가 아이콘 크기의 절반 이상일 때
+                        showHomeScreen()
+                        true
+                    } else {
+                        false
+                    }
+                }
+
+                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                    // 터치 이벤트가 끝날 때
+                    startY = 0f
+                    false
+                }
+
+                else -> false
+            }
+        }
+    }
+
+    private fun showHomeScreen() {
+        val intent = Intent(this, PracticeScreenLock2Activity::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.scale_up_center, R.anim.fade_out)
+    }
+
+    private fun hideSystemUI() {
+        window.decorView.systemUiVisibility = (
+                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                        or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        or View.SYSTEM_UI_FLAG_FULLSCREEN
+                )
 
         /**타이머 멈추고 실행*/
         // 타이머 초기화
@@ -93,70 +145,35 @@ class PracticeScreenLockActivity : AppCompatActivity() {
 
     @SuppressLint("ClickableViewAccessibility")
     private fun showProblemDialog() {
-        // 다이얼로그 생성
         val dialogBuilder = AlertDialog.Builder(this)
-        dialogBuilder.setTitle("")
-            .setMessage("주어진 시간내에 잠금화면을 풀어 홈화면으로 이동하시오.")
-            .setPositiveButton("확인") { dialog, _ ->
-                dialog.dismiss() // 다이얼로그 닫기
-                // 다이얼로그가 닫힐 때 타이머 다시 시작
-                startTimer(remainingTimeInMillis)
-            }
-        val dialog = dialogBuilder.create()
-        dialog.show() // 다이얼로그 보이기
+
+        // 커스텀 레이아웃을 설정하기 위한 레이아웃 인플레이터
+        val inflater = this.layoutInflater
+        val dialogView = inflater.inflate(R.layout.dialoglayout, null)
+
+        dialogBuilder.setView(dialogView)
+
+        val alertDialog = dialogBuilder.create()
+
+        // 다이얼로그 메시지 텍스트뷰 설정
+        val numberTextView = dialogView.findViewById<TextView>(R.id.dialogNumber)
+        numberTextView.text = "문제 2."
+
+        val messageTextView = dialogView.findViewById<TextView>(R.id.dialogMessage)
+        messageTextView.text = "잠금화면을 풀어 홈화면으로 이동하시오."
+        messageTextView.textSize = 20f // 글씨 크기 설정
+
+        // 확인 버튼 설정
+        val confirmButton = dialogView.findViewById<Button>(R.id.confirmButton)
+        confirmButton.setOnClickListener {
+            alertDialog.dismiss() // 다이얼로그 닫기
+            startTimer(remainingTimeInMillis) // 타이머 다시 시작
+        }
+
+        alertDialog.show()
 
         // 다이얼로그가 나타나면 타이머 멈춤
         timer.cancel()
         isTimerRunning = false
-
-
-        // 하단바 숨기기 설정
-        hideSystemUI()
-
-        lockIcon = findViewById(R.id.lock_icon)
-
-        lockIcon.setOnTouchListener { _, event ->
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    startY = event.rawY
-                    true
-                }
-
-                MotionEvent.ACTION_MOVE -> {
-                    val endY = event.rawY
-                    if (Math.abs(endY - startY) > lockIcon.height / 2) { // 드래그가 아이콘 크기의 절반 이상일 때
-                        showHomeScreen()
-                        true
-                    } else {
-                        false
-                    }
-                }
-
-                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
-                    // 터치 이벤트가 끝날 때
-                    startY = 0f
-                    false
-                }
-
-                else -> false
-            }
-        }
-    }
-
-    private fun showHomeScreen() {
-        val intent = Intent(this, PracticeScreenLock2Activity::class.java)
-        startActivity(intent)
-        overridePendingTransition(R.anim.scale_up_center, R.anim.fade_out)
-    }
-
-    private fun hideSystemUI() {
-        window.decorView.systemUiVisibility = (
-                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                        or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                        or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                        or View.SYSTEM_UI_FLAG_FULLSCREEN
-                )
     }
 }
