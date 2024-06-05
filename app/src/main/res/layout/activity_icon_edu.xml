@@ -51,7 +51,6 @@
                 android:text="모르는 용어에 대해 학습해보세요."
                 android:textColor="@color/white"
                 android:alpha="0.90"
-                android:textColor="#E1E1E1"
                 android:letterSpacing="-0.01"
                 app:layout_constraintTop_toBottomOf="@id/iconedu_tool"
                 app:layout_constraintStart_toStartOf="parent"

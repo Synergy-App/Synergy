@@ -8,13 +8,13 @@
 
     <View
         android:id="@+id/icon_green"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/eduColor1"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintDimensionRatio="H,12:5" />
+        app:layout_constraintDimensionRatio="H,12:6" />
 
     <TextView
         android:id="@+id/iconedu_tool"
@@ -109,12 +109,13 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/ic_basic_circle"
             app:layout_constraintTop_toBottomOf="@id/icon_tv_2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintWidth_percent="0.4"
             app:layout_constraintHeight_percent="0.3" />
+
+        <!--원형 넣고 싶으면 이거 바로 위 코드에 넣기 android:background="@drawable/ic_basic_circle"-->
 
 
         <ScrollView
@@ -134,7 +135,6 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/pretendard_medium"
-                android:letterSpacing="-0.03"
                 android:padding="8dp"
                 android:text="text"
                 android:textColor="@color/black" />
