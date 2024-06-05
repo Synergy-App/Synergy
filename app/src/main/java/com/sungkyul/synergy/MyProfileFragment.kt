@@ -1,16 +1,18 @@
+
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import com.sungkyul.synergy.LoginActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.FragmentMyProfileBinding
 import com.sungkyul.synergy.my_profile.CheckMyResultActivity
 import com.sungkyul.synergy.my_profile.MyExamResultActivity
-
-// Add other necessary imports
 
 class MyProfileFragment : Fragment() {
 
@@ -38,5 +40,11 @@ class MyProfileFragment : Fragment() {
             val intent = Intent(requireActivity(), CheckMyResultActivity::class.java)
             startActivity(intent)
         }
+
+        val sharedPreferences =
+            requireContext().getSharedPreferences("SynergyPrefs", Context.MODE_PRIVATE)
+        val nickname = sharedPreferences.getString("Nickname", "사용자")
+
+        binding.textViewName.text = nickname
     }
 }

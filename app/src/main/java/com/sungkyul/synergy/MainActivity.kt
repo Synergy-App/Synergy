@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.sungkyul.synergy.databinding.ActivityMainBinding
-
+import com.sungkyul.synergy.my_profile.Time
 
 /** 시너지 앱 메인 네비게이션 바 + fragment */
 
@@ -21,6 +21,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Start the time counter
+        Time.startTimeCounter()
 
         setFragment(Tag_learning, LearningFragment())
         binding.mainNavigationView.setOnItemSelectedListener { item ->
@@ -39,11 +42,10 @@ class MainActivity : AppCompatActivity() {
         val fragTransaction = manager.beginTransaction()
         if (manager.findFragmentByTag(tag) == null) {
             fragTransaction.add(R.id.mainMainFrameLayout, fragment, tag)
-
         }
         val learning = manager.findFragmentByTag(Tag_learning)
         val solving = manager.findFragmentByTag(Tag_solving)
-       // val review = manager.findFragmentByTag(Tag_review)
+        // val review = manager.findFragmentByTag(Tag_review)
         val myProfile = manager.findFragmentByTag(Tag_myProfile)
 
         if (learning != null) {
@@ -60,13 +62,13 @@ class MainActivity : AppCompatActivity() {
                 fragTransaction.hide(solving)
             }
         }
-//        if (review != null) {
-//            if (tag == Tag_review) {
-//                fragTransaction.show(review)
-//            } else {
-//                fragTransaction.hide(review)
-//            }
-//        }
+        // if (review != null) {
+        //     if (tag == Tag_review) {
+        //         fragTransaction.show(review)
+        //     } else {
+        //         fragTransaction.hide(review)
+        //     }
+        // }
         if (myProfile != null) {
             if (tag == Tag_myProfile) {
                 fragTransaction.show(myProfile)
@@ -76,4 +78,5 @@ class MainActivity : AppCompatActivity() {
         }
         fragTransaction.commitAllowingStateLoss()
     }
+
 }

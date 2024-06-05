@@ -3,11 +3,13 @@ package com.sungkyul.synergy.backend.auth
 import com.sungkyul.synergy.backend.ApiResponse
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface AuthAPI {
     @POST("user/signup")
-    fun signup(@Body requestBody: SignUpBody): Call<ApiResponse<Nothing>>
+    suspend fun signup(@Body requestBody: SignUpBody): Call<ApiResponse<Nothing>>
 
     @POST("user/check-id")
     fun checkId(@Body requestBody: CheckIdBody): Call<ApiResponse<CheckResult>>
@@ -18,7 +20,6 @@ interface AuthAPI {
     @POST("user/signin")
     fun signin(@Body requestBody: SignInBody): Call<ApiResponse<SignInResult>>
 
-
     @POST("user/find-id")
     fun findIdByPhone(@Body requestBody: FindIdBody): Call<ApiResponse<FindIdResult>>
 
@@ -28,5 +29,6 @@ interface AuthAPI {
     @POST("user/change-password")
     fun changePassword(@Body requestBody: ChangePasswordBody): Call<ApiResponse<ChangePasswordResult>>
 
-
+/*    @GET("user/info")
+    fun getUserInfo(@Header("Authorization") token: String): Call<ApiResponse<UserInfo>>*/
 }
