@@ -16,7 +16,8 @@ class BasicEduMainActivity : AppCompatActivity() {
         val wordDicButton = findViewById<Button>(R.id.word_dic_btn)
 
         basicMoveButton.setOnClickListener {
-            // 기본 동작 교육 버튼 클릭 이벤트 처리
+
+        // 기본 동작 교육 버튼 클릭 이벤트 처리
         }
 
         wordDicButton.setOnClickListener {

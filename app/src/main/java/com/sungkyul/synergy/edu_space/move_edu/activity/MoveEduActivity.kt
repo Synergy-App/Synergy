@@ -1,8 +1,10 @@
 package com.sungkyul.synergy.edu_space.move_edu.activity
 
+import android.graphics.Point
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.DisplayMetrics
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.ui.input.pointer.PointerEventType.Companion.Move
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,16 +18,29 @@ import com.sungkyul.synergy.edu_space.move_edu.data.Move
 class MoveEduActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMoveEduBinding
     private lateinit var moveAdapter: MoveEduAdapter // MoveEduAdapter에 해당하는 부분입니다.
+    private var standardSize_X = 0
+    private var standardSize_Y = 0
+    private var density = 0f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMoveEduBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // 화면의 기준 사이즈를 계산
+        getStandardSize()
+
+        // 텍스트 크기를 기준 사이즈를 이용해 설정
+        binding.iconeduTool.textSize = (standardSize_X / 12).toFloat()
+        binding.iconeduTool2.textSize = (standardSize_X / 20).toFloat()
+        binding.searchEditText.textSize = (standardSize_X / 20).toFloat()
+
         val recyclerView: RecyclerView = binding.moveRv // XML에서 정의한 RecyclerView의 ID를 가져옵니다.
 
         // RecyclerView에 레이아웃 매니저 설정
         recyclerView.layoutManager = LinearLayoutManager(this) // LinearLayoutManager 또는 필요한 레이아웃 매니저를 사용합니다.
+
+
 
         val iconSearchDict = listOf(
             Pair(R.drawable.ic_move_touch, "터치"),
@@ -41,7 +56,7 @@ class MoveEduActivity : AppCompatActivity() {
             moveList.add(Move(i.first, i.second))
         }
 
-        moveAdapter = MoveEduAdapter(this, moveList) // 여기에 생성한 아이템 리스트를 넣어줍니다.
+        moveAdapter = MoveEduAdapter(this, moveList,  standardSize_X) // 여기에 생성한 아이템 리스트를 넣어줍니다.
         recyclerView.adapter = moveAdapter
 
         //검색창 기능
@@ -73,5 +88,23 @@ class MoveEduActivity : AppCompatActivity() {
             override fun afterTextChanged(s: Editable?) {
             }
         })
+    }
+
+    // 디스플레이 사이즈를 반환하는 메서드
+    private fun getScreenSize(): Point {
+        val display = windowManager.defaultDisplay
+        val size = Point()
+        display.getSize(size)
+        return size
+    }
+
+    // 기기의 해상도와 밀도를 기준으로 기준 사이즈를 계산하는 메서드
+    private fun getStandardSize() {
+        val screenSize = getScreenSize()
+        val displayMetrics: DisplayMetrics = resources.displayMetrics
+        density = displayMetrics.density
+
+        standardSize_X = (screenSize.x / density).toInt()
+        standardSize_Y = (screenSize.y / density).toInt()
     }
 }
