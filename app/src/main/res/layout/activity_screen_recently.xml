@@ -391,10 +391,12 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/ic_phone"
-        android:layout_marginTop="18dp"
-        app:layout_constraintTop_toBottomOf="@id/rounded_edit_text"
+        app:layout_constraintBottom_toTopOf="@id/rounded_bg_layout"
+        app:layout_constraintTop_toTopOf="@id/rounded_bg_layout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0" />
+
 
     <ImageView
         android:id="@+id/icon_image_1"
