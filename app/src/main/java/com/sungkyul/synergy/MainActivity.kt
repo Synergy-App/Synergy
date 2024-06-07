@@ -19,9 +19,10 @@ private const val Tag_solving = "solving_fragment"
 private const val Tag_review = "review_fragment"
 private const val Tag_examResult = "examResult_fragment"
 private const val Tag_myProfile = "myProfile_fragment"
-private lateinit var binding: ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+
 
     private var backPressedOnce = false
     private val backPressHandler = Handler(Looper.getMainLooper())

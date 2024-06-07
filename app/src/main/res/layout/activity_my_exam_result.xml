@@ -7,41 +7,47 @@
     android:background="#F5F5F5"
     tools:context=".my_profile.MyExamResultActivity">
 
-        <LinearLayout
-            android:id="@+id/headerLayout"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:orientation="vertical"
-            android:background="@color/myColor1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:ignore="MissingConstraints">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="29dp"
-                android:layout_marginTop="12dp"
-                android:fontFamily="@font/pretendard_extrabold"
-                android:text="내 공간"
-                android:textColor="@color/white"
-                android:textSize="32dp" />
+    <ImageView
+        android:id="@+id/headerImage"
+        android:layout_width="0dp"
+        android:layout_height="112dp"
+        android:background="#7272BA"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="29dp"
-                android:fontFamily="@font/pretendard_extralight"
-                android:text="자신의 실력을 검증하세요"
-                android:textColor="@color/white"
-                android:textSize="24dp" />
-        </LinearLayout>
+    <TextView
+        android:id="@+id/headerTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="내 공간"
+        android:fontFamily="@font/pretendard_extrabold"
+        android:textColor="@color/white"
+        android:textSize="24dp"
+        app:layout_constraintTop_toTopOf="@id/headerImage"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="17dp"
+        android:layout_marginLeft="39dp" />
 
-        <androidx.recyclerview.widget.RecyclerView
+    <TextView
+        android:id="@+id/headerSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="자신의 실력을 검증하세요."
+        android:fontFamily="@font/pretendard_extralight"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintTop_toBottomOf="@id/headerTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="39dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/headerLayout"
+            app:layout_constraintTop_toBottomOf="@id/headerImage"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
