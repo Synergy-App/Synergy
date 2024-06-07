@@ -2,9 +2,12 @@ package com.sungkyul.synergy
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +22,11 @@ import com.sungkyul.synergy.adapter.EduButtonItem
  * MPAndroidChart라이브러리 나중에 분리해야할듯 */
 
 class LearningFragment : Fragment() {
+
+    private var backPressedOnce = false
+    private val backPressHandler = Handler(Looper.getMainLooper())
+    private val backPressRunnable = Runnable { backPressedOnce = false }
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -76,21 +84,22 @@ class LearningFragment : Fragment() {
 
         // RecyclerView 초기화 및 설정
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerView)
-        val layoutManager = GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
+        val layoutManager =
+            GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = layoutManager
 
         val buttonItemList = listOf(
             EduButtonItem("아이콘", R.drawable.ic_edubotton_icon),
-            EduButtonItem("화면구성",R.drawable.ic_edubutton_screen),
-            EduButtonItem("기본앱",R.drawable.ic_edubutton_default,),
-            EduButtonItem("환경 설정",R.drawable.ic_edubutton_setting,),
-            EduButtonItem("계정 생성",R.drawable.ic_edubutton_account),
-            EduButtonItem("앱 설치",R.drawable.ic_edubutton_download),
-            EduButtonItem("카카오톡",R.drawable.ic_edubutton_kakaotalk),
-            EduButtonItem("네이버",R.drawable.ic_edubutton_naver),
-            EduButtonItem("코레일",R.drawable.ic_edubutton_korail),
-            EduButtonItem("카카오택시",R.drawable.ic_edubutton_kakaotaxi),
-            EduButtonItem("배달의 민족",R.drawable.ic_edubutton_delivery)
+            EduButtonItem("화면구성", R.drawable.ic_edubutton_screen),
+            EduButtonItem("기본앱", R.drawable.ic_edubutton_default,),
+            EduButtonItem("환경 설정", R.drawable.ic_edubutton_setting,),
+            EduButtonItem("계정 생성", R.drawable.ic_edubutton_account),
+            EduButtonItem("앱 설치", R.drawable.ic_edubutton_download),
+            EduButtonItem("카카오톡", R.drawable.ic_edubutton_kakaotalk),
+            EduButtonItem("네이버", R.drawable.ic_edubutton_naver),
+            EduButtonItem("코레일", R.drawable.ic_edubutton_korail),
+            EduButtonItem("카카오택시", R.drawable.ic_edubutton_kakaotaxi),
+            EduButtonItem("배달의 민족", R.drawable.ic_edubutton_delivery)
         )
 
         val adapter = EduButtonAdapter(requireContext(), buttonItemList)
@@ -101,5 +110,22 @@ class LearningFragment : Fragment() {
         }
 
         return view
+    }
+
+    fun handleOnBackPressed(): Boolean {
+        if (backPressedOnce) {
+            activity?.finish()
+            return true
+        }
+
+        this.backPressedOnce = true
+        Toast.makeText(requireContext(), "뒤로가기를 한 번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show()
+        backPressHandler.postDelayed(backPressRunnable, 2000)
+        return true
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        backPressHandler.removeCallbacks(backPressRunnable)
     }
 }
