@@ -33,6 +33,5 @@ class NewScreenPracticeActivity : AppCompatActivity() {
                     cardView.setCardBackgroundColor(Color.WHITE)
                 }
             }
-
     }
 }

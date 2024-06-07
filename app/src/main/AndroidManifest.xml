@@ -20,11 +20,11 @@
         tools:targetApi="31">
         <activity
             android:name=".learning_space.screen.PracticeWebViewActivity"
-            android:exported="true" >
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+            android:exported="false">
+            <!--             <intent-filter>-->
+            <!--             <action android:name="android.intent.action.MAIN" />-->
+            <!--             <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--             </intent-filter>-->
         </activity>
 
         <activity
@@ -50,21 +50,16 @@
         </activity>
         <activity
             android:name=".learning_space.screen.PracticeScreenLockActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".my_profile.CheckMyResultActivity"
-            android:exported="false" /> <!-- <activity -->
-        <!-- android:name=".my_profile.MyExamResultActivity" -->
-        <!-- android:exported="true" /> -->
+            android:exported="false" />
+        <activity
+            android:name=".my_profile.MyExamResultActivity"
+            android:exported="false" />
         <activity
             android:name=".learning_space.NewScreenPracticeActivity"
-            android:exported="false" />
+            android:exported="true"></activity>
         <activity
             android:name=".FindIdPasswordActivity"
             android:exported="false" />
@@ -76,22 +71,10 @@
             android:exported="true" />
         <activity
             android:name=".edu_space.screen_layout.ScreenRecentlyActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".edu_space.screen_layout.ScreenHomeActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".edu_space.screen_layout.ScreenTopBarActivity"
             android:exported="false" />
@@ -100,13 +83,7 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.screen_layout.ScreenMenuActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".edu_space.screen_layout.ScreenMoveHomeActivity"
             android:exported="false" />
@@ -130,13 +107,7 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageChattingActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageSelectActivity"
             android:exported="false" />
@@ -154,7 +125,12 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".EduSpaceActivity"
             android:exported="false" />
@@ -163,13 +139,7 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.icon_edu.activity.IconEduActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".edu_space.default_app.todo.MenusActivity"
             android:exported="false" />
@@ -184,13 +154,7 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.screen_layout.ScreenLayoutActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".edu_space.default_app.phone.activity.DefaultPhoneActivity"
             android:exported="false" />
@@ -214,13 +178,7 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.settingedu2.Setting2FontActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".edu_space.accountedu.GoogleMainActivity"
             android:exported="false" />
@@ -256,13 +214,7 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.appinstall.AppInstallMainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity> <!-- 병윤님 앱 설치 메인 화면 -->
+            android:exported="false" />
         <activity
             android:name=".edu_space.appinstall.AppInstallSearchActivity"
             android:exported="false" />
