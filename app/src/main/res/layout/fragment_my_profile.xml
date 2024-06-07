@@ -83,7 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -101,7 +101,6 @@
                     android:textColor="@color/black"
                     android:textSize="25dp"
                     android:textStyle="bold" />
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -110,6 +109,13 @@
                     android:textSize="25dp"
                     android:textStyle="bold" />
             </LinearLayout>
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_my_charactor"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
