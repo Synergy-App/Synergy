@@ -42,6 +42,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/headerTitle" />
 
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/ic_my_charactor"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/headerImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="0dp"
@@ -109,13 +122,6 @@
                     android:textSize="25dp"
                     android:textStyle="bold" />
             </LinearLayout>
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="35dp"
-                android:src="@drawable/ic_my_charactor"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
