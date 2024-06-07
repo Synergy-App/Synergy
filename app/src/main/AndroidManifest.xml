@@ -33,6 +33,12 @@
             android:name=".learning_space.screen.PracticeWebViewActivity"
             android:exported="false" />
         <activity
+            android:name=".learning_space.intent.LearningDefaultAppActivity"
+            android:exported="false" />
+        <activity
+            android:name=".learning_space.intent.LearningScreenActivity"
+            android:exported="false" />
+        <activity
             android:name=".learning_space.screen.PracticeAppMove2Activity"
             android:exported="false" />
         <activity
