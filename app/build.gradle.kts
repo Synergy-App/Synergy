@@ -57,6 +57,8 @@ android {
 
 dependencies {
     implementation ("io.github.ParkSangGwon:tedpermission-normal:3.3.0")
+    implementation ("com.airbnb.android:lottie:6.0.0")
+
 
     implementation ("com.squareup.retrofit2:converter-gson:2.7.1")
     implementation ("com.google.android.material:material:1.3.0")
