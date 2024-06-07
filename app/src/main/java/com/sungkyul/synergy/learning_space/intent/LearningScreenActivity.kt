@@ -3,6 +3,7 @@ package com.sungkyul.synergy.learning_space.intent
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.sungkyul.synergy.databinding.ActivityExamResultListBinding
 import com.sungkyul.synergy.databinding.ActivityLearningIconBinding
 import com.sungkyul.synergy.learning_space.NewScreenPracticeActivity
 
