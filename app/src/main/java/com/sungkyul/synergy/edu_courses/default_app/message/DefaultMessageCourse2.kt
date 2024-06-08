@@ -82,8 +82,9 @@ data class DefaultMessageCourse2(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = width/2,
-                    y = height-110.0f,
+                    //x = width/2,
+                    //y = height-110.0f,
+                    target = null,
                     rotation = 180.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )
@@ -94,8 +95,9 @@ data class DefaultMessageCourse2(val eduScreen: EduScreen): EduCourse {
             action.id = "click_send_button"
             EduHand(
                 id = "tap",
-                x = 300.0f,
-                y = height-110.0f,
+                //x = 300.0f,
+                //y = height-110.0f,
+                target = null,
                 rotation = 180.0f,
                 gesture = HandGestures.Companion::tapGesture
             )
@@ -148,8 +150,9 @@ data class DefaultMessageCourse2(val eduScreen: EduScreen): EduCourse {
             action.id = "menu_button"
             EduHand(
                 id = "tap",
-                x = 300.0f,
-                y = height-110.0f,
+                //x = 300.0f,
+                //y = height-110.0f,
+                target = null,
                 gesture = HandGestures.Companion::tapGesture
             )
         })

@@ -24,10 +24,12 @@
             <View
                 android:id="@+id/icon_green"
                 android:layout_width="match_parent"
-                android:layout_height="175dp"
+                android:layout_height="0dp"
                 android:background="@color/eduColor1"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintDimensionRatio="H,12:6" />
 
             <TextView
                 android:id="@+id/iconedu_tool"
@@ -35,7 +37,6 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/pretendard_semibold"
                 android:text="2강 용어사전"
-                android:textSize="28sp"
                 android:textColor="@color/white"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -48,8 +49,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/pretendard_semibold"
                 android:text="모르는 용어에 대해 학습해보세요."
-                android:textSize="22sp"
-                android:textColor="#E1E1E1"
+                android:textColor="@color/white"
+                android:alpha="0.90"
                 android:letterSpacing="-0.01"
                 app:layout_constraintTop_toBottomOf="@id/iconedu_tool"
                 app:layout_constraintStart_toStartOf="parent"
@@ -66,11 +67,7 @@
                 android:paddingEnd="24dp"
                 android:src="@drawable/search_bar"
                 app:layout_constraintTop_toBottomOf="@id/iconedu_tool_2"
-                app:layout_constraintStart_toStartOf="parent"
-                />
-
-
-
+                app:layout_constraintStart_toStartOf="parent" />
 
             <ImageView
                 android:layout_width="26dp"
@@ -91,10 +88,8 @@
                 android:fontFamily="@font/pretendard_regular"
                 android:hint="검색해주세요"
                 android:textColor="#B3000000"
-                android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@id/searchIcon"
                 app:layout_constraintTop_toTopOf="@id/searchIcon" />
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -102,7 +97,7 @@
             android:id="@+id/icon_rv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="29dp"/>
+            android:layout_marginTop="15dp"/>
 
     </LinearLayout>
 

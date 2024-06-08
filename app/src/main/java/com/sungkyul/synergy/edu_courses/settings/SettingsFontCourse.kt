@@ -73,8 +73,9 @@ data class SettingsFontCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "drag",
-                    x = 30.0f,
-                    y = 550.0f,
+                    //x = 30.0f,
+                    //y = 550.0f,
+                    target = null,
                     width = 50.0f,
                     height = 75.0f,
                     gesture = HandGestures.Companion::horizontalDragGesture

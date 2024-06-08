@@ -4,8 +4,6 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.content.Context
-import android.view.WindowManager
-import android.view.WindowMetrics
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.ImageView
 

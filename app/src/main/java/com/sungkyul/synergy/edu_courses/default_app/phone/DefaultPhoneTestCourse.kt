@@ -131,7 +131,7 @@ data class DefaultPhoneTestCourse(val eduScreen: EduScreen): EduCourse {
 
             arrow.visibility = false
 
-            hands.add(
+            /*hands.add(
                 EduHand(
                     "touch",
                     R.drawable.hand,
@@ -142,14 +142,14 @@ data class DefaultPhoneTestCourse(val eduScreen: EduScreen): EduCourse {
                     -90.0f,
                     HandGestures.Companion::tapGesture
                 )
-            )
+            )*/
 
             action.id = "click_key_button"
             action.message = "1"
         })
 
         list.add(EduData().apply {
-            hands.add(
+            /*hands.add(
                 EduHand(
                     "touch",
                     R.drawable.hand,
@@ -160,7 +160,7 @@ data class DefaultPhoneTestCourse(val eduScreen: EduScreen): EduCourse {
                     0.0f,
                     HandGestures.Companion::tapGesture
                 )
-            )
+            )*/
 
             action.id = "click_key_button"
             action.message = "2"
