@@ -65,7 +65,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0"
+                    android:text="10"
                     android:textColor="@color/black"
                     android:textSize="25dp"
                     android:textStyle="bold" />
@@ -81,7 +81,6 @@
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/iconStart_btn"
                 android:layout_width="200dp"
                 android:layout_height="75dp"
                 android:layout_gravity="center"
@@ -92,14 +91,16 @@
                 app:cardPreventCornerOverlap="true"
                 app:cardUseCompatPadding="true">
 
-                <TextView
+                <Button
+                    android:id="@+id/iconStartBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:textSize="30dp"
                     android:text="문제풀기"
                     android:textColor="@android:color/white"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:background="@null" />
             </androidx.cardview.widget.CardView>
 
 
@@ -108,5 +109,3 @@
     </LinearLayout>
 
 </LinearLayout>
-
-

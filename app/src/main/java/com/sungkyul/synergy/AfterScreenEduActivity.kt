@@ -162,6 +162,8 @@ class LoginActivity : AppCompatActivity() {
                 putString(PREF_NICKNAME, it.user.nickname)
                 apply()
             }
+            Log.d("LoginActivity", "Token saved: ${it.accessToken}")
+            Log.d("LoginActivity", "Nickname saved: ${it.user.nickname}")
         }
     }
 }
