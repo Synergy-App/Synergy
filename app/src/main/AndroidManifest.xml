@@ -52,7 +52,6 @@
             android:exported="false" />
         <activity
             android:name=".APItestActivity"
-<<<<<<< HEAD
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -60,12 +59,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-=======
-            android:exported="false" />
         <activity
             android:name=".learning_space.screen.PracticeScreenLockActivity"
             android:exported="false" />
->>>>>>> 293aad76b84a128950c81db9d39ef211be16f4fb
         <activity
             android:name=".my_profile.CheckMyResultActivity"
             android:exported="false" />
@@ -84,7 +80,6 @@
         <!-- 아이디찾기/비밀번호변경 화면 -->
         <activity
             android:name=".FindIdPasswordActivity"
-<<<<<<< HEAD
             android:exported="false"/>
 
         <!-- 회원가입 화면 -->
@@ -104,18 +99,9 @@
         </activity>
 
         <!-- 화면구성 -->
-=======
-            android:exported="false" />
-        <activity
-            android:name=".RegisterActivity"
-            android:exported="true" />
-        <activity
-            android:name=".LoginActivity"
-            android:exported="true" />
         <activity
             android:name=".edu_space.screen_layout.ScreenRecentlyActivity"
             android:exported="false" />
->>>>>>> 293aad76b84a128950c81db9d39ef211be16f4fb
         <activity
             android:name=".edu_space.screen_layout.ScreenHomeActivity"
             android:exported="false" />
@@ -136,12 +122,8 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.default_app.todo.DefaultMenuActivity"
-<<<<<<< HEAD
-            android:exported="false" />><!-- 병윤님|화면구성 메뉴화면-->
+            android:exported="false" /><!-- 병윤님|화면구성 메뉴화면-->
 
-=======
-            android:exported="false" />
->>>>>>> 293aad76b84a128950c81db9d39ef211be16f4fb
         <activity
             android:name=".edu_space.default_app.todo.DefaultAppAddActivity"
             android:exported="false" />
@@ -156,31 +138,23 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageChattingActivity"
-<<<<<<< HEAD
+
             android:exported="true"> <!-- 메시지 화면 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".edu_space.default_app.message.activity.DefaultMessageSelectActivity"
-            android:exported="false" /> <!-- 메시지채팅 화면 -->
+        </activity><!-- 메시지채팅 화면 -->
         <!-- 채팅 방법 선택 -->
         <!-- 메시지 화면 -->
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageFristActivity"
             android:exported="false" /> <!-- 메시지채팅 화면 -->
-=======
-            android:exported="false" />
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageSelectActivity"
             android:exported="false" />
-        <activity
-            android:name=".edu_space.default_app.message.activity.DefaultMessageFristActivity"
-            android:exported="false" />
->>>>>>> 293aad76b84a128950c81db9d39ef211be16f4fb
+
         <activity
             android:name=".edu_space.naver.activity.NaverSearchResultActivity"
             android:exported="false" />
@@ -207,14 +181,10 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.icon_edu.activity.IconDetailActivity"
-<<<<<<< HEAD
+
             android:exported="false" />><!--1강-->
 
-      <activity
-=======
-            android:exported="false" />
         <activity
->>>>>>> 293aad76b84a128950c81db9d39ef211be16f4fb
             android:name=".edu_space.move_edu.activity.MoveEduActivity"
             android:exported="false" />
         <activity
@@ -240,26 +210,20 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.settingedu2.Setting2MainActivity"
-<<<<<<< HEAD
+
             android:exported="false" /> <!-- <activity -->
-=======
-            android:exported="false" />
->>>>>>> 293aad76b84a128950c81db9d39ef211be16f4fb
         <activity
             android:name=".edu_space.settingedu2.Setting2DisplayActivity"
             android:exported="false" />
         <activity
             android:name=".edu_space.settingedu2.Setting2FontActivity"
-<<<<<<< HEAD
+
             android:exported="true"> <!-- 계정생성 교육 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity> <!-- 계정생성 -->
-=======
-            android:exported="false" />
->>>>>>> 293aad76b84a128950c81db9d39ef211be16f4fb
         <activity
             android:name=".edu_space.accountedu.GoogleMainActivity"
             android:exported="false" />
@@ -295,7 +259,6 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.appinstall.AppInstallMainActivity"
-<<<<<<< HEAD
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -304,9 +267,6 @@
             </intent-filter>
         </activity> <!-- 병윤님 앱 설치 메인 화면 -->
 
-=======
-            android:exported="false" />
->>>>>>> 293aad76b84a128950c81db9d39ef211be16f4fb
         <activity
             android:name=".edu_space.appinstall.AppInstallSearchActivity"
             android:exported="false" />
