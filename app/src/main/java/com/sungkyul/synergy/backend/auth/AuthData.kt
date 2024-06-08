@@ -2,6 +2,11 @@ package com.sungkyul.synergy.backend.auth
 
 import com.sungkyul.synergy.types.User
 
+
+
+
+
+
 data class SignInBody (
     /** 아이디 */
     val authId: String,

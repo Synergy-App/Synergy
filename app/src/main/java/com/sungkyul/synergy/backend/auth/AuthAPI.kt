@@ -1,13 +1,30 @@
 package com.sungkyul.synergy.backend.auth
 
 import com.sungkyul.synergy.backend.ApiResponse
+import com.sungkyul.synergy.types.ExamAnswerBody
+import com.sungkyul.synergy.types.ExamCheckResult
+import com.sungkyul.synergy.types.ExamListResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface AuthAPI {
+
+    @GET("exam")
+    fun getExamList(): Call<ApiResponse<ExamListResponse>>
+
+
+    @POST("exam/{id}/check")
+    fun checkExamAnswer(
+        @Header("Authorization") token: String,
+        @Path("id") examId: Int,
+        @Body answer: ExamAnswerBody
+    ): Call<ApiResponse<ExamCheckResult>>
+
+
     @POST("user/signup")
     suspend fun signup(@Body requestBody: SignUpBody): Call<ApiResponse<Nothing>>
 
