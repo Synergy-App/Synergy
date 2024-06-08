@@ -9,7 +9,6 @@ import android.view.MotionEvent
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams
 import androidx.recyclerview.widget.RecyclerView
-import com.github.mikephil.charting.utils.Utils.init
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.edu_space.icon_edu.data.Icon
 import com.sungkyul.synergy.edu_space.icon_edu.data.IconInfo
@@ -89,7 +88,7 @@ class IconEduAdapter(
                             "절전 모드" -> IconInfo(
                                 R.drawable.ic_word_subtract,
                                 "절전 모드",
-                                "블필요한 기능을 제한하여 핸드폰 배터리나 에너지 소모를 줄이는 기능"
+                                "불필요한 기능을 제한하여 핸드폰 배터리나 에너지 소모를 줄이는 기능"
                             )
                             "캘린더" -> IconInfo(
                                 R.drawable.ic_word_calender,
@@ -208,8 +207,11 @@ class IconEduAdapter(
                                 "상세 설명이 없습니다."
                             )
                         }
+                        // Intent로 iconList와 currentItemIndex를 전달합니다.
                         val intent = Intent(context, IconDetailActivity::class.java)
                         intent.putExtra("iconInfo", iconInfo)
+                        intent.putExtra("iconList", iconList)
+                        intent.putExtra("currentItemIndex", bindingAdapterPosition)
                         context.startActivity(intent)
                     }
                     MotionEvent.ACTION_CANCEL -> {
