@@ -250,49 +250,6 @@ class NewScreenPracticeActivity : AppCompatActivity() {
     private fun resetOptionColors() {
         optionCardViews.forEach {
             it.setCardBackgroundColor(Color.WHITE)  // Default option color
-            it.setCardBackgroundColor(0x2193F3.toInt())  // White color for default option
-            it.cardElevation = 2f  // Default elevation
-
-import android.content.Intent
-import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import androidx.cardview.widget.CardView
-import com.sungkyul.synergy.R
-import com.sungkyul.synergy.databinding.ActivityExamResultListBinding
-import com.sungkyul.synergy.databinding.ActivityNewScreenPracticeBinding
-import com.sungkyul.synergy.learning_space.activity.ExamProblemActivity
-
-class NewScreenPracticeActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityNewScreenPracticeBinding
-
-    private lateinit var optionButtons: Array<CardView>
-    private val cardViewIds = arrayOf(
-        R.id.choose_option1_btn,
-        R.id.choose_option2_btn,
-        R.id.choose_option3_btn,
-        R.id.choose_option4_btn
-    )
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityNewScreenPracticeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        optionButtons = cardViewIds.map { findViewById<CardView>(it) }.toTypedArray()
-        for (cardView in optionButtons) {
-            cardView.setOnClickListener { selectOption(cardView) }
-        }
-
-        // 백 버튼
-        binding.backBtn.setOnClickListener {
-//            val intent = Intent(this, NewScreenPracticeActivity::class.java)
-//            startActivity(intent)
-        }
-        // 다음 버튼
-        binding.nextBtn.setOnClickListener {
-            val intent = Intent(this, ExamProblemActivity::class.java)
-            startActivity(intent)
         }
     }
 
