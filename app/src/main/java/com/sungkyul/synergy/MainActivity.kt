@@ -8,6 +8,7 @@ import android.os.Looper
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.sungkyul.synergy.com.sungkyul.synergy.learning_space.fragment.ExamSpaceFragment
 import com.sungkyul.synergy.databinding.ActivityMainBinding
 import com.sungkyul.synergy.my_profile.Time
 import com.sungkyul.synergy.learning_space.fragment.ExamResultFragment
@@ -36,9 +37,13 @@ class MainActivity : AppCompatActivity() {
         // Start the time counter
         Time.startTimeCounter()
 
-        setFragment(Tag_learning, LearningFragment())
+        // 실습 공간 프래그먼트로 바꿔치기
+        val examSpaceFragment = ExamSpaceFragment()
+        replaceFragment(examSpaceFragment)
+
         //setFragment(Tag_learning, LearningFragment())
-        setFragment(Tag_examResult, ExamResultFragment())
+        //setFragment(Tag_learning, LearningFragment())
+        //setFragment(Tag_examResult, ExamResultFragment())
         binding.mainNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.learingFragment -> setFragment(Tag_learning, LearningFragment())
@@ -139,5 +144,11 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         backPressHandler.removeCallbacks(backPressRunnable)
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(binding.mainMainFrameLayout.id, fragment)
+            .commit()
     }
 }
