@@ -127,7 +127,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="10dp"
             app:layout_constraintWidth_percent="0.938"
-            app:layout_constraintHeight_percent="0.5">
+            app:layout_constraintHeight_percent="0.48">
 
             <TextView
                 android:id="@+id/another_icon_iv"

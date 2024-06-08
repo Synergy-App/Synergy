@@ -2,16 +2,15 @@ package com.sungkyul.synergy
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.github.mikephil.charting.charts.HorizontalBarChart
-import com.github.mikephil.charting.data.BarData
-import com.github.mikephil.charting.data.BarDataSet
-import com.github.mikephil.charting.data.BarEntry
 import com.sungkyul.synergy.adapter.EduButtonAdapter
 import com.sungkyul.synergy.adapter.EduButtonItem
 
@@ -19,6 +18,11 @@ import com.sungkyul.synergy.adapter.EduButtonItem
  * MPAndroidChart라이브러리 나중에 분리해야할듯 */
 
 class LearningFragment : Fragment() {
+
+    private var backPressedOnce = false
+    private val backPressHandler = Handler(Looper.getMainLooper())
+    private val backPressRunnable = Runnable { backPressedOnce = false }
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,71 +30,72 @@ class LearningFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_learning, container, false)
 
-
-        val barChart: HorizontalBarChart = view.findViewById(R.id.barChart)
-
-        val myStudyTime = 65f // 예시: 1시간 5분을 분 단위로 변환하여 설정
-        val totalStudyTime = 180f // 전체 값 설정(우선 3시간이 최대라고 설정해둠)
-
-        // 전체 막대 설정
-        val totalEntries = ArrayList<BarEntry>()
-        totalEntries.add(BarEntry(0f, totalStudyTime)) // 전체 막대
-
-        val totalBarDataSet = BarDataSet(totalEntries, "Total Study Time")
-        totalBarDataSet.color = requireContext().getColor(R.color.chatColor) // 투명한 색으로 설정하여 숨김
-
-        // 공부한 시간 막대 설정
-        val studyEntries = ArrayList<BarEntry>()
-        studyEntries.add(BarEntry(0f, myStudyTime)) // 공부한 막대
-
-        val studyBarDataSet = BarDataSet(studyEntries, "My Study Time")
-        studyBarDataSet.color = requireContext().getColor(R.color.learnChatColor) // 공부한 막대 색상 설정
-
-        // 데이터 설정
-        val data = BarData(totalBarDataSet, studyBarDataSet)
-        data.barWidth = 0.1f
-
-        // X축 설정
-        val xAxis = barChart.xAxis
-        xAxis.setDrawGridLines(false)
-        xAxis.setDrawAxisLine(false)
-        xAxis.setDrawLabels(false)
-
-        // Y축 설정
-        val leftAxis = barChart.axisLeft
-        leftAxis.setDrawGridLines(false)
-        leftAxis.setDrawLabels(false) // 왼쪽 Y축 텍스트 숨기기
-        leftAxis.axisMinimum = 0f
-
-        val rightAxis = barChart.axisRight
-        rightAxis.setDrawGridLines(false)
-        rightAxis.setDrawAxisLine(false)
-        rightAxis.setDrawLabels(false)
-
-        // 차트 설정
-        barChart.description.isEnabled = false
-        barChart.legend.isEnabled = false
-        barChart.setTouchEnabled(false)
-        barChart.animateY(1000)
-        barChart.data = data
+//
+//        val barChart: HorizontalBarChart = view.findViewById(R.id.barChart)
+//
+//        val myStudyTime = 65f // 예시: 1시간 5분을 분 단위로 변환하여 설정
+//        val totalStudyTime = 180f // 전체 값 설정(우선 3시간이 최대라고 설정해둠)
+//
+//        // 전체 막대 설정
+//        val totalEntries = ArrayList<BarEntry>()
+//        totalEntries.add(BarEntry(0f, totalStudyTime)) // 전체 막대
+//
+//        val totalBarDataSet = BarDataSet(totalEntries, "Total Study Time")
+//        totalBarDataSet.color = requireContext().getColor(R.color.chatColor) // 투명한 색으로 설정하여 숨김
+//
+//        // 공부한 시간 막대 설정
+//        val studyEntries = ArrayList<BarEntry>()
+//        studyEntries.add(BarEntry(0f, myStudyTime)) // 공부한 막대
+//
+//        val studyBarDataSet = BarDataSet(studyEntries, "My Study Time")
+//        studyBarDataSet.color = requireContext().getColor(R.color.learnChatColor) // 공부한 막대 색상 설정
+//
+//        // 데이터 설정
+//        val data = BarData(totalBarDataSet, studyBarDataSet)
+//        data.barWidth = 0.1f
+//
+//        // X축 설정
+//        val xAxis = barChart.xAxis
+//        xAxis.setDrawGridLines(false)
+//        xAxis.setDrawAxisLine(false)
+//        xAxis.setDrawLabels(false)
+//
+//        // Y축 설정
+//        val leftAxis = barChart.axisLeft
+//        leftAxis.setDrawGridLines(false)
+//        leftAxis.setDrawLabels(false) // 왼쪽 Y축 텍스트 숨기기
+//        leftAxis.axisMinimum = 0f
+//
+//        val rightAxis = barChart.axisRight
+//        rightAxis.setDrawGridLines(false)
+//        rightAxis.setDrawAxisLine(false)
+//        rightAxis.setDrawLabels(false)
+//
+//        // 차트 설정
+//        barChart.description.isEnabled = false
+//        barChart.legend.isEnabled = false
+//        barChart.setTouchEnabled(false)
+//        barChart.animateY(1000)
+//        barChart.data = data
 
         // RecyclerView 초기화 및 설정
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerView)
-        val layoutManager = GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
+        val layoutManager =
+            GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = layoutManager
 
         val buttonItemList = listOf(
-            EduButtonItem("아이콘", R.drawable.ic_edubotton_icon),
-            EduButtonItem("화면구성",R.drawable.ic_edubutton_screen),
-            EduButtonItem("기본앱",R.drawable.ic_edubutton_default,),
-            EduButtonItem("환경 설정",R.drawable.ic_edubutton_setting,),
-            EduButtonItem("계정 생성",R.drawable.ic_edubutton_account),
-            EduButtonItem("앱 설치",R.drawable.ic_edubutton_download),
-            EduButtonItem("카카오톡",R.drawable.ic_edubutton_kakaotalk),
-            EduButtonItem("네이버",R.drawable.ic_edubutton_naver),
-            EduButtonItem("코레일",R.drawable.ic_edubutton_korail),
-            EduButtonItem("카카오택시",R.drawable.ic_edubutton_kakaotaxi),
-            EduButtonItem("배달의 민족",R.drawable.ic_edubutton_delivery)
+            EduButtonItem("아이콘", R.drawable.ic_edu_note),
+            EduButtonItem("화면구성", R.drawable.ic_edu_gall),
+            EduButtonItem("기본앱", R.drawable.ic_edu_app2,),
+            EduButtonItem("환경 설정", R.drawable.ic_edubutton_setting,),
+            EduButtonItem("계정 생성", R.drawable.ic_edu_create),
+            EduButtonItem("앱 설치", R.drawable.ic_edubutton_download),
+            EduButtonItem("카카오톡", R.drawable.ic_edubutton_kakaotalk),
+            EduButtonItem("네이버", R.drawable.ic_edubutton_naver),
+            EduButtonItem("코레일", R.drawable.ic_edubutton_korail),
+            EduButtonItem("카카오택시", R.drawable.ic_edubutton_kakaotaxi),
+            EduButtonItem("배달의 민족", R.drawable.ic_edubutton_delivery)
         )
 
         val adapter = EduButtonAdapter(requireContext(), buttonItemList)
@@ -101,5 +106,22 @@ class LearningFragment : Fragment() {
         }
 
         return view
+    }
+
+    fun handleOnBackPressed(): Boolean {
+        if (backPressedOnce) {
+            activity?.finish()
+            return true
+        }
+
+        this.backPressedOnce = true
+        Toast.makeText(requireContext(), "뒤로가기를 한 번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show()
+        backPressHandler.postDelayed(backPressRunnable, 2000)
+        return true
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        backPressHandler.removeCallbacks(backPressRunnable)
     }
 }

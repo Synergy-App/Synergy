@@ -26,44 +26,44 @@ class LearningDeliveryActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        binding.iconStartBtn.setOnClickListener {
-            val intent = Intent(this, BackendTest::class.java)
-            startActivity(intent)
-        }
-        /**백엔드 연결 부분 */
-        // 레트로핏 인스턴스 생성하기
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://172.16.111.213/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        val quizApi = retrofit.create(questionAPI::class.java)
-
-        quizApi.getLearningSpaceInfo().enqueue(object : Callback<List<QuizInfo>> {
-            override fun onResponse(
-                call: Call<List<QuizInfo>>,
-                response: Response<List<QuizInfo>>
-            ) {
-                if (response.isSuccessful && response.body() != null) {
-                    val learningInfo = response.body()!!
-                    if (learningInfo.isNotEmpty()) {
-                        val firstLearningInfo = learningInfo[10]
-                        with(binding) {
-                            learningInfoTv.text = firstLearningInfo.learningInfo
-//                            learningInfoTv2.text = firstLearningInfo.learningInfo
-//                            examNumberTv.text = firstLearningInfo.option1
-//                            levelNumberTv.text = firstLearningInfo.option2
-                        }
-                    } else {
-                        // learningInfo가 비어있을 때 처리
-                    }
-                } else {
-                    // 응답이 실패했을 때 처리
-                }
-            }
-
-            override fun onFailure(call: Call<List<QuizInfo>>, t: Throwable) {
-                // 오류 처리
-            }
-        })
+//        binding.iconStartBtn.setOnClickListener {
+//            val intent = Intent(this, BackendTest::class.java)
+//            startActivity(intent)
+//        }
+//        /**백엔드 연결 부분 */
+//        // 레트로핏 인스턴스 생성하기
+//        val retrofit = Retrofit.Builder()
+//            .baseUrl("http://172.16.111.213/")
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .build()
+//        val quizApi = retrofit.create(questionAPI::class.java)
+//
+//        quizApi.getLearningSpaceInfo().enqueue(object : Callback<List<QuizInfo>> {
+//            override fun onResponse(
+//                call: Call<List<QuizInfo>>,
+//                response: Response<List<QuizInfo>>
+//            ) {
+//                if (response.isSuccessful && response.body() != null) {
+//                    val learningInfo = response.body()!!
+//                    if (learningInfo.isNotEmpty()) {
+//                        val firstLearningInfo = learningInfo[10]
+//                        with(binding) {
+//                            learningInfoTv.text = firstLearningInfo.learningInfo
+////                            learningInfoTv2.text = firstLearningInfo.learningInfo
+////                            examNumberTv.text = firstLearningInfo.option1
+////                            levelNumberTv.text = firstLearningInfo.option2
+//                        }
+//                    } else {
+//                        // learningInfo가 비어있을 때 처리
+//                    }
+//                } else {
+//                    // 응답이 실패했을 때 처리
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<List<QuizInfo>>, t: Throwable) {
+//                // 오류 처리
+//            }
+//        })
     }
 }
