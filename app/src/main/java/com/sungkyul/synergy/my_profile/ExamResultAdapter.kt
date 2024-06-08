@@ -22,7 +22,7 @@ class ExamResultAdapter(private val examResults: List<ExamResult>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExamResultViewHolder {
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_exam_result, parent, false)
+            .inflate(R.layout.item_result_exam, parent, false)
         return ExamResultViewHolder(itemView)
     }
 

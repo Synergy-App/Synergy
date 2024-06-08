@@ -25,11 +25,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="자신의 실력을 검증하세요"
+            android:text="자신의 실력을 검증하세요."
             android:fontFamily="@font/pretendard_extralight"
             android:textColor="@color/white"
-            android:textSize="24dp"
-            android:layout_marginTop="49dp"
+            android:textSize="20dp"
+            android:layout_marginTop="55dp"
             android:layout_marginLeft="39dp"/>
 
         <androidx.recyclerview.widget.RecyclerView

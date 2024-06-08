@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".learning_space.screen.PracticeScreenLock2Activity">
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingHorizontal="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <!-- 타이머를 표시할 TextView -->
+        <TextView
+            android:id="@+id/timerTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:padding="16dp"
+            android:text="00:00"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <!-- 타이머와 텍스트 사이의 공간 -->
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <!-- 타이머 옆에 표시할 텍스트 -->
+        <TextView
+            android:id="@+id/problemText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:padding="16dp"
+            android:text="문제보기"
+            android:textColor="@color/phoneRed"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rootLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/screenedu_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll">
+
+        <include
+            android:id="@+id/include_toolbar"
+            layout="@layout/included_screen_layout_tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <include
+            android:id="@+id/include_navi_bar"
+            layout="@layout/included_screen_layout_navi_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <!-- 첫 번째 투명한 뷰 -->
+        <View
+            android:id="@+id/transparent_view_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="@id/include_navi_bar"
+            app:layout_constraintEnd_toStartOf="@id/transparent_view_2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/include_navi_bar"
+            app:layout_constraintWidth_percent="0.33" />
+
+        <!-- 두 번째 투명한 뷰 -->
+        <View
+            android:id="@+id/transparent_view_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="@id/include_navi_bar"
+            app:layout_constraintEnd_toStartOf="@id/transparent_view_3"
+            app:layout_constraintStart_toEndOf="@id/transparent_view_1"
+            app:layout_constraintTop_toTopOf="@id/include_navi_bar"
+            app:layout_constraintWidth_percent="0.34" />
+
+        <!-- 세 번째 투명한 뷰 -->
+        <View
+            android:id="@+id/transparent_view_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="@id/include_navi_bar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/transparent_view_2"
+            app:layout_constraintTop_toTopOf="@id/include_navi_bar"
+            app:layout_constraintWidth_percent="0.33" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

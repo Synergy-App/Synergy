@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".learning_space.screen.PracticeWebViewActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="106dp"
+            android:background="#D25A5A"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/learning_info_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="후면 카메라로 사진을 찍고 앨범에서 확인하세요. "
+                android:textColor="@color/white"
+                android:textSize="26dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+        <!-- 여기에 웹뷰 추가 -->
+        <WebView
+            android:id="@+id/webView"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <include
+            android:id="@+id/practice_nav_layout"
+            layout="@layout/practice_nav_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- 첫 번째 투명한 뷰 -->
+        <View
+            android:id="@+id/transparent_view_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/transparent_view_2"
+            app:layout_constraintTop_toTopOf="@id/include_navi_bar"
+            app:layout_constraintBottom_toBottomOf="@id/include_navi_bar"
+            app:layout_constraintWidth_percent="0.33" />
+
+        <!-- 두 번째 투명한 뷰 -->
+        <View
+            android:id="@+id/transparent_view_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintStart_toEndOf="@id/transparent_view_1"
+            app:layout_constraintEnd_toStartOf="@id/transparent_view_3"
+            app:layout_constraintTop_toTopOf="@id/include_navi_bar"
+            app:layout_constraintBottom_toBottomOf="@id/include_navi_bar"
+            app:layout_constraintWidth_percent="0.34" />
+
+        <!-- 세 번째 투명한 뷰 -->
+        <View
+            android:id="@+id/transparent_view_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintStart_toEndOf="@id/transparent_view_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/include_navi_bar"
+            app:layout_constraintBottom_toBottomOf="@id/include_navi_bar"
+            app:layout_constraintWidth_percent="0.33" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

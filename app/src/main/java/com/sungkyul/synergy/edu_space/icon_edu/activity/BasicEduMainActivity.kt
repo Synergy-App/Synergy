@@ -1,10 +1,12 @@
 package com.sungkyul.synergy.edu_space.icon_edu.activity
 
-
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.edu_space.move_edu.activity.MoveEduActivity
+
 
 class BasicEduMainActivity : AppCompatActivity() {
 
@@ -17,10 +19,14 @@ class BasicEduMainActivity : AppCompatActivity() {
 
         basicMoveButton.setOnClickListener {
             // 기본 동작 교육 버튼 클릭 이벤트 처리
+            val intent = Intent(this, MoveEduActivity::class.java)
+            startActivity(intent)
         }
 
         wordDicButton.setOnClickListener {
             // 용어 사전 버튼 클릭 이벤트 처리
+            val intent = Intent(this, IconEduActivity::class.java)
+            startActivity(intent)
         }
     }
 }

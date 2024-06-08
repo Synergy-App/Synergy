@@ -3,6 +3,9 @@ package com.sungkyul.synergy
 import MyProfileFragment
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.sungkyul.synergy.databinding.ActivityMainBinding
@@ -16,9 +19,15 @@ private const val Tag_solving = "solving_fragment"
 private const val Tag_review = "review_fragment"
 private const val Tag_examResult = "examResult_fragment"
 private const val Tag_myProfile = "myProfile_fragment"
-private lateinit var binding: ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+
+
+    private var backPressedOnce = false
+    private val backPressHandler = Handler(Looper.getMainLooper())
+    private val backPressRunnable = Runnable { backPressedOnce = false }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -100,4 +109,35 @@ class MainActivity : AppCompatActivity() {
         fragTransaction.commitAllowingStateLoss()
     }
 
+    override fun onBackPressed() {
+        val currentFragment: Fragment? = supportFragmentManager.findFragmentById(R.id.mainMainFrameLayout)
+        if (currentFragment is MyProfileFragment || currentFragment is LearningFragment || currentFragment is ExamResultFragment) {
+            if (handleBackPressedForFragments(currentFragment)) {
+                return
+            }
+        }
+
+        if (backPressedOnce) {
+            super.onBackPressed()
+            return
+        }
+
+        this.backPressedOnce = true
+        Toast.makeText(this, "뒤로가기를 한 번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show()
+        backPressHandler.postDelayed(backPressRunnable, 2000)
+    }
+
+    private fun handleBackPressedForFragments(fragment: Fragment): Boolean {
+        return when (fragment) {
+            is MyProfileFragment -> fragment.handleOnBackPressed()
+            is LearningFragment -> fragment.handleOnBackPressed()
+            is ExamResultFragment -> fragment.handleOnBackPressed()
+            else -> false
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        backPressHandler.removeCallbacks(backPressRunnable)
+    }
 }

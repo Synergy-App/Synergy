@@ -1,5 +1,6 @@
 package com.sungkyul.synergy.edu_space.screen_layout
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.MotionEvent
@@ -13,6 +14,7 @@ class ScreenLockActivity : AppCompatActivity() {
     private var startY = 0f
     private lateinit var lockIcon: ImageView
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_screen_lock)
