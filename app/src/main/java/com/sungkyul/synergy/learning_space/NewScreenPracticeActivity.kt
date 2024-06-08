@@ -8,6 +8,7 @@ import androidx.cardview.widget.CardView
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityExamResultListBinding
 import com.sungkyul.synergy.databinding.ActivityNewScreenPracticeBinding
+import com.sungkyul.synergy.learning_space.activity.ExamProblemActivity
 
 class NewScreenPracticeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNewScreenPracticeBinding
@@ -37,9 +38,9 @@ class NewScreenPracticeActivity : AppCompatActivity() {
 //            startActivity(intent)
         }
         // 다음 버튼
-        binding.backBtn.setOnClickListener {
-//            val intent = Intent(this, NewScreenPracticeActivity::class.java)
-//            startActivity(intent)
+        binding.nextBtn.setOnClickListener {
+            val intent = Intent(this, ExamProblemActivity::class.java)
+            startActivity(intent)
         }
     }
     private fun selectOption(selectedCardView: CardView) {
