@@ -33,11 +33,11 @@ class DisplayUtils {
             return px / context.resources.displayMetrics.density
         }
 
-        fun convertWidthFromRatioToPx(context: Context, ratio: Float): Float {
+        fun convertXFromRatioToPx(context: Context, ratio: Float): Float {
             return ratio * getSize(context).x
         }
 
-        fun convertHeightFromRatioToPx(context: Context, ratio: Float): Float {
+        fun convertYFromRatioToPx(context: Context, ratio: Float): Float {
             return ratio * getSize(context).y
         }
     }
