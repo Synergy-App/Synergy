@@ -4,7 +4,6 @@ import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
-import android.app.Activity
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -13,7 +12,6 @@ import android.graphics.Paint
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffXfermode
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,7 +24,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.toBitmap
@@ -541,17 +538,17 @@ class EduScreenFragment : Fragment() {
     }
 
     fun translateDialog(
-        topDp: Float,
-        bottomDp: Float,
-        startDp: Float,
-        endDp: Float,
+        topRatio: Float,
+        bottomRatio: Float,
+        startRatio: Float,
+        endRatio: Float,
         duration: Long = DIALOG_MOVEMENT_DURATION
     ) {
-        // dp -> px
-        val top = DisplayUtils.dpToPx(binding.root.context, topDp)
-        val bottom = DisplayUtils.dpToPx(binding.root.context, bottomDp)
-        val start = DisplayUtils.dpToPx(binding.root.context, startDp)
-        val end = DisplayUtils.dpToPx(binding.root.context, endDp)
+        // ratio -> px
+        val top = DisplayUtils.convertYFromRatioToPx(binding.root.context, topRatio)
+        val bottom = DisplayUtils.convertYFromRatioToPx(binding.root.context, bottomRatio)
+        val start = DisplayUtils.convertXFromRatioToPx(binding.root.context, startRatio)
+        val end = DisplayUtils.convertXFromRatioToPx(binding.root.context, endRatio)
 
         startValueAnimatorOfDialog(
             binding.dialog,
@@ -572,11 +569,11 @@ class EduScreenFragment : Fragment() {
     }
 
     fun translateBottomDialog(
-        heightDp: Float,
+        heightRatio: Float,
         duration: Long = VERTICAL_DIALOG_MOVEMENT_DURATION
     ) {
         val startHeight = binding.bottomDialog.height.toFloat()
-        val endHeight = DisplayUtils.dpToPx(binding.root.context, heightDp)
+        val endHeight = DisplayUtils.convertYFromRatioToPx(binding.root.context, heightRatio)
         val interpolator = AccelerateDecelerateInterpolator()
 
         registerAnimator("bottom_dialog", AnimUtils.startValueAnimatorOfFloat({
@@ -587,17 +584,17 @@ class EduScreenFragment : Fragment() {
     }
 
     fun translateBox(
-        leftDp: Float,
-        topDp: Float,
-        rightDp: Float,
-        bottomDp: Float,
+        leftRatio: Float,
+        topRatio: Float,
+        rightRatio: Float,
+        bottomRatio: Float,
         duration: Long = BOX_MOVEMENT_DURATION
     ) {
-        // dp -> px
-        val left = DisplayUtils.dpToPx(binding.root.context, leftDp)
-        val top = DisplayUtils.dpToPx(binding.root.context, topDp)
-        val right = DisplayUtils.dpToPx(binding.root.context, rightDp)
-        val bottom = DisplayUtils.dpToPx(binding.root.context, bottomDp)
+        // ratio -> px
+        val left = DisplayUtils.convertXFromRatioToPx(binding.root.context, leftRatio)
+        val top = DisplayUtils.convertYFromRatioToPx(binding.root.context, topRatio)
+        val right = DisplayUtils.convertXFromRatioToPx(binding.root.context, rightRatio)
+        val bottom = DisplayUtils.convertYFromRatioToPx(binding.root.context, bottomRatio)
 
         val startLeft = boxLeft
         val startTop = boxTop
@@ -687,7 +684,8 @@ class EduScreenFragment : Fragment() {
     fun addHand(
         id: String,
         source: Int,
-        target: View?,
+        x: Float,
+        y: Float,
         widthDp: Float,
         heightDp: Float,
         rotation: Float,
@@ -706,18 +704,8 @@ class EduScreenFragment : Fragment() {
 
         binding.gestureLayout.addView(imageView)
 
-        var x: Float = 0.0f
-        if(target != null) {
-            x = target.x+target.width/2
-            Log.i("hand_x", x.toString())
-        }
-        var y: Float = 0.0f
-        if(target != null) {
-            y = target.x+target.width/2
-            Log.i("hand_y", y.toString())
-        }
-        imageView.translationX = x
-        imageView.translationY = y
+        imageView.translationX = DisplayUtils.convertXFromRatioToPx(requireContext(), x)
+        imageView.translationY = DisplayUtils.convertYFromRatioToPx(requireContext(), y)
         imageView.rotation = rotation
         imageView.updateLayoutParams<ViewGroup.LayoutParams> {
             this.width = DisplayUtils.dpToPx(binding.root.context, widthDp).toInt()

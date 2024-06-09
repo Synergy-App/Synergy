@@ -1,13 +1,18 @@
 package com.sungkyul.synergy.fragments
 
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
+import android.text.Spannable
+import android.text.SpannableString
 import android.text.TextWatcher
+import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.RegisterActivity
@@ -16,6 +21,7 @@ class FragmentRegisterPassword : Fragment() {
 
     private lateinit var editTextPassword: EditText
     private lateinit var btnNext: Button
+    private lateinit var textView180: TextView
 
     companion object {
         private const val ARG_USER_ID = "user_id"
@@ -37,6 +43,20 @@ class FragmentRegisterPassword : Fragment() {
 
         editTextPassword = view.findViewById(R.id.editTextPassword)
         btnNext = view.findViewById(R.id.btnNext_Password)
+        textView180 = view.findViewById(R.id.textView180)
+
+        // "비밀번호" 텍스트 색상 변경
+        val text = "비밀번호를\n입력해주세요."
+        val spannable = SpannableString(text)
+        val start = text.indexOf("비밀번호")
+        val end = start + "비밀번호".length
+        spannable.setSpan(
+            ForegroundColorSpan(Color.parseColor("#CE3232")),
+            start,
+            end,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        textView180.text = spannable
 
         editTextPassword.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
@@ -49,9 +69,9 @@ class FragmentRegisterPassword : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (s.isNullOrEmpty()) {
-                    btnNext.setBackgroundColor(resources.getColor(android.R.color.darker_gray))
+                    btnNext.setBackgroundResource(R.drawable.login_border_background_white)
                 } else {
-                    btnNext.setBackgroundColor(resources.getColor(android.R.color.holo_orange_light))
+                    btnNext.setBackgroundResource(R.drawable.login_border_background_yellow)
                 }
             }
         })

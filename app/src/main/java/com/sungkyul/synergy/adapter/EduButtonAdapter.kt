@@ -18,9 +18,11 @@ import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.edu_space.accountedu.GoogleMainActivity
+import com.sungkyul.synergy.edu_space.appinstall.AppInstallMainActivity
 import com.sungkyul.synergy.edu_space.appinstall.installMainActivity
 import com.sungkyul.synergy.edu_space.default_app.DefaultAppActivity
 import com.sungkyul.synergy.edu_space.delivery.DlvMainActivity
+import com.sungkyul.synergy.edu_space.icon_edu.activity.BasicEduMainActivity
 import com.sungkyul.synergy.edu_space.icon_edu.activity.IconEduActivity
 import com.sungkyul.synergy.edu_space.kakaotalk.activity.KakaoMainActivity
 import com.sungkyul.synergy.edu_space.kakaotaxi.TaxiMainActivity
@@ -77,15 +79,15 @@ class EduButtonAdapter(private val context: Context, private val buttonList: Lis
 
                         // 버튼의 제목에 따라 해당 교육 액티비티로 이동한다.
                         when(title.text.toString()) {
-                            "아이콘" -> {
-                                val intent = Intent(context, IconEduActivity::class.java)
+                            "기초" -> {
+                                val intent = Intent(context, BasicEduMainActivity::class.java)
                                 context.startActivity(intent)
                             }
                             "화면구성" -> {
                                 val intent = Intent(context, ScreenLayoutActivity::class.java)
                                 context.startActivity(intent)
                             }
-                            "기본앱" -> {
+                            "기본 앱" -> {
                                 val intent = Intent(context, DefaultAppActivity::class.java)
                                 context.startActivity(intent)
                             }
@@ -98,7 +100,7 @@ class EduButtonAdapter(private val context: Context, private val buttonList: Lis
                                 context.startActivity(intent)
                             }
                             "앱 설치" -> {
-                                val intent = Intent(context, installMainActivity::class.java)
+                                val intent = Intent(context, AppInstallMainActivity::class.java)
                                 context.startActivity(intent)
                             }
                             "카카오톡" -> {

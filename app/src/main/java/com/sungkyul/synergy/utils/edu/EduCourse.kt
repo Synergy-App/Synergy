@@ -79,7 +79,8 @@ data class EduAction(
 data class EduHand(
     var id: String,
     var source: Int = R.drawable.hand,
-    var target: View?,
+    var x: Float = 0.0f,
+    var y: Float = 0.0f,
     var width: Float = 50.0f,
     var height: Float = 75.0f,
     var rotation: Float = 0.0f,

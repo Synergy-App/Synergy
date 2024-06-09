@@ -84,7 +84,7 @@ data class DefaultMessageCourse2(val eduScreen: EduScreen): EduCourse {
                     id = "tap",
                     //x = width/2,
                     //y = height-110.0f,
-                    target = null,
+                    x = 0.0f, y = 0.0f,
                     rotation = 180.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )
@@ -97,7 +97,7 @@ data class DefaultMessageCourse2(val eduScreen: EduScreen): EduCourse {
                 id = "tap",
                 //x = 300.0f,
                 //y = height-110.0f,
-                target = null,
+                x = 0.0f, y = 0.0f,
                 rotation = 180.0f,
                 gesture = HandGestures.Companion::tapGesture
             )
@@ -152,7 +152,7 @@ data class DefaultMessageCourse2(val eduScreen: EduScreen): EduCourse {
                 id = "tap",
                 //x = 300.0f,
                 //y = height-110.0f,
-                target = null,
+                x = 0.0f, y = 0.0f,
                 gesture = HandGestures.Companion::tapGesture
             )
         })

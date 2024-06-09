@@ -5,9 +5,9 @@ import android.os.Bundle
 import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityExamResultListBinding
+import com.sungkyul.synergy.com.sungkyul.synergy.learning_space.ResultPair
 import com.sungkyul.synergy.learning_space.adapter.ExamResultListAdapter
 import com.sungkyul.synergy.learning_space.adapter.ExamResultListData
 import com.sungkyul.synergy.utils.GalaxyButton
@@ -21,36 +21,21 @@ class ExamResultListActivity : AppCompatActivity() {
         binding = ActivityExamResultListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val resultList = intent.getParcelableArrayListExtra<ResultPair>("resultList")
+
         val dataSet = ArrayList<ExamResultListData>()
-        for(i in 1..6) {
-            dataSet.add(
-                ExamResultListData(
-                    R.drawable.todo_circle,
-                    "1. 문제"
-                )
-            )
+        if (resultList != null) {
+            for (result in resultList) {
+                val (questionNumber, isCorrect) = result
+                val resultText = if (isCorrect) "맞았습니다" else "틀렸습니다"
+                val resultImage = if (isCorrect) R.drawable.todo_circle else R.drawable.ic_micoff_white_24
+                dataSet.add(ExamResultListData(resultImage, "$questionNumber. 문제 - $resultText"))
+            }
         }
 
-        val recyclerview = binding.recyclerview
-        recyclerview.layoutManager = LinearLayoutManager(binding.root.context)
-        recyclerview.adapter = ExamResultListAdapter(dataSet)
-
-        recyclerview.addOnScrollListener(object: RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
-
-                // 스크롤을 시작한 경우
-                // 모든 버튼의 터치 애니메이션을 원래대로 되돌린다.
-                if(newState == RecyclerView.SCROLL_STATE_DRAGGING) {
-                    for(i in 0..<dataSet.size) {
-                        val galaxyButton = recyclerview.layoutManager?.findViewByPosition(i)?.findViewById<GalaxyButton>(R.id.galaxy_button)
-                        if(galaxyButton != null && galaxyButton.getToggle()) {
-                            galaxyButton.startTouchUpAnimation()
-                        }
-                    }
-                }
-            }
-        })
+        val recyclerView = binding.recyclerView
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = ExamResultListAdapter(dataSet)
 
         binding.backButton.post { binding.backButton.clipToRoundRect(27.0f) }
         binding.viewAllButton.post { binding.viewAllButton.clipToRoundRect(27.0f) }
@@ -62,9 +47,7 @@ class ExamResultListActivity : AppCompatActivity() {
                 }
                 MotionEvent.ACTION_UP -> {
                     (view as GalaxyButton).startTouchUpAnimation()
-
-                    //val intent = Intent(requireContext(), DefaultPhoneActivity::class.java)
-                    //startActivity(intent)
+                    finish()
                 }
             }
             true
@@ -77,9 +60,7 @@ class ExamResultListActivity : AppCompatActivity() {
                 }
                 MotionEvent.ACTION_UP -> {
                     (view as GalaxyButton).startTouchUpAnimation()
-
-                    //val intent = Intent(requireContext(), DefaultPhoneActivity::class.java)
-                    //startActivity(intent)
+                    // 다시 풀기 기능 추가
                 }
             }
             true

@@ -1,4 +1,10 @@
-package com.sungkyul.synergy.my_profile
 
 // ExamResult.kt
-data class ExamResult(val imageResId: Int,val title: String, val title2: String, val result: String)
+package com.sungkyul.synergy.my_profile
+
+data class ExamResult(
+    val title: String,
+    val title2: String,
+    val result: String,
+    val imageResId: Int
+)

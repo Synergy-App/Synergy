@@ -1,14 +1,12 @@
-import com.sungkyul.synergy.R
+package com.sungkyul.synergy.my_profile
 
-
-// ExamResultAdapter.kt
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.sungkyul.synergy.my_profile.ExamResult
+import com.sungkyul.synergy.R
 
 class ExamResultAdapter(private val examResults: List<ExamResult>) :
     RecyclerView.Adapter<ExamResultAdapter.ExamResultViewHolder>() {

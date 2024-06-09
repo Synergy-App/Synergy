@@ -2,22 +2,30 @@ package com.sungkyul.synergy.fragments
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.text.Editable
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.TextWatcher
+import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.RegisterActivity
 import com.sungkyul.synergy.backend.ApiResponse
 import com.sungkyul.synergy.backend.auth.AuthAPI
-import com.sungkyul.synergy.backend.auth.SignUpBody
 import com.sungkyul.synergy.backend.auth.SignInBody
 import com.sungkyul.synergy.backend.auth.SignInResult
+import com.sungkyul.synergy.backend.auth.SignUpBody
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -31,6 +39,7 @@ class FragmentRegisterNickname : Fragment() {
 
     private lateinit var editTextNick: EditText
     private lateinit var btnRegister: Button
+    private lateinit var textView180: TextView
     private lateinit var authApi: AuthAPI
 
     companion object {
@@ -74,6 +83,38 @@ class FragmentRegisterNickname : Fragment() {
 
         editTextNick = view.findViewById(R.id.editTextNick)
         btnRegister = view.findViewById(R.id.btnRegister)
+        textView180 = view.findViewById(R.id.textView180)
+
+        // "이름" 텍스트 색상 변경
+        val text = "이름을\n입력해주세요."
+        val spannable = SpannableString(text)
+        val start = text.indexOf("이름")
+        val end = start + "이름".length
+        spannable.setSpan(
+            ForegroundColorSpan(Color.parseColor("#CE3232")),
+            start,
+            end,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        textView180.text = spannable
+
+        editTextNick.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                // No need to implement
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // No need to implement
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (s.isNullOrEmpty()) {
+                    btnRegister.setBackgroundResource(R.drawable.login_border_background_white)
+                } else {
+                    btnRegister.setBackgroundResource(R.drawable.login_border_background_yellow)
+                }
+            }
+        })
 
         btnRegister.setOnClickListener {
             val nickname = editTextNick.text.toString().trim()

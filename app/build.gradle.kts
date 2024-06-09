@@ -2,11 +2,13 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
+    id("org.jetbrains.kotlin.plugin.parcelize") // 추가된 부분
 }
 
 android {
     buildFeatures {
-        viewBinding=true
+        dataBinding = true
+        viewBinding = true
         compose = true
     }
 
@@ -86,6 +88,8 @@ dependencies {
 
     // ViewPager2 슬라이드
     implementation("androidx.viewpager2:viewpager2:1.0.0")
+
+    implementation("androidx.window:window:1.3.0")
 
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     implementation("androidx.core:core-ktx:1.8.0")

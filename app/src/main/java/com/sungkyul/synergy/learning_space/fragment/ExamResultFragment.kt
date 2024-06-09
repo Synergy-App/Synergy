@@ -12,7 +12,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.sungkyul.synergy.databinding.FragmentExamResultBinding
-import com.sungkyul.synergy.edu_space.default_app.phone.activity.DefaultPhoneActivity
+import com.sungkyul.synergy.learning_space.activity.ExamResultListActivity
 import com.sungkyul.synergy.utils.GalaxyButton
 
 class ExamResultFragment : Fragment() {
@@ -37,12 +37,9 @@ class ExamResultFragment : Fragment() {
                 MotionEvent.ACTION_DOWN -> {
                     (view as GalaxyButton).startTouchDownAnimation(event.x, event.y, 100.0f)
                 }
-
                 MotionEvent.ACTION_UP -> {
                     (view as GalaxyButton).startTouchUpAnimation()
-
-                    //val intent = Intent(requireContext(), DefaultPhoneActivity::class.java)
-                    //startActivity(intent)
+                    // 이전 화면으로 돌아가는 로직 추가
                 }
             }
             true
@@ -53,16 +50,19 @@ class ExamResultFragment : Fragment() {
                 MotionEvent.ACTION_DOWN -> {
                     (view as GalaxyButton).startTouchDownAnimation(event.x, event.y, 100.0f)
                 }
-
                 MotionEvent.ACTION_UP -> {
                     (view as GalaxyButton).startTouchUpAnimation()
-
-                    //val intent = Intent(requireContext(), DefaultPhoneActivity::class.java)
-                    //startActivity(intent)
+                    val intent = Intent(requireContext(), ExamResultListActivity::class.java)
+                    startActivity(intent)
                 }
             }
             true
         }
+
+        // 맞춘 문제 수와 전체 문제 수를 가져와서 TextView에 설정
+        val correctAnswers = arguments?.getInt("correctAnswers", 0) ?: 0
+        val totalQuestions = arguments?.getInt("totalQuestions", 0) ?: 0
+        binding.countText.text = "$correctAnswers/$totalQuestions"
 
         return binding.root
     }

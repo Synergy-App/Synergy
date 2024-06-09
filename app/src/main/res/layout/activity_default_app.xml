@@ -4,16 +4,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bgColor1"
-    >
+    android:background="@color/bgColor1">
 
     <View
         android:id="@+id/icon_green"
         android:layout_width="match_parent"
-        android:layout_height="206dp"
-        android:background="@color/eduColor1"
+        android:layout_height="0dp"
+        android:background="#089156"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintDimensionRatio="H,12:4.0" />
 
     <TextView
         android:id="@+id/iconedu_tool"
@@ -25,176 +26,164 @@
         android:textColor="@color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="19dp"
-        android:layout_marginStart="32dp" />
+        android:layout_marginTop="17dp"
+        android:layout_marginStart="39dp" />
 
     <TextView
         android:id="@+id/iconedu_tool_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/pretendard_semibold"
         android:text="스마트폰 기본 어플을 교육하세요"
-        android:textSize="24sp"
-        android:textColor="#E1E1E1"
+        android:fontFamily="@font/pretendard_extralight"
+        android:textColor="@color/white"
+        android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/iconedu_tool"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="1dp"
-        android:layout_marginStart="32dp" />
-
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/ic_star"
-        app:layout_constraintTop_toBottomOf="@id/iconedu_tool_2"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="73dp" />
-
-    <ImageView
-        android:id="@+id/star"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/ic_star"
-        app:layout_constraintTop_toBottomOf="@id/iconedu_tool_2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp" />
-
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/ic_star"
-        app:layout_constraintTop_toBottomOf="@id/iconedu_tool_2"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="73dp"/>
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="39dp" />
 
     <!--카메라-->
     <com.sungkyul.synergy.utils.GalaxyButton
         android:id="@+id/camera_edu_box"
-        android:layout_width="match_parent"
-        android:layout_height="141dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/round_corner_white"
-        app:layout_constraintTop_toBottomOf="@id/star"
+        app:layout_constraintTop_toBottomOf="@id/icon_green"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.9"
+        app:layout_constraintHeight_percent="0.14"
         android:layout_marginTop="17dp"
-        android:layout_margin="24dp"/>
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp" />
 
     <ImageView
         android:id="@+id/camera"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:src="@drawable/ic_camera"
         app:layout_constraintTop_toTopOf="@id/camera_edu_box"
+        app:layout_constraintBottom_toBottomOf="@id/camera_edu_box"
         app:layout_constraintStart_toStartOf="@id/camera_edu_box"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="26dp"
-        />
+        app:layout_constraintWidth_percent="0.14"
+        app:layout_constraintHeight_percent="0.5"
+        android:layout_marginStart="26dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/camera"
         app:layout_constraintTop_toTopOf="@id/camera"
+        app:layout_constraintBottom_toBottomOf="@id/camera"
         android:text="카메라"
         android:textSize="32sp"
         android:fontFamily="@font/pretendard_semibold"
         android:textColor="@color/black"
         android:layout_marginStart="26dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/camera"
-        app:layout_constraintTop_toTopOf="@id/camera"
-        android:text="사진찍기"
-        android:textSize="26sp"
-        android:fontFamily="@font/pretendard_regular"
-        android:textColor="#838383"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="35dp"
-        />
-
-    <!--전화-->
+    <!--앨범-->
     <com.sungkyul.synergy.utils.GalaxyButton
-        android:id="@+id/call_edu_box"
-        android:layout_width="match_parent"
-        android:layout_height="141dp"
+        android:id="@+id/gallery_edu_box"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/round_corner_white"
         app:layout_constraintTop_toBottomOf="@id/camera_edu_box"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="59dp"
-        android:layout_margin="24dp"/>
+        app:layout_constraintWidth_percent="0.9"
+        app:layout_constraintHeight_percent="0.14"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp" />
+
+    <ImageView
+        android:id="@+id/gallery_ic"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/ic_gallery"
+        app:layout_constraintTop_toTopOf="@id/gallery_edu_box"
+        app:layout_constraintBottom_toBottomOf="@id/gallery_edu_box"
+        app:layout_constraintStart_toStartOf="@id/gallery_edu_box"
+        app:layout_constraintWidth_percent="0.14"
+        app:layout_constraintHeight_percent="0.5"
+        android:layout_marginStart="26dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/gallery_ic"
+        app:layout_constraintTop_toTopOf="@id/gallery_ic"
+        app:layout_constraintBottom_toBottomOf="@id/gallery_ic"
+        android:text="앨범"
+        android:textSize="32sp"
+        android:fontFamily="@font/pretendard_semibold"
+        android:textColor="@color/black"
+        android:layout_marginStart="26dp" />
+
+    <!--전화-->
+    <com.sungkyul.synergy.utils.GalaxyButton
+        android:id="@+id/call_edu_box"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/round_corner_white"
+        app:layout_constraintTop_toBottomOf="@id/gallery_edu_box"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.9"
+        app:layout_constraintHeight_percent="0.14"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp" />
 
     <ImageView
         android:id="@+id/call_ic"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:src="@drawable/ic_call"
         app:layout_constraintTop_toTopOf="@id/call_edu_box"
+        app:layout_constraintBottom_toBottomOf="@id/call_edu_box"
         app:layout_constraintStart_toStartOf="@id/call_edu_box"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="26dp"
-        />
+        app:layout_constraintWidth_percent="0.14"
+        app:layout_constraintHeight_percent="0.5"
+        android:layout_marginStart="26dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/call_ic"
         app:layout_constraintTop_toTopOf="@id/call_ic"
+        app:layout_constraintBottom_toBottomOf="@id/call_ic"
         android:text="전화"
         android:textSize="32sp"
         android:fontFamily="@font/pretendard_semibold"
         android:textColor="@color/black"
         android:layout_marginStart="26dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/call_ic"
-        app:layout_constraintTop_toTopOf="@id/call_ic"
-        android:text="부제목"
-        android:textSize="26sp"
-        android:fontFamily="@font/pretendard_regular"
-        android:textColor="#838383"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="35dp"
-        />
-
-    <!--문자메세지-->
+    <!--메시지-->
     <com.sungkyul.synergy.utils.GalaxyButton
         android:id="@+id/message_edu_box"
-        android:layout_width="match_parent"
-        android:layout_height="141dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/round_corner_white"
         app:layout_constraintTop_toBottomOf="@id/call_edu_box"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="59dp"
-        android:layout_margin="24dp"/>
+        app:layout_constraintWidth_percent="0.9"
+        app:layout_constraintHeight_percent="0.14"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp" />
 
     <ImageView
         android:id="@+id/message_ic"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:src="@drawable/ic_message"
         app:layout_constraintTop_toTopOf="@id/message_edu_box"
+        app:layout_constraintBottom_toBottomOf="@id/message_edu_box"
         app:layout_constraintStart_toStartOf="@id/message_edu_box"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="26dp"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/message_ic"
-        app:layout_constraintTop_toTopOf="@id/message_ic"
-        android:text="채팅 메시지"
-        android:textSize="32sp"
-        android:fontFamily="@font/pretendard_semibold"
-        android:textColor="@color/black"
+        app:layout_constraintWidth_percent="0.14"
+        app:layout_constraintHeight_percent="0.5"
         android:layout_marginStart="26dp" />
 
     <TextView
@@ -202,12 +191,11 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/message_ic"
         app:layout_constraintTop_toTopOf="@id/message_ic"
-        android:text="부제목"
-        android:textSize="26sp"
-        android:fontFamily="@font/pretendard_regular"
-        android:textColor="#838383"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="35dp"
-        />
+        app:layout_constraintBottom_toBottomOf="@id/message_ic"
+        android:text="메시지"
+        android:textSize="32sp"
+        android:fontFamily="@font/pretendard_semibold"
+        android:textColor="@color/black"
+        android:layout_marginStart="26dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

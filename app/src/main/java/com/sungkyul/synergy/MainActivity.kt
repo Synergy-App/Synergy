@@ -12,18 +12,21 @@ import com.sungkyul.synergy.com.sungkyul.synergy.learning_space.fragment.ExamSpa
 import com.sungkyul.synergy.databinding.ActivityMainBinding
 import com.sungkyul.synergy.my_profile.Time
 import com.sungkyul.synergy.learning_space.fragment.ExamResultFragment
+import com.sungkyul.synergy.utils.DisplayUtils
 
 /** 시너지 앱 메인 네비게이션 바 + fragment */
 
-private const val Tag_learning = "learn_fragment"
-private const val Tag_solving = "solving_fragment"
-private const val Tag_review = "review_fragment"
-private const val Tag_examResult = "examResult_fragment"
-private const val Tag_myProfile = "myProfile_fragment"
-
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+    companion object {
+        const val Tag_learning = "learn_fragment"
+        const val Tag_examSpace = "examSpace_fragment"
+        const val Tag_solving = "solving_fragment"
+        const val Tag_review = "review_fragment"
+        const val Tag_examResult = "examResult_fragment"
+        const val Tag_myProfile = "myProfile_fragment"
+    }
 
+    private lateinit var binding: ActivityMainBinding
 
     private var backPressedOnce = false
     private val backPressHandler = Handler(Looper.getMainLooper())
@@ -37,80 +40,23 @@ class MainActivity : AppCompatActivity() {
         // Start the time counter
         Time.startTimeCounter()
 
-        // 실습 공간 프래그먼트로 바꿔치기
-        val examSpaceFragment = ExamSpaceFragment()
-        replaceFragment(examSpaceFragment)
+        setFragment(Tag_learning, LearningFragment())
 
-        //setFragment(Tag_learning, LearningFragment())
-        //setFragment(Tag_learning, LearningFragment())
-        //setFragment(Tag_examResult, ExamResultFragment())
         binding.mainNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.learingFragment -> setFragment(Tag_learning, LearningFragment())
-                R.id.solvingFragment -> setFragment(Tag_solving, SolvingFragment())
-                //R.id.reviewFragment -> setFragment(Tag_review, ReviewFragment())
+                R.id.solvingFragment -> setFragment(Tag_examSpace, ExamSpaceFragment())
                 R.id.myProfileFrangment -> setFragment(Tag_myProfile, MyProfileFragment())
             }
             true
         }
     }
 
-    private fun setFragment(tag: String, fragment: Fragment) {
+    public fun setFragment(tag: String, fragment: Fragment) {
         val manager: FragmentManager = supportFragmentManager
         val fragTransaction = manager.beginTransaction()
-        if (manager.findFragmentByTag(tag) == null) {
-            fragTransaction.add(R.id.mainMainFrameLayout, fragment, tag)
-        }
-        val learning = manager.findFragmentByTag(Tag_learning)
-        val solving = manager.findFragmentByTag(Tag_solving)
-        // val review = manager.findFragmentByTag(Tag_review)
-       // val review = manager.findFragmentByTag(Tag_review)
-        val examResult = manager.findFragmentByTag(Tag_examResult)
-        val myProfile = manager.findFragmentByTag(Tag_myProfile)
-
-        if (learning != null) {
-            if (tag == Tag_learning) {
-                fragTransaction.show(learning)
-            } else {
-                fragTransaction.hide(learning)
-            }
-        }
-        if (solving != null) {
-            if (tag == Tag_solving) {
-                fragTransaction.show(solving)
-            } else {
-                fragTransaction.hide(solving)
-            }
-        }
-        // if (review != null) {
-        //     if (tag == Tag_review) {
-        //         fragTransaction.show(review)
-        //     } else {
-        //         fragTransaction.hide(review)
-        //     }
-        // }
-        if (examResult != null) {
-            if (tag == Tag_examResult) {
-                fragTransaction.show(examResult)
-            } else {
-                fragTransaction.hide(examResult)
-            }
-        }
-
-//        if (review != null) {
-//            if (tag == Tag_review) {
-//                fragTransaction.show(review)
-//            } else {
-//                fragTransaction.hide(review)
-//            }
-//        }
-        if (myProfile != null) {
-            if (tag == Tag_myProfile) {
-                fragTransaction.show(myProfile)
-            } else {
-                fragTransaction.hide(myProfile)
-            }
-        }
+        fragTransaction.replace(R.id.mainMainFrameLayout, fragment, tag)
+        fragTransaction.addToBackStack(tag)
         fragTransaction.commitAllowingStateLoss()
     }
 
@@ -144,11 +90,5 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         backPressHandler.removeCallbacks(backPressRunnable)
-    }
-
-    private fun replaceFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(binding.mainMainFrameLayout.id, fragment)
-            .commit()
     }
 }
