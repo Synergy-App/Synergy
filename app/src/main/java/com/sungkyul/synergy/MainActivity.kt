@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
 
 
         // 실습 공간 프래그먼트로 바꿔치기
-        //val examSpaceFragment = ExamSpaceFragment()
+        ///val examSpaceFragment = ExamSpaceFragment()
         //replaceFragment(examSpaceFragment)
 
         setFragment(Tag_learning, LearningFragment())

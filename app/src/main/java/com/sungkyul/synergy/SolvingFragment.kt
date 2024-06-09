@@ -26,15 +26,15 @@ class SolvingFragment : Fragment() {
         val buttonItemList = listOf(
             EduButtonItem("아이콘", R.drawable.ic_edu_note),
             EduButtonItem("화면구성", R.drawable.ic_edu_gall),
-            EduButtonItem("기본앱", R.drawable.ic_edu_app2,),
-            EduButtonItem("환경 설정", R.drawable.ic_edubutton_setting,),
+            EduButtonItem("기본앱", R.drawable.ic_edu_app2),
+            EduButtonItem("환경 설정", R.drawable.ic_edubutton_setting),
             EduButtonItem("계정 생성", R.drawable.ic_edu_create),
             EduButtonItem("앱 설치", R.drawable.ic_edubutton_download),
             EduButtonItem("카카오톡", R.drawable.ic_edubutton_kakaotalk),
-            EduButtonItem("네이버", R.drawable.ic_edubutton_naver),
-            EduButtonItem("코레일", R.drawable.ic_edubutton_korail),
-            EduButtonItem("카카오택시", R.drawable.ic_edubutton_kakaotaxi),
-            EduButtonItem("배달의 민족", R.drawable.ic_edubutton_delivery)
+            EduButtonItem("네이버", R.drawable.ic_edubutton_naver)
+//          EduButtonItem("코레일", R.drawable.ic_edubutton_korail),
+//          EduButtonItem("카카오택시", R.drawable.ic_edubutton_kakaotaxi),
+//          EduButtonItem("배달의 민족", R.drawable.ic_edubutton_delivery)
         )
         val adapter = LearningButtonAdapter(buttonItemList)
         recyclerView.adapter = adapter

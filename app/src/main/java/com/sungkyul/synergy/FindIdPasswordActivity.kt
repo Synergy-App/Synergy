@@ -1,10 +1,15 @@
 package com.sungkyul.synergy
 
+import android.graphics.Color
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.backend.ApiResponse
@@ -15,7 +20,6 @@ import com.sungkyul.synergy.backend.auth.FindIdBody
 import com.sungkyul.synergy.backend.auth.FindIdResult
 import com.sungkyul.synergy.backend.auth.VerifyUserBody
 import com.sungkyul.synergy.backend.auth.VerifyUserResult
-
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -54,6 +58,7 @@ class FindIdPasswordActivity : AppCompatActivity() {
 
         this.authApi = retrofit.create(AuthAPI::class.java)
     }
+
     // POST /user/find-id api를 실제로 호출하는 곳
     private suspend fun callFindIdAPI(request: FindIdBody): ApiResponse<FindIdResult>? {
         return withContext(Dispatchers.IO) {
@@ -111,6 +116,19 @@ class FindIdPasswordActivity : AppCompatActivity() {
         }
     }
 
+    // 텍스트 색상 변경 함수
+    private fun updateTextColor(textView: TextView, fullText: String, targetText: String, color: String) {
+        val spannable = SpannableString(fullText)
+        val start = fullText.indexOf(targetText)
+        val end = start + targetText.length
+        spannable.setSpan(
+            ForegroundColorSpan(Color.parseColor(color)),
+            start,
+            end,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        textView.text = spannable
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -124,6 +142,11 @@ class FindIdPasswordActivity : AppCompatActivity() {
         btnVerifyUser = findViewById(R.id.btnVerifyUser)
         btnChangePassword = findViewById(R.id.btnChangePassword)
         layoutChangePassword = findViewById(R.id.layoutChangePassword)
+
+        val textViewFindId: TextView = findViewById(R.id.textViewFindId)
+        val textViewChangePassword: TextView = findViewById(R.id.textViewChangePassword)
+        updateTextColor(textViewFindId, "아이디 찾기", "아이디", "#CE3232")
+        updateTextColor(textViewChangePassword, "비밀번호 변경", "비밀번호", "#CE3232")
 
         btnFindId.setOnClickListener {
             val phone = editTextPhoneForId.text.toString().trim()
