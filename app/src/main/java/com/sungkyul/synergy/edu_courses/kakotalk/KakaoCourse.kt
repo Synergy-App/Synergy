@@ -108,7 +108,7 @@ data class KakaoCourse(val eduScreen: EduScreen): EduCourse {
                     id = "tap",
                     //x = 100.0f,
                     //y = 200.0f,
-                    target = null,
+                    x = 0.0f, y = 0.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

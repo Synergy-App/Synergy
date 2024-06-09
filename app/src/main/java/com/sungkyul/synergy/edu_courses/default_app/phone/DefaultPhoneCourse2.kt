@@ -77,7 +77,7 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
                     id = "tap",
                     //x = 180.0f,
                     //y = 750.0f,
-                    target = null,
+                    x = 0.0f, y = 0.0f,
                     rotation = 180.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )
@@ -144,7 +144,7 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
                     id = "tap",
                     //x = 330.0f,
                     //y = 770.0f,
-                    target = null,
+                    x = 0.0f, y = 0.0f,
                     rotation = 180.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )
@@ -203,7 +203,7 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
                     id = "tap",
                     //x = 100.0f,
                     //y = 450.0f,
-                    target = null,
+                    x = 0.0f, y = 0.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
@@ -296,7 +296,7 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
                     id = "tap",
                     //x = 250.0f,
                     //y = 330.0f,
-                    target = null,
+                    x = 0.0f, y = 0.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

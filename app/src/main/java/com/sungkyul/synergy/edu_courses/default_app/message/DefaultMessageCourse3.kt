@@ -78,7 +78,7 @@ class DefaultMessageCourse3 (val eduScreen: EduScreen): EduCourse {
                 id = "tap",
                 //x = 300.0f,
                 //y = height-110.0f,
-                target = null,
+                x = 0.0f, y = 0.0f,
                 gesture = HandGestures.Companion::tapGesture
             )
         })

@@ -171,7 +171,7 @@ data class DefaultPhoneCallCourse(val eduScreen: EduScreen): EduCourse {
                     id = "tap",
                     //x = 190.0f,
                     //y = 760.0f,
-                    target = null,
+                    x = 0.0f, y = 0.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
