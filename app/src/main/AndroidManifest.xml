@@ -23,7 +23,10 @@
         <activity
             android:name=".SplashActivity"
             android:exported="true">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".learning_space.activity.ExamResultListActivity"
             android:exported="false" />
@@ -55,7 +58,6 @@
         <activity
             android:name=".APItestActivity"
             android:exported="false"/>
-
         <activity
             android:name=".learning_space.screen.PracticeScreenLockActivity"
             android:exported="false" />
@@ -73,7 +75,6 @@
         <activity
             android:name=".learning_space.NewScreenPracticeActivity"
             android:exported="false" />
-
         <!-- 아이디찾기/비밀번호변경 화면 -->
         <activity
             android:name=".FindIdPasswordActivity"

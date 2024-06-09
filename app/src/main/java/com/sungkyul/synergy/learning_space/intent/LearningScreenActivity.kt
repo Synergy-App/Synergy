@@ -3,27 +3,46 @@ package com.sungkyul.synergy.learning_space.intent
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.sungkyul.synergy.databinding.ActivityExamResultListBinding
 import com.sungkyul.synergy.databinding.ActivityLearningIconBinding
+import com.sungkyul.synergy.databinding.FragmentLearningIconBinding
 import com.sungkyul.synergy.learning_space.NewScreenPracticeActivity
 
 /**아이콘 실습 버튼 시작 클릭시 화면 전환 하는 화면
  * 화면구성 교육으로 감
  * */
 
-class LearningScreenActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityLearningIconBinding
+class LearningScreenFragment : Fragment() {
+    private var _binding: FragmentLearningIconBinding? = null
+    private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityLearningIconBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentLearningIconBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         binding.iconStartBtn.setOnClickListener {
-            val intent = Intent(this, NewScreenPracticeActivity::class.java)
+            val intent = Intent(requireContext(), NewScreenPracticeActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+}
+
 
         /**백엔드 연결 부분 */
         // 레트로핏 인스턴스 생성하기
@@ -61,7 +80,3 @@ class LearningScreenActivity : AppCompatActivity() {
 //            }
 //        }
 //        )
-
-
-    }
-}
