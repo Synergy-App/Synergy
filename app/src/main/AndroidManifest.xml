@@ -107,22 +107,7 @@
         <activity
             android:name=".edu_space.screen_layout.ScreenMoveHomeActivity"
             android:exported="false" />
-        <activity
-            android:name=".edu_space.default_app.todo.DefaultAppBarActivity"
-            android:exported="false" />
-        <activity
-            android:name=".edu_space.default_app.todo.DefaultMenuActivity"
-            android:exported="false" /><!-- 병윤님|화면구성 메뉴화면-->
 
-        <activity
-            android:name=".edu_space.default_app.todo.DefaultAppAddActivity"
-            android:exported="false" />
-        <activity
-            android:name=".edu_space.default_app.todo.DefaultLockedScreenActivity"
-            android:exported="false" />
-        <activity
-            android:name=".edu_space.default_app.todo.DefaultHomeActivity"
-            android:exported="false" />
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageActivity"
             android:exported="false" />
@@ -149,22 +134,24 @@
         <activity
             android:name=".main.activity.DigitalStartActivity"
             android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
-        </activity>
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+      
         <activity
             android:name=".EduSpaceActivity"
             android:exported="false" />
         <activity
             android:name=".edu_space.icon_edu.activity.BasicEduMainActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".edu_space.icon_edu.activity.IconEduActivity"
             android:exported="false" />
@@ -178,13 +165,8 @@
 
         <activity
             android:name=".edu_space.move_edu.activity.MoveEduActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".edu_space.move_edu.activity.MoveDetailActivity"
             android:exported="false" />
@@ -211,6 +193,9 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.default_app.camera.activity.DefaultCameraGalleryViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".edu_space.default_app.gallery.activity.DefaultGalleryActivity"
             android:exported="false" />
         <activity
             android:name=".edu_space.settingedu2.Setting2MainActivity"
@@ -250,16 +235,11 @@
         <activity
             android:name=".edu_space.accountedu.GoogleMailAddActivity"
             android:exported="false" />
-        <activity
-            android:name=".edu_space.appinstall.installActivity"
-            android:exported="false" />
-        <activity
-            android:name=".edu_space.appinstall.installMainActivity"
-            android:exported="false" />
+
         <activity
             android:name=".edu_space.appinstall.AppInstallMainActivity"
             android:exported="false"/>
-             <!-- 병윤님 앱 설치 메인 화면 -->
+
 
         <activity
             android:name=".edu_space.appinstall.AppInstallSearchActivity"
@@ -281,7 +261,13 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.naver.activity.NaverActivity"
-            android:exported="false" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".edu_space.naver.activity.NaverSearchInfoActivity"
             android:exported="false" />

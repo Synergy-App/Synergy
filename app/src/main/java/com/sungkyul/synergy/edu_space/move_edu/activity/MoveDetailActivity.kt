@@ -32,6 +32,12 @@ class MoveDetailActivity : AppCompatActivity() {
 
         displayMoveInfo(currentIndex)
 
+        // 기기별 해상도를 기준으로 글씨 크기를 조절합니다.
+        activityBinding.iconeduTool.textSize = (standardSizeX / 12).toFloat()
+        activityBinding.iconeduTool2.textSize = (standardSizeX / 20).toFloat()
+        activityBinding.moveTv1.textSize = (standardSizeX / 12).toFloat()
+        activityBinding.moveTv2.textSize = (standardSizeY / 26).toFloat()
+
         // next_nav 버튼 클릭 이벤트 처리
         val nextNavButton = activityBinding.practiceNavLayout.root.findViewById<ImageView>(R.id.next_nav)
         nextNavButton.setOnClickListener {
@@ -53,7 +59,9 @@ class MoveDetailActivity : AppCompatActivity() {
         // home_nav 버튼 클릭 이벤트 처리
         val homeNavButton = activityBinding.practiceNavLayout.root.findViewById<ImageView>(R.id.home_nav)
         homeNavButton.setOnClickListener {
-            val intent = Intent(this, MoveEduActivity::class.java)
+            val intent = Intent(this, MoveEduActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            }
             startActivity(intent)
             finish()
         }
@@ -99,11 +107,12 @@ class MoveDetailActivity : AppCompatActivity() {
 
     private fun getMoveDescription(moveText: String): String {
         return when (moveText) {
-            "터치" -> "화면에 손가락을 한번 눌렀다가 떼는 동작을 의미해요."
-            "스와이프" -> "화면에 손가락을 대고, 손가락을 움직여 화면을 이동시키는 것을 의미해요."
-            "꾹 누르기" -> "화면을 꾹 누르고 있는 것을 의미해요. 터치와는 달리 화면에서 손가락을 떼지 않고 누르고 있는 상태를 의미해요."
-            "드래그" -> "화면에서 특정 부분을 손가락으로 누르고 이동시키는 것을 의미해요, 스와이프와는 달리 화면에서 항목을 선택하고 움직이는 것이에요."
-            "확대&축소" -> "화면을 확대하거나 축소하고 싶을 때 사용할 수 있어요."
+            "터치" -> "화면에 손가락을 한번 눌렀다가 떼는 동작을 의미"
+            "스와이프" -> "화면에 손가락을 대고, 손가락을 움직여 화면을 이동시키는 것을 의미"
+            "꾹 누르기" -> "화면을 꾹 누르고 있는 것을 의미해요. 터치와는 달리 화면에서 손가락을 떼지 않고 누르고 있는 상태를 의미"
+            "드래그" -> "화면에서 특정 부분을 손가락으로 누르고 이동시키는 것을 의미해요, 스와이프와는 달리 화면에서 항목을 선택하고 움직이는 것"
+            "확대&축소" -> "화면을 확대하거나 축소하고 싶을 때 사용"
+            "캡처" -> "저장하고 싶은 화면을 이미지로 남기는 것"
             else -> "상세 설명이 없습니다."
         }
     }

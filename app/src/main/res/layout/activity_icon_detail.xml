@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintDimensionRatio="H,12:6" />
+        app:layout_constraintDimensionRatio="H,12:4.1" />
 
     <TextView
         android:id="@+id/iconedu_tool"
@@ -43,39 +43,7 @@
         app:layout_constraintTop_toBottomOf="@id/iconedu_tool"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/searchIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:paddingStart="24dp"
-        android:layout_marginEnd="0dp"
-        android:paddingEnd="24dp"
-        android:src="@drawable/search_bar"
-        app:layout_constraintTop_toBottomOf="@id/iconedu_tool_2"
-        app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:layout_width="26dp"
-        android:layout_height="26dp"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="7dp"
-        android:src="@drawable/ic_search_black_24dp"
-        app:layout_constraintStart_toStartOf="@id/searchIcon"
-        app:layout_constraintTop_toTopOf="@id/searchIcon" />
-
-    <EditText
-        android:id="@+id/search_edit_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="7dp"
-        android:background="@null"
-        android:fontFamily="@font/pretendard_regular"
-        android:hint="검색해주세요"
-        android:textColor="#B3000000"
-        app:layout_constraintStart_toStartOf="@id/searchIcon"
-        app:layout_constraintTop_toTopOf="@id/searchIcon" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/rounded_bg_layout"
@@ -83,12 +51,12 @@
         android:layout_height="0dp"
         android:background="@drawable/round_corner_white_2"
         app:layout_constraintWidth_percent="0.90"
-        app:layout_constraintHeight_percent="0.58"
+        app:layout_constraintHeight_percent="0.66"
         app:layout_constraintTop_toBottomOf="@id/icon_green"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/practice_nav_layout"
-        android:layout_marginTop="14dp">
+        android:layout_marginTop="18dp">
 
         <TextView
             android:id="@+id/icon_tv_2"
@@ -121,11 +89,11 @@
             android:layout_height="0dp"
             app:layout_constraintTop_toBottomOf="@id/icon_detail_iv"
             app:layout_constraintStart_toStartOf="parent"
-            android:background="@color/bgColor3"
+            android:background="@drawable/basicedu_rounded_background"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="4dp"
             app:layout_constraintWidth_percent="0.938"
-            app:layout_constraintHeight_percent="0.47"> <!-- 높이를 약간 줄여줌 -->
+            app:layout_constraintHeight_percent="0.55">
 
             <TextView
                 android:id="@+id/another_icon_iv"

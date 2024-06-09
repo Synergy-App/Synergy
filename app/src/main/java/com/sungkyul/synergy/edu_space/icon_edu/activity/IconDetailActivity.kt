@@ -10,6 +10,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.edu_space.icon_edu.data.Icon
 import com.sungkyul.synergy.edu_space.icon_edu.data.IconInfo
 import com.sungkyul.synergy.databinding.ActivityIconDetailBinding
+import com.sungkyul.synergy.edu_space.move_edu.activity.MoveEduActivity
 
 class IconDetailActivity : AppCompatActivity() {
     private lateinit var activityBinding: ActivityIconDetailBinding
@@ -39,7 +40,6 @@ class IconDetailActivity : AppCompatActivity() {
         // 기기별 해상도를 기준으로 글씨 크기를 조절합니다.
         activityBinding.iconeduTool.textSize = (standardSizeX / 12).toFloat()
         activityBinding.iconeduTool2.textSize = (standardSizeX / 20).toFloat()
-        activityBinding.searchEditText.textSize = (standardSizeX / 20).toFloat()
         activityBinding.iconTv2.textSize = (standardSizeX / 12).toFloat()
         activityBinding.anotherIconIv.textSize = (standardSizeY / 26).toFloat()
 
@@ -85,9 +85,15 @@ class IconDetailActivity : AppCompatActivity() {
         // home_nav 버튼 클릭 이벤트 처리
         val homeNavButton = activityBinding.practiceNavLayout.root.findViewById<ImageView>(R.id.home_nav)
         homeNavButton.setOnClickListener {
-            val intent = Intent(this, IconEduActivity::class.java)
+            val intent = Intent(this, IconEduActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            }
             startActivity(intent)
+            finish()
         }
+
+        // ImageView 크기 조정
+        adjustImageViewSize()
     }
 
     private fun getScreenSize(): Point {
