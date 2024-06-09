@@ -82,7 +82,7 @@ data class GoogleLoginCourse(val eduScreen: EduScreen): EduCourse {
                     id = "tap",
                     //x = 40.0f,
                     //y = 440.0f,
-                    target = null,
+                    x = 0.0f, y = 0.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

@@ -89,6 +89,8 @@ dependencies {
     // ViewPager2 슬라이드
     implementation("androidx.viewpager2:viewpager2:1.0.0")
 
+    implementation("androidx.window:window:1.3.0")
+
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     implementation("androidx.core:core-ktx:1.8.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

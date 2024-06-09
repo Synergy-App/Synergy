@@ -55,7 +55,7 @@ data class GooglePutCodeCourse(val eduScreen: EduScreen): EduCourse {
                     id = "tap",
                     //x = 150.0f,
                     //y = 210.0f,
-                    target = null,
+                    x = 0.0f, y = 0.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
@@ -70,7 +70,7 @@ data class GooglePutCodeCourse(val eduScreen: EduScreen): EduCourse {
                     id = "tap",
                     //x = 270.0f,
                     //y = 315.0f,
-                    target = null,
+                    x = 0.0f, y = 0.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

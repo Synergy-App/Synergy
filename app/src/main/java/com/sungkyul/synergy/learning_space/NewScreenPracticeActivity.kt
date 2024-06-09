@@ -239,11 +239,26 @@ class NewScreenPracticeActivity : AppCompatActivity() {
             optionTextView.visibility = TextView.GONE
             optionImageView.visibility = ImageView.VISIBLE
         } else {
+
             optionTextView.visibility = TextView.GONE
             optionImageView.visibility = ImageView.GONE
         }
 
         optionCard.tag = optionNumber
+
+            textView.visibility = TextView.GONE
+            imageView.visibility = ImageView.GONE
+        }
+
+        // Set default border for CardView
+        cardView.setCardBackgroundColor(Color.WHITE)  // Default option color
+    }
+
+    private fun resetOptionColors() {
+        optionCardViews.forEach {
+            it.setCardBackgroundColor(Color.WHITE)  // Default option color
+        }
+
     }
 
     private fun selectOption(cardView: CardView) {

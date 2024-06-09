@@ -5,14 +5,23 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.DisplayMetrics
+import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.window.layout.WindowMetricsCalculator
 import com.sungkyul.synergy.com.sungkyul.synergy.learning_space.fragment.ExamSpaceFragment
 import com.sungkyul.synergy.databinding.ActivityMainBinding
 import com.sungkyul.synergy.my_profile.Time
 import com.sungkyul.synergy.learning_space.fragment.ExamResultFragment
+
 import com.sungkyul.synergy.com.sungkyul.synergy.learning_space.ResultPair
+
+import com.sungkyul.synergy.utils.DisplayUtils
+
+/** 시너지 앱 메인 네비게이션 바 + fragment */
+
 
 private const val Tag_learning = "learn_fragment"
 private const val Tag_solving = "solving_fragment"
@@ -35,6 +44,7 @@ class MainActivity : AppCompatActivity() {
         // 타임 카운터 시작
         Time.startTimeCounter()
 
+
         // 초기 프래그먼트 설정
         val resultList = intent.getParcelableArrayListExtra<ResultPair>("resultList")
         if (resultList != null) {
@@ -49,6 +59,15 @@ class MainActivity : AppCompatActivity() {
             replaceFragment(examSpaceFragment)
         }
 
+
+        // 실습 공간 프래그먼트로 바꿔치기
+        //val examSpaceFragment = ExamSpaceFragment()
+        //replaceFragment(examSpaceFragment)
+
+        setFragment(Tag_learning, LearningFragment())
+        //setFragment(Tag_learning, LearningFragment())
+        //setFragment(Tag_examResult, ExamResultFragment())
+
         binding.mainNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.learingFragment -> setFragment(Tag_learning, LearningFragment())
@@ -57,6 +76,10 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+
+        // TEST: 비율에서 px로 변환하는 최종 테스트
+        //Log.i("ratio 0.1", DisplayUtils.convertWidthFromRatioToPx(this, 0.1f).toString())
+        //Log.i("ratio 0.2", DisplayUtils.convertHeightFromRatioToPx(this, 0.2f).toString())
     }
 
     private fun setFragment(tag: String, fragment: Fragment) {
