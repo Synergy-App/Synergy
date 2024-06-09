@@ -75,18 +75,27 @@
         <!-- 아이디찾기/비밀번호변경 화면 -->
         <activity
             android:name=".FindIdPasswordActivity"
-            android:exported="false"/>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <!-- 회원가입 화면 -->
         <activity
             android:name=".RegisterActivity"
-            android:exported="false"/>
+            android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
         <!-- 로그인 화면 -->
         <activity
             android:name=".LoginActivity"
             android:exported="false"/>
-
 
         <!-- 화면구성 -->
         <activity
@@ -108,13 +117,14 @@
             android:name=".edu_space.screen_layout.ScreenMoveHomeActivity"
             android:exported="false" />
 
+        <!-- 메시지 화면 -->
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageActivity"
             android:exported="false" />
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageChattingActivity"
 
-            android:exported="false"/> <!-- 메시지 화면 -->
+            android:exported="false"/>
             <!-- 메시지채팅 화면 -->
         <!-- 채팅 방법 선택 -->
         <!-- 메시지 화면 -->
@@ -125,9 +135,7 @@
             android:name=".edu_space.default_app.message.activity.DefaultMessageSelectActivity"
             android:exported="false" />
 
-        <activity
-            android:name=".edu_space.naver.activity.NaverSearchResultActivity"
-            android:exported="false" />
+
         <activity
             android:name=".edu_space.default_app.DefaultAppActivity"
             android:exported="false" />
@@ -137,13 +145,8 @@
 
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            android:exported="true"/>
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
       
         <activity
             android:name=".EduSpaceActivity"
@@ -206,7 +209,8 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.settingedu2.Setting2FontActivity"
-            android:exported="false"/> <!-- 계정생성 교육 -->
+            android:exported="false"/>
+
             <!-- 계정생성 -->
         <activity
             android:name=".edu_space.accountedu.GoogleMainActivity"
@@ -271,6 +275,7 @@
         <activity
             android:name=".edu_space.naver.activity.NaverSearchInfoActivity"
             android:exported="false" />
+
         <activity
             android:name=".learning_space.intent.LearningGoogleActivity"
             android:exported="false" />
