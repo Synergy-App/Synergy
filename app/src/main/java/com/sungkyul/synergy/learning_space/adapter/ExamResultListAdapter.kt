@@ -45,9 +45,7 @@ class ExamResultListAdapter(private val dataSet: ArrayList<ExamResultListData>):
                 }
                 MotionEvent.ACTION_UP -> {
                     (view as GalaxyButton).startTouchUpAnimation()
-
-                    //val intent = Intent(requireContext(), DefaultPhoneActivity::class.java)
-                    //startActivity(intent)
+                    // 상세 보기 기능 추가
                 }
             }
             true
