@@ -2,15 +2,14 @@ package com.sungkyul.synergy.com.sungkyul.synergy.learning_space.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.sungkyul.synergy.databinding.FragmentExamResultBinding
+import com.sungkyul.synergy.MainActivity
+import com.sungkyul.synergy.R
+import com.sungkyul.synergy.SolvingFragment
 import com.sungkyul.synergy.databinding.FragmentExamSpaceBinding
 import com.sungkyul.synergy.utils.GalaxyButton
 
@@ -38,13 +37,15 @@ class ExamSpaceFragment : Fragment() {
                 MotionEvent.ACTION_UP -> {
                     (view as GalaxyButton).startTouchUpAnimation()
 
-                    //val intent = Intent(requireContext(), DefaultPhoneActivity::class.java)
-                    //startActivity(intent)
+                    // SolvingFragment로 이동하는 코드 추가
+                    val mainActivity = activity as MainActivity
+                    mainActivity.setFragment(MainActivity.Tag_solving, SolvingFragment())
                 }
             }
             true
         }
 
+        // 나머지 버튼들은 기존 로직을 유지합니다.
         binding.allExerciseButton.setOnTouchListener { view, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
@@ -53,9 +54,6 @@ class ExamSpaceFragment : Fragment() {
 
                 MotionEvent.ACTION_UP -> {
                     (view as GalaxyButton).startTouchUpAnimation()
-
-                    //val intent = Intent(requireContext(), DefaultPhoneActivity::class.java)
-                    //startActivity(intent)
                 }
             }
             true
@@ -69,9 +67,6 @@ class ExamSpaceFragment : Fragment() {
 
                 MotionEvent.ACTION_UP -> {
                     (view as GalaxyButton).startTouchUpAnimation()
-
-                    //val intent = Intent(requireContext(), DefaultPhoneActivity::class.java)
-                    //startActivity(intent)
                 }
             }
             true
@@ -85,9 +80,6 @@ class ExamSpaceFragment : Fragment() {
 
                 MotionEvent.ACTION_UP -> {
                     (view as GalaxyButton).startTouchUpAnimation()
-
-                    //val intent = Intent(requireContext(), DefaultPhoneActivity::class.java)
-                    //startActivity(intent)
                 }
             }
             true
