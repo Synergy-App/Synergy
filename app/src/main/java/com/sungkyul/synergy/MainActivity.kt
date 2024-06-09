@@ -5,13 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.DisplayMetrics
+import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.window.layout.WindowMetricsCalculator
 import com.sungkyul.synergy.com.sungkyul.synergy.learning_space.fragment.ExamSpaceFragment
 import com.sungkyul.synergy.databinding.ActivityMainBinding
 import com.sungkyul.synergy.my_profile.Time
 import com.sungkyul.synergy.learning_space.fragment.ExamResultFragment
+import com.sungkyul.synergy.utils.DisplayUtils
 
 /** 시너지 앱 메인 네비게이션 바 + fragment */
 
@@ -53,6 +57,10 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+
+        // TEST: 비율에서 px로 변환하는 최종 테스트
+        //Log.i("ratio 0.1", DisplayUtils.convertWidthFromRatioToPx(this, 0.1f).toString())
+        //Log.i("ratio 0.2", DisplayUtils.convertHeightFromRatioToPx(this, 0.2f).toString())
     }
 
     private fun setFragment(tag: String, fragment: Fragment) {
