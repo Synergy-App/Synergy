@@ -7,6 +7,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityEduSpaceBinding
 import com.sungkyul.synergy.databinding.ActivityExamProblemBinding
 import com.sungkyul.synergy.edu_space.icon_edu.activity.IconEduActivity
+import com.sungkyul.synergy.learning_space.screen.PracticeScreenLockActivity
 
 class ExamProblemActivity : AppCompatActivity() {
     private lateinit var binding: ActivityExamProblemBinding
@@ -18,7 +19,7 @@ class ExamProblemActivity : AppCompatActivity() {
 
         binding.problemText.text = "주어진 시간 내에 설정 어플을 홈 화면에 배치하시오."
         binding.problemStartBtn.setOnClickListener {
-            val intent = Intent(this, ExamStartActivity::class.java)
+            val intent = Intent(this, PracticeScreenLockActivity::class.java)
             startActivity(intent)
         }
 
