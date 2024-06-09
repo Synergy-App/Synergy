@@ -2,11 +2,13 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
+    id("org.jetbrains.kotlin.plugin.parcelize") // 추가된 부분
 }
 
 android {
     buildFeatures {
-        viewBinding=true
+        dataBinding = true
+        viewBinding = true
         compose = true
     }
 
