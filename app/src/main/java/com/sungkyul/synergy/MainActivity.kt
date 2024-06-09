@@ -42,10 +42,10 @@ class MainActivity : AppCompatActivity() {
         Time.startTimeCounter()
 
         // 실습 공간 프래그먼트로 바꿔치기
-        val examSpaceFragment = ExamSpaceFragment()
-        replaceFragment(examSpaceFragment)
+        //val examSpaceFragment = ExamSpaceFragment()
+        //replaceFragment(examSpaceFragment)
 
-        //setFragment(Tag_learning, LearningFragment())
+        setFragment(Tag_learning, LearningFragment())
         //setFragment(Tag_learning, LearningFragment())
         //setFragment(Tag_examResult, ExamResultFragment())
         binding.mainNavigationView.setOnItemSelectedListener { item ->
