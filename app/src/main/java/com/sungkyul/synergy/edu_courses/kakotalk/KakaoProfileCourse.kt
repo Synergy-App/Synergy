@@ -85,7 +85,7 @@ data class KakaoProfileCourse(val eduScreen: EduScreen): EduCourse {
                     source = R.drawable.hand,
                     //x = 85.0f,
                     //y = 675.0f,
-                    target = null,
+                    x = 0.0f, y = 0.0f,
                     width = 50.0f,
                     height = 75.0f,
                     rotation = -90.0f,

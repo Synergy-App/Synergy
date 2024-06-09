@@ -81,7 +81,7 @@ data class DefaultMessageChattingCourse(val eduScreen: EduScreen): EduCourse {
                     id = "tap",
                     //x = 350.0f,
                     //y = 700.0f,
-                    target = null,
+                    x = 0.0f, y = 0.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
@@ -97,7 +97,7 @@ data class DefaultMessageChattingCourse(val eduScreen: EduScreen): EduCourse {
                     id = "tap",
                     //x = 350.0f,
                     //y = 550.0f,
-                    target = null,
+                    x = 0.0f, y = 0.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

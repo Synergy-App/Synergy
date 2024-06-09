@@ -23,10 +23,10 @@ data class DefaultPhoneCourse1(val eduScreen: EduScreen, val activity: AppCompat
             dialog.contentFont = R.font.pretendard_medium
             dialog.contentSize = 26.0f
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = 26.0f
-            dialog.bottom = 700.0f
-            dialog.start = 24.0f
-            dialog.end = 24.0f
+            dialog.top = 0.1f
+            dialog.bottom = 0.7f
+            dialog.start = 0.1f
+            dialog.end = 0.1f
             cover.boxVisibility = true
             cover.visibility = false
             cover.isClickable = true
@@ -40,10 +40,10 @@ data class DefaultPhoneCourse1(val eduScreen: EduScreen, val activity: AppCompat
         list.add(EduData().apply {
             dialog.contentText = "이 부분은 키패드라고 불리며,<br>전화하고 싶은 상대의 전화번호를<br>입력하는 버튼입니다."
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = 50.0f
-            dialog.bottom = 550.0f
-            dialog.start = 24.0f
-            dialog.end = 24.0f
+            dialog.top = 0.1f
+            dialog.bottom = 0.6f
+            dialog.start = 0.05f
+            dialog.end = 0.05f
             cover.boxLeft = 10.0f
             cover.boxRight = width - 10.0f
             cover.boxTop = 350.0f
@@ -58,8 +58,6 @@ data class DefaultPhoneCourse1(val eduScreen: EduScreen, val activity: AppCompat
 
         // 전화 버튼 설명
         list.add(EduData().apply {
-            dialog.top = 450.0f
-            dialog.bottom = 200.0f
             cover.boxLeft = 150.0f
             cover.boxRight = width - 150.0f
             cover.boxTop = 680.0f
@@ -70,8 +68,10 @@ data class DefaultPhoneCourse1(val eduScreen: EduScreen, val activity: AppCompat
         // 전화 걸기 안내
         list.add(EduData().apply {
             dialog.contentText = "010-2468-3579로<br>전화를 걸어보세요."
-            dialog.top = 300.0f
-            dialog.bottom = 400.0f
+            dialog.top = 0.1f
+            dialog.bottom = 0.7f
+            dialog.start = 0.1f
+            dialog.end = 0.1f
             dialog.contentColor = R.color.white
             dialog.background = R.drawable.edu_dialog_green_bg
             cover.boxVisibility = false
@@ -89,7 +89,8 @@ data class DefaultPhoneCourse1(val eduScreen: EduScreen, val activity: AppCompat
             hands.add(
                 EduHand(
                     id = "tap",
-                    target = activity.findViewById(R.id.key0),
+                    x = 0.8f,
+                    y = 0.675f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
@@ -119,7 +120,7 @@ data class DefaultPhoneCourse1(val eduScreen: EduScreen, val activity: AppCompat
                 hands.add(
                     EduHand(
                         id = "tap",
-                        target = keyViews[i],
+                        x = 0.0f, y = 0.0f,
                         gesture = HandGestures.Companion::tapGesture
                     )
                 )
@@ -133,7 +134,8 @@ data class DefaultPhoneCourse1(val eduScreen: EduScreen, val activity: AppCompat
             hands.add(
                 EduHand(
                     id = "tap",
-                    target = activity.findViewById(R.id.call_button),
+                    //target = activity.findViewById(R.id.call_button),
+                    x = 0.0f, y = 0.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
