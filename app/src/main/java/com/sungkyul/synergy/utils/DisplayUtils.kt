@@ -1,11 +1,26 @@
 package com.sungkyul.synergy.utils
 
 import android.content.Context
+import android.graphics.Point
+import android.graphics.Rect
 import android.util.TypedValue
+import androidx.window.layout.WindowMetricsCalculator
 
 class DisplayUtils {
     companion object {
-        // dp에서 px로 변환한다.
+        fun getBounds(context: Context): Rect {
+            val windowMetrics = WindowMetricsCalculator.getOrCreate()
+                .computeCurrentWindowMetrics(context)
+
+            return windowMetrics.bounds
+        }
+
+        fun getSize(context: Context): Point {
+            val bounds = getBounds(context)
+
+            return Point(bounds.width(), bounds.height())
+        }
+
         fun dpToPx(context: Context, dp: Float): Float {
             return TypedValue.applyDimension(
                 TypedValue.COMPLEX_UNIT_DIP,
@@ -14,9 +29,16 @@ class DisplayUtils {
             )
         }
 
-        // px에서 dp로 변환한다.
         fun pxToDp(context: Context, px: Float): Float {
             return px / context.resources.displayMetrics.density
+        }
+
+        fun convertWidthFromRatioToPx(context: Context, ratio: Float): Float {
+            return ratio * getSize(context).x
+        }
+
+        fun convertHeightFromRatioToPx(context: Context, ratio: Float): Float {
+            return ratio * getSize(context).y
         }
     }
 }
