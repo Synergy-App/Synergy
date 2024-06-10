@@ -45,6 +45,7 @@ class ExamResultTestActivity : AppCompatActivity() {
         backButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java).apply {
                 putExtra("target_fragment", MainActivity.Tag_examSpace)
+                putExtra("selected_navigation_item", R.id.solvingFragment)
             }
             startActivity(intent)
             finish()
