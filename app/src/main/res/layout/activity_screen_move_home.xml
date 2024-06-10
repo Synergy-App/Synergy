@@ -8,6 +8,11 @@
     android:background="@drawable/back1"
     tools:context=".edu_space.screen_layout.ScreenMoveHomeActivity">
 
+    <com.sungkyul.synergy.utils.edu.EduScreen
+        android:id="@+id/edu_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <include
         android:id="@+id/include_toolbar"
         layout="@layout/included_screen_layout_tool_bar"

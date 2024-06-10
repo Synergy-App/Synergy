@@ -1,5 +1,6 @@
 package com.sungkyul.synergy.edu_space.screen_layout
 
+import android.annotation.SuppressLint
 import android.app.ActivityOptions
 import android.content.ClipData
 import android.content.Intent
@@ -18,6 +19,7 @@ import com.sungkyul.synergy.utils.edu.EduScreen
 class ScreenMenuActivity : AppCompatActivity() {
     private lateinit var binding: ActivityScreenMenuBinding
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityScreenMenuBinding.inflate(layoutInflater)
@@ -30,7 +32,7 @@ class ScreenMenuActivity : AppCompatActivity() {
 
             // 교육 코스가 끝났을 때 발생하는 이벤트 리스너를 설정한다.
             binding.eduScreen.setOnFinishedCourseListener {
-                EduScreen.toTop(this, MainActivity::class.java)
+                //EduScreen.toTop(this, MainActivity::class.java)
             }
 
             // 교육을 시작한다.
@@ -46,16 +48,28 @@ class ScreenMenuActivity : AppCompatActivity() {
         // 아이콘 레이아웃에 롱클릭 리스너 추가
         val playstoreIcon = findViewById<View>(R.id.playstore_icon)
         playstoreIcon.setOnLongClickListener { view ->
-            val intent = Intent(this, ScreenMoveHomeActivity::class.java)
-            val options = ActivityOptions.makeSceneTransitionAnimation(this, playstoreIcon, "icon_transition")
+            if(binding.eduScreen.onAction("long_click_play_store_icon")) {
+                val intent = Intent(this, ScreenMoveHomeActivity::class.java)
+                val options = ActivityOptions.makeSceneTransitionAnimation(
+                    this,
+                    playstoreIcon,
+                    "icon_transition"
+                )
 
-            // 드래그 앤 드롭 관련 데이터 설정
-            val clipData = ClipData.newPlainText("icon_tag", view.tag.toString())
-            val shadowBuilder = DragShadowBuilder(view)
-            ViewCompat.startDragAndDrop(view, clipData, shadowBuilder, null, View.DRAG_FLAG_GLOBAL)
+                // 드래그 앤 드롭 관련 데이터 설정
+                val clipData = ClipData.newPlainText("icon_tag", view.tag.toString())
+                val shadowBuilder = DragShadowBuilder(view)
+                ViewCompat.startDragAndDrop(
+                    view,
+                    clipData,
+                    shadowBuilder,
+                    null,
+                    View.DRAG_FLAG_GLOBAL
+                )
 
-            // startActivity를 호출하여 ScreenMoveHomeActivity로 전환
-            startActivity(intent, options.toBundle())
+                // startActivity를 호출하여 ScreenMoveHomeActivity로 전환
+                startActivity(intent, options.toBundle())
+            }
             true
         }
 
@@ -64,7 +78,9 @@ class ScreenMenuActivity : AppCompatActivity() {
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> true
                 MotionEvent.ACTION_UP -> {
-                    returnToHomeScreen()
+                    if(binding.eduScreen.onAction("return_to_home_screen")) {
+                        returnToHomeScreen()
+                    }
                     true
                 }
                 else -> false
@@ -75,7 +91,9 @@ class ScreenMenuActivity : AppCompatActivity() {
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> true
                 MotionEvent.ACTION_UP -> {
-                    onBackPressed()
+                    if(binding.eduScreen.onAction("on_back_pressed")) {
+                        onBackPressed()
+                    }
                     true
                 }
                 else -> false

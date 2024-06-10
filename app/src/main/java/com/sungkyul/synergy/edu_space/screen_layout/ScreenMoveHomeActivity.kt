@@ -14,15 +14,16 @@ import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenMoveHomeCourse
 import com.sungkyul.synergy.databinding.ActivityScreenLayoutBinding
+import com.sungkyul.synergy.databinding.ActivityScreenMoveHomeBinding
 import com.sungkyul.synergy.utils.edu.EduScreen
 
 class ScreenMoveHomeActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityScreenLayoutBinding
+    private lateinit var binding: ActivityScreenMoveHomeBinding
     private lateinit var rootLayout: ConstraintLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityScreenLayoutBinding.inflate(layoutInflater)
+        binding = ActivityScreenMoveHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // 교육을 정의해보자!
