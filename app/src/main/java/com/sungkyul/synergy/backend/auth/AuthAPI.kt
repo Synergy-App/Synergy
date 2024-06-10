@@ -1,9 +1,11 @@
 package com.sungkyul.synergy.backend.auth
 
+import com.google.firebase.auth.UserInfo
 import com.sungkyul.synergy.backend.ApiResponse
 import com.sungkyul.synergy.types.ExamAnswerBody
 import com.sungkyul.synergy.types.ExamCheckResult
 import com.sungkyul.synergy.types.ExamListResponse
+import com.sungkyul.synergy.types.User
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -12,6 +14,14 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface AuthAPI {
+
+    @GET("user/me")
+    fun getUserInfo(@Header("Authorization") token: String): Call<ApiResponse<User>>
+
+
+    @GET("education/{educationId}/exams")
+    fun getExamListByEducationId(@Path("educationId") educationId: Int): Call<ApiResponse<ExamListResponse>>
+
 
     @GET("exam")
     fun getExamList(): Call<ApiResponse<ExamListResponse>>
