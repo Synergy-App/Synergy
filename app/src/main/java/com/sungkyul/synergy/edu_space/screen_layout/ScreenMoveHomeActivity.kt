@@ -10,8 +10,11 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenMoveHomeCourse
 import com.sungkyul.synergy.databinding.ActivityScreenLayoutBinding
+import com.sungkyul.synergy.utils.edu.EduScreen
 
 class ScreenMoveHomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityScreenLayoutBinding
@@ -21,6 +24,23 @@ class ScreenMoveHomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityScreenLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // 교육을 정의해보자!
+        binding.eduScreen.post {
+            // 교육 코스를 지정한다.
+            binding.eduScreen.course = ScreenMoveHomeCourse(binding.eduScreen)
+
+            // 교육 코스가 끝났을 때 발생하는 이벤트 리스너를 설정한다.
+            binding.eduScreen.setOnFinishedCourseListener {
+                EduScreen.toTop(this, MainActivity::class.java)
+            }
+
+            // 교육을 시작한다.
+            binding.eduScreen.start(this)
+        }
+
+        // 스마트폰의 이전 버튼을 누르면, 지정된 액티비티로 되돌아간다.
+        EduScreen.navigateBackToTop(this, MainActivity::class.java)
 
         // 하단바 숨기기 설정
         hideSystemUI()
