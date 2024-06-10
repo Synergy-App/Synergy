@@ -29,11 +29,6 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".LoginActivity"
@@ -299,6 +294,22 @@
         <activity
             android:name=".learning_space.intent.LearningIconActivity"
             android:exported="false" />
+        <activity
+        android:name=".learning_space.intent.LearningInstallActivity"
+        android:exported="false" />
+        <activity
+            android:name=".learning_space.intent.LearningNaverActivity"
+            android:exported="false" />
+        <activity
+            android:name=".learning_space.intent.LearningDeliveryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".learning_space.intent.LearningSettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".learning_space.intent.LearningKakaotalkActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
