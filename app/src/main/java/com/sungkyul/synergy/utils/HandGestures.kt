@@ -126,10 +126,8 @@ class HandGestures {
                 }
                 */
 
-
-        // 가로 스크롤 다운
         fun lockVerticalDragGesture(context: Context, imageView: ImageView): AnimatorSet {
-            return createDragGesture(context, imageView, 0.5f, 0.9f, 0.3f, 0.9f, 1500, 500)
+            return createDragGesture(context, imageView, 0.45f, 0.75f, 0.45f, 0.5f, 1500, 500)
         }
 
     }
