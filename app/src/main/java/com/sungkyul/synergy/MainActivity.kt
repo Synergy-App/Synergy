@@ -12,6 +12,9 @@ import com.sungkyul.synergy.com.sungkyul.synergy.learning_space.fragment.ExamSpa
 import com.sungkyul.synergy.databinding.ActivityMainBinding
 import com.sungkyul.synergy.my_profile.Time
 import com.sungkyul.synergy.learning_space.fragment.ExamResultFragment
+import com.sungkyul.synergy.SolvingFragment
+import com.sungkyul.synergy.LearningFragment
+import com.sungkyul.synergy.learning_space.intent.LearningScreenFragment
 import com.sungkyul.synergy.utils.DisplayUtils
 
 /** 시너지 앱 메인 네비게이션 바 + fragment */
@@ -40,7 +43,28 @@ class MainActivity : AppCompatActivity() {
         // Start the time counter
         Time.startTimeCounter()
 
-        setFragment(Tag_learning, LearningFragment())
+        // target_fragment 값을 확인하여 해당 프래그먼트를 설정합니다.
+        val targetFragment = intent.getStringExtra("target_fragment")
+        val targetNavigationItem = intent.getIntExtra("target_navigation_item", R.id.learingFragment)
+        if (targetFragment != null) {
+            when (targetFragment) {
+                Tag_examSpace -> {
+                    setFragment(Tag_examSpace, ExamSpaceFragment())
+                    binding.mainNavigationView.selectedItemId = targetNavigationItem
+                }
+                Tag_learning -> {
+                    setFragment(Tag_learning, LearningScreenFragment())
+                    binding.mainNavigationView.selectedItemId = targetNavigationItem
+                }
+                else -> {
+                    setFragment(Tag_learning, LearningFragment())
+                    binding.mainNavigationView.selectedItemId = targetNavigationItem
+                }
+            }
+        } else {
+            setFragment(Tag_learning, LearningFragment())
+            binding.mainNavigationView.selectedItemId = targetNavigationItem
+        }
 
         binding.mainNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
