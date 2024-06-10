@@ -213,16 +213,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="20dp">
 
-        <Button
+        <ImageView
             android:id="@+id/back_btn"
+            android:src="@drawable/back_btn_nav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
             android:text="이전" />
 
-        <Button
+        <ImageView
             android:id="@+id/next_btn"
+            android:src="@drawable/next_btn_nav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
