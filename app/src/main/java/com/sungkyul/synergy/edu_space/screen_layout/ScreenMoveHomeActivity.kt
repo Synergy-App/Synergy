@@ -1,5 +1,6 @@
 package com.sungkyul.synergy.edu_space.screen_layout
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.DragEvent
@@ -33,7 +34,10 @@ class ScreenMoveHomeActivity : AppCompatActivity() {
 
             // 교육 코스가 끝났을 때 발생하는 이벤트 리스너를 설정한다.
             binding.eduScreen.setOnFinishedCourseListener {
-                EduScreen.toTop(this, MainActivity::class.java)
+                val intent = Intent(this, ScreenHomeActivity::class.java)
+                intent.putExtra("from", "ScreenMoveHomeActivity")
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                startActivity(intent)
             }
 
             // 교육을 시작한다.
@@ -99,6 +103,7 @@ class ScreenMoveHomeActivity : AppCompatActivity() {
                 }
                 DragEvent.ACTION_DRAG_ENDED -> {
                     Log.d("ScreenMoveHomeActivity", "Drag ended")
+                    binding.eduScreen.onAction("release_icon")
                     true
                 }
                 else -> false

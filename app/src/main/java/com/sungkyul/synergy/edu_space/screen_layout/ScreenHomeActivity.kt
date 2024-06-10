@@ -26,7 +26,11 @@ class ScreenHomeActivity : AppCompatActivity() {
         // 교육을 정의해보자!
         binding.eduScreen.post {
             // 교육 코스를 지정한다.
-            binding.eduScreen.course = ScreenHomeCourse(binding.eduScreen)
+            if(intent.getStringExtra("from") == "ScreenMoveHomeActivity") {
+                //binding.eduScreen.course = ScreenHomeCourse2(binding.eduScreen)
+            } else {
+                binding.eduScreen.course = ScreenHomeCourse(binding.eduScreen)
+            }
 
             // 교육 코스가 끝났을 때 발생하는 이벤트 리스너를 설정한다.
             binding.eduScreen.setOnFinishedCourseListener {
