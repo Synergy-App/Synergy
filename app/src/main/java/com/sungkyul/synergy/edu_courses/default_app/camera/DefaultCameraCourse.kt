@@ -106,7 +106,7 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
                     id = "tap",
                     //x = 220.0f,
                     //y = height-100.0f,
-                    target = null,
+                    x = 0.0f, y = 0.0f,
                     rotation = -90.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )
@@ -148,7 +148,7 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
                     id = "tap",
                     //x = 120.0f,
                     //y = height-100.0f,
-                    target = null,
+                    x = 0.0f, y = 0.0f,
                     rotation = -90.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )

@@ -2,13 +2,17 @@ package com.sungkyul.synergy
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Point
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.sungkyul.synergy.backend.ApiResponse
 import com.sungkyul.synergy.backend.auth.AuthAPI
 import com.sungkyul.synergy.backend.auth.SignInBody
@@ -27,6 +31,8 @@ class LoginActivity : AppCompatActivity() {
     lateinit var btnRegister: Button
     lateinit var btnFind: Button
     lateinit var checkBoxAutoLogin: CheckBox
+    lateinit var imageView: ImageView
+    lateinit var textViewWelcome: TextView
 
     private val authApi: AuthAPI
 
@@ -36,6 +42,10 @@ class LoginActivity : AppCompatActivity() {
     private val PREF_AUTOLOGIN = "AutoLogin"
     private val PREF_TOKEN = "Token"
     private val PREF_NICKNAME = "Nickname"
+
+    private var standardSize_X = 0
+    private var standardSize_Y = 0
+    private var density = 0f
 
     init {
         // API 호출하기 위한 세팅
@@ -77,6 +87,8 @@ class LoginActivity : AppCompatActivity() {
         btnRegister = findViewById(R.id.btnRegister)
         btnFind = findViewById(R.id.btnFindIdPassword)
         checkBoxAutoLogin = findViewById(R.id.checkBoxAutoLogin)
+        imageView = findViewById(R.id.imageView)
+        textViewWelcome = findViewById(R.id.textView177)
 
         sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
 
@@ -153,6 +165,68 @@ class LoginActivity : AppCompatActivity() {
             val findIntent = Intent(this@LoginActivity, FindIdPasswordActivity::class.java)
             startActivity(findIntent)
         }
+
+        // Adjust the size of the ImageView and TextView
+        adjustSizes()
+    }
+
+    private fun getScreenSize(): Point {
+        val display = windowManager.defaultDisplay
+        val size = Point()
+        display.getSize(size)
+        return size
+    }
+
+    private fun getStandardSize() {
+        val screenSize = getScreenSize()
+        density = resources.displayMetrics.density
+        standardSize_X = (screenSize.x / density).toInt()
+        standardSize_Y = (screenSize.y / density).toInt()
+    }
+
+    private fun adjustSizes() {
+        getStandardSize()
+
+        // Adjust ImageView size
+        val newWidth = (standardSize_X * 1.2).toInt()
+        val newHeight = (standardSize_Y / 1.5).toInt()
+        imageView.layoutParams.width = newWidth
+        imageView.layoutParams.height = newHeight
+        imageView.requestLayout()
+
+        // 시너지 교육에 오신걸 환영합니다
+        textViewWelcome.textSize = (standardSize_X / 15).toFloat()  // Example text size adjustment
+        //아이디를 입력해주세요.
+        editTextId.textSize = (standardSize_X / 18).toFloat()
+        //비밀번호
+        editTextPassword.textSize = (standardSize_X /18).toFloat()
+        //로그인
+        btnLogin.textSize = (standardSize_X / 18).toFloat()
+        //회원가입
+        btnRegister.textSize = (standardSize_X / 21).toFloat()
+
+        // Adjust the heights of layouts
+        val idLayout = findViewById<ConstraintLayout>(R.id.rounded_bg_layout_id)
+        val passwordLayout = findViewById<ConstraintLayout>(R.id.rounded_bg_layout_password)
+        val loginButton = findViewById<Button>(R.id.btnLogin)
+        val RegisterButton = findViewById<Button>(R.id.btnRegister)
+
+        // Set heights as a fraction of the screen height
+        val layoutHeight = (standardSize_Y / 3.85).toInt()
+        val RegisterButtonHeight = (standardSize_Y / 5).toInt() // Adjust height for register button
+
+
+        idLayout.layoutParams.height = layoutHeight
+        passwordLayout.layoutParams.height = layoutHeight
+        loginButton.layoutParams.height = layoutHeight
+        RegisterButton.layoutParams.height = RegisterButtonHeight
+
+        // Apply the changes
+        idLayout.requestLayout()
+        passwordLayout.requestLayout()
+        loginButton.requestLayout()
+        RegisterButton.requestLayout()
+
     }
 
     private fun saveLoginInfo(signInResult: SignInResult?) {

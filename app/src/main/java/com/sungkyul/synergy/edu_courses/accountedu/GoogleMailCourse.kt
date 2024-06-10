@@ -103,7 +103,7 @@ data class GoogleMailCourse(val eduScreen: EduScreen): EduCourse {
                     id = "tap",
                     //x = 25.0f,
                     //y = 335.0f,
-                    target = null,
+                    x = 0.0f, y = 0.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
@@ -117,7 +117,7 @@ data class GoogleMailCourse(val eduScreen: EduScreen): EduCourse {
                     id = "tap",
                     //x = 135.0f,
                     //y = 435.0f,
-                    target = null,
+                    x = 0.0f, y = 0.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
@@ -131,7 +131,7 @@ data class GoogleMailCourse(val eduScreen: EduScreen): EduCourse {
                     id = "tap",
                     //x = 270.0f,
                     //y = 555.0f,
-                    target = null,
+                    x = 0.0f, y = 0.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

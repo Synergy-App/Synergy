@@ -1,19 +1,24 @@
 package com.sungkyul.synergy.edu_space.icon_edu.activity
 
+import android.content.Intent
 import android.graphics.Point
 import android.os.Bundle
-import android.widget.LinearLayout
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.edu_space.icon_edu.data.Icon
 import com.sungkyul.synergy.edu_space.icon_edu.data.IconInfo
 import com.sungkyul.synergy.databinding.ActivityIconDetailBinding
+import com.sungkyul.synergy.edu_space.move_edu.activity.MoveEduActivity
 
 class IconDetailActivity : AppCompatActivity() {
     private lateinit var activityBinding: ActivityIconDetailBinding
     private var standardSizeX: Int = 0
     private var standardSizeY: Int = 0
     private var density: Float = 0f
+    private var iconList: ArrayList<Icon>? = null
+    private var currentItemIndex: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +29,8 @@ class IconDetailActivity : AppCompatActivity() {
         getStandardSize()
 
         val iconInfo = intent.getSerializableExtra("iconInfo") as IconInfo
+        iconList = intent.getSerializableExtra("iconList") as ArrayList<Icon>?
+        currentItemIndex = intent.getIntExtra("currentItemIndex", 0)
 
         // 아이콘 정보를 화면에 표시합니다.
         activityBinding.iconTv2.text = iconInfo.iconText
@@ -33,13 +40,60 @@ class IconDetailActivity : AppCompatActivity() {
         // 기기별 해상도를 기준으로 글씨 크기를 조절합니다.
         activityBinding.iconeduTool.textSize = (standardSizeX / 12).toFloat()
         activityBinding.iconeduTool2.textSize = (standardSizeX / 20).toFloat()
-        activityBinding.searchEditText.textSize = (standardSizeX / 20).toFloat()
         activityBinding.iconTv2.textSize = (standardSizeX / 12).toFloat()
         activityBinding.anotherIconIv.textSize = (standardSizeY / 26).toFloat()
 
         // ImageView 크기 조정
         adjustImageViewSize()
 
+        // next_nav 버튼 클릭 이벤트 처리
+        val nextNavButton = activityBinding.practiceNavLayout.root.findViewById<ImageView>(R.id.next_nav)
+        nextNavButton.setOnClickListener {
+            val nextItemIndex = (currentItemIndex + 1) % (iconList?.size ?: 1)
+            val nextIconInfo = iconList?.get(nextItemIndex)?.let {
+                IconInfo(it.iconImage, it.iconText, it.iconDescription)
+            }
+            nextIconInfo?.let {
+                val intent = Intent(this, IconDetailActivity::class.java)
+                intent.putExtra("iconInfo", it)
+                intent.putExtra("iconList", iconList)
+                intent.putExtra("currentItemIndex", nextItemIndex)
+                startActivity(intent)
+                overridePendingTransition(0, 0) // 모션 없이 전환
+                finish()
+            }
+        }
+
+        // back_nav 버튼 클릭 이벤트 처리
+        val backNavButton = activityBinding.practiceNavLayout.root.findViewById<ImageView>(R.id.back_nav)
+        backNavButton.setOnClickListener {
+            val prevItemIndex = if (currentItemIndex - 1 < 0) (iconList?.size ?: 1) - 1 else currentItemIndex - 1
+            val prevIconInfo = iconList?.get(prevItemIndex)?.let {
+                IconInfo(it.iconImage, it.iconText, it.iconDescription)
+            }
+            prevIconInfo?.let {
+                val intent = Intent(this, IconDetailActivity::class.java)
+                intent.putExtra("iconInfo", it)
+                intent.putExtra("iconList", iconList)
+                intent.putExtra("currentItemIndex", prevItemIndex)
+                startActivity(intent)
+                overridePendingTransition(0, 0) // 모션 없이 전환
+                finish()
+            }
+        }
+
+        // home_nav 버튼 클릭 이벤트 처리
+        val homeNavButton = activityBinding.practiceNavLayout.root.findViewById<ImageView>(R.id.home_nav)
+        homeNavButton.setOnClickListener {
+            val intent = Intent(this, IconEduActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            }
+            startActivity(intent)
+            finish()
+        }
+
+        // ImageView 크기 조정
+        adjustImageViewSize()
     }
 
     private fun getScreenSize(): Point {
