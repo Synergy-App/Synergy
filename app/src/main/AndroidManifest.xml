@@ -27,22 +27,12 @@
             android:exported="true"></activity>
         <activity
             android:name=".learning_space.activity.ExamResultListActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".learning_space.activity.ExamResultListActivity"
             android:exported="false" />
         <activity
             android:name=".learning_space.screen.PracticeWebViewActivity"
             android:exported="false" />
         <activity
             android:name=".learning_space.intent.LearningDefaultAppActivity"
-            android:exported="false" />
-        <activity
-            android:name=".learning_space.intent.LearningScreenActivity"
             android:exported="false" />
         <activity
             android:name=".learning_space.screen.PracticeAppMove2Activity"
@@ -65,7 +55,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-            android:exported="false"/>
         <activity
             android:name=".learning_space.screen.PracticeScreenLockActivity"
             android:exported="false" />
@@ -92,8 +81,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> 
-            android:exported="false" />
+        </activity>
         <!-- 아이디찾기/비밀번호변경 화면 -->
         <activity
             android:name=".FindIdPasswordActivity"
