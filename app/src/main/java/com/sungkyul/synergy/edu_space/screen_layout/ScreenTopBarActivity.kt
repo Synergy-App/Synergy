@@ -7,9 +7,10 @@ import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.databinding.ActivityScreenTopbarBinding
 
 class ScreenTopBarActivity : AppCompatActivity() {
-
+    private lateinit var binding: ActivityScreenTopbarBinding
     private var startY = 0f
     private var endY = 0f
     private var wifiOn = false
@@ -21,7 +22,8 @@ class ScreenTopBarActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_screen_topbar)
+        binding = ActivityScreenTopbarBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // 하단바 숨기기 설정
         hideSystemUI()

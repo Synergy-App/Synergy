@@ -1,6 +1,5 @@
 package com.sungkyul.synergy.edu_space.screen_layout
 
-import android.content.ClipData
 import android.os.Bundle
 import android.util.Log
 import android.view.DragEvent
@@ -12,14 +11,16 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.databinding.ActivityScreenLayoutBinding
 
 class ScreenMoveHomeActivity : AppCompatActivity() {
-
+    private lateinit var binding: ActivityScreenLayoutBinding
     private lateinit var rootLayout: ConstraintLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_screen_move_home)
+        binding = ActivityScreenLayoutBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // 하단바 숨기기 설정
         hideSystemUI()

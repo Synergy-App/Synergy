@@ -8,16 +8,18 @@ import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.databinding.ActivityScreenLockBinding
 
 class ScreenLockActivity : AppCompatActivity() {
-
+    private lateinit var binding: ActivityScreenLockBinding
     private var startY = 0f
     private lateinit var lockIcon: ImageView
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_screen_lock)
+        binding = ActivityScreenLockBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // 하단바 숨기기 설정
         hideSystemUI()

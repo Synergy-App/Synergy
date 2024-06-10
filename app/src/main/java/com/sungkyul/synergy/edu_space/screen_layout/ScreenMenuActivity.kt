@@ -10,12 +10,15 @@ import android.view.View.DragShadowBuilder
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.databinding.ActivityScreenMenuBinding
 
 class ScreenMenuActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityScreenMenuBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_screen_menu)
+        binding = ActivityScreenMenuBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // 하단바 숨기기 설정
         hideSystemUI()

@@ -1,5 +1,6 @@
 package com.sungkyul.synergy.edu_space.screen_layout
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.MotionEvent
@@ -7,14 +8,17 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.databinding.ActivityScreenHomeBinding
 
 class ScreenHomeActivity : AppCompatActivity() {
-
+    private lateinit var binding: ActivityScreenHomeBinding
     private var startY = 0f
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_screen_home)
+        binding = ActivityScreenHomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // 하단바 숨기기 설정
         hideSystemUI()
