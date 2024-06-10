@@ -103,12 +103,18 @@ class LearningButtonAdapter(private val buttonList: List<EduButtonItem>): Recycl
         }
 
         private fun addFragment(activity: FragmentActivity, fragment: ViewModelStoreOwner) {
-            val fragmentManager = activity.supportFragmentManager
-            val transaction = fragmentManager.beginTransaction()
-            transaction.add(R.id.mainMainFrameLayout, fragment as Fragment)
-            transaction.addToBackStack(null)
-            transaction.commit()
+            if (fragment is Fragment) {
+                val fragmentManager = activity.supportFragmentManager
+                val transaction = fragmentManager.beginTransaction()
+                transaction.add(R.id.mainMainFrameLayout, fragment)
+                transaction.addToBackStack(null)
+                transaction.commit()
+            } else {
+                // 예외 처리 코드: fragment가 Fragment가 아닌 경우
+                throw IllegalArgumentException("Fragment instance required")
+            }
         }
+
 
         fun bind(buttonItem: EduButtonItem) {
             text1.text = buttonItem.buttonText
