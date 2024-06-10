@@ -1,6 +1,7 @@
 package com.sungkyul.synergy.learning_space.adapter
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -10,28 +11,20 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.ViewModelStoreOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.adapter.EduButtonItem
-import com.sungkyul.synergy.learning_space.intent.LearningDefaultAppActivity
-import com.sungkyul.synergy.learning_space.intent.LearningDeliveryActivity
-import com.sungkyul.synergy.learning_space.intent.LearningGoogleActivity
-import com.sungkyul.synergy.learning_space.intent.LearningIconActivity
-import com.sungkyul.synergy.learning_space.intent.LearningInstallActivity
-import com.sungkyul.synergy.learning_space.intent.LearningKakaotalkActivity
-import com.sungkyul.synergy.learning_space.intent.LearningKakaotaxiActivity
-import com.sungkyul.synergy.learning_space.intent.LearningNaverActivity
-import com.sungkyul.synergy.learning_space.intent.LearningScreenFragment
+import com.sungkyul.synergy.learning_space.intent.*
 import com.sungkyul.synergy.utils.GalaxyButton
 
 class LearningButtonAdapter(private val buttonList: List<EduButtonItem>): RecyclerView.Adapter<LearningButtonAdapter.ButtonViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ButtonViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.learning_item_button, parent, false)
         return ButtonViewHolder(view)
-
     }
+
     private var onItemClickListener: OnItemClickListener? = null
 
     fun setOnItemClickListener(listener: OnItemClickListener) {
@@ -50,12 +43,10 @@ class LearningButtonAdapter(private val buttonList: List<EduButtonItem>): Recycl
         return buttonList.size
     }
 
-
-
     @SuppressLint("ClickableViewAccessibility")
     inner class ButtonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val layout1: LinearLayout = itemView.findViewById(R.id.learning_layout)
-        private val text1: TextView = itemView.findViewById(R.id.title) // 이 부분에 해당하는 TextView의 ID를 정확히 입력해야 합니다.
+        private val text1: TextView = itemView.findViewById(R.id.title)
         private val text2: TextView = itemView.findViewById(R.id.learning_tv2)
         private val imageView: ImageView = itemView.findViewById(R.id.edu_icon)
         private val eduButton: GalaxyButton = itemView.findViewById(R.id.edu_button)
@@ -66,8 +57,6 @@ class LearningButtonAdapter(private val buttonList: List<EduButtonItem>): Recycl
                 eduButton.clipToRoundRect(27.0f)
             }
 
-            // 교육 버튼의 터치 이벤트 설정
-            // MotionEvent.ACTION_UP 안에 기능을 넣어주세요!
             eduButton.setOnTouchListener { view, event ->
                 when (event.action) {
                     MotionEvent.ACTION_DOWN -> {
@@ -76,22 +65,23 @@ class LearningButtonAdapter(private val buttonList: List<EduButtonItem>): Recycl
                     MotionEvent.ACTION_UP -> {
                         (view as GalaxyButton).startTouchUpAnimation()
 
-                        val activity = itemView.context as FragmentActivity
-                        val fragment = when (text1.text) {
-                            "아이콘" -> LearningIconActivity()
-                            "기본앱" -> LearningDefaultAppActivity()
-                            "화면구성" -> LearningScreenFragment()
-                           // "환경 설정" -> TestFragment()
-                            "계정 생성" -> LearningGoogleActivity()
-                            "앱 설치" -> LearningInstallActivity()
-                            "카카오톡" -> LearningKakaotalkActivity()
-                            "네이버" -> LearningNaverActivity()
-                            "카카오택시" -> LearningKakaotaxiActivity()
-                            "배달의 민족" -> LearningDeliveryActivity()
+                        val context = itemView.context
+                        val activity = context as FragmentActivity
+                        val title = text1.text.toString()
+                        when (title) {
+                            // Intent로 Activity 시작
+                            "아이콘" -> context.startActivity(Intent(context, LearningIconActivity::class.java))
+                            "기본앱" -> context.startActivity(Intent(context, LearningDefaultAppActivity::class.java))
+                            "계정 생성" -> context.startActivity(Intent(context, LearningGoogleActivity::class.java))
+                            "앱 설치" -> context.startActivity(Intent(context, LearningInstallActivity::class.java))
+                            "카카오톡" -> context.startActivity(Intent(context, LearningKakaotalkActivity::class.java))
+                            "네이버" -> context.startActivity(Intent(context, LearningNaverActivity::class.java))
+                            "카카오택시" -> context.startActivity(Intent(context, LearningKakaotaxiActivity::class.java))
+                            "배달의 민족" -> context.startActivity(Intent(context, LearningDeliveryActivity::class.java))
+
+                            // Fragment 시작
+                            "화면구성" -> replaceFragment(activity, LearningScreenFragment())
                             else -> null
-                        }
-                        fragment?.let {
-                            addFragment(activity, it)
                         }
                     }
                     MotionEvent.ACTION_CANCEL -> {
@@ -102,19 +92,13 @@ class LearningButtonAdapter(private val buttonList: List<EduButtonItem>): Recycl
             }
         }
 
-        private fun addFragment(activity: FragmentActivity, fragment: ViewModelStoreOwner) {
-            if (fragment is Fragment) {
-                val fragmentManager = activity.supportFragmentManager
-                val transaction = fragmentManager.beginTransaction()
-                transaction.add(R.id.mainMainFrameLayout, fragment)
-                transaction.addToBackStack(null)
-                transaction.commit()
-            } else {
-                // 예외 처리 코드: fragment가 Fragment가 아닌 경우
-                throw IllegalArgumentException("Fragment instance required")
-            }
+        private fun replaceFragment(activity: FragmentActivity, fragment: Fragment) {
+            val fragmentManager = activity.supportFragmentManager
+            val transaction = fragmentManager.beginTransaction()
+            transaction.replace(R.id.mainMainFrameLayout, fragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
-
 
         fun bind(buttonItem: EduButtonItem) {
             text1.text = buttonItem.buttonText
