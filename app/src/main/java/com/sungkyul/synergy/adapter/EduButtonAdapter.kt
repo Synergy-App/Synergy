@@ -18,6 +18,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityDefaultAppBinding
 import com.sungkyul.synergy.edu_space.accountedu.GoogleMainActivity
 import com.sungkyul.synergy.edu_space.appinstall.AppInstallMainActivity
+import com.sungkyul.synergy.edu_space.default_app.DefaultAppActivity
 import com.sungkyul.synergy.edu_space.icon_edu.activity.BasicEduMainFragment
 import com.sungkyul.synergy.edu_space.kakaotalk.activity.KakaoMainActivity
 import com.sungkyul.synergy.edu_space.naver.activity.NaverActivity
@@ -88,7 +89,7 @@ class EduButtonAdapter(
                             // Intent로 Activity 시작
                             "화면구성" -> context.startActivity(Intent(context, ScreenLayoutActivity::class.java))
                             "환경 설정" -> context.startActivity(Intent(context, Setting2MainActivity::class.java))
-                            "기본 앱" -> context.startActivity(Intent(context, ActivityDefaultAppBinding::class.java))
+                            "기본 앱" -> context.startActivity(Intent(context, DefaultAppActivity::class.java))
                             "계정 생성" -> context.startActivity(Intent(context, GoogleMainActivity::class.java))
                             "앱 설치" -> context.startActivity(Intent(context, AppInstallMainActivity::class.java))
                             "카카오톡" -> context.startActivity(Intent(context, KakaoMainActivity::class.java))
