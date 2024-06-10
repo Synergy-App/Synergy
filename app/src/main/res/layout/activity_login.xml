@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHeight_percent="0.30"
+        app:layout_constraintHeight_percent="0.25"
         app:layout_constraintWidth_percent="0.33"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -29,7 +29,7 @@
         android:paddingHorizontal="10sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@id/imageView"
         android:layout_marginTop="8sp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -140,7 +140,7 @@
             android:id="@+id/checkBoxAutoLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="6dp"
             android:text="자동 로그인"
             android:fontFamily="@font/pretendard_regular"
             app:layout_constraintTop_toBottomOf="@id/btnLogin"
@@ -155,13 +155,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/login"
+        android:layout_marginTop="6dp"
         android:orientation="vertical">
 
         <Button
             android:id="@+id/btnRegister"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:background="@drawable/login_border_background_white"
             android:padding="5dp"
             android:text="회원가입"
@@ -175,15 +175,18 @@
 
         <Button
             android:id="@+id/btnFindIdPassword"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="6dp"
             android:layout_marginBottom="10dp"
-            android:backgroundTint="#B3B3B3"
+            android:background="@android:color/transparent"
             android:text="아이디/비밀번호 찾기"
+            android:textColor="@color/black"
+            app:layout_constraintWidth_percent="0.65"
             app:layout_constraintTop_toBottomOf="@id/btnRegister"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

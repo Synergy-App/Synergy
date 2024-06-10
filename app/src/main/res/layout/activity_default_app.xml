@@ -27,7 +27,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="17dp"
-        android:layout_marginLeft="39dp" />
+        android:layout_marginStart="39dp" />
 
     <TextView
         android:id="@+id/iconedu_tool_2"
@@ -40,7 +40,7 @@
         app:layout_constraintTop_toBottomOf="@id/iconedu_tool"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="4dp"
-        android:layout_marginLeft="39dp" />
+        android:layout_marginStart="39dp" />
 
     <!--카메라-->
     <com.sungkyul.synergy.utils.GalaxyButton

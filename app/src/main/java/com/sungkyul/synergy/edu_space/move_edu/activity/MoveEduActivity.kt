@@ -48,7 +48,7 @@ class MoveEduActivity : AppCompatActivity() {
             Pair(R.drawable.ic_move_push, "꾹 누르기"),
             Pair(R.drawable.ic_move_drag, "드래그"),
             Pair(R.drawable.ic_move_size, "확대&축소"),
-            Pair(R.drawable.ic_sound_black, "캡처"),
+            Pair(R.drawable.ic_move_capture, "캡처"),
         )
 
         val moveList = ArrayList<Move>()
