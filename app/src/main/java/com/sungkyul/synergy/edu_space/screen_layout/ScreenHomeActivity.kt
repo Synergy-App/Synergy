@@ -44,7 +44,7 @@ class ScreenHomeActivity : AppCompatActivity() {
         hideSystemUI()
 
         // 전체 레이아웃 터치 이벤트 처리
-        findViewById<ConstraintLayout>(R.id.constraint_layout).setOnTouchListener { _, event ->
+        binding.constraintLayout.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
                     startY = event.y
@@ -52,7 +52,9 @@ class ScreenHomeActivity : AppCompatActivity() {
                 }
                 MotionEvent.ACTION_MOVE -> {
                     if (startY - event.y > 100) { // 위로 드래그 거리 설정 (100px 이상 드래그 시)
-                        showMenuScreen()
+                        if(binding.eduScreen.onAction("show_menu_screen")) {
+                            showMenuScreen()
+                        }
                         true
                     } else {
                         false
@@ -71,7 +73,9 @@ class ScreenHomeActivity : AppCompatActivity() {
                 }
                 MotionEvent.ACTION_MOVE -> {
                     if (event.y - startY > 100) { // 아래로 드래그 거리 설정 (100px 이상 드래그 시)
-                        showTopbarScreen()
+                        if(binding.eduScreen.onAction("show_topbar_screen")) {
+                            showTopbarScreen()
+                        }
                         true
                     } else {
                         false
@@ -86,7 +90,9 @@ class ScreenHomeActivity : AppCompatActivity() {
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> true
                 MotionEvent.ACTION_UP -> {
-                    showRecentlyScreen()
+                    if(binding.eduScreen.onAction("show_recently_screen")) {
+                        showRecentlyScreen()
+                    }
                     true
                 }
                 else -> false
@@ -97,7 +103,9 @@ class ScreenHomeActivity : AppCompatActivity() {
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> true
                 MotionEvent.ACTION_UP -> {
-                    returnToHomeScreen()
+                    if(binding.eduScreen.onAction("return_to_home_screen")) {
+                        returnToHomeScreen()
+                    }
                     true
                 }
                 else -> false
@@ -108,7 +116,9 @@ class ScreenHomeActivity : AppCompatActivity() {
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> true
                 MotionEvent.ACTION_UP -> {
-                    onBackPressed()
+                    if(binding.eduScreen.onAction("on_back_pressed")) {
+                        onBackPressed()
+                    }
                     true
                 }
                 else -> false
