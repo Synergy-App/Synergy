@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityMoveDetailBinding
 import com.sungkyul.synergy.edu_space.move_edu.data.Move
@@ -59,7 +60,7 @@ class MoveDetailActivity : AppCompatActivity() {
         // home_nav 버튼 클릭 이벤트 처리
         val homeNavButton = activityBinding.practiceNavLayout.root.findViewById<ImageView>(R.id.home_nav)
         homeNavButton.setOnClickListener {
-            val intent = Intent(this, MoveEduActivity::class.java).apply {
+            val intent = Intent(this, MainActivity::class.java).apply {
                 flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
             }
             startActivity(intent)

@@ -80,7 +80,7 @@ class LearningButtonAdapter(private val buttonList: List<EduButtonItem>): Recycl
                             "배달의 민족" -> context.startActivity(Intent(context, LearningDeliveryActivity::class.java))
 
                             // Fragment 시작
-                            "화면구성" -> replaceFragment(activity, LearningScreenFragment())
+                            "화면구성" -> addFragment(activity, LearningScreenFragment())
                             else -> null
                         }
                     }
@@ -92,10 +92,10 @@ class LearningButtonAdapter(private val buttonList: List<EduButtonItem>): Recycl
             }
         }
 
-        private fun replaceFragment(activity: FragmentActivity, fragment: Fragment) {
+        private fun addFragment(activity: FragmentActivity, fragment: Fragment) {
             val fragmentManager = activity.supportFragmentManager
             val transaction = fragmentManager.beginTransaction()
-            transaction.replace(R.id.mainMainFrameLayout, fragment)
+            transaction.add(R.id.mainMainFrameLayout, fragment)
             transaction.addToBackStack(null)
             transaction.commit()
         }
