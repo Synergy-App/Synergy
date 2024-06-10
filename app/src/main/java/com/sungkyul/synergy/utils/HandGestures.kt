@@ -7,6 +7,7 @@ import android.content.Context
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.ImageView
 
+// TODO(정신 없음 이것들을 클래스로 빼놓던가 해야지)
 class HandGestures {
     companion object {
         // Tap Gesture를 생성한다.
@@ -53,11 +54,11 @@ class HandGestures {
             movingDuration: Long,
             waitingDuration: Long
         ): AnimatorSet {
-            // dp -> px
-            val fromValueX = DisplayUtils.dpToPx(context, fromValueXDp)
-            val fromValueY = DisplayUtils.dpToPx(context, fromValueYDp)
-            val toValueX = DisplayUtils.dpToPx(context, toValueXDp)
-            val toValueY = DisplayUtils.dpToPx(context, toValueYDp)
+            // ratio -> px
+            val fromValueX = DisplayUtils.convertXFromRatioToPx(context, fromValueXDp)
+            val fromValueY = DisplayUtils.convertYFromRatioToPx(context, fromValueYDp)
+            val toValueX = DisplayUtils.convertXFromRatioToPx(context, toValueXDp)
+            val toValueY = DisplayUtils.convertYFromRatioToPx(context, toValueYDp)
 
             val set1 = AnimatorSet().apply {
                 duration = movingDuration
@@ -124,6 +125,12 @@ class HandGestures {
                     return createDragGesture(context, imageView, 220.0f, 510.0f, 360.0f, 510.0f, 1500, 500)
                 }
                 */
+
+
+        // 가로 스크롤 다운
+        fun lockVerticalDragGesture(context: Context, imageView: ImageView): AnimatorSet {
+            return createDragGesture(context, imageView, 0.5f, 0.9f, 0.3f, 0.9f, 1500, 500)
+        }
 
     }
 }
