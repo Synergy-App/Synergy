@@ -5,12 +5,36 @@ import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenRecentlyCourse
+import com.sungkyul.synergy.databinding.ActivityScreenRecentlyBinding
+import com.sungkyul.synergy.utils.edu.EduScreen
 
 class ScreenRecentlyActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityScreenRecentlyBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_screen_recently)
+        binding = ActivityScreenRecentlyBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        // 교육을 정의해보자!
+        binding.eduScreen.post {
+            // 교육 코스를 지정한다.
+            binding.eduScreen.course = ScreenRecentlyCourse(binding.eduScreen)
+
+            // 교육 코스가 끝났을 때 발생하는 이벤트 리스너를 설정한다.
+            binding.eduScreen.setOnFinishedCourseListener {
+                EduScreen.toTop(this, MainActivity::class.java)
+            }
+
+            // 교육을 시작한다.
+            binding.eduScreen.start(this)
+        }
+
+        // 스마트폰의 이전 버튼을 누르면, 지정된 액티비티로 되돌아간다.
+        EduScreen.navigateBackToTop(this, MainActivity::class.java)
 
         // 하단바 숨기기 설정
         hideSystemUI()
