@@ -93,11 +93,10 @@ class NewScreenPracticeActivity : AppCompatActivity() {
                 Log.d("NewScreenPracticeActivity", "Selected answer: $it")
                 checkAnswer(it)
             } ?: run {
-                Toast.makeText(this, "Please select an answer", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "정답을 선택해주세요.", Toast.LENGTH_SHORT).show()
                 Log.d("NewScreenPracticeActivity", "No answer selected")
             }
         }
-
         optionCardViews = cardViewIds.map { findViewById<CardView>(it) }.toList()
 
         for (cardView in optionCardViews) {
@@ -106,7 +105,13 @@ class NewScreenPracticeActivity : AppCompatActivity() {
 
         // 백 버튼
         binding.backBtn.setOnClickListener {
-            // Handle back button action
+            if (currentExamIndex > 0) {
+                currentExamIndex--
+            } else if (currentExamIndex == 0) {
+                Toast.makeText(this, "첫 번째 퀴즈입니다.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            showExam(currentExamIndex)
         }
     }
 
@@ -279,7 +284,7 @@ class NewScreenPracticeActivity : AppCompatActivity() {
     private fun selectOption(cardView: CardView) {
         selectedAnswer = cardView.tag as Int
         for (view in optionCardViews) {
-            view.setCardBackgroundColor(if (view == cardView) Color.YELLOW else Color.WHITE)
+            view.setCardBackgroundColor(if (view == cardView)  Color.parseColor("#FFD231") else Color.WHITE)
         }
     }
 }

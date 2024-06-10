@@ -137,7 +137,7 @@ class LoginActivity : AppCompatActivity() {
 
                         Toast.makeText(this@LoginActivity, "로그인 되었습니다.", Toast.LENGTH_SHORT).show()
 
-                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                        val intent = Intent(this@LoginActivity, SplashActivity::class.java)
                         startActivity(intent)
                         finish()  // 로그인 후 액티비티 종료
                     }
