@@ -24,25 +24,26 @@
         <!-- 고정 SplashActivity -->
         <activity
             android:name=".SplashActivity"
-            android:exported="true"></activity>
+            android:exported="true" >
+        </activity>
         <activity
-            android:name=".learning_space.activity.ExamResultListActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".learning_space.activity.ExamResultListActivity"
-            android:exported="false" />
+        <activity
+            android:name=".learning_space.activity.ExamResultListActivity"
+            android:exported="true">
+        </activity>
         <activity
             android:name=".learning_space.screen.PracticeWebViewActivity"
             android:exported="false" />
         <activity
             android:name=".learning_space.intent.LearningDefaultAppActivity"
-            android:exported="false" />
-        <activity
-            android:name=".learning_space.intent.LearningScreenActivity"
             android:exported="false" />
         <activity
             android:name=".learning_space.screen.PracticeAppMove2Activity"
@@ -59,13 +60,7 @@
         <activity
             android:name=".APItestActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-            android:exported="false"/>
         <activity
             android:name=".learning_space.screen.PracticeScreenLockActivity"
             android:exported="false" />
@@ -93,24 +88,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity> 
-            android:exported="false" />
         <!-- 아이디찾기/비밀번호변경 화면 -->
         <activity
             android:name=".FindIdPasswordActivity"
             android:exported="false" /> <!-- 회원가입 화면 -->
         <activity
             android:name=".RegisterActivity"
-            android:exported="false" /> <!-- 로그인 화면 -->
-        <activity
-            android:name=".LoginActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity> <!-- 화면구성 -->
-            android:exported="false"/>
+            android:exported="false" /> <!-- 로그인 화면 --><!-- 화면구성 -->
 
         <!-- 화면구성 -->
         <activity
@@ -160,7 +144,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity> <!-- 메시지채팅 화면 -->
-            android:exported="false"/>
             <!-- 메시지채팅 화면 -->
         <!-- 채팅 방법 선택 -->
         <!-- 메시지 화면 -->
@@ -192,7 +175,7 @@
             android:name=".EduSpaceActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.icon_edu.activity.BasicEduMainActivity"
+            android:name=".edu_space.icon_edu.activity.BasicEduMainFragment"
             android:exported="false" />
         <activity
             android:name=".edu_space.icon_edu.activity.IconEduActivity"
