@@ -133,5 +133,8 @@ class HandGestures {
         fun homeVerticalDragGesture(context: Context, imageView: ImageView): AnimatorSet {
             return createDragGesture(context, imageView, 0.45f, 0.75f, 0.45f, 0.5f, 1500, 500)
         }
+        fun homeTopbarDragGesture(context: Context, imageView: ImageView): AnimatorSet {
+            return createDragGesture(context, imageView, 0.5f, 0.025f, 0.5f, 0.5f, 1500, 500)
+        }
     }
 }

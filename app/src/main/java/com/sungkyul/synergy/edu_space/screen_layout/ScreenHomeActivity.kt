@@ -3,6 +3,7 @@ package com.sungkyul.synergy.edu_space.screen_layout
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenHomeCourse
+import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenHomeCourse2
 import com.sungkyul.synergy.databinding.ActivityScreenHomeBinding
 import com.sungkyul.synergy.utils.edu.EduScreen
 
@@ -27,7 +29,7 @@ class ScreenHomeActivity : AppCompatActivity() {
         binding.eduScreen.post {
             // 교육 코스를 지정한다.
             if(intent.getStringExtra("from") == "ScreenMoveHomeActivity") {
-                //binding.eduScreen.course = ScreenHomeCourse2(binding.eduScreen)
+                binding.eduScreen.course = ScreenHomeCourse2(binding.eduScreen)
             } else {
                 binding.eduScreen.course = ScreenHomeCourse(binding.eduScreen)
             }
@@ -78,6 +80,7 @@ class ScreenHomeActivity : AppCompatActivity() {
                 MotionEvent.ACTION_MOVE -> {
                     if (event.y - startY > 100) { // 아래로 드래그 거리 설정 (100px 이상 드래그 시)
                         if(binding.eduScreen.onAction("show_topbar_screen")) {
+                            Log.i("show_topbar_screen", "true")
                             showTopbarScreen()
                         }
                         true
