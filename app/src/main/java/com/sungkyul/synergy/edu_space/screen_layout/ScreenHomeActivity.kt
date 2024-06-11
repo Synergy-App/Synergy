@@ -30,6 +30,8 @@ class ScreenHomeActivity : AppCompatActivity() {
             // 교육 코스를 지정한다.
             if(intent.getStringExtra("from") == "ScreenMoveHomeActivity") {
                 binding.eduScreen.course = ScreenHomeCourse2(binding.eduScreen)
+            } else if(intent.getStringExtra("from") == "ScreenTopBarActivity") {
+                //binding.eduScreen.course = ScreenHomeCourse3(binding.eduScreen)
             } else {
                 binding.eduScreen.course = ScreenHomeCourse(binding.eduScreen)
             }

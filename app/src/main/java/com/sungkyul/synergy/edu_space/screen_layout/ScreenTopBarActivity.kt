@@ -3,9 +3,11 @@ package com.sungkyul.synergy.edu_space.screen_layout
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
+import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
@@ -29,6 +31,27 @@ class ScreenTopBarActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityScreenTopbarBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.brightnessSeekBar.progress = 100000
+
+        binding.brightnessSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                Log.i("SeekBar", "Progress: $progress")
+                if(progress == 0) {
+                    if(binding.eduScreen.onAction("drag_light")) {
+                        gotohome()
+                    }
+                }
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                Log.i("SeekBar", "Started tracking")
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                Log.i("SeekBar", "Stopped tracking")
+            }
+        })
 
         // 교육을 정의해보자!
         binding.eduScreen.post {
@@ -59,7 +82,9 @@ class ScreenTopBarActivity : AppCompatActivity() {
                 MotionEvent.ACTION_MOVE -> {
                     endY = event.rawY
                     if (startY - endY > 100) { // 드래그 거리 설정 (100px 이상 위로 드래그 시)
-                        showHomeScreen()
+                        if(binding.eduScreen.onAction("show_home_screen")) {
+                            showHomeScreen()
+                        }
                         true
                     } else {
                         false
@@ -77,8 +102,10 @@ class ScreenTopBarActivity : AppCompatActivity() {
 
         val wifiImageView = findViewById<ImageView>(R.id.wifi_image)
         wifiImageView.setOnClickListener {
-            wifiOn = !wifiOn
-            wifiImageView.setImageResource(if (wifiOn) R.drawable.ic_wifi_on else R.drawable.ic_wifi_off)
+            if(binding.eduScreen.onAction("click_wifi")) {
+                wifiOn = !wifiOn
+                wifiImageView.setImageResource(if (wifiOn) R.drawable.ic_wifi_on else R.drawable.ic_wifi_off)
+            }
         }
 
         val soundImageView = findViewById<ImageView>(R.id.sound_image)
@@ -121,6 +148,12 @@ class ScreenTopBarActivity : AppCompatActivity() {
         val intent = Intent(this, ScreenHomeActivity::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.slide_up, R.anim.stay)
+    }
+
+    private fun gotohome() {
+        val intent = Intent(this, ScreenHomeActivity::class.java)
+        intent.putExtra("from", "ScreenTopBarActivity")
+        startActivity(intent)
     }
 
     private fun hideSystemUI() {
