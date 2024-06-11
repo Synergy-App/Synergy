@@ -68,7 +68,7 @@ class DuckProfileFragment2 : Fragment() {
                 MotionEvent.ACTION_UP -> {
                     (view as GalaxyButton).startTouchUpAnimation()
 
-                    val intent = Intent(requireActivity(), CheckMyResultActivity::class.java)
+                    val intent = Intent(requireActivity(), CheckLearningAbilityActivity::class.java)
                     startActivity(intent)
                 }
             }
