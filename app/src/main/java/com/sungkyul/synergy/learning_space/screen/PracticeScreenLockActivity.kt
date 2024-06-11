@@ -15,6 +15,9 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityExamStartBinding
 import com.sungkyul.synergy.databinding.ActivityPracticeScreenLockPracticeBinding
 import com.sungkyul.synergy.edu_space.screen_layout.ScreenHomeActivity
+import com.sungkyul.synergy.learning_space.activity.ExamProblem2Activity
+
+/** 잠금화면 푸세요 문제 */
 
 class PracticeScreenLockActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPracticeScreenLockPracticeBinding
