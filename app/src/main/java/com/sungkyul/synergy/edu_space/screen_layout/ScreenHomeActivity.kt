@@ -12,6 +12,7 @@ import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenHomeCourse
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenHomeCourse2
+import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenHomeCourse3
 import com.sungkyul.synergy.databinding.ActivityScreenHomeBinding
 import com.sungkyul.synergy.utils.edu.EduScreen
 
@@ -31,7 +32,7 @@ class ScreenHomeActivity : AppCompatActivity() {
             if(intent.getStringExtra("from") == "ScreenMoveHomeActivity") {
                 binding.eduScreen.course = ScreenHomeCourse2(binding.eduScreen)
             } else if(intent.getStringExtra("from") == "ScreenTopBarActivity") {
-                //binding.eduScreen.course = ScreenHomeCourse3(binding.eduScreen)
+                binding.eduScreen.course = ScreenHomeCourse3(binding.eduScreen)
             } else {
                 binding.eduScreen.course = ScreenHomeCourse(binding.eduScreen)
             }
