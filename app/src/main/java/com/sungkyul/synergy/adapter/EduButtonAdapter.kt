@@ -28,6 +28,7 @@ import com.sungkyul.synergy.edu_space.kakaotalk.activity.KakaoMainActivity
 import com.sungkyul.synergy.edu_space.kakaotaxi.TaxiMainActivity
 import com.sungkyul.synergy.edu_space.naver.activity.NaverActivity
 import com.sungkyul.synergy.edu_space.screen_layout.ScreenLayoutActivity
+import com.sungkyul.synergy.edu_space.screen_layout.ScreenLockActivity
 import com.sungkyul.synergy.edu_space.settingedu2.Setting2MainActivity
 import com.sungkyul.synergy.edu_space.ticket.TicketMainActivity
 import com.sungkyul.synergy.utils.GalaxyButton
@@ -84,7 +85,7 @@ class EduButtonAdapter(private val context: Context, private val buttonList: Lis
                                 context.startActivity(intent)
                             }
                             "화면구성" -> {
-                                val intent = Intent(context, ScreenLayoutActivity::class.java)
+                                val intent = Intent(context, ScreenLockActivity::class.java)
                                 context.startActivity(intent)
                             }
                             "기본 앱" -> {
