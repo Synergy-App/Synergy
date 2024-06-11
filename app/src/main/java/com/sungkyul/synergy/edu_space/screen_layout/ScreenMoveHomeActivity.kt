@@ -36,7 +36,6 @@ class ScreenMoveHomeActivity : AppCompatActivity() {
             binding.eduScreen.setOnFinishedCourseListener {
                 val intent = Intent(this, ScreenHomeActivity::class.java)
                 intent.putExtra("from", "ScreenMoveHomeActivity")
-                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                 startActivity(intent)
             }
 
