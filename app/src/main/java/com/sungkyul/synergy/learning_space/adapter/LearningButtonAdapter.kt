@@ -85,8 +85,8 @@ class LearningButtonAdapter(private val buttonList: List<EduButtonItem>): Recycl
 
                         val activity = itemView.context as FragmentActivity
                         val fragment = when (text1.text) {
-                            "아이콘" -> LearningIconActivity()
-                            "기본앱" -> LearningDefaultAppActivity()
+                            "기초" -> LearningIconActivity()
+                            "기본 앱" -> LearningDefaultAppActivity()
                             "화면구성" -> LearningScreenFragment()
                             "계정 생성" -> LearningGoogleActivity()
                             "앱 설치" -> LearningInstallActivity()
