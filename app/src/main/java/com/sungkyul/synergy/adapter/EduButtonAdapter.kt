@@ -3,10 +3,14 @@ package com.sungkyul.synergy.adapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.graphics.Point
+import android.util.DisplayMetrics
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -75,6 +79,10 @@ class EduButtonAdapter(
                 eduButton.clipToRoundRect(27.0f)
             }
 
+            // 화면 크기에 따른 텍스트 크기 설정
+            setDynamicTextSize()
+
+
             eduButton.setOnTouchListener { view, event ->
                 when (event.action) {
                     MotionEvent.ACTION_DOWN -> {
@@ -126,6 +134,32 @@ class EduButtonAdapter(
                 }
                 true
             }
+        }
+
+        private fun getScreenSize(): Point {
+            val display = (context.getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay
+            val size = Point()
+            display.getSize(size)
+            return size
+        }
+
+        private fun getStandardSize(): Pair<Int, Int> {
+            val screenSize = getScreenSize()
+            val density = context.resources.displayMetrics.density
+
+            val standardSizeX = (screenSize.x / density).toInt()
+            val standardSizeY = (screenSize.y / density).toInt()
+
+            return Pair(standardSizeX, standardSizeY)
+        }
+
+        private fun setDynamicTextSize() {
+            val (standardSizeX, standardSizeY) = getStandardSize()
+
+            // 각각의 텍스트 요소에 다른 크기 설정
+            text1.setTextSize(TypedValue.COMPLEX_UNIT_SP, (standardSizeX / 14).toFloat())
+            text2.setTextSize(TypedValue.COMPLEX_UNIT_SP, (standardSizeX / 18).toFloat())
+
         }
 
         private fun addFragment(activity: FragmentActivity, fragment: Fragment) {
