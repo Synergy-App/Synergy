@@ -68,10 +68,10 @@
             android:name=".learning_space.activity.ExamProblemActivity"
             android:exported="true">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+             <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
+             <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
         </activity>
         <activity
             android:name=".learning_space.NewScreenPracticeActivity"
@@ -98,7 +98,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity> <!-- 화면구성 -->
-            android:exported="false"/>
 
         <!-- 화면구성 -->
         <activity
@@ -147,9 +146,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- 메시지채팅 화면 -->
-            android:exported="false"/>
-            <!-- 메시지채팅 화면 -->
+        </activity>
         <!-- 채팅 방법 선택 -->
         <!-- 메시지 화면 -->
         <activity
