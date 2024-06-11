@@ -16,13 +16,14 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityPracticeTopBarBinding
+import com.sungkyul.synergy.learning_space.activity.ExamProblem4Activity
 
 class PracticeTopBarActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPracticeTopBarBinding
     private var startY = 0f
     private lateinit var timer: CountDownTimer
     private var isTimerRunning = false
-    private var remainingTimeInMillis: Long = 10000 // 초기 카운트 다운 시간 (10초)
+    private var remainingTimeInMillis: Long = 15000 // 초기 카운트 다운 시간 (15초)
     private var pausedTimeInMillis: Long = 0 // 타이머가 일시정지된 시간
 
     @SuppressLint("ClickableViewAccessibility")
@@ -182,37 +183,36 @@ class PracticeTopBarActivity : AppCompatActivity() {
 
     private fun showNextProblemDialog() {
         // 예: 새로운 문제를 보여주는 다이얼로그 또는 새로운 액티비티로 이동하는 코드
-        val dialogBuilder = AlertDialog.Builder(this)
-        val inflater = this.layoutInflater
-        val dialogView = inflater.inflate(R.layout.dialoglayout, null) // 새로운 문제 레이아웃
-
-        dialogBuilder.setView(dialogView)
-        val alertDialog = dialogBuilder.create()
-
-        // 다이얼로그 메시지 텍스트뷰 설정
-        val numberTextView = dialogView.findViewById<TextView>(R.id.dialogNumber)
-        numberTextView.text = "문제 4."
-
-        val messageTextView = dialogView.findViewById<TextView>(R.id.dialogMessage)
-        messageTextView.text = "'플레이스토어' 앱을 실행한 후 홈 화면으로 이동하세요."
-        messageTextView.textSize = 20f
-
-        // 확인 버튼 설정
-        val confirmButton = dialogView.findViewById<Button>(R.id.confirmButton)
-        confirmButton.setOnClickListener {
-            alertDialog.dismiss() // 다이얼로그 닫기
+//        val dialogBuilder = AlertDialog.Builder(this)
+//        val inflater = this.layoutInflater
+//        val dialogView = inflater.inflate(R.layout.dialoglayout, null) // 새로운 문제 레이아웃
+//
+//        dialogBuilder.setView(dialogView)
+//        val alertDialog = dialogBuilder.create()
+//
+//        // 다이얼로그 메시지 텍스트뷰 설정
+//        val numberTextView = dialogView.findViewById<TextView>(R.id.dialogNumber)
+//        numberTextView.text = "문제 4."
+//
+//        val messageTextView = dialogView.findViewById<TextView>(R.id.dialogMessage)
+//        messageTextView.text = "'플레이스토어' 앱을 실행한 후 홈 화면으로 이동하세요."
+//        messageTextView.textSize = 20f
+//
+//        // 확인 버튼 설정
+//        val confirmButton = dialogView.findViewById<Button>(R.id.confirmButton)
+//        confirmButton.setOnClickListener {
+//            alertDialog.dismiss() // 다이얼로그 닫기
 
 //            val homeIntent = Intent(Intent.ACTION_MAIN)
 //            homeIntent.addCategory(Intent.CATEGORY_HOME)
 //            homeIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
 //            startActivity(homeIntent)
 
-            val intent = Intent(this, PracticeAppMoveActivity::class.java)
+            val intent = Intent(this, ExamProblem4Activity::class.java)
             startActivity(intent)
         }
 
-        alertDialog.show()
-    }
+     //   alertDialog.show()
 
     companion object {
         private const val REQUEST_WRITE_SETTINGS = 200
