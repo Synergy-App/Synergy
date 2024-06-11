@@ -22,11 +22,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/pretendard_extrabold"
             android:text="학습 능력 확인하기"
             android:textColor="@color/white"
+            android:fontFamily="@font/pretendard_bold"
             android:textSize="32sp"/>
-
     </FrameLayout>
 
     <FrameLayout
@@ -34,7 +33,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/rounded_button"
+        android:background="@drawable/round_corner_white"
         app:layout_constraintHeight_percent="0.40"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,164 +52,8 @@
                 android:text="XXX님의 취약 유형"
                 android:textColor="@color/black"
                 android:textSize="28sp"
-                android:textStyle="bold"/>
-
-            <!--<androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_marginTop="28dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/first_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/second_layout">
-
-                    <ImageView
-                        android:id="@+id/first_image"
-                        android:padding="8dp"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:src="@drawable/ic_edubutton_setting"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"/>
-
-                    <TextView
-                        android:id="@+id/first_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="기초교육"
-                        android:textSize="24sp"
-                        app:layout_constraintTop_toBottomOf="@id/first_image"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"/>
-
-                    <FrameLayout
-                        android:id="@+id/first_num"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/edu_dialog_yellow_bg"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="@string/one"
-                            android:textColor="@android:color/black"
-                            android:textSize="24sp" />
-
-                    </FrameLayout>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/second_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/first_layout"
-                    app:layout_constraintEnd_toStartOf="@id/third_layout">
-
-                    <ImageView
-                        android:id="@+id/second_image"
-                        android:padding="8dp"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:src="@drawable/ic_call"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"/>
-
-                    <TextView
-                        android:id="@+id/second_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="화면구성"
-                        android:textSize="24sp"
-                        app:layout_constraintTop_toBottomOf="@id/second_image"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"/>
-
-                    <FrameLayout
-                        android:id="@+id/second_num"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/edu_dialog_grey_bg"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="@string/two"
-                            android:textColor="@android:color/black"
-                            android:textSize="24sp" />
-
-                    </FrameLayout>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/third_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/second_layout"
-                    app:layout_constraintEnd_toEndOf="parent">
-
-                    <ImageView
-                        android:id="@+id/third_image"
-                        android:padding="8dp"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:src="@drawable/ic_edubutton_delivery"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"/>
-
-                    <TextView
-                        android:id="@+id/third_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="환경설정"
-                        android:textSize="24sp"
-                        app:layout_constraintTop_toBottomOf="@id/third_image"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"/>
-
-                    <FrameLayout
-                        android:id="@+id/third_num"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/edu_dialog_grey_bg"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="@string/three"
-                            android:textColor="@android:color/black"
-                            android:textSize="24sp" />
-
-                    </FrameLayout>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>-->
+                android:fontFamily="@font/pretendard_medium"
+                />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -219,14 +62,16 @@
 
                 <ImageView
                     android:id="@+id/status_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="128dp"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
                     android:src="@drawable/sebook_sad_face"
                     android:scaleType="centerInside"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toTopOf="@id/status_text"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintWidth_percent="0.4"
+                    app:layout_constraintDimensionRatio="1:1"/>
 
                 <TextView
                     android:id="@+id/status_text"
@@ -234,15 +79,15 @@
                     android:layout_height="wrap_content"
                     android:text="아직 측정되지 않았습니다."
                     android:textSize="24sp"
+                    android:textColor="#3D3D3D"
                     app:layout_constraintTop_toBottomOf="@id/status_image"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
-
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:fontFamily="@font/pretendard_semibold"
+                    />
             </androidx.constraintlayout.widget.ConstraintLayout>
-
         </LinearLayout>
-
     </FrameLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -251,131 +96,130 @@
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/rounded_button"
+        android:background="@drawable/round_corner_white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/top_view"
         app:layout_constraintBottom_toBottomOf="parent">
 
-            <TextView
-                android:id="@+id/learning_info_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="학습 현황"
-                android:textColor="@color/black"
-                android:textSize="28sp"
-                android:textStyle="bold"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/learning_info_layout"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+        <TextView
+            android:id="@+id/learning_info_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="학습 현황"
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            android:fontFamily="@font/pretendard_medium"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/learning_info_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
-            <LinearLayout
-                android:id="@+id/learning_info_layout"
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/learning_info_title"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent">
+        <LinearLayout
+            android:id="@+id/learning_info_layout"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/learning_info_title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                    <LinearLayout
+                <LinearLayout
+                    android:id="@+id/average_title_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/textViewAverageTime">
+
+                    <TextView
                         android:id="@+id/average_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/textViewAverageTime">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="#7272BA"
-                            android:text="하루 평균"
-                            android:textStyle="bold"
-                            android:textSize="24sp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="학습 시간"
-                            android:textStyle="bold"
-                            android:textSize="24sp"/>
-
-                    </LinearLayout>
+                        android:textColor="#7272BA"
+                        android:text="하루 평균"
+                        android:textSize="24sp"
+                        android:fontFamily="@font/pretendard_semibold"
+                        />
 
                     <TextView
-                        android:id="@+id/textViewAverageTime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/average_title"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:textSize="48sp"
-                        android:text="01:27:21"/>
+                        android:text="학습 시간"
+                        android:fontFamily="@font/pretendard_semibold"
+                        android:textSize="24sp"/>
+                </LinearLayout>
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/textViewAverageTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/average_title_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:textSize="48sp"
+                    android:fontFamily="@font/pretendard_medium"
+                    android:text="01:27:21"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="12dp"
-                    android:background="@color/light_grey"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:background="@color/light_grey"/>
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                    <LinearLayout
+                <LinearLayout
+                    android:id="@+id/today_title_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/textViewTodayTime">
+
+                    <TextView
                         android:id="@+id/today_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/textViewTodayTime">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="#7272BA"
-                            android:text="오늘"
-                            android:textStyle="bold"
-                            android:textSize="24sp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="학습 시간"
-                            android:textStyle="bold"
-                            android:textSize="24sp"/>
-
-                    </LinearLayout>
+                        android:textColor="#7272BA"
+                        android:text="오늘"
+                        android:textSize="24sp"
+                        android:fontFamily="@font/pretendard_semibold"
+                        />
 
                     <TextView
-                        android:id="@+id/textViewTodayTime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/today_title"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:textSize="48sp"
-                        android:textColor="#52A669"
-                        android:text="01:27:21"/>
+                        android:text="학습 시간"
+                        android:fontFamily="@font/pretendard_semibold"
+                        android:textSize="24sp"/>
+                </LinearLayout>
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </LinearLayout>
-
+                <TextView
+                    android:id="@+id/textViewTodayTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/today_title_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:textSize="48sp"
+                    android:fontFamily="@font/pretendard_medium"
+                    android:textColor="#52A669"
+                    android:text="01:27:21"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

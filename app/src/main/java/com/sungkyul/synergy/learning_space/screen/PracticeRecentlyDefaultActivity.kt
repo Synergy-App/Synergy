@@ -1,6 +1,7 @@
 package com.sungkyul.synergy.learning_space.screen
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -70,6 +71,7 @@ class PracticeRecentlyDefaultActivity : AppCompatActivity() {
 
             override fun onFinish() {
                 findViewById<TextView>(R.id.timerTextView).text = "0"
+                saveResult(false) // 실패 결과 저장
                 // 타이머 종료 후 수행할 작업 추가
             }
         }
@@ -107,6 +109,7 @@ class PracticeRecentlyDefaultActivity : AppCompatActivity() {
         val confirmButton = dialogView.findViewById<Button>(R.id.confirmButton)
         confirmButton.setOnClickListener {
             alertDialog.dismiss() // 다이얼로그 닫기
+            saveResult(true) // 성공 결과 저장
             startTimer(remainingTimeInMillis) // 타이머 다시 시작
         }
 
@@ -115,5 +118,12 @@ class PracticeRecentlyDefaultActivity : AppCompatActivity() {
         // 다이얼로그가 나타나면 타이머 멈춤
         timer.cancel()
         isTimerRunning = false
+    }
+
+    private fun saveResult(isSuccess: Boolean) {
+        val sharedPreferences = getSharedPreferences("PracticeRecentlyDefaultPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("quiz_result", isSuccess)
+        editor.apply()
     }
 }

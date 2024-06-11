@@ -19,8 +19,12 @@ import com.sungkyul.synergy.learning_space.activity.ExamProblem2Activity
 
 /** 잠금화면 푸세요 문제 */
 
+import android.content.Context
+import android.content.SharedPreferences
+
 class PracticeScreenLockActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPracticeScreenLockPracticeBinding
+    private lateinit var sharedPreferences: SharedPreferences
 
     private var startY = 0f
     private lateinit var lockIcon: ImageView
@@ -29,12 +33,14 @@ class PracticeScreenLockActivity : AppCompatActivity() {
     private var remainingTimeInMillis: Long = 10000 // 초기 카운트 다운 시간 (10초)
     private var pausedTimeInMillis: Long = 0 // 타이머가 일시정지된 시간
 
-
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPracticeScreenLockPracticeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // SharedPreferences 초기화
+        sharedPreferences = getSharedPreferences("PracticeScreenLockPrefs", Context.MODE_PRIVATE)
 
         // 하단바 숨기기 설정
         hideSystemUI()
@@ -47,23 +53,21 @@ class PracticeScreenLockActivity : AppCompatActivity() {
                     startY = event.rawY
                     true
                 }
-
                 MotionEvent.ACTION_MOVE -> {
                     val endY = event.rawY
                     if (Math.abs(endY - startY) > lockIcon.height / 2) { // 드래그가 아이콘 크기의 절반 이상일 때
+                        saveResult(true) // 성공 결과 저장
                         showHomeScreen()
                         true
                     } else {
                         false
                     }
                 }
-
                 MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
                     // 터치 이벤트가 끝날 때
                     startY = 0f
                     false
                 }
-
                 else -> false
             }
         }
@@ -96,8 +100,8 @@ class PracticeScreenLockActivity : AppCompatActivity() {
 
             override fun onFinish() {
                 binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
+                saveResult(false) // 실패 결과 저장
                 // 타이머 종료 후 수행할 작업 추가
-
             }
         }
 
@@ -108,6 +112,13 @@ class PracticeScreenLockActivity : AppCompatActivity() {
 
         timer.start() // 액티비티가 생성되면 타이머 시작
         isTimerRunning = true
+    }
+
+    private fun saveResult(isSuccess: Boolean) {
+        val sharedPreferences = getSharedPreferences("PracticeRecentlyDefaultPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("unlock_success", isSuccess)
+        editor.apply()
     }
 
     override fun onPause() {
@@ -134,12 +145,9 @@ class PracticeScreenLockActivity : AppCompatActivity() {
 
             override fun onFinish() {
                 binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
+                saveResult(false) // 실패 결과 저장
                 // 타이머 종료 후 수행할 작업 추가
             }
-        }
-        // 문제보기 클릭 시 다이얼로그 띄우기
-        binding.problemText.setOnClickListener {
-            showProblemDialog()
         }
 
         timer.start() // 액티비티가 생성되면 타이머 시작
@@ -180,3 +188,4 @@ class PracticeScreenLockActivity : AppCompatActivity() {
         isTimerRunning = false
     }
 }
+

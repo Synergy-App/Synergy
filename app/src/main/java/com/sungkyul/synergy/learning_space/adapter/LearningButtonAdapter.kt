@@ -3,10 +3,14 @@ package com.sungkyul.synergy.learning_space.adapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.graphics.Point
+import android.util.DisplayMetrics
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -29,10 +33,11 @@ import com.sungkyul.synergy.learning_space.intent.LearningScreenFragment
 import com.sungkyul.synergy.utils.GalaxyButton
 
 class LearningButtonAdapter(private val buttonList: List<EduButtonItem>): RecyclerView.Adapter<LearningButtonAdapter.ButtonViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ButtonViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.learning_item_button, parent, false)
-        return ButtonViewHolder(view)
+        return ButtonViewHolder(view, parent.context)
     }
 
     private var onItemClickListener: OnItemClickListener? = null
@@ -54,7 +59,7 @@ class LearningButtonAdapter(private val buttonList: List<EduButtonItem>): Recycl
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    inner class ButtonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ButtonViewHolder(itemView: View, val context: Context) : RecyclerView.ViewHolder(itemView) {
         private val layout1: LinearLayout = itemView.findViewById(R.id.learning_layout)
         private val text1: TextView = itemView.findViewById(R.id.title)
         private val text2: TextView = itemView.findViewById(R.id.learning_tv2)
@@ -67,6 +72,9 @@ class LearningButtonAdapter(private val buttonList: List<EduButtonItem>): Recycl
                 eduButton.clipToRoundRect(27.0f)
             }
 
+            // 화면 크기에 따른 텍스트 크기 설정
+            setDynamicTextSize()
+
             eduButton.setOnTouchListener { view, event ->
                 when (event.action) {
                     MotionEvent.ACTION_DOWN -> {
@@ -77,8 +85,8 @@ class LearningButtonAdapter(private val buttonList: List<EduButtonItem>): Recycl
 
                         val activity = itemView.context as FragmentActivity
                         val fragment = when (text1.text) {
-                            "아이콘" -> LearningIconActivity()
-                            "기본앱" -> LearningDefaultAppActivity()
+                            "기초" -> LearningIconActivity()
+                            "기본 앱" -> LearningDefaultAppActivity()
                             "화면구성" -> LearningScreenFragment()
                             "계정 생성" -> LearningGoogleActivity()
                             "앱 설치" -> LearningInstallActivity()
@@ -103,6 +111,32 @@ class LearningButtonAdapter(private val buttonList: List<EduButtonItem>): Recycl
                 }
                 true
             }
+        }
+
+        private fun getScreenSize(): Point {
+            val display = (context.getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay
+            val size = Point()
+            display.getSize(size)
+            return size
+        }
+
+        private fun getStandardSize(): Pair<Int, Int> {
+            val screenSize = getScreenSize()
+            val density = context.resources.displayMetrics.density
+
+            val standardSizeX = (screenSize.x / density).toInt()
+            val standardSizeY = (screenSize.y / density).toInt()
+
+            return Pair(standardSizeX, standardSizeY)
+        }
+
+        private fun setDynamicTextSize() {
+            val (standardSizeX, standardSizeY) = getStandardSize()
+
+            // 각각의 텍스트 요소에 다른 크기 설정
+            text1.setTextSize(TypedValue.COMPLEX_UNIT_SP, (standardSizeX / 14).toFloat())
+            text2.setTextSize(TypedValue.COMPLEX_UNIT_SP, (standardSizeX / 18).toFloat())
+
         }
 
         private fun addFragment(activity: FragmentActivity, fragment: Fragment) {

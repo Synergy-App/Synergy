@@ -1,6 +1,7 @@
 package com.sungkyul.synergy.learning_space.screen
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -39,6 +40,7 @@ class PracticeScreenTopScrollActivity : AppCompatActivity() {
                 }
                 MotionEvent.ACTION_MOVE -> {
                     if (startY - event.y > 100) { // 위로 드래그 거리 설정 (100px 이상 드래그 시)
+                        saveResult(true) // 성공 결과 저장
                         showMenuScreen()
                         true
                     } else {
@@ -58,6 +60,7 @@ class PracticeScreenTopScrollActivity : AppCompatActivity() {
                 }
                 MotionEvent.ACTION_MOVE -> {
                     if (event.y - startY > 100) { // 아래로 드래그 거리 설정 (100px 이상 드래그 시)
+                        saveResult(true) // 성공 결과 저장
                         showTopbarScreen()
                         true
                     } else {
@@ -135,7 +138,7 @@ class PracticeScreenTopScrollActivity : AppCompatActivity() {
 
             override fun onFinish() {
                 findViewById<TextView>(R.id.timerTextView).text = "0"
-                // 타이머 종료 후 수행할 작업 추가
+                saveResult(false)
             }
         }
 
@@ -157,7 +160,7 @@ class PracticeScreenTopScrollActivity : AppCompatActivity() {
 
         // 다이얼로그 메시지 텍스트뷰 설정
         val numberTextView = dialogView.findViewById<TextView>(R.id.dialogNumber)
-        numberTextView.text = "문제 3."
+        numberTextView.text = "문제 2."
 
         val messageTextView = dialogView.findViewById<TextView>(R.id.dialogMessage)
         messageTextView.text = "상단바 내리세요."
@@ -177,9 +180,16 @@ class PracticeScreenTopScrollActivity : AppCompatActivity() {
         isTimerRunning = false
     }
 
+    private fun saveResult(isSuccess: Boolean) {
+        val sharedPreferences = getSharedPreferences("PracticeRecentlyDefaultPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("scroll_success", isSuccess)
+        editor.apply()
+    }
+
     private fun showMenuScreen() {
-//        val intent = Intent(this, ScreenMenuActivity::class.java)
-//        startActivity(intent)
+        // val intent = Intent(this, ScreenMenuActivity::class.java)
+        // startActivity(intent)
         overridePendingTransition(R.anim.slide_up, R.anim.stay)
     }
 
@@ -190,16 +200,14 @@ class PracticeScreenTopScrollActivity : AppCompatActivity() {
     }
 
     private fun showRecentlyScreen() {
-//        val intent = Intent(this, ScreenRecentlyActivity::class.java)
-//        startActivity(intent)
+        // val intent = Intent(this, ScreenRecentlyActivity::class.java)
+        // startActivity(intent)
         overridePendingTransition(R.anim.slide_in_left, R.anim.stay)
     }
 
     private fun returnToHomeScreen() {
-//        val intent = Intent(this, ScreenHomeActivity::class.java)
-//        startActivity(intent)
+        // val intent = Intent(this, ScreenHomeActivity::class.java)
+        // startActivity(intent)
         overridePendingTransition(R.anim.stay, R.anim.stay)
     }
-
-
 }
