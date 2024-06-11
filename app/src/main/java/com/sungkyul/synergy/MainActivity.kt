@@ -68,6 +68,13 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+        
+        val fragmentName = intent.getStringExtra("fragment")
+        if(fragmentName == "SolvingFragment") {
+            setFragment(Tag_solving, SolvingFragment())
+        }
+
+        //else {setFragment(Tag_solving, ExamResultFragment())}
     }
 
     public fun setFragment(tag: String, fragment: Fragment) {
