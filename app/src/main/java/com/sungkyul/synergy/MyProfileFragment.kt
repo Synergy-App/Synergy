@@ -15,6 +15,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.sungkyul.synergy.CheckLearningAbilityActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.FragmentMyProfileBinding
 import com.sungkyul.synergy.my_profile.CheckMyResultActivity
@@ -49,7 +50,7 @@ class MyProfileFragment : Fragment() {
         }
 
         binding.CheckResultCardView.setOnClickListener {
-            val intent = Intent(requireActivity(), CheckMyResultActivity::class.java)
+            val intent = Intent(requireActivity(), CheckLearningAbilityActivity::class.java)
             startActivity(intent)
         }
 
