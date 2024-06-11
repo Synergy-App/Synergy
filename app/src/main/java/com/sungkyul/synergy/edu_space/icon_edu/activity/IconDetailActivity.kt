@@ -10,7 +10,6 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.edu_space.icon_edu.data.Icon
 import com.sungkyul.synergy.edu_space.icon_edu.data.IconInfo
 import com.sungkyul.synergy.databinding.ActivityIconDetailBinding
-import com.sungkyul.synergy.edu_space.move_edu.activity.MoveEduActivity
 
 class IconDetailActivity : AppCompatActivity() {
     private lateinit var activityBinding: ActivityIconDetailBinding

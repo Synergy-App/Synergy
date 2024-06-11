@@ -8,12 +8,12 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
-import com.sungkyul.synergy.learning_space.activity.ExamResultListActivity
+import com.sungkyul.synergy.learning_space.activity.ExamResultTestActivity
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import com.bumptech.glide.Glide
-import com.sungkyul.synergy.MainActivity
+import com.google.gson.Gson
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.backend.ApiResponse
 import com.sungkyul.synergy.backend.auth.AuthAPI
@@ -93,11 +93,10 @@ class NewScreenPracticeActivity : AppCompatActivity() {
                 Log.d("NewScreenPracticeActivity", "Selected answer: $it")
                 checkAnswer(it)
             } ?: run {
-                Toast.makeText(this, "Please select an answer", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "정답을 선택해주세요.", Toast.LENGTH_SHORT).show()
                 Log.d("NewScreenPracticeActivity", "No answer selected")
             }
         }
-
         optionCardViews = cardViewIds.map { findViewById<CardView>(it) }.toList()
 
         for (cardView in optionCardViews) {
@@ -106,7 +105,13 @@ class NewScreenPracticeActivity : AppCompatActivity() {
 
         // 백 버튼
         binding.backBtn.setOnClickListener {
-            // Handle back button action
+            if (currentExamIndex > 0) {
+                currentExamIndex--
+            } else if (currentExamIndex == 0) {
+                Toast.makeText(this, "첫 번째 퀴즈입니다.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            showExam(currentExamIndex)
         }
     }
 
@@ -133,6 +138,24 @@ class NewScreenPracticeActivity : AppCompatActivity() {
         })
     }
 
+    private fun updateDigitalAge() {
+        val sharedPreferences = getSharedPreferences("SynergyPrefs", Context.MODE_PRIVATE)
+        val currentDigitalAgeGrade = sharedPreferences.getString("DigitalAgeGrade", "old")
+        val newDigitalAgeGrade = when (currentDigitalAgeGrade) {
+            "old" -> "parent"
+            "parent" -> "adult"
+            "adult" -> "student"
+            "student" -> "baby"
+            else -> "old"
+        }
+        sharedPreferences.edit().putString("DigitalAgeGrade", newDigitalAgeGrade).apply()
+        Log.d("NewScreenPracticeActivity", "Digital age updated from $currentDigitalAgeGrade to $newDigitalAgeGrade")
+
+        // 저장된 값 확인 로그 추가
+        val updatedDigitalAgeGrade = sharedPreferences.getString("DigitalAgeGrade", null)
+        Log.d("NewScreenPracticeActivity", "Stored DigitalAgeGrade: $updatedDigitalAgeGrade")
+    }
+
     private fun checkAnswer(answer: Int) {
         val examId = examList[currentExamIndex].id
         val answerBody = ExamAnswerBody(answerOnSelect = answer, answerOnInput = "", answerOnActivity = "")
@@ -155,9 +178,11 @@ class NewScreenPracticeActivity : AppCompatActivity() {
                         }
                         // 결과 리스트에 추가
                         resultList.add(ResultPair(currentExamIndex + 1, result.correct))
+                        saveResultListToSharedPreferences(resultList) // 결과 리스트를 SharedPreferences에 저장
                         showNextExam()
                     } else {
                         Toast.makeText(this@NewScreenPracticeActivity, "정답을 선택하세요!", Toast.LENGTH_SHORT).show()
+
                     }
                 } else {
                     val errorMsg = response.errorBody()?.string()
@@ -173,15 +198,25 @@ class NewScreenPracticeActivity : AppCompatActivity() {
         })
     }
 
+    private fun saveResultListToSharedPreferences(resultList: ArrayList<ResultPair>) {
+        val gson = Gson()
+        val jsonResultList = gson.toJson(resultList)
+        val editor = sharedPreferences.edit()
+        editor.putString("resultList", jsonResultList)
+        editor.apply()
+    }
+
     private fun showNextExam() {
         Log.d("NewScreenPracticeActivity", "showNextExam called")
         if (currentExamIndex < examList.size - 1) {
             currentExamIndex++
             showExam(currentExamIndex)
         } else {
-            // 문제가 더 이상 없으면 MainActivity로 이동하고, 결과를 ExamResultFragment에 전달
-            val intent = Intent(this, ExamResultListActivity::class.java).apply {
+            updateDigitalAge()
+            // 문제가 더 이상 없으면 ExamResultTestActivity로 이동하여 맞춘 문제 수를 보여줌
+            val intent = Intent(this, ExamResultTestActivity::class.java).apply {
                 putParcelableArrayListExtra("resultList", ArrayList(resultList))
+                putExtra("totalQuestions", examList.size)
             }
             startActivity(intent)
             finish() // 현재 Activity를 종료
@@ -239,32 +274,17 @@ class NewScreenPracticeActivity : AppCompatActivity() {
             optionTextView.visibility = TextView.GONE
             optionImageView.visibility = ImageView.VISIBLE
         } else {
-
             optionTextView.visibility = TextView.GONE
             optionImageView.visibility = ImageView.GONE
         }
 
         optionCard.tag = optionNumber
-
-            textView.visibility = TextView.GONE
-            imageView.visibility = ImageView.GONE
-        }
-
-        // Set default border for CardView
-        cardView.setCardBackgroundColor(Color.WHITE)  // Default option color
-    }
-
-    private fun resetOptionColors() {
-        optionCardViews.forEach {
-            it.setCardBackgroundColor(Color.WHITE)  // Default option color
-        }
-
     }
 
     private fun selectOption(cardView: CardView) {
         selectedAnswer = cardView.tag as Int
         for (view in optionCardViews) {
-            view.setCardBackgroundColor(if (view == cardView) Color.YELLOW else Color.WHITE)
+            view.setCardBackgroundColor(if (view == cardView)  Color.parseColor("#FFD231") else Color.WHITE)
         }
     }
 }

@@ -18,19 +18,31 @@
         android:theme="@style/Theme.Synergy"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
-        <!--고정 SplashActivity-->
+        <activity
+            android:name=".learning_space.activity.ExamResultTestActivity"
+            android:exported="false" />
+        <!-- 고정 SplashActivity -->
         <activity
             android:name=".SplashActivity"
+            android:exported="true" >
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".learning_space.activity.ExamResultListActivity"
-            android:exported="false" />
-
+        <activity
+            android:name=".learning_space.activity.ExamResultListActivity"
+            android:exported="true">
+        </activity>
         <activity
             android:name=".learning_space.screen.PracticeWebViewActivity"
             android:exported="false" />
@@ -38,30 +50,24 @@
             android:name=".learning_space.intent.LearningDefaultAppActivity"
             android:exported="false" />
         <activity
-            android:name=".learning_space.intent.LearningScreenActivity"
-            android:exported="false" />
-        <activity
             android:name=".learning_space.screen.PracticeAppMove2Activity"
             android:exported="false" />
-
         <activity
             android:name=".learning_space.screen.PracticeAppMoveActivity"
             android:exported="false" />
-
         <activity
             android:name=".learning_space.screen.PracticeTopBarActivity"
             android:exported="false" />
         <activity
             android:name=".learning_space.screen.PracticeScreenLock2Activity"
             android:exported="false" />
-
         <activity
             android:name=".APItestActivity"
-            android:exported="false"/>
+            android:exported="true">
+        </activity>
         <activity
             android:name=".learning_space.screen.PracticeScreenLockActivity"
             android:exported="false" />
-
         <activity
             android:name=".my_profile.CheckMyResultActivity"
             android:exported="false" />
@@ -70,25 +76,29 @@
             android:exported="false" />
         <activity
             android:name=".learning_space.activity.ExamProblemActivity"
-            android:exported="false"/>
+            android:exported="true">
 
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
         <activity
             android:name=".learning_space.NewScreenPracticeActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> 
         <!-- 아이디찾기/비밀번호변경 화면 -->
         <activity
             android:name=".FindIdPasswordActivity"
-            android:exported="false"/>
-
-        <!-- 회원가입 화면 -->
+            android:exported="false" /> <!-- 회원가입 화면 -->
         <activity
             android:name=".RegisterActivity"
-            android:exported="false"/>
-
-        <!-- 로그인 화면 -->
-        <activity
-            android:name=".LoginActivity"
-            android:exported="false"/>
+            android:exported="false" /> <!-- 로그인 화면 --><!-- 화면구성 -->
 
         <!-- 화면구성 -->
         <activity
@@ -109,6 +119,21 @@
         <activity
             android:name=".edu_space.screen_layout.ScreenMoveHomeActivity"
             android:exported="false" />
+        <activity
+            android:name=".edu_space.default_app.todo.DefaultAppBarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".edu_space.default_app.todo.DefaultMenuActivity"
+            android:exported="false" /> <!-- 병윤님|화면구성 메뉴화면 -->
+        <activity
+            android:name=".edu_space.default_app.todo.DefaultAppAddActivity"
+            android:exported="false" />
+        <activity
+            android:name=".edu_space.default_app.todo.DefaultLockedScreenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".edu_space.default_app.todo.DefaultHomeActivity"
+            android:exported="false" />
 
         <!-- 메시지 화면 -->
         <activity
@@ -116,8 +141,13 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageChattingActivity"
+            android:exported="true"> <!-- 메시지 화면 -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            android:exported="false"/>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> <!-- 메시지채팅 화면 -->
             <!-- 메시지채팅 화면 -->
         <!-- 채팅 방법 선택 -->
         <!-- 메시지 화면 -->
@@ -127,62 +157,42 @@
         <activity
             android:name=".edu_space.default_app.message.activity.DefaultMessageSelectActivity"
             android:exported="false" />
-
-
+        <activity
+            android:name=".edu_space.naver.activity.NaverSearchResultActivity"
+            android:exported="false" />
         <activity
             android:name=".edu_space.default_app.DefaultAppActivity"
             android:exported="false" />
         <activity
             android:name=".main.activity.DigitalStartActivity"
             android:exported="false" />
-
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-      
         <activity
             android:name=".EduSpaceActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.icon_edu.activity.BasicEduMainActivity"
+            android:name=".edu_space.icon_edu.activity.BasicEduMainFragment"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.icon_edu.activity.IconEduActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.default_app.todo.MenusActivity"
             android:exported="false" />
         <activity
             android:name=".edu_space.icon_edu.activity.IconDetailActivity"
-            android:exported="false" /><!--1강-->
-
+            android:exported="false" /> <!-- 1강 -->
         <activity
             android:name=".edu_space.move_edu.activity.MoveEduActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.move_edu.activity.MoveDetailActivity"
             android:exported="false" />
-
         <activity
             android:name=".edu_space.screen_layout.ScreenLayoutActivity"
             android:exported="false" />
         <activity
             android:name=".edu_space.default_app.phone.activity.DefaultPhoneActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".edu_space.default_app.phone.activity.DefaultPhoneCallActivity"
             android:exported="false" />
@@ -196,19 +206,20 @@
             android:name=".edu_space.default_app.camera.activity.DefaultCameraGalleryViewActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.default_app.gallery.activity.DefaultGalleryActivity"
-            android:exported="false" />
-        <activity
             android:name=".edu_space.settingedu2.Setting2MainActivity"
-
             android:exported="false" /> <!-- <activity -->
         <activity
             android:name=".edu_space.settingedu2.Setting2DisplayActivity"
             android:exported="false" />
         <activity
             android:name=".edu_space.settingedu2.Setting2FontActivity"
-            android:exported="false"/>
+            android:exported="true"> <!-- 계정생성 교육 -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
             <!-- 계정생성 -->
         <activity
             android:name=".edu_space.accountedu.GoogleMainActivity"
@@ -237,12 +248,21 @@
         <activity
             android:name=".edu_space.accountedu.GoogleMailAddActivity"
             android:exported="false" />
-
+        <activity
+            android:name=".edu_space.appinstall.installActivity"
+            android:exported="false" />
+        <activity
+            android:name=".edu_space.appinstall.installMainActivity"
+            android:exported="false" />
         <activity
             android:name=".edu_space.appinstall.AppInstallMainActivity"
-            android:exported="false"/>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> <!-- 병윤님 앱 설치 메인 화면 -->
         <activity
             android:name=".edu_space.appinstall.AppInstallSearchActivity"
             android:exported="false" />
@@ -263,13 +283,7 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.naver.activity.NaverActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".edu_space.naver.activity.NaverSearchInfoActivity"
             android:exported="false" />
@@ -280,6 +294,22 @@
         <activity
             android:name=".learning_space.intent.LearningIconActivity"
             android:exported="false" />
+        <activity
+        android:name=".learning_space.intent.LearningInstallActivity"
+        android:exported="false" />
+        <activity
+            android:name=".learning_space.intent.LearningNaverActivity"
+            android:exported="false" />
+        <activity
+            android:name=".learning_space.intent.LearningDeliveryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".learning_space.intent.LearningSettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".learning_space.intent.LearningKakaotalkActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

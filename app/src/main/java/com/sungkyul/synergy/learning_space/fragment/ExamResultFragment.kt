@@ -59,11 +59,6 @@ class ExamResultFragment : Fragment() {
             true
         }
 
-        // 맞춘 문제 수와 전체 문제 수를 가져와서 TextView에 설정
-        val correctAnswers = arguments?.getInt("correctAnswers", 0) ?: 0
-        val totalQuestions = arguments?.getInt("totalQuestions", 0) ?: 0
-        binding.countText.text = "$correctAnswers/$totalQuestions"
-
         return binding.root
     }
 
