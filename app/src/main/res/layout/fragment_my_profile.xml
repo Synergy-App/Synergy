@@ -209,7 +209,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:text="학습능력\n평가하기"
+                    android:text="학습능력\n확인하기"
                     android:textAlignment="center"
                     android:textColor="#333333"
                     android:fontFamily="@font/pretendard_semibold" />
