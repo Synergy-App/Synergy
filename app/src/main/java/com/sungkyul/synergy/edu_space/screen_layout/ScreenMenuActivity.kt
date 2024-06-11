@@ -13,7 +13,9 @@ import androidx.core.view.ViewCompat
 import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenMenuCourse
+import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenMenuCourse2
 import com.sungkyul.synergy.databinding.ActivityScreenMenuBinding
+import com.sungkyul.synergy.edu_space.naver.activity.NaverActivity
 import com.sungkyul.synergy.utils.edu.EduScreen
 
 class ScreenMenuActivity : AppCompatActivity() {
@@ -28,7 +30,11 @@ class ScreenMenuActivity : AppCompatActivity() {
         // 교육을 정의해보자!
         binding.eduScreen.post {
             // 교육 코스를 지정한다.
-            binding.eduScreen.course = ScreenMenuCourse(binding.eduScreen)
+            if(intent.getStringExtra("from") == "ScreenHomeActivity4") {
+                binding.eduScreen.course = ScreenMenuCourse2(binding.eduScreen)
+            } else {
+                binding.eduScreen.course = ScreenMenuCourse(binding.eduScreen)
+            }
 
             // 교육 코스가 끝났을 때 발생하는 이벤트 리스너를 설정한다.
             binding.eduScreen.setOnFinishedCourseListener {
@@ -44,6 +50,13 @@ class ScreenMenuActivity : AppCompatActivity() {
 
         // 하단바 숨기기 설정
         hideSystemUI()
+
+        binding.naverButton.setOnClickListener {
+            if(binding.eduScreen.onAction("click_naver")) {
+                val intent = Intent(this, NaverActivity::class.java)
+                startActivity(intent)
+            }
+        }
 
         // 아이콘 레이아웃에 롱클릭 리스너 추가
         val playstoreIcon = findViewById<View>(R.id.playstore_icon)

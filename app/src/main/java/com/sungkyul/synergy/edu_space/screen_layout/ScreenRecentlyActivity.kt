@@ -84,6 +84,7 @@ class ScreenRecentlyActivity : AppCompatActivity() {
 
     private fun returnToHomeScreen() {
         val intent = Intent(this, ScreenHomeActivity::class.java)
+        intent.putExtra("from", "ScreenRecentlyActivity")
         startActivity(intent)
         overridePendingTransition(R.anim.stay, R.anim.stay)
     }

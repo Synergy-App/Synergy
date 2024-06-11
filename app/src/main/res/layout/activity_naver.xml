@@ -304,9 +304,10 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/include_navi_bar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/home_group">
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
 
             <ImageButton
                 android:id="@+id/shopping_button"
@@ -333,9 +334,10 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/include_navi_bar"
             app:layout_constraintStart_toEndOf="@id/shopping_group"
             app:layout_constraintEnd_toStartOf="@id/contents_group">
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
 
             <ImageButton
                 android:id="@+id/home_button"
@@ -363,9 +365,10 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/include_navi_bar"
             app:layout_constraintStart_toEndOf="@id/home_group"
             app:layout_constraintEnd_toStartOf="@id/clip_group">
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
 
             <ImageButton
                 android:id="@+id/contents_button"
@@ -392,9 +395,10 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/include_navi_bar"
             app:layout_constraintStart_toEndOf="@id/contents_group"
             app:layout_constraintEnd_toEndOf="parent">
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
 
             <ImageButton
                 android:id="@+id/clip_button"
@@ -413,6 +417,50 @@
                 android:text="@string/clip"/>
 
         </LinearLayout>
+
+        <include
+            android:id="@+id/include_navi_bar"
+            layout="@layout/included_screen_layout_navi_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/clip_group"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <!-- 첫 번째 투명한 뷰 -->
+        <View
+            android:id="@+id/transparent_view_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/transparent_view_2"
+            app:layout_constraintTop_toTopOf="@id/include_navi_bar"
+            app:layout_constraintBottom_toBottomOf="@id/include_navi_bar"
+            app:layout_constraintWidth_percent="0.33" />
+
+        <!-- 두 번째 투명한 뷰 -->
+        <View
+            android:id="@+id/transparent_view_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintStart_toEndOf="@id/transparent_view_1"
+            app:layout_constraintEnd_toStartOf="@id/transparent_view_3"
+            app:layout_constraintTop_toTopOf="@id/include_navi_bar"
+            app:layout_constraintBottom_toBottomOf="@id/include_navi_bar"
+            app:layout_constraintWidth_percent="0.34" />
+
+        <!-- 세 번째 투명한 뷰 -->
+        <View
+            android:id="@+id/transparent_view_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintStart_toEndOf="@id/transparent_view_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/include_navi_bar"
+            app:layout_constraintBottom_toBottomOf="@id/include_navi_bar"
+            app:layout_constraintWidth_percent="0.33" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -13,6 +13,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenHomeCourse
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenHomeCourse2
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenHomeCourse3
+import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenHomeCourse4
 import com.sungkyul.synergy.databinding.ActivityScreenHomeBinding
 import com.sungkyul.synergy.utils.edu.EduScreen
 
@@ -34,7 +35,7 @@ class ScreenHomeActivity : AppCompatActivity() {
             } else if(intent.getStringExtra("from") == "ScreenTopBarActivity") {
                 binding.eduScreen.course = ScreenHomeCourse3(binding.eduScreen)
             } else if(intent.getStringExtra("from") == "ScreenRecentlyActivity") {
-                //binding.eduScreen.course = ScreenHomeCourse4(binding.eduScreen)
+                binding.eduScreen.course = ScreenHomeCourse4(binding.eduScreen)
             }
             else {
                 binding.eduScreen.course = ScreenHomeCourse(binding.eduScreen)
@@ -65,7 +66,13 @@ class ScreenHomeActivity : AppCompatActivity() {
                 MotionEvent.ACTION_MOVE -> {
                     if (startY - event.y > 100) { // 위로 드래그 거리 설정 (100px 이상 드래그 시)
                         if(binding.eduScreen.onAction("show_menu_screen")) {
-                            showMenuScreen()
+                            if(intent.getStringExtra("from") == "ScreenRecentlyActivity") {
+                                val intent = Intent(this, ScreenMenuActivity::class.java)
+                                intent.putExtra("from", "ScreenHomeActivity4")
+                                startActivity(intent)
+                            } else {
+                                showMenuScreen()
+                            }
                         }
                         true
                     } else {
