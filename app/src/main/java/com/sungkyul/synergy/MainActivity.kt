@@ -12,9 +12,6 @@ import com.sungkyul.synergy.com.sungkyul.synergy.learning_space.fragment.ExamSpa
 import com.sungkyul.synergy.databinding.ActivityMainBinding
 import com.sungkyul.synergy.my_profile.Time
 import com.sungkyul.synergy.learning_space.fragment.ExamResultFragment
-import com.sungkyul.synergy.SolvingFragment
-import com.sungkyul.synergy.LearningFragment
-import com.sungkyul.synergy.utils.DisplayUtils
 
 /** 시너지 앱 메인 네비게이션 바 + fragment */
 
@@ -68,6 +65,8 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+
+        setFragment(Tag_learning, DuckProfileFragment2())
     }
 
     public fun setFragment(tag: String, fragment: Fragment) {
