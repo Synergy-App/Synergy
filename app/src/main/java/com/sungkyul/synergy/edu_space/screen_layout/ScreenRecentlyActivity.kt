@@ -1,5 +1,6 @@
 package com.sungkyul.synergy.edu_space.screen_layout
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.MotionEvent
@@ -14,6 +15,7 @@ import com.sungkyul.synergy.utils.edu.EduScreen
 class ScreenRecentlyActivity : AppCompatActivity() {
     private lateinit var binding: ActivityScreenRecentlyBinding
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityScreenRecentlyBinding.inflate(layoutInflater)
@@ -43,7 +45,9 @@ class ScreenRecentlyActivity : AppCompatActivity() {
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> true
                 MotionEvent.ACTION_UP -> {
-                    returnToHomeScreen()
+                    if(binding.eduScreen.onAction("return_to_home_screen")) {
+                        returnToHomeScreen()
+                    }
                     true
                 }
                 else -> false
@@ -54,7 +58,12 @@ class ScreenRecentlyActivity : AppCompatActivity() {
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> true
                 MotionEvent.ACTION_UP -> {
-                    onBackPressed()
+                    if(binding.eduScreen.onAction("on_back_pressed")) {
+                       //onBackPressed()
+                        val intent = Intent(this, ScreenHomeActivity::class.java)
+                        intent.putExtra("from", "ScreenRecentlyActivity")
+                        startActivity(intent)
+                    }
                     true
                 }
                 else -> false

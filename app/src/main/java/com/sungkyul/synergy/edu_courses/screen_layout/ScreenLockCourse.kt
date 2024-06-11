@@ -9,7 +9,7 @@ import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
 import com.sungkyul.synergy.utils.edu.EduScreen
 
-data class ScreenRecentlyCourse(val eduScreen: EduScreen): EduCourse {
+data class ScreenLockCourse(val eduScreen: EduScreen): EduCourse {
     override val list = ArrayList<EduData>()
     override val width = DisplayUtils.pxToDp(eduScreen.context, eduScreen.width.toFloat())
     override val height = DisplayUtils.pxToDp(eduScreen.context, eduScreen.height.toFloat())
@@ -18,39 +18,40 @@ data class ScreenRecentlyCourse(val eduScreen: EduScreen): EduCourse {
     init {
         list.add(EduData().apply {
             dialog.visibility = true
-            dialog.contentText = "최근에 실행했던<br>앱 목록들이<br>보이게 됩니다."
+            dialog.contentText = "잠금화면입니다."
             dialog.contentColor = R.color.white
-            dialog.contentGravity = Gravity.CENTER
             dialog.background = R.drawable.edu_dialog_black_bg
-            dialog.top = 0.8f
-            dialog.bottom = 0.04f
-            dialog.start = 0.1f
-            dialog.end = 0.1f
+            dialog.contentGravity = Gravity.CENTER
+            dialog.top = 0.05f
+            dialog.bottom = 0.8f
+            dialog.start = 0.05f
+            dialog.end = 0.05f
 
             cover.isClickable = true
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "이전에 실행했던 앱을<br>다시 실행해야 할 때<br>바로 실행할 수 있어<br>편리합니다."
+            dialog.contentText = "휴대폰의 전원버튼만<br>켠 상태로,<br><br>아직 잠금을 풀지 않은<br>상태입니다."
             dialog.contentColor = R.color.black
             dialog.background = R.drawable.edu_dialog_bg
-            dialog.top = 0.4f
-            dialog.bottom = 0.4f
+            dialog.top = 0.3f
+            dialog.bottom = 0.3f
 
             cover.visibility = true
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "뒤로 가기 버튼을 누르면<br>원래 화면으로 돌아갑니다."
-            dialog.top = 0.6f
-            dialog.bottom = 0.2f
+            dialog.contentText = "비밀번호나 패턴을 통해<br>남들이 보지 못하도록<br>휴대폰을 잠글 수 있습니다."
+            dialog.top = 0.4f
+            dialog.bottom = 0.4f
+        })
 
-            cover.boxVisibility = true
-            cover.boxBorderVisibility = true
-            cover.boxTop = 0.9f
-            cover.boxBottom = 1.0f
-            cover.boxLeft = 0.7f
-            cover.boxRight = 0.85f
+        list.add(EduData().apply {
+            dialog.contentText = "잠금을 해제하세요."
+            dialog.background = R.drawable.edu_dialog_green_bg
+            dialog.contentColor = R.color.white
+            dialog.top = 0.42f
+            dialog.bottom = 0.42f
         })
 
         list.add(EduData().apply {
@@ -59,17 +60,12 @@ data class ScreenRecentlyCourse(val eduScreen: EduScreen): EduCourse {
             cover.visibility = false
             cover.isClickable = false
 
-            action.id = "on_back_pressed"
-
-            hands.add(
-                EduHand(
-                    id = "tap",
-                    x = 0.7f,
-                    y = 0.8f,
-                    rotation = 180.0f,
-                    gesture = HandGestures::tapGesture
-                )
-            )
+            hands.add(EduHand(
+                id = "drag",
+                x = 0.5f,
+                y = 0.5f,
+                gesture = HandGestures::lockVerticalDragGesture
+            ))
         })
     }
 }

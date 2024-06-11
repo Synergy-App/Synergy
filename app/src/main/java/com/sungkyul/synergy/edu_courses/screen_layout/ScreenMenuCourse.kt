@@ -9,7 +9,7 @@ import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
 import com.sungkyul.synergy.utils.edu.EduScreen
 
-data class ScreenRecentlyCourse(val eduScreen: EduScreen): EduCourse {
+data class ScreenMenuCourse(val eduScreen: EduScreen): EduCourse {
     override val list = ArrayList<EduData>()
     override val width = DisplayUtils.pxToDp(eduScreen.context, eduScreen.width.toFloat())
     override val height = DisplayUtils.pxToDp(eduScreen.context, eduScreen.height.toFloat())
@@ -18,55 +18,51 @@ data class ScreenRecentlyCourse(val eduScreen: EduScreen): EduCourse {
     init {
         list.add(EduData().apply {
             dialog.visibility = true
-            dialog.contentText = "최근에 실행했던<br>앱 목록들이<br>보이게 됩니다."
+            dialog.contentText = "메뉴 화면입니다."
             dialog.contentColor = R.color.white
-            dialog.contentGravity = Gravity.CENTER
             dialog.background = R.drawable.edu_dialog_black_bg
-            dialog.top = 0.8f
-            dialog.bottom = 0.04f
-            dialog.start = 0.1f
-            dialog.end = 0.1f
+            dialog.contentGravity = Gravity.CENTER
+            dialog.top = 0.05f
+            dialog.bottom = 0.8f
+            dialog.start = 0.05f
+            dialog.end = 0.05f
 
             cover.isClickable = true
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "이전에 실행했던 앱을<br>다시 실행해야 할 때<br>바로 실행할 수 있어<br>편리합니다."
+            dialog.contentText = "휴대폰에 설치되어 있는<br>앱을 볼 수 있는<br>화면입니다."
             dialog.contentColor = R.color.black
             dialog.background = R.drawable.edu_dialog_bg
-            dialog.top = 0.4f
-            dialog.bottom = 0.4f
+            dialog.top = 0.35f
+            dialog.bottom = 0.35f
 
             cover.visibility = true
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "뒤로 가기 버튼을 누르면<br>원래 화면으로 돌아갑니다."
-            dialog.top = 0.6f
-            dialog.bottom = 0.2f
+            dialog.contentText = "메뉴 화면에 있는 앱을<br>홈 화면으로 꺼내볼까요?"
+        })
 
-            cover.boxVisibility = true
-            cover.boxBorderVisibility = true
-            cover.boxTop = 0.9f
-            cover.boxBottom = 1.0f
-            cover.boxLeft = 0.7f
-            cover.boxRight = 0.85f
+        list.add(EduData().apply {
+            dialog.contentText = "\"Play 스토어\" 앱을<br>표시된 곳에<br>이동시켜보세요."
+            dialog.background = R.drawable.edu_dialog_green_bg
+            dialog.contentColor = R.color.white
         })
 
         list.add(EduData().apply {
             dialog.visibility = false
 
-            cover.visibility = false
             cover.isClickable = false
+            cover.visibility = false
 
-            action.id = "on_back_pressed"
+            action.id = "long_click_play_store_icon"
 
             hands.add(
                 EduHand(
-                    id = "tap",
-                    x = 0.7f,
-                    y = 0.8f,
-                    rotation = 180.0f,
+                    id = "touch",
+                    x = 0.1f,
+                    y = 0.6f,
                     gesture = HandGestures::tapGesture
                 )
             )

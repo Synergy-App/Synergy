@@ -9,7 +9,7 @@ import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
 import com.sungkyul.synergy.utils.edu.EduScreen
 
-data class ScreenRecentlyCourse(val eduScreen: EduScreen): EduCourse {
+data class ScreenHomeCourse3(val eduScreen: EduScreen): EduCourse {
     override val list = ArrayList<EduData>()
     override val width = DisplayUtils.pxToDp(eduScreen.context, eduScreen.width.toFloat())
     override val height = DisplayUtils.pxToDp(eduScreen.context, eduScreen.height.toFloat())
@@ -18,39 +18,51 @@ data class ScreenRecentlyCourse(val eduScreen: EduScreen): EduCourse {
     init {
         list.add(EduData().apply {
             dialog.visibility = true
-            dialog.contentText = "최근에 실행했던<br>앱 목록들이<br>보이게 됩니다."
+            dialog.contentText = "하단바 화면입니다."
+            dialog.background = R.drawable.edu_dialog_black_bg
             dialog.contentColor = R.color.white
             dialog.contentGravity = Gravity.CENTER
-            dialog.background = R.drawable.edu_dialog_black_bg
             dialog.top = 0.8f
-            dialog.bottom = 0.04f
-            dialog.start = 0.1f
-            dialog.end = 0.1f
+            dialog.bottom = 0.1f
+            dialog.start = 0.05f
+            dialog.end = 0.05f
 
+            cover.visibility = true
             cover.isClickable = true
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "이전에 실행했던 앱을<br>다시 실행해야 할 때<br>바로 실행할 수 있어<br>편리합니다."
-            dialog.contentColor = R.color.black
+            dialog.contentText = "하단바란<br>휴대폰 하단에<br>세 개의 버튼으로 존재하며<br>화면을 이동할 때<br>사용합니다."
             dialog.background = R.drawable.edu_dialog_bg
-            dialog.top = 0.4f
-            dialog.bottom = 0.4f
-
-            cover.visibility = true
-        })
-
-        list.add(EduData().apply {
-            dialog.contentText = "뒤로 가기 버튼을 누르면<br>원래 화면으로 돌아갑니다."
-            dialog.top = 0.6f
-            dialog.bottom = 0.2f
+            dialog.contentColor = R.color.black
+            dialog.top = 0.5f
+            dialog.bottom = 0.15f
 
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
             cover.boxTop = 0.9f
             cover.boxBottom = 1.0f
-            cover.boxLeft = 0.7f
-            cover.boxRight = 0.85f
+            cover.boxLeft = 0.0f
+            cover.boxRight = 1.0f
+        })
+
+        list.add(EduData().apply {
+            dialog.contentText = "최근에 실행한 앱을<br>보는 버튼입니다."
+            dialog.top = 0.7f
+
+            cover.boxLeft = 0.125f
+            cover.boxRight = 0.325f
+        })
+
+        list.add(EduData().apply {
+            dialog.contentText = "최근 실행 앱 버튼을<br>터치하세요."
+            dialog.background = R.drawable.edu_dialog_green_bg
+            dialog.contentColor = R.color.white
+            dialog.top = 0.4f
+            dialog.bottom = 0.4f
+
+            cover.boxVisibility = false
+            cover.boxBorderVisibility = false
         })
 
         list.add(EduData().apply {
@@ -59,13 +71,13 @@ data class ScreenRecentlyCourse(val eduScreen: EduScreen): EduCourse {
             cover.visibility = false
             cover.isClickable = false
 
-            action.id = "on_back_pressed"
+            action.id = "show_recently_screen"
 
             hands.add(
                 EduHand(
-                    id = "tap",
-                    x = 0.7f,
-                    y = 0.8f,
+                    id = "touch",
+                    x = 0.15f,
+                    y = 0.825f,
                     rotation = 180.0f,
                     gesture = HandGestures::tapGesture
                 )
