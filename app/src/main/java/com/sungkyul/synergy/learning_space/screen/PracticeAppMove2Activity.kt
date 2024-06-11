@@ -1,7 +1,9 @@
 package com.sungkyul.synergy.learning_space.screen
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.DragEvent
 import android.view.View
@@ -11,6 +13,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.learning_space.activity.ExampleProblem5Activity
 
 class PracticeAppMove2Activity : AppCompatActivity() {
     private lateinit var rootLayout: ConstraintLayout
@@ -75,10 +78,17 @@ class PracticeAppMove2Activity : AppCompatActivity() {
                     DragEvent.ACTION_DRAG_ENDED -> {
                         Log.d("ScreenMoveHomeActivity", "Drag ended")
                         true
+
                     }
+
                     else -> false
                 }
+
             }
+        Handler().postDelayed({
+            val intent = Intent(this@PracticeAppMove2Activity, ExampleProblem5Activity::class.java)
+            startActivity(intent)
+        }, 3000)
         }
 
         private fun hideSystemUI() {
