@@ -69,9 +69,11 @@ class NaverActivity : AppCompatActivity() {
                 MotionEvent.ACTION_DOWN -> {
                 }
                 MotionEvent.ACTION_UP -> {
-                    // 네이버 검색 뷰로 이동
-                    val intent = Intent(this, NaverSearchActivity::class.java)
-                    startActivity(intent)
+                    if(binding.eduScreen.onAction("click_naver_search_view")) {
+                        // 네이버 검색 뷰로 이동
+                        val intent = Intent(this, NaverSearchActivity::class.java)
+                        startActivity(intent)
+                    }
 
                     view.performClick()
                 }
@@ -143,9 +145,10 @@ class NaverActivity : AppCompatActivity() {
 
         binding.transparentView3.setOnClickListener {
             if(binding.eduScreen.onAction("click_back")) {
-                val intent = Intent(this, ScreenHomeActivity::class.java)
+                /*val intent = Intent(this, ScreenHomeActivity::class.java)
                 intent.putExtra("from", "NaverActivity2")
-                startActivity(intent)
+                startActivity(intent)*/
+                binding.largeAd2.visibility = View.INVISIBLE
             }
         }
 

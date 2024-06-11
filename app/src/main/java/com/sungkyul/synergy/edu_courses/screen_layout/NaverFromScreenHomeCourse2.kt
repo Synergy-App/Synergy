@@ -41,5 +41,19 @@ data class NaverFromScreenHomeCourse2(val eduScreen: EduScreen): EduCourse {
                 )
             )
         })
+
+        list.add(EduData().apply {
+            dialog.visibility = true
+            dialog.contentText = "다음과 같이 이전 단계로<br>이동하게 됩니다."
+            dialog.background = R.drawable.edu_dialog_bg
+            dialog.contentGravity = Gravity.CENTER
+            dialog.top = 0.4f
+            dialog.bottom = 0.4f
+            dialog.start = 0.05f
+            dialog.end = 0.05f
+
+            cover.isClickable = true
+            cover.visibility = true
+        })
     }
 }
