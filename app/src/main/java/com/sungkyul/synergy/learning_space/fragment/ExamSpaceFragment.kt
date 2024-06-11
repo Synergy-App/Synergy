@@ -1,6 +1,7 @@
 package com.sungkyul.synergy.com.sungkyul.synergy.learning_space.fragment
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -11,6 +12,7 @@ import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.SolvingFragment
 import com.sungkyul.synergy.databinding.FragmentExamSpaceBinding
+import com.sungkyul.synergy.learning_space.activity.ExamProblemActivity
 import com.sungkyul.synergy.utils.GalaxyButton
 
 class ExamSpaceFragment : Fragment() {
@@ -53,6 +55,8 @@ class ExamSpaceFragment : Fragment() {
                 }
 
                 MotionEvent.ACTION_UP -> {
+                    val intent = Intent(activity, ExamProblemActivity::class.java)
+                    activity?.startActivity(intent)
                     (view as GalaxyButton).startTouchUpAnimation()
                 }
             }

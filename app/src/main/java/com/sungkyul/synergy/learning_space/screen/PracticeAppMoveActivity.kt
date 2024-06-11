@@ -3,6 +3,7 @@ package com.sungkyul.synergy.learning_space.screen
 import android.annotation.SuppressLint
 import android.app.ActivityOptions
 import android.content.ClipData
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -28,7 +29,6 @@ class PracticeAppMoveActivity : AppCompatActivity() {
     private var isTimerRunning = false
     private var remainingTimeInMillis: Long = 60000
     private var pausedTimeInMillis: Long = 0 // 타이머가 일시정지된 시간
-
 
     @SuppressLint( "ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -89,7 +89,6 @@ class PracticeAppMoveActivity : AppCompatActivity() {
                         or View.SYSTEM_UI_FLAG_FULLSCREEN
                 )
 
-        /**타이머 멈추고 실행*/
         // 타이머 초기화
         timer = object : CountDownTimer(remainingTimeInMillis, 1000) {
             override fun onTick(millisUntilFinished: Long) {
@@ -100,8 +99,6 @@ class PracticeAppMoveActivity : AppCompatActivity() {
 
             override fun onFinish() {
                 binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
-                // 타이머 종료 후 수행할 작업 추가
-
             }
         }
 
@@ -138,7 +135,6 @@ class PracticeAppMoveActivity : AppCompatActivity() {
 
             override fun onFinish() {
                 binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
-                // 타이머 종료 후 수행할 작업 추가
             }
         }
         // 문제보기 클릭 시 다이얼로그 띄우기
@@ -174,7 +170,8 @@ class PracticeAppMoveActivity : AppCompatActivity() {
         val confirmButton = dialogView.findViewById<Button>(R.id.confirmButton)
         confirmButton.setOnClickListener {
             alertDialog.dismiss() // 다이얼로그 닫기
-            startTimer(remainingTimeInMillis) // 타이머 다시 시작
+            saveResult(true) // 문제 풀이 성공으로 표시
+            returnToHomeScreen() // 홈 화면으로 이동
         }
 
         alertDialog.show()
@@ -183,9 +180,17 @@ class PracticeAppMoveActivity : AppCompatActivity() {
         timer.cancel()
         isTimerRunning = false
     }
+
     private fun returnToHomeScreen() {
         val intent = Intent(this, ScreenHomeActivity::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.stay, R.anim.stay)
+    }
+
+    private fun saveResult(isSuccess: Boolean) {
+        val sharedPreferences = getSharedPreferences("PracticeRecentlyDefaultPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("move_app_success", isSuccess)
+        editor.apply()
     }
 }
