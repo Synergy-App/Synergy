@@ -89,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="유형별"
-                android:fontFamily="@font/pretendard_medium"
+                android:fontFamily="@font/pretendard_semibold"
                 android:textColor="@color/black"
                 />
 
@@ -160,7 +160,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="전체"
-                android:fontFamily="@font/pretendard_medium"
+                android:fontFamily="@font/pretendard_semibold"
                 android:textColor="@color/black"
                 />
 
@@ -231,7 +231,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="취약점"
-                android:fontFamily="@font/pretendard_medium"
+                android:fontFamily="@font/pretendard_semibold"
                 android:textColor="@color/black"
                 />
 
@@ -304,7 +304,7 @@
                 android:text="난이도"
                 android:fontFamily="@font/pretendard_semibold"
                 android:textColor="@color/black"
-               />
+                />
 
             <TextView
                 android:id="@+id/difficulty2_test"
@@ -313,8 +313,7 @@
                 android:gravity="center"
                 android:text="실습"
                 android:fontFamily="@font/pretendard_semibold"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
+                />
         </LinearLayout>
 
         <ImageView
