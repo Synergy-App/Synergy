@@ -3,6 +3,7 @@ package com.sungkyul.synergy.edu_space.default_app.phone.activity
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import androidx.activity.OnBackPressedCallback
@@ -41,6 +42,9 @@ class DefaultPhoneActivity : AppCompatActivity() {
 
         // 교육을 정의해보자!
         binding.eduScreen.post {
+            Log.i("width", binding.eduScreen.width.toString())
+            Log.i("height", binding.eduScreen.height.toString())
+
             if(intent.getStringExtra("from") == null) {
                 binding.eduScreen.course = DefaultPhoneCourse1(binding.eduScreen, this)
             }
