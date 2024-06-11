@@ -23,6 +23,7 @@ import com.sungkyul.synergy.edu_space.icon_edu.activity.BasicEduMainFragment
 import com.sungkyul.synergy.edu_space.kakaotalk.activity.KakaoMainActivity
 import com.sungkyul.synergy.edu_space.naver.activity.NaverActivity
 import com.sungkyul.synergy.edu_space.screen_layout.ScreenLayoutActivity
+import com.sungkyul.synergy.edu_space.screen_layout.ScreenLockActivity
 import com.sungkyul.synergy.edu_space.settingedu2.Setting2MainActivity
 import com.sungkyul.synergy.utils.GalaxyButton
 
@@ -82,21 +83,52 @@ class EduButtonAdapter(
                     MotionEvent.ACTION_UP -> {
                         (view as GalaxyButton).startTouchUpAnimation()
 
-                        val context = itemView.context
-                        val activity = context as FragmentActivity
-                        val title = text1.text.toString()
-                        when (title) {
-                            // Intent로 Activity 시작
-                            "화면구성" -> context.startActivity(Intent(context, ScreenLayoutActivity::class.java))
-                            "환경 설정" -> context.startActivity(Intent(context, Setting2MainActivity::class.java))
-                            "기본 앱" -> context.startActivity(Intent(context, DefaultAppActivity::class.java))
-                            "계정 생성" -> context.startActivity(Intent(context, GoogleMainActivity::class.java))
-                            "앱 설치" -> context.startActivity(Intent(context, AppInstallMainActivity::class.java))
-                            "카카오톡" -> context.startActivity(Intent(context, KakaoMainActivity::class.java))
-                            "네이버" -> context.startActivity(Intent(context, NaverActivity::class.java))
-                            // Fragment 시작
-                            "기초" -> addFragment(activity, BasicEduMainFragment())
-                            else -> null
+                        // 버튼의 제목에 따라 해당 교육 액티비티로 이동한다.
+                        when(title.text.toString()) {
+                            "기초" -> {
+                                val intent = Intent(context, BasicEduMainActivity::class.java)
+                                context.startActivity(intent)
+                            }
+                            "화면구성" -> {
+                                val intent = Intent(context, ScreenLockActivity::class.java)
+                                context.startActivity(intent)
+                            }
+                            "기본 앱" -> {
+                                val intent = Intent(context, DefaultAppActivity::class.java)
+                                context.startActivity(intent)
+                            }
+                            "환경 설정" -> {
+                                val intent = Intent(context, Setting2MainActivity::class.java)
+                                context.startActivity(intent)
+                            }
+                            "계정 생성" -> {
+                                val intent = Intent(context, GoogleMainActivity::class.java)
+                                context.startActivity(intent)
+                            }
+                            "앱 설치" -> {
+                                val intent = Intent(context, AppInstallMainActivity::class.java)
+                                context.startActivity(intent)
+                            }
+                            "카카오톡" -> {
+                                val intent = Intent(context, KakaoMainActivity::class.java)
+                                context.startActivity(intent)
+                            }
+                            "네이버" -> {
+                                val intent = Intent(context, NaverActivity::class.java)
+                                context.startActivity(intent)
+                            }
+                            "코레일" -> {
+                                val intent = Intent(context, TicketMainActivity::class.java)
+                                context.startActivity(intent)
+                            }
+                            "카카오택시" -> {
+                                val intent = Intent(context, TaxiMainActivity::class.java)
+                                context.startActivity(intent)
+                            }
+                            "배달의 민족" -> {
+                                val intent = Intent(context, DlvMainActivity::class.java)
+                                context.startActivity(intent)
+                            }
                         }
                     }
                     MotionEvent.ACTION_CANCEL -> {
