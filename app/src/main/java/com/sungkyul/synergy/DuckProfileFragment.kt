@@ -1,33 +1,31 @@
+package com.sungkyul.synergy
+
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.graphics.Point
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.TypedValue
 import android.util.Log
-import android.view.Display
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
-import com.sungkyul.synergy.CheckLearningAbilityActivity
-import com.sungkyul.synergy.R
-import com.sungkyul.synergy.databinding.FragmentMyProfileBinding
+import com.sungkyul.synergy.databinding.FragmentDuckProfileBinding
+import com.sungkyul.synergy.edu_space.default_app.phone.activity.DefaultPhoneActivity
 import com.sungkyul.synergy.my_profile.CheckMyResultActivity
 import com.sungkyul.synergy.my_profile.MyExamResultActivity
+import com.sungkyul.synergy.utils.GalaxyButton
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject
 import java.io.IOException
 
-class MyProfileFragment : Fragment() {
-
-    private lateinit var binding: FragmentMyProfileBinding
+class DuckProfileFragment2 : Fragment() {
+    private lateinit var binding: FragmentDuckProfileBinding
 
     private var backPressedOnce = false
     private val backPressHandler = Handler(Looper.getMainLooper())
@@ -37,72 +35,52 @@ class MyProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentMyProfileBinding.inflate(inflater, container, false)
+        binding = FragmentDuckProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.examResultCardView.setOnClickListener {
-            val intent = Intent(requireActivity(), MyExamResultActivity::class.java)
-            startActivity(intent)
-        }
+        binding.examGalaxyButton.post { binding.examGalaxyButton.clipToRoundRect(27.0f) }
+        binding.checkGalaxyButton.post { binding.checkGalaxyButton.clipToRoundRect(27.0f) }
 
-        binding.CheckResultCardView.setOnClickListener {
-            val intent = Intent(requireActivity(), CheckLearningAbilityActivity::class.java)
-            startActivity(intent)
-        }
+        binding.examGalaxyButton.setOnTouchListener { view, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    (view as GalaxyButton).startTouchDownAnimation(event.x, event.y, 100.0f)
+                }
+                MotionEvent.ACTION_UP -> {
+                    (view as GalaxyButton).startTouchUpAnimation()
 
-        // 디스플레이 크기에 따라 글자 크기를 설정
-        setDynamicTextSize()
+                    val intent = Intent(requireActivity(), MyExamResultActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+            true
+        }
+        binding.checkGalaxyButton.setOnTouchListener { view, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    (view as GalaxyButton).startTouchDownAnimation(event.x, event.y, 100.0f)
+                }
+                MotionEvent.ACTION_UP -> {
+                    (view as GalaxyButton).startTouchUpAnimation()
+
+                    val intent = Intent(requireActivity(), CheckLearningAbilityActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+            true
+        }
 
         loadProfileData()
     }
 
     override fun onResume() {
         super.onResume()
-        loadProfileData() // 프래그먼트가 다시 활성화될 때 프로필 데이터를 업데이트
-    }
-
-    private fun getScreenSize(): Point {
-        val display = (requireActivity().getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay
-        val size = Point()
-        display.getSize(size)
-        return size
-    }
-
-    private fun getStandardSize(): Pair<Int, Int> {
-        val screenSize = getScreenSize()
-        val density = resources.displayMetrics.density
-
-        val standardSizeX = (screenSize.x / density).toInt()
-        val standardSizeY = (screenSize.y / density).toInt()
-
-        return Pair(standardSizeX, standardSizeY)
-    }
-
-    private fun setDynamicTextSize() {
-        val (standardSizeX, standardSizeY) = getStandardSize()
-
-        // 각각의 텍스트 요소에 다른 크기 설정
-        binding.headerTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, (standardSizeX / 12).toFloat())
-        binding.headerSubtitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, (standardSizeX / 15).toFloat())
-        binding.textViewName.setTextSize(TypedValue.COMPLEX_UNIT_SP, (standardSizeX / 13).toFloat())
-        binding.digitalAge.setTextSize(TypedValue.COMPLEX_UNIT_SP, (standardSizeX / 13).toFloat())
-        binding.digitalageName.setTextSize(TypedValue.COMPLEX_UNIT_SP, (standardSizeX / 13).toFloat())
-
-        // headerImage의 높이 설정
-        val headerImageHeight = (standardSizeY * 0.5).toInt()
-        binding.headerImage.layoutParams.height = headerImageHeight
-        binding.headerImage.requestLayout()
-
-        // 버튼 내부 텍스트 크기 설정
-        val examResultTextView = binding.examResultCardView.findViewById<TextView>(R.id.examResultText)
-        examResultTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, (standardSizeX / 15).toFloat())
-
-        val checkResultTextView = binding.CheckResultCardView.findViewById<TextView>(R.id.checkResultText)
-        checkResultTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, (standardSizeX / 15).toFloat())
+        loadProfileData() // Update profile data when the fragment resumes
     }
 
     private fun loadProfileData() {
@@ -115,7 +93,7 @@ class MyProfileFragment : Fragment() {
             binding.textViewName.text = nickname
         }
 
-        // SharedPreferences에 저장된 값에 따라 디지털 연령과 사용자 이미지를 설정
+        // Set the digital age and user image based on the saved value in SharedPreferences
         binding.digitalAge.text = getDigitalAgeText(digitalAgeGrade)
         updateUserImage(digitalAgeGrade)
 
@@ -142,7 +120,7 @@ class MyProfileFragment : Fragment() {
                             val data = json.getJSONObject("data")
                             val apiDigitalAgeGrade = data.getString("digitalAgeGrade")
 
-                            // API에서 가져온 digitalAgeGrade를 SharedPreferences에 저장
+                            // Save the digitalAgeGrade fetched from API to SharedPreferences
                             sharedPreferences.edit().putString("DigitalAgeGrade", apiDigitalAgeGrade).apply()
 
                             requireActivity().runOnUiThread {

@@ -37,6 +37,9 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".CheckLearningAbilityActivity"
+            android:exported="true"/>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
