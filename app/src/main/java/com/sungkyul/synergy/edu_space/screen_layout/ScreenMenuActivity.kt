@@ -5,6 +5,7 @@ import android.app.ActivityOptions
 import android.content.ClipData
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.View.DragShadowBuilder
@@ -14,6 +15,7 @@ import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenMenuCourse
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenMenuCourse2
+import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenMenuCourse3
 import com.sungkyul.synergy.databinding.ActivityScreenMenuBinding
 import com.sungkyul.synergy.edu_space.naver.activity.NaverActivity
 import com.sungkyul.synergy.utils.edu.EduScreen
@@ -34,7 +36,8 @@ class ScreenMenuActivity : AppCompatActivity() {
                 binding.eduScreen.course = ScreenMenuCourse2(binding.eduScreen)
             }
             else if(intent.getStringExtra("from") == "ScreenHomeActivity5") {
-                //binding.eduScreen.course = ScreenMenuCourse3(binding.eduScreen)
+                Log.i("두번째 네이버", "true")
+                binding.eduScreen.course = ScreenMenuCourse3(binding.eduScreen)
             }
             else {
                 binding.eduScreen.course = ScreenMenuCourse(binding.eduScreen)
@@ -57,8 +60,15 @@ class ScreenMenuActivity : AppCompatActivity() {
 
         binding.naverButton.setOnClickListener {
             if(binding.eduScreen.onAction("click_naver")) {
-                val intent = Intent(this, NaverActivity::class.java)
-                startActivity(intent)
+
+                val nintent = Intent(this, NaverActivity::class.java)
+
+                if(intent.getStringExtra("from") == "ScreenHomeActivity5") {
+                    Log.i("두 번째 네이버 진입", "true")
+                    nintent.putExtra("from", "ScreenMenuActivity3")
+                }
+
+                startActivity(nintent)
             }
         }
 

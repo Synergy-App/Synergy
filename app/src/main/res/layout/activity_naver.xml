@@ -290,6 +290,14 @@
 
     </ScrollView>
 
+    <ImageView
+        android:id="@+id/large_ad2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/naver_ad_null2"
+        android:background="@color/white"
+        android:visibility="invisible"/>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottom_navigation_menu"
         android:layout_width="match_parent"
@@ -463,5 +471,7 @@
             app:layout_constraintWidth_percent="0.33" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 </RelativeLayout>

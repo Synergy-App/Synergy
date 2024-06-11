@@ -15,6 +15,7 @@ import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.Scree
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenHomeCourse3
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenHomeCourse4
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenHomeCourse5
+import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenHomeCourse6
 import com.sungkyul.synergy.databinding.ActivityScreenHomeBinding
 import com.sungkyul.synergy.utils.edu.EduScreen
 
@@ -40,6 +41,9 @@ class ScreenHomeActivity : AppCompatActivity() {
             }
             else if(intent.getStringExtra("from") == "NaverActivity") {
                 binding.eduScreen.course = ScreenHomeCourse5(binding.eduScreen)
+            }
+            else if(intent.getStringExtra("from") == "NaverActivity2") {
+                binding.eduScreen.course = ScreenHomeCourse6(binding.eduScreen)
             }
             else {
                 binding.eduScreen.course = ScreenHomeCourse(binding.eduScreen)
@@ -77,6 +81,7 @@ class ScreenHomeActivity : AppCompatActivity() {
                             }
                             else if(intent.getStringExtra("from") == "NaverActivity") {
                                 val intent = Intent(this, ScreenMenuActivity::class.java)
+                                Log.i("네이버 첫번째 입성 후 돌아오기", "true")
                                 intent.putExtra("from", "ScreenHomeActivity5")
                                 startActivity(intent)
                             }
