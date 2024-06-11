@@ -32,7 +32,11 @@ class ScreenMenuActivity : AppCompatActivity() {
             // 교육 코스를 지정한다.
             if(intent.getStringExtra("from") == "ScreenHomeActivity4") {
                 binding.eduScreen.course = ScreenMenuCourse2(binding.eduScreen)
-            } else {
+            }
+            else if(intent.getStringExtra("from") == "ScreenHomeActivity5") {
+                //binding.eduScreen.course = ScreenMenuCourse3(binding.eduScreen)
+            }
+            else {
                 binding.eduScreen.course = ScreenMenuCourse(binding.eduScreen)
             }
 
