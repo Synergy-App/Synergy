@@ -66,7 +66,12 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        setFragment(Tag_learning, DuckProfileFragment2())
+        val fragmentName = intent.getStringExtra("fragment")
+        if(fragmentName == "SolvingFragment") {
+            setFragment(Tag_solving, SolvingFragment())
+        }
+
+        //else {setFragment(Tag_solving, ExamResultFragment())}
     }
 
     public fun setFragment(tag: String, fragment: Fragment) {

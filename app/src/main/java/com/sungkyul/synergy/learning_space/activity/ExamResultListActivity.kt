@@ -46,14 +46,15 @@ class ExamResultListActivity : AppCompatActivity() {
 
         // "돌아가기" 버튼 이벤트 처리
         binding.backButton.setOnClickListener {
-            onBackPressed()
+            //onBackPressed()
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("fragment", "SolvingFragment")
+            startActivity(intent)
         }
 
         // "다시 풀기" 버튼 이벤트 처리
         binding.viewAllButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("target_fragment", MainActivity.Tag_learning)
-            intent.putExtra("target_navigation_item", R.id.solvingFragment)
+            val intent = Intent(this, ExamProblemActivity::class.java)
             startActivity(intent)
         }
     }
