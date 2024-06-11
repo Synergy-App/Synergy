@@ -1,7 +1,7 @@
 package com.sungkyul.synergy.learning_space.screen
 
 import android.annotation.SuppressLint
-import android.content.ContentResolver
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -20,7 +20,6 @@ import com.sungkyul.synergy.learning_space.activity.ExamProblem4Activity
 
 class PracticeTopBarActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPracticeTopBarBinding
-    private var startY = 0f
     private lateinit var timer: CountDownTimer
     private var isTimerRunning = false
     private var remainingTimeInMillis: Long = 15000 // 초기 카운트 다운 시간 (15초)
@@ -50,6 +49,11 @@ class PracticeTopBarActivity : AppCompatActivity() {
 
         // 타이머 초기화 및 시작
         startTimer(remainingTimeInMillis)
+
+        // 문제보기 클릭 시 다이얼로그 띄우기
+        binding.problemText.setOnClickListener {
+            showProblemDialog()
+        }
     }
 
     private fun showHomeScreen() {
@@ -96,13 +100,9 @@ class PracticeTopBarActivity : AppCompatActivity() {
 
             override fun onFinish() {
                 binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
+                saveResult(false) // 실패 결과 저장
                 // 타이머 종료 후 수행할 작업 추가
             }
-        }
-
-        // 문제보기 클릭 시 다이얼로그 띄우기
-        binding.problemText.setOnClickListener {
-            showProblemDialog()
         }
 
         timer.start() // 타이머 시작
@@ -134,7 +134,6 @@ class PracticeTopBarActivity : AppCompatActivity() {
         confirmButton.setOnClickListener {
             alertDialog.dismiss() // 다이얼로그 닫기
             startTimer(remainingTimeInMillis) // 타이머 다시 시작
-
         }
 
         alertDialog.show()
@@ -164,6 +163,8 @@ class PracticeTopBarActivity : AppCompatActivity() {
         if (Settings.System.canWrite(this)) {
             Settings.System.putInt(contentResolver, Settings.System.SCREEN_BRIGHTNESS, brightness)
 
+            saveResult(true) // 성공 결과 저장
+
             if (!isDialogShown) {
                 isDialogShown = true // Set the flag to true to prevent multiple dialogs
                 Handler().postDelayed({
@@ -182,37 +183,16 @@ class PracticeTopBarActivity : AppCompatActivity() {
     }
 
     private fun showNextProblemDialog() {
-        // 예: 새로운 문제를 보여주는 다이얼로그 또는 새로운 액티비티로 이동하는 코드
-//        val dialogBuilder = AlertDialog.Builder(this)
-//        val inflater = this.layoutInflater
-//        val dialogView = inflater.inflate(R.layout.dialoglayout, null) // 새로운 문제 레이아웃
-//
-//        dialogBuilder.setView(dialogView)
-//        val alertDialog = dialogBuilder.create()
-//
-//        // 다이얼로그 메시지 텍스트뷰 설정
-//        val numberTextView = dialogView.findViewById<TextView>(R.id.dialogNumber)
-//        numberTextView.text = "문제 4."
-//
-//        val messageTextView = dialogView.findViewById<TextView>(R.id.dialogMessage)
-//        messageTextView.text = "'플레이스토어' 앱을 실행한 후 홈 화면으로 이동하세요."
-//        messageTextView.textSize = 20f
-//
-//        // 확인 버튼 설정
-//        val confirmButton = dialogView.findViewById<Button>(R.id.confirmButton)
-//        confirmButton.setOnClickListener {
-//            alertDialog.dismiss() // 다이얼로그 닫기
+        val intent = Intent(this, ExamProblem4Activity::class.java)
+        startActivity(intent)
+    }
 
-//            val homeIntent = Intent(Intent.ACTION_MAIN)
-//            homeIntent.addCategory(Intent.CATEGORY_HOME)
-//            homeIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-//            startActivity(homeIntent)
-
-            val intent = Intent(this, ExamProblem4Activity::class.java)
-            startActivity(intent)
-        }
-
-     //   alertDialog.show()
+    private fun saveResult(isSuccess: Boolean) {
+        val sharedPreferences = getSharedPreferences("PracticeRecentlyDefaultPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("brightness_adjust_success", isSuccess)
+        editor.apply()
+    }
 
     companion object {
         private const val REQUEST_WRITE_SETTINGS = 200
