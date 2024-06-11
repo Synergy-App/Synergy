@@ -14,6 +14,7 @@ import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.Scree
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenHomeCourse2
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenHomeCourse3
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenHomeCourse4
+import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenHomeCourse5
 import com.sungkyul.synergy.databinding.ActivityScreenHomeBinding
 import com.sungkyul.synergy.utils.edu.EduScreen
 
@@ -36,6 +37,9 @@ class ScreenHomeActivity : AppCompatActivity() {
                 binding.eduScreen.course = ScreenHomeCourse3(binding.eduScreen)
             } else if(intent.getStringExtra("from") == "ScreenRecentlyActivity") {
                 binding.eduScreen.course = ScreenHomeCourse4(binding.eduScreen)
+            }
+            else if(intent.getStringExtra("from") == "NaverActivity") {
+                binding.eduScreen.course = ScreenHomeCourse5(binding.eduScreen)
             }
             else {
                 binding.eduScreen.course = ScreenHomeCourse(binding.eduScreen)
@@ -70,7 +74,13 @@ class ScreenHomeActivity : AppCompatActivity() {
                                 val intent = Intent(this, ScreenMenuActivity::class.java)
                                 intent.putExtra("from", "ScreenHomeActivity4")
                                 startActivity(intent)
-                            } else {
+                            }
+                            else if(intent.getStringExtra("from") == "NaverActivity") {
+                                val intent = Intent(this, ScreenMenuActivity::class.java)
+                                intent.putExtra("from", "ScreenHomeActivity5")
+                                startActivity(intent)
+                            }
+                            else {
                                 showMenuScreen()
                             }
                         }
