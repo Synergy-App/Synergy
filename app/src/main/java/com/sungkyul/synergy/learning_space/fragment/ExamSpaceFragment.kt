@@ -1,11 +1,16 @@
 package com.sungkyul.synergy.com.sungkyul.synergy.learning_space.fragment
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.graphics.Point
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
@@ -85,6 +90,47 @@ class ExamSpaceFragment : Fragment() {
             true
         }
 
+        setDynamicTextSize() // 텍스트 크기 설정 함수 호출
+
         return binding.root
+    }
+
+    private fun getScreenSize(): Point {
+        val display =
+            (requireActivity().getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay
+        val size = Point()
+        display.getSize(size)
+        return size
+    }
+
+    private fun getStandardSize(): Pair<Int, Int> {
+        val screenSize = getScreenSize()
+        val density = resources.displayMetrics.density
+
+        val standardSizeX = (screenSize.x / density).toInt()
+        val standardSizeY = (screenSize.y / density).toInt()
+
+        return Pair(standardSizeX, standardSizeY)
+    }
+
+    private fun setDynamicTextSize() {
+        val (standardSizeX, standardSizeY) = getStandardSize()
+
+        // 각각의 텍스트 요소에 다른 크기 설정
+        binding.learingTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, (standardSizeX / 12).toFloat())
+        binding.learingSubtitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, (standardSizeX / 15).toFloat())
+        binding.category.setTextSize(TypedValue.COMPLEX_UNIT_SP,(standardSizeX / 14).toFloat())
+        binding.all.setTextSize(TypedValue.COMPLEX_UNIT_SP,(standardSizeX / 14).toFloat())
+        binding.weak.setTextSize(TypedValue.COMPLEX_UNIT_SP,(standardSizeX / 14).toFloat())
+        binding.difficulty2.setTextSize(TypedValue.COMPLEX_UNIT_SP,(standardSizeX / 14).toFloat())
+        binding.categoryTest.setTextSize(TypedValue.COMPLEX_UNIT_SP,(standardSizeX / 18).toFloat())
+        binding.allTest.setTextSize(TypedValue.COMPLEX_UNIT_SP,(standardSizeX / 18).toFloat())
+        binding.weakTest.setTextSize(TypedValue.COMPLEX_UNIT_SP,(standardSizeX / 18).toFloat())
+        binding.difficulty2Test.setTextSize(TypedValue.COMPLEX_UNIT_SP,(standardSizeX / 18).toFloat())
+
+        // headerImage의 높이 설정
+        val topbarImageHeight = (standardSizeY * 0.5).toInt() // 높이를 화면 높이의 50%로 설정
+        binding.topBarImage.layoutParams.height = topbarImageHeight
+        binding.topBarImage.requestLayout()
     }
 }
