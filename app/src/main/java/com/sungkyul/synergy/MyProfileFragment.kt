@@ -132,7 +132,7 @@ class MyProfileFragment : Fragment() {
             "adult" -> R.drawable.duck_adult
             "parent" -> R.drawable.duck_parent
             "old" -> R.drawable.duck_old
-            else -> R.drawable.duck_old
+            else -> R.drawable.sebook_sad_face
         }
         Glide.with(this).load(imageRes).into(imageView)
     }
