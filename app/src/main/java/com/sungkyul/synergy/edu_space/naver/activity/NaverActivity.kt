@@ -11,10 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.NaverFromScreenHomeCourse
-import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenHomeCourse
-import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenHomeCourse2
-import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenHomeCourse3
-import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenHomeCourse4
+import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.NaverFromScreenHomeCourse2
 import com.sungkyul.synergy.databinding.ActivityNaverBinding
 import com.sungkyul.synergy.edu_space.naver.adapter.NaverPostAdapter
 import com.sungkyul.synergy.edu_space.naver.adapter.NaverPostData
@@ -34,8 +31,8 @@ class NaverActivity : AppCompatActivity() {
         // 교육을 정의해보자!
         binding.eduScreen.post {
             // 교육 코스를 지정한다.
-            if(intent.getStringExtra("from") == "ScreenHomeActivity") {
-                binding.eduScreen.course = NaverFromScreenHomeCourse(binding.eduScreen)
+            if(intent.getStringExtra("from") == "ScreenMenuActivity3") {
+                binding.eduScreen.course = NaverFromScreenHomeCourse2(binding.eduScreen)
             } else {
                 binding.eduScreen.course = NaverFromScreenHomeCourse(binding.eduScreen)
             }
@@ -72,9 +69,11 @@ class NaverActivity : AppCompatActivity() {
                 MotionEvent.ACTION_DOWN -> {
                 }
                 MotionEvent.ACTION_UP -> {
-                    // 네이버 검색 뷰로 이동
-                    val intent = Intent(this, NaverSearchActivity::class.java)
-                    startActivity(intent)
+                    if(binding.eduScreen.onAction("click_naver_search_view")) {
+                        // 네이버 검색 뷰로 이동
+                        val intent = Intent(this, NaverSearchActivity::class.java)
+                        startActivity(intent)
+                    }
 
                     view.performClick()
                 }
@@ -141,6 +140,21 @@ class NaverActivity : AppCompatActivity() {
                 val intent = Intent(this, ScreenHomeActivity::class.java)
                 intent.putExtra("from", "NaverActivity")
                 startActivity(intent)
+            }
+        }
+
+        binding.transparentView3.setOnClickListener {
+            if(binding.eduScreen.onAction("click_back")) {
+                /*val intent = Intent(this, ScreenHomeActivity::class.java)
+                intent.putExtra("from", "NaverActivity2")
+                startActivity(intent)*/
+                binding.largeAd2.visibility = View.INVISIBLE
+            }
+        }
+
+        binding.ad2.setOnClickListener {
+            if(binding.eduScreen.onAction("click_ad2")) {
+                binding.largeAd2.visibility = View.VISIBLE
             }
         }
     }
