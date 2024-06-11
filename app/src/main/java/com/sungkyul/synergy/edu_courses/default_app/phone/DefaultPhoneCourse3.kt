@@ -25,10 +25,10 @@ data class DefaultPhoneCourse3(val eduScreen: EduScreen): EduCourse {
             dialog.contentFont = R.font.pretendard_medium
             dialog.contentSize = 26.0f
             dialog.contentGravity = Gravity.CENTER
-            dialog.start = 24.0f
-            dialog.end = 24.0f
-            dialog.top = 670.0f
-            dialog.bottom = 56.0f
+            dialog.start = 24.0f/412.0f
+            dialog.end = 24.0f/412.0f
+            dialog.top = 670.0f/930.0f
+            dialog.bottom = 56.0f/930.0f
 
             cover.visibility = false
             cover.isClickable = true
@@ -39,8 +39,8 @@ data class DefaultPhoneCourse3(val eduScreen: EduScreen): EduCourse {
 
         list.add(EduData().apply {
             dialog.contentText = "이름과 전화번호를 입력하고 저장 버튼을 눌러주세요."
-            dialog.top = 300.0f
-            dialog.bottom = 400.0f
+            dialog.top = 300.0f/930.0f
+            dialog.bottom = 400.0f/930.0f
             dialog.contentColor = R.color.white
             dialog.background = R.drawable.edu_dialog_green_bg
             cover.boxVisibility = false
@@ -57,9 +57,8 @@ data class DefaultPhoneCourse3(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    //x = 190.0f,
-                    //y = 300.0f,
-                    x = 0.0f, y = 0.0f,
+                    x = 190.0f/412.0f,
+                    y = 300.0f/930.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

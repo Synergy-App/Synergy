@@ -22,10 +22,10 @@ class DefaultMessageCourse1 (val eduScreen: EduScreen): EduCourse {
             dialog.contentFont = R.font.pretendard_medium
             dialog.contentSize = 26.0f
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = 26.0f
-            dialog.bottom = 670.0f
-            dialog.start = 24.0f
-            dialog.end = 24.0f
+            dialog.top = 26.0f/930.0f
+            dialog.bottom = 670.0f/930.0f
+            dialog.start = 24.0f/412.0f
+            dialog.end = 24.0f/412.0f
             cover.boxVisibility = true
             cover.visibility = false
             cover.isClickable = true
@@ -36,8 +36,8 @@ class DefaultMessageCourse1 (val eduScreen: EduScreen): EduCourse {
 
         list.add(EduData().apply {
             dialog.contentText = "보내고 싶은 상대를<br>클릭해주세요."
-            dialog.top = 300.0f
-            dialog.bottom = 400.0f
+            dialog.top = 300.0f/930.0f
+            dialog.bottom = 400.0f/930.0f
             dialog.contentColor = R.color.white
             dialog.background = R.drawable.edu_dialog_green_bg
             cover.boxVisibility = false
@@ -53,9 +53,8 @@ class DefaultMessageCourse1 (val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    //x = 150.0f,
-                    //y = height/2,
-                    x = 0.0f, y = 0.0f,
+                    x = 150.0f/412.0f,
+                    y = (930.0f/2+50.0f)/930.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

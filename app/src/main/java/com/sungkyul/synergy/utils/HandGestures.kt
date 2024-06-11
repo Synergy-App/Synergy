@@ -7,6 +7,7 @@ import android.content.Context
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.ImageView
 
+// TODO(정신 없음 이것들을 클래스로 빼놓던가 해야지)
 class HandGestures {
     companion object {
         // Tap Gesture를 생성한다.
@@ -53,11 +54,11 @@ class HandGestures {
             movingDuration: Long,
             waitingDuration: Long
         ): AnimatorSet {
-            // dp -> px
-            val fromValueX = DisplayUtils.dpToPx(context, fromValueXDp)
-            val fromValueY = DisplayUtils.dpToPx(context, fromValueYDp)
-            val toValueX = DisplayUtils.dpToPx(context, toValueXDp)
-            val toValueY = DisplayUtils.dpToPx(context, toValueYDp)
+            // ratio -> px
+            val fromValueX = DisplayUtils.convertXFromRatioToPx(context, fromValueXDp)
+            val fromValueY = DisplayUtils.convertYFromRatioToPx(context, fromValueYDp)
+            val toValueX = DisplayUtils.convertXFromRatioToPx(context, toValueXDp)
+            val toValueY = DisplayUtils.convertYFromRatioToPx(context, toValueYDp)
 
             val set1 = AnimatorSet().apply {
                 duration = movingDuration
@@ -125,5 +126,19 @@ class HandGestures {
                 }
                 */
 
+        fun lockVerticalDragGesture(context: Context, imageView: ImageView): AnimatorSet {
+            return createDragGesture(context, imageView, 0.45f, 0.75f, 0.45f, 0.5f, 1500, 500)
+        }
+
+        fun homeVerticalDragGesture(context: Context, imageView: ImageView): AnimatorSet {
+            return createDragGesture(context, imageView, 0.45f, 0.75f, 0.45f, 0.5f, 1500, 500)
+        }
+        fun homeTopbarDragGesture(context: Context, imageView: ImageView): AnimatorSet {
+            return createDragGesture(context, imageView, 0.5f, 0.025f, 0.5f, 0.5f, 1500, 500)
+        }
+
+        fun topbarLightDragGesture(context: Context, imageView: ImageView): AnimatorSet {
+            return createDragGesture(context, imageView, 0.9f, 0.2f, 0.1f, 0.2f, 1500, 500)
+        }
     }
 }

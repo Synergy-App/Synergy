@@ -1,18 +1,17 @@
 package com.sungkyul.synergy.learning_space.activity
 
-import android.content.Context
-import android.content.SharedPreferences
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.com.sungkyul.synergy.learning_space.ResultPair
 import com.sungkyul.synergy.databinding.ActivityExamResultListBinding
 import com.sungkyul.synergy.learning_space.adapter.ExamResultListAdapter
 import com.sungkyul.synergy.learning_space.adapter.ExamResultListData
+import com.sungkyul.synergy.learning_space.intent.LearningScreenFragment
+import com.sungkyul.synergy.MainActivity
 
 class ExamResultListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityExamResultListBinding
@@ -44,5 +43,18 @@ class ExamResultListActivity : AppCompatActivity() {
         val recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = ExamResultListAdapter(dataSet)
+
+        // "돌아가기" 버튼 이벤트 처리
+        binding.backButton.setOnClickListener {
+            onBackPressed()
+        }
+
+        // "다시 풀기" 버튼 이벤트 처리
+        binding.viewAllButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("target_fragment", MainActivity.Tag_learning)
+            intent.putExtra("target_navigation_item", R.id.solvingFragment)
+            startActivity(intent)
+        }
     }
 }

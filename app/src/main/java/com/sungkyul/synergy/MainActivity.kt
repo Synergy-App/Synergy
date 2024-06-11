@@ -12,7 +12,6 @@ import com.sungkyul.synergy.com.sungkyul.synergy.learning_space.fragment.ExamSpa
 import com.sungkyul.synergy.databinding.ActivityMainBinding
 import com.sungkyul.synergy.my_profile.Time
 import com.sungkyul.synergy.learning_space.fragment.ExamResultFragment
-import com.sungkyul.synergy.utils.DisplayUtils
 
 /** 시너지 앱 메인 네비게이션 바 + fragment */
 
@@ -40,7 +39,23 @@ class MainActivity : AppCompatActivity() {
         // Start the time counter
         Time.startTimeCounter()
 
-        setFragment(Tag_learning, LearningFragment())
+        // target_fragment 값을 확인하여 해당 프래그먼트를 설정합니다.
+        val targetFragment = intent.getStringExtra("target_fragment")
+        if (targetFragment != null) {
+            when (targetFragment) {
+                Tag_examSpace -> {
+                    setFragment(Tag_examSpace, ExamSpaceFragment())
+                    binding.mainNavigationView.selectedItemId = R.id.solvingFragment
+                }
+                else -> setFragment(Tag_learning, LearningFragment())
+            }
+        } else {
+            setFragment(Tag_learning, LearningFragment())
+        }
+
+        // 선택된 navigation item을 확인하여 설정합니다.
+        val selectedNavigationItem = intent.getIntExtra("selected_navigation_item", R.id.learingFragment)
+        binding.mainNavigationView.selectedItemId = selectedNavigationItem
 
         binding.mainNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -50,6 +65,8 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+
+        setFragment(Tag_learning, DuckProfileFragment2())
     }
 
     public fun setFragment(tag: String, fragment: Fragment) {

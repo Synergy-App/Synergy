@@ -17,13 +17,10 @@ class ExamProblemActivity : AppCompatActivity() {
         binding = ActivityExamProblemBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.problemText.text = "주어진 시간 내에 설정 어플을 홈 화면에 배치하시오."
+        binding.problemText.text = "주어진 시간 내에 홈화면으로 이동하시오."
         binding.problemStartBtn.setOnClickListener {
             val intent = Intent(this, PracticeScreenLockActivity::class.java)
             startActivity(intent)
         }
-
-
-
     }
 }

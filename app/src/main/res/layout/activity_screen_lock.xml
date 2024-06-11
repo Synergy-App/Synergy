@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     android:background="@drawable/screenedu_background">
 
+        <com.sungkyul.synergy.utils.edu.EduScreen
+            android:id="@+id/edu_screen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
         <!-- 툴바 포함 -->
         <include
             android:id="@+id/include_toolbar"

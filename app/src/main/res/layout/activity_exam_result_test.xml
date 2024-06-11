@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bgColor1"
     tools:context=".learning_space.activity.ExamResultTestActivity">
+
     <FrameLayout
         android:id="@+id/top_bar"
         android:layout_width="match_parent"
@@ -22,9 +24,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="화면구성 실습"
+            android:fontFamily="@font/pretendard_semibold"
             android:textColor="@color/white"
             android:textSize="24sp"/>
-
     </FrameLayout>
 
     <TextView
@@ -33,6 +35,8 @@
         android:layout_height="wrap_content"
         android:text="00차 시험 결과"
         android:textSize="24sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/pretendard_medium"
         app:layout_constraintTop_toBottomOf="@+id/h_line_1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
@@ -53,36 +57,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="2/10"
+        android:textColor="@color/black"
+        android:fontFamily="@font/pretendard_medium"
         android:textSize="24sp"
         app:layout_constraintTop_toBottomOf="@+id/h_line_4"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/back_button"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="@+id/h_line_5"
         app:layout_constraintBottom_toBottomOf="@+id/h_line_6"
         app:layout_constraintLeft_toLeftOf="@+id/v_line_1"
         app:layout_constraintRight_toRightOf="@+id/v_line_3"
-        android:background="@drawable/rounded_button">
+        android:background="@drawable/round_corner_white">
 
-        <com.sungkyul.synergy.utils.GalaxyButton
-            android:id="@+id/back_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <View
+            android:id="@+id/space_above_back"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
             android:id="@+id/back_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:text="돌아가기"
-            android:textSize="16sp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/back_image"
+            android:textColor="@color/black"
+            android:fontFamily="@font/pretendard_semibold"
+            android:textSize="20sp"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/space_above_back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -90,43 +99,42 @@
             android:id="@+id/back_image"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="12dp"
-            android:src="@drawable/todo_rect"
-            android:scaleType="centerInside"
-            app:layout_constraintTop_toBottomOf="@+id/back_text"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintWidth_percent="0.5"
+            android:src="@drawable/ic_solving_back"
+            app:layout_constraintTop_toBottomOf="@id/back_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.4"
             app:layout_constraintHeight_percent="0.4"/>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/viewAllButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="@+id/h_line_5"
         app:layout_constraintBottom_toBottomOf="@+id/h_line_6"
         app:layout_constraintLeft_toLeftOf="@+id/v_line_4"
         app:layout_constraintRight_toRightOf="@+id/v_line_6"
-        android:background="@drawable/rounded_button">
+        android:background="@drawable/round_corner_white">
 
-        <com.sungkyul.synergy.utils.GalaxyButton
-            android:id="@+id/viewAllButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <View
+            android:id="@+id/space_above_view_all"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
             android:id="@+id/view_all_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="문제보기"
+            android:textColor="@color/black"
+            android:fontFamily="@font/pretendard_semibold"
+            android:textSize="20sp"
             android:gravity="center"
-            android:text="전체\n문제 보기"
-            android:textSize="16sp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/view_all_image"
+            app:layout_constraintTop_toBottomOf="@id/space_above_view_all"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -134,16 +142,12 @@
             android:id="@+id/view_all_image"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="12dp"
-            android:src="@drawable/todo_rect"
-            android:scaleType="centerInside"
-            app:layout_constraintTop_toBottomOf="@+id/view_all_text"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintWidth_percent="0.5"
+            android:src="@drawable/ic_solving_allcheck"
+            app:layout_constraintTop_toBottomOf="@id/view_all_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.4"
             app:layout_constraintHeight_percent="0.4"/>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.Guideline
@@ -211,10 +215,10 @@
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v_line_4"
-        android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent="0.55"/>
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.59" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v_line_5"

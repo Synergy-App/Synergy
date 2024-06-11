@@ -3,8 +3,10 @@ package com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout
 import android.view.Gravity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.DisplayUtils
+import com.sungkyul.synergy.utils.HandGestures
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
+import com.sungkyul.synergy.utils.edu.EduHand
 import com.sungkyul.synergy.utils.edu.EduScreen
 
 data class ScreenRecentlyCourse(val eduScreen: EduScreen): EduCourse {
@@ -36,6 +38,38 @@ data class ScreenRecentlyCourse(val eduScreen: EduScreen): EduCourse {
             dialog.bottom = 0.4f
 
             cover.visibility = true
+        })
+
+        list.add(EduData().apply {
+            dialog.contentText = "뒤로 가기 버튼을 누르면<br>원래 화면으로 돌아갑니다."
+            dialog.top = 0.6f
+            dialog.bottom = 0.2f
+
+            cover.boxVisibility = true
+            cover.boxBorderVisibility = true
+            cover.boxTop = 0.9f
+            cover.boxBottom = 1.0f
+            cover.boxLeft = 0.7f
+            cover.boxRight = 0.85f
+        })
+
+        list.add(EduData().apply {
+            dialog.visibility = false
+
+            cover.visibility = false
+            cover.isClickable = false
+
+            action.id = "on_back_pressed"
+
+            hands.add(
+                EduHand(
+                    id = "tap",
+                    x = 0.7f,
+                    y = 0.8f,
+                    rotation = 180.0f,
+                    gesture = HandGestures::tapGesture
+                )
+            )
         })
     }
 }

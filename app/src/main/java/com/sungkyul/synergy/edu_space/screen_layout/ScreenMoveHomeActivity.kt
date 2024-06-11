@@ -1,6 +1,6 @@
 package com.sungkyul.synergy.edu_space.screen_layout
 
-import android.content.ClipData
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.DragEvent
@@ -11,15 +11,40 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenMoveHomeCourse
+import com.sungkyul.synergy.databinding.ActivityScreenLayoutBinding
+import com.sungkyul.synergy.databinding.ActivityScreenMoveHomeBinding
+import com.sungkyul.synergy.utils.edu.EduScreen
 
 class ScreenMoveHomeActivity : AppCompatActivity() {
-
+    private lateinit var binding: ActivityScreenMoveHomeBinding
     private lateinit var rootLayout: ConstraintLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_screen_move_home)
+        binding = ActivityScreenMoveHomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        // 교육을 정의해보자!
+        binding.eduScreen.post {
+            // 교육 코스를 지정한다.
+            binding.eduScreen.course = ScreenMoveHomeCourse(binding.eduScreen)
+
+            // 교육 코스가 끝났을 때 발생하는 이벤트 리스너를 설정한다.
+            binding.eduScreen.setOnFinishedCourseListener {
+                val intent = Intent(this, ScreenHomeActivity::class.java)
+                intent.putExtra("from", "ScreenMoveHomeActivity")
+                startActivity(intent)
+            }
+
+            // 교육을 시작한다.
+            binding.eduScreen.start(this)
+        }
+
+        // 스마트폰의 이전 버튼을 누르면, 지정된 액티비티로 되돌아간다.
+        EduScreen.navigateBackToTop(this, MainActivity::class.java)
 
         // 하단바 숨기기 설정
         hideSystemUI()
@@ -77,6 +102,7 @@ class ScreenMoveHomeActivity : AppCompatActivity() {
                 }
                 DragEvent.ACTION_DRAG_ENDED -> {
                     Log.d("ScreenMoveHomeActivity", "Drag ended")
+                    binding.eduScreen.onAction("release_icon")
                     true
                 }
                 else -> false
