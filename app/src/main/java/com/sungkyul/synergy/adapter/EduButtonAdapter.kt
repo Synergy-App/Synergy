@@ -84,10 +84,11 @@ class EduButtonAdapter(
                         (view as GalaxyButton).startTouchUpAnimation()
 
                         // 버튼의 제목에 따라 해당 교육 액티비티로 이동한다.
-                        when(title.text.toString()) {
+                        when(text1.text.toString()) {
                             "기초" -> {
-                                val intent = Intent(context, BasicEduMainActivity::class.java)
-                                context.startActivity(intent)
+                                /*val intent = Intent(context, BasicEduMainActivity::class.java)
+                                context.startActivity(intent)*/
+                                addFragment(context as FragmentActivity, BasicEduMainFragment())
                             }
                             "화면구성" -> {
                                 val intent = Intent(context, ScreenLockActivity::class.java)
@@ -115,18 +116,6 @@ class EduButtonAdapter(
                             }
                             "네이버" -> {
                                 val intent = Intent(context, NaverActivity::class.java)
-                                context.startActivity(intent)
-                            }
-                            "코레일" -> {
-                                val intent = Intent(context, TicketMainActivity::class.java)
-                                context.startActivity(intent)
-                            }
-                            "카카오택시" -> {
-                                val intent = Intent(context, TaxiMainActivity::class.java)
-                                context.startActivity(intent)
-                            }
-                            "배달의 민족" -> {
-                                val intent = Intent(context, DlvMainActivity::class.java)
                                 context.startActivity(intent)
                             }
                         }
