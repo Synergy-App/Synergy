@@ -33,7 +33,10 @@ class ScreenHomeActivity : AppCompatActivity() {
                 binding.eduScreen.course = ScreenHomeCourse2(binding.eduScreen)
             } else if(intent.getStringExtra("from") == "ScreenTopBarActivity") {
                 binding.eduScreen.course = ScreenHomeCourse3(binding.eduScreen)
-            } else {
+            } else if(intent.getStringExtra("from") == "ScreenRecentlyActivity") {
+                //binding.eduScreen.course = ScreenHomeCourse4(binding.eduScreen)
+            }
+            else {
                 binding.eduScreen.course = ScreenHomeCourse(binding.eduScreen)
             }
 
