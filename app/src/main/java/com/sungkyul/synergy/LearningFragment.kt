@@ -39,7 +39,10 @@ class LearningFragment : Fragment() {
         val buttonItemList = listOf(
             EduButtonItem("기초", R.drawable.ic_edu_note),
             EduButtonItem("화면구성", R.drawable.ic_edu_gall),
-            EduButtonItem("기본 앱", R.drawable.ic_edu_app2),
+            EduButtonItem("카메라", R.drawable.ic_camera),
+            EduButtonItem("앨범", R.drawable.ic_gallery),
+            EduButtonItem("전화", R.drawable.ic_call),
+            EduButtonItem("문자", R.drawable.ic_message),
             EduButtonItem("환경 설정", R.drawable.ic_edubutton_setting),
             EduButtonItem("계정 생성", R.drawable.ic_edu_create),
             EduButtonItem("앱 설치", R.drawable.ic_edubutton_download),

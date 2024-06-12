@@ -102,29 +102,41 @@ class EduButtonAdapter(
                                 val intent = Intent(context, ScreenLockActivity::class.java)
                                 context.startActivity(intent)
                             }
-                            "기본 앱" -> {
-                                val intent = Intent(context, DefaultAppActivity::class.java)
-                                context.startActivity(intent)
+                            "카메라" -> {
+                                /* val intent = Intent(context, DefaultAppActivity::class.java)
+                                 context.startActivity(intent)*/
+                            }
+                            "앨범" -> {
+                                /* val intent = Intent(context, DefaultAppActivity::class.java)
+                                 context.startActivity(intent)*/
+                            }
+                            "전화" -> {
+                                /*val intent = Intent(context, DefaultAppActivity::class.java)
+                                context.startActivity(intent)*/
+                            }
+                            "문자" -> {
+                                /* val intent = Intent(context, DefaultAppActivity::class.java)
+                                 context.startActivity(intent)*/
                             }
                             "환경 설정" -> {
-                                val intent = Intent(context, Setting2MainActivity::class.java)
-                                context.startActivity(intent)
+                                /* val intent = Intent(context, Setting2MainActivity::class.java)
+                                 context.startActivity(intent)*/
                             }
                             "계정 생성" -> {
-                                val intent = Intent(context, GoogleMainActivity::class.java)
-                                context.startActivity(intent)
+                                /*  val intent = Intent(context, GoogleMainActivity::class.java)
+                                  context.startActivity(intent)*/
                             }
                             "앱 설치" -> {
-                                val intent = Intent(context, AppInstallMainActivity::class.java)
-                                context.startActivity(intent)
+                                /*val intent = Intent(context, AppInstallMainActivity::class.java)
+                                context.startActivity(intent)*/
                             }
                             "카카오톡" -> {
-                                val intent = Intent(context, KakaoMainActivity::class.java)
-                                context.startActivity(intent)
+                                /*  val intent = Intent(context, KakaoMainActivity::class.java)
+                                  context.startActivity(intent)*/
                             }
                             "네이버" -> {
-                                val intent = Intent(context, NaverActivity::class.java)
-                                context.startActivity(intent)
+                                /*val intent = Intent(context, NaverActivity::class.java)
+                                context.startActivity(intent)*/
                             }
                         }
                     }
