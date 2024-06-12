@@ -29,6 +29,8 @@ class PracticeAppMoveActivity : AppCompatActivity() {
     private var isTimerRunning = false
     private var remainingTimeInMillis: Long = 60000
     private var pausedTimeInMillis: Long = 0 // 타이머가 일시정지된 시간
+    private var success: Boolean = false // 성공 여부를 나타내는 변수 추가
+
 
     @SuppressLint( "ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,6 +60,7 @@ class PracticeAppMoveActivity : AppCompatActivity() {
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> true
                 MotionEvent.ACTION_UP -> {
+                    success = true // 성공 여부를 true로 설정
                     returnToHomeScreen()
                     true
                 }
@@ -125,7 +128,7 @@ class PracticeAppMoveActivity : AppCompatActivity() {
         }
     }
 
-    private fun startTimer(startTimeInMillis: Long) {
+    private fun startTimer(startTimeInMillis: Long = remainingTimeInMillis) {
         timer = object : CountDownTimer(startTimeInMillis, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 remainingTimeInMillis = millisUntilFinished
@@ -134,9 +137,15 @@ class PracticeAppMoveActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
-                binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
+                if (!success) { // 성공하지 않았을 때만 실패로 저장
+                    binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
+                    saveResult(false) // 실패 결과 저장
+                }
+                // 타이머가 종료되면 자동으로 실패 처리됨
+                returnToHomeScreen()
             }
         }
+
         // 문제보기 클릭 시 다이얼로그 띄우기
         binding.problemText.setOnClickListener {
             showProblemDialog()
@@ -182,6 +191,8 @@ class PracticeAppMoveActivity : AppCompatActivity() {
     }
 
     private fun returnToHomeScreen() {
+        timer.cancel() // 타이머를 취소
+        saveResult(success) // 현재의 성공 여부를 저장
         val intent = Intent(this, ScreenHomeActivity::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.stay, R.anim.stay)

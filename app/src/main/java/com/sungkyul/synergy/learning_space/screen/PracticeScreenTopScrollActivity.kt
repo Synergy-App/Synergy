@@ -13,19 +13,15 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.edu_space.screen_layout.ScreenHomeActivity
-import com.sungkyul.synergy.edu_space.screen_layout.ScreenMenuActivity
-import com.sungkyul.synergy.edu_space.screen_layout.ScreenRecentlyActivity
-import com.sungkyul.synergy.edu_space.screen_layout.ScreenTopBarActivity
-import com.sungkyul.synergy.learning_space.activity.ExamProblem2Activity
 
-/** 상단바 내리세요 문제 */
 class PracticeScreenTopScrollActivity : AppCompatActivity() {
     private var startY = 0f
     private lateinit var timer: CountDownTimer
     private var isTimerRunning = false
     private var remainingTimeInMillis: Long = 15000 // 초기 카운트 다운 시간 (15초)
     private var pausedTimeInMillis: Long = 0 // 타이머가 일시정지된 시간
+    private var success: Boolean = false // 성공 여부를 나타내는 변수 추가
+
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,7 +47,6 @@ class PracticeScreenTopScrollActivity : AppCompatActivity() {
             }
         }
 
-        // 툴바 터치 이벤트 처리
         findViewById<View>(R.id.include_toolbar).setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
@@ -60,7 +55,7 @@ class PracticeScreenTopScrollActivity : AppCompatActivity() {
                 }
                 MotionEvent.ACTION_MOVE -> {
                     if (event.y - startY > 100) { // 아래로 드래그 거리 설정 (100px 이상 드래그 시)
-                        saveResult(true) // 성공 결과 저장
+                        success = true // 성공 여부를 true로 설정
                         showTopbarScreen()
                         true
                     } else {
@@ -71,7 +66,6 @@ class PracticeScreenTopScrollActivity : AppCompatActivity() {
             }
         }
 
-        // 투명한 뷰 터치 이벤트 처리
         findViewById<View>(R.id.transparent_view_1).setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> true
@@ -105,12 +99,10 @@ class PracticeScreenTopScrollActivity : AppCompatActivity() {
             }
         }
 
-        // 문제보기 클릭 시 다이얼로그 띄우기
         findViewById<TextView>(R.id.problemText).setOnClickListener {
             showProblemDialog()
         }
 
-        // 타이머 시작
         startTimer()
     }
 
@@ -138,7 +130,11 @@ class PracticeScreenTopScrollActivity : AppCompatActivity() {
 
             override fun onFinish() {
                 findViewById<TextView>(R.id.timerTextView).text = "0"
-                saveResult(false)
+                saveResult(false) // 타이머가 종료되면 성공하지 않았으므로 false 저장
+                // 실패 처리 후 다음 동작을 수행할 수 있도록 설정
+                // 여기서는 필요에 따라 다른 화면으로 이동하도록 하거나 다른 작업을 수행할 수 있습니다.
+                // 여기서는 예시로 showRecentlyScreen()을 호출하였습니다.
+                showTopbarScreen()
             }
         }
 
@@ -146,11 +142,11 @@ class PracticeScreenTopScrollActivity : AppCompatActivity() {
         isTimerRunning = true
     }
 
+
     @SuppressLint("ClickableViewAccessibility")
     private fun showProblemDialog() {
         val dialogBuilder = AlertDialog.Builder(this)
 
-        // 커스텀 레이아웃을 설정하기 위한 레이아웃 인플레이터
         val inflater = this.layoutInflater
         val dialogView = inflater.inflate(R.layout.dialoglayout, null)
 
@@ -158,15 +154,13 @@ class PracticeScreenTopScrollActivity : AppCompatActivity() {
 
         val alertDialog = dialogBuilder.create()
 
-        // 다이얼로그 메시지 텍스트뷰 설정
         val numberTextView = dialogView.findViewById<TextView>(R.id.dialogNumber)
         numberTextView.text = "문제 2."
 
         val messageTextView = dialogView.findViewById<TextView>(R.id.dialogMessage)
         messageTextView.text = "상단바 내리세요."
-        messageTextView.textSize = 20f // 글씨 크기 설정
+        messageTextView.textSize = 20f
 
-        // 확인 버튼 설정
         val confirmButton = dialogView.findViewById<Button>(R.id.confirmButton)
         confirmButton.setOnClickListener {
             alertDialog.dismiss()
@@ -175,7 +169,6 @@ class PracticeScreenTopScrollActivity : AppCompatActivity() {
 
         alertDialog.show()
 
-        // 다이얼로그가 나타나면 타이머 멈춤
         timer.cancel()
         isTimerRunning = false
     }
@@ -194,6 +187,8 @@ class PracticeScreenTopScrollActivity : AppCompatActivity() {
     }
 
     private fun showTopbarScreen() {
+        timer.cancel() // 타이머를 취소
+        saveResult(success) // 현재의 성공 여부를 저장
         val intent = Intent(this, PracticeScreenTopScroll2Activity::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.slide_down, R.anim.stay)

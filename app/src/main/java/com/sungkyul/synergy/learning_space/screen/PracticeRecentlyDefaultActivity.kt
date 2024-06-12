@@ -21,6 +21,8 @@ class PracticeRecentlyDefaultActivity : AppCompatActivity() {
     private var isTimerRunning = false
     private var remainingTimeInMillis: Long = 30000
     private var pausedTimeInMillis: Long = 0 // 타이머가 일시정지된 시간
+    private var success: Boolean = false // 성공 여부를 나타내는 변수 추가
+
 
     @SuppressLint("MissingInflatedId", "ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +34,7 @@ class PracticeRecentlyDefaultActivity : AppCompatActivity() {
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> true
                 MotionEvent.ACTION_UP -> {
+                    success = true // 성공 여부를 true로 설정
                     showRecentlyScreen()
                     true
                 }
@@ -57,11 +60,13 @@ class PracticeRecentlyDefaultActivity : AppCompatActivity() {
         }
     }
     private fun showRecentlyScreen() {
+        timer.cancel() // 타이머를 취소
+        saveResult(success) // 현재의 성공 여부를 저장
         val intent = Intent(this, PracticeRecentlyActivity::class.java)
         startActivity(intent)
         finish()
     }
-    private fun startTimer(startTimeInMillis: Long) {
+    private fun startTimer(startTimeInMillis: Long = remainingTimeInMillis) {
         timer = object : CountDownTimer(startTimeInMillis, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 remainingTimeInMillis = millisUntilFinished
@@ -70,9 +75,12 @@ class PracticeRecentlyDefaultActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
-                findViewById<TextView>(R.id.timerTextView).text = "0"
-                saveResult(false) // 실패 결과 저장
-                // 타이머 종료 후 수행할 작업 추가
+                if (!success) { // 성공하지 않았을 때만 실패로 저장
+                    findViewById<TextView>(R.id.timerTextView).text = "0"
+                    saveResult(false) // 실패 결과 저장
+                }
+                // 타이머가 종료되면 자동으로 실패 처리됨
+                showRecentlyScreen()
             }
         }
 
