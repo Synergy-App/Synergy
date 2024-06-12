@@ -84,25 +84,33 @@ class LearningButtonAdapter(private val buttonList: List<EduButtonItem>): Recycl
                         (view as GalaxyButton).startTouchUpAnimation()
 
                         val activity = itemView.context as FragmentActivity
-                        val fragment = when (text1.text) {
-                            "기초" -> LearningIconActivity()
-                            "기본 앱" -> LearningDefaultAppActivity()
-                            "화면구성" -> LearningScreenFragment()
-                            "계정 생성" -> LearningGoogleActivity()
-                            "앱 설치" -> LearningInstallActivity()
-                            "카카오톡" -> LearningKakaotalkActivity()
-                            "네이버" -> LearningNaverActivity()
-                            "카카오택시" -> LearningKakaotaxiActivity()
-                            "배달의 민족" -> LearningDeliveryActivity()
-                            else -> null
-                        }
-                        fragment?.let {
-                            if (it is Fragment) {
-                                addFragment(activity, it)
-                            } else {
-                                val intent = Intent(activity, it::class.java)
-                                activity.startActivity(intent)
+                        if (text1.text == "화면구성") {
+                            val fragment = LearningScreenFragment()
+                            addFragment(activity, fragment)
+                        } else {
+                            // 주석 처리된 코드
+                            /*
+                            val fragment = when (text1.text) {
+                                "기초" -> LearningIconActivity()
+                                "기본 앱" -> LearningDefaultAppActivity()
+                                "화면구성" -> LearningScreenFragment()
+                                "계정 생성" -> LearningGoogleActivity()
+                                "앱 설치" -> LearningInstallActivity()
+                                "카카오톡" -> LearningKakaotalkActivity()
+                                "네이버" -> LearningNaverActivity()
+                                "카카오택시" -> LearningKakaotaxiActivity()
+                                "배달의 민족" -> LearningDeliveryActivity()
+                                else -> null
                             }
+                            fragment?.let {
+                                if (it is Fragment) {
+                                    addFragment(activity, it)
+                                } else {
+                                    val intent = Intent(activity, it::class.java)
+                                    activity.startActivity(intent)
+                                }
+                            }
+                            */
                         }
                     }
                     MotionEvent.ACTION_CANCEL -> {
