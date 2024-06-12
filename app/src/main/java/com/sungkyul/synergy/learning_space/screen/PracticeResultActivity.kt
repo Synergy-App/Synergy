@@ -5,8 +5,10 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
 
 class PracticeResultActivity : AppCompatActivity() {
@@ -70,6 +72,18 @@ class PracticeResultActivity : AppCompatActivity() {
             startWebViewActivity("https://www.google.com", "최근 사용한 앱 목록을 확인하세요.")
         }
 
+        val backBtn = findViewById<Button>(R.id.goBackButton)
+        val problemBtn = findViewById<Button>(R.id.problemViewButton)
+
+
+        backBtn.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+        problemBtn.setOnClickListener {
+
+        }
+
     }
 
     private fun startWebViewActivity(url: String, learningInfo: String) {
@@ -78,5 +92,6 @@ class PracticeResultActivity : AppCompatActivity() {
         intent.putExtra("LEARNING_INFO", learningInfo)
         startActivity(intent)
     }
+
 
 }

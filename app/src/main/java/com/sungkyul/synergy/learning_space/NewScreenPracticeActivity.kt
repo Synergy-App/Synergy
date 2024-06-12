@@ -172,9 +172,9 @@ class NewScreenPracticeActivity : AppCompatActivity() {
                         Log.d("NewScreenPracticeActivity", "Check result: ${result.correct}")
                         if (result.correct) {
                             correctAnswers++ // 정답일 경우 카운트를 증가시킴
-                            Toast.makeText(this@NewScreenPracticeActivity, "정답이에요!", Toast.LENGTH_SHORT).show()
+                           // Toast.makeText(this@NewScreenPracticeActivity, "정답이에요!", Toast.LENGTH_SHORT).show()
                         } else {
-                            Toast.makeText(this@NewScreenPracticeActivity, "틀렸어요!", Toast.LENGTH_SHORT).show()
+                            //Toast.makeText(this@NewScreenPracticeActivity, "틀렸어요!", Toast.LENGTH_SHORT).show()
                         }
                         // 결과 리스트에 추가
                         resultList.add(ResultPair(currentExamIndex + 1, result.correct))

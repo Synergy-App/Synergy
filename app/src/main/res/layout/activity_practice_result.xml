@@ -316,6 +316,35 @@
                         android:visibility="gone" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+            <LinearLayout
+                android:id="@+id/bottomButtonContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <Button
+                    android:id="@+id/problemViewButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="문제보기"
+                    android:textStyle="bold"
+                    android:onClick="onProblemViewButtonClick" />
+
+                <Button
+                    android:id="@+id/goBackButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="돌아가기"
+                    android:textStyle="bold"
+                    android:onClick="onGoBackButtonClick" />
+            </LinearLayout>
+
 
         </LinearLayout>
 
