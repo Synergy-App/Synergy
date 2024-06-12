@@ -7,9 +7,14 @@ import android.os.Handler
 import android.os.Looper
 import android.util.TypedValue
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.databinding.ActivityCheckLearningAbilityBinding
 import com.sungkyul.synergy.my_profile.Time
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import org.json.JSONObject
+import java.io.IOException
 import java.util.concurrent.TimeUnit
 
 class CheckLearningAbilityActivity : AppCompatActivity() {
@@ -23,6 +28,7 @@ class CheckLearningAbilityActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setDynamicTextSize()
+        loadProfileData()
 
         handler = Handler(Looper.getMainLooper())
         runnable = object : Runnable {
@@ -58,6 +64,52 @@ class CheckLearningAbilityActivity : AppCompatActivity() {
         val todaySeconds = elapsedSeconds % 60
         val todayTimeString = String.format("%02d:%02d:%02d", todayHours, todayMinutes, todaySeconds)
         binding.textViewTodayTime.text = todayTimeString
+    }
+
+    private fun loadProfileData() {
+        val sharedPreferences = getSharedPreferences("SynergyPrefs", Context.MODE_PRIVATE)
+        val token = sharedPreferences.getString("Token", null)
+
+        if (token != null) {
+            val client = OkHttpClient()
+            val request = Request.Builder()
+                .url("https://synergy.hyeonwoo.com/user/me")
+                .addHeader("Authorization", "Bearer $token")
+                .build()
+
+            client.newCall(request).enqueue(object : okhttp3.Callback {
+                override fun onFailure(call: okhttp3.Call, e: IOException) {
+                    runOnUiThread {
+                        Toast.makeText(this@CheckLearningAbilityActivity, "프로필 데이터를 불러오는데 실패했습니다.", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onResponse(call: okhttp3.Call, response: okhttp3.Response) {
+                    if (response.isSuccessful) {
+                        val responseBody = response.body?.string()
+                        if (responseBody != null) {
+                            val json = JSONObject(responseBody)
+                            val data = json.getJSONObject("data")
+                            val nickname = data.optString("nickname", "사용자")
+
+                            runOnUiThread {
+                                binding.titleText.text = "$nickname 님의 취약 유형"
+                            }
+                        } else {
+                            runOnUiThread {
+                                Toast.makeText(this@CheckLearningAbilityActivity, "프로필 데이터를 불러오는데 실패했습니다.", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    } else {
+                        runOnUiThread {
+                            Toast.makeText(this@CheckLearningAbilityActivity, "프로필 데이터를 불러오는데 실패했습니다.", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+            })
+        } else {
+            Toast.makeText(this, "토큰이 없습니다.", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun getScreenSize(): Point {

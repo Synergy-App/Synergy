@@ -43,6 +43,9 @@ class DuckProfileFragment2 : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Initially hide the digi_age1 TextView
+        binding.digiAge1.visibility = View.GONE
+
         binding.examGalaxyButton.post { binding.examGalaxyButton.clipToRoundRect(27.0f) }
         binding.checkGalaxyButton.post { binding.checkGalaxyButton.clipToRoundRect(27.0f) }
 
@@ -87,7 +90,7 @@ class DuckProfileFragment2 : Fragment() {
         val sharedPreferences = requireContext().getSharedPreferences("SynergyPrefs", Context.MODE_PRIVATE)
         val token = sharedPreferences.getString("Token", null)
         val nickname = sharedPreferences.getString("Nickname", "사용자")
-        val digitalAgeGrade = sharedPreferences.getString("DigitalAgeGrade", "old")
+        var digitalAgeGrade = sharedPreferences.getString("DigitalAgeGrade", "none") ?: "none"
 
         if (nickname != null) {
             binding.textViewName.text = nickname
@@ -118,14 +121,17 @@ class DuckProfileFragment2 : Fragment() {
                         if (responseBody != null) {
                             val json = JSONObject(responseBody)
                             val data = json.getJSONObject("data")
-                            val apiDigitalAgeGrade = data.getString("digitalAgeGrade")
+                            val apiDigitalAgeGrade = data.optString("digitalAgeGrade", "none")
 
-                            // Save the digitalAgeGrade fetched from API to SharedPreferences
-                            sharedPreferences.edit().putString("DigitalAgeGrade", apiDigitalAgeGrade).apply()
-
+                            // Update UI with the fetched data
                             requireActivity().runOnUiThread {
                                 binding.digitalAge.text = getDigitalAgeText(apiDigitalAgeGrade)
                                 updateUserImage(apiDigitalAgeGrade)
+
+                                // Show digi_age1 TextView if the digitalAgeGrade is not "none"
+                                if (apiDigitalAgeGrade != "none") {
+                                    binding.digiAge1.visibility = View.VISIBLE
+                                }
                             }
                         }
                     } else {
@@ -146,6 +152,7 @@ class DuckProfileFragment2 : Fragment() {
             "adult" -> "어른"
             "parent" -> "중년"
             "old" -> "노인"
+            "none" -> "아직 측정되지 않았습니다!"
             else -> "알 수 없음"
         }
     }
@@ -158,6 +165,7 @@ class DuckProfileFragment2 : Fragment() {
             "adult" -> R.drawable.duck_adult
             "parent" -> R.drawable.duck_parent
             "old" -> R.drawable.duck_old
+            "none" -> R.drawable.my_character_default
             else -> R.drawable.sebook_sad_face
         }
         Glide.with(this).load(imageRes).into(imageView)
