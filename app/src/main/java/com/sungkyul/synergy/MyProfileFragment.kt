@@ -109,7 +109,7 @@ class MyProfileFragment : Fragment() {
         val sharedPreferences = requireContext().getSharedPreferences("SynergyPrefs", Context.MODE_PRIVATE)
         val token = sharedPreferences.getString("Token", null)
         val nickname = sharedPreferences.getString("Nickname", "사용자")
-        val digitalAgeGrade = sharedPreferences.getString("DigitalAgeGrade", "old")
+        val digitalAgeGrade = sharedPreferences.getString("DigitalAgeGrade", "default")
 
         if (nickname != null) {
             binding.textViewName.text = nickname
@@ -168,6 +168,7 @@ class MyProfileFragment : Fragment() {
             "adult" -> "어른"
             "parent" -> "중년"
             "old" -> "노인"
+            "default" -> "아직 측정되지 않았습니다!"
             else -> "알 수 없음"
         }
     }
@@ -180,6 +181,7 @@ class MyProfileFragment : Fragment() {
             "adult" -> R.drawable.duck_adult
             "parent" -> R.drawable.duck_parent
             "old" -> R.drawable.duck_old
+            "default" -> R.drawable.my_character_default
             else -> R.drawable.sebook_sad_face
         }
         Glide.with(this).load(imageRes).into(imageView)
