@@ -169,7 +169,7 @@ class MyProfileFragment : Fragment() {
             "parent" -> "중년"
             "old" -> "노인"
             "default" -> "아직 측정되지 않았습니다!"
-            else -> "알 수 없음"
+            else -> "아직 측정되지 않았습니다!"
         }
     }
 
