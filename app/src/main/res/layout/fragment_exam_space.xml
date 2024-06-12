@@ -159,7 +159,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="전체"
+                android:text="실습형"
                 android:fontFamily="@font/pretendard_semibold"
                 android:textColor="@color/black"
                 />
@@ -169,7 +169,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="실습"
+                android:text="문제"
                 android:fontFamily="@font/pretendard_semibold"
                 />
         </LinearLayout>
