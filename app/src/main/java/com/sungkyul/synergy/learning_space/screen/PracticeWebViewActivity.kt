@@ -1,5 +1,6 @@
 package com.sungkyul.synergy.learning_space.screen
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
@@ -13,6 +14,7 @@ import com.sungkyul.synergy.databinding.ActivityPracticeWebViewBinding
 class PracticeWebViewActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPracticeWebViewBinding
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPracticeWebViewBinding.inflate(layoutInflater)

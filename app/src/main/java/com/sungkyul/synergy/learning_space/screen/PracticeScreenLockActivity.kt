@@ -12,13 +12,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.databinding.ActivityExamStartBinding
 import com.sungkyul.synergy.databinding.ActivityPracticeScreenLockPracticeBinding
-import com.sungkyul.synergy.edu_space.screen_layout.ScreenHomeActivity
-import com.sungkyul.synergy.learning_space.activity.ExamProblem2Activity
-
-/** 잠금화면 푸세요 문제 */
-
 import android.content.Context
 import android.content.SharedPreferences
 
@@ -32,6 +26,7 @@ class PracticeScreenLockActivity : AppCompatActivity() {
     private var isTimerRunning = false
     private var remainingTimeInMillis: Long = 10000 // 초기 카운트 다운 시간 (10초)
     private var pausedTimeInMillis: Long = 0 // 타이머가 일시정지된 시간
+    private var success: Boolean = false // 성공 여부를 나타내는 변수 추가
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,7 +51,7 @@ class PracticeScreenLockActivity : AppCompatActivity() {
                 MotionEvent.ACTION_MOVE -> {
                     val endY = event.rawY
                     if (Math.abs(endY - startY) > lockIcon.height / 2) { // 드래그가 아이콘 크기의 절반 이상일 때
-                        saveResult(true) // 성공 결과 저장
+                        success = true // 성공 여부를 true로 설정
                         showHomeScreen()
                         true
                     } else {
@@ -71,9 +66,18 @@ class PracticeScreenLockActivity : AppCompatActivity() {
                 else -> false
             }
         }
+
+        // 문제보기 클릭 시 다이얼로그 띄우기
+        binding.problemText.setOnClickListener {
+            showProblemDialog()
+        }
+
+        startTimer() // 타이머 시작
     }
 
     private fun showHomeScreen() {
+        timer.cancel() // 타이머를 취소
+        saveResult(success) // 현재의 성공 여부를 저장
         val intent = Intent(this, PracticeScreenLock2Activity::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.scale_up_center, R.anim.fade_out)
@@ -88,30 +92,6 @@ class PracticeScreenLockActivity : AppCompatActivity() {
                         or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         or View.SYSTEM_UI_FLAG_FULLSCREEN
                 )
-
-        /**타이머 멈추고 실행*/
-        // 타이머 초기화
-        timer = object : CountDownTimer(remainingTimeInMillis, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                remainingTimeInMillis = millisUntilFinished
-                val secondsLeft = millisUntilFinished / 1000
-                binding.timerTextView.text = secondsLeft.toString() // 초를 텍스트뷰에 표시
-            }
-
-            override fun onFinish() {
-                binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
-                saveResult(false) // 실패 결과 저장
-                // 타이머 종료 후 수행할 작업 추가
-            }
-        }
-
-        // 문제보기 클릭 시 다이얼로그 띄우기
-        binding.problemText.setOnClickListener {
-            showProblemDialog()
-        }
-
-        timer.start() // 액티비티가 생성되면 타이머 시작
-        isTimerRunning = true
     }
 
     private fun saveResult(isSuccess: Boolean) {
@@ -135,7 +115,7 @@ class PracticeScreenLockActivity : AppCompatActivity() {
         }
     }
 
-    private fun startTimer(startTimeInMillis: Long) {
+    private fun startTimer(startTimeInMillis: Long = remainingTimeInMillis) {
         timer = object : CountDownTimer(startTimeInMillis, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 remainingTimeInMillis = millisUntilFinished
@@ -144,15 +124,19 @@ class PracticeScreenLockActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
-                binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
-                saveResult(false) // 실패 결과 저장
-                // 타이머 종료 후 수행할 작업 추가
+                if (!success) { // 성공하지 않았을 때만 실패로 저장
+                    binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
+                    saveResult(false) // 실패 결과 저장
+                }
+                // 타이머가 종료되면 자동으로 실패 처리됨
+                showHomeScreen()
             }
         }
 
-        timer.start() // 액티비티가 생성되면 타이머 시작
+        timer.start()
         isTimerRunning = true
     }
+
 
     @SuppressLint("ClickableViewAccessibility")
     private fun showProblemDialog() {
@@ -188,4 +172,3 @@ class PracticeScreenLockActivity : AppCompatActivity() {
         isTimerRunning = false
     }
 }
-

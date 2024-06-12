@@ -17,11 +17,11 @@ class PracticeResultActivity : AppCompatActivity() {
         // SharedPreferences에서 결과를 가져옴
         val sharedPreferences: SharedPreferences =
             getSharedPreferences("PracticeRecentlyDefaultPrefs", Context.MODE_PRIVATE)
-        val result4 = sharedPreferences.getBoolean("move_app_success", false)
-        val result5 = sharedPreferences.getBoolean("quiz_result", false)
-        val result1 = sharedPreferences.getBoolean("unlock_success", false)
-        val result2 = sharedPreferences.getBoolean("scroll_success", false)
-        val result3 = sharedPreferences.getBoolean("brightness_adjust_success", false)
+        val result4 = sharedPreferences.getBoolean("move_app_success", true)
+        val result5 = sharedPreferences.getBoolean("quiz_result", true)
+        val result1 = sharedPreferences.getBoolean("unlock_success", true)
+        val result2 = sharedPreferences.getBoolean("scroll_success", true)
+        val result3 = sharedPreferences.getBoolean("brightness_adjust_success", true)
 
         val option_text1 = findViewById<TextView>(R.id.option_text1)
         option_text1.text = if (result1) "1. 맞았습니다" else "1. 틀렸습니다"
