@@ -23,6 +23,7 @@ import com.sungkyul.synergy.databinding.ActivityDefaultAppBinding
 import com.sungkyul.synergy.edu_space.accountedu.GoogleMainActivity
 import com.sungkyul.synergy.edu_space.appinstall.AppInstallMainActivity
 import com.sungkyul.synergy.edu_space.default_app.DefaultAppActivity
+import com.sungkyul.synergy.edu_space.default_app.phone.activity.DefaultPhoneActivity
 import com.sungkyul.synergy.edu_space.icon_edu.activity.BasicEduMainFragment
 import com.sungkyul.synergy.edu_space.kakaotalk.activity.KakaoMainActivity
 import com.sungkyul.synergy.edu_space.naver.activity.NaverActivity
@@ -103,19 +104,21 @@ class EduButtonAdapter(
                                 context.startActivity(intent)
                             }
                             "카메라" -> {
-                                /* val intent = Intent(context, DefaultAppActivity::class.java)
-                                 context.startActivity(intent)*/
+                                /*// 전화 앱으로 이동한다.
+                                val intent = Intent(context, DefaultCameraActivity::class.java)
+                                context.startActivity(intent)*/
+
                             }
                             "앨범" -> {
-                                /* val intent = Intent(context, DefaultAppActivity::class.java)
+                                /* val intent = Intent(context, DefaultGalleryActivity::class.java)
                                  context.startActivity(intent)*/
                             }
                             "전화" -> {
-                                /*val intent = Intent(context, DefaultAppActivity::class.java)
+                                /*val intent = Intent(context, DefaultPhoneActivity::class.java)
                                 context.startActivity(intent)*/
                             }
                             "문자" -> {
-                                /* val intent = Intent(context, DefaultAppActivity::class.java)
+                                /* val intent = Intent(context, DefaultMessageChattingActivity::class.java)
                                  context.startActivity(intent)*/
                             }
                             "환경 설정" -> {

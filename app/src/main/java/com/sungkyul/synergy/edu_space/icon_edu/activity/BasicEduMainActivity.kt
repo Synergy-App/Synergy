@@ -1,11 +1,16 @@
 package com.sungkyul.synergy.edu_space.icon_edu.activity
 
+import android.content.Context
 import android.content.Intent
+import android.graphics.Point
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Button
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.sungkyul.synergy.R
@@ -34,8 +39,46 @@ class BasicEduMainFragment : Fragment() {
             startActivity(intent)
         }
 
+        setDynamicTextSize(view) // 추가: 텍스트 크기 설정
+
         return view
     }
+
+
+    private fun getScreenSize(): Point {
+        val display = (requireActivity().getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay
+        val size = Point()
+        display.getSize(size)
+        return size
+    }
+
+    private fun getStandardSize(): Pair<Int, Int> {
+        val screenSize = getScreenSize()
+        val density = resources.displayMetrics.density
+
+        val standardSizeX = (screenSize.x / density).toInt()
+        val standardSizeY = (screenSize.y / density).toInt()
+
+        return Pair(standardSizeX, standardSizeY)
+    }
+
+    private fun setDynamicTextSize(view: View) {
+        val (standardSizeX, standardSizeY) = getStandardSize()
+
+        // 각각의 텍스트 요소에 다른 크기 설정
+        val basicEdu: TextView = view.findViewById(R.id.basic_edu)
+        basicEdu.setTextSize(TypedValue.COMPLEX_UNIT_SP, (standardSizeX / 12).toFloat())
+
+        val basicEduSub: TextView = view.findViewById(R.id.basic_edu_sub)
+        basicEduSub.setTextSize(TypedValue.COMPLEX_UNIT_SP, (standardSizeX / 15).toFloat())
+
+        // headerImage의 높이 설정
+        val header: View = view.findViewById(R.id.header)
+        val headerHeight = (standardSizeY * 0.6).toInt() // 높이를 화면 높이의 10%로 설정
+        header.layoutParams.height = headerHeight
+        header.requestLayout()
+    }
+
 
     private fun addFragment(activity: FragmentActivity, fragment: Fragment) {
         val fragmentManager = activity.supportFragmentManager

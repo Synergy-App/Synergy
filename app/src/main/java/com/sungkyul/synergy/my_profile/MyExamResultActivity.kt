@@ -2,7 +2,9 @@ package com.sungkyul.synergy.my_profile
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.Point
 import android.os.Bundle
+import android.util.DisplayMetrics
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sungkyul.synergy.databinding.ActivityMyExamResultBinding
@@ -17,10 +19,20 @@ class MyExamResultActivity : AppCompatActivity() {
     private lateinit var adapter: ExamResultAdapter
     private lateinit var sharedPreferences: SharedPreferences
 
+    private var standardSize_X: Int = 0
+    private var standardSize_Y: Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMyExamResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // 화면의 기준 사이즈를 계산
+        getStandardSize()
+
+        // 텍스트 크기를 기준 사이즈를 이용해 설정
+        binding.headerTitle.textSize = (standardSize_X / 12).toFloat()
+        binding.headerSubtitle.textSize = (standardSize_X / 16).toFloat()
 
         // SharedPreferences 초기화
         sharedPreferences = getSharedPreferences("SynergyPrefs", Context.MODE_PRIVATE)
@@ -49,5 +61,23 @@ class MyExamResultActivity : AppCompatActivity() {
         } else {
             ArrayList()
         }
+    }
+
+    // 디스플레이 사이즈를 반환하는 메서드
+    private fun getScreenSize(): Point {
+        val display = windowManager.defaultDisplay
+        val size = Point()
+        display.getSize(size)
+        return size
+    }
+
+    // 기기의 해상도와 밀도를 기준으로 기준 사이즈를 계산하는 메서드
+    private fun getStandardSize() {
+        val screenSize = getScreenSize()
+        val displayMetrics: DisplayMetrics = resources.displayMetrics
+        val density = displayMetrics.density
+
+        standardSize_X = (screenSize.x / density).toInt()
+        standardSize_Y = (screenSize.y / density).toInt()
     }
 }
