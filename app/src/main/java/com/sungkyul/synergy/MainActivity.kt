@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.learingFragment -> setFragment(Tag_learning, LearningFragment())
                 R.id.solvingFragment -> setFragment(Tag_examSpace, ExamSpaceFragment())
-                R.id.myProfileFrangment -> setFragment(Tag_myProfile, DuckProfileFragment2())
+                R.id.myProfileFrangment -> setFragment(Tag_myProfile, MyProfileFragment())
             }
             true
         }
