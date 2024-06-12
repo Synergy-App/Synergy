@@ -26,8 +26,7 @@
             android:letterSpacing="-0.08"
             android:fontFamily="@font/pretendard_semibold"
             android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            />
 
         <TextView
             android:id="@+id/learning_tv2"
@@ -37,8 +36,7 @@
             android:letterSpacing="-0.08"
             android:fontFamily="@font/pretendard_semibold"
             android:textColor="#919191"
-            android:textSize="16sp"
-            android:textStyle="bold"
+
             app:layout_constraintStart_toStartOf="@id/learning_layout"
             app:layout_constraintTop_toTopOf="@id/learning_layout"/>
 
@@ -50,11 +48,11 @@
             android:layout_marginTop="12dp"
             android:src="@drawable/ic_edubotton_icon"/>
 
-<!--        <com.github.mikephil.charting.charts.HorizontalBarChart-->
-<!--            android:id="@+id/bar_chart"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="40dp"-->
-<!--            android:layout_marginTop="12dp"/>-->
+        <!--        <com.github.mikephil.charting.charts.HorizontalBarChart-->
+        <!--            android:id="@+id/bar_chart"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="40dp"-->
+        <!--            android:layout_marginTop="12dp"/>-->
     </LinearLayout>
 
     <com.sungkyul.synergy.utils.GalaxyButton

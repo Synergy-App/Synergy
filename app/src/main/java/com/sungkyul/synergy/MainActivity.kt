@@ -64,10 +64,17 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.learingFragment -> setFragment(Tag_learning, LearningFragment())
                 R.id.solvingFragment -> setFragment(Tag_examSpace, ExamSpaceFragment())
-                R.id.myProfileFrangment -> setFragment(Tag_myProfile, MyProfileFragment())
+                R.id.myProfileFrangment -> setFragment(Tag_myProfile, DuckProfileFragment2())
             }
             true
         }
+        
+        val fragmentName = intent.getStringExtra("fragment")
+        if(fragmentName == "SolvingFragment") {
+            setFragment(Tag_solving, SolvingFragment())
+        }
+
+        //else {setFragment(Tag_solving, ExamResultFragment())}
     }
 
     public fun setFragment(tag: String, fragment: Fragment) {

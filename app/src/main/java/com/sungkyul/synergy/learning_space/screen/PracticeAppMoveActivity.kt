@@ -3,6 +3,7 @@ package com.sungkyul.synergy.learning_space.screen
 import android.annotation.SuppressLint
 import android.app.ActivityOptions
 import android.content.ClipData
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -26,8 +27,9 @@ class PracticeAppMoveActivity : AppCompatActivity() {
     private lateinit var lockIcon: ImageView
     private lateinit var timer: CountDownTimer
     private var isTimerRunning = false
-    private var remainingTimeInMillis: Long = 60000
+    private var remainingTimeInMillis: Long = 10000
     private var pausedTimeInMillis: Long = 0 // 타이머가 일시정지된 시간
+    private var success: Boolean = false // 성공 여부를 나타내는 변수 추가
 
 
     @SuppressLint( "ClickableViewAccessibility")
@@ -36,7 +38,7 @@ class PracticeAppMoveActivity : AppCompatActivity() {
         binding = ActivityPracticeAppMoveBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        hideSystemUI()
+        startTimer()
 
         // 아이콘 레이아웃에 롱클릭 리스너 추가
         binding.playstoreIcon.setOnLongClickListener { view ->
@@ -47,6 +49,7 @@ class PracticeAppMoveActivity : AppCompatActivity() {
             val clipData = ClipData.newPlainText("icon_tag", view.tag.toString())
             val shadowBuilder = View.DragShadowBuilder(view)
             ViewCompat.startDragAndDrop(view, clipData, shadowBuilder, null, View.DRAG_FLAG_GLOBAL)
+            success = true // 성공 여부를 true로 설정
 
             // startActivity를 호출하여 ScreenMoveHomeActivity로 전환
             startActivity(intent, options.toBundle())
@@ -89,7 +92,6 @@ class PracticeAppMoveActivity : AppCompatActivity() {
                         or View.SYSTEM_UI_FLAG_FULLSCREEN
                 )
 
-        /**타이머 멈추고 실행*/
         // 타이머 초기화
         timer = object : CountDownTimer(remainingTimeInMillis, 1000) {
             override fun onTick(millisUntilFinished: Long) {
@@ -100,8 +102,6 @@ class PracticeAppMoveActivity : AppCompatActivity() {
 
             override fun onFinish() {
                 binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
-                // 타이머 종료 후 수행할 작업 추가
-
             }
         }
 
@@ -128,21 +128,26 @@ class PracticeAppMoveActivity : AppCompatActivity() {
         }
     }
 
-    private fun startTimer(startTimeInMillis: Long) {
+    private fun startTimer(startTimeInMillis: Long = remainingTimeInMillis) {
         timer = object : CountDownTimer(startTimeInMillis, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 remainingTimeInMillis = millisUntilFinished
                 val secondsLeft = millisUntilFinished / 1000
-                binding.timerTextView.text = secondsLeft.toString() // 초를 텍스트뷰에 표시
+                findViewById<TextView>(R.id.timerTextView).text = secondsLeft.toString()
             }
 
             override fun onFinish() {
-                binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
-                // 타이머 종료 후 수행할 작업 추가
+                if (!success) { // 성공하지 않았을 때만 실패로 저장
+                    findViewById<TextView>(R.id.timerTextView).text = "0"
+                    saveResult(false) // 실패 결과 저장
+                }
+                // 타이머가 종료되면 자동으로 실패 처리됨
+                returnToHomeScreen()
             }
         }
+
         // 문제보기 클릭 시 다이얼로그 띄우기
-        binding.problemText.setOnClickListener {
+        findViewById<TextView>(R.id.problemText).setOnClickListener {
             showProblemDialog()
         }
 
@@ -174,7 +179,8 @@ class PracticeAppMoveActivity : AppCompatActivity() {
         val confirmButton = dialogView.findViewById<Button>(R.id.confirmButton)
         confirmButton.setOnClickListener {
             alertDialog.dismiss() // 다이얼로그 닫기
-            startTimer(remainingTimeInMillis) // 타이머 다시 시작
+            saveResult(true) // 문제 풀이 성공으로 표시
+            returnToHomeScreen() // 홈 화면으로 이동
         }
 
         alertDialog.show()
@@ -183,9 +189,17 @@ class PracticeAppMoveActivity : AppCompatActivity() {
         timer.cancel()
         isTimerRunning = false
     }
+
     private fun returnToHomeScreen() {
-        val intent = Intent(this, ScreenHomeActivity::class.java)
+        val intent = Intent(this, PracticeAppMove2Activity::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.stay, R.anim.stay)
+    }
+
+    private fun saveResult(isSuccess: Boolean) {
+        val sharedPreferences = getSharedPreferences("PracticeRecentlyDefaultPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("move_app_success", isSuccess)
+        editor.apply()
     }
 }

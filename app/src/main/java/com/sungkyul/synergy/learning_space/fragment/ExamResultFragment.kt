@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.databinding.FragmentExamResultBinding
 import com.sungkyul.synergy.learning_space.activity.ExamResultListActivity
 import com.sungkyul.synergy.utils.GalaxyButton
@@ -39,7 +40,9 @@ class ExamResultFragment : Fragment() {
                 }
                 MotionEvent.ACTION_UP -> {
                     (view as GalaxyButton).startTouchUpAnimation()
-                    // 이전 화면으로 돌아가는 로직 추가
+                    val intent = Intent(requireContext(), MainActivity::class.java)
+                    intent.putExtra("fragment", "SolvingFragment")
+                    startActivity(intent)
                 }
             }
             true
