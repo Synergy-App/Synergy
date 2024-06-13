@@ -19,6 +19,10 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".learning_space.screen.PracticeCheckExamActivity"
+            android:exported="true">
+        </activity>
+        <activity
             android:name=".learning_space.screen.PracticeResultActivity"
             android:exported="false" />
         <activity
@@ -35,15 +39,16 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".CheckLearningAbilityActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -64,7 +69,7 @@
         </activity>
         <activity
             android:name=".learning_space.screen.PracticeRecentlyDefaultActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".learning_space.screen.PracticeRecentlyActivity"
             android:exported="false" />
@@ -73,7 +78,7 @@
             android:exported="false" />
         <activity
             android:name=".edu_space.screen_layout.ScreenRecentlyActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".learning_space.screen.PracticeScreenTopScroll2Activity"
             android:exported="false" />
