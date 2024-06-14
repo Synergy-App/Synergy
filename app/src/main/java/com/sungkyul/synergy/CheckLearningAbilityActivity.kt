@@ -18,6 +18,7 @@ import java.io.IOException
 import java.util.concurrent.TimeUnit
 
 class CheckLearningAbilityActivity : AppCompatActivity() {
+    /**전체 추가**/
     private lateinit var binding: ActivityCheckLearningAbilityBinding
     private lateinit var handler: Handler
     private lateinit var runnable: Runnable
