@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EFECE7"
-    tools:context=".learning_space.NewScreenPracticeActivity">
+    tools:context=".learning_space.screen.PracticeCheckExamActivity">
 
     <LinearLayout
         android:id="@+id/header_layout"
@@ -27,7 +26,6 @@
             android:textColor="@color/white"
             android:textSize="25sp"
             android:textStyle="bold" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -43,16 +41,14 @@
         app:layout_constraintTop_toBottomOf="@+id/header_layout">
 
         <ImageView
-            android:id="@+id/icon_image"
+            android:id="@+id/description_image"
             android:layout_width="120dp"
-            android:layout_gravity="center"
             android:layout_height="120dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/new_screen_icon_test"
+            android:layout_marginTop="20dp"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/header_layout" />
+            app:layout_constraintTop_toBottomOf="@id/description_text" />
 
         <TextView
             android:id="@+id/description_text"
@@ -67,17 +63,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/icon_image" />
-
-
-        <ImageView
-            android:id="@+id/description_image"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_marginTop="20dp"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/description_text" />
 
         <LinearLayout
             android:id="@+id/container"
@@ -249,5 +234,4 @@
             android:layout_height="wrap_content" />
 
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

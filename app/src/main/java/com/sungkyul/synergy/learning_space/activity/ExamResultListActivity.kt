@@ -10,8 +10,8 @@ import com.sungkyul.synergy.com.sungkyul.synergy.learning_space.ResultPair
 import com.sungkyul.synergy.databinding.ActivityExamResultListBinding
 import com.sungkyul.synergy.learning_space.adapter.ExamResultListAdapter
 import com.sungkyul.synergy.learning_space.adapter.ExamResultListData
-import com.sungkyul.synergy.learning_space.intent.LearningScreenFragment
 import com.sungkyul.synergy.MainActivity
+import com.sungkyul.synergy.learning_space.screen.PracticeCheckExamActivity
 
 class ExamResultListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityExamResultListBinding
@@ -42,11 +42,18 @@ class ExamResultListActivity : AppCompatActivity() {
 
         val recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = ExamResultListAdapter(dataSet)
+        recyclerView.adapter = ExamResultListAdapter(dataSet) { position ->
+            Log.d("ExamResultListActivity", "Item clicked at position: $position")
+            val selectedExamResult = resultList?.get(position)
+            val intent = Intent(this, PracticeCheckExamActivity::class.java).apply {
+                putExtra("selectedExamResult", selectedExamResult)
+                putExtra("questionNumber", selectedExamResult?.questionNumber)
+            }
+            startActivity(intent)
+        }
 
         // "돌아가기" 버튼 이벤트 처리
         binding.backButton.setOnClickListener {
-            //onBackPressed()
             val intent = Intent(this, MainActivity::class.java)
             intent.putExtra("fragment", "SolvingFragment")
             startActivity(intent)

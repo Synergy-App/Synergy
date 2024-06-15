@@ -1,5 +1,6 @@
 package com.sungkyul.synergy.types
 
+
 data class Exam(
     /**시험 관련**/
     val id: Int,
