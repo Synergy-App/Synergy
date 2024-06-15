@@ -22,6 +22,8 @@ data class ScreenHomeCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentColor = R.color.white
             dialog.background = R.drawable.edu_dialog_black_bg
             dialog.contentGravity = Gravity.CENTER
+            dialog.contentFont= R.font.pretendard_semibold
+            dialog.contentSize = 26.0f
             dialog.top = 0.05f
             dialog.bottom = 0.8f
             dialog.start = 0.05f

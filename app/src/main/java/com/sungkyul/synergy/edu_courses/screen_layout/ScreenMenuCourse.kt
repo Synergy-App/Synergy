@@ -19,6 +19,8 @@ data class ScreenMenuCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.visibility = true
             dialog.contentText = "메뉴 화면입니다."
+            dialog.contentFont= R.font.pretendard_semibold
+            dialog.contentSize = 26.0f
             dialog.contentColor = R.color.white
             dialog.background = R.drawable.edu_dialog_black_bg
             dialog.contentGravity = Gravity.CENTER
@@ -45,7 +47,7 @@ data class ScreenMenuCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "\"Play 스토어\" 앱을<br>표시된 곳에<br>이동시켜보세요."
+            dialog.contentText = "\"Play 스토어\" 앱을<br>홈 화면에<br>배치시켜보세요."
             dialog.background = R.drawable.edu_dialog_green_bg
             dialog.contentColor = R.color.white
         })

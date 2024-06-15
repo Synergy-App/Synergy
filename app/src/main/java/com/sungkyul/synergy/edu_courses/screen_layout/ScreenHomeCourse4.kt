@@ -19,8 +19,10 @@ data class ScreenHomeCourse4(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.visibility = true
             dialog.contentText = "홈 화면으로 이동하는<br>버튼입니다."
+            dialog.contentFont= R.font.pretendard_semibold
+            dialog.contentSize = 26.0f
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = 0.75f
+            dialog.top = 0.65f
             dialog.bottom = 0.15f
             dialog.start = 0.05f
             dialog.end = 0.05f
@@ -39,7 +41,7 @@ data class ScreenHomeCourse4(val eduScreen: EduScreen): EduCourse {
             dialog.contentText = "메뉴 화면에서<br><b>네이버</b>를 터치해<br>실행한 후 다시<br>홈 화면으로<br>이동하세요."
             dialog.background = R.drawable.edu_dialog_green_bg
             dialog.contentColor = R.color.white
-            dialog.top = 0.4f
+            dialog.top = 0.32f
             dialog.bottom = 0.4f
 
             cover.boxVisibility = false

@@ -23,10 +23,11 @@ data class ScreenLockCourse(val eduScreen: EduScreen): EduCourse {
             dialog.background = R.drawable.edu_dialog_black_bg
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 0.05f
+            dialog.contentFont= R.font.pretendard_semibold
+            dialog.contentSize = 26.0f
             dialog.bottom = 0.8f
             dialog.start = 0.05f
             dialog.end = 0.05f
-
             cover.isClickable = true
         })
 

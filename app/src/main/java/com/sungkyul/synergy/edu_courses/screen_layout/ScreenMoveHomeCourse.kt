@@ -20,7 +20,9 @@ data class ScreenMoveHomeCourse(val eduScreen: EduScreen): EduCourse {
 
         list.add(EduData().apply {
             dialog.visibility = true
-            dialog.contentText = "시너지 앱을 홈 화면에<br>배치하였습니다!"
+            dialog.contentText = "성공적으로<br>배치하였습니다!"
+            dialog.contentFont= R.font.pretendard_semibold
+            dialog.contentSize = 26.0f
             dialog.background = R.drawable.edu_dialog_yellow_bg
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 0.35f

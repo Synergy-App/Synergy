@@ -21,6 +21,8 @@ data class ScreenHomeCourse2(val eduScreen: EduScreen): EduCourse {
             dialog.contentText = "다음은 상단바입니다."
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 0.4f
+            dialog.contentFont= R.font.pretendard_semibold
+            dialog.contentSize = 26.0f
             dialog.bottom = 0.4f
             dialog.start = 0.05f
             dialog.end = 0.05f

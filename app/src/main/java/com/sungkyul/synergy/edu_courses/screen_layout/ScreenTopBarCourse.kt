@@ -22,6 +22,8 @@ data class ScreenTopBarCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentGravity = Gravity.CENTER
             dialog.contentColor = R.color.white
             dialog.background = R.drawable.edu_dialog_black_bg
+            dialog.contentFont= R.font.pretendard_semibold
+            dialog.contentSize = 26.0f
             dialog.top = 0.3f
             dialog.bottom = 0.55f
             dialog.start = 0.05f
