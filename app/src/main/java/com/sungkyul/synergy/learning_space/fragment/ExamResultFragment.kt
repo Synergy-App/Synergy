@@ -33,6 +33,7 @@ class ExamResultFragment : Fragment() {
         binding.backButton.post { binding.backButton.clipToRoundRect(27.0f) }
         binding.viewAllButton.post { binding.viewAllButton.clipToRoundRect(27.0f) }
 
+        //돌아가기
         binding.backButton.setOnTouchListener { view, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
@@ -48,6 +49,7 @@ class ExamResultFragment : Fragment() {
             true
         }
 
+        //전체문제 다시보기
         binding.viewAllButton.setOnTouchListener { view, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
