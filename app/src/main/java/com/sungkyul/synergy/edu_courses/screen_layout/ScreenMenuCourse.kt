@@ -21,6 +21,8 @@ data class ScreenMenuCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentText = "메뉴 화면입니다."
             dialog.contentColor = R.color.white
             dialog.background = R.drawable.edu_dialog_black_bg
+            dialog.contentFont = R.font.pretendard_semibold
+            dialog.contentSize = 24.0f
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 0.05f
             dialog.bottom = 0.8f
@@ -62,7 +64,7 @@ data class ScreenMenuCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "touch",
                     x = 0.1f,
-                    y = 0.4f,
+                    y = 0.6f,
                     gesture = HandGestures::tapGesture
                 )
             )

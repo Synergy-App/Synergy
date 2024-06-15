@@ -18,11 +18,13 @@ data class ScreenHomeCourse3(val eduScreen: EduScreen): EduCourse {
     init {
         list.add(EduData().apply {
             dialog.visibility = true
-            dialog.contentText = "하단바 화면입니다."
+            dialog.contentText = "다음은 하단바 화면입니다."
             dialog.background = R.drawable.edu_dialog_black_bg
             dialog.contentColor = R.color.white
+            dialog.contentFont = R.font.pretendard_semibold
+            dialog.contentSize = 24.0f
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = 0.8f
+            dialog.top = 0.75f
             dialog.bottom = 0.1f
             dialog.start = 0.05f
             dialog.end = 0.05f
@@ -40,7 +42,7 @@ data class ScreenHomeCourse3(val eduScreen: EduScreen): EduCourse {
 
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
-            cover.boxTop = 0.925f
+            cover.boxTop = 0.9f
             cover.boxBottom = 1.0f
             cover.boxLeft = 0.0f
             cover.boxRight = 1.0f
@@ -48,9 +50,10 @@ data class ScreenHomeCourse3(val eduScreen: EduScreen): EduCourse {
 
         list.add(EduData().apply {
             dialog.contentText = "최근에 실행한 앱을<br>보는 버튼입니다."
-            dialog.top = 0.7f
+            dialog.top = 0.65f
 
-            cover.boxRight = 0.3f
+            cover.boxLeft = 0.125f
+            cover.boxRight = 0.325f
         })
 
         list.add(EduData().apply {
@@ -76,7 +79,7 @@ data class ScreenHomeCourse3(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "touch",
                     x = 0.15f,
-                    y = 0.85f,
+                    y = 0.825f,
                     rotation = 180.0f,
                     gesture = HandGestures::tapGesture
                 )

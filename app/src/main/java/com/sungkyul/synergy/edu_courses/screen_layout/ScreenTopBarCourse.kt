@@ -22,6 +22,8 @@ data class ScreenTopBarCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentGravity = Gravity.CENTER
             dialog.contentColor = R.color.white
             dialog.background = R.drawable.edu_dialog_black_bg
+            dialog.contentFont = R.font.pretendard_semibold
+            dialog.contentSize = 24.0f
             dialog.top = 0.3f
             dialog.bottom = 0.55f
             dialog.start = 0.05f
@@ -32,7 +34,7 @@ data class ScreenTopBarCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "와이파이를 한 번<br>켜볼까요?"
+            dialog.contentText = "와이파이를 한 번 켜볼까요?"
             dialog.background = R.drawable.edu_dialog_green_bg
             dialog.top = 0.4f
             dialog.bottom = 0.4f
@@ -50,7 +52,7 @@ data class ScreenTopBarCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "touch",
                     x = 0.1f,
-                    y = 0.095f,
+                    y = 0.1f,
                     gesture = HandGestures::tapGesture
                 )
             )
@@ -76,7 +78,7 @@ data class ScreenTopBarCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "drag",
                     x = 0.9f,
-                    y = 0.14f,
+                    y = 0.2f,
                     gesture = HandGestures::topbarLightDragGesture
                 )
             )

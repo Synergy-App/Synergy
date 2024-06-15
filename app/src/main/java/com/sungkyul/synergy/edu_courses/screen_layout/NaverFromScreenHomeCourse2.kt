@@ -23,7 +23,7 @@ data class NaverFromScreenHomeCourse2(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 0.5f,
-                    y = 0.45f,
+                    y = 0.7f,
                     gesture = HandGestures::tapGesture
                 )
             )
@@ -34,8 +34,8 @@ data class NaverFromScreenHomeCourse2(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = 0.75f,
-                    y = 0.9f,
+                    x = 0.7f,
+                    y = 0.8f,
                     rotation = 180f,
                     gesture = HandGestures::tapGesture
                 )
@@ -46,6 +46,8 @@ data class NaverFromScreenHomeCourse2(val eduScreen: EduScreen): EduCourse {
             dialog.visibility = true
             dialog.contentText = "다음과 같이 이전 단계로<br>이동하게 됩니다."
             dialog.background = R.drawable.edu_dialog_bg
+            dialog.contentFont = R.font.pretendard_semibold
+            dialog.contentSize = 24.0f
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 0.4f
             dialog.bottom = 0.4f

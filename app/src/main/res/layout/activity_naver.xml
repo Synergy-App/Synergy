@@ -153,23 +153,26 @@
 
             </LinearLayout>
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/ad1"
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="48dp"
-                android:gravity="end"
                 app:layout_constraintTop_toBottomOf="@id/search_bar">
 
                 <ImageView
-                    android:layout_width="340dp"
+                    android:layout_width="330dp"
                     android:layout_height="90dp"
                     android:src="@drawable/naver_ad_null1"
                     android:layout_marginTop="-10dp"
-                    android:layout_marginEnd="-10dp"/>
+                    android:layout_marginEnd="-10dp"
+                    android:layout_marginStart="3dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </LinearLayout>
+
 
             <LinearLayout
                 android:id="@+id/ad2"
@@ -236,7 +239,7 @@
                         android:src="@drawable/naver_sun"/>
 
                 </LinearLayout>
-                
+
                 <LinearLayout
                     android:id="@+id/stock_view"
                     android:orientation="horizontal"

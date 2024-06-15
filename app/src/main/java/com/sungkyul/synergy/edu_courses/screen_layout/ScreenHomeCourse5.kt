@@ -21,6 +21,8 @@ data class ScreenHomeCourse5(val eduScreen: EduScreen): EduCourse {
             dialog.contentText = "홈 화면 이동에<br>성공하였습니다!"
             dialog.background = R.drawable.edu_dialog_yellow_bg
             dialog.contentGravity = Gravity.CENTER
+            dialog.contentFont = R.font.pretendard_semibold
+            dialog.contentSize = 24.0f
             dialog.top = 0.4f
             dialog.bottom = 0.4f
             dialog.start = 0.05f
@@ -41,16 +43,16 @@ data class ScreenHomeCourse5(val eduScreen: EduScreen): EduCourse {
             cover.boxBorderVisibility = true
             cover.boxTop = 0.9f
             cover.boxBottom = 1.0f
-            cover.boxLeft = 0.7f
-            cover.boxRight = 1.0f
+            cover.boxLeft = 0.65f
+            cover.boxRight = 0.9f
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "메뉴 화면에서 <b>네이버</b>를 터치해<br>실행한 후 뒤로가기 버튼을<br>클릭하여 이전 단계로<br>돌아가세요."
+            dialog.contentText = "메뉴 화면에서 \"네이버\"를 터치해 실행한 후 뒤로가기 버튼을 클릭하여 이전 단계로 돌아가세요."
             dialog.background = R.drawable.edu_dialog_green_bg
             dialog.contentColor = R.color.white
-            dialog.top = 0.4f
-            dialog.bottom = 0.4f
+            dialog.top = 0.25f
+            dialog.bottom = 0.45f
 
             cover.boxVisibility = false
             cover.boxBorderVisibility = false
@@ -67,8 +69,8 @@ data class ScreenHomeCourse5(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "drag",
-                    x = 0.45f,
-                    y = 0.75f,
+                    x = 0.5f,
+                    y = 0.5f,
                     gesture = HandGestures::homeVerticalDragGesture
                 )
             )
