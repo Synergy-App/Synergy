@@ -17,7 +17,7 @@ data class ScreenMenuCourse2(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             cover.boxBorderVisibility = true
             cover.boxTop = 0.1f
-            cover.boxBottom = 0.3f
+            cover.boxBottom = 0.25f
             cover.boxLeft = 0.25f
             cover.boxRight = 0.5f
 

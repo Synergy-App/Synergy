@@ -62,8 +62,8 @@ data class ScreenLockCourse(val eduScreen: EduScreen): EduCourse {
 
             hands.add(EduHand(
                 id = "drag",
-                x = 0.5f,
-                y = 0.5f,
+                x = 0.45f,
+                y = 0.75f,
                 gesture = HandGestures::lockVerticalDragGesture
             ))
         })
