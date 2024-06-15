@@ -32,7 +32,7 @@ data class ScreenTopBarCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "와이파이를 켜고,<br>벨소리를 소리나게<br>바꿔볼까요?"
+            dialog.contentText = "와이파이를 한 번<br>켜볼까요?"
             dialog.background = R.drawable.edu_dialog_green_bg
             dialog.top = 0.4f
             dialog.bottom = 0.4f
