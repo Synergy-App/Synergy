@@ -41,8 +41,8 @@ data class ScreenHomeCourse5(val eduScreen: EduScreen): EduCourse {
             cover.boxBorderVisibility = true
             cover.boxTop = 0.9f
             cover.boxBottom = 1.0f
-            cover.boxLeft = 0.65f
-            cover.boxRight = 0.9f
+            cover.boxLeft = 0.7f
+            cover.boxRight = 1.0f
         })
 
         list.add(EduData().apply {
@@ -67,8 +67,8 @@ data class ScreenHomeCourse5(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "drag",
-                    x = 0.5f,
-                    y = 0.5f,
+                    x = 0.45f,
+                    y = 0.75f,
                     gesture = HandGestures::homeVerticalDragGesture
                 )
             )

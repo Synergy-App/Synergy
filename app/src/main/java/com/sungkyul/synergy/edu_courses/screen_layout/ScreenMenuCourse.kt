@@ -62,7 +62,7 @@ data class ScreenMenuCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "touch",
                     x = 0.1f,
-                    y = 0.6f,
+                    y = 0.4f,
                     gesture = HandGestures::tapGesture
                 )
             )

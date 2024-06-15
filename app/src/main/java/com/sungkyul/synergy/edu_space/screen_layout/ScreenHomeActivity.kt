@@ -164,6 +164,7 @@ class ScreenHomeActivity : AppCompatActivity() {
     private fun showMenuScreen() {
         val intent = Intent(this, ScreenMenuActivity::class.java)
         startActivity(intent)
+        //overrideActivityTransition(0, R.anim.slide_up, R.anim.stay)
         overridePendingTransition(R.anim.slide_up, R.anim.stay)
     }
 

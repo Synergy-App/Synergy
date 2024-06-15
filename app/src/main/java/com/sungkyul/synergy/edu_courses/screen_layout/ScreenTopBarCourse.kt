@@ -50,7 +50,7 @@ data class ScreenTopBarCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "touch",
                     x = 0.1f,
-                    y = 0.1f,
+                    y = 0.095f,
                     gesture = HandGestures::tapGesture
                 )
             )
@@ -76,7 +76,7 @@ data class ScreenTopBarCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "drag",
                     x = 0.9f,
-                    y = 0.2f,
+                    y = 0.1275f,
                     gesture = HandGestures::topbarLightDragGesture
                 )
             )
