@@ -51,25 +51,28 @@ class PracticeResultActivity : AppCompatActivity() {
         val problem5 = findViewById<ImageView>(R.id.problem5)
         problem5.setImageResource(if (result5) R.drawable.correct else R.drawable.wrong)
 
-        // 클릭 이벤트 처리
+        // 클릭 이벤트 처리 잠금화면
         problem1.setOnClickListener {
-            startWebViewActivity("https://www.google.com", "잠금화면에서 홈화면으로 이동하세요.")
+            startWebViewActivity("https://youtu.be/DSkR2nc3uUE", "잠금화면에서 홈화면으로 이동하세요.")
         }
-
+        // 상단바
         problem2.setOnClickListener {
-            startWebViewActivity("https://www.google.com", "상단바를 내리세요.")
+            startWebViewActivity("https://youtu.be/aRTg0jgNQvo", "상단바를 내리세요.")
         }
 
+        // 밝기 조절
         problem3.setOnClickListener {
-            startWebViewActivity("https://www.google.com", "화면 밝기를 올리세요.")
+            startWebViewActivity("https://youtu.be/rLWAD9LW4aY", "화면 밝기를 올리세요.")
         }
 
+        // 앱 꺼내기
         problem4.setOnClickListener {
-            startWebViewActivity("https://www.google.com", "플레이 스토어를 홈 화면으로 이동하시오.")
+            startWebViewActivity("https://youtube.com/shorts/t5foNMcSMn0", "플레이 스토어를 홈 화면으로 이동하시오.")
         }
 
+        // 최근 실행
         problem5.setOnClickListener {
-            startWebViewActivity("https://www.google.com", "최근 사용한 앱 목록을 확인하세요.")
+            startWebViewActivity("https://youtu.be/UVARovWqK-M", "최근 사용한 앱 목록을 확인하세요.")
         }
 
         val backBtn = findViewById<Button>(R.id.goBackButton)
