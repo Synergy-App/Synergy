@@ -31,7 +31,7 @@ data class ScreenHomeCourse4(val eduScreen: EduScreen): EduCourse {
             cover.isClickable = true
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
-            cover.boxTop = 0.925f
+            cover.boxTop = 0.850f
             cover.boxBottom = 1.0f
             cover.boxLeft = 0.4f
             cover.boxRight = 0.6f
