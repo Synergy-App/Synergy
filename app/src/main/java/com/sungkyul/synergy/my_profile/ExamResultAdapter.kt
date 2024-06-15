@@ -1,6 +1,7 @@
 package com.sungkyul.synergy.my_profile
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,6 +38,7 @@ class ExamResultAdapter(
         holder.imageViewExamIcon.setImageResource(currentItem.imageResId)
 
         holder.imageViewExamIcon.setOnClickListener {
+            Log.d("ExamResultAdapter", "ImageView clicked for position: $position")
             val context = holder.itemView.context
             val intent = Intent(context, ExamResultListActivity::class.java).apply {
                 putParcelableArrayListExtra("resultList", ArrayList(currentItem.resultList))
