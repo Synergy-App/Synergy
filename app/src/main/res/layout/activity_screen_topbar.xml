@@ -6,13 +6,13 @@
     android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".edu_space.default_app.todo.DefaultAppBarActivity"
-    android:background="@drawable/screenedu_background">
+    android:background="@drawable/screenedu_background"
+    tools:context=".edu_space.default_app.todo.DefaultAppBarActivity">
 
     <com.sungkyul.synergy.utils.edu.EduScreen
         android:id="@+id/edu_screen"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
     <include
         android:id="@+id/include_toolbar"
@@ -26,7 +26,7 @@
         layout="@layout/included_screen_layout_navi_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <View
         android:id="@+id/drag_area"
@@ -34,97 +34,109 @@
         android:layout_height="100dp"
         android:background="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/overlayLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#A6FFFFFF"
         android:visibility="visible"
-        app:layout_constraintTop_toBottomOf="@id/include_toolbar"
         app:layout_constraintBottom_toTopOf="@id/include_navi_bar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/include_toolbar">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/hline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.045" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/hline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.13" />
 
         <LinearLayout
             android:id="@+id/icon_layout"
-            android:gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:gravity="center_horizontal"
             android:orientation="horizontal"
-            android:weightSum="6">
+            android:weightSum="6"
+            app:layout_constraintTop_toTopOf="@+id/hline1">
 
             <ImageView
                 android:id="@+id/wifi_image"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.9"
-                android:padding="4dp"
-                android:src="@drawable/ic_wifi_off"
                 android:adjustViewBounds="true"
-                android:scaleType="fitCenter" />
+                android:padding="4dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_wifi_off" />
 
             <ImageView
                 android:id="@+id/sound_image"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.9"
-                android:padding="4dp"
-                android:src="@drawable/ic_sound_off"
                 android:adjustViewBounds="true"
-                android:scaleType="fitCenter" />
+                android:padding="4dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_sound_off" />
 
             <ImageView
                 android:id="@+id/bluetooth_image"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.9"
-                android:padding="4dp"
-                android:src="@drawable/ic_bluetooth_off"
                 android:adjustViewBounds="true"
-                android:scaleType="fitCenter" />
+                android:padding="4dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_bluetooth_off" />
 
             <ImageView
                 android:id="@+id/screen_lock_image"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.9"
-                android:padding="4dp"
-                android:src="@drawable/ic_lock_off"
                 android:adjustViewBounds="true"
-                android:scaleType="fitCenter" />
+                android:padding="4dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_lock_off" />
 
             <ImageView
                 android:id="@+id/flight_image"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.9"
-                android:padding="4dp"
-                android:src="@drawable/ic_plane_off"
                 android:adjustViewBounds="true"
-                android:scaleType="fitCenter" />
+                android:padding="4dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_plane_off" />
 
             <ImageView
                 android:id="@+id/power_saving_image"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.9"
-                android:padding="4dp"
-                android:src="@drawable/ic_flash_off"
                 android:adjustViewBounds="true"
-                android:scaleType="fitCenter" />
+                android:padding="4dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_flash_off" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="125dp"
-            app:layout_constraintTop_toBottomOf="@id/icon_layout">
+            app:layout_constraintTop_toTopOf="@+id/hline2">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -141,6 +153,6 @@
                 android:max="255"
                 android:progressDrawable="@drawable/custom_progress" />
         </LinearLayout>
-    </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

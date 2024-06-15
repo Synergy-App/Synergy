@@ -76,7 +76,7 @@ data class ScreenTopBarCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "drag",
                     x = 0.9f,
-                    y = 0.1275f,
+                    y = 0.13f,
                     gesture = HandGestures::topbarLightDragGesture
                 )
             )
