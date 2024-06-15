@@ -24,7 +24,7 @@ data class NaverFromScreenHomeCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 0.44f,
-                    y = 0.8f,
+                    y = 0.9f,
                     rotation = 180f,
                     gesture = HandGestures::tapGesture
                 )
