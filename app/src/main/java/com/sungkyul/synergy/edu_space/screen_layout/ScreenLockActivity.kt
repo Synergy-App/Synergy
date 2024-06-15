@@ -5,6 +5,7 @@ import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.WindowInsets
@@ -16,11 +17,13 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenLockCourse
 import com.sungkyul.synergy.databinding.ActivityScreenLockBinding
 import com.sungkyul.synergy.utils.edu.EduScreen
+import kotlin.math.abs
 
 class ScreenLockActivity : AppCompatActivity() {
     private lateinit var binding: ActivityScreenLockBinding
     private var startY = 0f
     private lateinit var lockIcon: ImageView
+    private var dragged = false
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,12 +57,17 @@ class ScreenLockActivity : AppCompatActivity() {
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
                     startY = event.rawY
+                    dragged = false
                     true
                 }
+                // 이거 드래그하면 두 번 이상 작동해서 showHomeScreen이 여러 번 실행 됨
                 MotionEvent.ACTION_MOVE -> {
                     val endY = event.rawY
-                    if (Math.abs(endY - startY) > lockIcon.height / 2) { // 드래그가 아이콘 크기의 절반 이상일 때
-                        showHomeScreen()
+                    if (!dragged && abs(endY - startY) > lockIcon.height / 2) { // 드래그가 아이콘 크기의 절반 이상일 때
+                        if(binding.eduScreen.onAction("drag_lock")) {
+                            showHomeScreen()
+                        }
+                        dragged = true
                         true
                     } else {
                         false

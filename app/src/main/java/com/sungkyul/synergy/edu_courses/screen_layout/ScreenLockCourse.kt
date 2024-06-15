@@ -60,6 +60,8 @@ data class ScreenLockCourse(val eduScreen: EduScreen): EduCourse {
             cover.visibility = false
             cover.isClickable = false
 
+            action.id = "drag_lock"
+
             hands.add(EduHand(
                 id = "drag",
                 x = 0.45f,
