@@ -4,5 +4,6 @@ import java.io.Serializable
 
 data class Move(
     val moveImage: Int,
-    val moveText: String
+    val moveText: String,
+    val currentIndex: Int
 ) : Serializable

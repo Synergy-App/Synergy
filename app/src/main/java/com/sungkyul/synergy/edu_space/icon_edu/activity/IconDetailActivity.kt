@@ -84,10 +84,10 @@ class IconDetailActivity : AppCompatActivity() {
         // home_nav 버튼 클릭 이벤트 처리
         val homeNavButton = activityBinding.practiceNavLayout.root.findViewById<ImageView>(R.id.home_nav)
         homeNavButton.setOnClickListener {
-            val intent = Intent(this, IconEduActivity::class.java).apply {
+            /*val intent = Intent(this, IconEduFragment::class.java).apply {
                 flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
             }
-            startActivity(intent)
+            startActivity(intent)*/
             finish()
         }
 

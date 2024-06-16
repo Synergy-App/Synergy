@@ -1,32 +1,40 @@
 package com.sungkyul.synergy.edu_space.icon_edu.activity
 
-import android.content.Intent
+import android.content.Context
 import android.graphics.Point
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.DisplayMetrics
+import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.edu_space.icon_edu.adapter.IconEduAdapter
 import com.sungkyul.synergy.edu_space.icon_edu.data.Icon
 import com.sungkyul.synergy.databinding.ActivityIconEduBinding
+import com.sungkyul.synergy.databinding.ActivityMoveEduBinding
 
 /** 교육공간 속 아이콘 설명 액티비티 */
-class IconEduActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityIconEduBinding
+class IconEduFragment : Fragment() {
+    private var _binding: ActivityIconEduBinding? = null
+    private val binding get() = _binding!!
     private lateinit var iconAdapter: IconEduAdapter // IconEduAdapter에 해당하는 부분입니다.
     private var standardSize_X = 0
     private var standardSize_Y = 0
     private var density = 0f
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityIconEduBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = ActivityIconEduBinding.inflate(inflater, container, false)
+
 
         // 화면의 기준 사이즈를 계산
         getStandardSize()
@@ -39,7 +47,7 @@ class IconEduActivity : AppCompatActivity() {
         val recyclerView: RecyclerView = binding.iconRv // XML에서 정의한 RecyclerView의 ID를 가져옵니다.
 
         // RecyclerView에 레이아웃 매니저 설정
-        recyclerView.layoutManager = LinearLayoutManager(this) // LinearLayoutManager 또는 필요한 레이아웃 매니저를 사용합니다.
+        recyclerView.layoutManager = LinearLayoutManager(requireContext()) // LinearLayoutManager 또는 필요한 레이아웃 매니저를 사용합니다.
 
         val iconSearchDict = listOf(
             Triple(R.drawable.ic_word_wifi, "와이파이", "제한된 공간에서 무료로 사용 가능한 인터넷"),
@@ -77,7 +85,7 @@ class IconEduActivity : AppCompatActivity() {
             iconList.add(Icon(i.first, i.second, i.third)) // iconDescription 추가
         }
 
-        iconAdapter = IconEduAdapter(this, iconList,  standardSize_X) // 여기에 생성한 아이템 리스트를 넣어줍니다.
+        iconAdapter = IconEduAdapter(requireContext(), iconList,  standardSize_X) // 여기에 생성한 아이템 리스트를 넣어줍니다.
         recyclerView.adapter = iconAdapter
 
         binding.searchEditText.addTextChangedListener(object : TextWatcher {
@@ -107,10 +115,13 @@ class IconEduActivity : AppCompatActivity() {
 
             override fun afterTextChanged(s: Editable?) {}
         })
+
+        return binding.root
     }
 
     // 디스플레이 사이즈를 반환하는 메서드
     private fun getScreenSize(): Point {
+        val windowManager = requireContext().getSystemService(Context.WINDOW_SERVICE) as WindowManager
         val display = windowManager.defaultDisplay
         val size = Point()
         display.getSize(size)
