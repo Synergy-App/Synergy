@@ -3,10 +3,7 @@ package com.sungkyul.synergy.learning_space.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.sungkyul.synergy.R
-import com.sungkyul.synergy.databinding.ActivityEduSpaceBinding
 import com.sungkyul.synergy.databinding.ActivityExamProblemBinding
-import com.sungkyul.synergy.edu_space.icon_edu.activity.IconEduActivity
 import com.sungkyul.synergy.learning_space.screen.PracticeScreenLockActivity
 
 class ExamProblemActivity : AppCompatActivity() {

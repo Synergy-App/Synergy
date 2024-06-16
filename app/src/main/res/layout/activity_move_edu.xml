@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".edu_space.icon_edu.activity.IconEduActivity"
+    tools:context=".edu_space.icon_edu.activity.IconEduFragment"
     android:background="@color/bgColor1">
 
     <LinearLayout
