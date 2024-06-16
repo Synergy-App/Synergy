@@ -14,7 +14,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.edu_space.move_edu.fragment.MoveEduFragment
+import com.sungkyul.synergy.edu_space.move_edu.activity.MoveEduFragment
 
 class BasicEduMainFragment : Fragment() {
 

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ import com.sungkyul.synergy.utils.GalaxyButton
 class MoveEduAdapter(
     private val context: Context,
     private val moveList: ArrayList<Move>,
+    private val allMoveList: ArrayList<Move>,
     private val standardSize_X: Int // 추가된 부분
 ) : RecyclerView.Adapter<MoveEduAdapter.CustomViewHolder>() {
 
@@ -39,6 +41,8 @@ class MoveEduAdapter(
 
     @SuppressLint("ClickableViewAccessibility")
     inner class CustomViewHolder(private val binding: FragmentIconListBinding) : RecyclerView.ViewHolder(binding.root) {
+        private var currentIndex = 0
+
         init {
             binding.eduButton.post {
                 binding.eduButton.clipToRoundRect(27.0f)
@@ -53,13 +57,11 @@ class MoveEduAdapter(
                     MotionEvent.ACTION_UP -> {
                         (view as GalaxyButton).startTouchUpAnimation()
 
-                        val position = adapterPosition
-                        if (position != RecyclerView.NO_POSITION) {
-                            val intent = Intent(context, MoveDetailActivity::class.java)
-                            intent.putExtra("moveList", moveList)
-                            intent.putExtra("currentIndex", position)
-                            context.startActivity(intent)
-                        }
+                        val intent = Intent(context, MoveDetailActivity::class.java)
+                        intent.putExtra("moveList", allMoveList)
+                        intent.putExtra("currentIndex", currentIndex)
+                        Log.i("move-edu-adapter-touch", currentIndex.toString())
+                        context.startActivity(intent)
                     }
                     MotionEvent.ACTION_CANCEL -> {
                         (view as GalaxyButton).startTouchUpAnimation()
@@ -70,6 +72,9 @@ class MoveEduAdapter(
         }
 
         fun bind(move: Move, position: Int) {
+            currentIndex = move.currentIndex
+            Log.i("move-edu-adapter-bind", currentIndex.toString())
+
             binding.apply {
                 iconIv.setImageResource(move.moveImage)
                 iconTv.text = move.moveText
