@@ -106,7 +106,14 @@
                         android:layout_height="30dp"
                         android:layout_marginStart="10dp"
                         android:visibility="gone" />
+                    <ImageView
+                        android:id="@+id/option1_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:visibility="gone" />
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -140,6 +147,12 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginStart="10dp"
+                        android:visibility="gone" />
+                    <ImageView
+                        android:id="@+id/option2_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
                         android:visibility="gone" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -176,6 +189,12 @@
                         android:layout_height="30dp"
                         android:layout_marginStart="10dp"
                         android:visibility="gone" />
+                    <ImageView
+                        android:id="@+id/option3_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:visibility="gone" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -210,6 +229,12 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginStart="10dp"
+                        android:visibility="gone" />
+                    <ImageView
+                        android:id="@+id/option4_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
                         android:visibility="gone" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

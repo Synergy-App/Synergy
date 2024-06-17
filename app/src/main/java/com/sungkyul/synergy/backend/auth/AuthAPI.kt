@@ -2,6 +2,7 @@ package com.sungkyul.synergy.backend.auth
 
 import com.google.firebase.auth.UserInfo
 import com.sungkyul.synergy.backend.ApiResponse
+import com.sungkyul.synergy.types.Exam
 import com.sungkyul.synergy.types.ExamAnswerBody
 import com.sungkyul.synergy.types.ExamCheckResult
 import com.sungkyul.synergy.types.ExamListResponse
@@ -26,6 +27,11 @@ interface AuthAPI {
     @GET("exam")
     fun getExamList(): Call<ApiResponse<ExamListResponse>>
 
+    @GET("exams/{id}")
+    fun getExamDetails(
+        @Header("Authorization") token: String,
+        @Path("id") examId: Int
+    ): Call<ApiResponse<Exam>>
 
     @POST("exam/{id}/check")
     fun checkExamAnswer(

@@ -7,6 +7,6 @@ import kotlinx.parcelize.Parcelize
 data class ResultPair(
     val questionNumber: Int,
     val isCorrect: Boolean,
-    val userAnswer: Int,       // 사용자 선택 답변
-    val correctAnswer: Int     // 정답
+    val userAnswer: Int,
+    val answerOnSelect: Int // 새로 추가
 ) : Parcelable
