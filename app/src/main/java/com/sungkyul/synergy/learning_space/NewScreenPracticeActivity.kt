@@ -155,7 +155,6 @@ class NewScreenPracticeActivity : AppCompatActivity() {
         val updatedDigitalAgeGrade = sharedPreferences.getString("DigitalAgeGrade", null)
         Log.d("NewScreenPracticeActivity", "Stored DigitalAgeGrade: $updatedDigitalAgeGrade")
     }
-
     private fun checkAnswer(answer: Int) {
         val examId = examList[currentExamIndex].id
         val answerBody = ExamAnswerBody(answerOnSelect = answer, answerOnInput = "", answerOnActivity = "")
@@ -170,19 +169,19 @@ class NewScreenPracticeActivity : AppCompatActivity() {
                     val result = response.body()?.data
                     if (result != null) {
                         Log.d("NewScreenPracticeActivity", "Check result: ${result.correct}")
+                        Log.d("NewScreenPracticeActivity", "Correct answer: ${result.correctAnswer}")
+                        Log.d("NewScreenPracticeActivity", "Explanation: ${result.explanation}")
+
                         if (result.correct) {
                             correctAnswers++ // 정답일 경우 카운트를 증가시킴
-                            // Toast.makeText(this@NewScreenPracticeActivity, "정답이에요!", Toast.LENGTH_SHORT).show()
-                        } else {
-                            //Toast.makeText(this@NewScreenPracticeActivity, "틀렸어요!", Toast.LENGTH_SHORT).show()
                         }
+
                         // 결과 리스트에 추가, userAnswer와 correctAnswer를 추가
-                        resultList.add(ResultPair(currentExamIndex + 1, result.correct, answer, result.correctAnswer ?: 0))
+                        resultList.add(ResultPair(currentExamIndex + 1, result.correct, answer, result.answerOnSelect))
                         saveResultListToSharedPreferences(resultList) // 결과 리스트를 SharedPreferences에 저장
                         showNextExam()
                     } else {
                         Toast.makeText(this@NewScreenPracticeActivity, "정답을 선택하세요!", Toast.LENGTH_SHORT).show()
-
                     }
                 } else {
                     val errorMsg = response.errorBody()?.string()
@@ -197,6 +196,9 @@ class NewScreenPracticeActivity : AppCompatActivity() {
             }
         })
     }
+
+
+
 
     private fun saveResultListToSharedPreferences(resultList: ArrayList<ResultPair>) {
         val gson = Gson()
@@ -242,7 +244,7 @@ class NewScreenPracticeActivity : AppCompatActivity() {
             binding.descriptionText.text = exam.description
         } else {
             binding.descriptionImage.visibility = ImageView.GONE
-            binding.descriptionText.visibility = TextView.GONE
+            binding.descriptionText.visibility = ImageView.GONE
         }
 
         // 선택지 텍스트 또는 이미지를 각 Button 및 ImageButton에 설정

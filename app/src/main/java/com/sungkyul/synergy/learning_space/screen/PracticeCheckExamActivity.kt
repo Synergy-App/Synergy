@@ -163,7 +163,7 @@ class PracticeCheckExamActivity : AppCompatActivity() {
 
     private fun setInitialOptionStates(selectedExamResult: ResultPair) {
         val userAnswer = selectedExamResult.userAnswer
-        val correctAnswer = selectedExamResult.correctAnswer
+        val correctAnswer = selectedExamResult.answerOnSelect
 
         val optionViews = listOf(
             binding.chooseOption1Btn,
@@ -172,16 +172,36 @@ class PracticeCheckExamActivity : AppCompatActivity() {
             binding.chooseOption4Btn
         )
 
+        val optionIcons = listOf(
+            binding.option1Icon,
+            binding.option2Icon,
+            binding.option3Icon,
+            binding.option4Icon
+        )
+
         optionViews.forEachIndexed { index, cardView ->
             val isSelected = index + 1 == userAnswer
             val isCorrect = index + 1 == correctAnswer
 
             cardView.setCardBackgroundColor(
                 when {
-                    isSelected && isCorrect -> Color.GREEN
-                    isSelected -> Color.YELLOW
-                    isCorrect -> Color.BLUE
+                    isSelected && isCorrect -> Color.GREEN   // 선택한 답이 정답일 경우
+                    isSelected -> Color.YELLOW // 선택한 답이 틀렸을 경우
+                    isCorrect -> Color.GREEN   // 정답일 경우
                     else -> Color.WHITE
+                }
+            )
+
+            optionIcons[index].visibility = when {
+                isSelected || isCorrect -> View.VISIBLE
+                else -> View.GONE
+            }
+
+            optionIcons[index].setImageResource(
+                when {
+                    isSelected && !isCorrect -> R.drawable.wrong  // 선택한 답이 틀렸을 경우 wrong 아이콘
+                    isCorrect -> R.drawable.correct              // 정답일 경우 correct 아이콘
+                    else -> 0
                 }
             )
         }

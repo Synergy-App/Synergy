@@ -11,10 +11,24 @@ import com.sungkyul.synergy.databinding.ActivityExamResultListBinding
 import com.sungkyul.synergy.learning_space.adapter.ExamResultListAdapter
 import com.sungkyul.synergy.learning_space.adapter.ExamResultListData
 import com.sungkyul.synergy.MainActivity
+import com.sungkyul.synergy.backend.ApiResponse
+import com.sungkyul.synergy.backend.auth.AuthAPI
 import com.sungkyul.synergy.learning_space.screen.PracticeCheckExamActivity
+import com.sungkyul.synergy.types.ExamListResponse
+import com.sungkyul.synergy.types.Exam
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class ExamResultListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityExamResultListBinding
+    private lateinit var authAPI: AuthAPI
+    private lateinit var token: String
+    private var examList: List<Exam> = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,13 +44,66 @@ class ExamResultListActivity : AppCompatActivity() {
         Log.d("ExamResultListActivity", "Received totalQuestions: $totalQuestions")
         Log.d("ExamResultListActivity", "Received resultList: $resultList")
 
+        // SharedPreferences 초기화
+        val sharedPreferences = getSharedPreferences("SynergyPrefs", MODE_PRIVATE)
+        token = sharedPreferences.getString("Token", null) ?: run {
+            finish()
+            return
+        }
+
+        // Logging Interceptor 설정
+        val logging = HttpLoggingInterceptor().apply {
+            setLevel(HttpLoggingInterceptor.Level.BODY)
+        }
+
+        // OkHttpClient에 logging 인터셉터 추가
+        val httpClient = OkHttpClient.Builder()
+            .addInterceptor(logging)
+            .build()
+
+        // Retrofit 설정
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://synergy.hyeonwoo.com/")
+            .client(httpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        authAPI = retrofit.create(AuthAPI::class.java)
+
+        // Exam 데이터를 가져오는 함수 호출
+        fetchExamList(resultList)
+    }
+
+    private fun fetchExamList(resultList: ArrayList<ResultPair>?) {
+        authAPI.getExamList().enqueue(object : Callback<ApiResponse<ExamListResponse>> {
+            override fun onResponse(
+                call: Call<ApiResponse<ExamListResponse>>,
+                response: Response<ApiResponse<ExamListResponse>>
+            ) {
+                if (response.isSuccessful) {
+                    examList = response.body()?.data?.exams ?: emptyList()
+                    setupRecyclerView(resultList)
+                } else {
+                    Log.e("API_ERROR", "Failed to fetch data: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<ApiResponse<ExamListResponse>>, t: Throwable) {
+                Log.e("API_ERROR", "Error fetching data: ${t.message}")
+            }
+        })
+    }
+
+    private fun setupRecyclerView(resultList: ArrayList<ResultPair>?) {
         val dataSet = ArrayList<ExamResultListData>()
         if (resultList != null) {
             for (result in resultList) {
                 val (questionNumber, isCorrect) = result
+                val exam = examList.firstOrNull { it.id == questionNumber }
+                val questionText = exam?.question ?: "Unknown question"
                 val resultText = if (isCorrect) "맞았습니다" else "틀렸습니다"
                 val resultImage = if (isCorrect) R.drawable.correct else R.drawable.wrong
-                dataSet.add(ExamResultListData(resultImage, "$questionNumber. 문제 - $resultText"))
+                dataSet.add(ExamResultListData(resultImage, "$questionText - $resultText"))
             }
         }
 
