@@ -23,7 +23,7 @@ data class NaverFromScreenHomeCourse2(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 0.5f,
-                    y = 0.75f,
+                    y = 0.45f,
                     gesture = HandGestures::tapGesture
                 )
             )
@@ -34,8 +34,8 @@ data class NaverFromScreenHomeCourse2(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = 0.7f,
-                    y = 0.8f,
+                    x = 0.75f,
+                    y = 0.9f,
                     rotation = 180f,
                     gesture = HandGestures::tapGesture
                 )

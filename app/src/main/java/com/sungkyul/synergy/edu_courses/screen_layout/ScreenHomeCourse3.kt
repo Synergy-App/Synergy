@@ -40,7 +40,7 @@ data class ScreenHomeCourse3(val eduScreen: EduScreen): EduCourse {
 
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
-            cover.boxTop = 0.9f
+            cover.boxTop = 0.925f
             cover.boxBottom = 1.0f
             cover.boxLeft = 0.0f
             cover.boxRight = 1.0f
@@ -50,8 +50,7 @@ data class ScreenHomeCourse3(val eduScreen: EduScreen): EduCourse {
             dialog.contentText = "최근에 실행한 앱을<br>보는 버튼입니다."
             dialog.top = 0.7f
 
-            cover.boxLeft = 0.125f
-            cover.boxRight = 0.325f
+            cover.boxRight = 0.3f
         })
 
         list.add(EduData().apply {
@@ -77,7 +76,7 @@ data class ScreenHomeCourse3(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "touch",
                     x = 0.15f,
-                    y = 0.825f,
+                    y = 0.85f,
                     rotation = 180.0f,
                     gesture = HandGestures::tapGesture
                 )
