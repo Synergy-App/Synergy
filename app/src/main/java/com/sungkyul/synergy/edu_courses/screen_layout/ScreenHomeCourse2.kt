@@ -1,9 +1,7 @@
 package com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout
 
-import android.os.Build
 import android.view.Gravity
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
 import com.sungkyul.synergy.utils.edu.EduCourse
@@ -22,12 +20,9 @@ data class ScreenHomeCourse2(val eduScreen: EduScreen): EduCourse {
             dialog.visibility = true
             dialog.contentText = "다음은 상단바입니다."
             dialog.contentGravity = Gravity.CENTER
+            dialog.contentFont = R.font.pretendard_semibold
+            dialog.contentSize = 24.0f
             dialog.top = 0.4f
-            dialog.contentFont= R.font.pretendard_semibold
-            dialog.contentSize = when(Build.MODEL) {
-                GALAXY_NOTE9 -> 22.0f
-                else -> 26.0f
-            }
             dialog.bottom = 0.4f
             dialog.start = 0.05f
             dialog.end = 0.05f
@@ -52,7 +47,7 @@ data class ScreenHomeCourse2(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.contentText = "상단바를 보기 위해서는<br>상단바를 밑으로<br>끌어내려야 합니다."
             dialog.top = 0.1f
-            dialog.bottom = 0.7f
+            dialog.bottom = 0.6f
         })
 
         list.add(EduData().apply {

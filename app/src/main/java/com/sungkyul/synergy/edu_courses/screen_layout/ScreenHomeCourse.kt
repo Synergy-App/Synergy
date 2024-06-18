@@ -1,10 +1,7 @@
 package com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout
 
-import android.os.Build
-import android.util.Log
 import android.view.Gravity
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
 import com.sungkyul.synergy.utils.edu.EduCourse
@@ -19,18 +16,14 @@ data class ScreenHomeCourse(val eduScreen: EduScreen): EduCourse {
 
     // 교육 코스를 만든다.
     init {
-        Log.i("model?", Build.MODEL)
         list.add(EduData().apply {
             dialog.visibility = true
             dialog.contentText = "홈 화면입니다."
             dialog.contentColor = R.color.white
             dialog.background = R.drawable.edu_dialog_black_bg
+            dialog.contentFont = R.font.pretendard_semibold
+            dialog.contentSize = 24.0f
             dialog.contentGravity = Gravity.CENTER
-            dialog.contentFont= R.font.pretendard_semibold
-            dialog.contentSize = when(Build.MODEL) {
-                GALAXY_NOTE9 -> 22.0f
-                else -> 26.0f
-            }
             dialog.top = 0.05f
             dialog.bottom = 0.8f
             dialog.start = 0.05f
@@ -40,7 +33,7 @@ data class ScreenHomeCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "잠금 화면에서<br>잠금을 해제한 상태로<br>휴대폰을 사용할 수 있는<br>화면입니다."
+            dialog.contentText = "잠금 화면에서<br>잠금을 해제한 상태로<br>휴대폰을 사용할 수 있는 화면입니다."
             dialog.contentColor = R.color.black
             dialog.background = R.drawable.edu_dialog_bg
             dialog.top = 0.35f
@@ -86,8 +79,8 @@ data class ScreenHomeCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "drag",
-                    x = 0.45f,
-                    y = 0.75f,
+                    x = 0.5f,
+                    y = 0.5f,
                     gesture = HandGestures::homeVerticalDragGesture
                 )
             )
