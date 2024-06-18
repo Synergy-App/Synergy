@@ -138,7 +138,7 @@ class HandGestures {
         }
 
         fun topbarLightDragGesture(context: Context, imageView: ImageView): AnimatorSet {
-            return createDragGesture(context, imageView, 0.9f, 0.1275f, 0.1f, 0.1275f, 1500, 500)
+            return createDragGesture(context, imageView, 0.9f, 0.14f, 0.1f, 0.14f, 1500, 500)
         }
     }
 }

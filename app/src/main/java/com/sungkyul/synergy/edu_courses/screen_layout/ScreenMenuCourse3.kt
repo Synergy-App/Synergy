@@ -1,5 +1,7 @@
 package com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout
 
+import android.os.Build
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
 import com.sungkyul.synergy.utils.edu.EduCourse
@@ -16,9 +18,15 @@ data class ScreenMenuCourse3(val eduScreen: EduScreen): EduCourse {
     init {
         list.add(EduData().apply {
             cover.boxBorderVisibility = true
-            cover.boxTop = 0.1f
+            cover.boxTop = when(Build.MODEL) {
+                GALAXY_NOTE9 -> 0.105f
+                else -> 0.1f
+            }
             cover.boxBottom = 0.25f
-            cover.boxLeft = 0.25f
+            cover.boxLeft = when(Build.MODEL) {
+                GALAXY_NOTE9 -> 0.255f
+                else -> 0.25f
+            }
             cover.boxRight = 0.5f
 
             action.id = "click_naver"

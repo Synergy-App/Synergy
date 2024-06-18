@@ -25,6 +25,8 @@ import com.sungkyul.synergy.utils.edu.EduScreen
 class ScreenHomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityScreenHomeBinding
     private var startY = 0f
+    private var dragged = false
+    private var draggedToolbar = false
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +36,8 @@ class ScreenHomeActivity : AppCompatActivity() {
 
         // 교육을 정의해보자!
         binding.eduScreen.post {
+            Log.i("lock error log", "교육 정의 시작")
+
             // 교육 코스를 지정한다.
             if(intent.getStringExtra("from") == "ScreenMoveHomeActivity") {
                 binding.eduScreen.course = ScreenHomeCourse2(binding.eduScreen)
@@ -52,13 +56,17 @@ class ScreenHomeActivity : AppCompatActivity() {
                 binding.eduScreen.course = ScreenHomeCourse(binding.eduScreen)
             }
 
+            Log.i("lock error log", "코스 지정")
+
             // 교육 코스가 끝났을 때 발생하는 이벤트 리스너를 설정한다.
             binding.eduScreen.setOnFinishedCourseListener {
-                EduScreen.toTop(this, MainActivity::class.java)
+                //EduScreen.toTop(this, MainActivity::class.java)
             }
 
             // 교육을 시작한다.
             binding.eduScreen.start(this)
+
+            Log.i("lock error log", "교육 시작")
         }
 
         // 스마트폰의 이전 버튼을 누르면, 지정된 액티비티로 되돌아간다.
@@ -72,10 +80,11 @@ class ScreenHomeActivity : AppCompatActivity() {
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
                     startY = event.y
+                    dragged = false
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    if (startY - event.y > 100) { // 위로 드래그 거리 설정 (100px 이상 드래그 시)
+                    if (!dragged && startY - event.y > 100) {
                         if(binding.eduScreen.onAction("show_menu_screen")) {
                             if(intent.getStringExtra("from") == "ScreenRecentlyActivity") {
                                 val intent = Intent(this, ScreenMenuActivity::class.java)
@@ -92,6 +101,7 @@ class ScreenHomeActivity : AppCompatActivity() {
                                 showMenuScreen()
                             }
                         }
+                        dragged = true
                         true
                     } else {
                         false
@@ -106,14 +116,16 @@ class ScreenHomeActivity : AppCompatActivity() {
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
                     startY = event.y
+                    draggedToolbar = false
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
-                    if (event.y - startY > 100) { // 아래로 드래그 거리 설정 (100px 이상 드래그 시)
+                    if (!draggedToolbar && event.y - startY > 100) { // 아래로 드래그 거리 설정 (100px 이상 드래그 시)
                         if(binding.eduScreen.onAction("show_topbar_screen")) {
                             Log.i("show_topbar_screen", "true")
                             showTopbarScreen()
                         }
+                        draggedToolbar = true
                         true
                     } else {
                         false

@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.edu_space.move_edu.fragment
+package com.sungkyul.synergy.edu_space.move_edu.activity
 
 import android.graphics.Point
 import android.os.Bundle
@@ -50,20 +50,26 @@ class MoveEduFragment : Fragment() {
 
         // 아이콘과 검색어를 매칭하는 리스트
         val iconSearchDict = listOf(
-            Pair(R.drawable.ic_move_touch, "터치"),
-            Pair(R.drawable.ic_move_swipe, "스와이프"),
-            Pair(R.drawable.ic_move_push, "꾹 누르기"),
-            Pair(R.drawable.ic_move_drag, "드래그"),
-            Pair(R.drawable.ic_move_size, "확대&축소"),
-            Pair(R.drawable.ic_move_capture, "캡처"),
+            Triple(R.drawable.ic_move_touch, "터치", 0),
+            Triple(R.drawable.ic_move_swipe, "스와이프", 1),
+            Triple(R.drawable.ic_move_push, "꾹 누르기", 2),
+            Triple(R.drawable.ic_move_drag, "드래그", 3),
+            Triple(R.drawable.ic_move_size, "확대&축소", 4),
+            Triple(R.drawable.ic_move_capture, "캡처", 5),
         )
 
         val moveList = ArrayList<Move>()
-        for (i in iconSearchDict) {
-            moveList.add(Move(i.first, i.second))
+        for ((index, i) in iconSearchDict.withIndex()) {
+            moveList.add(Move(i.first, i.second, i.third))
         }
 
-        moveAdapter = MoveEduAdapter(requireContext(), moveList, standardSize_X)
+        // Deep copy?
+        val allMoveList = ArrayList<Move>()
+        for(i in moveList) {
+            allMoveList.add(i)
+        }
+
+        moveAdapter = MoveEduAdapter(requireContext(), moveList, allMoveList, standardSize_X)
         recyclerView.adapter = moveAdapter
 
         //검색창 기능
@@ -78,13 +84,13 @@ class MoveEduFragment : Fragment() {
                 // 자동 완성
                 moveList.clear()
                 if (s.toString().isNotEmpty()) {
-                    for (i in iconSearchDict.filter { it.second.contains(s.toString()) }) {
-                        moveList.add(Move(i.first, i.second))
+                    for ((index, i) in iconSearchDict.filter { it.second.contains(s.toString()) }.withIndex()) {
+                        moveList.add(Move(i.first, i.second, i.third))
                     }
                 } else {
                     // 검색 창이 비어 있으면, 모든 아이템들을 채운다.
-                    for (i in iconSearchDict) {
-                        moveList.add(Move(i.first, i.second))
+                    for ((index, i) in iconSearchDict.withIndex()) {
+                        moveList.add(Move(i.first, i.second, index))
                     }
                 }
 

@@ -8,8 +8,14 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.SolvingFragment
+import com.sungkyul.synergy.learning_space.activity.ExamProblemActivity
+import com.sungkyul.synergy.utils.GalaxyButton
 
 class PracticeResultActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,39 +57,48 @@ class PracticeResultActivity : AppCompatActivity() {
         val problem5 = findViewById<ImageView>(R.id.problem5)
         problem5.setImageResource(if (result5) R.drawable.correct else R.drawable.wrong)
 
-        // 클릭 이벤트 처리
+        // 클릭 이벤트 처리 잠금화면
         problem1.setOnClickListener {
-            startWebViewActivity("https://www.google.com", "잠금화면에서 홈화면으로 이동하세요.")
+            startWebViewActivity("https://youtu.be/DSkR2nc3uUE", "잠금화면에서 홈화면으로 이동하세요.")
         }
-
+        // 상단바
         problem2.setOnClickListener {
-            startWebViewActivity("https://www.google.com", "상단바를 내리세요.")
+            startWebViewActivity("https://youtu.be/aRTg0jgNQvo", "상단바를 내리세요.")
         }
 
+        // 밝기 조절
         problem3.setOnClickListener {
-            startWebViewActivity("https://www.google.com", "화면 밝기를 올리세요.")
+            startWebViewActivity("https://youtu.be/rLWAD9LW4aY", "화면 밝기를 올리세요.")
         }
 
+        // 앱 꺼내기
         problem4.setOnClickListener {
-            startWebViewActivity("https://www.google.com", "플레이 스토어를 홈 화면으로 이동하시오.")
+            startWebViewActivity("https://youtube.com/shorts/t5foNMcSMn0", "플레이 스토어를 홈 화면으로 이동하시오.")
         }
 
+        // 최근 실행
         problem5.setOnClickListener {
-            startWebViewActivity("https://www.google.com", "최근 사용한 앱 목록을 확인하세요.")
+            startWebViewActivity("https://youtu.be/UVARovWqK-M", "최근 사용한 앱 목록을 확인하세요.")
         }
 
-        val backBtn = findViewById<Button>(R.id.goBackButton)
-        val problemBtn = findViewById<Button>(R.id.problemViewButton)
+        val problemBtn = findViewById<GalaxyButton>(R.id.try_again_btn)
+        val backBtn = findViewById<GalaxyButton>(R.id.back_btn)
 
-
+        // 돌아가기 버튼
         backBtn.setOnClickListener {
+            // MainActivity로 이동하면서 SolvingFragment를 다시 표시하는 Intent 생성
             val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("fragment", "SolvingFragment")
+            // MainActivity에서 이 정보를 받아 Fragment를 설정할 수 있도록 함
+            startActivity(intent)
+            finish() // PracticeResultActivity 종료
+        }
+
+        // 다시풀기  버튼
+        problemBtn.setOnClickListener {
+            val intent=Intent(this, ExamProblemActivity::class.java)
             startActivity(intent)
         }
-        problemBtn.setOnClickListener {
-
-        }
-
     }
 
     private fun startWebViewActivity(url: String, learningInfo: String) {
@@ -92,6 +107,4 @@ class PracticeResultActivity : AppCompatActivity() {
         intent.putExtra("LEARNING_INFO", learningInfo)
         startActivity(intent)
     }
-
-
 }

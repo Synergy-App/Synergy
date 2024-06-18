@@ -14,7 +14,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.edu_space.move_edu.fragment.MoveEduFragment
+import com.sungkyul.synergy.edu_space.move_edu.activity.MoveEduFragment
 
 class BasicEduMainFragment : Fragment() {
 
@@ -35,8 +35,7 @@ class BasicEduMainFragment : Fragment() {
 
         wordDicButton.setOnClickListener {
             // 용어 사전 버튼 클릭 이벤트 처리
-            val intent = Intent(activity, IconEduActivity::class.java)
-            startActivity(intent)
+            addFragment(requireActivity(), IconEduFragment())
         }
 
         setDynamicTextSize(view) // 추가: 텍스트 크기 설정

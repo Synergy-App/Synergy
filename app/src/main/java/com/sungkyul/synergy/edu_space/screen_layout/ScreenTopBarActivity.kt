@@ -25,6 +25,7 @@ class ScreenTopBarActivity : AppCompatActivity() {
     private var screenLockOn = false
     private var flightOn = false
     private var powerSavingOn = false
+    private var dragged = false
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -77,14 +78,16 @@ class ScreenTopBarActivity : AppCompatActivity() {
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
                     startY = event.rawY
+                    dragged = false
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
                     endY = event.rawY
-                    if (startY - endY > 100) { // 드래그 거리 설정 (100px 이상 위로 드래그 시)
+                    if (!dragged && startY - endY > 100) { // 드래그 거리 설정 (100px 이상 위로 드래그 시)
                         if(binding.eduScreen.onAction("show_home_screen")) {
                             showHomeScreen()
                         }
+                        dragged = true
                         true
                     } else {
                         false

@@ -1,7 +1,9 @@
 package com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout
 
+import android.os.Build
 import android.view.Gravity
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
 import com.sungkyul.synergy.utils.edu.EduCourse
@@ -19,6 +21,11 @@ data class ScreenMenuCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.visibility = true
             dialog.contentText = "메뉴 화면입니다."
+            dialog.contentFont= R.font.pretendard_semibold
+            dialog.contentSize = when(Build.MODEL) {
+                GALAXY_NOTE9 -> 22.0f
+                else -> 26.0f
+            }
             dialog.contentColor = R.color.white
             dialog.background = R.drawable.edu_dialog_black_bg
             dialog.contentGravity = Gravity.CENTER
@@ -45,7 +52,7 @@ data class ScreenMenuCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "\"Play 스토어\" 앱을<br>표시된 곳에<br>이동시켜보세요."
+            dialog.contentText = "\"Play 스토어\" 앱을<br>홈 화면에<br>배치시켜보세요."
             dialog.background = R.drawable.edu_dialog_green_bg
             dialog.contentColor = R.color.white
         })
@@ -58,14 +65,24 @@ data class ScreenMenuCourse(val eduScreen: EduScreen): EduCourse {
 
             action.id = "long_click_play_store_icon"
 
-            hands.add(
-                EduHand(
-                    id = "touch",
-                    x = 0.1f,
-                    y = 0.4f,
-                    gesture = HandGestures::tapGesture
+            when(Build.MODEL) {
+                GALAXY_NOTE9 -> hands.add(
+                    EduHand(
+                        id = "touch",
+                        x = 0.1f,
+                        y = 0.45f,
+                        gesture = HandGestures::tapGesture
+                    )
                 )
-            )
+                else -> hands.add(
+                    EduHand(
+                        id = "touch",
+                        x = 0.1f,
+                        y = 0.4f,
+                        gesture = HandGestures::tapGesture
+                    )
+                )
+            }
         })
     }
 }

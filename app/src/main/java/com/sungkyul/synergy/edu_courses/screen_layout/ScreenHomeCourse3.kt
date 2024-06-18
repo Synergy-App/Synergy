@@ -1,7 +1,9 @@
 package com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout
 
+import android.os.Build
 import android.view.Gravity
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
 import com.sungkyul.synergy.utils.edu.EduCourse
@@ -18,11 +20,16 @@ data class ScreenHomeCourse3(val eduScreen: EduScreen): EduCourse {
     init {
         list.add(EduData().apply {
             dialog.visibility = true
-            dialog.contentText = "하단바 화면입니다."
+            dialog.contentText = "다음은<br>하단바 화면입니다."
+            dialog.contentFont= R.font.pretendard_semibold
+            dialog.contentSize = when(Build.MODEL) {
+                GALAXY_NOTE9 -> 22.0f
+                else -> 26.0f
+            }
             dialog.background = R.drawable.edu_dialog_black_bg
             dialog.contentColor = R.color.white
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = 0.8f
+            dialog.top = 0.7f
             dialog.bottom = 0.1f
             dialog.start = 0.05f
             dialog.end = 0.05f
@@ -40,7 +47,10 @@ data class ScreenHomeCourse3(val eduScreen: EduScreen): EduCourse {
 
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
-            cover.boxTop = 0.925f
+            cover.boxTop = when(Build.MODEL) {
+                GALAXY_NOTE9 -> 0.9f
+                else -> 0.850f
+            }
             cover.boxBottom = 1.0f
             cover.boxLeft = 0.0f
             cover.boxRight = 1.0f

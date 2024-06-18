@@ -1,7 +1,9 @@
 package com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout
 
+import android.os.Build
 import android.view.Gravity
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
 import com.sungkyul.synergy.utils.edu.EduCourse
@@ -19,27 +21,49 @@ data class NaverFromScreenHomeCourse2(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             action.id = "click_ad2"
 
-            hands.add(
-                EduHand(
-                    id = "tap",
-                    x = 0.5f,
-                    y = 0.45f,
-                    gesture = HandGestures::tapGesture
+
+            when(Build.MODEL) {
+                GALAXY_NOTE9 -> hands.add(
+                    EduHand(
+                        id = "tap",
+                        x = 0.5f,
+                        y = 0.55f,
+                        gesture = HandGestures::tapGesture
+                    )
                 )
-            )
+                else -> hands.add(
+                    EduHand(
+                        id = "tap",
+                        x = 0.5f,
+                        y = 0.45f,
+                        gesture = HandGestures::tapGesture
+                    )
+                )
+            }
         })
         list.add(EduData().apply {
             action.id = "click_back"
 
-            hands.add(
-                EduHand(
-                    id = "tap",
-                    x = 0.75f,
-                    y = 0.9f,
-                    rotation = 180f,
-                    gesture = HandGestures::tapGesture
+            when(Build.MODEL) {
+                GALAXY_NOTE9 -> hands.add(
+                    EduHand(
+                        id = "tap",
+                        x = 0.75f,
+                        y = 0.85f,
+                        rotation = 180f,
+                        gesture = HandGestures::tapGesture
+                    )
                 )
-            )
+                else -> hands.add(
+                    EduHand(
+                        id = "tap",
+                        x = 0.75f,
+                        y = 0.75f,
+                        rotation = 180f,
+                        gesture = HandGestures::tapGesture
+                    )
+                )
+            }
         })
 
         list.add(EduData().apply {
@@ -47,6 +71,11 @@ data class NaverFromScreenHomeCourse2(val eduScreen: EduScreen): EduCourse {
             dialog.contentText = "다음과 같이 이전 단계로<br>이동하게 됩니다."
             dialog.background = R.drawable.edu_dialog_bg
             dialog.contentGravity = Gravity.CENTER
+            dialog.contentFont= R.font.pretendard_semibold
+            dialog.contentSize = when(Build.MODEL) {
+                GALAXY_NOTE9 -> 22.0f
+                else -> 26.0f
+            }
             dialog.top = 0.4f
             dialog.bottom = 0.4f
             dialog.start = 0.05f

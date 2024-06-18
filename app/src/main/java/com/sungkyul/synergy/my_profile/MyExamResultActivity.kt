@@ -40,7 +40,7 @@ class MyExamResultActivity : AppCompatActivity() {
         // 예제 데이터
         val educationId = 1
         val examResults = listOf(
-            ExamResult("00차 화면구성", "시험결과", "0월 0일", R.drawable.group_3969, loadResultListFromSharedPreferences(educationId)),
+            ExamResult("1차 화면구성", "시험결과", "6월 19일", R.drawable.group_3969, loadResultListFromSharedPreferences(educationId)),
         )
 
         // totalQuestions를 가져옵니다.
