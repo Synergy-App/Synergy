@@ -128,7 +128,11 @@ class ExamResultListActivity : AppCompatActivity() {
 
         // "다시 풀기" 버튼 이벤트 처리
         binding.viewAllButton.setOnClickListener {
-            val intent = Intent(this, ExamProblemActivity::class.java)
+            /*val intent = Intent(this, ExamProblemActivity::class.java)
+            startActivity(intent)*/
+
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("fragment", "LearningScreenFragment")
             startActivity(intent)
         }
     }

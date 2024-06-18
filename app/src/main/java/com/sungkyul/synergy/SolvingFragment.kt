@@ -3,6 +3,7 @@ package com.sungkyul.synergy
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Point
+import android.os.Build
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.adapter.EduButtonItem
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.learning_space.adapter.LearningButtonAdapter
 
 class SolvingFragment : Fragment() {
@@ -71,14 +73,24 @@ class SolvingFragment : Fragment() {
 
         // 각각의 텍스트 요소에 다른 크기 설정
         val learingTitle: TextView = view.findViewById(R.id.learingTitle)
-        learingTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, (standardSizeX / 12).toFloat())
+        when(Build.MODEL) {
+            GALAXY_NOTE9 -> learingTitle.textSize = 24.0f
+            else ->  learingTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, (standardSizeX / 12).toFloat())
+        }
 
         val learingSubtitle: TextView = view.findViewById(R.id.learingSubtitle)
-        learingSubtitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, (standardSizeX / 15).toFloat())
+        when(Build.MODEL) {
+            GALAXY_NOTE9 -> learingSubtitle.textSize = 20.0f
+            else ->  learingSubtitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, (standardSizeX / 15).toFloat())
+        }
 
         // headerImage의 높이 설정
         val headerImage: View = view.findViewById(R.id.headerImage)
         val headerImageHeight = (standardSizeY * 0.5).toInt() // 높이를 화면 높이의 10%로 설정
+        when(Build.MODEL) {
+            GALAXY_NOTE9 -> (standardSizeY * 1.0).toInt()
+            else ->  (standardSizeY * 0.5).toInt()
+        }
         headerImage.layoutParams.height = headerImageHeight
         headerImage.requestLayout()
     }
