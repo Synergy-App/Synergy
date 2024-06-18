@@ -1,7 +1,9 @@
 package com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout
 
+import android.os.Build
 import android.view.Gravity
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
 import com.sungkyul.synergy.utils.edu.EduCourse
@@ -20,7 +22,10 @@ data class ScreenHomeCourse4(val eduScreen: EduScreen): EduCourse {
             dialog.visibility = true
             dialog.contentText = "홈 화면으로 이동하는<br>버튼입니다."
             dialog.contentFont= R.font.pretendard_semibold
-            dialog.contentSize = 26.0f
+            dialog.contentSize = when(Build.MODEL) {
+                GALAXY_NOTE9 -> 22.0f
+                else -> 26.0f
+            }
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 0.65f
             dialog.bottom = 0.15f
@@ -31,7 +36,10 @@ data class ScreenHomeCourse4(val eduScreen: EduScreen): EduCourse {
             cover.isClickable = true
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
-            cover.boxTop = 0.850f
+            cover.boxTop = when(Build.MODEL) {
+                GALAXY_NOTE9 -> 0.9f
+                else -> 0.85f
+            }
             cover.boxBottom = 1.0f
             cover.boxLeft = 0.4f
             cover.boxRight = 0.6f

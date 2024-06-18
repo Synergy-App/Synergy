@@ -1,7 +1,9 @@
 package com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout
 
+import android.os.Build
 import android.view.Gravity
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
 import com.sungkyul.synergy.utils.edu.EduCourse
@@ -20,7 +22,10 @@ data class ScreenHomeCourse5(val eduScreen: EduScreen): EduCourse {
             dialog.visibility = true
             dialog.contentText = "홈 화면 이동에<br>성공하였습니다!"
             dialog.contentFont= R.font.pretendard_semibold
-            dialog.contentSize = 26.0f
+            dialog.contentSize = when(Build.MODEL) {
+                GALAXY_NOTE9 -> 22.0f
+                else -> 26.0f
+            }
             dialog.background = R.drawable.edu_dialog_yellow_bg
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 0.4f
@@ -41,14 +46,17 @@ data class ScreenHomeCourse5(val eduScreen: EduScreen): EduCourse {
             cover.visibility = true
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
-            cover.boxTop = 0.850f
+            cover.boxTop = when(Build.MODEL) {
+                GALAXY_NOTE9 -> 0.9f
+                else -> 0.850f
+            }
             cover.boxBottom = 1.0f
             cover.boxLeft = 0.7f
             cover.boxRight = 1.0f
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "메뉴 화면에서 <b>네이버</b>를 터치해<br>실행한 후 뒤로가기 버튼을<br>클릭하여 이전 단계로<br>돌아가세요."
+            dialog.contentText = "메뉴 화면에서 <b>네이버</b>를<br>터치해 실행한 후<br>뒤로가기 버튼을 클릭하여<br>이전 단계로 돌아가세요."
             dialog.background = R.drawable.edu_dialog_green_bg
             dialog.contentColor = R.color.white
             dialog.top = 0.25f

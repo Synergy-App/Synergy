@@ -1,7 +1,9 @@
 package com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout
 
+import android.os.Build
 import android.view.Gravity
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
 import com.sungkyul.synergy.utils.edu.EduCourse
@@ -23,7 +25,10 @@ data class ScreenTopBarCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentColor = R.color.white
             dialog.background = R.drawable.edu_dialog_black_bg
             dialog.contentFont= R.font.pretendard_semibold
-            dialog.contentSize = 26.0f
+            dialog.contentSize = when(Build.MODEL) {
+                GALAXY_NOTE9 -> 22.0f
+                else -> 26.0f
+            }
             dialog.top = 0.3f
             dialog.bottom = 0.55f
             dialog.start = 0.05f
