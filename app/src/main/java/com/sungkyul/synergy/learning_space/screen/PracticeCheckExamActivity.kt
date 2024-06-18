@@ -30,6 +30,8 @@ class PracticeCheckExamActivity : AppCompatActivity() {
     private lateinit var authAPI: AuthAPI
     private lateinit var token: String
     private var examList: List<Exam> = emptyList()
+    private var selectedExamResult: ResultPair? = null
+    private var questionNumber: Int = -1
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,8 +39,8 @@ class PracticeCheckExamActivity : AppCompatActivity() {
         binding = ActivityPracticeCheckExamBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val selectedExamResult = intent.getParcelableExtra<ResultPair>("selectedExamResult")
-        val questionNumber = intent.getIntExtra("questionNumber", -1)
+        selectedExamResult = intent.getParcelableExtra<ResultPair>("selectedExamResult")
+        questionNumber = intent.getIntExtra("questionNumber", -1)
 
         // Log the received data
         Log.d("PracticeCheckExamActivity", "Received questionNumber: $questionNumber")
@@ -49,13 +51,30 @@ class PracticeCheckExamActivity : AppCompatActivity() {
 
         val button1 = includeLayout.findViewById<View>(R.id.home_nav)
         val button2 = includeLayout.findViewById<View>(R.id.back_nav)
+        val button3 = includeLayout.findViewById<View>(R.id.next_nav)
 
         button1.setOnClickListener {
             finish()
         }
         // Back 이전 문제 버튼
         button2.setOnClickListener {
-            finish()
+            if (questionNumber > 1) {
+                questionNumber--
+                fetchExamList()
+            } else {
+                // 첫 번째 문제일 경우
+                Log.d("PracticeCheckExamActivity", "첫 번째 문제입니다.")
+            }
+        }
+        // Next 다음 문제 버튼
+        button3.setOnClickListener {
+            if (questionNumber < examList.size) {
+                questionNumber++
+                fetchExamList()
+            } else {
+                // 마지막 문제일 경우
+                Log.d("PracticeCheckExamActivity", "마지막 문제입니다.")
+            }
         }
 
         // SharedPreferences 초기화
@@ -85,13 +104,13 @@ class PracticeCheckExamActivity : AppCompatActivity() {
         authAPI = retrofit.create(AuthAPI::class.java)
 
         if (selectedExamResult != null && questionNumber != -1) {
-            fetchExamList(selectedExamResult, questionNumber)
+            fetchExamList()
         } else {
             Log.e("PracticeCheckExamActivity", "Invalid selectedExamResult or questionNumber")
         }
     }
 
-    private fun fetchExamList(selectedExamResult: ResultPair, questionNumber: Int) {
+    private fun fetchExamList() {
         authAPI.getExamList().enqueue(object : Callback<ApiResponse<ExamListResponse>> {
             override fun onResponse(
                 call: Call<ApiResponse<ExamListResponse>>,
@@ -102,7 +121,7 @@ class PracticeCheckExamActivity : AppCompatActivity() {
                     val exam = examList.firstOrNull { it.id == questionNumber }
                     if (exam != null) {
                         showExam(exam)
-                        setInitialOptionStates(selectedExamResult)
+                        setInitialOptionStates(selectedExamResult!!)
                     } else {
                         Log.e("PracticeCheckExamActivity", "Exam not found for questionNumber: $questionNumber")
                     }
