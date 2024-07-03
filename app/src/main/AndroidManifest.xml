@@ -206,19 +206,16 @@
             android:name=".EduSpaceActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.icon_edu.activity.BasicEduMainFragment"
-            android:exported="false" />
-        <activity
-            android:name=".edu_space.icon_edu.activity.IconEduActivity"
+            android:name=".com.sungkyul.synergy.edu_space.basic_edu.BasicEduMainFragment"
             android:exported="false" />
         <activity
             android:name=".edu_space.default_app.todo.MenusActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.icon_edu.activity.IconDetailActivity"
+            android:name=".com.sungkyul.synergy.edu_space.basic_edu.dictionary_edu.activity.IconDetailActivity"
             android:exported="false" /> <!-- 1강 -->
         <activity
-            android:name=".edu_space.move_edu.activity.MoveDetailActivity"
+            android:name=".com.sungkyul.synergy.edu_space.basic_edu.move_edu.activity.MoveDetailActivity"
             android:exported="false" />
         <activity
             android:name=".edu_space.screen_layout.ScreenLayoutActivity"

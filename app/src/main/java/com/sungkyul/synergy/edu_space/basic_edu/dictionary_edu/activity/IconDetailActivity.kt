@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.edu_space.icon_edu.activity
+package com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.dictionary_edu.activity
 
 import android.content.Intent
 import android.graphics.Point
@@ -7,8 +7,8 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.edu_space.icon_edu.data.Icon
-import com.sungkyul.synergy.edu_space.icon_edu.data.IconInfo
+import com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.dictionary_edu.data.Icon
+import com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.dictionary_edu.data.IconInfo
 import com.sungkyul.synergy.databinding.ActivityIconDetailBinding
 
 class IconDetailActivity : AppCompatActivity() {

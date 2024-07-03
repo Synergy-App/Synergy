@@ -71,7 +71,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:padding="0dp"
-                android:src="@drawable/baseline_chat_bubble_24"
+                android:src="@drawable/kakao_baseline_chat_bubble_24"
                 android:scaleType="centerInside"
                 android:background="@null"
                 android:contentDescription="@null"/>

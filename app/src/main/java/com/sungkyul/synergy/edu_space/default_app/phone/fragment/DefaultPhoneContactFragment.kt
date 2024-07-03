@@ -2,10 +2,7 @@ package com.sungkyul.synergy.edu_space.default_app.phone.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -15,11 +12,7 @@ import com.sungkyul.synergy.databinding.FragmentDefaultPhoneContactBinding
 import com.sungkyul.synergy.edu_space.default_app.phone.activity.DefaultPhoneAddActivity
 import com.sungkyul.synergy.edu_space.default_app.phone.adapter.ContactAdapter
 import com.sungkyul.synergy.edu_space.default_app.phone.adapter.ContactData
-import com.sungkyul.synergy.edu_space.icon_edu.adapter.IconEduAdapter
-import com.sungkyul.synergy.edu_space.icon_edu.data.Icon
-import com.sungkyul.synergy.utils.GalaxyButton
 import com.sungkyul.synergy.utils.edu.EduListener
-import com.sungkyul.synergy.utils.edu.EduScreen
 
 class DefaultPhoneContactFragment(private val addedContact: ContactData? = null, private val eduListener: EduListener) : Fragment() {
     private lateinit var binding: FragmentDefaultPhoneContactBinding

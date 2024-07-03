@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.edu_space.move_edu.adapter
+package com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.move_edu.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -11,8 +11,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.FragmentIconListBinding
-import com.sungkyul.synergy.edu_space.move_edu.activity.MoveDetailActivity
-import com.sungkyul.synergy.edu_space.move_edu.data.Move
+import com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.move_edu.activity.MoveDetailActivity
+import com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.move_edu.data.Move
 import com.sungkyul.synergy.utils.GalaxyButton
 
 class MoveEduAdapter(

@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.edu_space.icon_edu.activity
+package com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.dictionary_edu.activity
 
 import android.content.Context
 import android.graphics.Point
@@ -10,15 +10,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.edu_space.icon_edu.adapter.IconEduAdapter
-import com.sungkyul.synergy.edu_space.icon_edu.data.Icon
+import com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.dictionary_edu.adapter.IconEduAdapter
+import com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.dictionary_edu.data.Icon
 import com.sungkyul.synergy.databinding.ActivityIconEduBinding
-import com.sungkyul.synergy.databinding.ActivityMoveEduBinding
 
 /** 교육공간 속 아이콘 설명 액티비티 */
 class IconEduFragment : Fragment() {

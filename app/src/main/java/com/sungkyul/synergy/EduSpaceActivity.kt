@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.sungkyul.synergy.databinding.ActivityEduSpaceBinding
-import com.sungkyul.synergy.edu_space.icon_edu.activity.IconEduFragment
+import com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.dictionary_edu.activity.IconEduFragment
 
 /** 교육 공간 메뉴 화면 */
 private lateinit var binding: ActivityEduSpaceBinding

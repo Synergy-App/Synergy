@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.edu_space.move_edu.data
+package com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.move_edu.data
 
 import java.io.Serializable
 

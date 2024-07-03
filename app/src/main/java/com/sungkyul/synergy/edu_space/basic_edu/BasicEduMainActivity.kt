@@ -1,7 +1,6 @@
-package com.sungkyul.synergy.edu_space.icon_edu.activity
+package com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu
 
 import android.content.Context
-import android.content.Intent
 import android.graphics.Point
 import android.os.Bundle
 import android.util.TypedValue
@@ -14,7 +13,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.edu_space.move_edu.activity.MoveEduFragment
+import com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.dictionary_edu.activity.IconEduFragment
+import com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.move_edu.activity.MoveEduFragment
 
 class BasicEduMainFragment : Fragment() {
 

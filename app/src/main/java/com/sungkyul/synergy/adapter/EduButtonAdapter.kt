@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.graphics.Point
-import android.util.DisplayMetrics
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -19,17 +18,8 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.databinding.ActivityDefaultAppBinding
-import com.sungkyul.synergy.edu_space.accountedu.GoogleMainActivity
-import com.sungkyul.synergy.edu_space.appinstall.AppInstallMainActivity
-import com.sungkyul.synergy.edu_space.default_app.DefaultAppActivity
-import com.sungkyul.synergy.edu_space.default_app.phone.activity.DefaultPhoneActivity
-import com.sungkyul.synergy.edu_space.icon_edu.activity.BasicEduMainFragment
-import com.sungkyul.synergy.edu_space.kakaotalk.activity.KakaoMainActivity
-import com.sungkyul.synergy.edu_space.naver.activity.NaverActivity
-import com.sungkyul.synergy.edu_space.screen_layout.ScreenLayoutActivity
+import com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.BasicEduMainFragment
 import com.sungkyul.synergy.edu_space.screen_layout.ScreenLockActivity
-import com.sungkyul.synergy.edu_space.settingedu2.Setting2MainActivity
 import com.sungkyul.synergy.utils.GalaxyButton
 
 data class EduButtonItem(

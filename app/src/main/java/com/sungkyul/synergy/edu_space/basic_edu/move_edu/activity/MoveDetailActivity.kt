@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.edu_space.move_edu.activity
+package com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.move_edu.activity
 
 import android.content.Intent
 import android.graphics.Point
@@ -9,8 +9,8 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityMoveDetailBinding
-import com.sungkyul.synergy.edu_space.move_edu.data.Move
-import com.sungkyul.synergy.edu_space.move_edu.data.MoveInfo
+import com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.move_edu.data.Move
+import com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.move_edu.data.MoveInfo
 
 class MoveDetailActivity : AppCompatActivity() {
     private lateinit var activityBinding: ActivityMoveDetailBinding

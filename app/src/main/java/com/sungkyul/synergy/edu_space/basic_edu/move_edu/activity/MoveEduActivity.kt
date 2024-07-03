@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.edu_space.move_edu.activity
+package com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.move_edu.activity
 
 import android.graphics.Point
 import android.os.Bundle
@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityMoveEduBinding
-import com.sungkyul.synergy.edu_space.move_edu.adapter.MoveEduAdapter
-import com.sungkyul.synergy.edu_space.move_edu.data.Move
+import com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.move_edu.adapter.MoveEduAdapter
+import com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.move_edu.data.Move
 
 class MoveEduFragment : Fragment() {
     private var _binding: ActivityMoveEduBinding? = null

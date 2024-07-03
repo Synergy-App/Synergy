@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.edu_space.icon_edu.data
+package com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.dictionary_edu.data
 
 /**Icon DATA (리사이클러뷰)*/
 import java.io.Serializable
