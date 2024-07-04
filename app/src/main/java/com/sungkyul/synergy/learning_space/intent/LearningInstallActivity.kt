@@ -3,15 +3,7 @@ package com.sungkyul.synergy.learning_space.intent
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.sungkyul.synergy.backend.BackendTest
-import com.sungkyul.synergy.backend.QuizInfo
-import com.sungkyul.synergy.backend.questionAPI
 import com.sungkyul.synergy.databinding.ActivityLearningIconBinding
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 /**아이콘 실습 버튼 시작 클릭시 화면 전환 하는 화면
  * 앱 설치으로 감
