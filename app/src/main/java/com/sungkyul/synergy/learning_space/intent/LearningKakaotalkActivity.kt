@@ -3,9 +3,7 @@ package com.sungkyul.synergy.learning_space.intent
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.sungkyul.synergy.backend.BackendTest
-import com.sungkyul.synergy.backend.QuizInfo
-import com.sungkyul.synergy.backend.questionAPI
+
 import com.sungkyul.synergy.databinding.ActivityLearningIconBinding
 import retrofit2.Call
 import retrofit2.Callback
