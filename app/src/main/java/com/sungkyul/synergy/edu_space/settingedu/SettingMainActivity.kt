@@ -1,27 +1,26 @@
-package com.sungkyul.synergy.edu_space.appinstall
+package com.sungkyul.synergy.edu_space.settingedu
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.MainActivity
-import com.sungkyul.synergy.R
-import com.sungkyul.synergy.databinding.ActivityInstallBinding
-import com.sungkyul.synergy.edu_courses.app_installation.InstallCourse
+import com.sungkyul.synergy.databinding.ActivitySetting2MainBinding
+import com.sungkyul.synergy.edu_courses.settings.SettingsCourse
 
-class installActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityInstallBinding
+class SettingMainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivitySetting2MainBinding
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityInstallBinding.inflate(layoutInflater)
+        binding = ActivitySetting2MainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // 교육을 정의해보자!
         binding.eduScreen.post {
-            binding.eduScreen.course = InstallCourse(binding.eduScreen)
+            binding.eduScreen.course = SettingsCourse(binding.eduScreen)
 
             binding.eduScreen.setOnFinishedCourseListener {
                 // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
@@ -45,32 +44,23 @@ class installActivity : AppCompatActivity() {
             }
         })
 
-        val searchQuery = intent.getStringExtra("search_query")
-
-
-        //검색어 가져옴 출력까지
-        val textView: TextView =findViewById(R.id.desEditText)
-        textView.text=searchQuery
-        val button43: Button = findViewById(R.id.button43)
-        val textView175: TextView = findViewById(R.id.textView175)
-
-        // 버튼 클릭 리스너 설정
-        button43.setOnClickListener {
-            // 현재 버튼의 텍스트를 가져옴
-            val buttonText = button43.text.toString()
-
-            // 버튼 텍스트에 따라 동작 수행
-            button43.setOnClickListener {
-                // 버튼 텍스트를 "열기"로 변경
-                button43.text = "열기"
-                // textView175의 문자를 "설치됨"으로 변경
-                textView175.text = "설치됨"
-
-
+        binding.scrollView.viewTreeObserver.addOnScrollChangedListener {
+            if(binding.scrollView.getChildAt(0).bottom <= binding.scrollView.height+binding.scrollView.scrollY) {
+                // 맨 아래에 도달한 경우
+                binding.eduScreen.onAction("scroll_to_bottom")
+                binding.scrollView.setOnTouchListener { _, _ -> true } // 스크롤 막기
             }
         }
+
+        // setting_display_btn 클릭 이벤트 처리
+        binding.settingDisplayBtn.setOnClickListener {
+            if(binding.eduScreen.onAction("tap_display_item")) {
+                // Setting2DisplayActivity로 이동하는 Intent 생성
+                val intent = Intent(this, SettingDisplayActivity::class.java)
+                startActivity(intent)
+            }
+
+
+        }
     }
-
-
-
 }

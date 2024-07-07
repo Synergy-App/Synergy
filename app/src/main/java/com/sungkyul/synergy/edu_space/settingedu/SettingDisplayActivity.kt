@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.edu_space.settingedu2
+package com.sungkyul.synergy.edu_space.settingedu
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -13,7 +13,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivitySetting2DisplayBinding
 import com.sungkyul.synergy.edu_courses.settings.SettingsDisplayCourse
 
-class Setting2DisplayActivity : AppCompatActivity() {
+class SettingDisplayActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySetting2DisplayBinding
 
     @SuppressLint("ClickableViewAccessibility")
@@ -54,7 +54,7 @@ class Setting2DisplayActivity : AppCompatActivity() {
         // settingDisplayBackButton 클릭 이벤트 처리
         settingDisplayBackButton.setOnClickListener {
             // Setting2MainActivity로 이동하는 Intent 생성
-            val intent = Intent(this, Setting2MainActivity::class.java)
+            val intent = Intent(this, SettingMainActivity::class.java)
             startActivity(intent)
         }
 
@@ -64,7 +64,7 @@ class Setting2DisplayActivity : AppCompatActivity() {
         // displayFontBtn 클릭 이벤트 처리
         displayFontBtn.setOnClickListener {
             // Setting2FontActivity로 이동하는 Intent 생성
-            val intent = Intent(this, Setting2FontActivity::class.java)
+            val intent = Intent(this, SettingFontActivity::class.java)
             startActivity(intent)
         }
 
