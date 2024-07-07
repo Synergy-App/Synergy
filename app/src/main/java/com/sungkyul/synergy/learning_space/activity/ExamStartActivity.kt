@@ -2,12 +2,14 @@ package com.sungkyul.synergy.learning_space.activity
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.databinding.ActivityExamProblemBinding
 import com.sungkyul.synergy.databinding.ActivityExamStartBinding
 
@@ -46,6 +48,11 @@ class ExamStartActivity : AppCompatActivity() {
 
         timer.start() // 액티비티가 생성되면 타이머 시작
         isTimerRunning = true
+
+        if (Build.MODEL == GALAXY_NOTE9) {
+            binding.timerTextView.textSize = 18.0f
+            binding.problemText.textSize = 18.0f
+        }
     }
 
     override fun onPause() {

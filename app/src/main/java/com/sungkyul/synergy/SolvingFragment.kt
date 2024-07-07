@@ -10,12 +10,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.adapter.EduButtonItem
 import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GalaxyNote9
 import com.sungkyul.synergy.learning_space.adapter.LearningButtonAdapter
 
 class SolvingFragment : Fragment() {
@@ -93,5 +95,11 @@ class SolvingFragment : Fragment() {
         }
         headerImage.layoutParams.height = headerImageHeight
         headerImage.requestLayout()
+
+        if(Build.MODEL == GALAXY_NOTE9) {
+            GalaxyNote9.setTitleSize(learingTitle)
+            GalaxyNote9.setSubtitleSize(learingSubtitle)
+            GalaxyNote9.setHeaderHeight(requireContext(), headerImage as ImageView)
+        }
     }
 }

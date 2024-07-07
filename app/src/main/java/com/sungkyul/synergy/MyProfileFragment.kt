@@ -1,6 +1,7 @@
 import android.content.Context
 import android.content.Intent
 import android.graphics.Point
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -11,12 +12,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.sungkyul.synergy.CheckLearningAbilityActivity
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GalaxyNote9
 import com.sungkyul.synergy.databinding.FragmentMyProfileBinding
 import com.sungkyul.synergy.my_profile.CheckMyResultActivity
 import com.sungkyul.synergy.my_profile.MyExamResultActivity
@@ -38,6 +42,7 @@ class MyProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMyProfileBinding.inflate(inflater, container, false)
+
         return binding.root
     }
 
@@ -103,6 +108,18 @@ class MyProfileFragment : Fragment() {
 
         val checkResultTextView = binding.CheckResultCardView.findViewById<TextView>(R.id.checkResultText)
         checkResultTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, (standardSizeX / 15).toFloat())
+
+        if (Build.MODEL == GALAXY_NOTE9) {
+            GalaxyNote9.setTitleSize(binding.headerTitle)
+            GalaxyNote9.setSubtitleSize(binding.headerSubtitle)
+            GalaxyNote9.setHeaderHeight(requireContext(), binding.headerImage)
+
+            binding.textViewName.textSize = 20.0f
+            binding.digitalAge.textSize = 20.0f
+
+            examResultTextView.textSize = 20.0f
+            checkResultTextView.textSize = 20.0f
+        }
     }
 
     private fun loadProfileData() {

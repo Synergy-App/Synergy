@@ -3,6 +3,7 @@ package com.sungkyul.synergy.edu_space.icon_edu.activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Point
+import android.os.Build
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.LayoutInflater
@@ -10,10 +11,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GalaxyNote9
 import com.sungkyul.synergy.edu_space.move_edu.activity.MoveEduFragment
 
 class BasicEduMainFragment : Fragment() {
@@ -76,6 +80,12 @@ class BasicEduMainFragment : Fragment() {
         val headerHeight = (standardSizeY * 0.6).toInt() // 높이를 화면 높이의 10%로 설정
         header.layoutParams.height = headerHeight
         header.requestLayout()
+
+        if (Build.MODEL == GALAXY_NOTE9) {
+            GalaxyNote9.setTitleSize(basicEdu)
+            GalaxyNote9.setSubtitleSize(basicEduSub)
+            GalaxyNote9.setHeaderHeight(requireContext(), header)
+        }
     }
 
 

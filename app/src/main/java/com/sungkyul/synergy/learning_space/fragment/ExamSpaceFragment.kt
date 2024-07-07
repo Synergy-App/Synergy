@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.Context
 import android.graphics.Point
+import android.os.Build
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.LayoutInflater
@@ -11,11 +12,14 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.SolvingFragment
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GalaxyNote9
 import com.sungkyul.synergy.databinding.FragmentExamSpaceBinding
 import com.sungkyul.synergy.learning_space.activity.ExamProblemActivity
 import com.sungkyul.synergy.utils.GalaxyButton
@@ -136,5 +140,11 @@ class ExamSpaceFragment : Fragment() {
         val topbarImageHeight = (standardSizeY * 0.5).toInt() // 높이를 화면 높이의 50%로 설정
         binding.topBarImage.layoutParams.height = topbarImageHeight
         binding.topBarImage.requestLayout()
+
+        if(Build.MODEL == GALAXY_NOTE9) {
+            GalaxyNote9.setTitleSize(binding.learingTitle)
+            GalaxyNote9.setSubtitleSize(binding.learingSubtitle)
+            GalaxyNote9.setHeaderHeight(requireContext(), binding.topBarImage as ImageView)
+        }
     }
 }

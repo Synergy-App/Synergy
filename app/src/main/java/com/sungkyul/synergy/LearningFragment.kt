@@ -3,6 +3,7 @@ package com.sungkyul.synergy
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Point
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -11,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -18,6 +20,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.adapter.EduButtonAdapter
 import com.sungkyul.synergy.adapter.EduButtonItem
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GalaxyNote9
 
 class LearningFragment : Fragment() {
 
@@ -93,6 +97,12 @@ class LearningFragment : Fragment() {
         val headerImageHeight = (standardSizeY * 0.5).toInt() // 높이를 화면 높이의 10%로 설정
         headerImage.layoutParams.height = headerImageHeight
         headerImage.requestLayout()
+
+        if(Build.MODEL == GALAXY_NOTE9) {
+            GalaxyNote9.setTitleSize(learingTitle)
+            GalaxyNote9.setSubtitleSize(learingSubtitle)
+            GalaxyNote9.setHeaderHeight(requireContext(), headerImage as ImageView)
+        }
     }
 
     fun handleOnBackPressed(): Boolean {

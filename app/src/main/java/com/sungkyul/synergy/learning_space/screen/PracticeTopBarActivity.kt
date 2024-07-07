@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
@@ -15,6 +16,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.databinding.ActivityPracticeTopBarBinding
 import com.sungkyul.synergy.learning_space.activity.ExamProblem4Activity
 
@@ -55,6 +57,11 @@ class PracticeTopBarActivity : AppCompatActivity() {
         // 문제보기 클릭 시 다이얼로그 띄우기
         binding.problemText.setOnClickListener {
             showProblemDialog()
+        }
+
+        if (Build.MODEL == GALAXY_NOTE9) {
+            binding.timerTextView.textSize = 18.0f
+            binding.problemText.textSize = 18.0f
         }
     }
 

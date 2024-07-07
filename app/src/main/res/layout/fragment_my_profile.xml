@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgColor1"
-    tools:context=".DuckProfileFragment2">
+    tools:context=".MyProfileFragment">
 
     <ImageView
         android:id="@+id/headerImage"

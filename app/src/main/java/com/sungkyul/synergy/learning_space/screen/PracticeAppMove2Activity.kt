@@ -1,6 +1,7 @@
 package com.sungkyul.synergy.learning_space.screen
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -13,6 +14,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.learning_space.activity.ExampleProblem5Activity
 
 class PracticeAppMove2Activity : AppCompatActivity() {
@@ -89,7 +91,12 @@ class PracticeAppMove2Activity : AppCompatActivity() {
             val intent = Intent(this@PracticeAppMove2Activity, ExampleProblem5Activity::class.java)
             startActivity(intent)
         }, 3000)
+
+        if (Build.MODEL == GALAXY_NOTE9) {
+            findViewById<TextView>(R.id.timerTextView).textSize = 18.0f
+            findViewById<TextView>(R.id.problemText).textSize = 18.0f
         }
+    }
 
         private fun hideSystemUI() {
             window.decorView.systemUiVisibility = (

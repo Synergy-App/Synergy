@@ -2,6 +2,7 @@ package com.sungkyul.synergy.edu_space.icon_edu.activity
 
 import android.content.Context
 import android.graphics.Point
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -15,10 +16,13 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GalaxyNote9
 import com.sungkyul.synergy.edu_space.icon_edu.adapter.IconEduAdapter
 import com.sungkyul.synergy.edu_space.icon_edu.data.Icon
 import com.sungkyul.synergy.databinding.ActivityIconEduBinding
 import com.sungkyul.synergy.databinding.ActivityMoveEduBinding
+import com.sungkyul.synergy.utils.DisplayUtils
 
 /** 교육공간 속 아이콘 설명 액티비티 */
 class IconEduFragment : Fragment() {
@@ -115,6 +119,15 @@ class IconEduFragment : Fragment() {
 
             override fun afterTextChanged(s: Editable?) {}
         })
+
+        if(Build.MODEL == GALAXY_NOTE9) {
+            GalaxyNote9.setTitleSize(binding.iconeduTool)
+            GalaxyNote9.setSubtitleSize(binding.iconeduTool2)
+            GalaxyNote9.setSubtitleSize(binding.searchEditText)
+            binding.iconGreen.layoutParams.apply {
+                binding.iconGreen.layoutParams.height = DisplayUtils.dpToPx(requireContext(), 250.0f).toInt()
+            }
+        }
 
         return binding.root
     }
