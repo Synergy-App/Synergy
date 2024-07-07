@@ -236,13 +236,13 @@
             android:name=".edu_space.default_app.camera.activity.DefaultCameraGalleryViewActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.settingedu2.Setting2MainActivity"
+            android:name=".edu_space.settingedu.SettingMainActivity"
             android:exported="false" /> <!-- <activity -->
         <activity
-            android:name=".edu_space.settingedu2.Setting2DisplayActivity"
+            android:name=".edu_space.settingedu.SettingDisplayActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.settingedu2.Setting2FontActivity"
+            android:name=".edu_space.settingedu.SettingFontActivity"
             android:exported="true"> <!-- 계정생성 교육 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -277,12 +277,7 @@
         <activity
             android:name=".edu_space.accountedu.GoogleMailAddActivity"
             android:exported="false" />
-        <activity
-            android:name=".edu_space.appinstall.installActivity"
-            android:exported="false" />
-        <activity
-            android:name=".edu_space.appinstall.installMainActivity"
-            android:exported="false" />
+
         <activity
             android:name=".edu_space.appinstall.AppInstallMainActivity"
             android:exported="true">

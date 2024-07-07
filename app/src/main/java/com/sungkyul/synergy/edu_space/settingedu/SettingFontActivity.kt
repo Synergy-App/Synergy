@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.edu_space.settingedu2
+package com.sungkyul.synergy.edu_space.settingedu
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,7 +11,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivitySetting2FontBinding
 import com.sungkyul.synergy.edu_courses.settings.SettingsFontCourse
 
-class Setting2FontActivity : AppCompatActivity() {
+class SettingFontActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySetting2FontBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,7 +48,7 @@ class Setting2FontActivity : AppCompatActivity() {
         // 뒤로 가기 버튼 클릭 시 이벤트 처리
         binding.fontBackButton.setOnClickListener {
             // 새로운 액티비티 시작
-            startActivity(Intent(this, Setting2DisplayActivity::class.java))
+            startActivity(Intent(this, SettingDisplayActivity::class.java))
         }
 
         // 시크바를 초기화한다.

@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.edu_space.settingedu2
+package com.sungkyul.synergy.edu_space.settingedu
 
 import android.content.Context
 import android.preference.PreferenceManager
