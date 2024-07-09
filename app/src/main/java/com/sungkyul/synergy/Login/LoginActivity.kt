@@ -1,4 +1,4 @@
-package com.sungkyul.synergy
+package com.sungkyul.synergy.com.sungkyul.synergy.Login
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -13,6 +13,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.sungkyul.synergy.R
+import com.sungkyul.synergy.SplashActivity
 import com.sungkyul.synergy.backend.ApiResponse
 import com.sungkyul.synergy.backend.auth.AuthAPI
 import com.sungkyul.synergy.backend.auth.SignInBody
@@ -50,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
     init {
         // API 호출하기 위한 세팅
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://synergy.hyeonwoo.com/") // 기본 URL 설정
+            .baseUrl("https://sng.hyeonwoo.com/") // 기본 URL 설정
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

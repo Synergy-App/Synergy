@@ -74,7 +74,7 @@ class CheckLearningAbilityActivity : AppCompatActivity() {
         if (token != null) {
             val client = OkHttpClient()
             val request = Request.Builder()
-                .url("https://synergy.hyeonwoo.com/user/me")
+                .url("https://sng.hyeonwoo.com/user/me")
                 .addHeader("Authorization", "Bearer $token")
                 .build()
 

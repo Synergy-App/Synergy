@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.fragments
+package com.sungkyul.synergy.com.sungkyul.synergy.Login
 
 import android.graphics.Color
 import android.os.Bundle
@@ -15,41 +15,28 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.RegisterActivity
 
-class FragmentRegisterPassword : Fragment() {
+class FragmentRegisterId : Fragment() {
 
-    private lateinit var editTextPassword: EditText
+    private lateinit var editTextId: EditText
     private lateinit var btnNext: Button
     private lateinit var textView180: TextView
-
-    companion object {
-        private const val ARG_USER_ID = "user_id"
-
-        fun newInstance(userId: String): FragmentRegisterPassword {
-            val fragment = FragmentRegisterPassword()
-            val args = Bundle()
-            args.putString(ARG_USER_ID, userId)
-            fragment.arguments = args
-            return fragment
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_register_password, container, false)
+        val view = inflater.inflate(R.layout.fragment_register_id, container, false)
 
-        editTextPassword = view.findViewById(R.id.editTextPassword)
-        btnNext = view.findViewById(R.id.btnNext_Password)
+        editTextId = view.findViewById(R.id.editTextId)
+        btnNext = view.findViewById(R.id.btnNext_Id)
         textView180 = view.findViewById(R.id.textView180)
 
-        // "비밀번호" 텍스트 색상 변경
-        val text = "비밀번호를\n입력해주세요."
+        // "아이디" 텍스트 색상 변경
+        val text = "아이디를\n입력해주세요."
         val spannable = SpannableString(text)
-        val start = text.indexOf("비밀번호")
-        val end = start + "비밀번호".length
+        val start = text.indexOf("아이디")
+        val end = start + "아이디".length
         spannable.setSpan(
             ForegroundColorSpan(Color.parseColor("#CE3232")),
             start,
@@ -58,7 +45,7 @@ class FragmentRegisterPassword : Fragment() {
         )
         textView180.text = spannable
 
-        editTextPassword.addTextChangedListener(object : TextWatcher {
+        editTextId.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 // No need to implement
             }
@@ -77,10 +64,9 @@ class FragmentRegisterPassword : Fragment() {
         })
 
         btnNext.setOnClickListener {
-            val password = editTextPassword.text.toString().trim()
-            val userId = arguments?.getString(ARG_USER_ID) ?: return@setOnClickListener
-            if (password.isNotEmpty()) {
-                (activity as RegisterActivity).navigateToNicknameFragment(userId, password)
+            val userId = editTextId.text.toString().trim()
+            if (userId.isNotEmpty()) {
+                (activity as RegisterActivity).navigateToPasswordFragment(userId)
             }
         }
 

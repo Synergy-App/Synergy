@@ -1,4 +1,4 @@
-package com.sungkyul.synergy
+package com.sungkyul.synergy.com.sungkyul.synergy.Login
 
 import android.graphics.Color
 import android.os.Bundle
@@ -12,6 +12,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.sungkyul.synergy.R
 import com.sungkyul.synergy.backend.ApiResponse
 import com.sungkyul.synergy.backend.auth.AuthAPI
 import com.sungkyul.synergy.backend.auth.ChangePasswordBody
@@ -51,7 +52,7 @@ class FindIdPasswordActivity : AppCompatActivity() {
             .build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://synergy.hyeonwoo.com/")
+            .baseUrl("https://sng.hyeonwoo.com/")
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()

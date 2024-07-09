@@ -96,7 +96,7 @@ class PracticeCheckExamActivity : AppCompatActivity() {
 
         // Retrofit 설정
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://synergy.hyeonwoo.com/")
+            .baseUrl("https://sng.hyeonwoo.com/")
             .client(httpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()

@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.fragments
+package com.sungkyul.synergy.com.sungkyul.synergy.Login
 
 import android.content.Context
 import android.content.Intent
@@ -20,7 +20,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.RegisterActivity
 import com.sungkyul.synergy.backend.ApiResponse
 import com.sungkyul.synergy.backend.auth.AuthAPI
 import com.sungkyul.synergy.backend.auth.SignInBody
@@ -67,7 +66,7 @@ class FragmentRegisterNickname : Fragment() {
             .build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://synergy.hyeonwoo.com/")
+            .baseUrl("https://sng.hyeonwoo.com/")
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
