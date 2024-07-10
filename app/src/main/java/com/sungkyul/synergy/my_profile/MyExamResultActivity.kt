@@ -3,6 +3,7 @@ package com.sungkyul.synergy.my_profile
 import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Point
+import android.os.Build
 import android.os.Bundle
 import android.util.DisplayMetrics
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +13,8 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.com.sungkyul.synergy.learning_space.ResultPair
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GalaxyNote9
 
 class MyExamResultActivity : AppCompatActivity() {
 
@@ -50,6 +53,12 @@ class MyExamResultActivity : AppCompatActivity() {
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         adapter = ExamResultAdapter(examResults, educationId, totalQuestions)
         binding.recyclerView.adapter = adapter
+
+        if (Build.MODEL == GALAXY_NOTE9) {
+            GalaxyNote9.setTitleSize(binding.headerTitle)
+            GalaxyNote9.setSubtitleSize(binding.headerSubtitle)
+            GalaxyNote9.setHeaderHeight(this, binding.headerImage)
+        }
     }
 
     private fun loadResultListFromSharedPreferences(educationId: Int): ArrayList<ResultPair> {

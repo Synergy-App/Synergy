@@ -1,6 +1,7 @@
-package com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.move_edu.activity
+package com.sungkyul.synergy.edu_space.move_edu.activity
 
 import android.graphics.Point
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -12,9 +13,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.databinding.ActivityMoveEduBinding
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.move_edu.adapter.MoveEduAdapter
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.move_edu.data.Move
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GalaxyNote9
+import com.sungkyul.synergy.databinding.ActivityMoveEduBinding
+import com.sungkyul.synergy.utils.DisplayUtils
 
 class MoveEduFragment : Fragment() {
     private var _binding: ActivityMoveEduBinding? = null
@@ -100,6 +104,15 @@ class MoveEduFragment : Fragment() {
 
             override fun afterTextChanged(s: Editable?) {}
         })
+
+        if(Build.MODEL == GALAXY_NOTE9) {
+            GalaxyNote9.setTitleSize(binding.iconeduTool)
+            GalaxyNote9.setSubtitleSize(binding.iconeduTool2)
+            GalaxyNote9.setSubtitleSize(binding.searchEditText)
+            binding.iconGreen.layoutParams.apply {
+                binding.iconGreen.layoutParams.height = DisplayUtils.dpToPx(requireContext(), 250.0f).toInt()
+            }
+        }
     }
 
     // 디스플레이 사이즈를 반환하는 메서드
