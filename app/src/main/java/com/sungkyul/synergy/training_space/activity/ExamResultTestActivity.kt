@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.com.sungkyul.synergy.learning_space.ResultPair
-import com.sungkyul.synergy.MainActivity
+import com.sungkyul.synergy.home.activity.MainActivity
 
 class ExamResultTestActivity : AppCompatActivity() {
     private lateinit var resultList: ArrayList<ResultPair>

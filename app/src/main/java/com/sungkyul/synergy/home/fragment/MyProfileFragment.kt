@@ -1,3 +1,5 @@
+package com.sungkyul.synergy.com.sungkyul.synergy.home.fragment
+
 import android.content.Context
 import android.content.Intent
 import android.graphics.Point
@@ -15,7 +17,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
-import com.sungkyul.synergy.CheckLearningAbilityActivity
+import com.sungkyul.synergy.home.activity.CheckLearningAbilityActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.com.sungkyul.synergy.utils.GalaxyNote9

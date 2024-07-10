@@ -1,6 +1,5 @@
-package com.sungkyul.synergy
+package com.sungkyul.synergy.home.activity
 
-import android.content.Context
 import android.graphics.Point
 import android.os.Bundle
 import android.os.Handler
@@ -47,7 +46,7 @@ class CheckLearningAbilityActivity : AppCompatActivity() {
     }
 
     private fun updateElapsedTime(elapsedSeconds: Long) {
-        val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
         val totalElapsedTime = sharedPreferences.getLong("totalElapsedTime", 0) + elapsedSeconds
         val totalDaysUsed = sharedPreferences.getLong("totalDaysUsed", 1)
 
@@ -68,7 +67,7 @@ class CheckLearningAbilityActivity : AppCompatActivity() {
     }
 
     private fun loadProfileData() {
-        val sharedPreferences = getSharedPreferences("SynergyPrefs", Context.MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences("SynergyPrefs", MODE_PRIVATE)
         val token = sharedPreferences.getString("Token", null)
 
         if (token != null) {
@@ -81,7 +80,11 @@ class CheckLearningAbilityActivity : AppCompatActivity() {
             client.newCall(request).enqueue(object : okhttp3.Callback {
                 override fun onFailure(call: okhttp3.Call, e: IOException) {
                     runOnUiThread {
-                        Toast.makeText(this@CheckLearningAbilityActivity, "프로필 데이터를 불러오는데 실패했습니다.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@CheckLearningAbilityActivity,
+                            "프로필 데이터를 불러오는데 실패했습니다.",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
 
@@ -98,12 +101,20 @@ class CheckLearningAbilityActivity : AppCompatActivity() {
                             }
                         } else {
                             runOnUiThread {
-                                Toast.makeText(this@CheckLearningAbilityActivity, "프로필 데이터를 불러오는데 실패했습니다.", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(
+                                    this@CheckLearningAbilityActivity,
+                                    "프로필 데이터를 불러오는데 실패했습니다.",
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             }
                         }
                     } else {
                         runOnUiThread {
-                            Toast.makeText(this@CheckLearningAbilityActivity, "프로필 데이터를 불러오는데 실패했습니다.", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                this@CheckLearningAbilityActivity,
+                                "프로필 데이터를 불러오는데 실패했습니다.",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }
                 }
@@ -114,7 +125,7 @@ class CheckLearningAbilityActivity : AppCompatActivity() {
     }
 
     private fun getScreenSize(): Point {
-        val display = (getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay
+        val display = (getSystemService(WINDOW_SERVICE) as WindowManager).defaultDisplay
         val size = Point()
         display.getSize(size)
         return size

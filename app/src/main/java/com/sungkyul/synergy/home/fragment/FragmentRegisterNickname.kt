@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.fragments
+package com.sungkyul.synergy.com.sungkyul.synergy.home.fragment
 
 import android.content.Context
 import android.content.Intent
@@ -18,9 +18,8 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.sungkyul.synergy.MainActivity
+import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.RegisterActivity
 import com.sungkyul.synergy.backend.ApiResponse
 import com.sungkyul.synergy.backend.auth.AuthAPI
 import com.sungkyul.synergy.backend.auth.SignInBody

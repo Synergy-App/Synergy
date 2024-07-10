@@ -1,4 +1,4 @@
-package com.sungkyul.synergy
+package com.sungkyul.synergy.home.activity
 
 import android.graphics.Color
 import android.os.Bundle
@@ -12,6 +12,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.sungkyul.synergy.R
 import com.sungkyul.synergy.backend.ApiResponse
 import com.sungkyul.synergy.backend.auth.AuthAPI
 import com.sungkyul.synergy.backend.auth.ChangePasswordBody
@@ -24,10 +25,10 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class FindIdPasswordActivity : AppCompatActivity() {
 
@@ -68,7 +69,10 @@ class FindIdPasswordActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     Log.d("FindIdPasswordActivity", "callFindIdAPI Success: ${response.body()}")
                 } else {
-                    Log.e("FindIdPasswordActivity", "callFindIdAPI Failed: ${response.errorBody()?.string()}")
+                    Log.e(
+                        "FindIdPasswordActivity",
+                        "callFindIdAPI Failed: ${response.errorBody()?.string()}"
+                    )
                 }
                 response.body()
             } catch (e: Exception) {
@@ -87,7 +91,10 @@ class FindIdPasswordActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     Log.d("FindIdPasswordActivity", "callVerifyUserAPI Success: ${response.body()}")
                 } else {
-                    Log.e("FindIdPasswordActivity", "callVerifyUserAPI Failed: ${response.errorBody()?.string()}")
+                    Log.e(
+                        "FindIdPasswordActivity",
+                        "callVerifyUserAPI Failed: ${response.errorBody()?.string()}"
+                    )
                 }
                 response.body()
             } catch (e: Exception) {
@@ -104,9 +111,15 @@ class FindIdPasswordActivity : AppCompatActivity() {
                 val call = authApi.changePassword(request)
                 val response = call.execute()
                 if (response.isSuccessful) {
-                    Log.d("FindIdPasswordActivity", "callChangePasswordAPI Success: ${response.body()}")
+                    Log.d(
+                        "FindIdPasswordActivity",
+                        "callChangePasswordAPI Success: ${response.body()}"
+                    )
                 } else {
-                    Log.e("FindIdPasswordActivity", "callChangePasswordAPI Failed: ${response.errorBody()?.string()}")
+                    Log.e(
+                        "FindIdPasswordActivity",
+                        "callChangePasswordAPI Failed: ${response.errorBody()?.string()}"
+                    )
                 }
                 response.body()
             } catch (e: Exception) {
@@ -161,10 +174,18 @@ class FindIdPasswordActivity : AppCompatActivity() {
 
                     if (res?.success == true) {
                         val userId = res.data?.authId
-                        Toast.makeText(this@FindIdPasswordActivity, "아이디는 $userId 입니다.", Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            this@FindIdPasswordActivity,
+                            "아이디는 $userId 입니다.",
+                            Toast.LENGTH_LONG
+                        ).show()
                     } else {
                         Log.e("FindIdPasswordActivity", "FindId Error: ${res?.err?.msg}")
-                        Toast.makeText(this@FindIdPasswordActivity, res?.err?.msg ?: "아이디 찾기에 실패하였습니다.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@FindIdPasswordActivity,
+                            res?.err?.msg ?: "아이디 찾기에 실패하였습니다.",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             }
@@ -175,7 +196,11 @@ class FindIdPasswordActivity : AppCompatActivity() {
             val userId = editTextIdForPassword.text.toString().trim()
 
             if (phone.isEmpty() || userId.isEmpty()) {
-                Toast.makeText(this@FindIdPasswordActivity, "전화번호와 아이디를 모두 입력해주세요.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this@FindIdPasswordActivity,
+                    "전화번호와 아이디를 모두 입력해주세요.",
+                    Toast.LENGTH_SHORT
+                ).show()
             } else {
                 CoroutineScope(Dispatchers.Main).launch {
                     val verifyBody = VerifyUserBody(userId, phone)
@@ -184,11 +209,19 @@ class FindIdPasswordActivity : AppCompatActivity() {
 
                     if (verifyRes?.success == true) {
                         layoutChangePassword.visibility = LinearLayout.VISIBLE
-                        Toast.makeText(this@FindIdPasswordActivity, "사용자 인증에 성공했습니다. 비밀번호를 변경하세요.", Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            this@FindIdPasswordActivity,
+                            "사용자 인증에 성공했습니다. 비밀번호를 변경하세요.",
+                            Toast.LENGTH_LONG
+                        ).show()
                     } else {
                         layoutChangePassword.visibility = LinearLayout.GONE
                         Log.e("FindIdPasswordActivity", "VerifyUser Error: ${verifyRes?.err?.msg}")
-                        Toast.makeText(this@FindIdPasswordActivity, verifyRes?.err?.msg ?: "사용자 인증에 실패했습니다.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@FindIdPasswordActivity,
+                            verifyRes?.err?.msg ?: "사용자 인증에 실패했습니다.",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             }
@@ -207,10 +240,21 @@ class FindIdPasswordActivity : AppCompatActivity() {
                     Log.d("FindIdPasswordActivity", "ChangePassword Response: $changePasswordRes")
 
                     if (changePasswordRes?.success == true) {
-                        Toast.makeText(this@FindIdPasswordActivity, "비밀번호가 성공적으로 변경되었습니다.", Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            this@FindIdPasswordActivity,
+                            "비밀번호가 성공적으로 변경되었습니다.",
+                            Toast.LENGTH_LONG
+                        ).show()
                     } else {
-                        Log.e("FindIdPasswordActivity", "ChangePassword Error: ${changePasswordRes?.err?.msg}")
-                        Toast.makeText(this@FindIdPasswordActivity, changePasswordRes?.err?.msg ?: "비밀번호 변경에 실패하였습니다.", Toast.LENGTH_SHORT).show()
+                        Log.e(
+                            "FindIdPasswordActivity",
+                            "ChangePassword Error: ${changePasswordRes?.err?.msg}"
+                        )
+                        Toast.makeText(
+                            this@FindIdPasswordActivity,
+                            changePasswordRes?.err?.msg ?: "비밀번호 변경에 실패하였습니다.",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             }

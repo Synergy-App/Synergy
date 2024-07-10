@@ -14,8 +14,8 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
-import com.sungkyul.synergy.MainActivity
-import com.sungkyul.synergy.SolvingFragment
+import com.sungkyul.synergy.home.activity.MainActivity
+import com.sungkyul.synergy.com.sungkyul.synergy.home.fragment.SolvingFragment
 import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.com.sungkyul.synergy.utils.GalaxyNote9
 import com.sungkyul.synergy.databinding.FragmentExamSpaceBinding

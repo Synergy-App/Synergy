@@ -10,7 +10,7 @@ import android.util.Log
 import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
-import com.sungkyul.synergy.MainActivity
+import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.databinding.ActivityGooglePutCodeBinding
 import com.sungkyul.synergy.courses.accountedu.GooglePutCodeCourse
 

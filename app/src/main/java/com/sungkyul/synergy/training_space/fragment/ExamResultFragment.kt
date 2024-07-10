@@ -11,7 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.sungkyul.synergy.MainActivity
+import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.databinding.FragmentExamResultBinding
 import com.sungkyul.synergy.training_space.activity.ExamResultListActivity
 import com.sungkyul.synergy.utils.GalaxyButton

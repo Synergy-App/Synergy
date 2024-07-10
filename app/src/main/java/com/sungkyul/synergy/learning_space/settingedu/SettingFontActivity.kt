@@ -6,7 +6,7 @@ import android.util.TypedValue
 import android.widget.SeekBar
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
-import com.sungkyul.synergy.MainActivity
+import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivitySetting2FontBinding
 import com.sungkyul.synergy.courses.settings.SettingsFontCourse

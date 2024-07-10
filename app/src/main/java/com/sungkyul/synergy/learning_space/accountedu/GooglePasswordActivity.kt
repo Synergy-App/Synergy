@@ -10,7 +10,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
-import com.sungkyul.synergy.MainActivity
+import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.databinding.ActivityGooglePasswordBinding
 import com.sungkyul.synergy.courses.accountedu.GooglePasswordCourse
 

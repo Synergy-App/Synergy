@@ -7,7 +7,7 @@ import android.view.View
 import android.view.WindowManager
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
-import com.sungkyul.synergy.MainActivity
+import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.databinding.ActivityScreenLayoutBinding
 import com.sungkyul.synergy.courses.screen_layout.ScreenLayoutCourse
 

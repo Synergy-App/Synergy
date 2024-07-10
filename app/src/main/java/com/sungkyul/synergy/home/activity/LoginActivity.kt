@@ -1,4 +1,4 @@
-package com.sungkyul.synergy
+package com.sungkyul.synergy.home.activity
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -13,6 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.sungkyul.synergy.R
 import com.sungkyul.synergy.backend.ApiResponse
 import com.sungkyul.synergy.backend.auth.AuthAPI
 import com.sungkyul.synergy.backend.auth.SignInBody
@@ -67,7 +68,10 @@ class LoginActivity : AppCompatActivity() {
                     Log.d("LoginActivity", "callSignInAPI Success: ${response.body()}")
                     response.body()
                 } else {
-                    Log.e("LoginActivity", "callSignInAPI Failed: ${response.errorBody()?.string()}")
+                    Log.e(
+                        "LoginActivity",
+                        "callSignInAPI Failed: ${response.errorBody()?.string()}"
+                    )
                     null
                 }
             } catch (e: Exception) {
