@@ -1,15 +1,20 @@
-package com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.dictionary_edu.activity
+package com.sungkyul.synergy.edu_space.basic_edu.activity
 
 import android.content.Intent
 import android.graphics.Point
+import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.dictionary_edu.data.Icon
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.dictionary_edu.data.IconInfo
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GalaxyNote9
 import com.sungkyul.synergy.databinding.ActivityIconDetailBinding
+import com.sungkyul.synergy.utils.DisplayUtils
 
 class IconDetailActivity : AppCompatActivity() {
     private lateinit var activityBinding: ActivityIconDetailBinding
@@ -119,5 +124,14 @@ class IconDetailActivity : AppCompatActivity() {
         params.width = (newWidth * density).toInt()
         params.height = (newHeight * density).toInt()
         activityBinding.iconDetailIv.layoutParams = params
+
+        if(Build.MODEL == GALAXY_NOTE9) {
+            GalaxyNote9.setTitleSize(findViewById(R.id.iconedu_tool))
+            GalaxyNote9.setSubtitleSize(findViewById(R.id.iconedu_tool_2))
+            val context = this
+            findViewById<View>(R.id.icon_green).layoutParams.apply {
+                this.height = DisplayUtils.dpToPx(context, 175.0f).toInt()
+            }
+        }
     }
 }

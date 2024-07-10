@@ -13,7 +13,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.dictionary_edu.data.Icon
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.dictionary_edu.data.IconInfo
 import com.sungkyul.synergy.databinding.FragmentIconListBinding
-import com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.dictionary_edu.activity.IconDetailActivity
+import com.sungkyul.synergy.edu_space.basic_edu.activity.IconDetailActivity
 import com.sungkyul.synergy.utils.GalaxyButton
 
 /** 교육공간 속 아이콘 리사이클러뷰 어뎁터 */

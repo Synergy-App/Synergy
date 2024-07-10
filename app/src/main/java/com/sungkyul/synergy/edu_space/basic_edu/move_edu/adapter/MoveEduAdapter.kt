@@ -9,10 +9,9 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.sungkyul.synergy.R
-import com.sungkyul.synergy.databinding.FragmentIconListBinding
-import com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.move_edu.activity.MoveDetailActivity
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.move_edu.data.Move
+import com.sungkyul.synergy.databinding.FragmentIconListBinding
+import com.sungkyul.synergy.edu_space.move_edu.activity.MoveDetailActivity
 import com.sungkyul.synergy.utils.GalaxyButton
 
 class MoveEduAdapter(

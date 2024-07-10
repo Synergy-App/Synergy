@@ -1,16 +1,18 @@
-package com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.move_edu.activity
+package com.sungkyul.synergy.edu_space.move_edu.activity
 
 import android.content.Intent
 import android.graphics.Point
+import android.os.Build
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.sungkyul.synergy.MainActivity
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.databinding.ActivityMoveDetailBinding
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.move_edu.data.Move
-import com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.move_edu.data.MoveInfo
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GalaxyNote9
+import com.sungkyul.synergy.databinding.ActivityMoveDetailBinding
 
 class MoveDetailActivity : AppCompatActivity() {
     private lateinit var activityBinding: ActivityMoveDetailBinding
@@ -95,6 +97,12 @@ class MoveDetailActivity : AppCompatActivity() {
         params.width = (newWidth * density).toInt()
         params.height = (newHeight * density).toInt()
         activityBinding.moveDetailIv.layoutParams = params
+
+        if(Build.MODEL == GALAXY_NOTE9) {
+            GalaxyNote9.setTitleSize(findViewById(R.id.iconedu_tool))
+            GalaxyNote9.setSubtitleSize(findViewById(R.id.iconedu_tool_2))
+            GalaxyNote9.setHeaderHeight(this, findViewById(R.id.icon_green))
+        }
     }
 
     private fun displayMoveInfo(index: Int) {

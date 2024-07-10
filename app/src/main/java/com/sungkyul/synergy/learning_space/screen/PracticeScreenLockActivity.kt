@@ -15,6 +15,9 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityPracticeScreenLockPracticeBinding
 import android.content.Context
 import android.content.SharedPreferences
+import android.os.Build
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GalaxyNote9
 
 class PracticeScreenLockActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPracticeScreenLockPracticeBinding
@@ -73,6 +76,11 @@ class PracticeScreenLockActivity : AppCompatActivity() {
         }
 
         startTimer() // 타이머 시작
+
+        if (Build.MODEL == GALAXY_NOTE9) {
+            binding.timerTextView.textSize = 18.0f
+            binding.problemText.textSize = 18.0f
+        }
     }
 
     private fun showHomeScreen() {
@@ -95,7 +103,10 @@ class PracticeScreenLockActivity : AppCompatActivity() {
     }
 
     private fun saveResult(isSuccess: Boolean) {
-        val sharedPreferences = getSharedPreferences("PracticeRecentlyDefaultPrefs", Context.MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences(
+            "PracticeRecentlyDefaultPrefs",
+            Context.MODE_PRIVATE
+        )
         val editor = sharedPreferences.edit()
         editor.putBoolean("unlock_success", isSuccess)
         editor.apply()
