@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".learning_space.screen.PracticeWebViewActivity">
+    tools:context=".training_space.screen.PracticeWebViewActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

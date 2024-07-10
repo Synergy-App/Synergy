@@ -10,7 +10,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".edu_space.naver.activity.NaverSearchInfoActivity"
+    tools:context=".learning_space.naver.activity.NaverSearchInfoActivity"
     android:background="#F0F0F3">
 
 

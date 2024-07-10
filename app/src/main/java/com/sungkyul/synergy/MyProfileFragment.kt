@@ -7,12 +7,10 @@ import android.os.Handler
 import android.os.Looper
 import android.util.TypedValue
 import android.util.Log
-import android.view.Display
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -22,8 +20,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.com.sungkyul.synergy.utils.GalaxyNote9
 import com.sungkyul.synergy.databinding.FragmentMyProfileBinding
-import com.sungkyul.synergy.my_profile.CheckMyResultActivity
-import com.sungkyul.synergy.my_profile.MyExamResultActivity
+import com.sungkyul.synergy.profile_space.MyExamResultActivity
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject

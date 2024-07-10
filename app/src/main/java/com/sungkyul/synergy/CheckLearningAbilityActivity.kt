@@ -10,7 +10,7 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.databinding.ActivityCheckLearningAbilityBinding
-import com.sungkyul.synergy.my_profile.Time
+import com.sungkyul.synergy.profile_space.Time
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject

@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back1"
-    tools:context=".edu_space.screen_layout.ScreenMoveHomeActivity">
+    tools:context=".learning_space.screen_layout.ScreenMoveHomeActivity">
 
     <com.sungkyul.synergy.utils.edu.EduScreen
         android:id="@+id/edu_screen"
