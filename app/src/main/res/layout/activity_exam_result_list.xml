@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:background="@color/bgColor1"
 
-        tools:context=".learning_space.ExamResultListActivity">
+        tools:context=".training_space.ExamResultListActivity">
 
         <LinearLayout
             android:orientation="vertical"

@@ -40,7 +40,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".edu_space.default_app.phone.fragment.DefaultPhoneRecentHistoryFragment">
+        tools:context=".learning_space.default_app.phone.fragment.DefaultPhoneRecentHistoryFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recent_history_list"

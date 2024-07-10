@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E4E4E4"
-    tools:context=".edu_space.delivery.shopActivity">
+    tools:context=".learning_space.delivery.shopActivity">
 
     <com.sungkyul.synergy.utils.edu.EduScreen
         android:id="@+id/edu_screen"

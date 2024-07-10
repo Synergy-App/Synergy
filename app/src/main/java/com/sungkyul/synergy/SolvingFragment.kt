@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.adapter.EduButtonItem
 import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.com.sungkyul.synergy.utils.GalaxyNote9
-import com.sungkyul.synergy.learning_space.adapter.LearningButtonAdapter
+import com.sungkyul.synergy.training_space.adapter.LearningButtonAdapter
 
 class SolvingFragment : Fragment() {
     @SuppressLint("ClickableViewAccessibility")

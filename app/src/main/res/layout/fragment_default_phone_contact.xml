@@ -69,7 +69,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".edu_space.default_app.phone.fragment.DefaultPhoneContactFragment">
+    tools:context=".learning_space.default_app.phone.fragment.DefaultPhoneContactFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/contact_list"

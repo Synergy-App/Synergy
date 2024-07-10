@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgColor1"
-    tools:context=".learning_space.activity.ExamResultTestActivity">
+    tools:context=".training_space.activity.ExamResultTestActivity">
 
     <FrameLayout
         android:id="@+id/top_bar"

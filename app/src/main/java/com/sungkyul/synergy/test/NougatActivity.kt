@@ -3,7 +3,7 @@ package com.sungkyul.synergy.test
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.databinding.ActivityNougatBinding
-import com.sungkyul.synergy.edu_space.default_app.DefaultAppActivity
+import com.sungkyul.synergy.learning_space.default_app.DefaultAppActivity
 import com.sungkyul.synergy.utils.edu.EduScreen
 
 class NougatActivity : AppCompatActivity() {

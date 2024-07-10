@@ -22,7 +22,7 @@
 
     <fragment
         android:id="@+id/secondFragment"
-        android:name="com.sungkyul.synergy.my_profile.ResultExamFragment"
+        android:name="com.sungkyul.synergy.profile_space.ResultExamFragment"
         android:label="Second Fragment"
         tools:layout="@layout/fragment_result_exam" />
 </navigation>

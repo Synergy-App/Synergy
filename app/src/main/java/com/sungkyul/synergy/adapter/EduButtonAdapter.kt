@@ -18,8 +18,8 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.edu_space.basic_edu.activity.BasicEduMainFragment
-import com.sungkyul.synergy.edu_space.screen_layout.ScreenLockActivity
+import com.sungkyul.synergy.learning_space.basic_edu.activity.BasicEduMainFragment
+import com.sungkyul.synergy.learning_space.screen_layout.ScreenLockActivity
 import com.sungkyul.synergy.utils.GalaxyButton
 
 data class EduButtonItem(

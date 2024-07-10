@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/screenedu_background"
-    tools:context=".edu_space.default_app.todo.DefaultAppBarActivity">
+    tools:context=".learning_space.default_app.todo.DefaultAppBarActivity">
 
     <com.sungkyul.synergy.utils.edu.EduScreen
         android:id="@+id/edu_screen"

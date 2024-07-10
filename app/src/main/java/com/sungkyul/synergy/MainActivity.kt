@@ -10,12 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.sungkyul.synergy.com.sungkyul.synergy.learning_space.fragment.ExamSpaceFragment
 import com.sungkyul.synergy.databinding.ActivityMainBinding
-import com.sungkyul.synergy.my_profile.Time
-import com.sungkyul.synergy.learning_space.fragment.ExamResultFragment
-import com.sungkyul.synergy.SolvingFragment
-import com.sungkyul.synergy.LearningFragment
-import com.sungkyul.synergy.learning_space.intent.LearningScreenFragment
-import com.sungkyul.synergy.utils.DisplayUtils
+import com.sungkyul.synergy.profile_space.Time
+import com.sungkyul.synergy.training_space.fragment.ExamResultFragment
+import com.sungkyul.synergy.training_space.intent.LearningScreenFragment
 
 /** 시너지 앱 메인 네비게이션 바 + fragment */
 

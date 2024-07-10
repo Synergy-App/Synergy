@@ -5,7 +5,7 @@
     android:id="@+id/constraint_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".learning_space.screen.PracticeRecentlyDefaultActivity">
+    tools:context=".training_space.screen.PracticeRecentlyDefaultActivity">
 
     <LinearLayout
         android:id="@+id/ll"

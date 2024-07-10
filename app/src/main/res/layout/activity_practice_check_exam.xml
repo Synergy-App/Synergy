@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EFECE7"
-    tools:context=".learning_space.screen.PracticeCheckExamActivity">
+    tools:context=".training_space.screen.PracticeCheckExamActivity">
 
     <LinearLayout
         android:id="@+id/header_layout"

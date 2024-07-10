@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".learning_space.screen.PracticeResultActivity">
+    tools:context=".training_space.screen.PracticeResultActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/bgColor1"
 
-        tools:context=".learning_space.ExamResultListActivity">
+        tools:context=".training_space.ExamResultListActivity">
 
         <LinearLayout
             android:id="@+id/top_bar"

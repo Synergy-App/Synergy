@@ -8,7 +8,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".edu_space.appinstall.installMainActivity">
+    tools:context=".learning_space.appinstall.installMainActivity">
 
     <com.sungkyul.synergy.utils.edu.EduScreen
         android:id="@+id/edu_screen"
