@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.adapter
+package com.sungkyul.synergy.com.sungkyul.synergy.home.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -15,7 +15,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.learning_space.basic_edu.activity.BasicEduMainFragment
@@ -29,7 +28,6 @@ data class EduButtonItem(
 
 class EduButtonAdapter(
     private val context: Context,
-    private val fragmentManager: FragmentManager,
     private val buttonList: List<EduButtonItem>
 ) : RecyclerView.Adapter<EduButtonAdapter.ButtonViewHolder>() {
 

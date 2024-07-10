@@ -1,13 +1,16 @@
-package com.sungkyul.synergy
+package com.sungkyul.synergy.home.activity
 
-import MyProfileFragment
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.sungkyul.synergy.R
+import com.sungkyul.synergy.com.sungkyul.synergy.home.fragment.LearningFragment
+import com.sungkyul.synergy.com.sungkyul.synergy.home.fragment.MyProfileFragment
+import com.sungkyul.synergy.com.sungkyul.synergy.home.fragment.SolvingFragment
 import com.sungkyul.synergy.com.sungkyul.synergy.learning_space.fragment.ExamSpaceFragment
 import com.sungkyul.synergy.databinding.ActivityMainBinding
 import com.sungkyul.synergy.profile_space.Time
@@ -55,7 +58,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         // 선택된 navigation item을 확인하여 설정합니다.
-        val selectedNavigationItem = intent.getIntExtra("selected_navigation_item", R.id.learingFragment)
+        val selectedNavigationItem = intent.getIntExtra("selected_navigation_item",
+            R.id.learingFragment
+        )
         binding.mainNavigationView.selectedItemId = selectedNavigationItem
 
         binding.mainNavigationView.setOnItemSelectedListener { item ->
@@ -66,7 +71,7 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
-        
+
         val fragmentName = intent.getStringExtra("fragment")
         if(fragmentName == "SolvingFragment") {
             setFragment(Tag_solving, SolvingFragment())

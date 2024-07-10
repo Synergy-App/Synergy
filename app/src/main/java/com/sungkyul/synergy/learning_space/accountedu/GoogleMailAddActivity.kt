@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
-import com.sungkyul.synergy.MainActivity
+import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.databinding.ActivityGoogleMailAddBinding
 import com.sungkyul.synergy.courses.accountedu.GoogleMailAddCourse
 

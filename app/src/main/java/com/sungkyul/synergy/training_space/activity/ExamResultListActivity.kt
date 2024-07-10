@@ -10,7 +10,7 @@ import com.sungkyul.synergy.com.sungkyul.synergy.learning_space.ResultPair
 import com.sungkyul.synergy.databinding.ActivityExamResultListBinding
 import com.sungkyul.synergy.training_space.adapter.ExamResultListAdapter
 import com.sungkyul.synergy.training_space.adapter.ExamResultListData
-import com.sungkyul.synergy.MainActivity
+import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.backend.ApiResponse
 import com.sungkyul.synergy.backend.auth.AuthAPI
 import com.sungkyul.synergy.training_space.screen.PracticeCheckExamActivity

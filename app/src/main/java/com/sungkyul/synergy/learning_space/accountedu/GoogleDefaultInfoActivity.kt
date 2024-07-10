@@ -17,7 +17,7 @@ import android.widget.RadioGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.sungkyul.synergy.MainActivity
+import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityGoogleDefaultinfoBinding
 import com.sungkyul.synergy.courses.accountedu.GoogleDefaultInfoCourse

@@ -16,7 +16,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.adapter.EduButtonItem
+import com.sungkyul.synergy.com.sungkyul.synergy.home.adapter.EduButtonItem
 
 import com.sungkyul.synergy.training_space.intent.LearningScreenFragment
 import com.sungkyul.synergy.utils.GalaxyButton

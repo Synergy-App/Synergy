@@ -8,7 +8,7 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.sungkyul.synergy.MainActivity
+import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.NaverFromScreenHomeCourse
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.NaverFromScreenHomeCourse2

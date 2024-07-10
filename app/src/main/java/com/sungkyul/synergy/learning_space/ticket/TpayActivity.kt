@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
-import com.sungkyul.synergy.MainActivity
+import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityTpayBinding
 import com.sungkyul.synergy.courses.ticket.TPayCourse

@@ -6,7 +6,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
-import com.sungkyul.synergy.MainActivity
+import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityShopBinding
 import com.sungkyul.synergy.courses.delivery.ShopCourse

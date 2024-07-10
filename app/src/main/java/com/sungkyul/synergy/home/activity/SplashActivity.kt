@@ -1,14 +1,11 @@
-package com.sungkyul.synergy
+package com.sungkyul.synergy.home.activity
 
-import android.R
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
-import com.airbnb.lottie.LottieAnimationView
 import com.sungkyul.synergy.databinding.ActivitySplashBinding
-
 
 class SplashActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySplashBinding

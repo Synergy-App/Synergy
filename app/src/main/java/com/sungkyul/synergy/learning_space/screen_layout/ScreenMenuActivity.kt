@@ -11,7 +11,7 @@ import android.view.View
 import android.view.View.DragShadowBuilder
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
-import com.sungkyul.synergy.MainActivity
+import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenMenuCourse
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenMenuCourse2

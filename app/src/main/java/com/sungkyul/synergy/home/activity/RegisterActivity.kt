@@ -1,11 +1,12 @@
-package com.sungkyul.synergy
+package com.sungkyul.synergy.home.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.sungkyul.synergy.fragments.FragmentRegisterId
-import com.sungkyul.synergy.fragments.FragmentRegisterNickname
-import com.sungkyul.synergy.fragments.FragmentRegisterPassword
+import com.sungkyul.synergy.R
+import com.sungkyul.synergy.com.sungkyul.synergy.home.fragment.FragmentRegisterId
+import com.sungkyul.synergy.com.sungkyul.synergy.home.fragment.FragmentRegisterNickname
+import com.sungkyul.synergy.com.sungkyul.synergy.home.fragment.FragmentRegisterPassword
 
 class RegisterActivity : AppCompatActivity() {
 

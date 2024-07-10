@@ -8,7 +8,7 @@ import android.widget.ImageButton
 import android.widget.SeekBar
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
-import com.sungkyul.synergy.MainActivity
+import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivitySetting2DisplayBinding
 import com.sungkyul.synergy.courses.settings.SettingsDisplayCourse
