@@ -40,6 +40,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var sharedPreferences: SharedPreferences
     private val PREFS_NAME = "SynergyPrefs"
     private val PREF_ID = "SavedId"
+    private val PREF_PASSWORD = "SavedPassword" // 비밀번호 저장 키 추가
     private val PREF_AUTOLOGIN = "AutoLogin"
     private val PREF_TOKEN = "Token"
     private val PREF_NICKNAME = "Nickname"
@@ -51,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
     init {
         // API 호출하기 위한 세팅
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://synergy.hyeonwoo.com/") // 기본 URL 설정
+            .baseUrl("https://sng.hyeonwoo.com/") // 기본 URL 설정
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -96,11 +97,13 @@ class LoginActivity : AppCompatActivity() {
 
         sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
 
-        // 자동로그인
+        // 자동 로그인 체크
         if (sharedPreferences.getBoolean(PREF_AUTOLOGIN, false)) {
             val savedId = sharedPreferences.getString(PREF_ID, "")
-            editTextId.setText(savedId)
-            checkBoxAutoLogin.isChecked = true
+            val savedPassword = sharedPreferences.getString(PREF_PASSWORD, "")
+            if (!savedId.isNullOrEmpty() && !savedPassword.isNullOrEmpty()) {
+                autoLogin(savedId, savedPassword)
+            }
         }
 
         // 로그인 버튼 클릭
@@ -120,13 +123,13 @@ class LoginActivity : AppCompatActivity() {
 
                     // 로그인 성공 시
                     if (res?.success == true) {
-                        // 로그인 성공 시 닉네임과 토큰을 SharedPreferences에 저장
-                        saveLoginInfo(res.data)
+                        saveLoginInfo(authId, pw, res.data)
 
                         if (checkBoxAutoLogin.isChecked) {
                             // Save ID and auto-login preference
                             with(sharedPreferences.edit()) {
                                 putString(PREF_ID, authId)
+                                putString(PREF_PASSWORD, pw)  // 비밀번호 저장
                                 putBoolean(PREF_AUTOLOGIN, true)
                                 apply()
                             }
@@ -134,16 +137,13 @@ class LoginActivity : AppCompatActivity() {
                             // Clear auto-login preference
                             with(sharedPreferences.edit()) {
                                 remove(PREF_ID)
+                                remove(PREF_PASSWORD)  // 비밀번호 제거
                                 putBoolean(PREF_AUTOLOGIN, false)
                                 apply()
                             }
                         }
 
-                        Toast.makeText(this@LoginActivity, "로그인 되었습니다.", Toast.LENGTH_SHORT).show()
-
-                        val intent = Intent(this@LoginActivity, SplashActivity::class.java)
-                        startActivity(intent)
-                        finish()  // 로그인 후 액티비티 종료
+                        proceedToNextActivity()
                     }
                     // 로그인 실패 시
                     else {
@@ -219,7 +219,6 @@ class LoginActivity : AppCompatActivity() {
         val layoutHeight = (standardSize_Y / 3.85).toInt()
         val RegisterButtonHeight = (standardSize_Y / 5).toInt() // Adjust height for register button
 
-
         idLayout.layoutParams.height = layoutHeight
         passwordLayout.layoutParams.height = layoutHeight
         loginButton.layoutParams.height = layoutHeight
@@ -230,12 +229,13 @@ class LoginActivity : AppCompatActivity() {
         passwordLayout.requestLayout()
         loginButton.requestLayout()
         RegisterButton.requestLayout()
-
     }
 
-    private fun saveLoginInfo(signInResult: SignInResult?) {
+    private fun saveLoginInfo(authId: String, pw: String, signInResult: SignInResult?) {
         signInResult?.let {
             with(sharedPreferences.edit()) {
+                putString(PREF_ID, authId)
+                putString(PREF_PASSWORD, pw)  // 비밀번호 저장
                 putString(PREF_TOKEN, it.accessToken)
                 putString(PREF_NICKNAME, it.user.nickname)
                 apply()
@@ -243,5 +243,28 @@ class LoginActivity : AppCompatActivity() {
             Log.d("LoginActivity", "Token saved: ${it.accessToken}")
             Log.d("LoginActivity", "Nickname saved: ${it.user.nickname}")
         }
+    }
+
+    private fun autoLogin(authId: String, pw: String) {
+        CoroutineScope(Dispatchers.Main).launch {
+            val body = SignInBody(authId, pw)
+            val res = callSignInAPI(body)
+            Log.d("LoginActivity", "Auto Login Response: $res")
+
+            // 로그인 성공 시
+            if (res?.success == true) {
+                proceedToNextActivity()
+            } else {
+                Log.e("LoginActivity", "Auto Login Error: ${res?.err?.msg}")
+                Toast.makeText(this@LoginActivity, res?.err?.msg ?: "자동 로그인에 실패하였습니다.", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun proceedToNextActivity() {
+        Toast.makeText(this@LoginActivity, "로그인 되었습니다.", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this@LoginActivity, SplashActivity::class.java)
+        startActivity(intent)
+        finish()  // 로그인 후 액티비티 종료
     }
 }

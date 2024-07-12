@@ -24,7 +24,7 @@ class APItestActivity : AppCompatActivity() {
             .build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://synergy.hyeonwoo.com/")
+            .baseUrl("https://sng.hyeonwoo.com/")
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
