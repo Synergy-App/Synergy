@@ -19,17 +19,17 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".learning_space.screen.PracticeCheckExamActivity"
+            android:name=".training_space.screen.PracticeCheckExamActivity"
             android:exported="true">
         </activity>
         <activity
-            android:name=".learning_space.screen.PracticeResultActivity"
+            android:name=".training_space.screen.PracticeResultActivity"
             android:exported="false" />
         <activity
-            android:name=".learning_space.activity.ExampleProblem5Activity"
+            android:name=".training_space.activity.ExampleProblem5Activity"
             android:exported="false" /> <!-- 고정 SplashActivity -->
         <activity
-            android:name=".SplashActivity"
+            android:name=".home.activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,7 +38,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".home.activity.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,10 +47,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CheckLearningAbilityActivity"
+            android:name=".home.activity.CheckLearningAbilityActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".home.activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -59,7 +59,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".learning_space.activity.ExamProblemActivity"
+            android:name=".training_space.activity.ExamProblemActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -68,70 +68,70 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".learning_space.screen.PracticeRecentlyDefaultActivity"
+            android:name=".training_space.screen.PracticeRecentlyDefaultActivity"
             android:exported="true" />
         <activity
-            android:name=".learning_space.screen.PracticeRecentlyActivity"
+            android:name=".training_space.screen.PracticeRecentlyActivity"
             android:exported="false" />
         <activity
-            android:name=".learning_space.activity.ExamProblem4Activity"
+            android:name=".training_space.activity.ExamProblem4Activity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.screen_layout.ScreenRecentlyActivity"
+            android:name=".learning_space.screen_layout.ScreenRecentlyActivity"
             android:exported="true" />
         <activity
-            android:name=".learning_space.screen.PracticeScreenTopScroll2Activity"
+            android:name=".training_space.screen.PracticeScreenTopScroll2Activity"
             android:exported="false" />
         <activity
-            android:name=".learning_space.activity.ExamProblem2Activity"
+            android:name=".training_space.activity.ExamProblem2Activity"
             android:exported="false" />
         <activity
-            android:name=".learning_space.activity.ExamResultTestActivity"
+            android:name=".training_space.activity.ExamResultTestActivity"
             android:exported="false" /> <!-- 고정 SplashActivity -->
         <activity
-            android:name=".learning_space.activity.ExamProblem3Activity"
+            android:name=".training_space.activity.ExamProblem3Activity"
             android:exported="true" />
         <activity
-            android:name=".learning_space.activity.ExamResultListActivity"
+            android:name=".training_space.activity.ExamResultListActivity"
             android:exported="true" />
         <activity
-            android:name=".learning_space.screen.PracticeWebViewActivity"
+            android:name=".training_space.screen.PracticeWebViewActivity"
             android:exported="false" />
         <activity
-            android:name=".learning_space.screen.PracticeScreenTopScrollActivity"
+            android:name=".training_space.screen.PracticeScreenTopScrollActivity"
             android:exported="false" />
         <activity
-            android:name=".learning_space.intent.LearningDefaultAppActivity"
+            android:name=".training_space.intent.LearningDefaultAppActivity"
             android:exported="false" />
         <activity
-            android:name=".learning_space.screen.PracticeAppMove2Activity"
+            android:name=".training_space.screen.PracticeAppMove2Activity"
             android:exported="false" />
         <activity
-            android:name=".learning_space.screen.PracticeAppMoveActivity"
+            android:name=".training_space.screen.PracticeAppMoveActivity"
             android:exported="false" />
         <activity
-            android:name=".learning_space.screen.PracticeTopBarActivity"
+            android:name=".training_space.screen.PracticeTopBarActivity"
             android:exported="false" />
         <activity
-            android:name=".learning_space.screen.PracticeScreenLock2Activity"
+            android:name=".training_space.screen.PracticeScreenLock2Activity"
             android:exported="false" />
         <activity
-            android:name=".APItestActivity"
+            android:name=".home.activity.APItestActivity"
             android:exported="true" />
         <activity
-            android:name=".learning_space.screen.PracticeScreenLockActivity"
+            android:name=".training_space.screen.PracticeScreenLockActivity"
             android:exported="false" />
         <activity
-            android:name=".my_profile.CheckMyResultActivity"
+            android:name=".profile_space.CheckMyResultActivity"
             android:exported="false" />
         <activity
-            android:name=".my_profile.MyExamResultActivity"
+            android:name=".profile_space.MyExamResultActivity"
             android:exported="false" /> <!-- <intent-filter> -->
         <!-- <action android:name="android.intent.action.MAIN" /> -->
         <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
         <!-- </intent-filter> -->
         <activity
-            android:name=".learning_space.NewScreenPracticeActivity"
+            android:name=".training_space.NewScreenPracticeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -140,47 +140,47 @@
             </intent-filter>
         </activity> <!-- 아이디찾기/비밀번호변경 화면 -->
         <activity
-            android:name=".FindIdPasswordActivity"
+            android:name=".home.activity.FindIdPasswordActivity"
             android:exported="true" /> <!-- 회원가입 화면 -->
         <activity
-            android:name=".RegisterActivity"
+            android:name=".home.activity.RegisterActivity"
             android:exported="true" /> <!-- 로그인 화면 -->
         <!-- 화면구성 -->
         <activity
-            android:name=".edu_space.screen_layout.ScreenHomeActivity"
+            android:name=".learning_space.screen_layout.ScreenHomeActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.screen_layout.ScreenTopBarActivity"
+            android:name=".learning_space.screen_layout.ScreenTopBarActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.screen_layout.ScreenLockActivity"
+            android:name=".learning_space.screen_layout.ScreenLockActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.screen_layout.ScreenMenuActivity"
+            android:name=".learning_space.screen_layout.ScreenMenuActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.screen_layout.ScreenMoveHomeActivity"
+            android:name=".learning_space.screen_layout.ScreenMoveHomeActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.default_app.todo.DefaultAppBarActivity"
+            android:name=".learning_space.default_app.todo.DefaultAppBarActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.default_app.todo.DefaultMenuActivity"
+            android:name=".learning_space.default_app.todo.DefaultMenuActivity"
             android:exported="false" /> <!-- 병윤님|화면구성 메뉴화면 -->
         <activity
-            android:name=".edu_space.default_app.todo.DefaultAppAddActivity"
+            android:name=".learning_space.default_app.todo.DefaultAppAddActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.default_app.todo.DefaultLockedScreenActivity"
+            android:name=".learning_space.default_app.todo.DefaultLockedScreenActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.default_app.todo.DefaultHomeActivity"
+            android:name=".learning_space.default_app.todo.DefaultHomeActivity"
             android:exported="false" /> <!-- 메시지 화면 -->
         <activity
-            android:name=".edu_space.default_app.message.activity.DefaultMessageActivity"
+            android:name=".learning_space.default_app.message.activity.DefaultMessageActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.default_app.message.activity.DefaultMessageChattingActivity"
+            android:name=".learning_space.default_app.message.activity.DefaultMessageChattingActivity"
             android:exported="true"> <!-- 메시지 화면 -->
 
         </activity> <!-- 메시지채팅 화면 -->
@@ -188,28 +188,28 @@
         <!-- 채팅 방법 선택 -->
         <!-- 메시지 화면 -->
         <activity
-            android:name=".edu_space.default_app.message.activity.DefaultMessageFristActivity"
+            android:name=".learning_space.default_app.message.activity.DefaultMessageFristActivity"
             android:exported="false" /> <!-- 메시지채팅 화면 -->
         <activity
-            android:name=".edu_space.default_app.message.activity.DefaultMessageSelectActivity"
+            android:name=".learning_space.default_app.message.activity.DefaultMessageSelectActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.naver.activity.NaverSearchResultActivity"
+            android:name=".learning_space.naver.activity.NaverSearchResultActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.default_app.DefaultAppActivity"
+            android:name=".learning_space.default_app.DefaultAppActivity"
             android:exported="false" />
         <activity
             android:name=".main.activity.DigitalStartActivity"
             android:exported="false" />
         <activity
-            android:name=".EduSpaceActivity"
+            android:name=".home.activity.EduSpaceActivity"
             android:exported="false" />
         <activity
             android:name=".com.sungkyul.synergy.edu_space.basic_edu.BasicEduMainFragment"
             android:exported="false" />
         <activity
-            android:name=".edu_space.default_app.todo.MenusActivity"
+            android:name=".learning_space.default_app.todo.MenusActivity"
             android:exported="false" />
         <activity
             android:name=".com.sungkyul.synergy.edu_space.basic_edu.dictionary_edu.activity.IconDetailActivity"
@@ -218,31 +218,31 @@
             android:name=".com.sungkyul.synergy.edu_space.basic_edu.move_edu.activity.MoveDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.screen_layout.ScreenLayoutActivity"
+            android:name=".learning_space.screen_layout.ScreenLayoutActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.default_app.phone.activity.DefaultPhoneActivity"
+            android:name=".learning_space.default_app.phone.activity.DefaultPhoneActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.default_app.phone.activity.DefaultPhoneCallActivity"
+            android:name=".learning_space.default_app.phone.activity.DefaultPhoneCallActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.default_app.phone.activity.DefaultPhoneAddActivity"
+            android:name=".learning_space.default_app.phone.activity.DefaultPhoneAddActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.default_app.camera.activity.DefaultCameraActivity"
+            android:name=".learning_space.default_app.camera.activity.DefaultCameraActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.default_app.camera.activity.DefaultCameraGalleryViewActivity"
+            android:name=".learning_space.default_app.camera.activity.DefaultCameraGalleryViewActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.settingedu.SettingMainActivity"
+            android:name=".learning_space.settingedu.SettingMainActivity"
             android:exported="false" /> <!-- <activity -->
         <activity
-            android:name=".edu_space.settingedu.SettingDisplayActivity"
+            android:name=".learning_space.settingedu.SettingDisplayActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.settingedu.SettingFontActivity"
+            android:name=".learning_space.settingedu.SettingFontActivity"
             android:exported="true"> <!-- 계정생성 교육 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -251,35 +251,35 @@
             </intent-filter>
         </activity> <!-- 계정생성 -->
         <activity
-            android:name=".edu_space.accountedu.GoogleMainActivity"
+            android:name=".learning_space.accountedu.GoogleMainActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.accountedu.GoogleLoginActivity"
+            android:name=".learning_space.accountedu.GoogleLoginActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.accountedu.GoogleMakeActivity"
+            android:name=".learning_space.accountedu.GoogleMakeActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.accountedu.GoogleDefaultInfoActivity"
+            android:name=".learning_space.accountedu.GoogleDefaultInfoActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.accountedu.GoogleMailActivity"
+            android:name=".learning_space.accountedu.GoogleMailActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.accountedu.GooglePasswordActivity"
+            android:name=".learning_space.accountedu.GooglePasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.accountedu.GoogleGetCodeActivity"
+            android:name=".learning_space.accountedu.GoogleGetCodeActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.accountedu.GooglePutCodeActivity"
+            android:name=".learning_space.accountedu.GooglePutCodeActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.accountedu.GoogleMailAddActivity"
+            android:name=".learning_space.accountedu.GoogleMailAddActivity"
             android:exported="false" />
 
         <activity
-            android:name=".edu_space.appinstall.AppInstallMainActivity"
+            android:name=".learning_space.appinstall.AppInstallMainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -288,49 +288,49 @@
             </intent-filter>
         </activity> <!-- 병윤님 앱 설치 메인 화면 -->
         <activity
-            android:name=".edu_space.appinstall.AppInstallSearchActivity"
+            android:name=".learning_space.appinstall.AppInstallSearchActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.appinstall.AppInstallLoadingActivity"
+            android:name=".learning_space.appinstall.AppInstallLoadingActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.kakaotalk.activity.KakaoMainActivity"
+            android:name=".learning_space.kakaotalk.activity.KakaoMainActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.kakaotalk.activity.KakaoProfileDetailActivity"
+            android:name=".learning_space.kakaotalk.activity.KakaoProfileDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.kakaotalk.activity.KakaoChattingActivity"
+            android:name=".learning_space.kakaotalk.activity.KakaoChattingActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.naver.activity.NaverSearchActivity"
+            android:name=".learning_space.naver.activity.NaverSearchActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.naver.activity.NaverActivity"
+            android:name=".learning_space.naver.activity.NaverActivity"
             android:exported="false" />
         <activity
-            android:name=".edu_space.naver.activity.NaverSearchInfoActivity"
+            android:name=".learning_space.naver.activity.NaverSearchInfoActivity"
             android:exported="false" />
         <activity
-            android:name=".learning_space.intent.LearningGoogleActivity"
+            android:name=".training_space.intent.LearningGoogleActivity"
             android:exported="false" />
         <activity
-            android:name=".learning_space.intent.LearningIconActivity"
+            android:name=".training_space.intent.LearningIconActivity"
             android:exported="false" />
         <activity
-            android:name=".learning_space.intent.LearningInstallActivity"
+            android:name=".training_space.intent.LearningInstallActivity"
             android:exported="false" />
         <activity
-            android:name=".learning_space.intent.LearningNaverActivity"
+            android:name=".training_space.intent.LearningNaverActivity"
             android:exported="false" />
         <activity
-            android:name=".learning_space.intent.LearningDeliveryActivity"
+            android:name=".training_space.intent.LearningDeliveryActivity"
             android:exported="false" />
         <activity
-            android:name=".learning_space.intent.LearningSettingActivity"
+            android:name=".training_space.intent.LearningSettingActivity"
             android:exported="false" />
         <activity
-            android:name=".learning_space.intent.LearningKakaotalkActivity"
+            android:name=".training_space.intent.LearningKakaotalkActivity"
             android:exported="false" />
     </application>
 
