@@ -3,6 +3,7 @@ package com.sungkyul.synergy.profile_space
 import android.app.Application
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -21,6 +22,7 @@ class Time : Application() {
             runnable = object : Runnable {
                 override fun run() {
                     elapsedTime += 1
+                    Log.d("Time", "Elapsed Time: $elapsedTime seconds")
                     handler.postDelayed(this, 1000)
                 }
             }
@@ -33,12 +35,15 @@ class Time : Application() {
 
         fun getCurrentDate(): String {
             val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-            return dateFormat.format(Date())
+            val currentDate = dateFormat.format(Date())
+            Log.d("Time", "Current Date: $currentDate")
+            return currentDate
         }
     }
 
     override fun onCreate() {
         super.onCreate()
         startTimeCounter()
+        Log.d("Time", "Time Counter Started")
     }
 }

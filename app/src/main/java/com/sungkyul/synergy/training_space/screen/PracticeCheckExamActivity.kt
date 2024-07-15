@@ -32,6 +32,8 @@ class PracticeCheckExamActivity : AppCompatActivity() {
     private var examList: List<Exam> = emptyList()
     private var selectedExamResult: ResultPair? = null
     private var questionNumber: Int = -1
+    private var position: Int = -1
+    private var examResults: ArrayList<ResultPair> = arrayListOf()
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,10 +43,13 @@ class PracticeCheckExamActivity : AppCompatActivity() {
 
         selectedExamResult = intent.getParcelableExtra<ResultPair>("selectedExamResult")
         questionNumber = intent.getIntExtra("questionNumber", -1)
+        position = intent.getIntExtra("position", -1)
+        examResults = intent.getParcelableArrayListExtra<ResultPair>("resultList") ?: arrayListOf()
 
         // Log the received data
         Log.d("PracticeCheckExamActivity", "Received questionNumber: $questionNumber")
         Log.d("PracticeCheckExamActivity", "Received selectedExamResult: $selectedExamResult")
+        Log.d("PracticeCheckExamActivity", "Received position: $position")
 
         // Include된 레이아웃에서 버튼 찾기
         val includeLayout = findViewById<View>(R.id.practice_nav_layout)
@@ -58,21 +63,19 @@ class PracticeCheckExamActivity : AppCompatActivity() {
         }
         // Back 이전 문제 버튼
         button2.setOnClickListener {
-            if (questionNumber > 1) {
-                questionNumber--
-                fetchExamList()
+            if (position > 0) {
+                position--
+                updateExamData(position)
             } else {
-                // 첫 번째 문제일 경우
                 Log.d("PracticeCheckExamActivity", "첫 번째 문제입니다.")
             }
         }
         // Next 다음 문제 버튼
         button3.setOnClickListener {
-            if (questionNumber < examList.size) {
-                questionNumber++
-                fetchExamList()
+            if (position < examResults.size - 1) {
+                position++
+                updateExamData(position)
             } else {
-                // 마지막 문제일 경우
                 Log.d("PracticeCheckExamActivity", "마지막 문제입니다.")
             }
         }
@@ -108,6 +111,12 @@ class PracticeCheckExamActivity : AppCompatActivity() {
         } else {
             Log.e("PracticeCheckExamActivity", "Invalid selectedExamResult or questionNumber")
         }
+    }
+
+    private fun updateExamData(position: Int) {
+        selectedExamResult = examResults[position]
+        questionNumber = selectedExamResult?.questionNumber ?: -1
+        fetchExamList()
     }
 
     private fun fetchExamList() {

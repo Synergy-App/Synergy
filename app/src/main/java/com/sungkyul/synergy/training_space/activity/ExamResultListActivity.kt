@@ -136,4 +136,5 @@ class ExamResultListActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
 }

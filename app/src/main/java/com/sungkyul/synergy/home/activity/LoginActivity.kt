@@ -50,6 +50,7 @@ class LoginActivity : AppCompatActivity() {
     private var density = 0f
 
     init {
+        
         // API 호출하기 위한 세팅
         val retrofit = Retrofit.Builder()
             .baseUrl("https://sng.hyeonwoo.com/") // 기본 URL 설정

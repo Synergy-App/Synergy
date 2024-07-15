@@ -17,11 +17,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
-import com.sungkyul.synergy.home.activity.CheckLearningAbilityActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.com.sungkyul.synergy.utils.GalaxyNote9
 import com.sungkyul.synergy.databinding.FragmentMyProfileBinding
+import com.sungkyul.synergy.profile_space.CheckLearningAbilityActivity
+import com.sungkyul.synergy.home.activity.LoginActivity
 import com.sungkyul.synergy.profile_space.MyExamResultActivity
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -56,6 +57,10 @@ class MyProfileFragment : Fragment() {
         binding.CheckResultCardView.setOnClickListener {
             val intent = Intent(requireActivity(), CheckLearningAbilityActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.btnLogout.setOnClickListener {
+            logout()
         }
 
         // 디스플레이 크기에 따라 글자 크기를 설정
@@ -201,6 +206,23 @@ class MyProfileFragment : Fragment() {
             else -> R.drawable.sebook_sad_face
         }
         Glide.with(this).load(imageRes).into(imageView)
+    }
+
+    private fun logout() {
+        val sharedPreferences = requireContext().getSharedPreferences("SynergyPrefs", Context.MODE_PRIVATE)
+        with(sharedPreferences.edit()) {
+            remove("Token")
+            remove("Nickname")
+            remove("DigitalAgeGrade")
+            remove("AutoLogin")
+            remove("SavedId")
+            remove("SavedPassword")
+            apply()
+        }
+        val intent = Intent(requireActivity(), LoginActivity::class.java)
+        startActivity(intent)
+        requireActivity().finish() // 현재 액티비티를 종료하여 뒤로 가기 버튼을 눌렀을 때 다시 프로필 화면으로 돌아가지 않도록 함
+        Toast.makeText(requireContext(), "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show()
     }
 
     fun handleOnBackPressed(): Boolean {

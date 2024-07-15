@@ -47,7 +47,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".home.activity.CheckLearningAbilityActivity"
+            android:name=".profile_space.CheckLearningAbilityActivity"
             android:exported="true" />
         <activity
             android:name=".home.activity.MainActivity"
@@ -120,9 +120,6 @@
             android:exported="true" />
         <activity
             android:name=".training_space.screen.PracticeScreenLockActivity"
-            android:exported="false" />
-        <activity
-            android:name=".profile_space.CheckMyResultActivity"
             android:exported="false" />
         <activity
             android:name=".profile_space.MyExamResultActivity"
