@@ -80,6 +80,10 @@ data class ChangePasswordBody(
 /** POST /user/change-password 응답데이터 */
 data class ChangePasswordResult(
     val success: Boolean,
-    val message: String
+    val err: ErrorResponse?,
+    val data: Any?
 )
-
+data class ErrorResponse(
+    val msg: String,
+    val code: String
+)

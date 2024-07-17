@@ -18,6 +18,11 @@
         android:theme="@style/Theme.Synergy"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+        <activity
+            android:name=".home.activity.ChangePasswordActivity"
+            android:exported="true">
+        </activity>
         <activity
             android:name=".training_space.screen.PracticeCheckExamActivity"
             android:exported="true">

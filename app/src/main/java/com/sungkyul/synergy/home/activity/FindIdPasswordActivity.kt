@@ -1,5 +1,7 @@
+// FindIdPasswordActivity.kt
 package com.sungkyul.synergy.home.activity
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Spannable
@@ -15,8 +17,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.backend.ApiResponse
 import com.sungkyul.synergy.backend.auth.AuthAPI
-import com.sungkyul.synergy.backend.auth.ChangePasswordBody
-import com.sungkyul.synergy.backend.auth.ChangePasswordResult
 import com.sungkyul.synergy.backend.auth.FindIdBody
 import com.sungkyul.synergy.backend.auth.FindIdResult
 import com.sungkyul.synergy.backend.auth.VerifyUserBody
@@ -36,10 +36,7 @@ class FindIdPasswordActivity : AppCompatActivity() {
     private lateinit var btnFindId: Button
     private lateinit var editTextPhoneForPassword: EditText
     private lateinit var editTextIdForPassword: EditText
-    private lateinit var editTextNewPassword: EditText
     private lateinit var btnVerifyUser: Button
-    private lateinit var btnChangePassword: Button
-    private lateinit var layoutChangePassword: LinearLayout
 
     private val authApi: AuthAPI
 
@@ -60,89 +57,6 @@ class FindIdPasswordActivity : AppCompatActivity() {
         this.authApi = retrofit.create(AuthAPI::class.java)
     }
 
-    // POST /user/find-id api를 실제로 호출하는 곳
-    private suspend fun callFindIdAPI(request: FindIdBody): ApiResponse<FindIdResult>? {
-        return withContext(Dispatchers.IO) {
-            try {
-                val call = authApi.findIdByPhone(request)
-                val response = call.execute()
-                if (response.isSuccessful) {
-                    Log.d("FindIdPasswordActivity", "callFindIdAPI Success: ${response.body()}")
-                } else {
-                    Log.e(
-                        "FindIdPasswordActivity",
-                        "callFindIdAPI Failed: ${response.errorBody()?.string()}"
-                    )
-                }
-                response.body()
-            } catch (e: Exception) {
-                Log.e("FindIdPasswordActivity", "callFindIdAPI Exception: ${e.message}")
-                null
-            }
-        }
-    }
-
-    // POST /user/verify-user api를 실제로 호출하는 곳
-    private suspend fun callVerifyUserAPI(request: VerifyUserBody): ApiResponse<VerifyUserResult>? {
-        return withContext(Dispatchers.IO) {
-            try {
-                val call = authApi.verifyUser(request)
-                val response = call.execute()
-                if (response.isSuccessful) {
-                    Log.d("FindIdPasswordActivity", "callVerifyUserAPI Success: ${response.body()}")
-                } else {
-                    Log.e(
-                        "FindIdPasswordActivity",
-                        "callVerifyUserAPI Failed: ${response.errorBody()?.string()}"
-                    )
-                }
-                response.body()
-            } catch (e: Exception) {
-                Log.e("FindIdPasswordActivity", "callVerifyUserAPI Exception: ${e.message}")
-                null
-            }
-        }
-    }
-
-    // POST /user/change-password api를 실제로 호출하는 곳
-    private suspend fun callChangePasswordAPI(request: ChangePasswordBody): ApiResponse<ChangePasswordResult>? {
-        return withContext(Dispatchers.IO) {
-            try {
-                val call = authApi.changePassword(request)
-                val response = call.execute()
-                if (response.isSuccessful) {
-                    Log.d(
-                        "FindIdPasswordActivity",
-                        "callChangePasswordAPI Success: ${response.body()}"
-                    )
-                } else {
-                    Log.e(
-                        "FindIdPasswordActivity",
-                        "callChangePasswordAPI Failed: ${response.errorBody()?.string()}"
-                    )
-                }
-                response.body()
-            } catch (e: Exception) {
-                Log.e("FindIdPasswordActivity", "callChangePasswordAPI Exception: ${e.message}")
-                null
-            }
-        }
-    }
-
-    // 텍스트 색상 변경 함수
-    private fun updateTextColor(textView: TextView, fullText: String, targetText: String, color: String) {
-        val spannable = SpannableString(fullText)
-        val start = fullText.indexOf(targetText)
-        val end = start + targetText.length
-        spannable.setSpan(
-            ForegroundColorSpan(Color.parseColor(color)),
-            start,
-            end,
-            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-        textView.text = spannable
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_find_id_password)
@@ -151,10 +65,7 @@ class FindIdPasswordActivity : AppCompatActivity() {
         btnFindId = findViewById(R.id.btnFindId)
         editTextPhoneForPassword = findViewById(R.id.editTextPhoneForPassword)
         editTextIdForPassword = findViewById(R.id.editTextIdForPassword)
-        editTextNewPassword = findViewById(R.id.editTextNewPassword)
         btnVerifyUser = findViewById(R.id.btnVerifyUser)
-        btnChangePassword = findViewById(R.id.btnChangePassword)
-        layoutChangePassword = findViewById(R.id.layoutChangePassword)
 
         val textViewFindId: TextView = findViewById(R.id.textViewFindId)
         val textViewChangePassword: TextView = findViewById(R.id.textViewChangePassword)
@@ -208,14 +119,10 @@ class FindIdPasswordActivity : AppCompatActivity() {
                     Log.d("FindIdPasswordActivity", "VerifyUser Response: $verifyRes")
 
                     if (verifyRes?.success == true) {
-                        layoutChangePassword.visibility = LinearLayout.VISIBLE
-                        Toast.makeText(
-                            this@FindIdPasswordActivity,
-                            "사용자 인증에 성공했습니다. 비밀번호를 변경하세요.",
-                            Toast.LENGTH_LONG
-                        ).show()
+                        val intent = Intent(this@FindIdPasswordActivity, ChangePasswordActivity::class.java)
+                        intent.putExtra("userId", userId)
+                        startActivity(intent)
                     } else {
-                        layoutChangePassword.visibility = LinearLayout.GONE
                         Log.e("FindIdPasswordActivity", "VerifyUser Error: ${verifyRes?.err?.msg}")
                         Toast.makeText(
                             this@FindIdPasswordActivity,
@@ -226,38 +133,63 @@ class FindIdPasswordActivity : AppCompatActivity() {
                 }
             }
         }
+    }
 
-        btnChangePassword.setOnClickListener {
-            val userId = editTextIdForPassword.text.toString().trim()
-            val newPassword = editTextNewPassword.text.toString().trim()
-
-            if (newPassword.isEmpty()) {
-                Toast.makeText(this@FindIdPasswordActivity, "새 비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
-            } else {
-                CoroutineScope(Dispatchers.Main).launch {
-                    val changePasswordBody = ChangePasswordBody(userId, newPassword)
-                    val changePasswordRes = callChangePasswordAPI(changePasswordBody)
-                    Log.d("FindIdPasswordActivity", "ChangePassword Response: $changePasswordRes")
-
-                    if (changePasswordRes?.success == true) {
-                        Toast.makeText(
-                            this@FindIdPasswordActivity,
-                            "비밀번호가 성공적으로 변경되었습니다.",
-                            Toast.LENGTH_LONG
-                        ).show()
-                    } else {
-                        Log.e(
-                            "FindIdPasswordActivity",
-                            "ChangePassword Error: ${changePasswordRes?.err?.msg}"
-                        )
-                        Toast.makeText(
-                            this@FindIdPasswordActivity,
-                            changePasswordRes?.err?.msg ?: "비밀번호 변경에 실패하였습니다.",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
+    // POST /user/find-id api를 실제로 호출하는 곳
+    private suspend fun callFindIdAPI(request: FindIdBody): ApiResponse<FindIdResult>? {
+        return withContext(Dispatchers.IO) {
+            try {
+                val call = authApi.findIdByPhone(request)
+                val response = call.execute()
+                if (response.isSuccessful) {
+                    Log.d("FindIdPasswordActivity", "callFindIdAPI Success: ${response.body()}")
+                } else {
+                    Log.e(
+                        "FindIdPasswordActivity",
+                        "callFindIdAPI Failed: ${response.errorBody()?.string()}"
+                    )
                 }
+                response.body()
+            } catch (e: Exception) {
+                Log.e("FindIdPasswordActivity", "callFindIdAPI Exception: ${e.message}")
+                null
             }
         }
+    }
+
+    // POST /user/verify-user api를 실제로 호출하는 곳
+    private suspend fun callVerifyUserAPI(request: VerifyUserBody): ApiResponse<VerifyUserResult>? {
+        return withContext(Dispatchers.IO) {
+            try {
+                val call = authApi.verifyUser(request)
+                val response = call.execute()
+                if (response.isSuccessful) {
+                    Log.d("FindIdPasswordActivity", "callVerifyUserAPI Success: ${response.body()}")
+                } else {
+                    Log.e(
+                        "FindIdPasswordActivity",
+                        "callVerifyUserAPI Failed: ${response.errorBody()?.string()}"
+                    )
+                }
+                response.body()
+            } catch (e: Exception) {
+                Log.e("FindIdPasswordActivity", "callVerifyUserAPI Exception: ${e.message}")
+                null
+            }
+        }
+    }
+
+    // 텍스트 색상 변경 함수
+    private fun updateTextColor(textView: TextView, fullText: String, targetText: String, color: String) {
+        val spannable = SpannableString(fullText)
+        val start = fullText.indexOf(targetText)
+        val end = start + targetText.length
+        spannable.setSpan(
+            ForegroundColorSpan(Color.parseColor(color)),
+            start,
+            end,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        textView.text = spannable
     }
 }

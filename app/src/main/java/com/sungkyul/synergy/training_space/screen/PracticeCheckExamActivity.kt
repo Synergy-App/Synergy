@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import com.bumptech.glide.Glide
@@ -50,6 +51,7 @@ class PracticeCheckExamActivity : AppCompatActivity() {
         Log.d("PracticeCheckExamActivity", "Received questionNumber: $questionNumber")
         Log.d("PracticeCheckExamActivity", "Received selectedExamResult: $selectedExamResult")
         Log.d("PracticeCheckExamActivity", "Received position: $position")
+        Log.d("PracticeCheckExamActivity", "Received examResults: $examResults")
 
         // Include된 레이아웃에서 버튼 찾기
         val includeLayout = findViewById<View>(R.id.practice_nav_layout)
@@ -67,6 +69,7 @@ class PracticeCheckExamActivity : AppCompatActivity() {
                 position--
                 updateExamData(position)
             } else {
+                Toast.makeText(this, "첫 번째 문제입니다.", Toast.LENGTH_SHORT).show()
                 Log.d("PracticeCheckExamActivity", "첫 번째 문제입니다.")
             }
         }
@@ -76,6 +79,7 @@ class PracticeCheckExamActivity : AppCompatActivity() {
                 position++
                 updateExamData(position)
             } else {
+                Toast.makeText(this, "마지막 문제입니다.", Toast.LENGTH_SHORT).show()
                 Log.d("PracticeCheckExamActivity", "마지막 문제입니다.")
             }
         }
@@ -116,6 +120,7 @@ class PracticeCheckExamActivity : AppCompatActivity() {
     private fun updateExamData(position: Int) {
         selectedExamResult = examResults[position]
         questionNumber = selectedExamResult?.questionNumber ?: -1
+        Log.d("PracticeCheckExamActivity", "Updated questionNumber: $questionNumber, position: $position")
         fetchExamList()
     }
 

@@ -11,5 +11,6 @@ data class ApiResponse<T> (
     /** 처리 실패 시 서버에서 응답하는 에러 객체 */
     val err: ResponseError,
     /** 처리 성공 시 서버에서 응답하는 응답데이터 */
-    val data: T
+    val data: T,
+    val message: String?
 )

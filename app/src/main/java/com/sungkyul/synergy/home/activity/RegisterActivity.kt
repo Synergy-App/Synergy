@@ -7,6 +7,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.com.sungkyul.synergy.home.fragment.FragmentRegisterId
 import com.sungkyul.synergy.com.sungkyul.synergy.home.fragment.FragmentRegisterNickname
 import com.sungkyul.synergy.com.sungkyul.synergy.home.fragment.FragmentRegisterPassword
+import com.sungkyul.synergy.com.sungkyul.synergy.home.fragment.FragmentRegisterPhone
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -27,6 +28,10 @@ class RegisterActivity : AppCompatActivity() {
 
     fun navigateToNicknameFragment(userId: String, password: String) {
         replaceFragment(FragmentRegisterNickname.newInstance(userId, password))
+    }
+
+    fun navigateToPhoneFragment(userId: String, password: String, nickname: String) {
+        replaceFragment(FragmentRegisterPhone.newInstance(userId, password, nickname))
     }
 
     private fun replaceFragment(fragment: Fragment) {

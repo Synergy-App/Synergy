@@ -113,8 +113,10 @@ class ExamResultListActivity : AppCompatActivity() {
             Log.d("ExamResultListActivity", "Item clicked at position: $position")
             val selectedExamResult = resultList?.get(position)
             val intent = Intent(this, PracticeCheckExamActivity::class.java).apply {
+                putParcelableArrayListExtra("resultList", resultList)
                 putExtra("selectedExamResult", selectedExamResult)
                 putExtra("questionNumber", selectedExamResult?.questionNumber)
+                putExtra("position", position)
             }
             startActivity(intent)
         }
@@ -136,5 +138,4 @@ class ExamResultListActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
 }

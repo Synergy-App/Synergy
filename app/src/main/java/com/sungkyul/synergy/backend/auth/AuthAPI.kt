@@ -61,7 +61,6 @@ interface AuthAPI {
 
     @POST("user/change-password")
     fun changePassword(@Body requestBody: ChangePasswordBody): Call<ApiResponse<ChangePasswordResult>>
-
 /*    @GET("user/info")
     fun getUserInfo(@Header("Authorization") token: String): Call<ApiResponse<UserInfo>>*/
 }
