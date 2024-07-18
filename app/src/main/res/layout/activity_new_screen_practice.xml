@@ -10,13 +10,15 @@
     <LinearLayout
         android:id="@+id/header_layout"
         android:layout_width="0dp"
-        android:layout_height="106dp"
+        android:layout_height="0dp"
         android:background="#D25A5A"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/options_container"
+        app:layout_constraintVertical_weight="1">
 
         <TextView
             android:id="@+id/learning_info_tv"
@@ -32,27 +34,25 @@
 
     <LinearLayout
         android:id="@+id/options_container"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:gravity="center"
         android:padding="10dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/button_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header_layout">
+        app:layout_constraintTop_toBottomOf="@+id/header_layout"
+        app:layout_constraintVertical_weight="3">
 
         <ImageView
             android:id="@+id/icon_image"
             android:layout_width="120dp"
-            android:layout_gravity="center"
             android:layout_height="120dp"
+            android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:src="@drawable/new_screen_icon_test"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/header_layout" />
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/description_text"
@@ -63,21 +63,14 @@
             android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="bold"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/icon_image" />
-
+            android:visibility="gone" />
 
         <ImageView
             android:id="@+id/description_image"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_marginTop="20dp"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/description_text" />
+            android:visibility="gone" />
 
         <LinearLayout
             android:id="@+id/container"
@@ -85,19 +78,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/description_image">
+            android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/choose_option1_btn"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="30dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/description_image">
+                android:layout_marginTop="30dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -128,11 +115,7 @@
                 android:id="@+id/choose_option2_btn"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/choose_option1_btn"
-                app:layout_constraintVertical_bias="0.2">
+                android:layout_marginTop="15dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -163,11 +146,7 @@
                 android:id="@+id/choose_option3_btn"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/choose_option2_btn"
-                app:layout_constraintVertical_bias="0.3">
+                android:layout_marginTop="15dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -198,11 +177,7 @@
                 android:id="@+id/choose_option4_btn"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/choose_option3_btn"
-                app:layout_constraintVertical_bias="0.4">
+                android:layout_marginTop="15dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -234,17 +209,19 @@
     <LinearLayout
         android:id="@+id/button_layout"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginBottom="20dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/options_container"
+        app:layout_constraintVertical_weight="1">
 
         <ImageView
             android:id="@+id/back_btn"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
@@ -253,7 +230,7 @@
 
         <ImageView
             android:id="@+id/next_btn"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_weight="1"
