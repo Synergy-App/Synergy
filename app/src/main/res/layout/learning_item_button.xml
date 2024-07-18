@@ -46,7 +46,7 @@
             android:layout_height="50dp"
             android:layout_gravity="end"
             android:layout_marginTop="12dp"
-            android:src="@drawable/ic_edubotton_icon"/>
+            android:src="@drawable/ic_basic"/>
 
         <!--        <com.github.mikephil.charting.charts.HorizontalBarChart-->
         <!--            android:id="@+id/bar_chart"-->

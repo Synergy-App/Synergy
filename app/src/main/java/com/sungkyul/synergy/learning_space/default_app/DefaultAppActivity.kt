@@ -8,9 +8,9 @@ import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.databinding.ActivityDefaultAppBinding
 import com.sungkyul.synergy.learning_space.default_app.camera.activity.DefaultCameraActivity
+import com.sungkyul.synergy.learning_space.default_app.gallery.activity.DefaultGalleryActivity
 import com.sungkyul.synergy.learning_space.default_app.message.activity.DefaultMessageChattingActivity
 import com.sungkyul.synergy.learning_space.default_app.phone.activity.DefaultPhoneActivity
-import com.sungkyul.synergy.learning_space.default_app.gallery.activity.DefaultGalleryActivity
 import com.sungkyul.synergy.utils.GalaxyButton
 
 class DefaultAppActivity : AppCompatActivity() {
