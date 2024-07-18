@@ -225,24 +225,22 @@
         <activity
             android:name=".learning_space.default_app.DefaultAppActivity"
             android:exported="false" />
-        <activity
-            android:name=".main.activity.DigitalStartActivity"
-            android:exported="false" />
+
         <activity
             android:name=".home.activity.EduSpaceActivity"
             android:exported="false" />
-        <activity
-            android:name=".com.sungkyul.synergy.edu_space.basic_edu.BasicEduMainFragment"
-            android:exported="false" />
+       <activity
+           android:name=".learning_space.basic_edu.activity.BasicEduMainFragment"
+           android:exported="false"/>
         <activity
             android:name=".learning_space.default_app.todo.MenusActivity"
             android:exported="false" />
         <activity
-            android:name=".com.sungkyul.synergy.edu_space.basic_edu.dictionary_edu.activity.IconDetailActivity"
-            android:exported="false" /> <!-- 1강 -->
+            android:name=".learning_space.basic_edu.activity.IconDetailActivity"
+            android:exported="false"/>
         <activity
-            android:name=".com.sungkyul.synergy.edu_space.basic_edu.move_edu.activity.MoveDetailActivity"
-            android:exported="false" />
+            android:name=".learning_space.move_edu.activity.MoveDetailActivity"
+            android:exported="false"/>
         <activity
             android:name=".learning_space.screen_layout.ScreenLayoutActivity"
             android:exported="false" />

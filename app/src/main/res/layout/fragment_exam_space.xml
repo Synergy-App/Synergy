@@ -44,21 +44,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/learingTitle" />
 
-    <!-- 유형별 실습 버튼 -->
+    <!--유형별 실습-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/type_exercise_layout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/top_bar_image"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/all_exercise_layout"
-        app:layout_constraintWidth_percent="0.44"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.85"
         app:layout_constraintHeight_percent="0.3"
         android:layout_marginTop="26dp"
-        android:layout_marginStart="10dp"
         android:layout_marginEnd="5dp"
         android:background="@drawable/rounded_button"
-        android:elevation="6dp">
+        android:elevation="6dp"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.5">
 
         <com.sungkyul.synergy.utils.GalaxyButton
             android:id="@+id/type_exercise_button"
@@ -107,14 +108,14 @@
             android:id="@+id/type_exercise_image"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/ic_solve_type"
             android:scaleType="centerInside"
-            app:layout_constraintTop_toBottomOf="@id/type_exercise_text_group"
+            android:src="@drawable/ic_solve_type"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintWidth_percent="0.64"
-            app:layout_constraintHeight_percent="0.4"/>
+            app:layout_constraintHeight_percent="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/type_exercise_text_group"
+            app:layout_constraintWidth_percent="0.8" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- 전체 실습 버튼 -->
@@ -122,16 +123,17 @@
         android:id="@+id/all_exercise_layout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/top_bar_image"
-        app:layout_constraintStart_toEndOf="@+id/type_exercise_layout"
+        app:layout_constraintTop_toBottomOf="@id/type_exercise_layout"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintWidth_percent="0.44"
+        app:layout_constraintWidth_percent="0.85"
         app:layout_constraintHeight_percent="0.3"
         android:layout_marginTop="26dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="5dp"
         android:background="@drawable/rounded_button"
-        android:elevation="6dp">
+        android:elevation="6dp"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.5">
 
         <com.sungkyul.synergy.utils.GalaxyButton
             android:id="@+id/all_exercise_button"
@@ -188,146 +190,5 @@
             app:layout_constraintHeight_percent="0.4"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- 취약점 공략 버튼 -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/attacking_vulnerabilities_layout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/type_exercise_layout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/difficulty_practice_layout"
-        app:layout_constraintWidth_percent="0.44"
-        app:layout_constraintHeight_percent="0.3"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="5dp"
-        android:background="@drawable/rounded_button"
-        android:elevation="6dp">
-
-        <com.sungkyul.synergy.utils.GalaxyButton
-            android:id="@+id/attacking_vulnerabilities_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/round_corner_white"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-        <LinearLayout
-            android:id="@+id/attacking_vulnerabilities_text_group"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/attacking_vulnerabilities_image"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <TextView
-                android:id="@+id/weak"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="취약점"
-                android:fontFamily="@font/pretendard_semibold"
-                android:textColor="@color/black"
-                />
-
-            <TextView
-                android:id="@+id/weak_test"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="공략"
-                android:fontFamily="@font/pretendard_semibold"
-                />
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/attacking_vulnerabilities_image"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:src="@drawable/ic_solve_weak"
-            android:scaleType="centerInside"
-            app:layout_constraintTop_toBottomOf="@id/attacking_vulnerabilities_text_group"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintWidth_percent="0.68"
-            app:layout_constraintHeight_percent="0.4"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!-- 난이도 실습 버튼 -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/difficulty_practice_layout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/all_exercise_layout"
-        app:layout_constraintStart_toEndOf="@+id/attacking_vulnerabilities_layout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintWidth_percent="0.44"
-        app:layout_constraintHeight_percent="0.3"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/rounded_button"
-        android:elevation="6dp">
-
-        <com.sungkyul.synergy.utils.GalaxyButton
-            android:id="@+id/difficulty_practice_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/round_corner_white"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-        <LinearLayout
-            android:id="@+id/difficulty_practice_text_group"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/difficulty_practice_image"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <TextView
-                android:id="@+id/difficulty2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="난이도"
-                android:fontFamily="@font/pretendard_semibold"
-                android:textColor="@color/black"
-                />
-
-            <TextView
-                android:id="@+id/difficulty2_test"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="실습"
-                android:fontFamily="@font/pretendard_semibold"
-                />
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/difficulty_practice_image"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:src="@drawable/ic_solve_star"
-            android:scaleType="centerInside"
-            app:layout_constraintTop_toBottomOf="@id/difficulty_practice_text_group"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintWidth_percent="0.54"
-            app:layout_constraintHeight_percent="0.4"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -45,7 +45,6 @@ class LearningFragment : Fragment() {
             EduButtonItem("기초", R.drawable.ic_edu_note),
             EduButtonItem("화면구성", R.drawable.ic_edu_gall),
             EduButtonItem("카메라", R.drawable.ic_camera),
-            EduButtonItem("앨범", R.drawable.ic_gallery),
             EduButtonItem("전화", R.drawable.ic_call),
             EduButtonItem("문자", R.drawable.ic_message),
             EduButtonItem("환경 설정", R.drawable.ic_edubutton_setting),

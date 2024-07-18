@@ -67,25 +67,27 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:text="1강    기본 동작 교육"
-            android:textAlignment="textStart"
-            android:textSize="20sp"
+            android:text="1강 \n 기본 동작 교육"
+            android:textSize="25sp"
+            android:fontFamily="@font/pretendard_semibold"
             android:textColor="#000000"
             android:background="@drawable/round_corner_white_basicbtn"
+            android:drawableLeft="@drawable/hand_click"
             android:padding="20dp" /> <!-- 패딩을 16dp에서 20dp로 증가 -->
 
         <Button
             android:id="@+id/word_dic_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="15dp"
             android:layout_marginBottom="8dp"
-            android:text="2강    용어 사전"
-            android:textAlignment="textStart"
-            android:textSize="20sp"
-            android:background="@drawable/round_corner_white_basicbtn"
+            android:text="2강 \n 용어 사전"
+            android:textSize="25sp"
+            android:fontFamily="@font/pretendard_semibold"
             android:textColor="#000000"
-            android:padding="20dp" /> <!-- 패딩을 16dp에서 20dp로 증가 -->
+            android:background="@drawable/round_corner_white_basicbtn"
+            android:drawableLeft="@drawable/dictionary"
+            android:padding="20dp" />
     </LinearLayout>
 
 

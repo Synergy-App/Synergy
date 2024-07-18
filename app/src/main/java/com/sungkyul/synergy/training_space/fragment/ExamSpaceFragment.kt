@@ -34,8 +34,7 @@ class ExamSpaceFragment : Fragment() {
 
         binding.typeExerciseButton.post { binding.typeExerciseButton.clipToRoundRect(27.0f) }
         binding.allExerciseButton.post { binding.allExerciseButton.clipToRoundRect(27.0f) }
-        binding.attackingVulnerabilitiesButton.post { binding.attackingVulnerabilitiesButton.clipToRoundRect(27.0f) }
-        binding.difficultyPracticeButton.post { binding.difficultyPracticeButton.clipToRoundRect(27.0f) }
+
 
         binding.typeExerciseButton.setOnTouchListener { view, event ->
             when (event.action) {
@@ -64,32 +63,6 @@ class ExamSpaceFragment : Fragment() {
                 MotionEvent.ACTION_UP -> {
                     val intent = Intent(activity, ExamProblemActivity::class.java)
                     activity?.startActivity(intent)
-                    (view as GalaxyButton).startTouchUpAnimation()
-                }
-            }
-            true
-        }
-
-        binding.attackingVulnerabilitiesButton.setOnTouchListener { view, event ->
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    (view as GalaxyButton).startTouchDownAnimation(event.x, event.y, 100.0f)
-                }
-
-                MotionEvent.ACTION_UP -> {
-                    (view as GalaxyButton).startTouchUpAnimation()
-                }
-            }
-            true
-        }
-
-        binding.difficultyPracticeButton.setOnTouchListener { view, event ->
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    (view as GalaxyButton).startTouchDownAnimation(event.x, event.y, 100.0f)
-                }
-
-                MotionEvent.ACTION_UP -> {
                     (view as GalaxyButton).startTouchUpAnimation()
                 }
             }
@@ -127,12 +100,10 @@ class ExamSpaceFragment : Fragment() {
         binding.learingSubtitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, (standardSizeX / 15).toFloat())
         binding.category.setTextSize(TypedValue.COMPLEX_UNIT_SP,(standardSizeX / 14).toFloat())
         binding.all.setTextSize(TypedValue.COMPLEX_UNIT_SP,(standardSizeX / 14).toFloat())
-        binding.weak.setTextSize(TypedValue.COMPLEX_UNIT_SP,(standardSizeX / 14).toFloat())
-        binding.difficulty2.setTextSize(TypedValue.COMPLEX_UNIT_SP,(standardSizeX / 14).toFloat())
+
         binding.categoryTest.setTextSize(TypedValue.COMPLEX_UNIT_SP,(standardSizeX / 18).toFloat())
         binding.allTest.setTextSize(TypedValue.COMPLEX_UNIT_SP,(standardSizeX / 18).toFloat())
-        binding.weakTest.setTextSize(TypedValue.COMPLEX_UNIT_SP,(standardSizeX / 18).toFloat())
-        binding.difficulty2Test.setTextSize(TypedValue.COMPLEX_UNIT_SP,(standardSizeX / 18).toFloat())
+
 
         // headerImage의 높이 설정
         val topbarImageHeight = (standardSizeY * 0.5).toInt() // 높이를 화면 높이의 50%로 설정
