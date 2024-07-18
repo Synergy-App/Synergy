@@ -18,10 +18,10 @@ data class KakaoCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.contentText = "<span style=\"color:#E6C60D\"><b>카카오톡</b></span>의<br>메인 화면입니다."
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = 300.0f
-            dialog.bottom = 300.0f
-            dialog.start = 50.0f
-            dialog.end = 50.0f
+            dialog.top = 0.6f
+            dialog.bottom = 0.2f
+            dialog.start = 0.1f
+            dialog.end = 0.1f
             dialog.visibility = true
             cover.visibility = true
             cover.isClickable = true

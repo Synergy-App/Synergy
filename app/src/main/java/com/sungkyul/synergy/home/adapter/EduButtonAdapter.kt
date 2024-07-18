@@ -21,6 +21,7 @@ import com.sungkyul.synergy.learning_space.basic_edu.activity.BasicEduMainFragme
 import com.sungkyul.synergy.learning_space.default_app.message.activity.DefaultMessageFirstActivity
 import com.sungkyul.synergy.learning_space.screen_layout.ScreenFirstActivity
 import com.sungkyul.synergy.learning_space.default_app.phone.activity.DefaultPhoneFirstActivity
+import com.sungkyul.synergy.learning_space.kakaotalk.activity.KakaoFirstActivity
 import com.sungkyul.synergy.learning_space.settingedu.SettingsFirstActivity
 import com.sungkyul.synergy.utils.GalaxyButton
 
@@ -125,8 +126,8 @@ class EduButtonAdapter(
                                 context.startActivity(intent)*/
                             }
                             "카카오톡" -> {
-                                /*  val intent = Intent(context, KakaoMainActivity::class.java)
-                                  context.startActivity(intent)*/
+                                 val intent = Intent(context, KakaoFirstActivity::class.java)
+                                  context.startActivity(intent)
                             }
                             "네이버" -> {
                                 /*val intent = Intent(context, NaverActivity::class.java)
