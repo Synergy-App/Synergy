@@ -17,9 +17,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.courses.settings.SettingsFirstCourse
 import com.sungkyul.synergy.learning_space.basic_edu.activity.BasicEduMainFragment
 import com.sungkyul.synergy.learning_space.screen_layout.ScreenFirstActivity
 import com.sungkyul.synergy.learning_space.screen_layout.ScreenLockActivity
+import com.sungkyul.synergy.learning_space.settingedu.SettingsFirstActivity
 import com.sungkyul.synergy.utils.GalaxyButton
 
 data class EduButtonItem(
@@ -111,8 +113,8 @@ class EduButtonAdapter(
                                  context.startActivity(intent)*/
                             }
                             "환경 설정" -> {
-                                /* val intent = Intent(context, Setting2MainActivity::class.java)
-                                 context.startActivity(intent)*/
+                                 val intent = Intent(context, SettingsFirstActivity::class.java)
+                                 context.startActivity(intent)
                             }
                             "계정 생성" -> {
                                 /*  val intent = Intent(context, GoogleMainActivity::class.java)

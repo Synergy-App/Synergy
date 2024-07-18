@@ -145,7 +145,8 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
                 separatorWidth = 5,
                 height = 0.0f,
                 background = R.drawable.edu_top_dialog_bg,
-                visibility = false
+                visibility = false,
+                sebookImageVisibility = false
             ),
             EduVerticalDialog(
                 titleText = "",
@@ -162,7 +163,8 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
                 separatorWidth = 5,
                 height = 0.0f,
                 background = R.drawable.edu_bottom_dialog_bg,
-                visibility = false
+                visibility = false,
+                sebookImageVisibility = false
             ),
             EduCover(
                 boxLeft = 0.0f,
@@ -346,7 +348,15 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
             eduScreenFragment.hideBottomDialog()
         }
 
+        if(hasChangedBottomDialogSebookImageVisibility(from = false, to = true)) {
+            eduScreenFragment.showBottomDialogSebookImage()
+        }
+        if(hasChangedBottomDialogSebookImageVisibility(from = true, to = false)) {
+            eduScreenFragment.hideBottomDialogSebookImage()
+        }
+
         currentDialog.visibility = dialog.visibility ?: currentDialog.visibility
+        currentDialog.sebookImageVisibility = dialog.sebookImageVisibility ?: currentDialog.sebookImageVisibility
     }
 
     private fun hasChangedDialogVisibility(from: Boolean, to: Boolean): Boolean {
@@ -361,6 +371,13 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         val dialog = course!!.list[num].bottomDialog
 
         return currentDialog.visibility == from && dialog.visibility == to
+    }
+
+    private fun hasChangedBottomDialogSebookImageVisibility(from: Boolean, to: Boolean): Boolean {
+        val currentDialog = currentEduData.bottomDialog
+        val dialog = course!!.list[num].bottomDialog
+
+        return currentDialog.sebookImageVisibility == from && dialog.sebookImageVisibility == to
     }
 
     private fun configureEduScreenFragmentCover() {

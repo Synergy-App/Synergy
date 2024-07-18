@@ -39,6 +39,7 @@ data class EduImageDialog(
 )
 data class EduVerticalDialog(
     var visibility: Boolean? = null,
+    var sebookImageVisibility: Boolean? = null,
     var titleText: String? = null,
     var titleFont: Int? = null,
     var titleSize: Float? = null,
