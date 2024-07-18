@@ -16,6 +16,7 @@ import com.sungkyul.synergy.R
 class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, attrs), EduListener {
     var course: EduCourse? = null
     private val eduScreenFragment = EduScreenFragment()
+    private var onNextListener: ((Int) -> Unit)? = null
     private var onFinishedCourseListener: (() -> Unit)? = null
     private val currentEduData = initEduData()
     private var num = -1
@@ -44,6 +45,10 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         return currentEduData.action
     }
 
+    fun setOnNextListener(l: ((Int) -> Unit)?) {
+        onNextListener = l
+    }
+
     fun setOnFinishedCourseListener(l: (() -> Unit)?) {
         onFinishedCourseListener = l
     }
@@ -61,6 +66,8 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
 
     fun next() {
         num++
+
+        onNextListener?.invoke(num)
 
         if(num >= course!!.list.size) {
             onFinishedCourseListener?.invoke()
