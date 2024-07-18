@@ -17,10 +17,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.courses.settings.SettingsFirstCourse
 import com.sungkyul.synergy.learning_space.basic_edu.activity.BasicEduMainFragment
 import com.sungkyul.synergy.learning_space.screen_layout.ScreenFirstActivity
-import com.sungkyul.synergy.learning_space.screen_layout.ScreenLockActivity
+import com.sungkyul.synergy.learning_space.default_app.phone.activity.DefaultPhoneFirstActivity
 import com.sungkyul.synergy.learning_space.settingedu.SettingsFirstActivity
 import com.sungkyul.synergy.utils.GalaxyButton
 
@@ -105,8 +104,8 @@ class EduButtonAdapter(
                                  context.startActivity(intent)*/
                             }
                             "전화" -> {
-                                /*val intent = Intent(context, DefaultPhoneActivity::class.java)
-                                context.startActivity(intent)*/
+                                val intent = Intent(context, DefaultPhoneFirstActivity::class.java)
+                                context.startActivity(intent)
                             }
                             "문자" -> {
                                 /* val intent = Intent(context, DefaultMessageChattingActivity::class.java)
