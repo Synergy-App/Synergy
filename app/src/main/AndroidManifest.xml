@@ -18,15 +18,15 @@
         android:theme="@style/Theme.Synergy"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
+        <activity
+            android:name=".learning_space.screen_layout.ScreenFirstActivity"
+            android:exported="false" />
         <activity
             android:name=".home.activity.ChangePasswordActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".training_space.screen.PracticeCheckExamActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".training_space.screen.PracticeResultActivity"
             android:exported="false" />
@@ -279,7 +279,6 @@
         <activity
             android:name=".learning_space.accountedu.GoogleMailAddActivity"
             android:exported="false" />
-
         <activity
             android:name=".learning_space.appinstall.AppInstallMainActivity"
             android:exported="true">

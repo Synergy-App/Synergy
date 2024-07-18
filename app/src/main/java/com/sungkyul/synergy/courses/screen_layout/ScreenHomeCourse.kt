@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout
+package com.sungkyul.synergy.courses.screen_layout
 
 import android.os.Build
 import android.util.Log

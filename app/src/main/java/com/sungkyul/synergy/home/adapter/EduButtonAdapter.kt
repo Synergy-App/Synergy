@@ -18,6 +18,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.learning_space.basic_edu.activity.BasicEduMainFragment
+import com.sungkyul.synergy.learning_space.screen_layout.ScreenFirstActivity
 import com.sungkyul.synergy.learning_space.screen_layout.ScreenLockActivity
 import com.sungkyul.synergy.utils.GalaxyButton
 
@@ -88,7 +89,7 @@ class EduButtonAdapter(
                                 addFragment(context as FragmentActivity, BasicEduMainFragment())
                             }
                             "화면구성" -> {
-                                val intent = Intent(context, ScreenLockActivity::class.java)
+                                val intent = Intent(context, ScreenFirstActivity::class.java)
                                 context.startActivity(intent)
                             }
                             "카메라" -> {
