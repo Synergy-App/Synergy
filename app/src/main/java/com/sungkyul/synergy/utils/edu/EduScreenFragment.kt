@@ -112,6 +112,7 @@ class EduScreenFragment : Fragment() {
 
         binding.topDialog.visibility = LinearLayout.INVISIBLE
         binding.bottomDialog.visibility = LinearLayout.INVISIBLE
+        binding.bottomSebookImage.visibility = LinearLayout.INVISIBLE
 
         binding.root.post {
             // 캔버스를 생성한다.
@@ -479,6 +480,14 @@ class EduScreenFragment : Fragment() {
         binding.bottomDialog.visibility = LinearLayout.INVISIBLE
     }
 
+    fun showBottomDialogSebookImage() {
+        binding.bottomSebookImage.visibility = ImageView.VISIBLE
+    }
+
+    fun hideBottomDialogSebookImage() {
+        binding.bottomSebookImage.visibility = ImageView.INVISIBLE
+    }
+
     fun showCover() {
         AnimUtils.startValueAnimatorOfFloat({
             coverPaint.alpha = (it * coverMaxAlpha).toInt()
@@ -577,9 +586,12 @@ class EduScreenFragment : Fragment() {
         val interpolator = AccelerateDecelerateInterpolator()
 
         registerAnimator("bottom_dialog", AnimUtils.startValueAnimatorOfFloat({
+            var h = 0
             binding.bottomDialog.updateLayoutParams<RelativeLayout.LayoutParams> {
                 height = (startHeight + (endHeight - startHeight) * it).toInt()
+                h = height
             }
+            binding.bottomSebookImage.y = DisplayUtils.getSize(requireContext()).y-binding.bottomSebookImage.height-h-DisplayUtils.dpToPx(requireContext(), 10.0f)
         }, 0.0f, 1.0f, duration, interpolator))
     }
 
