@@ -29,7 +29,7 @@
         app:layout_constraintGuide_percent="0.5" />
 
     <ImageView
-        android:id="@+id/sebook_basic"
+        android:id="@+id/sebook_smile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="centerInside"
@@ -40,7 +40,7 @@
         android:src="@drawable/sebook_smile"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/image_title"
+        android:id="@+id/icon_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="12dp"

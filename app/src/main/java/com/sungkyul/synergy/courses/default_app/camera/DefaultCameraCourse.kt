@@ -1,6 +1,9 @@
 package com.sungkyul.synergy.courses.default_app.camera
 
+import android.os.Build
 import android.view.Gravity
+import com.sungkyul.synergy.R
+import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
 import com.sungkyul.synergy.utils.edu.EduCourse
@@ -15,6 +18,25 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
 
     // 교육 코스를 만든다.
     init {
+        list.add(EduData().apply {
+            dialog.contentText = "카메라 화면입니다."
+            dialog.contentGravity = Gravity.CENTER
+            dialog.top = 0.1f
+            dialog.bottom = 0.7f
+            dialog.start = 0.1f
+            dialog.end = 0.1f
+            dialog.visibility = true
+            dialog.contentColor = R.color.white
+            dialog.background = R.drawable.edu_dialog_black_bg
+            dialog.contentGravity = Gravity.CENTER
+            dialog.contentFont= R.font.pretendard_semibold
+            dialog.contentSize = when(Build.MODEL) {
+                GALAXY_NOTE9 -> 22.0f
+                else -> 26.0f
+            }
+            cover.isClickable = true
+        })
+
         list.add(EduData().apply {
             dialog.contentText = "위 메뉴는 카메라의<br>플래시, 타이머 등을<br>설정할 수 있어요."
             dialog.contentGravity = Gravity.CENTER

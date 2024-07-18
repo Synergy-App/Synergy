@@ -24,12 +24,12 @@ class SettingsFirstActivity : AppCompatActivity() {
         binding.eduScreen.post {
             binding.eduScreen.course = SettingsFirstCourse(binding.eduScreen)
 
-            binding.imageTitle.visibility = LinearLayout.INVISIBLE
-            binding.sebookBasic.visibility = ImageView.VISIBLE
+            binding.iconImage.visibility = LinearLayout.INVISIBLE
+            binding.sebookSmile.visibility = ImageView.VISIBLE
             binding.eduScreen.setOnNextListener {num->
                 if(num==1) {
-                    binding.imageTitle.visibility = LinearLayout.VISIBLE
-                    binding.sebookBasic.visibility = ImageView.INVISIBLE
+                    binding.iconImage.visibility = LinearLayout.VISIBLE
+                    binding.sebookSmile.visibility = ImageView.INVISIBLE
                 }
             }
             binding.eduScreen.setOnFinishedCourseListener {

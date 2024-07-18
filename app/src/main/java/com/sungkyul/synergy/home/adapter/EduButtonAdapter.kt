@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.learning_space.appinstall.AppInstallFirstActivity
 import com.sungkyul.synergy.learning_space.basic_edu.activity.BasicEduMainFragment
+import com.sungkyul.synergy.learning_space.default_app.camera.activity.DefaultCameraFirstActivity
 import com.sungkyul.synergy.learning_space.default_app.message.activity.DefaultMessageFirstActivity
 import com.sungkyul.synergy.learning_space.screen_layout.ScreenFirstActivity
 import com.sungkyul.synergy.learning_space.default_app.phone.activity.DefaultPhoneFirstActivity
@@ -98,9 +99,8 @@ class EduButtonAdapter(
                                 context.startActivity(intent)
                             }
                             "카메라" -> {
-                                /*// 전화 앱으로 이동한다.
-                                val intent = Intent(context, DefaultCameraActivity::class.java)
-                                context.startActivity(intent)*/
+                                val intent = Intent(context, DefaultCameraFirstActivity::class.java)
+                                context.startActivity(intent)
 
                             }
                             "앨범" -> {

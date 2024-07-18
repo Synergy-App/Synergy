@@ -22,7 +22,7 @@
         app:layout_constraintGuide_begin="357dp" />
 
     <ImageView
-        android:id="@+id/sebook_basic"
+        android:id="@+id/sebook_smile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="centerInside"
