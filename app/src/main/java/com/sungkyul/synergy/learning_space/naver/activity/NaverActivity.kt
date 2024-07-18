@@ -12,6 +12,7 @@ import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.NaverFromScreenHomeCourse
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.NaverFromScreenHomeCourse2
+import com.sungkyul.synergy.courses.naver.NaverCourse
 import com.sungkyul.synergy.databinding.ActivityNaverBinding
 import com.sungkyul.synergy.learning_space.naver.adapter.NaverPostAdapter
 import com.sungkyul.synergy.learning_space.naver.adapter.NaverPostData
@@ -31,7 +32,9 @@ class NaverActivity : AppCompatActivity() {
         // 교육을 정의해보자!
         binding.eduScreen.post {
             // 교육 코스를 지정한다.
-            if(intent.getStringExtra("from") == "ScreenMenuActivity3") {
+            if(intent.getStringExtra("from") == "NaverFirstActivity") {
+                binding.eduScreen.course = NaverCourse(binding.eduScreen)
+            } else if(intent.getStringExtra("from") == "ScreenMenuActivity3") {
                 binding.eduScreen.course = NaverFromScreenHomeCourse2(binding.eduScreen)
             } else {
                 binding.eduScreen.course = NaverFromScreenHomeCourse(binding.eduScreen)
