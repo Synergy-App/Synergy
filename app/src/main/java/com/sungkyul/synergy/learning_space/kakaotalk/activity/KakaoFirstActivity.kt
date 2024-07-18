@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.learning_space.settingedu
+package com.sungkyul.synergy.learning_space.kakaotalk.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,23 +6,22 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
-import com.sungkyul.synergy.courses.screen_layout.ScreenFirstCourse
-import com.sungkyul.synergy.courses.settings.SettingsFirstCourse
-import com.sungkyul.synergy.databinding.ActivitySettingsFirstBinding
+import com.sungkyul.synergy.courses.settings.KakaoFirstCourse
+import com.sungkyul.synergy.databinding.ActivityKakaoFirstBinding
 import com.sungkyul.synergy.home.activity.MainActivity
-import com.sungkyul.synergy.learning_space.screen_layout.ScreenLockActivity
+import com.sungkyul.synergy.learning_space.default_app.phone.activity.DefaultPhoneActivity
 
-class SettingsFirstActivity : AppCompatActivity() {
-    private lateinit var binding: ActivitySettingsFirstBinding
+class KakaoFirstActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityKakaoFirstBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySettingsFirstBinding.inflate(layoutInflater)
+        binding = ActivityKakaoFirstBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // 교육을 정의해보자!
         binding.eduScreen.post {
-            binding.eduScreen.course = SettingsFirstCourse(binding.eduScreen)
+            binding.eduScreen.course = KakaoFirstCourse(binding.eduScreen)
 
             binding.iconImage.visibility = LinearLayout.INVISIBLE
             binding.sebookSmile.visibility = ImageView.VISIBLE
@@ -34,7 +33,7 @@ class SettingsFirstActivity : AppCompatActivity() {
             }
             binding.eduScreen.setOnFinishedCourseListener {
                 // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
-                val intent = Intent(binding.root.context, SettingMainActivity::class.java)
+                val intent = Intent(binding.root.context, KakaoMainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                 startActivity(intent)
             }

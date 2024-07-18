@@ -23,14 +23,14 @@ class ScreenFirstActivity : AppCompatActivity() {
             binding.eduScreen.course = ScreenFirstCourse(binding.eduScreen)
 
             binding.sebookTitle.visibility = LinearLayout.INVISIBLE
-            binding.sebookAll.visibility = ImageView.VISIBLE
+            binding.sebookSmile.visibility = ImageView.VISIBLE
             binding.eduScreen.setOnNextListener {num->
                 if(num==1 || num==2) {
                     binding.sebookTitle.visibility = LinearLayout.VISIBLE
-                    binding.sebookAll.visibility = ImageView.INVISIBLE
+                    binding.sebookSmile.visibility = ImageView.INVISIBLE
                 } else {
                     binding.sebookTitle.visibility = LinearLayout.INVISIBLE
-                    binding.sebookAll.visibility = ImageView.VISIBLE
+                    binding.sebookSmile.visibility = ImageView.VISIBLE
                 }
             }
             binding.eduScreen.setOnFinishedCourseListener {

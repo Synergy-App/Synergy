@@ -17,10 +17,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.courses.settings.SettingsFirstCourse
+import com.sungkyul.synergy.learning_space.appinstall.AppInstallFirstActivity
 import com.sungkyul.synergy.learning_space.basic_edu.activity.BasicEduMainFragment
+import com.sungkyul.synergy.learning_space.default_app.camera.activity.DefaultCameraFirstActivity
+import com.sungkyul.synergy.learning_space.default_app.message.activity.DefaultMessageFirstActivity
 import com.sungkyul.synergy.learning_space.screen_layout.ScreenFirstActivity
-import com.sungkyul.synergy.learning_space.screen_layout.ScreenLockActivity
+import com.sungkyul.synergy.learning_space.default_app.phone.activity.DefaultPhoneFirstActivity
+import com.sungkyul.synergy.learning_space.kakaotalk.activity.KakaoFirstActivity
+import com.sungkyul.synergy.learning_space.naver.activity.NaverFirstActivity
 import com.sungkyul.synergy.learning_space.settingedu.SettingsFirstActivity
 import com.sungkyul.synergy.utils.GalaxyButton
 
@@ -95,9 +99,8 @@ class EduButtonAdapter(
                                 context.startActivity(intent)
                             }
                             "카메라" -> {
-                                /*// 전화 앱으로 이동한다.
-                                val intent = Intent(context, DefaultCameraActivity::class.java)
-                                context.startActivity(intent)*/
+                                val intent = Intent(context, DefaultCameraFirstActivity::class.java)
+                                context.startActivity(intent)
 
                             }
                             "앨범" -> {
@@ -105,12 +108,12 @@ class EduButtonAdapter(
                                  context.startActivity(intent)*/
                             }
                             "전화" -> {
-                                /*val intent = Intent(context, DefaultPhoneActivity::class.java)
-                                context.startActivity(intent)*/
+                                val intent = Intent(context, DefaultPhoneFirstActivity::class.java)
+                                context.startActivity(intent)
                             }
                             "문자" -> {
-                                /* val intent = Intent(context, DefaultMessageChattingActivity::class.java)
-                                 context.startActivity(intent)*/
+                                 val intent = Intent(context, DefaultMessageFirstActivity::class.java)
+                                 context.startActivity(intent)
                             }
                             "환경 설정" -> {
                                  val intent = Intent(context, SettingsFirstActivity::class.java)
@@ -121,16 +124,16 @@ class EduButtonAdapter(
                                   context.startActivity(intent)*/
                             }
                             "앱 설치" -> {
-                                /*val intent = Intent(context, AppInstallMainActivity::class.java)
-                                context.startActivity(intent)*/
+                                val intent = Intent(context, AppInstallFirstActivity::class.java)
+                                context.startActivity(intent)
                             }
                             "카카오톡" -> {
-                                /*  val intent = Intent(context, KakaoMainActivity::class.java)
-                                  context.startActivity(intent)*/
+                                 val intent = Intent(context, KakaoFirstActivity::class.java)
+                                  context.startActivity(intent)
                             }
                             "네이버" -> {
-                                /*val intent = Intent(context, NaverActivity::class.java)
-                                context.startActivity(intent)*/
+                                val intent = Intent(context, NaverFirstActivity::class.java)
+                                context.startActivity(intent)
                             }
                         }
                     }
