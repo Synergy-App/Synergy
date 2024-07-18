@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.learning_space.appinstall.AppInstallFirstActivity
 import com.sungkyul.synergy.learning_space.basic_edu.activity.BasicEduMainFragment
 import com.sungkyul.synergy.learning_space.default_app.message.activity.DefaultMessageFirstActivity
 import com.sungkyul.synergy.learning_space.screen_layout.ScreenFirstActivity
@@ -123,8 +124,8 @@ class EduButtonAdapter(
                                   context.startActivity(intent)*/
                             }
                             "앱 설치" -> {
-                                /*val intent = Intent(context, AppInstallMainActivity::class.java)
-                                context.startActivity(intent)*/
+                                val intent = Intent(context, AppInstallFirstActivity::class.java)
+                                context.startActivity(intent)
                             }
                             "카카오톡" -> {
                                  val intent = Intent(context, KakaoFirstActivity::class.java)

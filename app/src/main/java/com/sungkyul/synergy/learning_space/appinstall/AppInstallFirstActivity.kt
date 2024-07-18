@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.learning_space.default_app.message.activity
+package com.sungkyul.synergy.learning_space.appinstall
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,34 +6,40 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
-import com.sungkyul.synergy.courses.default_app.message.DefaultMessageFirstCourse
-import com.sungkyul.synergy.databinding.ActivityDefaultMessageFirstBinding
+import com.sungkyul.synergy.courses.app_installation.InstallFirstCourse
+import com.sungkyul.synergy.databinding.ActivityAppInstallFirstBinding
 import com.sungkyul.synergy.home.activity.MainActivity
-import com.sungkyul.synergy.learning_space.default_app.phone.activity.DefaultPhoneActivity
 
-class DefaultMessageFirstActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityDefaultMessageFirstBinding
+class AppInstallFirstActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityAppInstallFirstBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDefaultMessageFirstBinding.inflate(layoutInflater)
+        binding = ActivityAppInstallFirstBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // 교육을 정의해보자!
         binding.eduScreen.post {
-            binding.eduScreen.course = DefaultMessageFirstCourse(binding.eduScreen)
+            binding.eduScreen.course = InstallFirstCourse(binding.eduScreen)
 
-            binding.imageTitle.visibility = LinearLayout.INVISIBLE
             binding.sebookBasic.visibility = ImageView.VISIBLE
+            binding.sebookSmile.visibility = ImageView.INVISIBLE
+            binding.imageTitle.visibility = LinearLayout.INVISIBLE
             binding.eduScreen.setOnNextListener {num->
                 if(num==1) {
-                    binding.imageTitle.visibility = LinearLayout.VISIBLE
                     binding.sebookBasic.visibility = ImageView.INVISIBLE
+                    binding.sebookSmile.visibility = ImageView.VISIBLE
+                    binding.imageTitle.visibility = LinearLayout.INVISIBLE
+                }
+                if(num==2) {
+                    binding.sebookBasic.visibility = ImageView.INVISIBLE
+                    binding.sebookSmile.visibility = ImageView.INVISIBLE
+                    binding.imageTitle.visibility = LinearLayout.VISIBLE
                 }
             }
             binding.eduScreen.setOnFinishedCourseListener {
                 // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
-                val intent = Intent(binding.root.context, DefaultMessageChattingActivity::class.java)
+                val intent = Intent(binding.root.context, AppInstallMainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                 startActivity(intent)
             }

@@ -29,7 +29,7 @@
         app:layout_constraintGuide_percent="0.5" />
 
     <ImageView
-        android:id="@+id/sebook_basic"
+        android:id="@+id/sebook_smile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="centerInside"
@@ -38,6 +38,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:src="@drawable/sebook_smile"/>
+
+    <ImageView
+        android:id="@+id/sebook_basic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerInside"
+        app:layout_constraintTop_toTopOf="@+id/guide"
+        app:layout_constraintBottom_toBottomOf="@+id/guide2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/sebook_basic"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/image_title"
@@ -53,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="32sp"
-            android:text="카카오톡"
+            android:text="play 스토어"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -64,7 +75,7 @@
             android:id="@+id/image"
             android:layout_width="250dp"
             android:layout_height="250dp"
-            android:src="@drawable/ic_kakaotalk"
+            android:src="@drawable/playstore"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text"

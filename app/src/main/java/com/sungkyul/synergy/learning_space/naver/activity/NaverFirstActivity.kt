@@ -23,11 +23,11 @@ class NaverFirstActivity : AppCompatActivity() {
             binding.eduScreen.course = NaverFirstCourse(binding.eduScreen)
 
             binding.imageTitle.visibility = LinearLayout.INVISIBLE
-            binding.sebookAll.visibility = ImageView.VISIBLE
+            binding.sebookBasic.visibility = ImageView.VISIBLE
             binding.eduScreen.setOnNextListener {num->
                 if(num==1) {
                     binding.imageTitle.visibility = LinearLayout.VISIBLE
-                    binding.sebookAll.visibility = ImageView.INVISIBLE
+                    binding.sebookBasic.visibility = ImageView.INVISIBLE
                 }
             }
             binding.eduScreen.setOnFinishedCourseListener {
