@@ -18,6 +18,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.learning_space.basic_edu.activity.BasicEduMainFragment
+import com.sungkyul.synergy.learning_space.default_app.message.activity.DefaultMessageFirstActivity
 import com.sungkyul.synergy.learning_space.screen_layout.ScreenFirstActivity
 import com.sungkyul.synergy.learning_space.default_app.phone.activity.DefaultPhoneFirstActivity
 import com.sungkyul.synergy.learning_space.settingedu.SettingsFirstActivity
@@ -108,8 +109,8 @@ class EduButtonAdapter(
                                 context.startActivity(intent)
                             }
                             "문자" -> {
-                                /* val intent = Intent(context, DefaultMessageChattingActivity::class.java)
-                                 context.startActivity(intent)*/
+                                 val intent = Intent(context, DefaultMessageFirstActivity::class.java)
+                                 context.startActivity(intent)
                             }
                             "환경 설정" -> {
                                  val intent = Intent(context, SettingsFirstActivity::class.java)
