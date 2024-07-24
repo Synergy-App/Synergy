@@ -1,9 +1,9 @@
-// FindIdPasswordActivity.kt
 package com.sungkyul.synergy.home.activity
 
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Parcelable
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
@@ -30,6 +30,10 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+
+inline fun <reified T : Parcelable> Intent.putParcelableExtra(key: String, value: T?) {
+    putExtra(key, value)
+}
 class FindIdPasswordActivity : AppCompatActivity() {
 
     private lateinit var editTextPhoneForId: EditText
@@ -101,7 +105,6 @@ class FindIdPasswordActivity : AppCompatActivity() {
                 }
             }
         }
-
         btnVerifyUser.setOnClickListener {
             val phone = editTextPhoneForPassword.text.toString().trim()
             val userId = editTextIdForPassword.text.toString().trim()
@@ -119,9 +122,20 @@ class FindIdPasswordActivity : AppCompatActivity() {
                     Log.d("FindIdPasswordActivity", "VerifyUser Response: $verifyRes")
 
                     if (verifyRes?.success == true) {
-                        val intent = Intent(this@FindIdPasswordActivity, ChangePasswordActivity::class.java)
-                        intent.putExtra("userId", userId)
-                        startActivity(intent)
+                        val resetKey = verifyRes.data?.resetKey
+                        if (!resetKey.isNullOrEmpty()) {
+                            // resetKey만 Intent에 추가하여 ChangePasswordActivity로 전달
+                            val intent = Intent(this@FindIdPasswordActivity, ChangePasswordActivity::class.java)
+                            intent.putExtra("resetKey", resetKey) // resetKey를 String으로 추가
+                            Log.d("FindIdPasswordActivity", "ResetKey: $resetKey")
+                            startActivity(intent)
+                        } else {
+                            Toast.makeText(
+                                this@FindIdPasswordActivity,
+                                "비밀번호 재설정 키가 누락되었습니다.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     } else {
                         Log.e("FindIdPasswordActivity", "VerifyUser Error: ${verifyRes?.err?.msg}")
                         Toast.makeText(
@@ -133,6 +147,9 @@ class FindIdPasswordActivity : AppCompatActivity() {
                 }
             }
         }
+
+
+
     }
 
     // POST /user/find-id api를 실제로 호출하는 곳

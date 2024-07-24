@@ -1,89 +1,111 @@
 package com.sungkyul.synergy.backend.auth
 
+import android.os.Parcel
+import android.os.Parcelable
 import com.sungkyul.synergy.types.User
 
-
-
-
-
-
-data class SignInBody (
-    /** 아이디 */
+// SignInBody 클래스
+data class SignInBody(
     val authId: String,
-    /** 패스워드 */
-    val pw: String,
-)
+    val pw: String
+) // Parcelable 필요 없음
 
-data class SignUpBody (
-    /** 아이디 */
+// SignUpBody 클래스
+data class SignUpBody(
     val authId: String,
-    /** 패스워드 */
     val pw: String,
-    /** 패스워드 재입력 */
     val pwRe: String,
-    /** 닉네임 */
     val nickname: String,
-    /** 휴대폰번호 */
     val phone: String
-)
+) // Parcelable 필요 없음
 
-data class CheckNicknameBody (
+// CheckNicknameBody 클래스
+data class CheckNicknameBody(
     val nickname: String
-)
+) // Parcelable 필요 없음
 
-data class CheckIdBody (
+// CheckIdBody 클래스
+data class CheckIdBody(
     val authId: String
-)
+) // Parcelable 필요 없음
 
-/** POST /user/check-id, POST /user/check-nickname 응답데이터 */
-data class CheckResult (
-    /** 아이디/닉네임의 사용가능여부 */
+// CheckResult 클래스
+data class CheckResult(
     val available: Boolean
-)
+) // Parcelable 필요 없음
 
-/** POST /user/signin 응답데이터 */
-data class SignInResult (
-    /** 유저의 JWT토큰 */
+// SignInResult 클래스
+data class SignInResult(
     val accessToken: String,
-    /** 로그인한 유저 정보 */
     val user: User
-)
+) // Parcelable 필요 없음
 
-/**아이디와 비밀번호 찾기 */
-/** POST /user/find-id 요청데이터 */
-data class FindIdBody (
+// FindIdBody 클래스
+data class FindIdBody(
     val phone: String
-)
+) // Parcelable 필요 없음
 
-/** POST /user/find-id 응답데이터 */
-data class FindIdResult (
+// FindIdResult 클래스
+data class FindIdResult(
     val authId: String?
-)
+) // Parcelable 필요 없음
 
-/** POST /user/verify-user 요청데이터 */
+// VerifyUserBody 클래스
 data class VerifyUserBody(
     val authId: String,
     val phone: String
-)
+) // Parcelable 필요 없음
 
-/** POST /user/verify-user 응답데이터 */
+// 기존의 VerifyUserResult 데이터 클래스에 Parcelable 구현 추가
+/*
+data class ResetKeyData(
+    val resetKey: String
+)
+*/
+
 data class VerifyUserResult(
-    val success: Boolean
-)
-
-/** POST /user/change-password 요청데이터 */
-data class ChangePasswordBody(
-    val authId: String,
-    val newPassword: String
-)
-
-/** POST /user/change-password 응답데이터 */
-data class ChangePasswordResult(
     val success: Boolean,
     val err: ErrorResponse?,
-    val data: Any?
+    val resetKey: String
 )
 data class ErrorResponse(
     val msg: String,
     val code: String
-)
+) : Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readString() ?: "",
+        parcel.readString() ?: ""
+    )
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(msg)
+        parcel.writeString(code)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<ErrorResponse> {
+        override fun createFromParcel(parcel: Parcel): ErrorResponse {
+            return ErrorResponse(parcel)
+        }
+
+        override fun newArray(size: Int): Array<ErrorResponse?> {
+            return arrayOfNulls(size)
+        }
+    }
+}
+
+// ChangePasswordBody 클래스
+data class ChangePasswordBody(
+    val password: String,
+    val resetKey: String
+) // Parcelable 필요 없음
+
+// ChangePasswordResult 클래스
+data class ChangePasswordResult(
+    val success: Boolean,
+    val err: ErrorResponse?,
+    val data: Any?
+) // Parcelable 필요 없음

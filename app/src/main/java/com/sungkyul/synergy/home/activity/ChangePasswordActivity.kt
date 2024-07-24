@@ -34,6 +34,7 @@ class ChangePasswordActivity : AppCompatActivity() {
         editTextNewPassword = findViewById(R.id.editTextNewPassword)
         btnChangePassword = findViewById(R.id.btnChangePassword)
 
+        // Retrofit setup
         val loggingInterceptor = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
         }
@@ -49,20 +50,32 @@ class ChangePasswordActivity : AppCompatActivity() {
 
         authApi = retrofit.create(AuthAPI::class.java)
 
+        // Get resetKey from Intent
+        val resetKey = intent.getStringExtra("resetKey")
+        if (resetKey == null) {
+            Log.e("ChangePasswordActivity", "resetKey is null")
+            Toast.makeText(this, "비밀번호 재설정 키가 누락되었습니다.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         btnChangePassword.setOnClickListener {
+            Log.d("ChangePasswordActivity", "Change Password Button Clicked")
             val newPassword = editTextNewPassword.text.toString().trim()
-            val userId = intent.getStringExtra("authId") ?: return@setOnClickListener
+            Log.d("ChangePasswordActivity", "New Password: '$newPassword'")
 
             if (newPassword.isEmpty()) {
+                Log.d("ChangePasswordActivity", "비밀번호 공백")
                 Toast.makeText(this, "새 비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
             } else {
-                changePassword(userId, newPassword)
+                Log.d("ChangePasswordActivity", "함수 호출")
+                changePassword(resetKey, newPassword)
             }
         }
     }
 
-    private fun changePassword(authId: String, newPassword: String) {
-        val request = ChangePasswordBody(authId, newPassword)
+    private fun changePassword(resetKey: String, newPassword: String) {
+        Log.d("ChangePasswordActivity", "changePassword called with resetKey: $resetKey and newPassword: $newPassword")
+        val request = ChangePasswordBody(newPassword, resetKey)
         val call = authApi.changePassword(request)
 
         call.enqueue(object : Callback<ApiResponse<ChangePasswordResult>> {
