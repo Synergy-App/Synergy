@@ -19,6 +19,27 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".training_space.default_app.camera.PracticeResultGalleryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.default_app.camera.PracticeCamera3Activity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.default_app.camera.problem.ExamCameraProblem3Activity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.default_app.camera.problem.ExamCameraProblem2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.default_app.camera.PracticeCamera2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.default_app.camera.problem.ExamCameraProblemActivity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.default_app.camera.PracticeCameraActivity"
+            android:exported="false" />
+        <activity
             android:name=".learning_space.default_app.camera.activity.DefaultCameraFirstActivity"
             android:exported="false" />
         <activity
@@ -36,6 +57,7 @@
         <activity
             android:name=".learning_space.default_app.phone.activity.DefaultPhoneFirstActivity"
             android:exported="false" />
+        <activity android:name=".learning_space.default_app.gallery.activity.DefaultGalleryActivity" />
         <activity
             android:name=".courses.default_app.phone.DefaultPhoneFirstCourse"
             android:exported="false" />
@@ -225,22 +247,21 @@
         <activity
             android:name=".learning_space.default_app.DefaultAppActivity"
             android:exported="false" />
-
         <activity
             android:name=".home.activity.EduSpaceActivity"
             android:exported="false" />
-       <activity
-           android:name=".learning_space.basic_edu.activity.BasicEduMainFragment"
-           android:exported="false"/>
+        <activity
+            android:name=".learning_space.basic_edu.activity.BasicEduMainFragment"
+            android:exported="false" />
         <activity
             android:name=".learning_space.default_app.todo.MenusActivity"
             android:exported="false" />
         <activity
             android:name=".learning_space.basic_edu.activity.IconDetailActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".learning_space.move_edu.activity.MoveDetailActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".learning_space.screen_layout.ScreenLayoutActivity"
             android:exported="false" />

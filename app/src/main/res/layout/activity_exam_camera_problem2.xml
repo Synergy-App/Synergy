@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="다음 아이콘이 의미하는\n용어는 무엇일까요?"
+            android:text="카메라 전면, 후면을 전환하는\n버튼은 무엇인가?"
             android:textColor="@color/white"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -51,7 +51,6 @@
             android:layout_height="120dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:src="@drawable/new_screen_icon_test"
             android:visibility="gone" />
 
         <TextView
@@ -92,15 +91,12 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <TextView
+                    <ImageView
                         android:id="@+id/option_text1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:text="1. 블루투스"
-                        android:textColor="@android:color/black"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:src="@drawable/air" />
 
                     <ImageView
                         android:id="@+id/option_image1"
@@ -123,15 +119,12 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <TextView
+                    <ImageView
                         android:id="@+id/option_text2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:text="2. 음량"
-                        android:textColor="@android:color/black"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:src="@drawable/air"/>
 
                     <ImageView
                         android:id="@+id/option_image2"
@@ -154,49 +147,15 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <TextView
+                    <ImageView
                         android:id="@+id/option_text3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:text="3. 신호"
-                        android:textColor="@android:color/black"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:src="@drawable/air" />
 
                     <ImageView
                         android:id="@+id/option_image3"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginStart="10dp"
-                        android:visibility="gone" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/choose_option4_btn"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/option_text4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:text="4. 와이파이"
-                        android:textColor="@android:color/black"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <ImageView
-                        android:id="@+id/option_image4"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginStart="10dp"

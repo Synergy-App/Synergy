@@ -2,6 +2,7 @@ package com.sungkyul.synergy.training_space.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.graphics.Point
 import android.util.TypedValue
 import android.view.LayoutInflater
@@ -17,11 +18,13 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.com.sungkyul.synergy.home.adapter.EduButtonItem
+import com.sungkyul.synergy.training_space.default_app.camera.problem.ExamCameraProblemActivity
 
 import com.sungkyul.synergy.training_space.intent.LearningScreenFragment
 import com.sungkyul.synergy.utils.GalaxyButton
 
-class LearningButtonAdapter(private val buttonList: List<EduButtonItem>): RecyclerView.Adapter<LearningButtonAdapter.ButtonViewHolder>() {
+class LearningButtonAdapter(private val buttonList: List<EduButtonItem>) :
+    RecyclerView.Adapter<LearningButtonAdapter.ButtonViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ButtonViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -48,7 +51,8 @@ class LearningButtonAdapter(private val buttonList: List<EduButtonItem>): Recycl
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    inner class ButtonViewHolder(itemView: View, val context: Context) : RecyclerView.ViewHolder(itemView) {
+    inner class ButtonViewHolder(itemView: View, val context: Context) :
+        RecyclerView.ViewHolder(itemView) {
         private val layout1: LinearLayout = itemView.findViewById(R.id.learning_layout)
         private val text1: TextView = itemView.findViewById(R.id.title)
         private val text2: TextView = itemView.findViewById(R.id.learning_tv2)
@@ -69,6 +73,7 @@ class LearningButtonAdapter(private val buttonList: List<EduButtonItem>): Recycl
                     MotionEvent.ACTION_DOWN -> {
                         (view as GalaxyButton).startTouchDownAnimation(event.x, event.y, 100.0f)
                     }
+
                     MotionEvent.ACTION_UP -> {
                         (view as GalaxyButton).startTouchUpAnimation()
 
@@ -78,30 +83,31 @@ class LearningButtonAdapter(private val buttonList: List<EduButtonItem>): Recycl
                             addFragment(activity, fragment)
                         } else {
                             // 주석 처리된 코드
-                            /*
+
                             val fragment = when (text1.text) {
-                                "기초" -> LearningIconActivity()
-                                "기본 앱" -> LearningDefaultAppActivity()
-                                "화면구성" -> LearningScreenFragment()
-                                "계정 생성" -> LearningGoogleActivity()
-                                "앱 설치" -> LearningInstallActivity()
-                                "카카오톡" -> LearningKakaotalkActivity()
-                                "네이버" -> LearningNaverActivity()
-                                "카카오택시" -> LearningKakaotaxiActivity()
-                                "배달의 민족" -> LearningDeliveryActivity()
+                                // "기초" -> LearningIconActivity()
+                                //"기본 앱" -> LearningDefaultAppActivity()
+                                "카메라" -> ExamCameraProblemActivity()
+                                //"계정 생성" -> LearningGoogleActivity()
+                                //"앱 설치" -> LearningInstallActivity()
+                                //"카카오톡" -> LearningKakaotalkActivity()
+                                //"네이버" -> LearningNaverActivity()
+                                //"카카오택시" -> LearningKakaotaxiActivity()
+                                //"배달의 민족" -> LearningDeliveryActivity()
                                 else -> null
                             }
                             fragment?.let {
-                                if (it is Fragment) {
-                                    addFragment(activity, it)
-                                } else {
-                                    val intent = Intent(activity, it::class.java)
-                                    activity.startActivity(intent)
-                                }
+//                                if (it is Fragment) {
+//                                    addFragment(activity, it)
+//                                } else {
+                                val intent = Intent(activity, it::class.java)
+                                activity.startActivity(intent)
+                                // }
                             }
-                            */
+
                         }
                     }
+
                     MotionEvent.ACTION_CANCEL -> {
                         (view as GalaxyButton).startTouchUpAnimation()
                     }
@@ -111,7 +117,8 @@ class LearningButtonAdapter(private val buttonList: List<EduButtonItem>): Recycl
         }
 
         private fun getScreenSize(): Point {
-            val display = (context.getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay
+            val display =
+                (context.getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay
             val size = Point()
             display.getSize(size)
             return size
