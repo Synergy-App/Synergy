@@ -57,7 +57,6 @@ class MessageChattingAdapter(private val context: Context, private val dataSet: 
                 MotionEvent.ACTION_UP -> {
                     (view as GalaxyButton).startTouchUpAnimation()
 
-                    Log.i("tqtr", course.toString())
                     if(course is DefaultMessageCourse3) {
                         // 메시지 방으로 이동한다.
                         val intent = Intent(context, DefaultMessageActivity::class.java)

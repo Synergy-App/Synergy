@@ -6,6 +6,7 @@ class AdaptiveUtils {
     companion object {
         fun dialogTitleMedium(): Float {
             return when (Build.MODEL) {
+                GALAXY_NOTE9_EMU -> 26.0f
                 GALAXY_NOTE9 -> 26.0f
                 GALAXY_A10E -> 30.0f
                 GALAXY_A31 -> 30.0f
@@ -15,6 +16,7 @@ class AdaptiveUtils {
 
         fun dialogContentMedium(): Float {
             return when (Build.MODEL) {
+                GALAXY_NOTE9_EMU -> 22.0f
                 GALAXY_NOTE9 -> 22.0f
                 GALAXY_A10E -> 26.0f
                 GALAXY_A31 -> 26.0f
@@ -24,6 +26,10 @@ class AdaptiveUtils {
 
         fun ratio(x: Float): Float {
             return when (Build.MODEL) {
+                GALAXY_NOTE9_EMU -> {
+                    x
+                }
+
                 GALAXY_NOTE9 -> {
                     x
                 }

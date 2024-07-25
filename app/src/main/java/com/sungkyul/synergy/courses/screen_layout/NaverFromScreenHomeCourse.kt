@@ -1,7 +1,5 @@
-package com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout
+package com.sungkyul.synergy.courses.screen_layout
 
-import android.view.Gravity
-import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
 import com.sungkyul.synergy.utils.edu.EduCourse

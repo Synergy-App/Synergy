@@ -1,10 +1,11 @@
-package com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout
+package com.sungkyul.synergy.courses.screen_layout
 
 import android.os.Build
 import android.view.Gravity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.utils.DisplayUtils
+import com.sungkyul.synergy.utils.GALAXY_NOTE9_EMU
 import com.sungkyul.synergy.utils.HandGestures
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
@@ -46,6 +47,15 @@ data class NaverFromScreenHomeCourse2(val eduScreen: EduScreen): EduCourse {
 
             when(Build.MODEL) {
                 GALAXY_NOTE9 -> hands.add(
+                    EduHand(
+                        id = "tap",
+                        x = 0.75f,
+                        y = 0.85f,
+                        rotation = 180f,
+                        gesture = HandGestures::tapGesture
+                    )
+                )
+                GALAXY_NOTE9_EMU -> hands.add(
                     EduHand(
                         id = "tap",
                         x = 0.75f,

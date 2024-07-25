@@ -10,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.NaverFromScreenHomeCourse
-import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.NaverFromScreenHomeCourse2
+import com.sungkyul.synergy.courses.screen_layout.NaverFromScreenHomeCourse
+import com.sungkyul.synergy.courses.screen_layout.NaverFromScreenHomeCourse2
 import com.sungkyul.synergy.courses.naver.NaverCourse
 import com.sungkyul.synergy.databinding.ActivityNaverBinding
 import com.sungkyul.synergy.learning_space.EduCompletionActivity
