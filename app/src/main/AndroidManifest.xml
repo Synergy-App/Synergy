@@ -21,6 +21,27 @@
         <activity
             android:name=".learning_space.EduCompletionActivity"
             android:exported="false" />
+      <activity
+            android:name=".training_space.default_app.camera.PracticeResultGalleryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.default_app.camera.PracticeCamera3Activity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.default_app.camera.problem.ExamCameraProblem3Activity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.default_app.camera.problem.ExamCameraProblem2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.default_app.camera.PracticeCamera2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.default_app.camera.problem.ExamCameraProblemActivity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.default_app.camera.PracticeCameraActivity"
+            android:exported="false" />
         <activity
             android:name=".learning_space.default_app.camera.activity.DefaultCameraFirstActivity"
             android:exported="false" />
@@ -39,6 +60,7 @@
         <activity
             android:name=".learning_space.default_app.phone.activity.DefaultPhoneFirstActivity"
             android:exported="false" />
+        <activity android:name=".learning_space.default_app.gallery.activity.DefaultGalleryActivity" />
         <activity
             android:name=".courses.default_app.phone.DefaultPhoneFirstCourse"
             android:exported="false" />
