@@ -23,6 +23,7 @@ import com.sungkyul.synergy.learning_space.default_app.camera.activity.DefaultCa
 import com.sungkyul.synergy.learning_space.default_app.message.activity.DefaultMessageChattingActivity
 import com.sungkyul.synergy.learning_space.default_app.message.activity.DefaultMessageFirstActivity
 import com.sungkyul.synergy.learning_space.default_app.message.activity.DefaultMessageSelectActivity
+import com.sungkyul.synergy.learning_space.default_app.phone.activity.DefaultPhoneCallActivity
 import com.sungkyul.synergy.learning_space.screen_layout.ScreenFirstActivity
 import com.sungkyul.synergy.learning_space.default_app.phone.activity.DefaultPhoneFirstActivity
 import com.sungkyul.synergy.learning_space.kakaotalk.activity.KakaoFirstActivity

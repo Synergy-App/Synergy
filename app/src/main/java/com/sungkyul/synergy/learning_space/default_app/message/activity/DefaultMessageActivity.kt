@@ -50,7 +50,6 @@ class DefaultMessageActivity : AppCompatActivity() {
             binding.eduScreen.setOnFinishedCourseListener {
                 // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
 
-                // DefaultAppActivity로 되돌아 간다.
                 val intent = Intent(binding.root.context, EduCompletionActivity::class.java)
                 intent.putExtra("course", "message")
                 startActivity(intent)

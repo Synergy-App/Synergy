@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.databinding.ActivityEduCompletionBinding
 import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.learning_space.default_app.message.activity.DefaultMessageFirstActivity
+import com.sungkyul.synergy.learning_space.default_app.phone.activity.DefaultPhoneFirstActivity
 import com.sungkyul.synergy.learning_space.screen_layout.ScreenFirstActivity
 
 class EduCompletionActivity : AppCompatActivity() {
@@ -23,8 +24,9 @@ class EduCompletionActivity : AppCompatActivity() {
          var replayIntent = Intent(this, MainActivity::class.java)
 
         replayIntent = when(intent.getStringExtra("course")) {
-            "screen_layout" -> Intent(this, ScreenFirstActivity::class.java)
             "message" -> Intent(this, DefaultMessageFirstActivity::class.java)
+            "phone" -> Intent(this, DefaultPhoneFirstActivity::class.java)
+            "screen_layout" -> Intent(this, ScreenFirstActivity::class.java)
             else -> Intent(this, MainActivity::class.java)
         }
 
