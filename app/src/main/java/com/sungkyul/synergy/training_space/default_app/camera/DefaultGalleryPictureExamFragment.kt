@@ -1,6 +1,8 @@
-package com.sungkyul.synergy.learning_space.default_app.gallery.fragment
+package com.sungkyul.synergy.training_space.default_app.camera
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,10 +12,23 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.FragmentDefaultGalleryPictureBinding
 import com.sungkyul.synergy.learning_space.default_app.gallery.adapter.GalleryPictureAdapter
 import com.sungkyul.synergy.learning_space.default_app.gallery.adapter.GalleryPictureData
-import com.sungkyul.synergy.utils.edu.EduListener
 
-class DefaultGalleryPictureFragment(private val eduListener: EduListener) : Fragment() {
+class DefaultGalleryPictureExamFragment : Fragment() {
+
     private lateinit var binding: FragmentDefaultGalleryPictureBinding
+
+    companion object {
+        private const val ARG_EDU_SCREEN = "edu_screen"
+
+        // Factory method to create a new instance of the Fragment with arguments
+        fun newInstance(eduScreen: String): DefaultGalleryPictureExamFragment {
+            val fragment = DefaultGalleryPictureExamFragment()
+            val args = Bundle()
+            args.putString(ARG_EDU_SCREEN, eduScreen)
+            fragment.arguments = args
+            return fragment
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -21,7 +36,10 @@ class DefaultGalleryPictureFragment(private val eduListener: EduListener) : Frag
     ): View {
         binding = FragmentDefaultGalleryPictureBinding.inflate(inflater, container, false)
 
-        // recyclerview에 들어갈 데이터 셋을 만든다.
+        // Retrieve arguments passed to the fragment
+        val eduScreen = arguments?.getString(ARG_EDU_SCREEN)
+
+        // Create dataset
         val dataSet = ArrayList<GalleryPictureData>()
         dataSet.add(
             GalleryPictureData(
@@ -37,7 +55,7 @@ class DefaultGalleryPictureFragment(private val eduListener: EduListener) : Frag
                 "4월 27일",
                 arrayListOf(
                     R.drawable.sample_screenshot1,
-                    R.drawable.sample_screenshot2,
+                    R.drawable.gallery_apple,
                     R.drawable.sample_screenshot1
                 )
             )
@@ -57,12 +75,22 @@ class DefaultGalleryPictureFragment(private val eduListener: EduListener) : Frag
                 )
             )
         }
+
+        // RecyclerView 설정
         val recyclerView = binding.recyclerview
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = GalleryPictureAdapter(requireContext(), dataSet) { position ->
             val galleryPictureData = dataSet[position]
+            if (galleryPictureData.images.contains(R.drawable.gallery_apple)) {
+                moveToScreen()
+            }
         }
 
         return binding.root
+    }
+
+    private fun moveToScreen() {
+        val intent = Intent(requireContext(), PracticeResultGalleryActivity::class.java)
+        startActivity(intent)
     }
 }
