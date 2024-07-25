@@ -14,6 +14,7 @@ import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.Naver
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.NaverFromScreenHomeCourse2
 import com.sungkyul.synergy.courses.naver.NaverCourse
 import com.sungkyul.synergy.databinding.ActivityNaverBinding
+import com.sungkyul.synergy.learning_space.EduCompletionActivity
 import com.sungkyul.synergy.learning_space.naver.adapter.NaverPostAdapter
 import com.sungkyul.synergy.learning_space.naver.adapter.NaverPostData
 import com.sungkyul.synergy.learning_space.screen_layout.ScreenHomeActivity
@@ -42,7 +43,13 @@ class NaverActivity : AppCompatActivity() {
 
             // 교육 코스가 끝났을 때 발생하는 이벤트 리스너를 설정한다.
             binding.eduScreen.setOnFinishedCourseListener {
-                EduScreen.toTop(this, MainActivity::class.java)
+                if(binding.eduScreen.course is NaverFromScreenHomeCourse2) {
+                    val intent = Intent(this, EduCompletionActivity::class.java)
+                    intent.putExtra("course", "screen_layout")
+                    startActivity(intent)
+                } else {
+                    EduScreen.toTop(this, MainActivity::class.java)
+                }
             }
 
             // 교육을 시작한다.

@@ -2,18 +2,15 @@ package com.sungkyul.synergy.learning_space
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
-import com.sungkyul.synergy.R
+import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.databinding.ActivityEduCompletionBinding
 import com.sungkyul.synergy.home.activity.MainActivity
-import com.sungkyul.synergy.utils.GalaxyButton
+import com.sungkyul.synergy.learning_space.screen_layout.ScreenFirstActivity
 
 class EduCompletionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEduCompletionBinding
-    private val homeIntent = Intent(this, MainActivity::class.java)
-    private var replayIntent = Intent(this, MainActivity::class.java)
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,8 +18,12 @@ class EduCompletionActivity : AppCompatActivity() {
         binding = ActivityEduCompletionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        when(intent.getStringExtra("from")) {
-            else -> replayIntent = Intent(this, MainActivity::class.java)
+         val homeIntent = Intent(this, MainActivity::class.java)
+         var replayIntent = Intent(this, MainActivity::class.java)
+
+        replayIntent = when(intent.getStringExtra("course")) {
+            "screen_layout" -> Intent(this, ScreenFirstActivity::class.java)
+            else -> Intent(this, MainActivity::class.java)
         }
 
         binding.goHomeButton.setOnTouchListener { view, event ->

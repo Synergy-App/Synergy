@@ -20,6 +20,7 @@ import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.Scree
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenHomeCourse5
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenHomeCourse6
 import com.sungkyul.synergy.databinding.ActivityScreenHomeBinding
+import com.sungkyul.synergy.learning_space.EduCompletionActivity
 import com.sungkyul.synergy.utils.edu.EduScreen
 
 class ScreenHomeActivity : AppCompatActivity() {
@@ -61,6 +62,7 @@ class ScreenHomeActivity : AppCompatActivity() {
             // 교육 코스가 끝났을 때 발생하는 이벤트 리스너를 설정한다.
             binding.eduScreen.setOnFinishedCourseListener {
                 //EduScreen.toTop(this, MainActivity::class.java)
+
             }
 
             // 교육을 시작한다.
