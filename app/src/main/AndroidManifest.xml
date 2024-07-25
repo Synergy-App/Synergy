@@ -19,6 +19,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".learning_space.EduCompletionActivity"
+            android:exported="false" />
+        <activity
             android:name=".learning_space.default_app.camera.activity.DefaultCameraFirstActivity"
             android:exported="false" />
         <activity
@@ -225,22 +228,21 @@
         <activity
             android:name=".learning_space.default_app.DefaultAppActivity"
             android:exported="false" />
-
         <activity
             android:name=".home.activity.EduSpaceActivity"
             android:exported="false" />
-       <activity
-           android:name=".learning_space.basic_edu.activity.BasicEduMainFragment"
-           android:exported="false"/>
+        <activity
+            android:name=".learning_space.basic_edu.activity.BasicEduMainFragment"
+            android:exported="false" />
         <activity
             android:name=".learning_space.default_app.todo.MenusActivity"
             android:exported="false" />
         <activity
             android:name=".learning_space.basic_edu.activity.IconDetailActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".learning_space.move_edu.activity.MoveDetailActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".learning_space.screen_layout.ScreenLayoutActivity"
             android:exported="false" />
