@@ -25,7 +25,6 @@ class ExamCameraProblemActivity : AppCompatActivity() {
         binding.problemStartBtn.setOnClickListener {
             val intent = Intent(this, PracticeCameraActivity::class.java)
             startActivity(intent)
-
         }
     }
 }
