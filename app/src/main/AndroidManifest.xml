@@ -19,6 +19,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".training_space.default_app.camera.problem.ExamCameraProblem4Activity"
+            android:exported="false" />
+        <activity
             android:name=".training_space.default_app.camera.PracticeResultGalleryActivity"
             android:exported="false" />
         <activity
