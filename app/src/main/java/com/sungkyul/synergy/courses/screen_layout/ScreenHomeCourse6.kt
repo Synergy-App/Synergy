@@ -3,12 +3,10 @@ package com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout
 import android.os.Build
 import android.view.Gravity
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
+import com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.utils.DisplayUtils
-import com.sungkyul.synergy.utils.HandGestures
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
-import com.sungkyul.synergy.utils.edu.EduHand
 import com.sungkyul.synergy.utils.edu.EduScreen
 
 data class ScreenHomeCourse6(val eduScreen: EduScreen): EduCourse {

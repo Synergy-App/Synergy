@@ -14,8 +14,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
-import com.sungkyul.synergy.com.sungkyul.synergy.utils.GalaxyNote9
+import com.sungkyul.synergy.utils.GALAXY_NOTE9
+import com.sungkyul.synergy.utils.GalaxyNote9
 import com.sungkyul.synergy.learning_space.basic_edu.dictionary_edu.activity.IconEduFragment
 import com.sungkyul.synergy.learning_space.move_edu.activity.MoveEduFragment
 

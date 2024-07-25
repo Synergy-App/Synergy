@@ -16,7 +16,7 @@ import com.sungkyul.synergy.databinding.ActivityPracticeScreenLockPracticeBindin
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Build
-import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
+import com.sungkyul.synergy.utils.GALAXY_NOTE9
 
 class PracticeScreenLockActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPracticeScreenLockPracticeBinding
