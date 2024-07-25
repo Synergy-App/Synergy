@@ -2,6 +2,7 @@ package com.sungkyul.synergy.courses.default_app.message
 
 import android.view.Gravity
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.utils.AdaptiveUtils
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
 import com.sungkyul.synergy.utils.edu.EduCourse
@@ -18,14 +19,14 @@ data class DefaultMessageChattingCourse(val eduScreen: EduScreen): EduCourse {
     // 교육 코스를 만든다.
     init {
         list.add(EduData().apply {
-            dialog.contentText = "문자 화면 입니다."
+            dialog.contentText = "문자 화면입니다."
             dialog.contentFont = R.font.pretendard_medium
-            dialog.contentSize = 26.0f
+            dialog.contentSize = AdaptiveUtils.dialogContentMedium()
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = 26.0f/930.0f
-            dialog.bottom = 700.0f/930.0f
-            dialog.start = 24.0f/412.0f
-            dialog.end = 24.0f/412.0f
+            dialog.top = AdaptiveUtils.ratio(26.0f/930.0f)
+            dialog.bottom = AdaptiveUtils.ratio(700.0f/930.0f)
+            dialog.start = AdaptiveUtils.ratio(24.0f/412.0f)
+            dialog.end = AdaptiveUtils.ratio(24.0f/412.0f)
             cover.visibility = false
             cover.isClickable = true
             dialog.visibility = true
@@ -35,13 +36,13 @@ data class DefaultMessageChattingCourse(val eduScreen: EduScreen): EduCourse {
 
         list.add(EduData().apply {
             dialog.contentText = "이 부분을 통해<br>이전에 주고 받은 메세지<br>내역을 확인할 수 있습니다."
-            dialog.top = 50.0f/930.0f
-            dialog.bottom = 600.0f/930.0f
+            dialog.top = AdaptiveUtils.ratio(0.75f)
+            dialog.bottom = AdaptiveUtils.ratio(0.05f)
             cover.boxVisibility = true
-            cover.boxLeft = 0.0f
-            cover.boxTop = 280.0f/930.0f
-            cover.boxRight = 1.0f
-            cover.boxBottom = (930.0f-60.0f)/930.0f
+            cover.boxLeft = AdaptiveUtils.ratio(0.0f)
+            cover.boxTop = AdaptiveUtils.ratio(0.14f)
+            cover.boxRight = AdaptiveUtils.ratio(1.0f)
+            cover.boxBottom = AdaptiveUtils.ratio(0.7f)
             cover.visibility = true
             cover.boxBorderVisibility = true
             cover.boxBorderColor = R.color.black
@@ -52,19 +53,19 @@ data class DefaultMessageChattingCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.contentText = "메세지를 보내는<br>버튼입니다."
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = 380.0f/930.0f
-            dialog.bottom = 200.0f/930.0f
-            cover.boxLeft = 0.75f
-            cover.boxTop = 0.725f
-            cover.boxRight = 0.95f
-            cover.boxBottom = 0.825f
+            dialog.top = AdaptiveUtils.ratio(0.6f)
+            dialog.bottom = AdaptiveUtils.ratio(200.0f/930.0f)
+            cover.boxLeft = AdaptiveUtils.ratio(0.76f)
+            cover.boxTop = AdaptiveUtils.ratio(0.755f)
+            cover.boxRight = AdaptiveUtils.ratio(0.95f)
+            cover.boxBottom = AdaptiveUtils.ratio(0.875f)
             cover.boxBorderColor = R.color.lime
         })
 
         list.add(EduData().apply {
             dialog.contentText = "메시지를 보내볼까요?"
-            dialog.top = 300.0f/930.0f
-            dialog.bottom = 400.0f/930.0f
+            dialog.top = AdaptiveUtils.ratio(300.0f/930.0f)
+            dialog.bottom = AdaptiveUtils.ratio(400.0f/930.0f)
             dialog.contentColor = R.color.white
             dialog.background = R.drawable.edu_dialog_green_bg
             cover.boxVisibility = false
@@ -79,8 +80,8 @@ data class DefaultMessageChattingCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = 340.0f/412.0f,
-                    y = 710.0f/930.0f,
+                    x = AdaptiveUtils.ratio(340.0f/412.0f),
+                    y = AdaptiveUtils.ratio(0.83f),
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
@@ -94,8 +95,8 @@ data class DefaultMessageChattingCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = 340.0f/412.0f,
-                    y = 570.0f/930.0f,
+                    x = AdaptiveUtils.ratio(340.0f/412.0f),
+                    y = AdaptiveUtils.ratio(0.69f),
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

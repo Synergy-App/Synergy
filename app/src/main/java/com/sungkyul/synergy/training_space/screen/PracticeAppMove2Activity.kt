@@ -14,7 +14,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
+import com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.training_space.activity.ExampleProblem5Activity
 
 class PracticeAppMove2Activity : AppCompatActivity() {

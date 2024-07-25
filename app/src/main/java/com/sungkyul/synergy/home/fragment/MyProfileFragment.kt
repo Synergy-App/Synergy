@@ -18,8 +18,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
-import com.sungkyul.synergy.com.sungkyul.synergy.utils.GalaxyNote9
+import com.sungkyul.synergy.utils.GALAXY_NOTE9
+import com.sungkyul.synergy.utils.GalaxyNote9
 import com.sungkyul.synergy.databinding.FragmentMyProfileBinding
 import com.sungkyul.synergy.profile_space.CheckLearningAbilityActivity
 import com.sungkyul.synergy.home.activity.LoginActivity

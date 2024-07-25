@@ -11,16 +11,15 @@ import android.view.View
 import android.view.WindowInsets
 import android.view.WindowInsetsController
 import androidx.appcompat.app.AppCompatActivity
-import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.courses.screen_layout.ScreenHomeCourse
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenHomeCourse2
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenHomeCourse3
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenHomeCourse4
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenHomeCourse5
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenHomeCourse6
+import com.sungkyul.synergy.courses.screen_layout.ScreenHomeCourse
 import com.sungkyul.synergy.databinding.ActivityScreenHomeBinding
-import com.sungkyul.synergy.learning_space.EduCompletionActivity
+import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.utils.edu.EduScreen
 
 class ScreenHomeActivity : AppCompatActivity() {

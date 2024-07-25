@@ -1,0 +1,45 @@
+package com.sungkyul.synergy.utils
+
+import android.os.Build
+
+class AdaptiveUtils {
+    companion object {
+        fun dialogTitleMedium(): Float {
+            return when (Build.MODEL) {
+                GALAXY_NOTE9 -> 26.0f
+                GALAXY_A10E -> 30.0f
+                GALAXY_A31 -> 30.0f
+                else -> 30.0f
+            }
+        }
+
+        fun dialogContentMedium(): Float {
+            return when (Build.MODEL) {
+                GALAXY_NOTE9 -> 22.0f
+                GALAXY_A10E -> 26.0f
+                GALAXY_A31 -> 26.0f
+                else -> 26.0f
+            }
+        }
+
+        fun ratio(x: Float): Float {
+            return when (Build.MODEL) {
+                GALAXY_NOTE9 -> {
+                    x
+                }
+
+                GALAXY_A10E -> {
+                    x
+                }
+
+                GALAXY_A31 -> {
+                    x
+                }
+
+                else -> {
+                    x
+                }
+            }
+        }
+    }
+}

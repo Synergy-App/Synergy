@@ -13,8 +13,8 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.com.sungkyul.synergy.learning_space.ResultPair
-import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
-import com.sungkyul.synergy.com.sungkyul.synergy.utils.GalaxyNote9
+import com.sungkyul.synergy.utils.GALAXY_NOTE9
+import com.sungkyul.synergy.utils.GalaxyNote9
 
 class MyExamResultActivity : AppCompatActivity() {
 
