@@ -3,8 +3,9 @@ package com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout
 import android.os.Build
 import android.view.Gravity
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
+import com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.utils.DisplayUtils
+import com.sungkyul.synergy.utils.GALAXY_NOTE9_EMU
 import com.sungkyul.synergy.utils.HandGestures
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
@@ -48,6 +49,7 @@ data class ScreenHomeCourse5(val eduScreen: EduScreen): EduCourse {
             cover.boxBorderVisibility = true
             cover.boxTop = when(Build.MODEL) {
                 GALAXY_NOTE9 -> 0.9f
+                GALAXY_NOTE9_EMU -> 0.9f
                 else -> 0.850f
             }
             cover.boxBottom = 1.0f

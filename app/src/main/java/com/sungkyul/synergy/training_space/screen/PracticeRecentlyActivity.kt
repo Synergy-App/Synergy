@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.widget.TextView
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
+import com.sungkyul.synergy.utils.GALAXY_NOTE9
 
 class PracticeRecentlyActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

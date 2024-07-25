@@ -16,7 +16,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
+import com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.databinding.ActivityPracticeTopBarBinding
 import com.sungkyul.synergy.training_space.activity.ExamProblem4Activity
 
