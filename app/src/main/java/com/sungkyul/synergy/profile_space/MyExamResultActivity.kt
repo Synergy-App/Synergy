@@ -15,6 +15,9 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.com.sungkyul.synergy.learning_space.ResultPair
 import com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.utils.GalaxyNote9
+import java.text.SimpleDateFormat
+import java.util.Locale
+import java.util.Date
 
 class MyExamResultActivity : AppCompatActivity() {
 
@@ -43,7 +46,13 @@ class MyExamResultActivity : AppCompatActivity() {
         // 예제 데이터
         val educationId = 1
         val examResults = listOf(
-            ExamResult("1차 화면구성", "시험결과", "6월 19일", R.drawable.group_3969, loadResultListFromSharedPreferences(educationId)),
+            ExamResult(
+                "1차 화면구성",
+                "시험결과",
+                loadSavedDate() ?: "날짜 없음",
+                R.drawable.group_3969,
+                loadResultListFromSharedPreferences(educationId)
+            )
         )
 
         // totalQuestions를 가져옵니다.
@@ -69,6 +78,22 @@ class MyExamResultActivity : AppCompatActivity() {
             gson.fromJson(jsonResultList, type)
         } else {
             ArrayList()
+        }
+    }
+
+    private fun loadSavedDate(): String? {
+        val dateString = sharedPreferences.getString("lastQuizDate", null)
+        return dateString?.let { formatDateString(it) }
+    }
+
+    private fun formatDateString(dateString: String): String {
+        return try {
+            val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+            val outputFormat = SimpleDateFormat("MM월 dd일", Locale.getDefault())
+            val date: Date = inputFormat.parse(dateString) ?: Date()
+            outputFormat.format(date)
+        } catch (e: Exception) {
+            "날짜 변환 오류"
         }
     }
 

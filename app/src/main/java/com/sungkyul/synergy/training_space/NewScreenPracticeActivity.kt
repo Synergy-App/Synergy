@@ -30,6 +30,8 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.text.SimpleDateFormat
+import java.util.*
 
 class NewScreenPracticeActivity : AppCompatActivity() {
 
@@ -97,6 +99,7 @@ class NewScreenPracticeActivity : AppCompatActivity() {
                 Log.d("NewScreenPracticeActivity", "No answer selected")
             }
         }
+
         optionCardViews = cardViewIds.map { findViewById<CardView>(it) }.toList()
 
         for (cardView in optionCardViews) {
@@ -139,7 +142,6 @@ class NewScreenPracticeActivity : AppCompatActivity() {
     }
 
     private fun updateDigitalAge() {
-        val sharedPreferences = getSharedPreferences("SynergyPrefs", Context.MODE_PRIVATE)
         val currentDigitalAgeGrade = sharedPreferences.getString("DigitalAgeGrade", "old")
         val newDigitalAgeGrade = when (currentDigitalAgeGrade) {
             "old" -> "parent"
@@ -155,6 +157,7 @@ class NewScreenPracticeActivity : AppCompatActivity() {
         val updatedDigitalAgeGrade = sharedPreferences.getString("DigitalAgeGrade", null)
         Log.d("NewScreenPracticeActivity", "Stored DigitalAgeGrade: $updatedDigitalAgeGrade")
     }
+
     private fun checkAnswer(answer: Int) {
         val examId = examList[currentExamIndex].id
         val answerBody = ExamAnswerBody(answerOnSelect = answer, answerOnInput = "", answerOnActivity = "")
@@ -197,15 +200,18 @@ class NewScreenPracticeActivity : AppCompatActivity() {
         })
     }
 
-
-
-
     private fun saveResultListToSharedPreferences(resultList: ArrayList<ResultPair>) {
         val gson = Gson()
         val jsonResultList = gson.toJson(resultList)
         val editor = sharedPreferences.edit()
         editor.putString("resultList", jsonResultList)
         editor.apply()
+    }
+
+    private fun saveDateToSharedPreferences() {
+        val currentDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
+        sharedPreferences.edit().putString("lastQuizDate", currentDate).apply()
+        Log.d("NewScreenPracticeActivity", "Date saved: $currentDate")
     }
 
     private fun showNextExam() {
@@ -215,6 +221,7 @@ class NewScreenPracticeActivity : AppCompatActivity() {
             showExam(currentExamIndex)
         } else {
             updateDigitalAge()
+            saveDateToSharedPreferences() // 문제를 모두 푼 후 날짜 저장
             // 문제가 더 이상 없으면 ExamResultTestActivity로 이동하여 맞춘 문제 수를 보여줌
             val intent = Intent(this, ExamResultTestActivity::class.java).apply {
                 putParcelableArrayListExtra("resultList", ArrayList(resultList))
@@ -244,7 +251,7 @@ class NewScreenPracticeActivity : AppCompatActivity() {
             binding.descriptionText.text = exam.description
         } else {
             binding.descriptionImage.visibility = ImageView.GONE
-            binding.descriptionText.visibility = ImageView.GONE
+            binding.descriptionText.visibility = TextView.GONE
         }
 
         // 선택지 텍스트 또는 이미지를 각 Button 및 ImageButton에 설정
