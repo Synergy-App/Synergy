@@ -3,7 +3,7 @@ package com.sungkyul.synergy.test
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.databinding.ActivityNougatBinding
-import com.sungkyul.synergy.learning_space.default_app.DefaultAppActivity
+import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.utils.edu.EduScreen
 
 class NougatActivity : AppCompatActivity() {
@@ -21,7 +21,7 @@ class NougatActivity : AppCompatActivity() {
 
             // 교육 코스가 끝났을 때 발생하는 이벤트 리스너를 설정한다.
             binding.eduScreen.setOnFinishedCourseListener {
-                EduScreen.toTop(this, DefaultAppActivity::class.java)
+                EduScreen.toTop(this, MainActivity::class.java)
             }
 
             // 교육을 시작한다.
@@ -29,6 +29,6 @@ class NougatActivity : AppCompatActivity() {
         }
 
         // 스마트폰의 이전 버튼을 누르면, 지정된 액티비티로 되돌아간다.
-        EduScreen.navigateBackToTop(this, DefaultAppActivity::class.java)
+        EduScreen.navigateBackToTop(this, MainActivity::class.java)
     }
 }

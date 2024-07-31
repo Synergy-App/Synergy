@@ -8,7 +8,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.databinding.ActivityDefaultPhoneAddBinding
 import com.sungkyul.synergy.courses.default_app.phone.DefaultPhoneCourse3
-import com.sungkyul.synergy.learning_space.default_app.DefaultAppActivity
+import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.utils.AnimUtils
 
 class DefaultPhoneAddActivity : AppCompatActivity() {
@@ -28,7 +28,7 @@ class DefaultPhoneAddActivity : AppCompatActivity() {
                 // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
 
                 // DefaultAppActivity로 되돌아 간다.
-                val intent = Intent(binding.root.context, DefaultAppActivity::class.java)
+                val intent = Intent(binding.root.context, MainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                 startActivity(intent)
             }
@@ -40,7 +40,7 @@ class DefaultPhoneAddActivity : AppCompatActivity() {
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 // DefaultAppActivity로 되돌아 간다.
-                val intent = Intent(binding.root.context, DefaultAppActivity::class.java)
+                val intent = Intent(binding.root.context, MainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                 startActivity(intent)
             }

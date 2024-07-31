@@ -250,9 +250,7 @@
         <activity
             android:name=".learning_space.naver.activity.NaverSearchResultActivity"
             android:exported="false" />
-        <activity
-            android:name=".learning_space.default_app.DefaultAppActivity"
-            android:exported="false" />
+       
         <activity
             android:name=".home.activity.EduSpaceActivity"
             android:exported="false" />

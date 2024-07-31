@@ -11,8 +11,10 @@ import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.home.activity.MainActivity
 
 class AppInstallMainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,5 +58,19 @@ class AppInstallMainActivity : AppCompatActivity() {
                 }
             }
         })
+
+        /*
+        // 뒤로 가기 키를 눌렀을 때의 이벤트를 처리한다.
+        onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // MainActivity로 되돌아 간다.
+                val intent = Intent(binding.root.context, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                startActivity(intent)
+            }
+        })
+
+         */
+
     }
 }
