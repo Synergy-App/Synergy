@@ -13,7 +13,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityDefaultMessageChattingBinding
 import com.sungkyul.synergy.courses.default_app.message.DefaultMessageChattingCourse
 import com.sungkyul.synergy.courses.default_app.message.DefaultMessageCourse3
-import com.sungkyul.synergy.learning_space.default_app.DefaultAppActivity
+import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.learning_space.default_app.message.adapter.MessageChattingAdapter
 import com.sungkyul.synergy.learning_space.default_app.message.adapter.MessageChattingData
 import com.sungkyul.synergy.utils.AnimUtils
@@ -69,7 +69,7 @@ class DefaultMessageChattingActivity : AppCompatActivity() {
         onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 // DefaultAppActivity로 되돌아 간다.
-                val intent = Intent(binding.root.context, DefaultAppActivity::class.java)
+                val intent = Intent(binding.root.context, MainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                 startActivity(intent)
             }
