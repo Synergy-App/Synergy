@@ -2,6 +2,7 @@ package com.sungkyul.synergy.courses.settings
 
 import android.view.Gravity
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.utils.AdaptiveUtils
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
 import com.sungkyul.synergy.utils.edu.EduCourse
@@ -17,14 +18,14 @@ data class SettingsFontCourse(val eduScreen: EduScreen): EduCourse {
     // 교육 코스를 만든다.
     init {
         list.add(EduData().apply {
-            dialog.contentText = "글자 크기를 조절하는 화면입니다."
+            dialog.contentText = "글자 크기를 조절할 수 있는<br>화면입니다."
             dialog.contentGravity = Gravity.CENTER
             dialog.contentFont = R.font.pretendard_medium
-            dialog.contentSize = 26.0f
-            dialog.top = 26.0f
-            dialog.bottom = 460.0f
-            dialog.start = 24.0f
-            dialog.end = 24.0f
+            dialog.contentSize = AdaptiveUtils.dialogContentMedium()
+            dialog.top = AdaptiveUtils.ratio(0.1f)
+            dialog.bottom = AdaptiveUtils.ratio(0.7f)
+            dialog.start = AdaptiveUtils.ratio(0.1f)
+            dialog.end = AdaptiveUtils.ratio(0.1f)
             dialog.visibility = true
             cover.visibility = false
             cover.isClickable = true
@@ -32,31 +33,27 @@ data class SettingsFontCourse(val eduScreen: EduScreen): EduCourse {
             dialog.background = R.drawable.edu_dialog_black_bg
         })
         list.add(EduData().apply {
-            dialog.contentText = "글자 크기를 조절해 원하는 크기로 변경할 수 있습니다."
-            dialog.top = 300.0f
-            dialog.bottom = 150.0f
-            dialog.start = 24.0f
-            dialog.end = 24.0f
+            dialog.contentText = "글자 크기를 조절해<br>원하는 크기로<br>변경할 수 있습니다."
+            dialog.top = AdaptiveUtils.ratio(0.5f)
+            dialog.bottom = AdaptiveUtils.ratio(0.2f)
             dialog.visibility = true
             cover.visibility = true
             dialog.contentColor = R.color.black
             dialog.background = R.drawable.edu_dialog_bg
 
-            cover.boxLeft = 0.0f
-            cover.boxRight = width-0.0f
-            cover.boxTop = 615.0f
-            cover.boxBottom = 485.0f /*크기가 커질 수록 박스가 커짐 */
+            cover.boxLeft = AdaptiveUtils.ratio(0.0f)
+            cover.boxRight = AdaptiveUtils.ratio(1.0f)
+            cover.boxTop = AdaptiveUtils.ratio(0.8f)
+            cover.boxBottom = AdaptiveUtils.ratio(1.0f) /*크기가 커질 수록 박스가 커짐 */
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "글자 크기를 최대로 키워볼까요?"
+            dialog.contentText = "글자 크기를 최대로<br>키워볼까요?"
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = 250.0f
-            dialog.bottom = 250.0f
-            dialog.start = 24.0f
-            dialog.end = 24.0f
+            dialog.top = AdaptiveUtils.ratio(0.4f)
+            dialog.bottom = AdaptiveUtils.ratio(0.4f)
             dialog.visibility = true
             cover.visibility = true
             cover.boxVisibility = false
@@ -73,9 +70,8 @@ data class SettingsFontCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "drag",
-                    //x = 30.0f,
-                    //y = 550.0f,
-                    x = 0.0f, y = 0.0f,
+                    x = AdaptiveUtils.ratio(0.15f),
+                    y = AdaptiveUtils.ratio(0.85f),
                     width = 50.0f,
                     height = 75.0f,
                     gesture = HandGestures.Companion::horizontalDragGesture
@@ -85,20 +81,18 @@ data class SettingsFontCourse(val eduScreen: EduScreen): EduCourse {
 
         list.add(EduData().apply {
             action.id = "clear_ment"
-            dialog.contentText = "글자 크기가 최대로 조절되었습니다!"
-            dialog.top = 320.0f
-            dialog.bottom = 200.0f
-            dialog.start = 24.0f
-            dialog.end = 24.0f
+            dialog.contentText = "글자 크기가<br>최대로 조절되었습니다!"
+            dialog.top = AdaptiveUtils.ratio(0.45f)
+            dialog.bottom = AdaptiveUtils.ratio(0.35f)
             dialog.visibility = true
             cover.visibility = true
             dialog.contentColor = R.color.black
             dialog.background = R.drawable.edu_dialog_yellow_bg
 
-            cover.boxLeft = 0.0f
-            cover.boxRight = width-0.0f
-            cover.boxTop = 160.0f
-            cover.boxBottom = 280.0f /*크기가 커질 수록 박스가 커짐 */
+            cover.boxLeft = AdaptiveUtils.ratio(0.0f)
+            cover.boxRight = AdaptiveUtils.ratio(1.0f)
+            cover.boxTop = AdaptiveUtils.ratio(0.15f)
+            cover.boxBottom = AdaptiveUtils.ratio(0.3f)
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
             cover.isClickable = true
@@ -106,12 +100,10 @@ data class SettingsFontCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "글자 크기가 너무 작아 사용하는데 어려웠다면"
+            dialog.contentText = "글자 크기가 너무 작아<br>사용하는데 어려웠다면"
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = 250.0f
-            dialog.bottom = 250.0f
-            dialog.start = 24.0f
-            dialog.end = 24.0f
+            dialog.top = AdaptiveUtils.ratio(0.4f)
+            dialog.bottom = AdaptiveUtils.ratio(0.4f)
             dialog.visibility = true
             cover.visibility = true
             cover.boxVisibility = false
@@ -123,7 +115,9 @@ data class SettingsFontCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "환경설정을 통해 글자 크기를 조절할 수 있습니다."
+            dialog.contentText = "환경설정을 통해<br>글자 크기를<br>조절할 수 있습니다."
+            dialog.top = AdaptiveUtils.ratio(0.35f)
+            dialog.bottom = AdaptiveUtils.ratio(0.35f)
         })
     }
 }

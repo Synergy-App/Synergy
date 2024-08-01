@@ -28,6 +28,8 @@ import com.sungkyul.synergy.learning_space.screen_layout.ScreenFirstActivity
 import com.sungkyul.synergy.learning_space.default_app.phone.activity.DefaultPhoneFirstActivity
 import com.sungkyul.synergy.learning_space.kakaotalk.activity.KakaoFirstActivity
 import com.sungkyul.synergy.learning_space.naver.activity.NaverFirstActivity
+import com.sungkyul.synergy.learning_space.settingedu.SettingFontActivity
+import com.sungkyul.synergy.learning_space.settingedu.SettingMainActivity
 import com.sungkyul.synergy.learning_space.settingedu.SettingsFirstActivity
 import com.sungkyul.synergy.utils.GalaxyButton
 

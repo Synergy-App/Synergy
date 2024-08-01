@@ -2,6 +2,7 @@ package com.sungkyul.synergy.courses.settings
 
 import android.view.Gravity
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.utils.AdaptiveUtils
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
 import com.sungkyul.synergy.utils.edu.EduCourse
@@ -19,12 +20,12 @@ data class SettingsCourse(val eduScreen: EduScreen): EduCourse {
             list.add(EduData().apply {
                 dialog.contentText = "환경설정의<br>메인 화면입니다."
                 dialog.contentFont = R.font.pretendard_medium
-                dialog.contentSize = 26.0f
+                dialog.contentSize = AdaptiveUtils.dialogContentMedium()
                 dialog.contentGravity = Gravity.CENTER
-                dialog.top = 26.0f
-                dialog.bottom = 500.0f
-                dialog.start = 24.0f
-                dialog.end = 24.0f
+                dialog.top = AdaptiveUtils.ratio(0.1f)
+                dialog.bottom = AdaptiveUtils.ratio(0.7f)
+                dialog.start = AdaptiveUtils.ratio(0.1f)
+                dialog.end = AdaptiveUtils.ratio(0.1f)
                 dialog.visibility = true
                 cover.visibility = false
                 cover.isClickable = true
@@ -34,12 +35,10 @@ data class SettingsCourse(val eduScreen: EduScreen): EduCourse {
             })
 
         list.add(EduData().apply {
-            dialog.contentText = "휴대폰의 상세 설정 목록들이 나열되어 있는데요."
+            dialog.contentText = "휴대폰의 상세 설정 목록들이<br>나열되어 있는데요."
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = 40.0f
-            dialog.bottom = 400.0f
-            dialog.start = 24.0f
-            dialog.end = 24.0f
+            dialog.top = AdaptiveUtils.ratio(0.4f)
+            dialog.bottom = AdaptiveUtils.ratio(0.4f)
             dialog.visibility = true
             cover.visibility = true
             dialog.contentColor = R.color.black
@@ -47,16 +46,14 @@ data class SettingsCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "글자 크기를 변경하기 위해서는 디스플레이를 이용하면 됩니다."
+            dialog.contentText = "글자 크기를 변경하기 위해서는<br>디스플레이를 이용하면 됩니다."
+            dialog.top = AdaptiveUtils.ratio(0.35f)
+            dialog.bottom = AdaptiveUtils.ratio(0.35f)
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "디스플레이를 클릭해 주세요."
+            dialog.contentText = "디스플레이를<br>클릭해 주세요."
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = 40.0f
-            dialog.bottom = 500.0f
-            dialog.start = 24.0f
-            dialog.end = 24.0f
             dialog.visibility = true
             cover.visibility = true
             dialog.contentColor = R.color.white
@@ -71,9 +68,8 @@ data class SettingsCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "drag",
-                    //x = 200.0f,
-                    //y = 650.0f,
-                    x = 0.0f, y = 0.0f,
+                    x = AdaptiveUtils.ratio(0.5f),
+                    y = AdaptiveUtils.ratio(0.5f),
                     gesture = HandGestures.Companion::verticalScrollGesture
                 )
             )
@@ -97,9 +93,8 @@ data class SettingsCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    //x = 200.0f,
-                    //y = 200.0f,
-                    x = 0.0f, y = 0.0f,
+                    x = AdaptiveUtils.ratio(0.5f),
+                    y = AdaptiveUtils.ratio(0.5f),
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
