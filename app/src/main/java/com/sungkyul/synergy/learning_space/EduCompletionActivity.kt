@@ -10,6 +10,7 @@ import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.learning_space.default_app.message.activity.DefaultMessageFirstActivity
 import com.sungkyul.synergy.learning_space.default_app.phone.activity.DefaultPhoneFirstActivity
 import com.sungkyul.synergy.learning_space.screen_layout.ScreenFirstActivity
+import com.sungkyul.synergy.learning_space.settingedu.SettingsFirstActivity
 
 class EduCompletionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEduCompletionBinding
@@ -27,6 +28,7 @@ class EduCompletionActivity : AppCompatActivity() {
             "message" -> Intent(this, DefaultMessageFirstActivity::class.java)
             "phone" -> Intent(this, DefaultPhoneFirstActivity::class.java)
             "screen_layout" -> Intent(this, ScreenFirstActivity::class.java)
+            "settings" -> Intent(this, SettingsFirstActivity::class.java)
             else -> Intent(this, MainActivity::class.java)
         }
 

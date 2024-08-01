@@ -101,12 +101,30 @@ class HandGestures {
 
         // 세로 스크롤 다운
         fun verticalScrollGesture(context: Context, imageView: ImageView): AnimatorSet {
-            return createDragGesture(context, imageView, 200.0f, 550.0f, 200.0f, 300.0f, 1500, 500)
+            return createDragGesture(
+                context,
+                imageView,
+                AdaptiveUtils.ratio(0.5f),
+                AdaptiveUtils.ratio(0.5f),
+                AdaptiveUtils.ratio(0.5f),
+                AdaptiveUtils.ratio(0.2f),
+                1500,
+                500
+            )
         }
 
         // 가로 스크롤 다운
         fun horizontalDragGesture(context: Context, imageView: ImageView): AnimatorSet {
-            return createDragGesture(context, imageView, 30.0f, 550.0f, 310.0f, 550.0f, 1500, 500)
+            return createDragGesture(
+                context,
+                imageView,
+                AdaptiveUtils.ratio(0.15f),
+                AdaptiveUtils.ratio(0.85f),
+                AdaptiveUtils.ratio(0.8f),
+                AdaptiveUtils.ratio(0.85f),
+                1500,
+                500
+            )
         }
 
 

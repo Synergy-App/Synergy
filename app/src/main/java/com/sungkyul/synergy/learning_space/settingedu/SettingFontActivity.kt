@@ -10,6 +10,7 @@ import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivitySetting2FontBinding
 import com.sungkyul.synergy.courses.settings.SettingsFontCourse
+import com.sungkyul.synergy.learning_space.EduCompletionActivity
 
 class SettingFontActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySetting2FontBinding
@@ -26,9 +27,8 @@ class SettingFontActivity : AppCompatActivity() {
             binding.eduScreen.setOnFinishedCourseListener {
                 // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
 
-                // MainActivity로 되돌아 간다.
-                val intent = Intent(binding.root.context, MainActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                val intent = Intent(binding.root.context, EduCompletionActivity::class.java)
+                intent.putExtra("course", "settings")
                 startActivity(intent)
             }
             // 교육을 시작한다.
