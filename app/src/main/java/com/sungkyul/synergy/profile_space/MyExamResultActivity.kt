@@ -43,20 +43,23 @@ class MyExamResultActivity : AppCompatActivity() {
         // SharedPreferences 초기화
         sharedPreferences = getSharedPreferences("SynergyPrefs", Context.MODE_PRIVATE)
 
-        // 예제 데이터
-        val educationId = 1
+        // 교육 ID에 따른 이름과 이미지 설정
+        val educationId = 1  // 예시 교육 ID
+        val educationInfo = getEducationInfo(educationId)
+
+        // 예제 데이터 생성
         val examResults = listOf(
             ExamResult(
-                "1차 화면구성",
+                educationInfo.name,
                 "시험결과",
                 loadSavedDate() ?: "날짜 없음",
-                R.drawable.group_3969,
+                educationInfo.imageRes,
                 loadResultListFromSharedPreferences(educationId)
             )
         )
 
-        // totalQuestions를 가져옵니다.
-        val totalQuestions = 10
+        // 문제 총 갯수 가져오기 (예제)
+        val totalQuestions = 10  // 예시로 10으로 설정, 실제 데이터에 맞게 설정
 
         // RecyclerView 초기화
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
@@ -70,6 +73,29 @@ class MyExamResultActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * educationId에 따라 교육 이름과 이미지를 반환하는 메서드
+     */
+    private fun getEducationInfo(educationId: Int): EducationInfo {
+        return when (educationId) {
+            1 -> EducationInfo("1차 기초", R.drawable.ic_edu_note) // 예제 이미지 및 이름
+            2 -> EducationInfo("1차 화면구성", R.drawable.ic_edu_gall) // 실제 이미지 및 이름 설정
+            3 -> EducationInfo("1차 카메라", R.drawable.ic_camera) // 실제 이미지 및 이름 설정
+            4 -> EducationInfo("1차 전화", R.drawable.ic_call) // 예제 이미지 및 이름
+            5 -> EducationInfo("1차 문자", R.drawable.ic_message) // 실제 이미지 및 이름 설정
+            6 -> EducationInfo("1차 환경 설정", R.drawable.ic_edubutton_setting) // 실제 이미지 및 이름 설정
+            7 -> EducationInfo("1차 계정 생성", R.drawable.ic_edu_create) // 실제 이미지 및 이름 설정
+            8 -> EducationInfo("1차 앱 설치", R.drawable.ic_edubutton_download) // 실제 이미지 및 이름 설정
+            9 -> EducationInfo("1차 카카오톡", R.drawable.ic_edubutton_kakaotalk) // 실제 이미지 및 이름 설정
+            10 -> EducationInfo("1차 네이버", R.drawable.ic_edubutton_naver) // 실제 이미지 및 이름 설정
+            // 추가적인 educationId에 따른 매핑 추가
+            else -> EducationInfo("기타 교육", R.drawable.ic_edu_note) // 기본 이미지 및 이름
+        }
+    }
+
+    /**
+     * SharedPreferences에서 저장된 결과 리스트를 가져오는 메서드
+     */
     private fun loadResultListFromSharedPreferences(educationId: Int): ArrayList<ResultPair> {
         val gson = Gson()
         val jsonResultList = sharedPreferences.getString("resultList", null)
@@ -81,11 +107,17 @@ class MyExamResultActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * SharedPreferences에서 저장된 날짜를 불러오는 메서드
+     */
     private fun loadSavedDate(): String? {
         val dateString = sharedPreferences.getString("lastQuizDate", null)
         return dateString?.let { formatDateString(it) }
     }
 
+    /**
+     * 날짜 문자열을 포맷팅하는 메서드
+     */
     private fun formatDateString(dateString: String): String {
         return try {
             val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
@@ -115,3 +147,8 @@ class MyExamResultActivity : AppCompatActivity() {
         standardSize_Y = (screenSize.y / density).toInt()
     }
 }
+
+/**
+ * 교육 정보 클래스
+ */
+data class EducationInfo(val name: String, val imageRes: Int)
