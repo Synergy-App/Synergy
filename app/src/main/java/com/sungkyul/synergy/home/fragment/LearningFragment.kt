@@ -21,8 +21,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.com.sungkyul.synergy.home.adapter.EduButtonAdapter
 import com.sungkyul.synergy.com.sungkyul.synergy.home.adapter.EduButtonItem
-import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
-import com.sungkyul.synergy.com.sungkyul.synergy.utils.GalaxyNote9
+import com.sungkyul.synergy.utils.GALAXY_NOTE9
+import com.sungkyul.synergy.utils.GalaxyNote9
 
 class LearningFragment : Fragment() {
 

@@ -17,8 +17,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.dictionary_edu.adapter.IconEduAdapter
 import com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.dictionary_edu.data.Icon
-import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
-import com.sungkyul.synergy.com.sungkyul.synergy.utils.GalaxyNote9
+import com.sungkyul.synergy.utils.GALAXY_NOTE9
+import com.sungkyul.synergy.utils.GalaxyNote9
 import com.sungkyul.synergy.databinding.ActivityIconEduBinding
 import com.sungkyul.synergy.utils.DisplayUtils
 

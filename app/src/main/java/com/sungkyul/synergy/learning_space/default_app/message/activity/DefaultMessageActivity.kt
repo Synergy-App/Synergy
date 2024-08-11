@@ -13,7 +13,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityDefaultMessageBinding
 import com.sungkyul.synergy.courses.default_app.message.DefaultMessageCourse2
-import com.sungkyul.synergy.learning_space.default_app.DefaultAppActivity
+import com.sungkyul.synergy.courses.default_app.message.DefaultMessageCourse4
+import com.sungkyul.synergy.home.activity.MainActivity
+import com.sungkyul.synergy.learning_space.EduCompletionActivity
 import com.sungkyul.synergy.learning_space.default_app.message.adapter.MessageAdapter
 import com.sungkyul.synergy.learning_space.default_app.message.adapter.MessageData
 import com.sungkyul.synergy.learning_space.default_app.message.adapter.MyMessageData
@@ -35,14 +37,21 @@ class DefaultMessageActivity : AppCompatActivity() {
         // 교육을 정의해보자!
         binding.eduScreen.post {
 
-            binding.eduScreen.course = DefaultMessageCourse2(binding.eduScreen)
+            when(intent.getStringExtra("prev_course")) {
+                "DefaultMessageCourse3" -> {
+                    binding.eduScreen.course = DefaultMessageCourse4(binding.eduScreen)
+                }
+                else -> {
+                    binding.eduScreen.course = DefaultMessageCourse2(binding.eduScreen)
+                }
+            }
+
 
             binding.eduScreen.setOnFinishedCourseListener {
                 // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
 
-                // DefaultAppActivity로 되돌아 간다.
-                val intent = Intent(binding.root.context, DefaultAppActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                val intent = Intent(binding.root.context, EduCompletionActivity::class.java)
+                intent.putExtra("course", "message")
                 startActivity(intent)
             }
             // 교육을 시작한다.
@@ -53,7 +62,7 @@ class DefaultMessageActivity : AppCompatActivity() {
         onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 // DefaultAppActivity로 되돌아 간다.
-                val intent = Intent(binding.root.context, DefaultAppActivity::class.java)
+                val intent = Intent(binding.root.context, MainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                 startActivity(intent)
             }

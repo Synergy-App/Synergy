@@ -1,6 +1,7 @@
 package com.sungkyul.synergy.learning_space.default_app.phone.activity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
@@ -14,10 +15,11 @@ import com.sungkyul.synergy.courses.default_app.phone.DefaultPhoneCourse1
 import com.sungkyul.synergy.courses.default_app.phone.DefaultPhoneCourse2
 import com.sungkyul.synergy.courses.default_app.phone.DefaultPhoneCourse3
 import com.sungkyul.synergy.courses.default_app.phone.DefaultPhoneCourse4
+import com.sungkyul.synergy.home.activity.MainActivity
+import com.sungkyul.synergy.learning_space.EduCompletionActivity
 import com.sungkyul.synergy.learning_space.default_app.TOUCH_DOWN_ALPHA
 import com.sungkyul.synergy.learning_space.default_app.TOUCH_DURATION_ALPHA
 import com.sungkyul.synergy.learning_space.default_app.TOUCH_UP_ALPHA
-import com.sungkyul.synergy.learning_space.default_app.DefaultAppActivity
 import com.sungkyul.synergy.learning_space.default_app.phone.adapter.ContactData
 import com.sungkyul.synergy.learning_space.default_app.phone.fragment.DefaultPhoneContactFragment
 import com.sungkyul.synergy.learning_space.default_app.phone.fragment.DefaultPhoneKeypadFragment
@@ -58,11 +60,15 @@ class DefaultPhoneActivity : AppCompatActivity() {
             }
 
             binding.eduScreen.setOnFinishedCourseListener {
-                EduScreen.toTop(this, DefaultAppActivity::class.java)
+                //EduScreen.toTop(this, DefaultAppActivity::class.java)
+
+                val intent = Intent(binding.root.context, EduCompletionActivity::class.java)
+                intent.putExtra("course", "phone")
+                startActivity(intent)
             }
             binding.eduScreen.start(this)
         }
-        EduScreen.navigateBackToTop(this, DefaultAppActivity::class.java)
+        EduScreen.navigateBackToTop(this, MainActivity::class.java)
 
         // Fragments
         keypadFragment = DefaultPhoneKeypadFragment(binding.eduScreen)

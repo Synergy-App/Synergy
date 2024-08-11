@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityDefaultMessageSelectBinding
 import com.sungkyul.synergy.courses.default_app.message.DefaultMessageCourse1
-import com.sungkyul.synergy.learning_space.default_app.DefaultAppActivity
+import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.learning_space.default_app.message.adapter.MessageContactData
 import com.sungkyul.synergy.learning_space.default_app.message.adapter.MessageSelectAdapter
 
@@ -32,7 +32,7 @@ class DefaultMessageSelectActivity : AppCompatActivity() {
                 // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
 
                 // DefaultAppActivity로 되돌아 간다.
-                val intent = Intent(binding.root.context, DefaultAppActivity::class.java)
+                val intent = Intent(binding.root.context, MainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                 startActivity(intent)
             }
@@ -44,7 +44,7 @@ class DefaultMessageSelectActivity : AppCompatActivity() {
         onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 // DefaultAppActivity로 되돌아 간다.
-                val intent = Intent(binding.root.context, DefaultAppActivity::class.java)
+                val intent = Intent(binding.root.context, MainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                 startActivity(intent)
             }

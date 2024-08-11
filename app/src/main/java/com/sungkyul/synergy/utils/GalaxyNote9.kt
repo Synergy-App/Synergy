@@ -1,9 +1,8 @@
-package com.sungkyul.synergy.com.sungkyul.synergy.utils
+package com.sungkyul.synergy.utils
 
 import android.content.Context
 import android.view.View
 import android.widget.TextView
-import com.sungkyul.synergy.utils.DisplayUtils
 
 class GalaxyNote9 {
     companion object {

@@ -2,6 +2,7 @@ package com.sungkyul.synergy.courses.settings
 
 import android.view.Gravity
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.utils.AdaptiveUtils
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
 import com.sungkyul.synergy.utils.edu.EduCourse
@@ -17,14 +18,14 @@ data class SettingsDisplayCourse(val eduScreen: EduScreen): EduCourse {
     // 교육 코스를 만든다.
     init {
         list.add(EduData().apply {
-            dialog.contentText = "아래 \"글자 크기와 스타일\"을 눌러보세요."
+            dialog.contentText = "\"글자 크기와 스타일\"을<br>눌러보세요."
             dialog.contentGravity = Gravity.CENTER
             dialog.contentFont = R.font.pretendard_medium
-            dialog.contentSize = 26.0f
-            dialog.top = 40.0f
-            dialog.bottom = 450.0f
-            dialog.start = 24.0f
-            dialog.end = 24.0f
+            dialog.contentSize = AdaptiveUtils.dialogContentMedium()
+            dialog.top = AdaptiveUtils.ratio(0.35f)
+            dialog.bottom = AdaptiveUtils.ratio(0.35f)
+            dialog.start = AdaptiveUtils.ratio(0.1f)
+            dialog.end = AdaptiveUtils.ratio(0.1f)
             dialog.visibility = true
             cover.visibility = true
             cover.isClickable = true
@@ -60,9 +61,8 @@ data class SettingsDisplayCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "drag",
                     source = R.drawable.hand,
-                    //x = 200.0f,
-                    //y = 650.0f,
-                    x = 0.0f, y = 0.0f,
+                    x = AdaptiveUtils.ratio(0.5f),
+                    y = AdaptiveUtils.ratio(0.5f),
                     width = 50.0f,
                     height = 75.0f,
                     gesture = HandGestures.Companion::verticalScrollGesture
@@ -83,9 +83,8 @@ data class SettingsDisplayCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    //x = 200.0f,
-                    //y = 300.0f,
-                    x = 0.0f, y = 0.0f,
+                    x = AdaptiveUtils.ratio(0.5f),
+                    y = AdaptiveUtils.ratio(0.6f),
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

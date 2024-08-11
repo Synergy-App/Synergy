@@ -14,8 +14,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
-import com.sungkyul.synergy.com.sungkyul.synergy.utils.GalaxyNote9
+import com.sungkyul.synergy.utils.GALAXY_NOTE9
+import com.sungkyul.synergy.utils.GalaxyNote9
 import com.sungkyul.synergy.learning_space.basic_edu.dictionary_edu.activity.IconEduFragment
 import com.sungkyul.synergy.learning_space.move_edu.activity.MoveEduFragment
 
@@ -33,7 +33,6 @@ class BasicEduMainFragment : Fragment() {
         basicMoveButton.setOnClickListener {
             // 기본 동작 교육 버튼 클릭 이벤트 처리
             addFragment(requireActivity(), MoveEduFragment())
-
         }
 
         wordDicButton.setOnClickListener {
@@ -45,7 +44,6 @@ class BasicEduMainFragment : Fragment() {
 
         return view
     }
-
 
     private fun getScreenSize(): Point {
         val display = (requireActivity().getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay
@@ -87,13 +85,11 @@ class BasicEduMainFragment : Fragment() {
         }
     }
 
-
     private fun addFragment(activity: FragmentActivity, fragment: Fragment) {
         val fragmentManager = activity.supportFragmentManager
         val transaction = fragmentManager.beginTransaction()
-        transaction.add(R.id.mainMainFrameLayout, fragment)
+        transaction.replace(R.id.mainMainFrameLayout, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
     }
-
 }

@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import androidx.appcompat.app.AlertDialog
-import com.sungkyul.synergy.com.sungkyul.synergy.utils.GALAXY_NOTE9
+import com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.databinding.ActivityExamStartBinding
 
 class ExamStartActivity : AppCompatActivity() {
