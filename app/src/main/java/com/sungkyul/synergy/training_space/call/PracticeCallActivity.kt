@@ -20,7 +20,6 @@ import com.sungkyul.synergy.courses.default_app.phone.DefaultPhoneCourse2
 import com.sungkyul.synergy.courses.default_app.phone.DefaultPhoneCourse3
 import com.sungkyul.synergy.courses.default_app.phone.DefaultPhoneCourse4
 import com.sungkyul.synergy.databinding.ActivityPracticeCallBinding
-import com.sungkyul.synergy.learning_space.default_app.DefaultAppActivity
 import com.sungkyul.synergy.learning_space.default_app.TOUCH_DOWN_ALPHA
 import com.sungkyul.synergy.learning_space.default_app.TOUCH_DURATION_ALPHA
 import com.sungkyul.synergy.learning_space.default_app.TOUCH_UP_ALPHA

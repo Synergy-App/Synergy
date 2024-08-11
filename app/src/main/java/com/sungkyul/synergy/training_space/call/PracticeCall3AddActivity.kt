@@ -14,9 +14,6 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.courses.default_app.phone.DefaultPhoneCourse3
 import com.sungkyul.synergy.databinding.ActivityDefaultPhoneAddBinding
 import com.sungkyul.synergy.databinding.ActivityPracticeCall3AddBinding
-import com.sungkyul.synergy.databinding.ActivityPracticeCall3Binding
-import com.sungkyul.synergy.learning_space.default_app.DefaultAppActivity
-import com.sungkyul.synergy.learning_space.default_app.phone.activity.DefaultPhoneActivity
 import com.sungkyul.synergy.training_space.call.problem.ExamCallProblem2Activity
 import com.sungkyul.synergy.training_space.call.problem.ExamCallProblem4Activity
 import com.sungkyul.synergy.utils.AnimUtils

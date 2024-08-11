@@ -17,7 +17,6 @@ import androidx.core.content.ContextCompat
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityPracticeCall2Binding
 import com.sungkyul.synergy.learning_space.default_app.CALL_ENDED_DELAY
-import com.sungkyul.synergy.learning_space.default_app.DefaultAppActivity
 import com.sungkyul.synergy.learning_space.default_app.TOUCH_DOWN_ALPHA
 import com.sungkyul.synergy.learning_space.default_app.TOUCH_DOWN_SCALE
 import com.sungkyul.synergy.learning_space.default_app.TOUCH_DURATION_ALPHA
