@@ -271,13 +271,14 @@
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/naver_search_btn"
+                android:src="@drawable/jjigae1"
+                android:layout_marginStart="8dp"
                 android:contentDescription="Search Icon"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="버튼 1"
+                android:text="순두부찌개"
                 android:textColor="#222225"
                 android:textSize="16sp"
                 android:layout_marginStart="8dp"/>
@@ -300,13 +301,14 @@
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/naver_search_btn"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/jjigae2"
                 android:contentDescription="Search Icon"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="버튼 2"
+                android:text="부대찌개"
                 android:textColor="#222225"
                 android:textSize="16sp"
                 android:layout_marginStart="8dp"/>
@@ -329,13 +331,14 @@
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/naver_search_btn"
+                android:src="@drawable/jjigae3"
+                android:layout_marginStart="8dp"
                 android:contentDescription="Search Icon"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="버튼 3"
+                android:text="김치찌개"
                 android:textColor="#222225"
                 android:textSize="16sp"
                 android:layout_marginStart="8dp"/>
@@ -359,13 +362,14 @@
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/naver_search_btn"
+                android:src="@drawable/jjigae4"
+                android:layout_marginStart="8dp"
                 android:contentDescription="Search Icon"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="버튼 4"
+                android:text="황탯국"
                 android:textColor="#222225"
                 android:textSize="16sp"
                 android:layout_marginStart="8dp"/>

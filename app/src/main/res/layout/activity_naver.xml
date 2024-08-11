@@ -158,15 +158,15 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="48dp"
-                android:gravity="end"
+                android:layout_marginHorizontal="0dp"
+                android:gravity="center"
                 app:layout_constraintTop_toBottomOf="@id/search_bar">
 
                 <ImageView
                     android:layout_width="340dp"
                     android:layout_height="90dp"
                     android:src="@drawable/naver_ad_null1"
-                    android:layout_marginTop="-10dp"
+                    android:layout_marginTop="6dp"
                     android:layout_marginEnd="-10dp"/>
 
             </LinearLayout>
@@ -236,7 +236,7 @@
                         android:src="@drawable/naver_sun"/>
 
                 </LinearLayout>
-                
+
                 <LinearLayout
                     android:id="@+id/stock_view"
                     android:orientation="horizontal"
@@ -286,17 +286,19 @@
                 android:nestedScrollingEnabled="false"
                 app:layout_constraintTop_toBottomOf="@id/weather_and_stock_view"/>
 
+            <ImageView
+                android:id="@+id/large_ad2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:src="@drawable/naver_ad_null2"
+                android:visibility="invisible"
+                tools:layout_editor_absoluteX="-1dp"
+                tools:layout_editor_absoluteY="0dp" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
-
-    <ImageView
-        android:id="@+id/large_ad2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/naver_ad_null2"
-        android:background="@color/white"
-        android:visibility="invisible"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottom_navigation_menu"

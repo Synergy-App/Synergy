@@ -123,8 +123,10 @@
         android:layout_marginEnd="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardView">
+        app:layout_constraintTop_toBottomOf="@id/cardView"
+        app:layout_constraintVertical_bias="0.0">
 
         <FrameLayout
             android:id="@+id/examResultCardView"
@@ -224,7 +226,9 @@
         android:text="로그아웃"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonContainer" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonContainer"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

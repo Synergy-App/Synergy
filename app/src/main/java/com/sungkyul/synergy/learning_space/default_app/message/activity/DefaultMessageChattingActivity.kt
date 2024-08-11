@@ -13,7 +13,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityDefaultMessageChattingBinding
 import com.sungkyul.synergy.courses.default_app.message.DefaultMessageChattingCourse
 import com.sungkyul.synergy.courses.default_app.message.DefaultMessageCourse3
-import com.sungkyul.synergy.learning_space.default_app.DefaultAppActivity
+import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.learning_space.default_app.message.adapter.MessageChattingAdapter
 import com.sungkyul.synergy.learning_space.default_app.message.adapter.MessageChattingData
 import com.sungkyul.synergy.utils.AnimUtils
@@ -57,9 +57,9 @@ class DefaultMessageChattingActivity : AppCompatActivity() {
                 // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
 
                 // DefaultAppActivity로 되돌아 간다.
-                val intent = Intent(binding.root.context, DefaultAppActivity::class.java)
+                /*val intent = Intent(binding.root.context, DefaultAppActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-                startActivity(intent)
+                startActivity(intent)*/
             }
             // 교육을 시작한다.
             binding.eduScreen.start(this)
@@ -69,7 +69,7 @@ class DefaultMessageChattingActivity : AppCompatActivity() {
         onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 // DefaultAppActivity로 되돌아 간다.
-                val intent = Intent(binding.root.context, DefaultAppActivity::class.java)
+                val intent = Intent(binding.root.context, MainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                 startActivity(intent)
             }
@@ -165,7 +165,12 @@ class DefaultMessageChattingActivity : AppCompatActivity() {
 
         val messageChattingList = binding.messageChattingList
         messageChattingList.layoutManager = LinearLayoutManager(binding.root.context)
-        messageChattingList.adapter = MessageChattingAdapter(this, messageChattingArray)
+        messageChattingList.adapter = MessageChattingAdapter(this, messageChattingArray, binding.eduScreen.course)
+        binding.eduScreen.post {
+            if (intent.getStringExtra("from") == "menu_button") {
+                messageChattingList.adapter = MessageChattingAdapter(this, messageChattingArray, binding.eduScreen.course)
+            }
+        }
 
         // 메시지 채팅 목록의 스크롤 리스너를 추가한다.
         messageChattingList.addOnScrollListener(object: RecyclerView.OnScrollListener() {

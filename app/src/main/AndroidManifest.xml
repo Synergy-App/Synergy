@@ -53,6 +53,9 @@
             android:name=".training_space.default_app.camera.problem.ExamCameraProblem4Activity"
             android:exported="false" />
         <activity
+            android:name=".learning_space.EduCompletionActivity"
+            android:exported="false" />
+        <activity
             android:name=".training_space.default_app.camera.PracticeResultGalleryActivity"
             android:exported="false" />
         <activity
@@ -269,9 +272,7 @@
         <activity
             android:name=".learning_space.naver.activity.NaverSearchResultActivity"
             android:exported="false" />
-        <activity
-            android:name=".learning_space.default_app.DefaultAppActivity"
-            android:exported="false" />
+
         <activity
             android:name=".home.activity.EduSpaceActivity"
             android:exported="false" />
@@ -313,13 +314,8 @@
             android:exported="false" />
         <activity
             android:name=".learning_space.settingedu.SettingFontActivity"
-            android:exported="true"> <!-- 계정생성 교육 -->
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity> <!-- 계정생성 -->
+            android:exported="false"/> <!-- 계정생성 교육 -->
+            <!-- 계정생성 -->
         <activity
             android:name=".learning_space.accountedu.GoogleMainActivity"
             android:exported="false" />
@@ -349,13 +345,8 @@
             android:exported="false" />
         <activity
             android:name=".learning_space.appinstall.AppInstallMainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity> <!-- 병윤님 앱 설치 메인 화면 -->
+            android:exported="false"/>
+            <!-- 병윤님 앱 설치 메인 화면 -->
         <activity
             android:name=".learning_space.appinstall.AppInstallSearchActivity"
             android:exported="false" />

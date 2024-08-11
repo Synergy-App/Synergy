@@ -15,10 +15,26 @@ data class Exam(
     val select2: String?,
     val select3: String?,
     val select4: String?,
+    
     val select5: String?,
     val select1ImgUrl: String?,
     val select2ImgUrl: String?,
     val select3ImgUrl: String?,
     val select4ImgUrl: String?,
     val select5ImgUrl: String?,
+
+    val history: List<ExamHistoryItem>
+)
+
+
+
+data class ExamHistoryItem(
+    val id: Int,
+    val createdAt: String,
+    val updatedAt: String,
+    val deletedAt: String?,
+    val correct: Boolean,
+    val answer: String,
+    val input: String,
+    val examStep: Int
 )
