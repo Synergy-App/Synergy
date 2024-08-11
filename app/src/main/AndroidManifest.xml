@@ -19,6 +19,37 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".training_space.call.PracticeCall4Activity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.call.PracticeCall3AddActivity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.call.PracticeCall3Activity"
+            android:exported="false" />
+        <activity android:name=".training_space.call.problem.ExamCallProblem3Activity" />
+        <activity
+            android:name=".training_space.call.PracticeCall2ResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.call.PracticeCall2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.call.PracticeCallActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".training_space.call.problem.ExamCallProblemActivity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.call.problem.ExamCallProblem2Activity"
+            android:exported="false" />
+        <activity
             android:name=".training_space.default_app.camera.problem.ExamCameraProblem4Activity"
             android:exported="false" />
         <activity
@@ -62,9 +93,6 @@
             android:exported="false" />
         <activity android:name=".learning_space.default_app.gallery.activity.DefaultGalleryActivity" />
         <activity
-            android:name=".courses.default_app.phone.DefaultPhoneFirstCourse"
-            android:exported="false" />
-        <activity
             android:name=".learning_space.settingedu.SettingsFirstActivity"
             android:exported="false" />
         <activity
@@ -84,13 +112,7 @@
             android:exported="false" /> <!-- 고정 SplashActivity -->
         <activity
             android:name=".home.activity.SplashActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".home.activity.LoginActivity"
             android:exported="true">
