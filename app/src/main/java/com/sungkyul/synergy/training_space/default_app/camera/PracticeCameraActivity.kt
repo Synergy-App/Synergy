@@ -28,8 +28,6 @@ class PracticeCameraActivity : AppCompatActivity() {
     private var pausedTimeInMillis: Long = 0 // 타이머가 일시정지된 시간
     private var success: Boolean = false // 성공 여부를 나타내는 변수 추가
 
-
-
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
