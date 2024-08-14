@@ -1,20 +1,29 @@
 package com.sungkyul.synergy.learning_space.default_app.gallery.activity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.MotionEvent
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.sungkyul.synergy.courses.default_app.camera.DefaultGalleryCourse
+import com.sungkyul.synergy.courses.default_app.message.DefaultMessageCourse2
+import com.sungkyul.synergy.courses.default_app.message.DefaultMessageCourse4
 import com.sungkyul.synergy.databinding.ActivityDefaultGalleryBinding
+import com.sungkyul.synergy.home.activity.MainActivity
+import com.sungkyul.synergy.learning_space.EduCompletionActivity
+import com.sungkyul.synergy.learning_space.default_app.camera.activity.DefaultCameraActivity
 import com.sungkyul.synergy.learning_space.default_app.gallery.fragment.DefaultGalleryAlbumFragment
 import com.sungkyul.synergy.learning_space.default_app.gallery.fragment.DefaultGalleryPictureFragment
 import com.sungkyul.synergy.learning_space.default_app.gallery.fragment.DefaultGalleryShareFragment
 import com.sungkyul.synergy.learning_space.default_app.gallery.fragment.DefaultGalleryStoryFragment
 import com.sungkyul.synergy.utils.AnimUtils
+import com.sungkyul.synergy.utils.edu.EduScreen
 
 data class BottomNavItem(
     val fragment: Fragment,
@@ -38,6 +47,32 @@ class DefaultGalleryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDefaultGalleryBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // 교육을 정의해보자!
+        binding.eduScreen.post {
+
+                    binding.eduScreen.course = DefaultGalleryCourse(binding.eduScreen)
+
+
+            binding.eduScreen.setOnFinishedCourseListener {
+                // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
+
+                val intent = Intent(binding.root.context, EduCompletionActivity::class.java)
+                intent.putExtra("course", "message")
+                startActivity(intent)
+            }
+            // 교육을 시작한다.
+            binding.eduScreen.start(this)
+        }
+
+        //뒤로가기버튼을 누르면 다시 카메라로 이동한다
+        this.onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val intent = Intent(binding.root.context, DefaultCameraActivity::class.java)
+                intent.putExtra("from", "DefaultGalleryActivity")
+                startActivity(intent)
+            }
+        })
 
         // 프래그먼트들을 초기화한다.
         pictureFragment = DefaultGalleryPictureFragment(binding.eduScreen)
