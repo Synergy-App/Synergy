@@ -6,6 +6,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import com.sungkyul.synergy.R
 import com.sungkyul.synergy.courses.default_app.camera.DefaultCameraFirstCourse
 import com.sungkyul.synergy.courses.settings.DefaultPhoneFirstCourse
 import com.sungkyul.synergy.databinding.ActivityDefaultCameraFirstBinding
@@ -35,9 +36,10 @@ class DefaultCameraFirstActivity : AppCompatActivity() {
                 }
                 if(num==2) {
                     binding.cameraPhoto.visibility = ImageView.VISIBLE
+                    binding.iconImage.visibility = LinearLayout.INVISIBLE
                 }
                 if(num==3) {
-                    //binding.cameraPhoto
+                    binding.cameraPhoto.setImageResource(R.drawable.camera_explanation_2)
                 }
             }
             binding.eduScreen.setOnFinishedCourseListener {
