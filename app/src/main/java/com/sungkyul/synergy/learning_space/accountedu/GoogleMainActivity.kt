@@ -14,7 +14,6 @@ import com.sungkyul.synergy.courses.accountedu.GoogleMainCourse
 class
 GoogleMainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGoogleMainBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityGoogleMainBinding.inflate(layoutInflater)

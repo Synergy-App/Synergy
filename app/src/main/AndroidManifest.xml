@@ -19,6 +19,31 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".training_space.google.PracticeGoogle8Activity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.google.PracticeGoogle7Activity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.google.PracticeGoogle6Activity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.google.PracticeGoogle5Activity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.google.PracticeGoogle4Activity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.google.PracticeGoogle3Activity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.google.PracticeGoogle2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.google.PracticeGoogleActivity"
+            android:exported="false">
+        </activity>
+        <activity
             android:name=".training_space.setting.PracticeSettingFontActivity"
             android:exported="false" />
         <activity
@@ -26,7 +51,7 @@
             android:exported="false" />
         <activity
             android:name=".training_space.setting.PraticeSettingActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".training_space.message.PracticeMessageListActivity"
             android:exported="false" />
@@ -55,7 +80,7 @@
             android:exported="false" />
         <activity
             android:name=".training_space.call.PracticeCallActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".training_space.call.problem.ExamCallProblemActivity"
             android:exported="false" />
