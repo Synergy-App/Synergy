@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".training_space.message.PracticeMessageActivity">
+
+
+    <!-- 상단 LinearLayout (타이머와 문제보기 텍스트를 포함) -->
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingHorizontal="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <!-- 타이머를 표시할 TextView -->
+        <TextView
+            android:id="@+id/timerTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:padding="16dp"
+            android:text="00:00"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <!-- 타이머와 텍스트 사이의 공간 -->
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <!-- 타이머 옆에 표시할 텍스트 -->
+        <TextView
+            android:id="@+id/problemText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:padding="16dp"
+            android:text="문제보기"
+            android:textColor="@color/phoneRed"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- 메인 컨텐츠 레이아웃 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="7dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll"
+        tools:layout_editor_absoluteX="7dp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/message_screen_bg">
+
+            <com.sungkyul.synergy.utils.edu.EduScreen
+                android:id="@+id/edu_screen"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <LinearLayout
+                android:id="@+id/top_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/go_to_top_menu_button"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/black_circle"
+                    android:contentDescription="@string/go_to_top_menu_button"
+                    android:padding="12dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/naver_previous_button" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/profile_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/synergy"
+                        android:textColor="@color/message_profile_name"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/phone_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/init_phone_number"
+                        android:textColor="@color/message_phone_num"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/call_button"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/black_circle"
+                        android:contentDescription="@string/call_button"
+                        android:padding="8dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/phone_call" />
+
+                    <ImageButton
+                        android:id="@+id/search_button"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/black_circle"
+                        android:contentDescription="@string/search_button"
+                        android:padding="12dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/phone_magnifying_glass" />
+
+                    <ImageButton
+                        android:id="@+id/conversation_settings_button"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/black_circle"
+                        android:contentDescription="@string/conversation_settings_button"
+                        android:padding="12dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/phone_more" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/messages"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/bottom_bar"
+                android:layout_below="@+id/top_bar" />
+
+            <LinearLayout
+                android:id="@+id/bottom_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/image_button"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/black_circle"
+                        android:contentDescription="@string/image_button"
+                        android:padding="8dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_gallery_icon_gray_24" />
+
+                    <ImageButton
+                        android:id="@+id/camera_button"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/black_circle"
+                        android:contentDescription="@string/camera_button"
+                        android:padding="8dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_camera_gray" />
+
+                    <ImageButton
+                        android:id="@+id/plus_button"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/black_circle"
+                        android:contentDescription="@string/plus_button"
+                        android:padding="8dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/todo_circle"
+                        android:visibility="gone" />
+
+                    <ImageButton
+                        android:id="@+id/expand_button"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/black_circle"
+                        android:contentDescription="@string/expand_button"
+                        android:padding="8dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/todo_circle"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/message_input_bg">
+
+                    <EditText
+                        android:id="@+id/message_edit_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@id/emoji_button"
+                        android:hint="@string/text_message"
+                        android:importantForAutofill="no"
+                        android:inputType="text"
+                        android:textSize="22sp" />
+
+                    <ImageButton
+                        android:id="@+id/emoji_button"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/black_circle"
+                        android:contentDescription="@string/emoji_button"
+                        android:padding="8dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_icon_gray" />
+
+                </RelativeLayout>
+
+                <ImageButton
+                    android:id="@+id/record_button"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/black_circle"
+                    android:contentDescription="@string/record_button"
+                    android:padding="8dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/todo_circle"
+                    android:visibility="gone" />
+
+                <ImageButton
+                    android:id="@+id/send_button"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/black_circle"
+                    android:contentDescription="@string/send_button"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_messagego" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

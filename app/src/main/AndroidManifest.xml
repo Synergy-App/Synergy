@@ -19,6 +19,25 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".training_space.setting.PracticeSettingFontActivity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.setting.PracticeSettingDisActivity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.setting.PraticeSettingActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".training_space.message.PracticeMessageListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.message.problem.ExamMessageActivity"
+            android:exported="true" />
+        <activity
+            android:name=".training_space.message.PracticeMessageActivity"
+            android:exported="false" />
+        <activity android:name=".training_space.call.problem.ExamCallProblem4Activity" />
+        <activity
             android:name=".training_space.call.PracticeCall4Activity"
             android:exported="false" />
         <activity
@@ -36,8 +55,7 @@
             android:exported="false" />
         <activity
             android:name=".training_space.call.PracticeCallActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"/>
         <activity
             android:name=".training_space.call.problem.ExamCallProblemActivity"
             android:exported="false" />
@@ -114,7 +132,6 @@
         <activity
             android:name=".home.activity.LoginActivity"
             android:exported="true">
-            
         </activity>
         <activity
             android:name=".profile_space.CheckLearningAbilityActivity"
@@ -255,7 +272,6 @@
         <activity
             android:name=".learning_space.naver.activity.NaverSearchResultActivity"
             android:exported="false" />
-
         <activity
             android:name=".home.activity.EduSpaceActivity"
             android:exported="false" />
@@ -297,8 +313,8 @@
             android:exported="false" />
         <activity
             android:name=".learning_space.settingedu.SettingFontActivity"
-            android:exported="false"/> <!-- 계정생성 교육 -->
-            <!-- 계정생성 -->
+            android:exported="false" /> <!-- 계정생성 교육 -->
+        <!-- 계정생성 -->
         <activity
             android:name=".learning_space.accountedu.GoogleMainActivity"
             android:exported="false" />
@@ -328,8 +344,7 @@
             android:exported="false" />
         <activity
             android:name=".learning_space.appinstall.AppInstallMainActivity"
-            android:exported="false"/>
-            <!-- 병윤님 앱 설치 메인 화면 -->
+            android:exported="false" /> <!-- 병윤님 앱 설치 메인 화면 -->
         <activity
             android:name=".learning_space.appinstall.AppInstallSearchActivity"
             android:exported="false" />
