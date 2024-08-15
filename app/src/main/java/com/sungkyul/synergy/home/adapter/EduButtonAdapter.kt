@@ -30,7 +30,10 @@ import com.sungkyul.synergy.learning_space.default_app.message.activity.DefaultM
 import com.sungkyul.synergy.learning_space.default_app.phone.activity.DefaultPhoneCallActivity
 import com.sungkyul.synergy.learning_space.screen_layout.ScreenFirstActivity
 import com.sungkyul.synergy.learning_space.default_app.phone.activity.DefaultPhoneFirstActivity
+import com.sungkyul.synergy.learning_space.kakaotalk.activity.KakaoChattingActivity
 import com.sungkyul.synergy.learning_space.kakaotalk.activity.KakaoFirstActivity
+import com.sungkyul.synergy.learning_space.kakaotalk.activity.KakaoMainActivity
+import com.sungkyul.synergy.learning_space.kakaotalk.activity.KakaoProfileDetailActivity
 import com.sungkyul.synergy.learning_space.naver.activity.NaverActivity
 import com.sungkyul.synergy.learning_space.naver.activity.NaverFirstActivity
 import com.sungkyul.synergy.learning_space.naver.activity.NaverSearchInfoActivity
@@ -142,7 +145,7 @@ class EduButtonAdapter(
                             }
                             "카카오톡" -> {
                                  val intent = Intent(context, KakaoFirstActivity::class.java)
-                                  context.startActivity(intent)
+                                context.startActivity(intent)
                             }
                             "네이버" -> {
                                 val intent = Intent(context, NaverFirstActivity::class.java)

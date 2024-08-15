@@ -9,7 +9,9 @@ import androidx.fragment.app.FragmentManager
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityKakaoMainBinding
 import com.sungkyul.synergy.courses.kakotalk.KakaoCourse
+import com.sungkyul.synergy.courses.kakotalk.KakaoFromChattingCourse
 import com.sungkyul.synergy.home.activity.MainActivity
+import com.sungkyul.synergy.learning_space.EduCompletionActivity
 import com.sungkyul.synergy.learning_space.kakaotalk.fragment.ChatFragment
 import com.sungkyul.synergy.learning_space.kakaotalk.fragment.FriendsFragment
 
@@ -34,7 +36,10 @@ class KakaoMainActivity : AppCompatActivity() {
             setFragment(TAG_FRIENDS, FriendsFragment())
         }
         binding.chattingButton.setOnClickListener {
-            setFragment(TAG_CHAT, ChatFragment())
+            if(binding.eduScreen.onAction("click_chatting_button")){
+                setFragment(TAG_CHAT, ChatFragment())
+            }
+
         }
         binding.openchattingButton.setOnClickListener {
             //setFragment(TAG_OPENCHAT, ())
@@ -48,10 +53,16 @@ class KakaoMainActivity : AppCompatActivity() {
 
         // 교육 추가
         binding.eduScreen.post {
-            binding.eduScreen.course = KakaoCourse(binding.eduScreen)
+            if(intent.getStringExtra("from")=="KakaoChattingActivity"){
+                   binding.eduScreen.course=KakaoFromChattingCourse(binding.eduScreen)
+            } else {
+                binding.eduScreen.course = KakaoCourse(binding.eduScreen)
+            }
 
             binding.eduScreen.setOnFinishedCourseListener {
-                finish()
+                val intent = Intent(this, EduCompletionActivity::class.java)
+                intent.putExtra("course", "kakao")
+                startActivity(intent)
             }
 
             binding.eduScreen.start(this)
@@ -65,6 +76,7 @@ class KakaoMainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         })
+
     }
 
     private fun setFragment(tag: String, fragment: Fragment) {
