@@ -149,6 +149,7 @@
                     android:layout_gravity="center"
                     android:src="@drawable/ic_kakao_chat_face_black_24dp"/>
                 <ImageView
+                    android:id="@+id/sharp_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
