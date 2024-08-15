@@ -29,6 +29,7 @@ data class DefaultCameraGalleryViewWithBehindPicCourse(val eduScreen: EduScreen)
             dialog.contentFont= R.font.pretendard_semibold
             dialog.contentSize = AdaptiveUtils.dialogContentMedium()
             cover.isClickable = true
+            cover.visibility=true
         })
 
     }

@@ -30,7 +30,7 @@ data class DefaultGalleryCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentColor = R.color.black
             dialog.background = R.drawable.edu_dialog_yellow_bg
             dialog.contentGravity = Gravity.CENTER
-            dialog.contentFont= R.font.pretendard_semibold
+            dialog.contentFont = R.font.pretendard_semibold
             dialog.contentSize = AdaptiveUtils.dialogContentMedium()
             cover.isClickable = true
         })
@@ -42,10 +42,10 @@ data class DefaultGalleryCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentColor = R.color.white
             dialog.background = R.drawable.edu_dialog_green_bg
             dialog.contentGravity = Gravity.CENTER
-            dialog.contentFont= R.font.pretendard_semibold
+            dialog.contentFont = R.font.pretendard_semibold
             dialog.contentSize = AdaptiveUtils.dialogContentMedium()
             cover.isClickable = true
-            cover.visibility=true
+            cover.visibility = true
         })
 
         list.add(EduData().apply {
@@ -59,108 +59,6 @@ data class DefaultGalleryCourse(val eduScreen: EduScreen): EduCourse {
                     x = AdaptiveUtils.ratio(0.1f),
                     y = AdaptiveUtils.ratio(0.85f),
                     rotation = 180.0f,
-                    gesture = HandGestures.Companion::tapGesture
-                )
-            )
-        })
-
-
-
-
-
-
-
-        list.add(EduData().apply {
-            dialog.contentText = "사진을 촬영하는<br>버튼입니다."
-            cover.boxLeft = AdaptiveUtils.ratio(0.4f)
-            cover.boxTop = AdaptiveUtils.ratio(0.82f)
-            cover.boxRight = AdaptiveUtils.ratio(0.6f)
-            cover.boxBottom = AdaptiveUtils.ratio(0.92f)
-        })
-
-        list.add(EduData().apply {
-            dialog.contentText = "가장 최근에 찍힌 사진이<br>이 부분에 나타나고"
-            cover.boxLeft = AdaptiveUtils.ratio(0.15f)
-            cover.boxRight = AdaptiveUtils.ratio(0.4f)
-        })
-
-        list.add(EduData().apply {
-            dialog.contentText = "터치하면 앨범으로<br>이동합니다."
-        })
-
-        list.add(EduData().apply {
-            dialog.contentText = "사진을 찍어보고<br>앨범을 확인해 볼까요?"
-            dialog.background = R.drawable.edu_dialog_green_bg
-            dialog.contentColor=R.color.white
-
-            cover.boxVisibility=false
-            cover.boxBorderVisibility=false
-        })
-
-        list.add(EduData().apply {
-            dialog.contentText="<p style='color:red'><b>잠깐!</b></p><br>현재 보이는 카메라는<br>" +
-                    "사생활 문제로<br>" +
-                    "작동되지 않아요!<br>" +
-                    "<br>가상의 이미지일 뿐이랍니다.<br>참고해주세요!"
-            dialog.background = R.drawable.edu_dialog_bg
-            dialog.contentColor=R.color.black
-            dialog.top=AdaptiveUtils.ratio(0.2f)
-            dialog.bottom=AdaptiveUtils.ratio(0.2f)
-        })
-
-        list.add(EduData().apply {
-            dialog.contentText="<p style='color:red'><b>잠깐!</b></p><br>현재 화면은 후면으로 <br>보이는 가상화면입니다.<br><br>앞에 보이는 풍경을<br>" +
-                    "찍는다고 생각하고<br>촬영을 진행해주세요."
-            dialog.background = R.drawable.edu_dialog_bg
-            dialog.contentColor=R.color.black
-            dialog.top=AdaptiveUtils.ratio(0.2f)
-            dialog.bottom=AdaptiveUtils.ratio(0.2f)
-        })
-
-        list.add(EduData().apply {
-            dialog.visibility = false
-            cover.visibility = false
-            cover.isClickable = false
-            action.id = "click_shooting_button"
-            hands.add(
-                EduHand(
-                    id = "tap",
-                    x = AdaptiveUtils.ratio(0.45f),
-                    y = AdaptiveUtils.ratio(0.875f),
-                    gesture = HandGestures.Companion::tapGesture
-                )
-            )
-        })
-
-        list.add(EduData().apply {
-            dialog.contentText = "사진이 찍혔습니다!"
-            dialog.background = R.drawable.edu_dialog_yellow_bg
-            dialog.contentColor=R.color.black
-            dialog.top = AdaptiveUtils.ratio(0.5f)
-            dialog.bottom = AdaptiveUtils.ratio(0.3f)
-            dialog.visibility = true
-            cover.isClickable = true
-        })
-
-        list.add(EduData().apply {
-            dialog.contentText = "방금 찍은 사진을<br>확인해 볼까요?"
-            dialog.background = R.drawable.edu_dialog_green_bg
-            dialog.contentColor=R.color.white
-            dialog.top = AdaptiveUtils.ratio(0.4f)
-            dialog.bottom = AdaptiveUtils.ratio(0.4f)
-            cover.visibility = true
-        })
-
-        list.add(EduData().apply {
-            dialog.visibility = false
-            cover.visibility = false
-            cover.isClickable = false
-            action.id = "click_gallery_button"
-            hands.add(
-                EduHand(
-                    id = "tap",
-                    x = AdaptiveUtils.ratio(0.22f),
-                    y = AdaptiveUtils.ratio(0.875f),
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
