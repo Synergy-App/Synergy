@@ -10,6 +10,8 @@ import androidx.core.content.ContextCompat
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityDefaultCameraBinding
 import com.sungkyul.synergy.courses.default_app.camera.DefaultCameraCourse
+import com.sungkyul.synergy.courses.default_app.camera.DefaultCameraFromGalleryCourse
+import com.sungkyul.synergy.courses.default_app.camera.DefaultCameraGalleryViewCourse
 import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.learning_space.default_app.TOUCH_DOWN_ALPHA
 import com.sungkyul.synergy.learning_space.default_app.TOUCH_DURATION_ALPHA
@@ -27,7 +29,11 @@ class DefaultCameraActivity : AppCompatActivity() {
 
         // 교육을 정의해보자!
         binding.eduScreen.post {
-            binding.eduScreen.course = DefaultCameraCourse(binding.eduScreen)
+            if(intent.getStringExtra("from")=="DefaultGalleryActivity"){
+                binding.eduScreen.course = DefaultCameraFromGalleryCourse(binding.eduScreen)
+            }else {
+                binding.eduScreen.course = DefaultCameraCourse(binding.eduScreen)
+            }
 
             binding.eduScreen.setOnFinishedCourseListener {
                 // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
@@ -96,6 +102,8 @@ class DefaultCameraActivity : AppCompatActivity() {
             MotionEvent.ACTION_UP -> {
                 AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
                 view.performClick()
+
+
             }
         }
         true
@@ -166,9 +174,18 @@ class DefaultCameraActivity : AppCompatActivity() {
             MotionEvent.ACTION_UP -> {
                 AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
 
-                // 갤러리 뷰로 이동한다.
-                val intent = Intent(this, DefaultCameraGalleryViewActivity::class.java)
-                startActivity(intent)
+                if(binding.eduScreen.onAction("click_gallery_button")){
+                    if(binding.eduScreen.course is DefaultCameraFromGalleryCourse){
+                        val intent = Intent(binding.root.context, DefaultCameraGalleryViewActivity::class.java)
+                        intent.putExtra("from", "DefaultCameraWithFrontPic")
+                        startActivity(intent)
+                    } else {
+                        // 갤러리 뷰로 이동한다.
+                        val intent = Intent(this, DefaultCameraGalleryViewActivity::class.java)
+                        startActivity(intent)
+                    }
+                }
+
 
                 view.performClick()
             }
@@ -187,7 +204,9 @@ class DefaultCameraActivity : AppCompatActivity() {
 
                 AnimUtils.startShootingAnimation(this, binding.cameraScreen)
 
-                binding.eduScreen.onAction("click_shooting_button")
+                if(binding.eduScreen.onAction("click_shooting_button")){
+
+                }
 
                 view.performClick()
             }
@@ -204,6 +223,10 @@ class DefaultCameraActivity : AppCompatActivity() {
             MotionEvent.ACTION_UP -> {
                 AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
                 view.performClick()
+
+                if(binding.eduScreen.onAction("click_camera_toggle_button")){
+                    binding.cameraScreen.setImageResource(R.drawable.behind_picture)
+                }
             }
         }
         true

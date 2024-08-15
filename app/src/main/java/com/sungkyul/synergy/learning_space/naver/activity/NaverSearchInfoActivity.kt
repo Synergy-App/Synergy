@@ -1,11 +1,19 @@
 package com.sungkyul.synergy.learning_space.naver.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.StyleSpan
+import com.sungkyul.synergy.courses.naver.NaverCourse
+import com.sungkyul.synergy.courses.naver.NaverSearchInfoCourse
+import com.sungkyul.synergy.courses.screen_layout.NaverFromScreenHomeCourse
+import com.sungkyul.synergy.courses.screen_layout.NaverFromScreenHomeCourse2
 import com.sungkyul.synergy.databinding.ActivityNaverSearchInfoBinding
+import com.sungkyul.synergy.home.activity.MainActivity
+import com.sungkyul.synergy.learning_space.EduCompletionActivity
+import com.sungkyul.synergy.utils.edu.EduScreen
 
 class NaverSearchInfoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNaverSearchInfoBinding
@@ -14,6 +22,29 @@ class NaverSearchInfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityNaverSearchInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // 교육을 정의해보자!
+        binding.eduScreen.post {
+            // 교육 코스를 지정한다.
+                binding.eduScreen.course = NaverSearchInfoCourse(binding.eduScreen)
+
+            // 교육 코스가 끝났을 때 발생하는 이벤트 리스너를 설정한다.
+            binding.eduScreen.setOnFinishedCourseListener {
+                    EduScreen.toTop(this, MainActivity::class.java)
+            }
+
+            // 교육을 시작한다.
+            binding.eduScreen.start(this)
+        }
+
+        val naverbutton = binding.naverButton
+        naverbutton.setOnClickListener{
+            if(binding.eduScreen.onAction("click_naver_button")){
+                val intent = Intent(this, NaverActivity::class.java)
+                intent.putExtra("from","NaverSearchInfoActivity")
+                startActivity(intent)
+            }
+        }
 
         val textViewText = binding.relatedText.text.toString()
         val startIndex = textViewText.indexOf("연관")

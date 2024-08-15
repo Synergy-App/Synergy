@@ -132,13 +132,6 @@
         <activity
             android:name=".home.activity.LoginActivity"
             android:exported="true">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".profile_space.CheckLearningAbilityActivity"
@@ -155,11 +148,7 @@
         <activity
             android:name=".training_space.activity.ExamProblemActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            
         </activity>
         <activity
             android:name=".training_space.screen.PracticeRecentlyDefaultActivity"
@@ -224,11 +213,7 @@
         <activity
             android:name=".training_space.NewScreenPracticeActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            
         </activity> <!-- 아이디찾기/비밀번호변경 화면 -->
         <activity
             android:name=".home.activity.FindIdPasswordActivity"
@@ -380,7 +365,7 @@
             android:exported="false" />
         <activity
             android:name=".learning_space.naver.activity.NaverActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".learning_space.naver.activity.NaverSearchInfoActivity"
             android:exported="false" />

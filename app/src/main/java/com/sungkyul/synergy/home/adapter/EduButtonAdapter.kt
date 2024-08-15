@@ -17,17 +17,26 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.courses.default_app.camera.DefaultCameraFromGalleryCourse
 import com.sungkyul.synergy.learning_space.appinstall.AppInstallFirstActivity
 import com.sungkyul.synergy.learning_space.basic_edu.activity.BasicEduMainFragment
+import com.sungkyul.synergy.learning_space.default_app.camera.activity.DefaultCameraActivity
 import com.sungkyul.synergy.learning_space.default_app.camera.activity.DefaultCameraFirstActivity
+import com.sungkyul.synergy.learning_space.default_app.camera.activity.DefaultCameraGalleryViewActivity
+import com.sungkyul.synergy.learning_space.default_app.gallery.activity.DefaultGalleryActivity
 import com.sungkyul.synergy.learning_space.default_app.message.activity.DefaultMessageChattingActivity
 import com.sungkyul.synergy.learning_space.default_app.message.activity.DefaultMessageFirstActivity
 import com.sungkyul.synergy.learning_space.default_app.message.activity.DefaultMessageSelectActivity
 import com.sungkyul.synergy.learning_space.default_app.phone.activity.DefaultPhoneCallActivity
 import com.sungkyul.synergy.learning_space.screen_layout.ScreenFirstActivity
 import com.sungkyul.synergy.learning_space.default_app.phone.activity.DefaultPhoneFirstActivity
+import com.sungkyul.synergy.learning_space.kakaotalk.activity.KakaoChattingActivity
 import com.sungkyul.synergy.learning_space.kakaotalk.activity.KakaoFirstActivity
+import com.sungkyul.synergy.learning_space.kakaotalk.activity.KakaoMainActivity
+import com.sungkyul.synergy.learning_space.kakaotalk.activity.KakaoProfileDetailActivity
+import com.sungkyul.synergy.learning_space.naver.activity.NaverActivity
 import com.sungkyul.synergy.learning_space.naver.activity.NaverFirstActivity
+import com.sungkyul.synergy.learning_space.naver.activity.NaverSearchInfoActivity
 import com.sungkyul.synergy.learning_space.settingedu.SettingFontActivity
 import com.sungkyul.synergy.learning_space.settingedu.SettingMainActivity
 import com.sungkyul.synergy.learning_space.settingedu.SettingsFirstActivity
@@ -104,7 +113,9 @@ class EduButtonAdapter(
                                 context.startActivity(intent)
                             }
                             "카메라" -> {
+                                //val intent = Intent(context, DefaultCameraFirstActivity::class.java)
                                 val intent = Intent(context, DefaultCameraFirstActivity::class.java)
+                                intent.putExtra("from", "DefaultGalleryActivity")
                                 context.startActivity(intent)
 
                             }
@@ -134,10 +145,11 @@ class EduButtonAdapter(
                             }
                             "카카오톡" -> {
                                  val intent = Intent(context, KakaoFirstActivity::class.java)
-                                  context.startActivity(intent)
+                                context.startActivity(intent)
                             }
                             "네이버" -> {
                                 val intent = Intent(context, NaverFirstActivity::class.java)
+
                                 context.startActivity(intent)
                             }
                         }

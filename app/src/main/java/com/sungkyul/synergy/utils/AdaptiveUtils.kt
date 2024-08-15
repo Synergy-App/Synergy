@@ -2,6 +2,16 @@ package com.sungkyul.synergy.utils
 
 import android.os.Build
 
+/*
+애뮬 기준
+AVD Name Galaxy Note9
+Galaxy Note9 6.4 1440x2960 xxhdpi
+Q Android 10.0 x86
+Startup orientation Portrait
+Graphics Automatic
+
+ */
+
 class AdaptiveUtils {
     companion object {
         fun dialogTitleMedium(): Float {
