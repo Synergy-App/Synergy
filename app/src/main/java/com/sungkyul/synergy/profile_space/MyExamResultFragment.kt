@@ -6,32 +6,36 @@ import android.graphics.Point
 import android.os.Build
 import android.os.Bundle
 import android.util.DisplayMetrics
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.view.WindowManager
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.sungkyul.synergy.databinding.ActivityMyExamResultBinding
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.com.sungkyul.synergy.learning_space.ResultPair
+import com.sungkyul.synergy.databinding.FragmentMyExamResultBinding
 import com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.utils.GalaxyNote9
 import java.text.SimpleDateFormat
-import java.util.Locale
 import java.util.Date
+import java.util.Locale
 
-class MyExamResultActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityMyExamResultBinding
+class MyExamResultFragment : Fragment() {
+    private lateinit var binding: FragmentMyExamResultBinding
     private lateinit var adapter: ExamResultAdapter
     private lateinit var sharedPreferences: SharedPreferences
 
     private var standardSize_X: Int = 0
     private var standardSize_Y: Int = 0
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityMyExamResultBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentMyExamResultBinding.inflate(inflater, container, false)
 
         // 화면의 기준 사이즈를 계산
         getStandardSize()
@@ -41,7 +45,7 @@ class MyExamResultActivity : AppCompatActivity() {
         binding.headerSubtitle.textSize = (standardSize_X / 16).toFloat()
 
         // SharedPreferences 초기화
-        sharedPreferences = getSharedPreferences("SynergyPrefs", Context.MODE_PRIVATE)
+        sharedPreferences = requireContext().getSharedPreferences("SynergyPrefs", Context.MODE_PRIVATE)
 
         // 교육 ID에 따른 이름과 이미지 설정
         val educationId = 1  // 예시 교육 ID
@@ -62,15 +66,17 @@ class MyExamResultActivity : AppCompatActivity() {
         val totalQuestions = 10  // 예시로 10으로 설정, 실제 데이터에 맞게 설정
 
         // RecyclerView 초기화
-        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         adapter = ExamResultAdapter(examResults, educationId, totalQuestions)
         binding.recyclerView.adapter = adapter
 
         if (Build.MODEL == GALAXY_NOTE9) {
             GalaxyNote9.setTitleSize(binding.headerTitle)
             GalaxyNote9.setSubtitleSize(binding.headerSubtitle)
-            GalaxyNote9.setHeaderHeight(this, binding.headerImage)
+            GalaxyNote9.setHeaderHeight(requireContext(), binding.headerImage)
         }
+
+        return binding.root
     }
 
     /**
@@ -131,6 +137,7 @@ class MyExamResultActivity : AppCompatActivity() {
 
     // 디스플레이 사이즈를 반환하는 메서드
     private fun getScreenSize(): Point {
+        val windowManager = requireContext().getSystemService(Context.WINDOW_SERVICE) as WindowManager
         val display = windowManager.defaultDisplay
         val size = Point()
         display.getSize(size)

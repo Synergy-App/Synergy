@@ -159,7 +159,7 @@
             android:exported="true">
         </activity>
         <activity
-            android:name=".profile_space.CheckLearningAbilityActivity"
+            android:name=".profile_space.CheckLearningAbilityFragment"
             android:exported="true" />
         <activity
             android:name=".home.activity.MainActivity"
@@ -229,9 +229,7 @@
         <activity
             android:name=".training_space.screen.PracticeScreenLockActivity"
             android:exported="false" />
-        <activity
-            android:name=".profile_space.MyExamResultActivity"
-            android:exported="false" /> <!-- <intent-filter> -->
+        <!-- <intent-filter> -->
         <!-- <action android:name="android.intent.action.MAIN" /> -->
         <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
         <!-- </intent-filter> -->

@@ -21,9 +21,9 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.utils.GalaxyNote9
 import com.sungkyul.synergy.databinding.FragmentMyProfileBinding
-import com.sungkyul.synergy.profile_space.CheckLearningAbilityActivity
+import com.sungkyul.synergy.profile_space.CheckLearningAbilityFragment
 import com.sungkyul.synergy.home.activity.LoginActivity
-import com.sungkyul.synergy.profile_space.MyExamResultActivity
+import com.sungkyul.synergy.home.activity.MainActivity
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject
@@ -50,12 +50,15 @@ class MyProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.examResultCardView.setOnClickListener {
-            val intent = Intent(requireActivity(), MyExamResultActivity::class.java)
+            val intent = Intent(requireActivity(), MainActivity::class.java)
+            intent.putExtra("fragment", "MyExamResultFragment")
             startActivity(intent)
         }
 
         binding.CheckResultCardView.setOnClickListener {
-            val intent = Intent(requireActivity(), CheckLearningAbilityActivity::class.java)
+
+            val intent = Intent(requireActivity(), MainActivity::class.java)
+            intent.putExtra("fragment", "CheckLearningAbilityFragment")
             startActivity(intent)
         }
 
