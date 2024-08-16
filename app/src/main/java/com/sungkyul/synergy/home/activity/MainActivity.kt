@@ -15,6 +15,8 @@ import com.sungkyul.synergy.com.sungkyul.synergy.home.fragment.MyProfileFragment
 import com.sungkyul.synergy.com.sungkyul.synergy.home.fragment.SolvingFragment
 import com.sungkyul.synergy.com.sungkyul.synergy.learning_space.fragment.ExamSpaceFragment
 import com.sungkyul.synergy.databinding.ActivityMainBinding
+import com.sungkyul.synergy.profile_space.CheckLearningAbilityFragment
+import com.sungkyul.synergy.profile_space.MyExamResultFragment
 import com.sungkyul.synergy.profile_space.Time
 import com.sungkyul.synergy.training_space.fragment.ExamResultFragment
 import com.sungkyul.synergy.training_space.intent.LearningScreenFragment
@@ -42,7 +44,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        Log.i("Build.MODEL", Build.MODEL)
 
         // Start the time counter
         Time.startTimeCounter()
@@ -76,12 +77,19 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
+        //메인액티비티를시작할때프래그먼트가지정되어있으면그프래그먼트로바꿈
         val fragmentName = intent.getStringExtra("fragment")
         if(fragmentName == "SolvingFragment") {
             setFragment(Tag_solving, SolvingFragment())
         }
         if(fragmentName == "LearningScreenFragment") {
             setFragment("LearningScreenFragment", LearningScreenFragment())
+        }
+        if(fragmentName == "MyExamResultFragment") {
+            setFragment("MyExamResultFragment", MyExamResultFragment())
+        }
+        if(fragmentName == "CheckLearningAbilityFragment") {
+            setFragment("CheckLearningAbilityFragment", CheckLearningAbilityFragment())
         }
 
         //else {setFragment(Tag_solving, ExamResultFragment())}
