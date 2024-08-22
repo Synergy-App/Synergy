@@ -8,5 +8,6 @@ data class ResultPair(
     val questionNumber: Int,
     val isCorrect: Boolean,
     val userAnswer: Int,
-    val answerOnSelect: Int // 새로 추가
+    val answerOnSelect: Int,
+    val educationId: Int // 추가된 필드
 ) : Parcelable

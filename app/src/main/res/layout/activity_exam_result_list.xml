@@ -28,7 +28,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="화면구성 실습"
+                android:text="객관식 실습"
                 android:textColor="@color/white"
                 android:fontFamily="@font/pretendard_semibold"
                 android:textSize="24sp"/>

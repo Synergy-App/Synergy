@@ -25,7 +25,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ExamResultAdapter(
     private val examResults: List<ExamResult>,
-    private val educationId: Int,
     private val totalQuestions: Int
 ) : RecyclerView.Adapter<ExamResultAdapter.ExamResultViewHolder>() {
 
@@ -79,8 +78,9 @@ class ExamResultAdapter(
             val context = holder.itemView.context
             val intent = Intent(context, ExamResultListActivity::class.java).apply {
                 putParcelableArrayListExtra("resultList", ArrayList(currentItem.resultList))
-                putExtra("educationId", educationId)
+                putExtra("receivedId", currentItem.resultList.firstOrNull()?.educationId ?: -1)  // educationId를 resultList에서 가져옴
                 putExtra("totalQuestions", totalQuestions)
+                putExtra("source", "MyExamResultFragment")
             }
             context.startActivity(intent)
         }

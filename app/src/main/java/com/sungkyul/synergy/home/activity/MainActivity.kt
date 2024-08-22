@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         const val Tag_examSpace = "examSpace_fragment"
         const val Tag_solving = "solving_fragment"
         const val Tag_review = "review_fragment"
-        const val Tag_examResult = "examResult_fragment"
+        const val Tag_examResult = "MyExamResultFragment"
         const val Tag_myProfile = "myProfile_fragment"
     }
 

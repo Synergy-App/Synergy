@@ -29,39 +29,40 @@ class ExamResultListActivity : AppCompatActivity() {
     private lateinit var authAPI: AuthAPI
     private lateinit var token: String
     private var examList: List<Exam> = emptyList()
+    private var receivedId: Int = -1
+    private var source: String? = null  // Source 변수 추가
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityExamResultListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Intent에서 source를 받아옵니다.
+        source = intent.getStringExtra("source")
+
         val resultList = intent.getParcelableArrayListExtra<ResultPair>("resultList")
-        val educationId = intent.getIntExtra("educationId", -1)
         val totalQuestions = intent.getIntExtra("totalQuestions", -1)
 
-        // Log the received data
-        Log.d("ExamResultListActivity", "Received educationId: $educationId")
         Log.d("ExamResultListActivity", "Received totalQuestions: $totalQuestions")
         Log.d("ExamResultListActivity", "Received resultList: $resultList")
 
-        // SharedPreferences 초기화
         val sharedPreferences = getSharedPreferences("SynergyPrefs", MODE_PRIVATE)
         token = sharedPreferences.getString("Token", null) ?: run {
             finish()
             return
         }
 
-        // Logging Interceptor 설정
+        receivedId = intent.getIntExtra("receivedId", -1)
+        Log.d("ExamResultListActivity", "Received receivedId: $receivedId")
+
         val logging = HttpLoggingInterceptor().apply {
             setLevel(HttpLoggingInterceptor.Level.BODY)
         }
 
-        // OkHttpClient에 logging 인터셉터 추가
         val httpClient = OkHttpClient.Builder()
             .addInterceptor(logging)
             .build()
 
-        // Retrofit 설정
         val retrofit = Retrofit.Builder()
             .baseUrl("https://sng.hyeonwoo.com/")
             .client(httpClient)
@@ -69,8 +70,6 @@ class ExamResultListActivity : AppCompatActivity() {
             .build()
 
         authAPI = retrofit.create(AuthAPI::class.java)
-
-        // Exam 데이터를 가져오는 함수 호출
         fetchExamList(resultList)
     }
 
@@ -111,30 +110,41 @@ class ExamResultListActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = ExamResultListAdapter(dataSet) { position ->
             Log.d("ExamResultListActivity", "Item clicked at position: $position")
+
             val selectedExamResult = resultList?.get(position)
             val intent = Intent(this, PracticeCheckExamActivity::class.java).apply {
                 putParcelableArrayListExtra("resultList", resultList)
                 putExtra("selectedExamResult", selectedExamResult)
                 putExtra("questionNumber", selectedExamResult?.questionNumber)
                 putExtra("position", position)
+                putExtra("receivedId", receivedId)
             }
             startActivity(intent)
         }
 
         // "돌아가기" 버튼 이벤트 처리
         binding.backButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("fragment", "SolvingFragment")
-            startActivity(intent)
+            when (source) {
+                "MyExamResultFragment" -> {
+                    // MyExamResultFragment에서 왔을 경우
+                    finish()  // 그냥 종료
+                }
+                "ExamResultTestActivity" -> {
+                    // ExamResultTestActivity에서 왔을 경우
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.putExtra("fragment", "SolvingFragment")
+                    startActivity(intent)
+                }
+                else -> {
+                    finish()  // 기본 동작으로 종료
+                }
+            }
         }
 
         // "다시 풀기" 버튼 이벤트 처리
         binding.viewAllButton.setOnClickListener {
-            /*val intent = Intent(this, ExamProblemActivity::class.java)
-            startActivity(intent)*/
-
             val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("fragment", "LearningScreenFragment")
+            intent.putExtra("fragment", "SolvingFragment")
             startActivity(intent)
         }
     }

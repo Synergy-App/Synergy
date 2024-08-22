@@ -15,7 +15,6 @@ data class Exam(
     val select2: String?,
     val select3: String?,
     val select4: String?,
-    
     val select5: String?,
     val select1ImgUrl: String?,
     val select2ImgUrl: String?,

@@ -35,6 +35,7 @@ class PracticeCheckExamActivity : AppCompatActivity() {
     private var questionNumber: Int = -1
     private var position: Int = -1
     private var examResults: ArrayList<ResultPair> = arrayListOf()
+    private var receivedId: Int = -1
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,16 +43,20 @@ class PracticeCheckExamActivity : AppCompatActivity() {
         binding = ActivityPracticeCheckExamBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        Log.d("PracticeCheckExamActivity", "befor Received educationId: $receivedId")
+
         selectedExamResult = intent.getParcelableExtra<ResultPair>("selectedExamResult")
         questionNumber = intent.getIntExtra("questionNumber", -1)
         position = intent.getIntExtra("position", -1)
         examResults = intent.getParcelableArrayListExtra<ResultPair>("resultList") ?: arrayListOf()
+        receivedId = intent.getIntExtra("receivedId", -1)
 
         // Log the received data
         Log.d("PracticeCheckExamActivity", "Received questionNumber: $questionNumber")
         Log.d("PracticeCheckExamActivity", "Received selectedExamResult: $selectedExamResult")
         Log.d("PracticeCheckExamActivity", "Received position: $position")
         Log.d("PracticeCheckExamActivity", "Received examResults: $examResults")
+        Log.d("PracticeCheckExamActivity", "Received educationId: $receivedId")
 
         // Include된 레이아웃에서 버튼 찾기
         val includeLayout = findViewById<View>(R.id.practice_nav_layout)
@@ -125,19 +130,28 @@ class PracticeCheckExamActivity : AppCompatActivity() {
     }
 
     private fun fetchExamList() {
+        Log.d("PracticeCheckExamActivity", "Fetching exams for educationId: $receivedId")
         authAPI.getExamList().enqueue(object : Callback<ApiResponse<ExamListResponse>> {
             override fun onResponse(
                 call: Call<ApiResponse<ExamListResponse>>,
                 response: Response<ApiResponse<ExamListResponse>>
             ) {
                 if (response.isSuccessful) {
-                    examList = response.body()?.data?.exams ?: emptyList()
-                    val exam = examList.firstOrNull { it.id == questionNumber }
-                    if (exam != null) {
+                    Log.d("PracticeCheckExamActivity", "Total exams fetched: ${response.body()?.data?.exams?.size}")
+
+                    // 올바른 educationId를 가진 exam만 필터링
+                    examList = response.body()?.data?.exams?.filter { it.educationId == receivedId } ?: emptyList()
+
+                    Log.d("PracticeCheckExamActivity", "Filtered exams count: ${examList.size}")
+
+                    // 문제를 questionNumber(인덱스) 기반으로 조회
+                    if (questionNumber > 0 && questionNumber <= examList.size) {
+                        val exam = examList[questionNumber - 1]
+                        Log.d("PracticeCheckExamActivity", "Found exam: $exam")
                         showExam(exam)
                         setInitialOptionStates(selectedExamResult!!)
                     } else {
-                        Log.e("PracticeCheckExamActivity", "Exam not found for questionNumber: $questionNumber")
+                        Log.e("PracticeCheckExamActivity", "Question number out of bounds: $questionNumber")
                     }
                 } else {
                     Log.e("PracticeCheckExamActivity", "Failed to fetch data: ${response.message()}")
@@ -145,10 +159,11 @@ class PracticeCheckExamActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<ApiResponse<ExamListResponse>>, t: Throwable) {
-                Log.e("PracticeCheckExamActivity", "Error fetching data: ${t.message}")
+                Log.e("API_ERROR", "Error fetching data: ${t.message}")
             }
         })
     }
+
 
     private fun showExam(exam: Exam) {
         binding.learningInfoTv.text = exam.question

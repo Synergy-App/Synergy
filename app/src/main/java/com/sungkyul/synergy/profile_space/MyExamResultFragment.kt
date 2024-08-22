@@ -23,6 +23,8 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
+data class EducationInfo(val name: String, val imageRes: Int, var educationId: Int = 0)
+
 class MyExamResultFragment : Fragment() {
     private lateinit var binding: FragmentMyExamResultBinding
     private lateinit var adapter: ExamResultAdapter
@@ -48,26 +50,41 @@ class MyExamResultFragment : Fragment() {
         sharedPreferences = requireContext().getSharedPreferences("SynergyPrefs", Context.MODE_PRIVATE)
 
         // 교육 ID에 따른 이름과 이미지 설정
-        val educationId = 1  // 예시 교육 ID
-        val educationInfo = getEducationInfo(educationId)
-
-        // 예제 데이터 생성
-        val examResults = listOf(
-            ExamResult(
-                educationInfo.name,
-                "시험결과",
-                loadSavedDate() ?: "날짜 없음",
-                educationInfo.imageRes,
-                loadResultListFromSharedPreferences(educationId)
-            )
+        val educationInfoList = listOf(
+            getEducationInfo(-1),
+            getEducationInfo(2),
+            getEducationInfo(3),
+            getEducationInfo(4),
+            getEducationInfo(5),
+            getEducationInfo(6),
+            getEducationInfo(7),
+            getEducationInfo(8),
+            getEducationInfo(9),
+            getEducationInfo(10)
         )
 
-        // 문제 총 갯수 가져오기 (예제)
+        // 날짜가 있는 항목만 필터링하여 표시
+        val examResults = educationInfoList.mapNotNull { educationInfo ->
+            val savedDate = loadSavedDate(educationInfo.educationId)
+            if (savedDate != null) {
+                ExamResult(
+                    educationInfo.name + "시험결과",
+                    "",
+                    savedDate,
+                    educationInfo.imageRes,
+                    loadResultListFromSharedPreferences(educationInfo.educationId)
+                )
+            } else {
+                null // 날짜가 없는 경우 리스트에서 제외
+            }
+        }
+
+        // 문제 총 갯수 설정
         val totalQuestions = 10  // 예시로 10으로 설정, 실제 데이터에 맞게 설정
 
         // RecyclerView 초기화
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        adapter = ExamResultAdapter(examResults, educationId, totalQuestions)
+        adapter = ExamResultAdapter(examResults, totalQuestions)
         binding.recyclerView.adapter = adapter
 
         if (Build.MODEL == GALAXY_NOTE9) {
@@ -84,18 +101,19 @@ class MyExamResultFragment : Fragment() {
      */
     private fun getEducationInfo(educationId: Int): EducationInfo {
         return when (educationId) {
-            1 -> EducationInfo("1차 기초", R.drawable.ic_edu_note) // 예제 이미지 및 이름
-            2 -> EducationInfo("1차 화면구성", R.drawable.ic_edu_gall) // 실제 이미지 및 이름 설정
-            3 -> EducationInfo("1차 카메라", R.drawable.ic_camera) // 실제 이미지 및 이름 설정
-            4 -> EducationInfo("1차 전화", R.drawable.ic_call) // 예제 이미지 및 이름
-            5 -> EducationInfo("1차 문자", R.drawable.ic_message) // 실제 이미지 및 이름 설정
-            6 -> EducationInfo("1차 환경 설정", R.drawable.ic_edubutton_setting) // 실제 이미지 및 이름 설정
-            7 -> EducationInfo("1차 계정 생성", R.drawable.ic_edu_create) // 실제 이미지 및 이름 설정
-            8 -> EducationInfo("1차 앱 설치", R.drawable.ic_edubutton_download) // 실제 이미지 및 이름 설정
-            9 -> EducationInfo("1차 카카오톡", R.drawable.ic_edubutton_kakaotalk) // 실제 이미지 및 이름 설정
-            10 -> EducationInfo("1차 네이버", R.drawable.ic_edubutton_naver) // 실제 이미지 및 이름 설정
-            // 추가적인 educationId에 따른 매핑 추가
+            -1 -> EducationInfo("기초 ", R.drawable.ic_edu_note)
+            2 -> EducationInfo("화면구성 ", R.drawable.ic_edu_gall)
+            3 -> EducationInfo("카메라 ", R.drawable.ic_camera)
+            4 -> EducationInfo("전화 ", R.drawable.ic_call)
+            5 -> EducationInfo("문자 ", R.drawable.ic_message)
+            6 -> EducationInfo("환경 설정 ", R.drawable.ic_edubutton_setting)
+            7 -> EducationInfo("계정 생성 ", R.drawable.ic_edu_create)
+            8 -> EducationInfo("앱 설치 ", R.drawable.ic_edubutton_download)
+            9 -> EducationInfo("카카오톡 ", R.drawable.ic_edubutton_kakaotalk)
+            10 -> EducationInfo("네이버 ", R.drawable.ic_edubutton_naver)
             else -> EducationInfo("기타 교육", R.drawable.ic_edu_note) // 기본 이미지 및 이름
+        }.apply {
+            this.educationId = educationId
         }
     }
 
@@ -104,7 +122,7 @@ class MyExamResultFragment : Fragment() {
      */
     private fun loadResultListFromSharedPreferences(educationId: Int): ArrayList<ResultPair> {
         val gson = Gson()
-        val jsonResultList = sharedPreferences.getString("resultList", null)
+        val jsonResultList = sharedPreferences.getString("resultList_$educationId", null)
         return if (jsonResultList != null) {
             val type = object : TypeToken<ArrayList<ResultPair>>() {}.type
             gson.fromJson(jsonResultList, type)
@@ -116,8 +134,8 @@ class MyExamResultFragment : Fragment() {
     /**
      * SharedPreferences에서 저장된 날짜를 불러오는 메서드
      */
-    private fun loadSavedDate(): String? {
-        val dateString = sharedPreferences.getString("lastQuizDate", null)
+    private fun loadSavedDate(educationId: Int): String? {
+        val dateString = sharedPreferences.getString("lastQuizDate_$educationId", null)
         return dateString?.let { formatDateString(it) }
     }
 
@@ -131,7 +149,7 @@ class MyExamResultFragment : Fragment() {
             val date: Date = inputFormat.parse(dateString) ?: Date()
             outputFormat.format(date)
         } catch (e: Exception) {
-            "날짜 변환 오류"
+            "시험기록없음"
         }
     }
 
@@ -154,8 +172,3 @@ class MyExamResultFragment : Fragment() {
         standardSize_Y = (screenSize.y / density).toInt()
     }
 }
-
-/**
- * 교육 정보 클래스
- */
-data class EducationInfo(val name: String, val imageRes: Int)
