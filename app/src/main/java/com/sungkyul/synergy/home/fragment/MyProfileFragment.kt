@@ -28,6 +28,12 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject
 import java.io.IOException
+import com.sungkyul.synergy.profile_space.EducationInfo
+
+
+
+
+import android.content.SharedPreferences
 
 class MyProfileFragment : Fragment() {
 
@@ -42,7 +48,6 @@ class MyProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMyProfileBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 
@@ -56,7 +61,6 @@ class MyProfileFragment : Fragment() {
         }
 
         binding.CheckResultCardView.setOnClickListener {
-
             val intent = Intent(requireActivity(), MainActivity::class.java)
             intent.putExtra("fragment", "CheckLearningAbilityFragment")
             startActivity(intent)
@@ -66,9 +70,7 @@ class MyProfileFragment : Fragment() {
             logout()
         }
 
-        // 디스플레이 크기에 따라 글자 크기를 설정
         setDynamicTextSize()
-
         loadProfileData()
     }
 
@@ -131,84 +133,70 @@ class MyProfileFragment : Fragment() {
 
     private fun loadProfileData() {
         val sharedPreferences = requireContext().getSharedPreferences("SynergyPrefs", Context.MODE_PRIVATE)
-        val token = sharedPreferences.getString("Token", null)
         val nickname = sharedPreferences.getString("Nickname", "사용자")
-        val digitalAgeGrade = sharedPreferences.getString("DigitalAgeGrade", "default")
-
         if (nickname != null) {
             binding.textViewName.text = nickname
         }
 
-        // SharedPreferences에 저장된 값에 따라 디지털 연령과 사용자 이미지를 설정
-        binding.digitalAge.text = getDigitalAgeText(digitalAgeGrade)
-        updateUserImage(digitalAgeGrade)
+        // 완료한 시험 수를 가져와 디지털 나이를 설정합니다.
+        val completedExamCount = getCompletedExamCount(sharedPreferences)
+        updateDigitalAge(completedExamCount)
+    }
 
-        if (token != null) {
-            val client = OkHttpClient()
-            val request = Request.Builder()
-                .url("https://sng.hyeonwoo.com/user/me")
-                .addHeader("Authorization", "Bearer $token")
-                .build()
+    private fun getCompletedExamCount(sharedPreferences: SharedPreferences): Int {
+        val educationInfoList = listOf(
+            EducationInfo("기초", R.drawable.ic_edu_note, -1),
+            EducationInfo("화면구성", R.drawable.ic_edu_gall, 2),
+            EducationInfo("카메라", R.drawable.ic_camera, 3),
+            EducationInfo("전화", R.drawable.ic_call, 4),
+            EducationInfo("문자", R.drawable.ic_message, 5),
+            EducationInfo("환경 설정", R.drawable.ic_edubutton_setting, 6),
+            EducationInfo("계정 생성", R.drawable.ic_edu_create, 7),
+            EducationInfo("앱 설치", R.drawable.ic_edubutton_download, 8),
+            EducationInfo("카카오톡", R.drawable.ic_edubutton_kakaotalk, 9),
+            EducationInfo("네이버", R.drawable.ic_edubutton_naver, 10)
+        )
 
-            client.newCall(request).enqueue(object : okhttp3.Callback {
-                override fun onFailure(call: okhttp3.Call, e: IOException) {
-                    Log.e("Profile", "Failed to load profile data", e)
-                    requireActivity().runOnUiThread {
-                        Toast.makeText(requireContext(), "프로필 데이터를 불러오는데 실패했습니다.", Toast.LENGTH_SHORT).show()
-                    }
-                }
-
-                override fun onResponse(call: okhttp3.Call, response: okhttp3.Response) {
-                    if (response.isSuccessful) {
-                        val responseBody = response.body?.string()
-                        if (responseBody != null) {
-                            val json = JSONObject(responseBody)
-                            val data = json.getJSONObject("data")
-                            val apiDigitalAgeGrade = data.getString("digitalAgeGrade")
-
-                            // API에서 가져온 digitalAgeGrade를 SharedPreferences에 저장
-                            sharedPreferences.edit().putString("DigitalAgeGrade", apiDigitalAgeGrade).apply()
-
-                            requireActivity().runOnUiThread {
-                                binding.digitalAge.text = getDigitalAgeText(apiDigitalAgeGrade)
-                                updateUserImage(apiDigitalAgeGrade)
-                            }
-                        }
-                    } else {
-                        Log.e("Profile", "Failed to load profile data: ${response.message}")
-                        requireActivity().runOnUiThread {
-                            Toast.makeText(requireContext(), "프로필 데이터를 불러오는데 실패했습니다.", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-                }
-            })
+        // 저장된 날짜가 있는지 확인하여 완료된 시험 수를 계산
+        return educationInfoList.count { educationInfo ->
+            sharedPreferences.getString("lastQuizDate_${educationInfo.educationId}", null) != null
         }
     }
 
-    private fun getDigitalAgeText(digitalAgeGrade: String?): String {
+    private fun updateDigitalAge(completedExamCount: Int) {
+        val (digitalAgeGrade, digitalAgeImage) = when (completedExamCount) {
+            0 -> "old" to R.drawable.duck_old
+            1 -> "parent" to R.drawable.duck_parent
+            2 -> "adult" to R.drawable.duck_adult
+            3 -> "student" to R.drawable.duck_student
+            else -> "baby" to R.drawable.duck_baby
+        }
+
+        // SharedPreferences에 저장된 디지털 나이 업데이트
+        val sharedPreferences = requireContext().getSharedPreferences("SynergyPrefs", Context.MODE_PRIVATE)
+        with(sharedPreferences.edit()) {
+            putString("DigitalAgeGrade", digitalAgeGrade)
+            apply()
+        }
+
+        // 사용자 이미지와 텍스트 업데이트
+        updateUserImage(digitalAgeImage)
+        binding.digitalAge.text = getDigitalAgeText(digitalAgeGrade)
+    }
+
+    private fun getDigitalAgeText(digitalAgeGrade: String): String {
         return when (digitalAgeGrade) {
             "baby" -> "어린이"
             "student" -> "학생"
             "adult" -> "어른"
             "parent" -> "중년"
             "old" -> "노인"
-            "default" -> "아직 측정되지 않았습니다!"
             else -> "아직 측정되지 않았습니다!"
         }
     }
 
-    private fun updateUserImage(digitalAgeGrade: String?) {
-        val imageView = binding.userimage
-        val imageRes = when (digitalAgeGrade) {
-            "baby" -> R.drawable.duck_baby
-            "student" -> R.drawable.duck_student
-            "adult" -> R.drawable.duck_adult
-            "parent" -> R.drawable.duck_parent
-            "old" -> R.drawable.duck_old
-            "default" -> R.drawable.my_character_default
-            else -> R.drawable.sebook_sad_face
-        }
-        Glide.with(this).load(imageRes).into(imageView)
+    private fun updateUserImage(imageRes: Int) {
+        Glide.with(this).load(imageRes).into(binding.userimage)
     }
 
     private fun logout() {
@@ -224,7 +212,7 @@ class MyProfileFragment : Fragment() {
         }
         val intent = Intent(requireActivity(), LoginActivity::class.java)
         startActivity(intent)
-        requireActivity().finish() // 현재 액티비티를 종료하여 뒤로 가기 버튼을 눌렀을 때 다시 프로필 화면으로 돌아가지 않도록 함
+        requireActivity().finish()
         Toast.makeText(requireContext(), "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show()
     }
 
