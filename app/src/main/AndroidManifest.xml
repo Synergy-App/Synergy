@@ -19,7 +19,26 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".training_space.call.problem.ExamCallResult3Activity"
+            android:exported="false"
+            android:label="@string/title_activity_exam_call_result3" />
+        <activity
+            android:name=".training_space.call.problem.ExamCallResult1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.naver.PracticeNaver3Activity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.naver.PracticeNaver2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.naver.PracticeNaverActivity"
+            android:exported="false" />
+        <activity
             android:name=".training_space.activity.ChooseTypeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.google.PracticeGoogle9Activity"
             android:exported="false" />
         <activity
             android:name=".training_space.google.PracticeGoogle8Activity"
@@ -44,7 +63,7 @@
             android:exported="false" />
         <activity
             android:name=".training_space.google.PracticeGoogleActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".training_space.setting.PracticeSettingFontActivity"
             android:exported="false" />
@@ -71,6 +90,9 @@
             android:name=".training_space.call.PracticeCall3AddActivity"
             android:exported="false" />
         <activity
+            android:name=".training_space.setting.problem.ExamSettingActivity"
+            android:exported="false" />
+        <activity
             android:name=".training_space.call.PracticeCall3Activity"
             android:exported="false" />
         <activity android:name=".training_space.call.problem.ExamCallProblem3Activity" />
@@ -82,10 +104,11 @@
             android:exported="false" />
         <activity
             android:name=".training_space.call.PracticeCallActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".training_space.call.problem.ExamCallProblemActivity"
-            android:exported="false" />
+            android:exported="false">
+        </activity>
         <activity
             android:name=".training_space.call.problem.ExamCallProblem2Activity"
             android:exported="false" />
@@ -158,22 +181,16 @@
             android:exported="true" />
         <activity
             android:name=".home.activity.LoginActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".profile_space.CheckLearningAbilityFragment"
             android:exported="true" />
         <activity
             android:name=".home.activity.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".training_space.activity.ExamProblemActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".training_space.screen.PracticeRecentlyDefaultActivity"
             android:exported="true" />
@@ -233,7 +250,7 @@
         <!-- </intent-filter> -->
         <activity
             android:name=".training_space.NewScreenPracticeActivity"
-            android:exported="true"></activity> <!-- 아이디찾기/비밀번호변경 화면 -->
+            android:exported="true" /> <!-- 아이디찾기/비밀번호변경 화면 -->
         <activity
             android:name=".home.activity.FindIdPasswordActivity"
             android:exported="true" /> <!-- 회원가입 화면 -->

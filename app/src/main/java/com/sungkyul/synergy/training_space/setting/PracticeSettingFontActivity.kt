@@ -9,6 +9,7 @@ import android.util.TypedValue
 import android.widget.Button
 import android.widget.SeekBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityPracticeSettingFontBinding
@@ -44,7 +45,6 @@ class PracticeSettingFontActivity : AppCompatActivity() {
             TypedValue.COMPLEX_UNIT_PX,
             resources.getDimension(R.dimen.main_text_size_0)
         )
-
         binding.textsizeSeekbar.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
@@ -62,9 +62,20 @@ class PracticeSettingFontActivity : AppCompatActivity() {
 
                 binding.mainText.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize)
 
+                // 글자 크기가 최대로 높아졌을 때
                 if (progress == 7 && fromUser) {
-                    binding.eduScreen.onAction("change_text_size_bar")
+                    Toast.makeText(
+                        this@PracticeSettingFontActivity,
+                        "글자 크기가 최대로 설정되었습니다!",
+                        Toast.LENGTH_SHORT
+                    ).show()
 
+                    // 타이머가 실행 중일 때 멈추기
+                    if (isTimerRunning) {
+                        timer.cancel()
+                        isTimerRunning = false
+                        binding.timerTextView.text = "성공" // 타이머 중지 상태를 표시
+                    }
                 }
             }
 
@@ -72,33 +83,17 @@ class PracticeSettingFontActivity : AppCompatActivity() {
 
             override fun onStopTrackingTouch(seekBar: SeekBar) {}
         })
-        // 타이머 초기화
-        timer = object : CountDownTimer(remainingTimeInMillis, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                remainingTimeInMillis = millisUntilFinished
-                val secondsLeft = millisUntilFinished / 1000
-                binding.timerTextView.text = secondsLeft.toString() // 초를 텍스트뷰에 표시
-            }
-
-            override fun onFinish() {
-                binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
-            }
-        }
-
-        // 문제보기 클릭 시 다이얼로그 띄우기
-        binding.problemText.setOnClickListener {
-            showProblemDialog()
-        }
-
-        timer.start() // 액티비티가 생성되면 타이머 시작
-        isTimerRunning = true
     }
 
     private fun startTimer() {
         timer = object : CountDownTimer(remainingTimeInMillis, 1000) {
             override fun onTick(millisUntilFinished: Long) {
-                remainingTimeInMillis = millisUntilFinished
-                binding.timerTextView.text = (millisUntilFinished / 1000).toString()
+                if (isTimerRunning) {
+                    remainingTimeInMillis = millisUntilFinished
+                    binding.timerTextView.text = (millisUntilFinished / 1000).toString()
+                } else {
+                    cancel() // 타이머가 이미 멈춘 경우 중지
+                }
             }
 
             override fun onFinish() {

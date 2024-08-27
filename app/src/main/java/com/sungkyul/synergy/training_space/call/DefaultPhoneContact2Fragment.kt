@@ -12,10 +12,14 @@ import com.sungkyul.synergy.databinding.FragmentDefaultPhoneContactBinding
 import com.sungkyul.synergy.learning_space.default_app.phone.activity.DefaultPhoneAddActivity
 import com.sungkyul.synergy.learning_space.default_app.phone.adapter.ContactAdapter
 import com.sungkyul.synergy.learning_space.default_app.phone.adapter.ContactData
+import com.sungkyul.synergy.training_space.call.problem.ExamCallResult3Activity
 import com.sungkyul.synergy.utils.edu.EduListener
 
 
-class DefaultPhoneContact2Fragment(private val addedContact: ContactData? = null, private val eduListener: EduListener) : Fragment() {
+class DefaultPhoneContact2Fragment(
+    private val addedContact: ContactData? = null,
+    private val eduListener: EduListener
+) : Fragment() {
     private lateinit var binding: FragmentDefaultPhoneContactBinding
     private lateinit var contactAdapter: ContactAdapter
     private val contactArray = ArrayList<ContactData>()
@@ -28,12 +32,18 @@ class DefaultPhoneContact2Fragment(private val addedContact: ContactData? = null
 
         // 기존 연락처 목록 추가
         contactArray.add(ContactData(R.drawable.ic_person_black_24dp, "대장님", "휴대전화: 010-1234-1234"))
-        contactArray.add(ContactData(R.drawable.ic_person_black_24dp, "UX/UI 디자이너","휴대전화: 010-1234-1234"))
-        contactArray.add(ContactData(R.drawable.ic_person_black_24dp, "기획자","휴대전화: 010-1234-1234"))
+        contactArray.add(
+            ContactData(
+                R.drawable.ic_person_black_24dp,
+                "UX/UI 디자이너",
+                "휴대전화: 010-1234-1234"
+            )
+        )
+        contactArray.add(ContactData(R.drawable.ic_person_black_24dp, "기획자", "휴대전화: 010-1234-1234"))
 
 
         // 새 연락처 추가
-        if(addedContact != null) {
+        if (addedContact != null) {
             contactArray.add(addedContact)
         }
 
@@ -46,7 +56,8 @@ class DefaultPhoneContact2Fragment(private val addedContact: ContactData? = null
         binding.addButton.setOnClickListener {
             val intent = Intent(requireContext(), PracticeCall3AddActivity::class.java)
             startActivity(intent)
-
+//            val intent = Intent(requireContext(), ExamCallResult3Activity::class.java)
+//            startActivity(intent)
         }
 
         binding.searchButton.setOnTouchListener { _, _ ->

@@ -111,4 +111,8 @@
     <string name="video_call">영상 통화</string>
     <string name="wallet">지갑</string>
     <string name="title_activity_ma">maActivity</string>
+    <string name="title_activity_exam_call_result3">ExamCallResult3Activity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
