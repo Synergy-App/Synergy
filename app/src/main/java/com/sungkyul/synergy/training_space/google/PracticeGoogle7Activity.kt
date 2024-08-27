@@ -56,10 +56,7 @@ class PracticeGoogle7Activity : AppCompatActivity() {
 
         binding.putNextButton.setOnClickListener {
             val nextIntent = Intent(this, PracticeGoogle8Activity::class.java)
-
-            // 값을 전달한다.
-            nextIntent.putExtras(intent)
-
+            intent.putExtra("remainingTimeInMillis", remainingTimeInMillis) // 남은 시간 전달
             startActivity(nextIntent)
         }
         // editText의 텍스트 변경 감지
