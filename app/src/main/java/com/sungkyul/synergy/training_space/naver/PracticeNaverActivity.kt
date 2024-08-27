@@ -1,75 +1,128 @@
-package com.sungkyul.synergy.training_space.google
+package com.sungkyul.synergy.training_space.naver
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.view.Gravity
+import android.view.MotionEvent
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.courses.accountedu.GoogleMakeCourse
-import com.sungkyul.synergy.databinding.ActivityGoogleMakeBinding
-import com.sungkyul.synergy.databinding.ActivityPracticeGoogle2Binding
+import com.sungkyul.synergy.courses.naver.NaverCourse
+import com.sungkyul.synergy.courses.naver.NaverFromNaverSearchInfoCourse
+import com.sungkyul.synergy.courses.screen_layout.NaverFromScreenHomeCourse
+import com.sungkyul.synergy.courses.screen_layout.NaverFromScreenHomeCourse2
+import com.sungkyul.synergy.databinding.ActivityNaverBinding
+import com.sungkyul.synergy.databinding.ActivityPracticeGoogle9Binding
+import com.sungkyul.synergy.databinding.ActivityPracticeNaverBinding
 import com.sungkyul.synergy.home.activity.MainActivity
-import com.sungkyul.synergy.learning_space.accountedu.GoogleDefaultInfoActivity
+import com.sungkyul.synergy.learning_space.EduCompletionActivity
+import com.sungkyul.synergy.learning_space.naver.activity.NaverSearchActivity
+import com.sungkyul.synergy.learning_space.naver.activity.NaverSearchInfoActivity
+import com.sungkyul.synergy.learning_space.naver.adapter.NaverPostAdapter
+import com.sungkyul.synergy.learning_space.naver.adapter.NaverPostData
+import com.sungkyul.synergy.learning_space.screen_layout.ScreenHomeActivity
 import com.sungkyul.synergy.training_space.call.problem.ExamCallProblem2Activity
-import com.sungkyul.synergy.utils.SimpleTextWatcher
+import com.sungkyul.synergy.training_space.google.PracticeGoogle2Activity
+import com.sungkyul.synergy.utils.AnimUtils
+import com.sungkyul.synergy.utils.edu.EduScreen
 
-class PracticeGoogle2Activity : AppCompatActivity() {
-    private lateinit var binding: ActivityPracticeGoogle2Binding
+class PracticeNaverActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityPracticeNaverBinding
     private lateinit var timer: CountDownTimer
     private var isTimerRunning = false
-    private var remainingTimeInMillis: Long = 300000
+    private var remainingTimeInMillis: Long = 700000
     private var pausedTimeInMillis: Long = 0 // 타이머가 일시정지된 시간
     private var success: Boolean = false // 성공 여부를 나타내는 변수 추가
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityPracticeGoogle2Binding.inflate(layoutInflater)
+        binding = ActivityPracticeNaverBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        remainingTimeInMillis = intent.getLongExtra("remainingTimeInMillis", 30000)
+        hideSystemUI()
 
         startTimer()
 
-        val makeNextButton: Button = findViewById(R.id.make_next_button)
-        makeNextButton.setOnClickListener {
-            // 다음 화면으로 이동하는 명시적 인텐트 설정
-            val intent = Intent(this, PracticeGoogle3Activity::class.java)
+        // 이벤트 리스너 설정
+        binding.searchBar.setOnTouchListener { view, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
 
-            // 값을 전달한다.
-            intent.putExtra("last_name", binding.firstnameEdittext.text.toString())
-            intent.putExtra("first_name", binding.nameEdittext.text.toString())
+                    val intent = Intent(this, PracticeNaver2Activity::class.java)
+                    intent.putExtra("remainingTimeInMillis", remainingTimeInMillis) // 남은 시간 전달
+                    startActivity(intent)
 
-            intent.putExtra("remainingTimeInMillis", remainingTimeInMillis) // 남은 시간 전달
-            startActivity(intent)
+
+                    view.performClick()
+                }
+            }
+            true
+        }
+        binding.shoppingButton.setOnTouchListener { view, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    AnimUtils.startTouchDownSpringButtonAnimation(view)
+                }
+
+                MotionEvent.ACTION_UP -> {
+                    AnimUtils.startTouchUpSpringButtonAnimation(view)
+
+                    view.performClick()
+                }
+            }
+            true
+        }
+        binding.homeButton.setOnTouchListener { view, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    AnimUtils.startTouchDownSpringButtonAnimation(view)
+                }
+
+                MotionEvent.ACTION_UP -> {
+                    AnimUtils.startTouchUpSpringButtonAnimation(view)
+
+                    view.performClick()
+                }
+            }
+            true
+        }
+        binding.contentsButton.setOnTouchListener { view, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    AnimUtils.startTouchDownSpringButtonAnimation(view)
+                }
+
+                MotionEvent.ACTION_UP -> {
+                    AnimUtils.startTouchUpSpringButtonAnimation(view)
+
+                    view.performClick()
+                }
+            }
+            true
+        }
+        binding.clipButton.setOnTouchListener { view, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    AnimUtils.startTouchDownSpringButtonAnimation(view)
+                }
+
+                MotionEvent.ACTION_UP -> {
+                    AnimUtils.startTouchUpSpringButtonAnimation(view)
+
+                    view.performClick()
+                }
+            }
+            true
         }
 
-        // firstnameEdittext의 텍스트 변경 감지
-        binding.firstnameEdittext.addTextChangedListener(object : SimpleTextWatcher() {
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s != null && s.isNotEmpty()) {
-                    // 사용자가 텍스트를 입력한 경우
-                    binding.eduScreen.onAction("first_name_input")
-                    binding.firstnameEdittext.setOnTouchListener { _, _ -> true }
-                }
-            }
-        })
-
-        // nameEdittext의 텍스트 변경 감지
-        binding.nameEdittext.addTextChangedListener(object : SimpleTextWatcher() {
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s != null && s.isNotEmpty()) {
-                    // 사용자가 텍스트를 입력한 경우
-                    binding.eduScreen.onAction("name_input")
-                    binding.nameEdittext.setOnTouchListener { _, _ -> true }
-                }
-            }
-        })
         // 타이머 초기화
         timer = object : CountDownTimer(remainingTimeInMillis, 1000) {
             override fun onTick(millisUntilFinished: Long) {
@@ -121,7 +174,7 @@ class PracticeGoogle2Activity : AppCompatActivity() {
         // "개인용" 버튼에 클릭 리스너를 추가합니다.
         personalButton.setOnClickListener {
             // 화면을 이동시킵니다. (이동할 화면의 액티비티를 여기에 지정합니다.)
-            val intent = Intent(this, PracticeGoogle2Activity::class.java)
+            val intent = Intent(this, PracticeNaver2Activity::class.java)
             intent.putExtra("remainingTimeInMillis", remainingTimeInMillis) // 남은 시간 전달
             startActivity(intent)
 
@@ -184,7 +237,7 @@ class PracticeGoogle2Activity : AppCompatActivity() {
         numberTextView.text = "문제 1."
 
         val messageTextView = dialogView.findViewById<TextView>(R.id.dialogMessage)
-        messageTextView.text = "구글 계정 생성을 완료하시오."
+        messageTextView.text = "된장찌개 만드는 방법을 검색창에 입력하시오."
         messageTextView.textSize = 20f
 
         // 확인 버튼 설정
@@ -203,9 +256,20 @@ class PracticeGoogle2Activity : AppCompatActivity() {
         isTimerRunning = false
     }
 
-    private fun returnToHomeScreen() {
-        val intent = Intent(this, ExamCallProblem2Activity::class.java)
-        startActivity(intent)
-        overridePendingTransition(R.anim.stay, R.anim.stay)
+//    private fun returnToHomeScreen() {
+//        val intent = Intent(this, ExamCallProblem2Activity::class.java)
+//        startActivity(intent)
+//        overridePendingTransition(R.anim.stay, R.anim.stay)
+
+
+    private fun hideSystemUI() {
+        window.decorView.systemUiVisibility = (
+                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                        or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        or View.SYSTEM_UI_FLAG_FULLSCREEN
+                )
     }
 }

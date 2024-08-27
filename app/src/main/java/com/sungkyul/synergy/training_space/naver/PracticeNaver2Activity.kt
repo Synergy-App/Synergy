@@ -1,104 +1,98 @@
-package com.sungkyul.synergy.training_space.call
+package com.sungkyul.synergy.training_space.naver
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.view.MotionEvent
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Button
 import android.widget.TextView
-import androidx.activity.OnBackPressedCallback
-import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.courses.default_app.phone.DefaultPhoneCourse3
-import com.sungkyul.synergy.databinding.ActivityDefaultPhoneAddBinding
-import com.sungkyul.synergy.databinding.ActivityPracticeCall3AddBinding
+import com.sungkyul.synergy.databinding.ActivityNaverSearchBinding
+import com.sungkyul.synergy.databinding.ActivityPracticeNaver2Binding
+import com.sungkyul.synergy.databinding.ActivityPracticeNaverBinding
+import com.sungkyul.synergy.learning_space.naver.activity.NaverSearchInfoActivity
+import com.sungkyul.synergy.learning_space.naver.activity.NaverSearchResultActivity
+import com.sungkyul.synergy.learning_space.naver.adapter.NaverAutocompleteAdapter
+import com.sungkyul.synergy.learning_space.naver.adapter.NaverAutocompleteData
 import com.sungkyul.synergy.training_space.call.problem.ExamCallProblem2Activity
-import com.sungkyul.synergy.training_space.call.problem.ExamCallProblem4Activity
-import com.sungkyul.synergy.training_space.call.problem.ExamCallResult3Activity
-import com.sungkyul.synergy.utils.AnimUtils
+import com.sungkyul.synergy.utils.TextUtils
 
-class PracticeCall3AddActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityPracticeCall3AddBinding
+class PracticeNaver2Activity : AppCompatActivity() {
+    private lateinit var binding: ActivityPracticeNaver2Binding
+
     private lateinit var timer: CountDownTimer
     private var isTimerRunning = false
-    private var remainingTimeInMillis: Long = 30000
+    private var remainingTimeInMillis: Long = 300000
     private var pausedTimeInMillis: Long = 0 // 타이머가 일시정지된 시간
     private var success: Boolean = false // 성공 여부를 나타내는 변수 추가
 
 
-    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityPracticeCall3AddBinding.inflate(layoutInflater)
+        binding = ActivityPracticeNaver2Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        remainingTimeInMillis = intent.getLongExtra("remainingTimeInMillis", 30000)
         startTimer()
 
 
-        // 각 버튼의 터치 애니메이션을 초기화한다.
-        AnimUtils.initTouchButtonAnimation(binding.cancelButton)
-        AnimUtils.initTouchButtonAnimation(binding.saveButton)
+        val naverAutocompleteArray = ArrayList<NaverAutocompleteData>()
 
+        val naverAutocompleteList = binding.naverAutocompleteList
+        naverAutocompleteList.layoutManager = LinearLayoutManager(binding.root.context)
+        naverAutocompleteList.adapter = NaverAutocompleteAdapter(naverAutocompleteArray, this)
 
-        // 이벤트 리스너들을 추가한다.
-        binding.cancelButton.setOnTouchListener { view, event ->
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    AnimUtils.startTouchDownButtonAnimation(this, view)
+        binding.searchEditText.requestFocus()
+
+        binding.searchEditText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val adapter = naverAutocompleteList.adapter as NaverAutocompleteAdapter
+
+                // 모든 아이템들을 삭제한다.
+                adapter.notifyItemRangeRemoved(0, naverAutocompleteArray.size)
+
+                // 자동 완성
+                naverAutocompleteArray.clear()
+                if (s.toString().isNotEmpty()) {
+                    for (i in TextUtils.searchAll(s.toString())) {
+                        naverAutocompleteArray.add(NaverAutocompleteData(i))
+                    }
                 }
 
-                MotionEvent.ACTION_UP -> {
-                    AnimUtils.startTouchUpButtonAnimation(this, view)
-
-                    //finish()
-                }
-            }
-            true
-        }
-        binding.saveButton.setOnTouchListener { view, event ->
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    AnimUtils.startTouchDownButtonAnimation(this, view)
-                }
-
-                MotionEvent.ACTION_UP -> {
-                    AnimUtils.startTouchUpButtonAnimation(this, view)
-
-                    val intent = Intent(this, ExamCallResult3Activity::class.java)
-//                    intent.putExtra(
-//                        "from",
-//                        "save_contact"
-//                    ) // id 값 바꾸기 - 연락처 저장 눌렀을 때 변화하는 화면을 알아야 하기 때문
-//                    intent.putExtra("name", binding.phoneNameEditText.text.toString())
-//                    intent.putExtra("num", binding.phoneNumEditText.text.toString())
-//                    intent.putExtra("email", binding.phoneEmailEditText.text.toString())
-//                    intent.putExtra("group", binding.phoneGroupEditText.text.toString())
-                    startActivity(intent)
-                }
-            }
-            true
-        }
-        binding.phoneNameEditText.setOnFocusChangeListener { _, hasFocus ->
-            if (hasFocus) {
-                binding.eduScreen.onAction("phone_name_edit_text")
+                // 아이템들을 추가한다.
+                adapter.notifyItemRangeInserted(0, naverAutocompleteArray.size)
             }
 
+            override fun afterTextChanged(s: Editable?) {
+            }
+        })
+        binding.previousButton.setOnClickListener {
+            finish()
         }
-        //이름 적는 칸
-        binding.phoneNameEditText.setOnClickListener {
-            if (binding.eduScreen.onAction("phone_name_edit_text")) {
-                // id가 서로 일치하면 이 부분이 실행된다.
+        binding.clearButton.setOnClickListener {
+            binding.searchEditText.setText("")
+        }
+        binding.searchButton.setOnClickListener {
+            val searchQuery = binding.searchEditText.text.toString()
+            if (searchQuery.contains("된장찌개") || searchQuery.contains("된장 찌개") || searchQuery.contains(
+                    "된장"
+                )
+            ) {
+                val intent = Intent(this, PracticeNaver3Activity::class.java)
+                intent.putExtra("remainingTimeInMillis", remainingTimeInMillis) // 남은 시간 전달
+                startActivity(intent)
+            } else {
             }
         }
-        //전화번호 적는 칸
-        binding.phoneNumEditText.setOnClickListener {
-
-            val inputText = binding.phoneNameEditText.text.toString()
-            if (inputText == "시너지") {
-                binding.eduScreen.onAction("phone_num_edit_text")
-            }
+        binding.cancelButton.setOnClickListener {
+            finish()
         }
         // 타이머 초기화
         timer = object : CountDownTimer(remainingTimeInMillis, 1000) {
@@ -134,6 +128,7 @@ class PracticeCall3AddActivity : AppCompatActivity() {
         if (!isTimerRunning) {
             startTimer(pausedTimeInMillis)
         }
+
     }
 
     private fun startTimer(startTimeInMillis: Long = remainingTimeInMillis) {
@@ -165,7 +160,7 @@ class PracticeCall3AddActivity : AppCompatActivity() {
 
     @SuppressLint("ClickableViewAccessibility")
     private fun showProblemDialog() {
-        val dialogBuilder = AlertDialog.Builder(this)
+        val dialogBuilder = androidx.appcompat.app.AlertDialog.Builder(this)
 
         // 커스텀 레이아웃을 설정하기 위한 레이아웃 인플레이터
         val inflater = this.layoutInflater
@@ -177,11 +172,11 @@ class PracticeCall3AddActivity : AppCompatActivity() {
 
         // 다이얼로그 메시지 텍스트뷰 설정
         val numberTextView = dialogView.findViewById<TextView>(R.id.dialogNumber)
-        numberTextView.text = "문제 3."
+        numberTextView.text = "문제 1."
 
         val messageTextView = dialogView.findViewById<TextView>(R.id.dialogMessage)
-        messageTextView.text = "연락처에 다음과 같이 저장하시오.\n이름: 시너지, \n전화번호: 010-1111-1111."
-        messageTextView.textSize = 20f // 글씨 크기 설정
+        messageTextView.text = "된장찌개 만드는 방법을 검색창에 입력하시오."
+        messageTextView.textSize = 20f
 
         // 확인 버튼 설정
         val confirmButton = dialogView.findViewById<Button>(R.id.confirmButton)

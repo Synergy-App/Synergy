@@ -1,0 +1,843 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".training_space.naver.PracticeNaver3Activity">
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingHorizontal="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <!-- 타이머를 표시할 TextView -->
+        <TextView
+            android:id="@+id/timerTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:padding="16dp"
+            android:text="00:00"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <!-- 타이머와 텍스트 사이의 공간 -->
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <!-- 타이머 옆에 표시할 텍스트 -->
+        <TextView
+            android:id="@+id/problemText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:padding="16dp"
+            android:text="문제보기"
+            android:textColor="@color/phoneRed"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- 메인 컨텐츠 레이아웃 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="7dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll"
+        tools:layout_editor_absoluteX="7dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#F0F0F3"
+            tools:context=".learning_space.naver.activity.NaverSearchInfoActivity">
+
+
+            <com.sungkyul.synergy.utils.edu.EduScreen
+                android:id="@+id/edu_screen"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <LinearLayout
+                android:id="@+id/search_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/naver_button"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@color/white"
+                    android:contentDescription="@null"
+                    android:padding="8dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/naver_logo" />
+
+                <EditText
+                    android:id="@+id/search_edit_text"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:autofillHints="@string/naver_search_hint_2"
+                    android:background="@null"
+                    android:inputType="text"
+                    android:textColor="@color/naver_search_black"
+                    android:textSize="16sp"
+                    tools:ignore="LabelFor" />
+
+
+                <LinearLayout
+                    android:id="@+id/naver_search_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/clear_button"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@null"
+                        android:contentDescription="@null"
+                        android:padding="12dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/naver_clear_button" />
+
+                    <ImageButton
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@null"
+                        android:contentDescription="@null"
+                        android:padding="8dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/naver_search_voice" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/green_line"
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:layout_below="@id/search_bar"
+                android:layout_marginTop="0dp"
+                android:background="#03C75A" />
+
+
+            <!-- 흰색 배경의 릴레이티브 레이아웃 -->
+            <RelativeLayout
+                android:id="@+id/naver_menu_layout"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_below="@id/green_line"
+                android:background="@android:color/white">
+
+                <LinearLayout
+                    android:id="@+id/blog_button1"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/naver_rounded_btn"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="1dp"
+                        android:src="@drawable/naver_blog" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:text="블로그"
+                        android:textColor="#222225"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/cafe_button2"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_toEndOf="@id/blog_button1"
+                    android:background="@drawable/naver_rounded_btn"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="1dp"
+                        android:src="@drawable/naver_cafe_icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:text="카페"
+                        android:textColor="#222225"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/image_button3"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_toEndOf="@id/cafe_button2"
+                    android:background="@drawable/naver_rounded_btn"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="1dp"
+                        android:src="@drawable/naver_image" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:text="이미지"
+                        android:textColor="#222225"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/qin_button4"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_toEndOf="@id/image_button3"
+                    android:background="@drawable/naver_rounded_btn"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="1dp"
+                        android:src="@drawable/naver_qin" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:text="지식인"
+                        android:textColor="#222225"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/related_keywords_layout"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@id/naver_menu_layout"
+                android:layout_marginTop="8dp"
+                android:background="@android:color/white">
+
+                <!-- 나머지 텍스트 -->
+                <TextView
+                    android:id="@+id/related_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="연관  돼지고기 김치찌개 만드는 법, 고추장찌개 만드는 법, 시래기된장찌개 만드는 법, 순두부찌개 만드는 법,"
+                    android:textColor="#444446" />
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="380dp"
+                    android:layout_marginTop="31dp"
+                    android:src="@drawable/naver_related_icon" />
+            </RelativeLayout>
+
+            <!-- 흰색 배경의 릴레이티브 레이아웃 -->
+            <RelativeLayout
+                android:id="@+id/popular_topics_layout"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_below="@id/related_keywords_layout"
+                android:layout_marginTop="8dp"
+                android:background="@android:color/white">
+
+                <!-- "된장찌개 만드는 법 인기주제" 텍스트 -->
+                <TextView
+                    android:id="@+id/popular_topics_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="된장찌개 만드는 법 인기주제"
+                    android:textColor="#222224"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <!-- 버튼 1 -->
+                <LinearLayout
+                    android:id="@+id/button1"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/popular_topics_text"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/naver_null_rounded_btn"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="8dp"
+                        android:contentDescription="Search Icon"
+                        android:src="@drawable/jjigae1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="순두부찌개"
+                        android:textColor="#222225"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <!-- 버튼 2 -->
+                <LinearLayout
+                    android:id="@+id/button2"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/popular_topics_text"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_toEndOf="@id/button1"
+                    android:background="@drawable/naver_null_rounded_btn"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="8dp"
+                        android:contentDescription="Search Icon"
+                        android:src="@drawable/jjigae2" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="부대찌개"
+                        android:textColor="#222225"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <!-- 버튼 3 -->
+                <LinearLayout
+                    android:id="@+id/button3"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/button1"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/naver_null_rounded_btn"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="8dp"
+                        android:contentDescription="Search Icon"
+                        android:src="@drawable/jjigae3" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="김치찌개"
+                        android:textColor="#222225"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <!-- 버튼 4 -->
+                <LinearLayout
+                    android:id="@+id/button4"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/button2"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_toEndOf="@id/button3"
+                    android:background="@drawable/naver_null_rounded_btn"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="8dp"
+                        android:contentDescription="Search Icon"
+                        android:src="@drawable/jjigae4" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="황탯국"
+                        android:textColor="#222225"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/search_result_layout"
+                android:layout_width="match_parent"
+                android:layout_height="320dp"
+                android:layout_below="@id/popular_topics_layout"
+                android:layout_marginTop="8dp"
+                android:background="@android:color/white">
+
+                <!-- "된장국 만드는법" 텍스트 -->
+                <TextView
+                    android:id="@+id/main_search_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="된장찌개 만드는법"
+                    android:textColor="#222224"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/naver_bloger"
+                    android:layout_width="380dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/main_search_text"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="Search Icon"
+                        android:src="@drawable/naver_search_btn" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="시너지"
+                        android:textColor="#222224"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="인플루언서"
+                        android:textColor="#4CA762"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="•"
+                        android:textColor="#C5C5C7"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="2023.09.12"
+                        android:textColor="#939395"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_marginStart="100dp"
+                        android:src="@drawable/ic_naver_add_grey_24" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/naver_blog_main_text"
+                    android:layout_width="380dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/naver_bloger"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="-6dp"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/naver_blog_main_info_text1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:text="배추 된장찌개 만드는법 두부 넣은 레시피 공유"
+                        android:textColor="#2B66BC"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/naver_blog_sub_text"
+                    android:layout_width="390dp"
+                    android:layout_height="60dp"
+                    android:layout_below="@id/naver_blog_main_text"
+                    android:layout_marginTop="-10dp"
+                    android:background="@android:color/white">
+
+                    <TextView
+                        android:id="@+id/naver_blog_sub_info_text1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="26dp"
+                        android:layout_marginTop="8dp"
+                        android:text="배추된장찌개 만드는법 간단하고 누구나 만들기 쉬운 레시피로, 두부를 넣어 만든 레시피입니다."
+                        android:textColor="#444446"
+                        android:textSize="16sp" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/image_container"
+                    android:layout_width="380dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/naver_blog_sub_text"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="160dp"
+                        android:layout_height="130dp"
+                        android:layout_marginStart="10dp"
+                        android:rotation="90"
+                        android:src="@drawable/blog_image1" />
+
+                    <ImageView
+                        android:layout_width="160dp"
+                        android:layout_height="130dp"
+                        android:layout_marginStart="-40dp"
+                        android:src="@drawable/blog_image2" />
+
+                    <ImageView
+                        android:layout_width="160dp"
+                        android:layout_height="130dp"
+                        android:layout_marginStart="-40dp"
+                        android:rotation="90"
+                        android:src="@drawable/blog_image3" />
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/search_result_layout2"
+                android:layout_width="match_parent"
+                android:layout_height="320dp"
+                android:layout_below="@id/search_result_layout"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/white">
+
+                <TextView
+                    android:id="@+id/main_search_text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="요리•레시피 인기글"
+                    android:textColor="#222224"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/naver_bloger2"
+                    android:layout_width="380dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/main_search_text2"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="Search Icon"
+                        android:src="@drawable/naver_search_btn" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="시북이"
+                        android:textColor="#222224"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="인플루언서"
+                        android:textColor="#4CA762"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="•"
+                        android:textColor="#C5C5C7"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="2024.01.06"
+                        android:textColor="#939395"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_marginStart="100dp"
+                        android:src="@drawable/ic_naver_add_grey_24" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/naver_blog_main_text2"
+                    android:layout_width="380dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/naver_bloger2"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="-6dp"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/naver_blog_main_info_text2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:text="쉽게 된장찌개 만드는법 10분 간편 레시피"
+                        android:textColor="#2B66BC"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/naver_blog_sub_text2"
+                    android:layout_width="390dp"
+                    android:layout_height="60dp"
+                    android:layout_below="@id/naver_blog_main_text2"
+                    android:layout_marginTop="-10dp"
+                    android:background="@android:color/white">
+
+                    <TextView
+                        android:id="@+id/naver_blog_sub_info_text2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="26dp"
+                        android:layout_marginTop="8dp"
+                        android:text="된장찌개 만드는법 누구나 쉽게 따라하는 레시피 알려드립니다. 재료도 간략하게! 십분내로 조리가능!!"
+                        android:textColor="#444446"
+                        android:textSize="16sp" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/image_container2"
+                    android:layout_width="380dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/naver_blog_sub_text2"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="160dp"
+                        android:layout_height="130dp"
+                        android:layout_marginStart="10dp"
+                        android:rotation="90"
+                        android:src="@drawable/blog_image1" />
+
+                    <ImageView
+                        android:layout_width="160dp"
+                        android:layout_height="130dp"
+                        android:layout_marginStart="-40dp"
+                        android:src="@drawable/blog_image2" />
+
+                    <ImageView
+                        android:layout_width="160dp"
+                        android:layout_height="130dp"
+                        android:layout_marginStart="-40dp"
+                        android:rotation="90"
+                        android:src="@drawable/blog_image3" />
+
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/bottom_menu_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/white">
+
+                    <ImageButton
+                        android:id="@+id/home_button"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@null"
+                        android:contentDescription="@null"
+                        android:padding="12dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/naver_home_button"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/previous_button"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageButton
+                        android:id="@+id/previous_button"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_toEndOf="@id/home_button"
+                        android:background="@null"
+                        android:contentDescription="@null"
+                        android:padding="12dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/naver_previous_button"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/next_button"
+                        app:layout_constraintStart_toEndOf="@id/home_button"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageButton
+                        android:id="@+id/next_button"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@null"
+                        android:contentDescription="@null"
+                        android:padding="12dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/naver_next_button"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/search_menu_button"
+                        app:layout_constraintStart_toEndOf="@id/previous_button"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageButton
+                        android:id="@+id/search_menu_button"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@null"
+                        android:contentDescription="@null"
+                        android:padding="8dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/naver_search_menu_button"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/refresh_button"
+                        app:layout_constraintStart_toEndOf="@id/next_button"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageButton
+                        android:id="@+id/refresh_button"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@null"
+                        android:contentDescription="@null"
+                        android:padding="12dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/naver_refresh_button"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/share_button"
+                        app:layout_constraintStart_toEndOf="@id/search_menu_button"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageButton
+                        android:id="@+id/share_button"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="4dp"
+                        android:background="@null"
+                        android:contentDescription="@null"
+                        android:padding="8dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_naver_share_grey_24"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/bottom_other_menu_button"
+                        app:layout_constraintStart_toEndOf="@id/refresh_button"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageButton
+                        android:id="@+id/bottom_other_menu_button"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@null"
+                        android:contentDescription="@null"
+                        android:padding="12dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/naver_bottom_menu_button"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/share_button"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

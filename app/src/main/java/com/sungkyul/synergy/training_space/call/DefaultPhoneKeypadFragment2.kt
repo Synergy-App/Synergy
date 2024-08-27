@@ -23,6 +23,7 @@ import com.sungkyul.synergy.learning_space.default_app.TOUCH_UP_ALPHA
 import com.sungkyul.synergy.learning_space.default_app.TOUCH_UP_SCALE
 import com.sungkyul.synergy.learning_space.default_app.phone.activity.DefaultPhoneCallActivity
 import com.sungkyul.synergy.training_space.call.problem.ExamCallProblem2Activity
+import com.sungkyul.synergy.training_space.call.problem.ExamCallResult1Activity
 import com.sungkyul.synergy.training_space.screen.PracticeAppMove2Activity
 import com.sungkyul.synergy.utils.AnimUtils
 import com.sungkyul.synergy.utils.TextUtils
@@ -159,7 +160,7 @@ class DefaultPhoneKeypadFragment2(private val eduListener: EduListener) : Fragme
                 if(eduListener.onAction("click_call_button")) {
                     if (binding.phoneNumText.text.toString().isNotEmpty()) {
                         // 전화 화면으로 이동
-                        val intent = Intent(requireContext(), ExamCallProblem2Activity::class.java)
+                        val intent = Intent(requireContext(), ExamCallResult1Activity::class.java)
                        // intent.putExtra("phone_num", binding.phoneNumText.text.toString())
                         startActivity(intent)
                     }

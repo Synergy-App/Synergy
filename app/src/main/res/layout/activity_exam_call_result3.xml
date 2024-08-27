@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".training_space.call.problem.ExamCallResult3Activity">
+
+    <!-- 상단 LinearLayout (타이머와 문제보기 텍스트를 포함) -->
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingHorizontal="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <!-- 타이머를 표시할 TextView -->
+        <TextView
+            android:id="@+id/timerTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:padding="16dp"
+            android:text="00:00"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <!-- 타이머와 텍스트 사이의 공간 -->
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <!-- 타이머 옆에 표시할 텍스트 -->
+        <TextView
+            android:id="@+id/problemText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:padding="16dp"
+            android:text="문제보기"
+            android:textColor="@color/phoneRed"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- 메인 컨텐츠 레이아웃 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="7dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll"
+        tools:layout_editor_absoluteX="7dp">
+
+
+        <RelativeLayout
+            android:id="@+id/main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/phoneDeepBgColor">
+
+            <com.sungkyul.synergy.utils.edu.EduScreen
+                android:id="@+id/edu_screen"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/phoneBgColor"
+                android:orientation="vertical"
+                tools:ignore="MissingConstraints">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="130dp"
+                    android:layout_marginBottom="130dp"
+                    android:gravity="center"
+                    android:text="전화"
+                    android:textSize="38dp" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+
+                    <EditText
+                        android:id="@+id/search_edit_text"
+                        android:layout_width="100dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="left"
+                        android:background="@android:color/transparent"
+                        android:textSize="18sp" />
+
+
+                    <ImageButton
+                        android:id="@+id/add_button"
+                        android:layout_width="52dp"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:padding="12dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_add_black_24" />
+
+                    <ImageButton
+                        android:id="@+id/search_button"
+                        android:layout_width="52dp"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:padding="12dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_search_black_24dp" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="18dp"
+                        android:background="@null"
+                        android:padding="12dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_gallery_add_black_24" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/contact_list_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    android:padding="16dp"
+                    android:background="@color/white"
+                    app:layout_constraintTop_toBottomOf="@id/ll"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+                </LinearLayout>
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

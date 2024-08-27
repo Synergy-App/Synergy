@@ -1,41 +1,32 @@
-package com.sungkyul.synergy.training_space.call
+package com.sungkyul.synergy.training_space.call.problem
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.util.Log
+import android.os.Handler
+import android.os.Looper
 import android.view.MotionEvent
-import android.view.View
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.courses.default_app.phone.DefaultPhoneCourse1
-import com.sungkyul.synergy.courses.default_app.phone.DefaultPhoneCourse2
-import com.sungkyul.synergy.courses.default_app.phone.DefaultPhoneCourse3
-import com.sungkyul.synergy.courses.default_app.phone.DefaultPhoneCourse4
-import com.sungkyul.synergy.databinding.ActivityPracticeCallBinding
-import com.sungkyul.synergy.learning_space.default_app.TOUCH_DOWN_ALPHA
-import com.sungkyul.synergy.learning_space.default_app.TOUCH_DURATION_ALPHA
-import com.sungkyul.synergy.learning_space.default_app.TOUCH_UP_ALPHA
+import com.sungkyul.synergy.databinding.ActivityExamCallResult1Binding
+import com.sungkyul.synergy.databinding.ActivityExamCallResult3Binding
+import com.sungkyul.synergy.databinding.ActivityPracticeCall3Binding
+import com.sungkyul.synergy.databinding.FragmentDefaultPhoneContactBinding
 import com.sungkyul.synergy.learning_space.default_app.phone.adapter.ContactData
-import com.sungkyul.synergy.learning_space.default_app.phone.fragment.DefaultPhoneContactFragment
-import com.sungkyul.synergy.learning_space.default_app.phone.fragment.DefaultPhoneKeypadFragment
 import com.sungkyul.synergy.learning_space.default_app.phone.fragment.DefaultPhoneRecentHistoryFragment
-import com.sungkyul.synergy.training_space.call.problem.ExamCallProblem2Activity
-import com.sungkyul.synergy.training_space.call.problem.ExamCallResult1Activity
-import com.sungkyul.synergy.training_space.screen.PracticeAppMove2Activity
-import com.sungkyul.synergy.utils.AnimUtils
+import com.sungkyul.synergy.training_space.call.DefaultPhoneContact2Fragment
+import com.sungkyul.synergy.training_space.call.DefaultPhoneKeypadFragment2
 import com.sungkyul.synergy.utils.GalaxyButton
-import com.sungkyul.synergy.utils.edu.EduScreen
 
-class PracticeCallActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityPracticeCallBinding
+class ExamCallResult3Activity : AppCompatActivity() {
+    private lateinit var binding: ActivityExamCallResult3Binding
     private lateinit var keypadFragment: Fragment
     private lateinit var recentHistoryFragment: Fragment
     private lateinit var contactFragment: Fragment
@@ -51,94 +42,36 @@ class PracticeCallActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        binding = ActivityPracticeCallBinding.inflate(layoutInflater)
+        binding = ActivityExamCallResult3Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
         startTimer()
 
         // Fragments
-        keypadFragment = DefaultPhoneKeypadFragment2(binding.eduScreen)
         recentHistoryFragment = DefaultPhoneRecentHistoryFragment()
-        contactFragment = DefaultPhoneContactFragment(eduListener = binding.eduScreen)
 
         // 초기 메인 레이아웃 배경 설정
-        updateMainBgColor(R.color.phoneBgColor)
-        binding.keypadButton.post {
-            binding.keypadButton.clipToRoundRect(20.0f)
-        }
-        binding.recentHistoryButton.post {
-            binding.recentHistoryButton.clipToRoundRect(20.0f)
-        }
-        binding.contactButton.post {
-            binding.contactButton.clipToRoundRect(20.0f)
-        }
+        //   replaceFragment(contactFragment)
+        val contacts = listOf(
+            "시너지, 010-1111-1111",
+            "김밥천국, 02-999-9999"
+        )
 
-        // 하단 내비게이션 뷰에서 메뉴 아이템을 선택하면, 메인 레이아웃 배경을 변경하고 해당하는 프래그먼트로 교체한다.
-        binding.keypadButton.setOnTouchListener { view, event ->
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    (view as GalaxyButton).startTouchDownAnimation(event.x, event.y, 100.0f)
-                }
+        val contactListContainer = findViewById<LinearLayout>(R.id.contact_list_container)
 
-                MotionEvent.ACTION_UP -> {
-                    (view as GalaxyButton).startTouchUpAnimation()
-
-                    if (binding.eduScreen.onAction("click_keypad_button")) {
-                        replaceFragment(keypadFragment)
-                    }
-                }
-            }
-            true
-        }
-        binding.recentHistoryButton.setOnTouchListener { view, event ->
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    (view as GalaxyButton).startTouchDownAnimation(event.x, event.y, 100.0f)
-                }
-
-                MotionEvent.ACTION_UP -> {
-                    (view as GalaxyButton).startTouchUpAnimation()
-
-                    if (binding.eduScreen.onAction("click_recent_history_button")) {
-                        replaceFragment(recentHistoryFragment)
-                    }
-                }
-            }
-            true
-        }
-        binding.contactButton.setOnTouchListener { view, event ->
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    (view as GalaxyButton).startTouchDownAnimation(event.x, event.y, 100.0f)
-                }
-
-                MotionEvent.ACTION_UP -> {
-                    (view as GalaxyButton).startTouchUpAnimation()
-
-                    if (binding.eduScreen.onAction("click_contact_button")) {
-                        replaceFragment(contactFragment)
-                    }
-                }
-            }
-            true
+        for (contact in contacts) {
+            val textView = TextView(this)
+            textView.text = contact
+            textView.textSize = 18f
+            textView.setPadding(8, 8, 8, 8)
+            contactListContainer.addView(textView)
         }
 
-        replaceFragment(keypadFragment)
-
-        if (intent.getStringExtra("from") == "save_contact") {
-            // 새 연락처를 프래그먼트로 넘긴다.
-            contactFragment = DefaultPhoneContactFragment(
-                ContactData(
-                    R.drawable.ic_person_black_24dp,
-                    intent.getStringExtra("name")!!,
-                    intent.getStringExtra("num")!!
-                ),
-                binding.eduScreen
-            )
-
-            replaceFragment(contactFragment)
-        }
-
+        // 3초 후에 성공 메시지 표시 TODO -------------
+//        Handler(Looper.getMainLooper()).postDelayed({
+//            val intent = Intent(this, ExamCallProblem2Activity::class.java)
+//            startActivity(intent)
+//        }, 3000)}
 
         // 타이머 초기화
         timer = object : CountDownTimer(remainingTimeInMillis, 1000) {
@@ -187,10 +120,10 @@ class PracticeCallActivity : AppCompatActivity() {
             override fun onFinish() {
                 if (!success) { // 성공하지 않았을 때만 실패로 저장
                     findViewById<TextView>(R.id.timerTextView).text = "0"
-                   // saveResult(false) // 실패 결과 저장
+                    // saveResult(false) // 실패 결과 저장
                 }
                 // 타이머가 종료되면 자동으로 실패 처리됨
-              //  returnToHomeScreen()
+                //  returnToHomeScreen()
             }
         }
 
@@ -217,10 +150,10 @@ class PracticeCallActivity : AppCompatActivity() {
 
         // 다이얼로그 메시지 텍스트뷰 설정
         val numberTextView = dialogView.findViewById<TextView>(R.id.dialogNumber)
-        numberTextView.text = "문제 1."
+        numberTextView.text = "문제 3."
 
         val messageTextView = dialogView.findViewById<TextView>(R.id.dialogMessage)
-        messageTextView.text = "010-2345-6789로 전화를 걸어세요."
+        messageTextView.text = "연락처에 다음과 같이 저장하시오.\n이름: 시너지, \n전화번호: 010-1111-1111."
         messageTextView.textSize = 20f // 글씨 크기 설정
 
         // 확인 버튼 설정
@@ -229,7 +162,7 @@ class PracticeCallActivity : AppCompatActivity() {
             alertDialog.dismiss() // 다이얼로그 닫기
 
             // ///////saveResult(true) // 문제 풀이 성공으로 표시
-           // returnToHomeScreen() // 홈 화면으로 이동
+            // returnToHomeScreen() // 홈 화면으로 이동
         }
 
         alertDialog.show()
@@ -240,7 +173,7 @@ class PracticeCallActivity : AppCompatActivity() {
     }
 
     private fun returnToHomeScreen() {
-        val intent = Intent(this, ExamCallResult1Activity::class.java)
+        val intent = Intent(this, ExamCallProblem2Activity::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.stay, R.anim.stay)
     }
@@ -255,15 +188,4 @@ class PracticeCallActivity : AppCompatActivity() {
 //    }
 
 
-    private fun updateMainBgColor(color: Int) {
-        val drawable = ContextCompat.getDrawable(applicationContext, color)
-        binding.phoneBottomNav.background = drawable
-        binding.mainLayout.background = drawable
-    }
-
-    private fun replaceFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(binding.phoneFragmentContainer.id, fragment)
-            .commit()
-    }
 }
