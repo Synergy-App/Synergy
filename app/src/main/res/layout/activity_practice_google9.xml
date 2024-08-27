@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".training_space.google.PracticeGoogle9Activity">
+
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingHorizontal="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <!-- 타이머를 표시할 TextView -->
+        <TextView
+            android:id="@+id/timerTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:padding="16dp"
+            android:text="00:00"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <!-- 타이머와 텍스트 사이의 공간 -->
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <!-- 타이머 옆에 표시할 텍스트 -->
+        <TextView
+            android:id="@+id/problemText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:padding="16dp"
+            android:text="문제보기"
+            android:textColor="@color/phoneRed"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- 메인 컨텐츠 레이아웃 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="7dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll"
+        tools:layout_editor_absoluteX="7dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <com.sungkyul.synergy.utils.edu.EduScreen
+                android:id="@+id/edu_screen"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!-- Google 메뉴(짝대기 세개) 이미지 -->
+                <ImageView
+                    android:id="@+id/google_menu"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/google_menu"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!-- "전체" 버튼 -->
+                <TextView
+                    android:id="@+id/all_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="전체"
+                    android:textColor="#1058C7"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/google_menu"
+                    app:layout_constraintStart_toEndOf="@id/google_menu"
+                    app:layout_constraintTop_toTopOf="@id/google_menu" />
+
+                <!-- "전체" 아래 파란색 밑줄 -->
+                <View
+                    android:layout_width="38dp"
+                    android:layout_height="2.5dp"
+                    android:layout_marginStart="-6dp"
+                    android:layout_marginTop="4dp"
+                    android:background="#1058C7"
+                    app:layout_constraintStart_toStartOf="@id/all_textview"
+                    app:layout_constraintTop_toBottomOf="@id/all_textview" />
+
+                <!-- "이미지" 버튼 -->
+                <TextView
+                    android:id="@+id/image_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:text="이미지"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/all_textview"
+                    app:layout_constraintStart_toEndOf="@id/all_textview"
+                    app:layout_constraintTop_toTopOf="@id/all_textview" />
+
+                <!-- Google 다이얼패드(똥글 9개) 이미지 -->
+                <ImageView
+                    android:id="@+id/google_dialpad"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:layout_marginTop="22dp"
+                    android:layout_marginEnd="20dp"
+                    android:src="@drawable/google_dialpad"
+                    app:layout_constraintEnd_toStartOf="@id/login_button"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!-- "로그인" 버튼 -->
+                <Button
+                    android:id="@+id/login_button"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/blue_rounded_button"
+                    android:paddingStart="16dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="10dp"
+                    android:text="로그인"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!-- Google 로고 이미지 -->
+                <ImageView
+                    android:id="@+id/google_logo"
+                    android:layout_width="190dp"
+                    android:layout_height="110dp"
+                    android:layout_marginTop="70dp"
+                    android:src="@drawable/googlelogo"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/image_textview" />
+
+                <!-- 검색창 -->
+                <LinearLayout
+                    android:id="@+id/search_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="14dp"
+                    android:background="@drawable/rounded_button_with_border"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/google_logo" />
+
+                <!-- 돋보기 아이콘 -->
+                <ImageView
+                    android:id="@+id/search_lens_button"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/google_search"
+                    app:layout_constraintBottom_toBottomOf="@id/search_layout"
+                    app:layout_constraintStart_toStartOf="@id/search_layout"
+                    app:layout_constraintTop_toTopOf="@id/search_layout" />
+
+                <!-- 음성 검색 버튼 -->
+                <ImageView
+                    android:id="@+id/voice_search_button"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginEnd="4dp"
+                    android:src="@drawable/google_voice"
+                    app:layout_constraintBottom_toBottomOf="@id/search_layout"
+                    app:layout_constraintEnd_toStartOf="@id/image_search_button"
+                    app:layout_constraintTop_toTopOf="@id/search_layout" />
+
+                <!-- 이미지 검색 버튼 -->
+                <ImageView
+                    android:id="@+id/image_search_button"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/google_lens"
+                    app:layout_constraintBottom_toBottomOf="@id/search_layout"
+                    app:layout_constraintEnd_toEndOf="@id/search_layout"
+                    app:layout_constraintTop_toTopOf="@id/search_layout" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
