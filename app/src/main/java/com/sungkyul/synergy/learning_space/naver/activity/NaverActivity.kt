@@ -13,6 +13,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.courses.screen_layout.NaverFromScreenHomeCourse
 import com.sungkyul.synergy.courses.screen_layout.NaverFromScreenHomeCourse2
 import com.sungkyul.synergy.courses.naver.NaverCourse
+import com.sungkyul.synergy.courses.naver.NaverFromNaverSearchInfoCourse
 import com.sungkyul.synergy.databinding.ActivityNaverBinding
 import com.sungkyul.synergy.learning_space.EduCompletionActivity
 import com.sungkyul.synergy.learning_space.naver.adapter.NaverPostAdapter
@@ -37,7 +38,10 @@ class NaverActivity : AppCompatActivity() {
                 binding.eduScreen.course = NaverCourse(binding.eduScreen)
             } else if(intent.getStringExtra("from") == "ScreenMenuActivity3") {
                 binding.eduScreen.course = NaverFromScreenHomeCourse2(binding.eduScreen)
-            } else {
+            } else if(intent.getStringExtra("from") == "NaverSearchInfoActivity") {
+                binding.eduScreen.course = NaverFromNaverSearchInfoCourse(binding.eduScreen)
+            }
+            else {
                 binding.eduScreen.course = NaverFromScreenHomeCourse(binding.eduScreen)
             }
 
@@ -47,7 +51,12 @@ class NaverActivity : AppCompatActivity() {
                     val intent = Intent(this, EduCompletionActivity::class.java)
                     intent.putExtra("course", "screen_layout")
                     startActivity(intent)
-                } else {
+                } else if(binding.eduScreen.course is NaverFromNaverSearchInfoCourse) {
+                    val intent = Intent(this, EduCompletionActivity::class.java)
+                    intent.putExtra("course", "naver")
+                    startActivity(intent)
+                }
+                else {
                     EduScreen.toTop(this, MainActivity::class.java)
                 }
             }
@@ -79,9 +88,12 @@ class NaverActivity : AppCompatActivity() {
                 MotionEvent.ACTION_DOWN -> {
                 }
                 MotionEvent.ACTION_UP -> {
-                    if(binding.eduScreen.onAction("click_naver_search_view")) {
+                    if(binding.eduScreen.onAction("click_naver_search_view") && intent.getStringExtra("from")=="NaverFirstActivity") {
                         // 네이버 검색 뷰로 이동
-                        val intent = Intent(this, NaverSearchActivity::class.java)
+                        //val intent = Intent(this, NaverSearchActivity::class.java)
+
+                        // 된장찌개로 이동
+                        val intent = Intent(this, NaverSearchInfoActivity::class.java)
                         startActivity(intent)
                     }
 

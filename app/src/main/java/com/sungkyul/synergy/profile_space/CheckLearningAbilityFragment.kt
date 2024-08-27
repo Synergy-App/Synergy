@@ -1,15 +1,19 @@
 package com.sungkyul.synergy.profile_space
 
 import android.content.Context
+import android.content.Context.MODE_PRIVATE
 import android.graphics.Point
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.TypedValue
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import com.sungkyul.synergy.databinding.ActivityCheckLearningAbilityBinding
+import androidx.fragment.app.Fragment
+import com.sungkyul.synergy.databinding.FragmentCheckLearningAbilityBinding
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject
@@ -17,9 +21,9 @@ import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CheckLearningAbilityActivity : AppCompatActivity() {
+class CheckLearningAbilityFragment : Fragment() {
 
-    private lateinit var binding: ActivityCheckLearningAbilityBinding
+    private lateinit var binding: FragmentCheckLearningAbilityBinding
     private var totalStudyTimeInMinutes = 0
     private var studyDaysCount = 0
     private var todayStudyTimeInMinutes = 0
@@ -34,14 +38,17 @@ class CheckLearningAbilityActivity : AppCompatActivity() {
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityCheckLearningAbilityBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentCheckLearningAbilityBinding.inflate(inflater, container, false)
 
         setDynamicTextSize()
         loadLocalData()
         handler.post(updateTask)
+
+        return binding.root
     }
 
     override fun onDestroy() {
@@ -50,7 +57,7 @@ class CheckLearningAbilityActivity : AppCompatActivity() {
     }
 
     private fun loadLocalData() {
-        val sharedPreferences = getSharedPreferences("SynergyPrefs", MODE_PRIVATE)
+        val sharedPreferences = requireContext().getSharedPreferences("SynergyPrefs", MODE_PRIVATE)
         totalStudyTimeInMinutes = sharedPreferences.getInt("totalStudyTimeInMinutes", 0)
         studyDaysCount = sharedPreferences.getInt("studyDaysCount", 1)
         todayStudyTimeInMinutes = sharedPreferences.getInt("todayStudyTimeInMinutes", 0)
@@ -73,7 +80,7 @@ class CheckLearningAbilityActivity : AppCompatActivity() {
     }
 
     private fun saveLocalData() {
-        val sharedPreferences = getSharedPreferences("SynergyPrefs", MODE_PRIVATE)
+        val sharedPreferences = requireContext().getSharedPreferences("SynergyPrefs", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putInt("totalStudyTimeInMinutes", totalStudyTimeInMinutes)
         editor.putInt("studyDaysCount", studyDaysCount)
@@ -83,7 +90,7 @@ class CheckLearningAbilityActivity : AppCompatActivity() {
     }
 
     private fun loadProfileData() {
-        val sharedPreferences = getSharedPreferences("SynergyPrefs", MODE_PRIVATE)
+        val sharedPreferences = requireContext().getSharedPreferences("SynergyPrefs", Context.MODE_PRIVATE)
         val token = sharedPreferences.getString("Token", null)
 
         if (token != null) {
@@ -95,9 +102,9 @@ class CheckLearningAbilityActivity : AppCompatActivity() {
 
             client.newCall(request).enqueue(object : okhttp3.Callback {
                 override fun onFailure(call: okhttp3.Call, e: IOException) {
-                    runOnUiThread {
+                    requireActivity().runOnUiThread {
                         Toast.makeText(
-                            this@CheckLearningAbilityActivity,
+                            requireContext(),
                             "프로필 데이터를 불러오는데 실패했습니다.",
                             Toast.LENGTH_SHORT
                         ).show()
@@ -116,24 +123,24 @@ class CheckLearningAbilityActivity : AppCompatActivity() {
                             studyDaysCount = data.optInt("study_days_count", 1) // 기본값을 1로 설정하여 0으로 나누는 오류 방지
                             todayStudyTimeInMinutes = data.optInt("today_study_time", 0)
 
-                            runOnUiThread {
+                            requireActivity().runOnUiThread {
                                 binding.titleText.text = "$nickname 님의 취약 유형"
                                 updateStudyTimeViews()
                                 saveLocalData()
                             }
                         } else {
-                            runOnUiThread {
+                            requireActivity().runOnUiThread {
                                 Toast.makeText(
-                                    this@CheckLearningAbilityActivity,
+                                    requireContext(),
                                     "프로필 데이터를 불러오는데 실패했습니다.",
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
                         }
                     } else {
-                        runOnUiThread {
+                        requireActivity().runOnUiThread {
                             Toast.makeText(
-                                this@CheckLearningAbilityActivity,
+                                requireContext(),
                                 "프로필 데이터를 불러오는데 실패했습니다.",
                                 Toast.LENGTH_SHORT
                             ).show()
@@ -142,9 +149,10 @@ class CheckLearningAbilityActivity : AppCompatActivity() {
                 }
             })
         } else {
-            Toast.makeText(this, "토큰이 없습니다.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "토큰이 없습니다.", Toast.LENGTH_SHORT).show()
         }
     }
+
 
     private fun updateStudyTime() {
         todayStudyTimeInMinutes += 1
@@ -166,11 +174,13 @@ class CheckLearningAbilityActivity : AppCompatActivity() {
     }
 
     private fun getScreenSize(): Point {
-        val display = (getSystemService(WINDOW_SERVICE) as WindowManager).defaultDisplay
+        // 프래그먼트에서 Context를 사용하여 WindowManager를 가져옴
+        val display = (requireContext().getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay
         val size = Point()
         display.getSize(size)
         return size
     }
+
 
     private fun getStandardSize(): Pair<Int, Int> {
         val screenSize = getScreenSize()

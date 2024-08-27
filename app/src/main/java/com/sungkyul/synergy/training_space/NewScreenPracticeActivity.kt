@@ -44,6 +44,7 @@ class NewScreenPracticeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNewScreenPracticeBinding
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var token: String
+    private var receivedId: Int = -1
 
     private val cardViewIds = arrayOf(
         R.id.choose_option1_btn,
@@ -66,6 +67,11 @@ class NewScreenPracticeActivity : AppCompatActivity() {
             finish()
             return
         }
+
+        // 이전 액티비티에서 receivedId를 받아옵니다.
+        receivedId = sharedPreferences.getInt("receivedId", -1)
+
+        Log.d("NewScreenPracticeActivity", "Received receivedId: $receivedId")
 
         // Logging Interceptor 설정
         val logging = HttpLoggingInterceptor().apply {
@@ -125,9 +131,18 @@ class NewScreenPracticeActivity : AppCompatActivity() {
                 response: Response<ApiResponse<ExamListResponse>>
             ) {
                 if (response.isSuccessful) {
-                    examList = response.body()?.data?.exams ?: emptyList()
-                    currentExamIndex = 0
-                    showExam(currentExamIndex)
+                    val allExams = response.body()?.data?.exams ?: emptyList()
+
+                    // receivedId와 일치하는 educationId를 가진 문제들만 필터링
+                    examList = allExams.filter { it.educationId == receivedId }
+
+                    if (examList.isNotEmpty()) {
+                        currentExamIndex = 0
+                        showExam(currentExamIndex)
+                    } else {
+                        Toast.makeText(this@NewScreenPracticeActivity, "해당 교육 ID에 대한 문제가 없습니다.", Toast.LENGTH_SHORT).show()
+                        finish()
+                    }
                 } else {
                     Toast.makeText(this@NewScreenPracticeActivity, "Failed to fetch data", Toast.LENGTH_SHORT).show()
                     Log.e("API_ERROR", "Response code: ${response.code()}, message: ${response.message()}")
@@ -175,12 +190,23 @@ class NewScreenPracticeActivity : AppCompatActivity() {
                         Log.d("NewScreenPracticeActivity", "Correct answer: ${result.correctAnswer}")
                         Log.d("NewScreenPracticeActivity", "Explanation: ${result.explanation}")
 
+
                         if (result.correct) {
                             correctAnswers++ // 정답일 경우 카운트를 증가시킴
                         }
 
-                        // 결과 리스트에 추가, userAnswer와 correctAnswer를 추가
-                        resultList.add(ResultPair(currentExamIndex + 1, result.correct, answer, result.answerOnSelect))
+                        // 교육 ID를 포함하여 결과 리스트에 추가
+                        val resultPair = ResultPair(
+                            currentExamIndex + 1,
+                            result.correct,
+                            answer,
+                            result.answerOnSelect,
+                            receivedId // educationId 추가
+                        )
+
+                        Log.d("NewScreenPracticeActivity", "Adding ResultPair: $resultPair")
+
+                        resultList.add(resultPair)
                         saveResultListToSharedPreferences(resultList) // 결과 리스트를 SharedPreferences에 저장
                         showNextExam()
                     } else {
@@ -204,14 +230,17 @@ class NewScreenPracticeActivity : AppCompatActivity() {
         val gson = Gson()
         val jsonResultList = gson.toJson(resultList)
         val editor = sharedPreferences.edit()
-        editor.putString("resultList", jsonResultList)
+        // 교육 ID를 사용하여 저장
+        editor.putString("resultList_$receivedId", jsonResultList)
         editor.apply()
+
+        Log.d("NewScreenPracticeActivity", "Saved resultList to SharedPreferences: $jsonResultList")
     }
 
     private fun saveDateToSharedPreferences() {
         val currentDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
-        sharedPreferences.edit().putString("lastQuizDate", currentDate).apply()
-        Log.d("NewScreenPracticeActivity", "Date saved: $currentDate")
+        sharedPreferences.edit().putString("lastQuizDate_$receivedId", currentDate).apply()
+        Log.d("NewScreenPracticeActivity", "Date saved: $currentDate for educationId: $receivedId")
     }
 
     private fun showNextExam() {
@@ -223,10 +252,15 @@ class NewScreenPracticeActivity : AppCompatActivity() {
             updateDigitalAge()
             saveDateToSharedPreferences() // 문제를 모두 푼 후 날짜 저장
             // 문제가 더 이상 없으면 ExamResultTestActivity로 이동하여 맞춘 문제 수를 보여줌
+            Log.d("NewScreenPracticeActivity", "Received receivedId: $receivedId")
             val intent = Intent(this, ExamResultTestActivity::class.java).apply {
                 putParcelableArrayListExtra("resultList", ArrayList(resultList))
                 putExtra("totalQuestions", examList.size)
+                putExtra("educationId", receivedId) // 교육 ID 추가
+                putExtra("receivedId", receivedId) // 교육 ID 추가
             }
+            Log.d("NewScreenPracticeActivity", "done Received receivedId: $receivedId")
+
             startActivity(intent)
             finish() // 현재 Activity를 종료
         }
@@ -259,6 +293,12 @@ class NewScreenPracticeActivity : AppCompatActivity() {
         setupOption(binding.chooseOption2Btn, exam.select2, exam.select2ImgUrl, binding.optionText2.id, binding.optionImage2.id, 2)
         setupOption(binding.chooseOption3Btn, exam.select3, exam.select3ImgUrl, binding.optionText3.id, binding.optionImage3.id, 3)
         setupOption(binding.chooseOption4Btn, exam.select4, exam.select4ImgUrl, binding.optionText4.id, binding.optionImage4.id, 4)
+
+        // 선택지의 수에 따라 가시성 설정
+        binding.chooseOption1Btn.visibility = if (exam.select1.isNullOrEmpty() && exam.select1ImgUrl.isNullOrEmpty()) CardView.GONE else CardView.VISIBLE
+        binding.chooseOption2Btn.visibility = if (exam.select2.isNullOrEmpty() && exam.select2ImgUrl.isNullOrEmpty()) CardView.GONE else CardView.VISIBLE
+        binding.chooseOption3Btn.visibility = if (exam.select3.isNullOrEmpty() && exam.select3ImgUrl.isNullOrEmpty()) CardView.GONE else CardView.VISIBLE
+        binding.chooseOption4Btn.visibility = if (exam.select4.isNullOrEmpty() && exam.select4ImgUrl.isNullOrEmpty()) CardView.GONE else CardView.VISIBLE
 
         // 선택된 옵션 초기화
         selectedAnswer = null

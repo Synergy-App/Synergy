@@ -19,7 +19,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".training_space.google.PracticeGoogle9Activity"
+            android:name=".training_space.activity.ChooseTypeActivity"
             android:exported="false" />
         <activity
             android:name=".training_space.google.PracticeGoogle8Activity"
@@ -44,13 +44,7 @@
             android:exported="false" />
         <activity
             android:name=".training_space.google.PracticeGoogleActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".training_space.setting.PracticeSettingFontActivity"
             android:exported="false" />
@@ -164,17 +158,9 @@
             android:exported="true" />
         <activity
             android:name=".home.activity.LoginActivity"
-            android:exported="true">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
+            android:exported="true"></activity>
         <activity
-            android:name=".profile_space.CheckLearningAbilityActivity"
+            android:name=".profile_space.CheckLearningAbilityFragment"
             android:exported="true" />
         <activity
             android:name=".home.activity.MainActivity"
@@ -187,13 +173,7 @@
         </activity>
         <activity
             android:name=".training_space.activity.ExamProblemActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".training_space.screen.PracticeRecentlyDefaultActivity"
             android:exported="true" />
@@ -247,22 +227,13 @@
             android:exported="true" />
         <activity
             android:name=".training_space.screen.PracticeScreenLockActivity"
-            android:exported="false" />
-        <activity
-            android:name=".profile_space.MyExamResultActivity"
             android:exported="false" /> <!-- <intent-filter> -->
         <!-- <action android:name="android.intent.action.MAIN" /> -->
         <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
         <!-- </intent-filter> -->
         <activity
             android:name=".training_space.NewScreenPracticeActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity> <!-- 아이디찾기/비밀번호변경 화면 -->
+            android:exported="true"></activity> <!-- 아이디찾기/비밀번호변경 화면 -->
         <activity
             android:name=".home.activity.FindIdPasswordActivity"
             android:exported="true" /> <!-- 회원가입 화면 -->
@@ -413,7 +384,7 @@
             android:exported="false" />
         <activity
             android:name=".learning_space.naver.activity.NaverActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".learning_space.naver.activity.NaverSearchInfoActivity"
             android:exported="false" />

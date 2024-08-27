@@ -20,6 +20,7 @@ import com.sungkyul.synergy.com.sungkyul.synergy.home.adapter.EduButtonItem
 import com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.utils.GalaxyNote9
 import com.sungkyul.synergy.training_space.adapter.LearningButtonAdapter
+import com.sungkyul.synergy.training_space.adapter.LearningButtonItem
 
 class SolvingFragment : Fragment() {
     @SuppressLint("ClickableViewAccessibility")
@@ -34,18 +35,18 @@ class SolvingFragment : Fragment() {
         recyclerView.layoutManager = layoutManager
 
         val buttonItemList = listOf(
-            EduButtonItem("기초", R.drawable.ic_edu_note),
-            EduButtonItem("화면구성", R.drawable.ic_edu_gall),
-            EduButtonItem("카메라", R.drawable.ic_camera),
-            EduButtonItem("전화", R.drawable.ic_call),
-            EduButtonItem("문자", R.drawable.ic_message),
-            EduButtonItem("환경 설정", R.drawable.ic_edubutton_setting),
-            EduButtonItem("계정 생성", R.drawable.ic_edu_create),
-            EduButtonItem("앱 설치", R.drawable.ic_edubutton_download),
-            EduButtonItem("카카오톡", R.drawable.ic_edubutton_kakaotalk),
-            EduButtonItem("네이버", R.drawable.ic_edubutton_naver)
-
+            LearningButtonItem("기초", R.drawable.ic_edu_note, -1),
+            LearningButtonItem("화면구성", R.drawable.ic_edu_gall, 2),
+            LearningButtonItem("카메라", R.drawable.ic_camera, 3),
+            LearningButtonItem("전화", R.drawable.ic_call, 4),
+            LearningButtonItem("문자", R.drawable.ic_message, 5),
+            LearningButtonItem("환경 설정", R.drawable.ic_edubutton_setting, 6),
+            LearningButtonItem("계정 생성", R.drawable.ic_edu_create, 7),
+            LearningButtonItem("앱 설치", R.drawable.ic_edubutton_download, 8),
+            LearningButtonItem("카카오톡", R.drawable.ic_edubutton_kakaotalk, 9),
+            LearningButtonItem("네이버", R.drawable.ic_edubutton_naver, 10)
         )
+
         val adapter = LearningButtonAdapter(buttonItemList)
         recyclerView.adapter = adapter
 

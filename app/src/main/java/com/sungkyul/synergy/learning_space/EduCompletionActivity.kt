@@ -7,8 +7,11 @@ import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.databinding.ActivityEduCompletionBinding
 import com.sungkyul.synergy.home.activity.MainActivity
+import com.sungkyul.synergy.learning_space.default_app.camera.activity.DefaultCameraFirstActivity
 import com.sungkyul.synergy.learning_space.default_app.message.activity.DefaultMessageFirstActivity
 import com.sungkyul.synergy.learning_space.default_app.phone.activity.DefaultPhoneFirstActivity
+import com.sungkyul.synergy.learning_space.kakaotalk.activity.KakaoFirstActivity
+import com.sungkyul.synergy.learning_space.naver.activity.NaverFirstActivity
 import com.sungkyul.synergy.learning_space.screen_layout.ScreenFirstActivity
 import com.sungkyul.synergy.learning_space.settingedu.SettingsFirstActivity
 
@@ -25,7 +28,10 @@ class EduCompletionActivity : AppCompatActivity() {
          var replayIntent = Intent(this, MainActivity::class.java)
 
         replayIntent = when(intent.getStringExtra("course")) {
+            "camera" -> Intent(this, DefaultCameraFirstActivity::class.java)
+            "kakao" -> Intent(this, KakaoFirstActivity::class.java)
             "message" -> Intent(this, DefaultMessageFirstActivity::class.java)
+            "naver" -> Intent(this, NaverFirstActivity::class.java)
             "phone" -> Intent(this, DefaultPhoneFirstActivity::class.java)
             "screen_layout" -> Intent(this, ScreenFirstActivity::class.java)
             "settings" -> Intent(this, SettingsFirstActivity::class.java)

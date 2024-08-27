@@ -12,7 +12,7 @@ import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
 import com.sungkyul.synergy.utils.edu.EduScreen
 
-data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
+data class DefaultCameraFromGalleryCourse(val eduScreen: EduScreen): EduCourse {
     override val list = ArrayList<EduData>()
     override val width = DisplayUtils.pxToDp(eduScreen.context, eduScreen.width.toFloat())
     override val height = DisplayUtils.pxToDp(eduScreen.context, eduScreen.height.toFloat())
@@ -20,64 +20,71 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
     // 교육 코스를 만든다.
     init {
         list.add(EduData().apply {
-            dialog.contentText = "카메라 화면입니다."
+            dialog.contentText = "화면을 전환하는<br>버튼입니다."
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = 0.1f
-            dialog.bottom = 0.7f
-            dialog.start = 0.1f
-            dialog.end = 0.1f
+            dialog.top = AdaptiveUtils.ratio(0.65f)
+            dialog.bottom = AdaptiveUtils.ratio(0.15f)
+            dialog.start = AdaptiveUtils.ratio(0.1f)
+            dialog.end = AdaptiveUtils.ratio(0.1f)
             dialog.visibility = true
-            dialog.contentColor = R.color.white
-            dialog.background = R.drawable.edu_dialog_black_bg
+            dialog.contentColor = R.color.black
+            dialog.background = R.drawable.edu_dialog_bg
             dialog.contentGravity = Gravity.CENTER
-            dialog.contentFont= R.font.pretendard_semibold
+            dialog.contentFont = R.font.pretendard_semibold
             dialog.contentSize = AdaptiveUtils.dialogContentMedium()
             cover.isClickable = true
+
+            cover.visibility=true
+            cover.boxVisibility=true
+            cover.boxBorderVisibility=true
+            cover.boxLeft=AdaptiveUtils.ratio(0.65f)
+            cover.boxTop=AdaptiveUtils.ratio(0.82f)
+
+            cover.boxRight=AdaptiveUtils.ratio(0.82f)
+            cover.boxBottom=AdaptiveUtils.ratio(0.92f)
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "사진, 동영상 등<br>자신이 원하는 촬영을<br>선택할 수 있습니다."
+            dialog.contentText = "전면과 후면을<br>변경해주어 셀카를<br>찍을 수 있습니다."
             dialog.contentGravity = Gravity.CENTER
-            dialog.background = R.drawable.edu_dialog_bg
+            dialog.top = AdaptiveUtils.ratio(0.55f)
+            dialog.bottom = AdaptiveUtils.ratio(0.15f)
+            dialog.start = AdaptiveUtils.ratio(0.1f)
+            dialog.end = AdaptiveUtils.ratio(0.1f)
+            dialog.visibility = true
             dialog.contentColor = R.color.black
+            dialog.background = R.drawable.edu_dialog_bg
+            dialog.contentGravity = Gravity.CENTER
+            dialog.contentFont = R.font.pretendard_semibold
+            dialog.contentSize = AdaptiveUtils.dialogContentMedium()
+            cover.isClickable = true
+
+            cover.visibility=true
+            cover.boxVisibility=true
+            cover.boxBorderVisibility=true
+            cover.boxLeft=AdaptiveUtils.ratio(0.65f)
+            cover.boxTop=AdaptiveUtils.ratio(0.82f)
+
+            cover.boxRight=AdaptiveUtils.ratio(0.82f)
+            cover.boxBottom=AdaptiveUtils.ratio(0.92f)
+        })
+
+        list.add(EduData().apply {
+            dialog.contentText = "셀카를 찍고<br>앨범으로 이동해<br>사진을 확인해볼까요?"
+            dialog.contentGravity = Gravity.CENTER
             dialog.top = AdaptiveUtils.ratio(0.4f)
             dialog.bottom = AdaptiveUtils.ratio(0.4f)
-            dialog.start = AdaptiveUtils.ratio(0.05f)
-            dialog.end = AdaptiveUtils.ratio(0.05f)
-            cover.boxLeft = AdaptiveUtils.ratio(0.0f)
-            cover.boxTop = AdaptiveUtils.ratio(0.75f)
-            cover.boxRight = AdaptiveUtils.ratio(1.0f)
-            cover.boxBottom = AdaptiveUtils.ratio(0.82f)
+            dialog.start = AdaptiveUtils.ratio(0.1f)
+            dialog.end = AdaptiveUtils.ratio(0.1f)
             dialog.visibility = true
-            cover.visibility = true
-            cover.isClickable = true
-            cover.boxBorderVisibility = true
-            cover.boxVisibility = true
-        })
-
-        list.add(EduData().apply {
-            dialog.contentText = "사진을 촬영하는<br>버튼입니다."
-            cover.boxLeft = AdaptiveUtils.ratio(0.4f)
-            cover.boxTop = AdaptiveUtils.ratio(0.82f)
-            cover.boxRight = AdaptiveUtils.ratio(0.6f)
-            cover.boxBottom = AdaptiveUtils.ratio(0.92f)
-        })
-
-        list.add(EduData().apply {
-            dialog.contentText = "가장 최근에 찍힌 사진이<br>이 부분에 나타나고"
-            cover.boxLeft = AdaptiveUtils.ratio(0.15f)
-            cover.boxRight = AdaptiveUtils.ratio(0.4f)
-        })
-
-        list.add(EduData().apply {
-            dialog.contentText = "터치하면 앨범으로<br>이동합니다."
-        })
-
-        list.add(EduData().apply {
-            dialog.contentText = "사진을 찍어보고<br>앨범을 확인해 볼까요?"
+            dialog.contentColor = R.color.white
             dialog.background = R.drawable.edu_dialog_green_bg
-            dialog.contentColor=R.color.white
+            dialog.contentGravity = Gravity.CENTER
+            dialog.contentFont = R.font.pretendard_semibold
+            dialog.contentSize = AdaptiveUtils.dialogContentMedium()
+            cover.isClickable = true
 
+            cover.visibility=false
             cover.boxVisibility=false
             cover.boxBorderVisibility=false
         })
@@ -94,12 +101,27 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.contentText="<p style='color:red'><b>잠깐!</b></p><br>현재 화면은 후면으로 <br>보이는 가상화면입니다.<br><br>앞에 보이는 풍경을<br>" +
+            dialog.contentText="<p style='color:red'><b>잠깐!</b></p><br>현재 화면은 전면으로 <br>보이는 가상화면입니다.<br><br>본인의 모습을<br>" +
                     "찍는다고 생각하고<br>촬영을 진행해주세요."
             dialog.background = R.drawable.edu_dialog_bg
             dialog.contentColor=R.color.black
             dialog.top=AdaptiveUtils.ratio(0.2f)
             dialog.bottom=AdaptiveUtils.ratio(0.2f)
+        })
+
+        list.add(EduData().apply {
+            dialog.visibility = false
+            cover.visibility = false
+            cover.isClickable = false
+            action.id = "click_camera_toggle_button"
+            hands.add(
+                EduHand(
+                    id = "tap",
+                    x = AdaptiveUtils.ratio(0.74f),
+                    y = AdaptiveUtils.ratio(0.875f),
+                    gesture = HandGestures.Companion::tapGesture
+                )
+            )
         })
 
         list.add(EduData().apply {
@@ -118,25 +140,6 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "사진이 찍혔습니다!"
-            dialog.background = R.drawable.edu_dialog_yellow_bg
-            dialog.contentColor=R.color.black
-            dialog.top = AdaptiveUtils.ratio(0.5f)
-            dialog.bottom = AdaptiveUtils.ratio(0.3f)
-            dialog.visibility = true
-            cover.isClickable = true
-        })
-
-        list.add(EduData().apply {
-            dialog.contentText = "방금 찍은 사진을<br>확인해 볼까요?"
-            dialog.background = R.drawable.edu_dialog_green_bg
-            dialog.contentColor=R.color.white
-            dialog.top = AdaptiveUtils.ratio(0.4f)
-            dialog.bottom = AdaptiveUtils.ratio(0.4f)
-            cover.visibility = true
-        })
-
-        list.add(EduData().apply {
             dialog.visibility = false
             cover.visibility = false
             cover.isClickable = false
@@ -150,6 +153,5 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
                 )
             )
         })
-
     }
 }

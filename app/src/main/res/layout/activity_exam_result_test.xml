@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="화면구성 실습"
+            android:text="객관식 실습"
             android:fontFamily="@font/pretendard_semibold"
             android:textColor="@color/white"
             android:textSize="28sp"/>
@@ -33,7 +33,7 @@
         android:id="@+id/exam_result_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1차 시험 결과"
+        android:text="시험 결과"
         android:textSize="28sp"
         android:textColor="@color/black"
         android:fontFamily="@font/pretendard_medium"
