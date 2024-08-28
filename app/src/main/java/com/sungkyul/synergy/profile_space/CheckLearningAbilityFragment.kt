@@ -1,7 +1,6 @@
 package com.sungkyul.synergy.profile_space
 
 import android.content.Context
-import android.content.Context.MODE_PRIVATE
 import android.graphics.Point
 import android.os.Bundle
 import android.os.Handler
@@ -13,13 +12,14 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.google.gson.Gson
+import com.sungkyul.synergy.R
+import com.sungkyul.synergy.com.sungkyul.synergy.learning_space.ResultPair
 import com.sungkyul.synergy.databinding.FragmentCheckLearningAbilityBinding
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import org.json.JSONObject
-import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.math.min
 
 class CheckLearningAbilityFragment : Fragment() {
 
@@ -46,7 +46,10 @@ class CheckLearningAbilityFragment : Fragment() {
 
         setDynamicTextSize()
         loadLocalData()
+        loadProfileData() // 닉네임을 로드하여 제목에 반영
         handler.post(updateTask)
+
+        calculateWeakness() // 취약 유형 계산 및 업데이트
 
         return binding.root
     }
@@ -57,7 +60,7 @@ class CheckLearningAbilityFragment : Fragment() {
     }
 
     private fun loadLocalData() {
-        val sharedPreferences = requireContext().getSharedPreferences("SynergyPrefs", MODE_PRIVATE)
+        val sharedPreferences = requireContext().getSharedPreferences("SynergyPrefs", Context.MODE_PRIVATE)
         totalStudyTimeInMinutes = sharedPreferences.getInt("totalStudyTimeInMinutes", 0)
         studyDaysCount = sharedPreferences.getInt("studyDaysCount", 1)
         todayStudyTimeInMinutes = sharedPreferences.getInt("todayStudyTimeInMinutes", 0)
@@ -66,7 +69,6 @@ class CheckLearningAbilityFragment : Fragment() {
         val currentDate = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(Date())
 
         if (lastDate != currentDate) {
-            // 날짜가 바뀌었으므로 오늘 학습 시간을 초기화하고 일 수를 증가시킴
             studyDaysCount += 1
             todayStudyTimeInMinutes = 0
             val editor = sharedPreferences.edit()
@@ -80,7 +82,7 @@ class CheckLearningAbilityFragment : Fragment() {
     }
 
     private fun saveLocalData() {
-        val sharedPreferences = requireContext().getSharedPreferences("SynergyPrefs", MODE_PRIVATE)
+        val sharedPreferences = requireContext().getSharedPreferences("SynergyPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putInt("totalStudyTimeInMinutes", totalStudyTimeInMinutes)
         editor.putInt("studyDaysCount", studyDaysCount)
@@ -88,71 +90,6 @@ class CheckLearningAbilityFragment : Fragment() {
         editor.putString("lastDate", SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(Date()))
         editor.apply()
     }
-
-    private fun loadProfileData() {
-        val sharedPreferences = requireContext().getSharedPreferences("SynergyPrefs", Context.MODE_PRIVATE)
-        val token = sharedPreferences.getString("Token", null)
-
-        if (token != null) {
-            val client = OkHttpClient()
-            val request = Request.Builder()
-                .url("https://sng.hyeonwoo.com/user/me")
-                .addHeader("Authorization", "Bearer $token")
-                .build()
-
-            client.newCall(request).enqueue(object : okhttp3.Callback {
-                override fun onFailure(call: okhttp3.Call, e: IOException) {
-                    requireActivity().runOnUiThread {
-                        Toast.makeText(
-                            requireContext(),
-                            "프로필 데이터를 불러오는데 실패했습니다.",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
-
-                override fun onResponse(call: okhttp3.Call, response: okhttp3.Response) {
-                    if (response.isSuccessful) {
-                        val responseBody = response.body?.string()
-                        if (responseBody != null) {
-                            val json = JSONObject(responseBody)
-                            val data = json.getJSONObject("data")
-                            val nickname = data.optString("nickname", "사용자")
-
-                            totalStudyTimeInMinutes = data.optInt("total_study_time", 0)
-                            studyDaysCount = data.optInt("study_days_count", 1) // 기본값을 1로 설정하여 0으로 나누는 오류 방지
-                            todayStudyTimeInMinutes = data.optInt("today_study_time", 0)
-
-                            requireActivity().runOnUiThread {
-                                binding.titleText.text = "$nickname 님의 취약 유형"
-                                updateStudyTimeViews()
-                                saveLocalData()
-                            }
-                        } else {
-                            requireActivity().runOnUiThread {
-                                Toast.makeText(
-                                    requireContext(),
-                                    "프로필 데이터를 불러오는데 실패했습니다.",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                        }
-                    } else {
-                        requireActivity().runOnUiThread {
-                            Toast.makeText(
-                                requireContext(),
-                                "프로필 데이터를 불러오는데 실패했습니다.",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    }
-                }
-            })
-        } else {
-            Toast.makeText(requireContext(), "토큰이 없습니다.", Toast.LENGTH_SHORT).show()
-        }
-    }
-
 
     private fun updateStudyTime() {
         todayStudyTimeInMinutes += 1
@@ -173,14 +110,64 @@ class CheckLearningAbilityFragment : Fragment() {
         binding.textViewTodayTime.text = String.format("%02d시간 %02d분", todayHours, todayMinutes)
     }
 
+    private fun loadProfileData() {
+        val sharedPreferences = requireContext().getSharedPreferences("SynergyPrefs", Context.MODE_PRIVATE)
+        val nickname = sharedPreferences.getString("Nickname", "사용자")
+        if (nickname != null) {
+            binding.titleText.text = "$nickname 님의 취약 유형"
+        }
+    }
+
+    private fun calculateWeakness() {
+        val sharedPreferences = requireContext().getSharedPreferences("SynergyPrefs", Context.MODE_PRIVATE)
+
+        val educationInfoList = listOf(
+            EducationInfo("기초", R.drawable.ic_edu_note, -1),
+            EducationInfo("화면구성", R.drawable.ic_edu_gall, 2),
+            EducationInfo("카메라", R.drawable.ic_camera, 3),
+            EducationInfo("전화", R.drawable.ic_call, 4),
+            EducationInfo("문자", R.drawable.ic_message, 5),
+            EducationInfo("환경 설정", R.drawable.ic_edubutton_setting, 6),
+            EducationInfo("계정 생성", R.drawable.ic_edu_create, 7),
+            EducationInfo("앱 설치", R.drawable.ic_edubutton_download, 8),
+            EducationInfo("카카오톡", R.drawable.ic_edubutton_kakaotalk, 9),
+            EducationInfo("네이버", R.drawable.ic_edubutton_naver, 10)
+        )
+
+        var weakestEducation: EducationInfo? = null
+        var lowestCorrectRatio = Double.MAX_VALUE
+
+        for (educationInfo in educationInfoList) {
+            val resultListJson = sharedPreferences.getString("resultList_${educationInfo.educationId}", null)
+            if (resultListJson != null) {
+                val resultList = Gson().fromJson(resultListJson, Array<ResultPair>::class.java).toList()
+                val totalQuestions = resultList.size
+                val correctAnswers = resultList.count { it.isCorrect }
+                val correctRatio = if (totalQuestions > 0) correctAnswers.toDouble() / totalQuestions else 1.0
+
+                if (correctRatio < lowestCorrectRatio) {
+                    lowestCorrectRatio = correctRatio
+                    weakestEducation = educationInfo
+                }
+            }
+        }
+
+        // 최약 유형이 있으면 이미지와 텍스트를 설정
+        if (weakestEducation != null) {
+            binding.statusText.text = "${weakestEducation.name}실습의 정답률이 가장 낮습니다."
+            Glide.with(this).load(weakestEducation.imageRes).into(binding.statusImage)
+        } else {
+            binding.statusText.text = "아직 측정되지 않았습니다."
+            binding.statusImage.setImageResource(R.drawable.sebook_sad_face) // 기본 이미지 설정
+        }
+    }
+
     private fun getScreenSize(): Point {
-        // 프래그먼트에서 Context를 사용하여 WindowManager를 가져옴
         val display = (requireContext().getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay
         val size = Point()
         display.getSize(size)
         return size
     }
-
 
     private fun getStandardSize(): Pair<Int, Int> {
         val screenSize = getScreenSize()
@@ -195,12 +182,10 @@ class CheckLearningAbilityFragment : Fragment() {
     private fun setDynamicTextSize() {
         val (standardSizeX, standardSizeY) = getStandardSize()
 
-        // 각각의 텍스트 요소에 다른 크기 설정
         binding.headerTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, (standardSizeX / 12).toFloat())
         binding.titleText.setTextSize(TypedValue.COMPLEX_UNIT_SP, (standardSizeX / 15).toFloat())
         binding.learningInfoTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, (standardSizeX / 15).toFloat())
 
-        // 여기에 추가적으로 필요한 TextView를 설정합니다.
         binding.averageTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, (standardSizeX / 18).toFloat())
         binding.todayTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, (standardSizeX / 18).toFloat())
     }
