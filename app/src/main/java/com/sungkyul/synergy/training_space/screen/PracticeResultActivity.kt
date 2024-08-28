@@ -9,9 +9,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.com.sungkyul.synergy.home.fragment.SolvingFragment
 import com.sungkyul.synergy.training_space.activity.ExamProblemActivity
 import com.sungkyul.synergy.utils.GalaxyButton
-
 class PracticeResultActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -89,9 +89,9 @@ class PracticeResultActivity : AppCompatActivity() {
             finish() // PracticeResultActivity 종료
         }
 
-        // 다시풀기  버튼
+        // 다시풀기 버튼
         problemBtn.setOnClickListener {
-            val intent=Intent(this, ExamProblemActivity::class.java)
+            val intent = Intent(this, ExamProblemActivity::class.java)
             startActivity(intent)
         }
     }
