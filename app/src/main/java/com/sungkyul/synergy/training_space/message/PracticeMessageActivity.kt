@@ -20,6 +20,7 @@ import com.sungkyul.synergy.learning_space.default_app.message.adapter.MessageAd
 import com.sungkyul.synergy.learning_space.default_app.message.adapter.MessageData
 import com.sungkyul.synergy.learning_space.default_app.message.adapter.MyMessageData
 import com.sungkyul.synergy.training_space.call.PracticeCall2ResultActivity
+import com.sungkyul.synergy.training_space.message.result.ExamMessageResultActivity
 import com.sungkyul.synergy.utils.AnimUtils
 import com.sungkyul.synergy.utils.DateTimeUtils
 import java.time.LocalDateTime
@@ -87,54 +88,55 @@ class PracticeMessageActivity : AppCompatActivity() {
                 binding.eduScreen.onAction("click_message_edit_text")
             }
         }
+
         binding.sendButton.setOnTouchListener { view, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
                     AnimUtils.startTouchDownButtonAnimation(this, view)
                 }
-
                 MotionEvent.ACTION_UP -> {
                     AnimUtils.startTouchUpButtonAnimation(this, view)
 
+                    // Check if the send button was clicked successfully
                     if (binding.eduScreen.onAction("click_send_button")) {
                         val adapter = messages.adapter as MessageAdapter
 
                         if (binding.messageEditText.text.toString().isNotEmpty()) {
+                            // Create and add new message data
                             messageArray.add(
                                 MyMessageData(
                                     binding.messageEditText.text.toString(),
                                     "${now.format(DateTimeUtils.dateFormatter)} ${
-                                        DateTimeUtils.getKoreanDayOfWeek(
-                                            now
-                                        )
+                                        DateTimeUtils.getKoreanDayOfWeek(now)
                                     }",
                                     "${DateTimeUtils.getKoreanPeriod(now)} ${
-                                        now.format(
-                                            DateTimeUtils.timeFormatter
-                                        )
+                                        now.format(DateTimeUtils.timeFormatter)
                                     }"
                                 )
                             )
 
-                            // 아이템을 추가한다.
-                            adapter.notifyItemRangeInserted(
-                                messageArray.size - 1,
-                                messageArray.size
+                            // Notify adapter of the new item
+                            adapter.notifyItemInserted(messageArray.size - 1)
+
+                            // Clear the input field
+                            binding.messageEditText.text.clear()
+
+                            // Hide the keyboard
+                            val inputMethodManager =
+                                getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                            inputMethodManager.hideSoftInputFromWindow(
+                                binding.messageEditText.windowToken,
+                                0
                             )
 
-                            binding.messageEditText.text.clear()
+                            // Set success to true immediately when the message is sent
+                            success = true
+                            saveResult(success) // Save the success immediately
                         }
 
-                        // 키보드를 숨긴다.
-                        val inputMethodManager =
-                            getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                        inputMethodManager.hideSoftInputFromWindow(
-                            binding.messageEditText.windowToken,
-                            0
-                        )
+                        returnToHomeScreen() // Always return to home after sending
+                        view.performClick()
                     }
-                    returnToHomeScreen()
-                    view.performClick()
                 }
             }
             true
@@ -169,12 +171,17 @@ class PracticeMessageActivity : AppCompatActivity() {
                 binding.timerTextView.text = secondsLeft.toString() // 초를 텍스트뷰에 표시
             }
 
+            // Timer finish logic
             override fun onFinish() {
-                binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
+                // Check if success is already true
+                if (!success) {
+                    binding.timerTextView.text = "0"
+                    saveResult(false) // Only save as failure if no message was sent successfully
+                }
+                returnToHomeScreen()
             }
         }
-
-        // 문제보기 클릭 시 다이얼로그 띄우기
+            // 문제보기 클릭 시 다이얼로그 띄우기
         binding.problemText.setOnClickListener {
             showProblemDialog()
         }
@@ -206,13 +213,16 @@ class PracticeMessageActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
-                if (!success) { // 성공하지 않았을 때만 실패로 저장
+                // 성공하지 않았을 때만 실패 처리
+                if (!success) {
                     findViewById<TextView>(R.id.timerTextView).text = "0"
-                    // saveResult(false) // 실패 결과 저장
+                    saveResult(false) // 실패 결과 저장
+                    // 성공 여부를 false로 설정
+                    success = false
                 }
-                // 타이머가 종료되면 자동으로 실패 처리됨
-                //   returnToHomeScreen()
+                returnToHomeScreen() // 홈 화면으로 이동
             }
+
         }
 
         // 문제보기 클릭 시 다이얼로그 띄우기
@@ -261,10 +271,17 @@ class PracticeMessageActivity : AppCompatActivity() {
     }
 
     private fun returnToHomeScreen() {
-//        val intent = Intent(this, ExamMessageActivity::class.java)
-//        startActivity(intent)
+        saveResult(success) // 현재의 성공 여부를 저장
+        val intent = Intent(this, ExamMessageResultActivity::class.java)
+        startActivity(intent)
 //        overridePendingTransition(R.anim.stay, R.anim.stay)
-        //TODO 메세지 전송 성공 시 어디로 보내야할까용?
+    }
+
+    private fun saveResult(isSuccess: Boolean) {
+        val sharedPreferences = getSharedPreferences("ExamMessagePrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("quiz_result", isSuccess)
+        editor.apply()
     }
 
     private val onTouchGoToTopMenuButtonListener = View.OnTouchListener { view, event ->

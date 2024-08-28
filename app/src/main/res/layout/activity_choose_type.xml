@@ -1,22 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/bgColor1"
     android:gravity="center"
-    android:padding="16dp">
+    android:orientation="vertical">
 
-    <Button
-        android:id="@+id/buttonObjective"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="객관식"
-        android:layout_marginBottom="20dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#EFEDE7"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/buttonSubjective"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="주관식" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="106dp"
+                android:background="#D25A5A"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/learning_info_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="유형별 실습"
+                    android:textColor="@color/white"
+                    android:textSize="36dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="34dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="250dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/sibug" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/buttons"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            tools:ignore="MissingConstraints">
+
+                            <FrameLayout
+                                android:id="@+id/buttonObjective"
+                                android:layout_width="match_parent"
+                                android:layout_height="64dp"
+                                android:layout_marginBottom="8dp"
+                                android:background="@drawable/salmon_rounded_button">
+
+                                <com.sungkyul.synergy.utils.GalaxyButton
+                                    android:id="@+id/back_btn"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:contentDescription="돌아가기 버튼" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/pretendard_semibold"
+                                        android:gravity="center"
+                                        android:text="객관식"
+                                        android:textColor="@color/white"
+                                        android:textSize="20sp" />
+                                </LinearLayout>
+                            </FrameLayout>
+
+                            <View
+                                android:layout_width="wrap_content"
+                                android:layout_height="5dp" />
+
+                            <FrameLayout
+                                android:id="@+id/buttonSubjective"
+                                android:layout_width="match_parent"
+                                android:layout_height="64dp"
+                                android:background="@drawable/salmon_rounded_button">
+
+                                <com.sungkyul.synergy.utils.GalaxyButton
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:contentDescription="주관" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/pretendard_semibold"
+                                        android:gravity="center"
+                                        android:text="주관식"
+                                        android:textColor="@color/white"
+                                        android:textSize="20sp" />
+                                </LinearLayout>
+                            </FrameLayout>
+                        </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>

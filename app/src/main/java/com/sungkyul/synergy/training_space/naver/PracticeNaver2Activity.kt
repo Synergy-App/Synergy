@@ -2,9 +2,11 @@ package com.sungkyul.synergy.training_space.naver
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.preference.PreferenceManager
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Button
@@ -19,6 +21,8 @@ import com.sungkyul.synergy.learning_space.naver.activity.NaverSearchResultActiv
 import com.sungkyul.synergy.learning_space.naver.adapter.NaverAutocompleteAdapter
 import com.sungkyul.synergy.learning_space.naver.adapter.NaverAutocompleteData
 import com.sungkyul.synergy.training_space.call.problem.ExamCallProblem2Activity
+import com.sungkyul.synergy.training_space.call.problem.ExamNaverProblemActivity
+import com.sungkyul.synergy.training_space.naver.result.ExamNaverResultActivity
 import com.sungkyul.synergy.utils.TextUtils
 
 class PracticeNaver2Activity : AppCompatActivity() {
@@ -30,11 +34,15 @@ class PracticeNaver2Activity : AppCompatActivity() {
     private var pausedTimeInMillis: Long = 0 // 타이머가 일시정지된 시간
     private var success: Boolean = false // 성공 여부를 나타내는 변수 추가
 
+    private lateinit var sharedPreferences: SharedPreferences
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPracticeNaver2Binding.inflate(layoutInflater)
         setContentView(binding.root)
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
 
         remainingTimeInMillis = intent.getLongExtra("remainingTimeInMillis", 30000)
         startTimer()
@@ -85,7 +93,7 @@ class PracticeNaver2Activity : AppCompatActivity() {
                     "된장"
                 )
             ) {
-                val intent = Intent(this, PracticeNaver3Activity::class.java)
+                val intent = Intent(this, ExamNaverResultActivity::class.java)
                 intent.putExtra("remainingTimeInMillis", remainingTimeInMillis) // 남은 시간 전달
                 startActivity(intent)
             } else {
@@ -142,10 +150,10 @@ class PracticeNaver2Activity : AppCompatActivity() {
             override fun onFinish() {
                 if (!success) { // 성공하지 않았을 때만 실패로 저장
                     findViewById<TextView>(R.id.timerTextView).text = "0"
-                    // saveResult(false) // 실패 결과 저장
+                    saveResult(false) // 실패 결과 저장
                 }
                 // 타이머가 종료되면 자동으로 실패 처리됨
-                //  returnToHomeScreen()
+                  returnToHomeScreen()
             }
         }
 
@@ -195,9 +203,14 @@ class PracticeNaver2Activity : AppCompatActivity() {
     }
 
     private fun returnToHomeScreen() {
-        val intent = Intent(this, ExamCallProblem2Activity::class.java)
+        val intent = Intent(this, ExamNaverResultActivity::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.stay, R.anim.stay)
 
+    }
+    private fun saveResult(isSuccess: Boolean) {
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("shared_result", isSuccess) // 동일한 키로 결과 저장
+        editor.apply()
     }
 }

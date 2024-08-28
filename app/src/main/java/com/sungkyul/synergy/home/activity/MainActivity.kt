@@ -44,7 +44,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         // Start the time counter
         Time.startTimeCounter()
 
@@ -56,6 +55,7 @@ class MainActivity : AppCompatActivity() {
                     setFragment(Tag_examSpace, ExamSpaceFragment())
                     binding.mainNavigationView.selectedItemId = R.id.solvingFragment
                 }
+
                 else -> setFragment(Tag_learning, LearningFragment())
             }
         } else {
@@ -63,9 +63,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         // 선택된 navigation item을 확인하여 설정합니다.
-        val selectedNavigationItem = intent.getIntExtra("selected_navigation_item",
-            R.id.learingFragment
-        )
+        val selectedNavigationItem =
+            intent.getIntExtra("selected_navigation_item", R.id.learingFragment)
         binding.mainNavigationView.selectedItemId = selectedNavigationItem
 
         binding.mainNavigationView.setOnItemSelectedListener { item ->
@@ -77,22 +76,29 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        //메인액티비티를시작할때프래그먼트가지정되어있으면그프래그먼트로바꿈
+        // 하단바까지도 변경하게
         val fragmentName = intent.getStringExtra("fragment")
-        if(fragmentName == "SolvingFragment") {
-            setFragment(Tag_solving, SolvingFragment())
-        }
-        if(fragmentName == "LearningScreenFragment") {
-            setFragment("LearningScreenFragment", LearningScreenFragment())
-        }
-        if(fragmentName == "MyExamResultFragment") {
-            setFragment("MyExamResultFragment", MyExamResultFragment())
-        }
-        if(fragmentName == "CheckLearningAbilityFragment") {
-            setFragment("CheckLearningAbilityFragment", CheckLearningAbilityFragment())
-        }
+        when (fragmentName) {
+            "SolvingFragment" -> {
+                setFragment(Tag_solving, SolvingFragment())
+                binding.mainNavigationView.selectedItemId = R.id.solvingFragment
+            }
 
-        //else {setFragment(Tag_solving, ExamResultFragment())}
+            "LearningScreenFragment" -> {
+                setFragment("LearningScreenFragment", LearningScreenFragment())
+                binding.mainNavigationView.selectedItemId = R.id.learingFragment
+            }
+
+            "MyExamResultFragment" -> {
+                setFragment("MyExamResultFragment", MyExamResultFragment())
+                binding.mainNavigationView.selectedItemId = R.id.myProfileFrangment
+            }
+
+            "CheckLearningAbilityFragment" -> {
+                setFragment("CheckLearningAbilityFragment", CheckLearningAbilityFragment())
+                binding.mainNavigationView.selectedItemId = R.id.myProfileFrangment
+            }
+        }
     }
 
     public fun setFragment(tag: String, fragment: Fragment) {
@@ -101,37 +107,5 @@ class MainActivity : AppCompatActivity() {
         fragTransaction.replace(R.id.mainMainFrameLayout, fragment, tag)
         fragTransaction.addToBackStack(tag)
         fragTransaction.commitAllowingStateLoss()
-    }
-
-    override fun onBackPressed() {
-        val currentFragment: Fragment? = supportFragmentManager.findFragmentById(R.id.mainMainFrameLayout)
-        if (currentFragment is MyProfileFragment || currentFragment is LearningFragment || currentFragment is ExamResultFragment) {
-            if (handleBackPressedForFragments(currentFragment)) {
-                return
-            }
-        }
-
-        if (backPressedOnce) {
-            super.onBackPressed()
-            return
-        }
-
-        this.backPressedOnce = true
-        Toast.makeText(this, "뒤로가기를 한 번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show()
-        backPressHandler.postDelayed(backPressRunnable, 2000)
-    }
-
-    private fun handleBackPressedForFragments(fragment: Fragment): Boolean {
-        return when (fragment) {
-            is MyProfileFragment -> fragment.handleOnBackPressed()
-            is LearningFragment -> fragment.handleOnBackPressed()
-            is ExamResultFragment -> fragment.handleOnBackPressed()
-            else -> false
-        }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        backPressHandler.removeCallbacks(backPressRunnable)
     }
 }

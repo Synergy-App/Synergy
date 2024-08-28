@@ -2,9 +2,11 @@ package com.sungkyul.synergy.training_space.naver
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.preference.PreferenceManager
 import android.util.Log
 import android.view.Gravity
 import android.view.MotionEvent
@@ -29,6 +31,7 @@ import com.sungkyul.synergy.learning_space.naver.adapter.NaverPostAdapter
 import com.sungkyul.synergy.learning_space.naver.adapter.NaverPostData
 import com.sungkyul.synergy.learning_space.screen_layout.ScreenHomeActivity
 import com.sungkyul.synergy.training_space.call.problem.ExamCallProblem2Activity
+import com.sungkyul.synergy.training_space.call.problem.ExamNaverProblemActivity
 import com.sungkyul.synergy.training_space.google.PracticeGoogle2Activity
 import com.sungkyul.synergy.utils.AnimUtils
 import com.sungkyul.synergy.utils.edu.EduScreen
@@ -37,15 +40,21 @@ class PracticeNaverActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPracticeNaverBinding
     private lateinit var timer: CountDownTimer
     private var isTimerRunning = false
-    private var remainingTimeInMillis: Long = 700000
+    private var remainingTimeInMillis: Long = 700
     private var pausedTimeInMillis: Long = 0 // 타이머가 일시정지된 시간
     private var success: Boolean = false // 성공 여부를 나타내는 변수 추가
+
+    private lateinit var sharedPreferences: SharedPreferences
+
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPracticeNaverBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+
 
         hideSystemUI()
 
@@ -133,6 +142,8 @@ class PracticeNaverActivity : AppCompatActivity() {
 
             override fun onFinish() {
                 binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
+                saveResult(false) // Save failure result if time runs out
+
             }
         }
 
@@ -143,6 +154,11 @@ class PracticeNaverActivity : AppCompatActivity() {
 
         timer.start() // 액티비티가 생성되면 타이머 시작
         isTimerRunning = true
+    }
+    private fun saveResult(isSuccess: Boolean) {
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("practice_naver_result", isSuccess)
+        editor.apply()
     }
 
     override fun onPause() {
@@ -245,8 +261,9 @@ class PracticeNaverActivity : AppCompatActivity() {
         confirmButton.setOnClickListener {
             alertDialog.dismiss() // 다이얼로그 닫기
 
-            // ///////saveResult(true) // 문제 풀이 성공으로 표시
-            // returnToHomeScreen() // 홈 화면으로 이동
+            // 문제 풀이 성공으로 표시
+            saveResult(true) // 성공으로 저장
+           // returnToHomeScreen() // 홈 화면으로 이동
         }
 
         alertDialog.show()
@@ -257,9 +274,10 @@ class PracticeNaverActivity : AppCompatActivity() {
     }
 
 //    private fun returnToHomeScreen() {
-//        val intent = Intent(this, ExamCallProblem2Activity::class.java)
+//        val intent = Intent(this, ExamNaverProblemActivity::class.java)
 //        startActivity(intent)
 //        overridePendingTransition(R.anim.stay, R.anim.stay)
+//    }
 
 
     private fun hideSystemUI() {
