@@ -22,6 +22,9 @@
             android:name=".training_space.naver.result.ExamNaverResultActivity"
             android:exported="false" />
         <activity
+            android:name=".training_space.google.problem.ExamGoogleProblem"
+            android:exported="false" />
+        <activity
             android:name=".training_space.message.result.ExamMessageResultActivity"
             android:exported="false" />
         <activity
@@ -32,6 +35,9 @@
             android:name=".training_space.call.problem.ExamCallResult1Activity"
             android:exported="false" />
         <activity
+            android:name=".training_space.naver.problem.ExamNaverProblem"
+            android:exported="false" />
+        <activity
             android:name=".training_space.naver.PracticeNaver3Activity"
             android:exported="false" />
         <activity
@@ -39,16 +45,10 @@
             android:exported="false" />
         <activity
             android:name=".training_space.naver.PracticeNaverActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".training_space.activity.ChooseTypeActivity"
-            android:exported="false" />
+            android:exported="true"></activity>
         <activity
             android:name=".training_space.google.PracticeGoogle9Activity"
             android:exported="false" />
@@ -90,13 +90,7 @@
             android:exported="false" />
         <activity
             android:name=".training_space.message.problem.ExamMessageActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".training_space.message.PracticeMessageActivity"
             android:exported="false" />
@@ -204,7 +198,13 @@
             android:exported="true" />
         <activity
             android:name=".home.activity.MainActivity"
-            android:exported="true" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".training_space.activity.ExamProblemActivity"
             android:exported="true" />
