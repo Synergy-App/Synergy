@@ -113,7 +113,7 @@
                                 android:background="@drawable/salmon_rounded_button">
 
                                 <com.sungkyul.synergy.utils.GalaxyButton
-                                    android:id="@+id/try_again_btn"
+                                    android:id="@+id/buttonSubjective"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:contentDescription="주관" />
@@ -130,7 +130,7 @@
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/pretendard_semibold"
                                         android:gravity="center"
-                                        android:text="다시 풀기"
+                                        android:text="주관식"
                                         android:textColor="@color/white"
                                         android:textSize="20sp" />
                                 </LinearLayout>

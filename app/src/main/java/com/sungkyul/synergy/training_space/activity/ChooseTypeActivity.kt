@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.R
@@ -26,8 +27,8 @@ class ChooseTypeActivity : AppCompatActivity() {
         val receivedId = sharedPreferences.getInt("receivedId", -1)
         Log.d("ChooseTypeActivity", "Loaded receivedId from SharedPreferences: $receivedId")
 
-        val buttonObjective = findViewById<Button>(R.id.buttonObjective)
-        val buttonSubjective = findViewById<Button>(R.id.buttonSubjective)
+        val buttonObjective = findViewById<FrameLayout>(R.id.buttonObjective)
+        val buttonSubjective = findViewById<FrameLayout>(R.id.buttonSubjective)
 
         // 객체에 따라 다른 액티비티로 이동하는 로직
         buttonObjective.setOnClickListener {
