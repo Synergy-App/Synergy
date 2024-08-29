@@ -29,6 +29,9 @@ import com.sungkyul.synergy.learning_space.accountedu.GoogleMakeActivity
 import com.sungkyul.synergy.learning_space.accountedu.GooglePasswordActivity
 import com.sungkyul.synergy.learning_space.accountedu.GooglePutCodeActivity
 import com.sungkyul.synergy.learning_space.appinstall.AppInstallFirstActivity
+import com.sungkyul.synergy.learning_space.appinstall.AppInstallLoadingActivity
+import com.sungkyul.synergy.learning_space.appinstall.AppInstallMainActivity
+import com.sungkyul.synergy.learning_space.appinstall.AppInstallSearchActivity
 import com.sungkyul.synergy.learning_space.basic_edu.activity.BasicEduMainFragment
 import com.sungkyul.synergy.learning_space.default_app.camera.activity.DefaultCameraActivity
 import com.sungkyul.synergy.learning_space.default_app.camera.activity.DefaultCameraFirstActivity
@@ -152,7 +155,8 @@ class EduButtonAdapter(
                                   context.startActivity(intent)
                             }
                             "앱 설치" -> {
-                                val intent = Intent(context, AppInstallFirstActivity::class.java)
+                                //val intent = Intent(context, AppInstallFirstActivity::class.java)
+                                val intent = Intent(context, AppInstallLoadingActivity::class.java)
                                 context.startActivity(intent)
                             }
                             "카카오톡" -> {
