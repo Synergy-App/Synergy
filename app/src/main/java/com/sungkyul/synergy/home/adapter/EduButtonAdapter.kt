@@ -155,8 +155,7 @@ class EduButtonAdapter(
                                   context.startActivity(intent)
                             }
                             "앱 설치" -> {
-                                //val intent = Intent(context, AppInstallFirstActivity::class.java)
-                                val intent = Intent(context, AppInstallLoadingActivity::class.java)
+                                val intent = Intent(context, AppInstallFirstActivity::class.java)
                                 context.startActivity(intent)
                             }
                             "카카오톡" -> {
