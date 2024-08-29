@@ -26,15 +26,15 @@ data class NougatCourse(val eduScreen: EduScreen): EduCourse {
 
             dialog.titleText = "제목"
             dialog.contentText = "내용"
-            dialog.top = 300.0f
-            dialog.bottom = 300.0f
-            dialog.start = 100.0f
-            dialog.end = 100.0f
+            dialog.top = 300.0f/930.0f
+            dialog.bottom = 300.0f/930.0f
+            dialog.start = 100.0f/412.0f
+            dialog.end = 100.0f/412.0f
 
-            cover.boxLeft = 100.0f
-            cover.boxTop = 100.0f
-            cover.boxRight = 200.0f
-            cover.boxBottom = 200.0f
+            cover.boxLeft = 100.0f/412.0f
+            cover.boxTop = 100.0f/930.0f
+            cover.boxRight = 200.0f/412.0f
+            cover.boxBottom = 200.0f/930.0f
             cover.boxBorderWidth = 25.0f
         })
 
@@ -43,10 +43,10 @@ data class NougatCourse(val eduScreen: EduScreen): EduCourse {
             cover.boxBorderVisibility = true
 
 
-            cover.boxLeft = 100.0f
-            cover.boxTop = 100.0f
-            cover.boxRight = 200.0f
-            cover.boxBottom = 200.0f
+            cover.boxLeft = 100.0f/412.0f
+            cover.boxTop = 100.0f/930.0f
+            cover.boxRight = 200.0f/412.0f
+            cover.boxBottom = 200.0f/930.0f
 
 
             bottomDialog.contentText = "하단 다이얼로그 등장!"

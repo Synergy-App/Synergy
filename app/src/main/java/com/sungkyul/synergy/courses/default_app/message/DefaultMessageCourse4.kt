@@ -22,10 +22,10 @@ class DefaultMessageCourse4 (val eduScreen: EduScreen): EduCourse {
             dialog.contentFont = R.font.pretendard_medium
             dialog.contentSize = AdaptiveUtils.dialogContentMedium()
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = AdaptiveUtils.ratio(300.0f/930.0f)
-            dialog.bottom = AdaptiveUtils.ratio(400.0f/930.0f)
-            dialog.start = AdaptiveUtils.ratio(24.0f/412.0f)
-            dialog.end = AdaptiveUtils.ratio(24.0f/412.0f)
+            dialog.top = 300.0f/930.0f
+            dialog.bottom = 400.0f/930.0f
+            dialog.start = 24.0f/412.0f
+            dialog.end = 24.0f/412.0f
             cover.boxVisibility = false
             cover.visibility = true
             cover.isClickable = true

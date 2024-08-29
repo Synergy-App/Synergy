@@ -24,10 +24,10 @@ class DefaultMessageCourse3 (val eduScreen: EduScreen): EduCourse {
             dialog.contentFont = R.font.pretendard_medium
             dialog.contentSize = AdaptiveUtils.dialogContentMedium()
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = AdaptiveUtils.ratio(300.0f/930.0f)
-            dialog.bottom = AdaptiveUtils.ratio(400.0f/930.0f)
-            dialog.start = AdaptiveUtils.ratio(24.0f/412.0f)
-            dialog.end = AdaptiveUtils.ratio(24.0f/412.0f)
+            dialog.top = 300.0f/930.0f
+            dialog.bottom = 400.0f/930.0f
+            dialog.start = 24.0f/412.0f
+            dialog.end = 24.0f/412.0f
             cover.boxVisibility = false
             cover.visibility = true
             cover.isClickable = true
@@ -38,31 +38,31 @@ class DefaultMessageCourse3 (val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.contentText = "이 버튼을 눌러<br>작성할 필요 없이"
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = AdaptiveUtils.ratio(0.6f)
-            dialog.bottom = AdaptiveUtils.ratio(200.0f/930.0f)
+            dialog.top = 0.6f
+            dialog.bottom = 200.0f/930.0f
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
-            cover.boxLeft = AdaptiveUtils.ratio(0.77f)
-            cover.boxTop = AdaptiveUtils.ratio(0.77f)
-            cover.boxRight = AdaptiveUtils.ratio(0.97f)
-            cover.boxBottom = AdaptiveUtils.ratio(0.87f)
+            cover.boxLeft = 0.77f
+            cover.boxTop = 0.77f
+            cover.boxRight = 0.97f
+            cover.boxBottom = 0.87f
             cover.boxBorderColor = R.color.lime
         })
 
         list.add(EduData().apply {
             dialog.contentText = "내역을 클릭하여 쉽게<br>문자를 보낼 수 있습니다."
-            dialog.top = AdaptiveUtils.ratio(250.0f/930.0f)
-            dialog.bottom = AdaptiveUtils.ratio(450.0f/930.0f)
-            cover.boxTop = AdaptiveUtils.ratio(120.0f/930.0f)
-            cover.boxLeft = AdaptiveUtils.ratio(0.0f)
-            cover.boxBottom = AdaptiveUtils.ratio(0.2f)
-            cover.boxRight = AdaptiveUtils.ratio(1.0f)
+            dialog.top = 250.0f/930.0f
+            dialog.bottom = 450.0f/930.0f
+            cover.boxTop = 120.0f/930.0f
+            cover.boxLeft = 0.0f
+            cover.boxBottom = 0.2f
+            cover.boxRight = 1.0f
         })
 
         list.add(EduData().apply {
             dialog.contentText = "'시너지'와의 문자 내역을<br>확인해보세요"
-            dialog.top = AdaptiveUtils.ratio(300.0f/930.0f)
-            dialog.bottom = AdaptiveUtils.ratio(400.0f/930.0f)
+            dialog.top = 300.0f/930.0f
+            dialog.bottom = 400.0f/930.0f
             dialog.contentColor = R.color.white
             dialog.background = R.drawable.edu_dialog_green_bg
             cover.boxVisibility = false
@@ -76,8 +76,8 @@ class DefaultMessageCourse3 (val eduScreen: EduScreen): EduCourse {
             action.id = "click_synergy"
             hands.add(EduHand(
                 id = "tap",
-                x = AdaptiveUtils.ratio(0.5f),
-                y = AdaptiveUtils.ratio(170.0f/930.0f),
+                x = 0.5f,
+                y = 170.0f/930.0f,
                 gesture = HandGestures.Companion::tapGesture
             ))
         })

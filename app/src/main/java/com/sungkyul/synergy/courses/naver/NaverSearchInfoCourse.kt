@@ -29,10 +29,10 @@ data class NaverSearchInfoCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentGravity = Gravity.CENTER
             dialog.contentFont= R.font.pretendard_semibold
             dialog.contentSize = AdaptiveUtils.dialogContentMedium()
-            dialog.top = AdaptiveUtils.ratio(0.7f)
-            dialog.bottom = AdaptiveUtils.ratio(0.1f)
-            dialog.start = AdaptiveUtils.ratio(0.05f)
-            dialog.end = AdaptiveUtils.ratio(0.05f)
+            dialog.top = 0.7f
+            dialog.bottom = 0.1f
+            dialog.start = 0.05f
+            dialog.end = 0.05f
 
             cover.isClickable = true
         })
@@ -42,8 +42,8 @@ data class NaverSearchInfoCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentText = "원하는 정보를 검색을<br>통해 찾아볼 수 있습니다."
             dialog.contentColor = R.color.black
             dialog.background = R.drawable.edu_dialog_bg
-            dialog.top = AdaptiveUtils.ratio(0.4f)
-            dialog.bottom = AdaptiveUtils.ratio(0.4f)
+            dialog.top = 0.4f
+            dialog.bottom = 0.4f
 
             cover.visibility = true
         })
@@ -62,8 +62,8 @@ data class NaverSearchInfoCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = AdaptiveUtils.ratio(0.1f),
-                    y = AdaptiveUtils.ratio(0.0f),
+                    x = 0.1f,
+                    y = 0.0f,
                     rotation = 270.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )

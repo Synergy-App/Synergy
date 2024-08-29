@@ -2,6 +2,7 @@ package com.sungkyul.synergy.courses.default_app.phone
 
 import android.view.Gravity
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.utils.AdaptiveUtils
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
 import com.sungkyul.synergy.utils.edu.EduCourse
@@ -20,7 +21,7 @@ data class DefaultPhoneCourse3(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.contentText = "연락처를 추가하는 화면입니다."
             dialog.contentFont = R.font.pretendard_medium
-            dialog.contentSize = 26.0f
+            dialog.contentSize = AdaptiveUtils.dialogContentMedium()
             dialog.contentGravity = Gravity.CENTER
             dialog.start = 24.0f/412.0f
             dialog.end = 24.0f/412.0f

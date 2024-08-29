@@ -10,6 +10,7 @@ import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityGoogleMainBinding
 import com.sungkyul.synergy.courses.accountedu.GoogleMainCourse
+import com.sungkyul.synergy.utils.DisplayUtils
 
 class
 GoogleMainActivity : AppCompatActivity() {
@@ -33,6 +34,12 @@ GoogleMainActivity : AppCompatActivity() {
             }
             // 교육을 시작한다.
             binding.eduScreen.start(this)
+
+
+            val width = DisplayUtils.pxToDp(binding.eduScreen.context, binding.eduScreen.width.toFloat())
+            val height = DisplayUtils.pxToDp(binding.eduScreen.context, binding.eduScreen.height.toFloat())
+            Log.i("size_width:", width.toString())
+            Log.i("size_height:", height.toString())
         }
 
         // 뒤로 가기 키를 눌렀을 때의 이벤트를 처리한다.

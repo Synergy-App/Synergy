@@ -303,6 +303,9 @@
             android:name=".learning_space.default_app.todo.DefaultLockedScreenActivity"
             android:exported="false" />
         <activity
+            android:name=".learning_space.accountedu.GoogleFirstActivity"
+            android:exported="false" />
+        <activity
             android:name=".learning_space.default_app.todo.DefaultHomeActivity"
             android:exported="false" /> <!-- 메시지 화면 -->
         <activity

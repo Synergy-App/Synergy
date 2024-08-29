@@ -27,10 +27,10 @@ data class DefaultMessageFirstCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentGravity = Gravity.CENTER
             dialog.contentFont= R.font.pretendard_semibold
             dialog.contentSize = AdaptiveUtils.dialogContentMedium()
-            dialog.top = AdaptiveUtils.ratio(0.4f)
-            dialog.bottom = AdaptiveUtils.ratio(0.35f)
-            dialog.start = AdaptiveUtils.ratio(0.05f)
-            dialog.end = AdaptiveUtils.ratio(0.05f)
+            dialog.top = 0.4f
+            dialog.bottom = 0.35f
+            dialog.start = 0.05f
+            dialog.end = 0.05f
 
             bottomDialog.visibility = true
 
@@ -41,7 +41,7 @@ data class DefaultMessageFirstCourse(val eduScreen: EduScreen): EduCourse {
             dialog.visibility = false
 
             bottomDialog.sebookImageVisibility = true
-            bottomDialog.height = AdaptiveUtils.ratio(0.3f)
+            bottomDialog.height = 0.3f
             bottomDialog.titleText = "메시지"
             bottomDialog.titleFont= R.font.pretendard_bold
             bottomDialog.titleSize = AdaptiveUtils.dialogTitleMedium()
