@@ -22,10 +22,10 @@ data class SettingsDisplayCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentGravity = Gravity.CENTER
             dialog.contentFont = R.font.pretendard_medium
             dialog.contentSize = AdaptiveUtils.dialogContentMedium()
-            dialog.top = AdaptiveUtils.ratio(0.35f)
-            dialog.bottom = AdaptiveUtils.ratio(0.35f)
-            dialog.start = AdaptiveUtils.ratio(0.1f)
-            dialog.end = AdaptiveUtils.ratio(0.1f)
+            dialog.top = 0.35f
+            dialog.bottom = 0.35f
+            dialog.start = 0.1f
+            dialog.end = 0.1f
             dialog.visibility = true
             cover.visibility = true
             cover.isClickable = true
@@ -44,8 +44,8 @@ data class SettingsDisplayCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "drag",
-                    x = 220.0f,
-                    y = 510.0f,
+                    x = 220.0f/412.0f,
+                    y = 510.0f/930.0f,
                     gesture = HandGestures.Companion::displayLightDragGesture
                 )
             )
@@ -61,8 +61,8 @@ data class SettingsDisplayCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "drag",
                     source = R.drawable.hand,
-                    x = AdaptiveUtils.ratio(0.5f),
-                    y = AdaptiveUtils.ratio(0.5f),
+                    x = 0.5f,
+                    y = 0.5f,
                     width = 50.0f,
                     height = 75.0f,
                     gesture = HandGestures.Companion::verticalScrollGesture
@@ -72,9 +72,9 @@ data class SettingsDisplayCourse(val eduScreen: EduScreen): EduCourse {
 
         list.add(EduData().apply {
 
-            cover.boxLeft = 10.0f
+            cover.boxLeft = 10.0f/412.0f
             cover.boxRight = width-10.0f
-            cover.boxTop = 280.0f
+            cover.boxTop = 280.0f/930.0f
             cover.boxBottom = 340.0f /*크기가 커질 수록 박스가 커짐 */
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
@@ -83,8 +83,8 @@ data class SettingsDisplayCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = AdaptiveUtils.ratio(0.5f),
-                    y = AdaptiveUtils.ratio(0.6f),
+                    x = 0.5f,
+                    y = 0.6f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

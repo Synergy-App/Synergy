@@ -9,6 +9,7 @@ import android.widget.FrameLayout
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.utils.AdaptiveUtils
 
 /*
     교육 화면 레이아웃이다.
@@ -284,10 +285,10 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         eduScreenFragment.setDialogContentSize(currentDialog.contentSize!!)
 
         eduScreenFragment.translateDialog(
-            currentDialog.top!!,
-            currentDialog.bottom!!,
-            currentDialog.start!!,
-            currentDialog.end!!,
+            AdaptiveUtils.ratio(currentDialog.top!!),
+            AdaptiveUtils.ratio(currentDialog.bottom!!),
+            AdaptiveUtils.ratio(currentDialog.start!!),
+            AdaptiveUtils.ratio(currentDialog.end!!),
             if(hasChangedDialogVisibility(from = false, to = true)) 0 else EduScreenFragment.DIALOG_MOVEMENT_DURATION
         )
 
@@ -326,7 +327,7 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         eduScreenFragment.setBottomDialogContentSize(currentDialog.contentSize!!)
 
         eduScreenFragment.translateBottomDialog(
-            currentDialog.height!!,
+            AdaptiveUtils.ratio(currentDialog.height!!),
             if(hasChangedBottomDialogVisibility(from = false, to = true)) 0 else EduScreenFragment.DIALOG_MOVEMENT_DURATION
         )
 
@@ -385,10 +386,10 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
         val cover = course!!.list[num].cover
 
         eduScreenFragment.translateBox(
-            currentCover.boxLeft!!,
-            currentCover.boxTop!!,
-            currentCover.boxRight!!,
-            currentCover.boxBottom!!,
+            AdaptiveUtils.ratio(currentCover.boxLeft!!),
+            AdaptiveUtils.ratio(currentCover.boxTop!!),
+            AdaptiveUtils.ratio(currentCover.boxRight!!),
+            AdaptiveUtils.ratio(currentCover.boxBottom!!),
             if(hasChangedBoxVisibility(from = false, to = true)) 0 else EduScreenFragment.BOX_MOVEMENT_DURATION
         )
 
@@ -470,8 +471,8 @@ class EduScreen(context: Context, attrs: AttributeSet?): FrameLayout(context, at
             eduScreenFragment.addHand(
                 id = i.id,
                 source = i.source,
-                x = i.x,
-                y = i.y,
+                x = AdaptiveUtils.ratio(i.x),
+                y = AdaptiveUtils.ratio(i.y),
                 widthDp = i.width,
                 heightDp = i.height,
                 rotation = i.rotation,

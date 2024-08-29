@@ -29,10 +29,10 @@ data class NaverCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentGravity = Gravity.CENTER
             dialog.contentFont= R.font.pretendard_semibold
             dialog.contentSize = AdaptiveUtils.dialogContentMedium()
-            dialog.top = AdaptiveUtils.ratio(0.2f)
-            dialog.bottom = AdaptiveUtils.ratio(0.65f)
-            dialog.start = AdaptiveUtils.ratio(0.05f)
-            dialog.end = AdaptiveUtils.ratio(0.05f)
+            dialog.top = 0.2f
+            dialog.bottom = 0.65f
+            dialog.start = 0.05f
+            dialog.end = 0.05f
 
             bottomDialog.visibility = true
 
@@ -43,13 +43,13 @@ data class NaverCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentText = "네이버는 쇼핑, 홈,<br>콘텐츠, 클립으로 구분되어<br>있습니다."
             dialog.background = R.drawable.edu_dialog_bg
             dialog.contentColor = R.color.black
-            dialog.top = AdaptiveUtils.ratio(0.6f)
-            dialog.bottom = AdaptiveUtils.ratio(0.2f)
+            dialog.top = 0.6f
+            dialog.bottom = 0.2f
 
-            cover.boxLeft = AdaptiveUtils.ratio(0.0f)
-            cover.boxRight = AdaptiveUtils.ratio(1.0f)
-            cover.boxTop = AdaptiveUtils.ratio(0.85f)
-            cover.boxBottom = AdaptiveUtils.ratio(0.95f)
+            cover.boxLeft = 0.0f
+            cover.boxRight = 1.0f
+            cover.boxTop = 0.85f
+            cover.boxBottom = 0.95f
             cover.visibility = true
             cover.boxVisibility = true
             cover.boxBorderVisibility=  true
@@ -62,16 +62,16 @@ data class NaverCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentText = "네이버의 메인 화면<br>입니다"
             dialog.contentGravity = Gravity.LEFT
 
-            cover.boxLeft = AdaptiveUtils.ratio(0.3f)
-            cover.boxRight = AdaptiveUtils.ratio(0.5f)
+            cover.boxLeft = 0.3f
+            cover.boxRight = 0.5f
         })
 
         list.add(EduData().apply {
             dialog.titleText="쇼핑"
             dialog.contentText = "휴대폰으로 쇼핑을<br>즐길 수 있습니다."
 
-            cover.boxLeft = AdaptiveUtils.ratio(0.1f)
-            cover.boxRight = AdaptiveUtils.ratio(0.3f)
+            cover.boxLeft = 0.1f
+            cover.boxRight = 0.3f
         })
 
 
@@ -79,29 +79,29 @@ data class NaverCourse(val eduScreen: EduScreen): EduCourse {
             dialog.titleText="콘텐츠"
             dialog.contentText = "뉴스, 경제, 스포츠, 살림<br>등 여러 정보를 볼 수 있습니다."
 
-            cover.boxLeft = AdaptiveUtils.ratio(0.5f)
-            cover.boxRight = AdaptiveUtils.ratio(0.7f)
+            cover.boxLeft = 0.5f
+            cover.boxRight = 0.7f
         })
 
         list.add(EduData().apply {
             dialog.titleText="클립"
             dialog.contentText = "짧은 영상들을 볼 수<br>있습니다."
 
-            cover.boxLeft = AdaptiveUtils.ratio(0.7f)
-            cover.boxRight = AdaptiveUtils.ratio(0.9f)
+            cover.boxLeft = 0.7f
+            cover.boxRight = 0.9f
         })
 
         list.add(EduData().apply {
             dialog.titleText=""
             dialog.contentText = "이 부분은 검색창으로<br>원하는 정보를 이 곳에<br> 검색할 수 있습니다."
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = AdaptiveUtils.ratio(0.3f)
-            dialog.bottom = AdaptiveUtils.ratio(0.5f)
+            dialog.top = 0.3f
+            dialog.bottom = 0.5f
 
-            cover.boxLeft = AdaptiveUtils.ratio(0.0f)
-            cover.boxRight = AdaptiveUtils.ratio(1.0f)
-            cover.boxTop = AdaptiveUtils.ratio(0.15f)
-            cover.boxBottom = AdaptiveUtils.ratio(0.25f)
+            cover.boxLeft = 0.0f
+            cover.boxRight = 1.0f
+            cover.boxTop = 0.15f
+            cover.boxBottom = 0.25f
         })
 
         list.add(EduData().apply {
@@ -120,8 +120,8 @@ data class NaverCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentText = "\"된장찌개 만드는 법\"을<br>검색해서 요리법을<br>찾아보세요."
             dialog.background = R.drawable.edu_dialog_green_bg
             dialog.contentColor = R.color.white
-            dialog.top = AdaptiveUtils.ratio(0.4f)
-            dialog.bottom = AdaptiveUtils.ratio(0.4f)
+            dialog.top = 0.4f
+            dialog.bottom = 0.4f
 
             cover.boxBorderVisibility=false
             cover.boxVisibility = false
@@ -135,8 +135,8 @@ data class NaverCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                 id = "tap",
-                x = AdaptiveUtils.ratio(0.5f),
-                y = AdaptiveUtils.ratio(0.2f),
+                x = 0.5f,
+                y = 0.2f,
                 gesture = HandGestures.Companion::tapGesture
             )
             )

@@ -2,6 +2,7 @@ package com.sungkyul.synergy.courses.default_app.phone
 
 import android.view.Gravity
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.utils.AdaptiveUtils
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
@@ -17,7 +18,7 @@ class DefaultPhoneCourse4 (val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.contentText = "연락처 저장에<br>성공하였습니다."
             dialog.contentFont = R.font.pretendard_medium
-            dialog.contentSize = 26.0f
+            dialog.contentSize = AdaptiveUtils.dialogContentMedium()
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 550.0f/930.0f
             dialog.bottom = 200.0f/930.0f

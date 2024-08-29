@@ -14,10 +14,10 @@ data class TaxiMainCourse(val eduScreen: EduScreen): EduCourse {
     init {
         list.add(EduData().apply {
             dialog.contentText = "넌 못 지나간다."
-            dialog.top = 300.0f
-            dialog.bottom = 300.0f
-            dialog.start = 50.0f
-            dialog.end = 50.0f
+            dialog.top = 300.0f/930.0f
+            dialog.bottom = 300.0f/930.0f
+            dialog.start = 50.0f/412.0f
+            dialog.end = 50.0f/412.0f
             dialog.visibility = true
 
             cover.visibility = true

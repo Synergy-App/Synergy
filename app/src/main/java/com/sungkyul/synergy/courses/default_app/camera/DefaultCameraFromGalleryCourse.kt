@@ -22,10 +22,10 @@ data class DefaultCameraFromGalleryCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.contentText = "화면을 전환하는<br>버튼입니다."
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = AdaptiveUtils.ratio(0.65f)
-            dialog.bottom = AdaptiveUtils.ratio(0.15f)
-            dialog.start = AdaptiveUtils.ratio(0.1f)
-            dialog.end = AdaptiveUtils.ratio(0.1f)
+            dialog.top = 0.65f
+            dialog.bottom = 0.15f
+            dialog.start = 0.1f
+            dialog.end = 0.1f
             dialog.visibility = true
             dialog.contentColor = R.color.black
             dialog.background = R.drawable.edu_dialog_bg
@@ -37,20 +37,20 @@ data class DefaultCameraFromGalleryCourse(val eduScreen: EduScreen): EduCourse {
             cover.visibility=true
             cover.boxVisibility=true
             cover.boxBorderVisibility=true
-            cover.boxLeft=AdaptiveUtils.ratio(0.65f)
-            cover.boxTop=AdaptiveUtils.ratio(0.82f)
+            cover.boxLeft=0.65f
+            cover.boxTop=0.82f
 
-            cover.boxRight=AdaptiveUtils.ratio(0.82f)
-            cover.boxBottom=AdaptiveUtils.ratio(0.92f)
+            cover.boxRight=0.82f
+            cover.boxBottom=0.92f
         })
 
         list.add(EduData().apply {
             dialog.contentText = "전면과 후면을<br>변경해주어 셀카를<br>찍을 수 있습니다."
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = AdaptiveUtils.ratio(0.55f)
-            dialog.bottom = AdaptiveUtils.ratio(0.15f)
-            dialog.start = AdaptiveUtils.ratio(0.1f)
-            dialog.end = AdaptiveUtils.ratio(0.1f)
+            dialog.top = 0.55f
+            dialog.bottom = 0.15f
+            dialog.start = 0.1f
+            dialog.end = 0.1f
             dialog.visibility = true
             dialog.contentColor = R.color.black
             dialog.background = R.drawable.edu_dialog_bg
@@ -62,20 +62,20 @@ data class DefaultCameraFromGalleryCourse(val eduScreen: EduScreen): EduCourse {
             cover.visibility=true
             cover.boxVisibility=true
             cover.boxBorderVisibility=true
-            cover.boxLeft=AdaptiveUtils.ratio(0.65f)
-            cover.boxTop=AdaptiveUtils.ratio(0.82f)
+            cover.boxLeft=0.65f
+            cover.boxTop=0.82f
 
-            cover.boxRight=AdaptiveUtils.ratio(0.82f)
-            cover.boxBottom=AdaptiveUtils.ratio(0.92f)
+            cover.boxRight=0.82f
+            cover.boxBottom=0.92f
         })
 
         list.add(EduData().apply {
             dialog.contentText = "셀카를 찍고<br>앨범으로 이동해<br>사진을 확인해볼까요?"
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = AdaptiveUtils.ratio(0.4f)
-            dialog.bottom = AdaptiveUtils.ratio(0.4f)
-            dialog.start = AdaptiveUtils.ratio(0.1f)
-            dialog.end = AdaptiveUtils.ratio(0.1f)
+            dialog.top = 0.4f
+            dialog.bottom = 0.4f
+            dialog.start = 0.1f
+            dialog.end = 0.1f
             dialog.visibility = true
             dialog.contentColor = R.color.white
             dialog.background = R.drawable.edu_dialog_green_bg
@@ -96,8 +96,8 @@ data class DefaultCameraFromGalleryCourse(val eduScreen: EduScreen): EduCourse {
                     "<br>가상의 이미지일 뿐이랍니다.<br>참고해주세요!"
             dialog.background = R.drawable.edu_dialog_bg
             dialog.contentColor=R.color.black
-            dialog.top=AdaptiveUtils.ratio(0.2f)
-            dialog.bottom=AdaptiveUtils.ratio(0.2f)
+            dialog.top=0.2f
+            dialog.bottom=0.2f
         })
 
         list.add(EduData().apply {
@@ -105,8 +105,8 @@ data class DefaultCameraFromGalleryCourse(val eduScreen: EduScreen): EduCourse {
                     "찍는다고 생각하고<br>촬영을 진행해주세요."
             dialog.background = R.drawable.edu_dialog_bg
             dialog.contentColor=R.color.black
-            dialog.top=AdaptiveUtils.ratio(0.2f)
-            dialog.bottom=AdaptiveUtils.ratio(0.2f)
+            dialog.top=0.2f
+            dialog.bottom=0.2f
         })
 
         list.add(EduData().apply {
@@ -117,8 +117,8 @@ data class DefaultCameraFromGalleryCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = AdaptiveUtils.ratio(0.74f),
-                    y = AdaptiveUtils.ratio(0.875f),
+                    x = 0.74f,
+                    y = 0.875f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
@@ -132,8 +132,8 @@ data class DefaultCameraFromGalleryCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = AdaptiveUtils.ratio(0.45f),
-                    y = AdaptiveUtils.ratio(0.875f),
+                    x = 0.45f,
+                    y = 0.875f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
@@ -147,8 +147,8 @@ data class DefaultCameraFromGalleryCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = AdaptiveUtils.ratio(0.22f),
-                    y = AdaptiveUtils.ratio(0.875f),
+                    x = 0.22f,
+                    y = 0.875f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

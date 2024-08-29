@@ -40,10 +40,10 @@ data class DefaultCameraGalleryViewCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentGravity = Gravity.CENTER
             dialog.background = R.drawable.edu_dialog_bg
             dialog.contentColor = R.color.black
-            cover.boxLeft = AdaptiveUtils.ratio(0.0f)
-            cover.boxTop = AdaptiveUtils.ratio(0.0f)
-            cover.boxRight = AdaptiveUtils.ratio(0.2f)
-            cover.boxBottom = AdaptiveUtils.ratio(0.1f)
+            cover.boxLeft = 0.0f
+            cover.boxTop = 0.0f
+            cover.boxRight = 0.2f
+            cover.boxBottom = 0.1f
             dialog.visibility = true
             cover.visibility = true
             cover.isClickable = true
@@ -59,8 +59,8 @@ data class DefaultCameraGalleryViewCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = AdaptiveUtils.ratio(0.1f),
-                    y = AdaptiveUtils.ratio(0.05f),
+                    x = 0.1f,
+                    y = 0.05f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

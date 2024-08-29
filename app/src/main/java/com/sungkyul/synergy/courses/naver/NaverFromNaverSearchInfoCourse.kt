@@ -28,36 +28,36 @@ data class NaverFromNaverSearchInfoCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentGravity = Gravity.CENTER
             dialog.contentFont = R.font.pretendard_semibold
             dialog.contentSize = AdaptiveUtils.dialogContentMedium()
-            dialog.top = AdaptiveUtils.ratio(0.3f)
-            dialog.bottom = AdaptiveUtils.ratio(0.5f)
-            dialog.start = AdaptiveUtils.ratio(0.05f)
-            dialog.end = AdaptiveUtils.ratio(0.05f)
+            dialog.top = 0.3f
+            dialog.bottom = 0.5f
+            dialog.start = 0.05f
+            dialog.end = 0.05f
 
             cover.visibility=true
             cover.isClickable = true
             cover.boxVisibility=true
             cover.boxBorderVisibility=true
             cover.boxBorderColor=R.color.lime
-            cover.boxTop=AdaptiveUtils.ratio(0.52f)
-            cover.boxBottom=AdaptiveUtils.ratio(0.6f)
-            cover.boxLeft=AdaptiveUtils.ratio(0.0f)
-            cover.boxRight=AdaptiveUtils.ratio(1.0f)
+            cover.boxTop=0.52f
+            cover.boxBottom=0.6f
+            cover.boxLeft=0.0f
+            cover.boxRight=1.0f
         })
 
         list.add(EduData().apply {
             dialog.visibility = true
             dialog.contentText = "현재 위치를 기반으로<br>날씨를 확인할 수 있고"
 
-            cover.boxLeft=AdaptiveUtils.ratio(0.0f)
-            cover.boxRight=AdaptiveUtils.ratio(0.5f)
+            cover.boxLeft=0.0f
+            cover.boxRight=0.5f
         })
 
         list.add(EduData().apply {
             dialog.visibility = true
             dialog.contentText = "미세먼지 정보를 확인할<br>수도 있습니다."
 
-            cover.boxLeft=AdaptiveUtils.ratio(0.5f)
-            cover.boxRight=AdaptiveUtils.ratio(1.0f)
+            cover.boxLeft=0.5f
+            cover.boxRight=1.0f
         })
     }
 }

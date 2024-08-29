@@ -24,10 +24,10 @@ data class KakaoChatCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentGravity = Gravity.CENTER
             dialog.contentFont = R.font.pretendard_semibold
             dialog.contentSize = AdaptiveUtils.dialogContentMedium()
-            dialog.top = AdaptiveUtils.ratio(0.1f)
-            dialog.bottom = AdaptiveUtils.ratio(0.7f)
-            dialog.start = AdaptiveUtils.ratio(0.1f)
-            dialog.end = AdaptiveUtils.ratio(0.1f)
+            dialog.top = 0.1f
+            dialog.bottom = 0.7f
+            dialog.start = 0.1f
+            dialog.end = 0.1f
             dialog.visibility = true
             cover.isClickable = true
         })
@@ -35,10 +35,10 @@ data class KakaoChatCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.contentText = "상대에게<br>인사 메시지를<br>보내보세요."
             dialog.background = R.drawable.edu_dialog_green_bg
-            dialog.top = AdaptiveUtils.ratio(0.4f)
-            dialog.bottom = AdaptiveUtils.ratio(0.4f)
-            dialog.start = AdaptiveUtils.ratio(0.1f)
-            dialog.end = AdaptiveUtils.ratio(0.1f)
+            dialog.top = 0.4f
+            dialog.bottom = 0.4f
+            dialog.start = 0.1f
+            dialog.end = 0.1f
             cover.visibility = true
         })
 
@@ -51,8 +51,8 @@ data class KakaoChatCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     source = R.drawable.hand,
-                    x = AdaptiveUtils.ratio(0.5f),
-                    y = AdaptiveUtils.ratio(0.8f),
+                    x = 0.5f,
+                    y = 0.8f,
                     rotation = 180.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )
@@ -71,10 +71,10 @@ data class KakaoChatCourse(val eduScreen: EduScreen): EduCourse {
             cover.visibility = true
             cover.boxBorderVisibility=true
             cover.boxVisibility=true
-            cover.boxLeft=AdaptiveUtils.ratio(0.5f)
-            cover.boxRight=AdaptiveUtils.ratio(1.0f)
-            cover.boxTop=AdaptiveUtils.ratio(0.1f)
-            cover.boxBottom=AdaptiveUtils.ratio(0.2f)
+            cover.boxLeft=0.5f
+            cover.boxRight=1.0f
+            cover.boxTop=0.1f
+            cover.boxBottom=0.2f
             cover.isClickable=true
         })
 
@@ -86,10 +86,10 @@ data class KakaoChatCourse(val eduScreen: EduScreen): EduCourse {
             cover.visibility = true
             cover.boxBorderVisibility=true
             cover.boxVisibility=true
-            cover.boxLeft=AdaptiveUtils.ratio(0.0f)
-            cover.boxRight=AdaptiveUtils.ratio(0.5f)
-            cover.boxTop=AdaptiveUtils.ratio(0.1f)
-            cover.boxBottom=AdaptiveUtils.ratio(0.2f)
+            cover.boxLeft=0.0f
+            cover.boxRight=0.5f
+            cover.boxTop=0.1f
+            cover.boxBottom=0.2f
         })
     }
 }
