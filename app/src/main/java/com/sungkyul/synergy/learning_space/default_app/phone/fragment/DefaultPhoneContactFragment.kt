@@ -26,7 +26,7 @@ class DefaultPhoneContactFragment(private val addedContact: ContactData? = null,
         binding = FragmentDefaultPhoneContactBinding.inflate(inflater, container, false)
 
         // 기존 연락처 목록 추가
-        contactArray.add(ContactData(R.drawable.ic_person_black_24dp, "대장님", "휴대전화: 010-1234-1234"))
+        contactArray.add(ContactData(R.drawable.ic_person_black_24dp, "시너지", "휴대전화: 010-1234-1234"))
         contactArray.add(ContactData(R.drawable.ic_person_black_24dp, "UX/UI 디자이너","휴대전화: 010-1234-1234"))
         contactArray.add(ContactData(R.drawable.ic_person_black_24dp, "기획자","휴대전화: 010-1234-1234"))
 

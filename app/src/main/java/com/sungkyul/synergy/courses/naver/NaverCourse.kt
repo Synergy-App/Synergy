@@ -72,6 +72,7 @@ data class NaverCourse(val eduScreen: EduScreen): EduCourse {
 
             cover.boxLeft = 0.1f
             cover.boxRight = 0.3f
+            cover.boxBorderColor = R.color.lime
         })
 
 

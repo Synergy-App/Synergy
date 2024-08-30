@@ -151,6 +151,7 @@ data class DefaultPhoneCallCourse(val eduScreen: EduScreen): EduCourse {
             cover.boxRight = AdaptiveUtils.ratio((412.0f-150.0f)/412.0f)
             cover.boxTop = 720.0f/930.0f
             cover.boxBottom = 840.0f/930.0f
+            cover.boxBorderColor = R.color.lime
             dialog.contentText = "이 버튼을 누르면<br>전화가 종료됩니다."
         })
 

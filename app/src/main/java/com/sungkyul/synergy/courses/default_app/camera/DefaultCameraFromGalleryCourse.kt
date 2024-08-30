@@ -83,8 +83,6 @@ data class DefaultCameraFromGalleryCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentFont = R.font.pretendard_semibold
             dialog.contentSize = AdaptiveUtils.dialogContentMedium()
             cover.isClickable = true
-
-            cover.visibility=false
             cover.boxVisibility=false
             cover.boxBorderVisibility=false
         })
