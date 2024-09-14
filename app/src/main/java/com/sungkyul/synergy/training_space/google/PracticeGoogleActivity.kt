@@ -11,14 +11,9 @@ import android.text.style.ForegroundColorSpan
 import android.view.Gravity
 import android.widget.Button
 import android.widget.TextView
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.courses.accountedu.GoogleLoginCourse
-import com.sungkyul.synergy.databinding.ActivityGoogleLoginBinding
 import com.sungkyul.synergy.databinding.ActivityPracticeGoogleBinding
-import com.sungkyul.synergy.home.activity.MainActivity
-import com.sungkyul.synergy.learning_space.accountedu.GoogleMakeActivity
 import com.sungkyul.synergy.training_space.call.problem.ExamCallProblem2Activity
 
 class PracticeGoogleActivity : AppCompatActivity() {
@@ -27,9 +22,8 @@ class PracticeGoogleActivity : AppCompatActivity() {
     private lateinit var timer: CountDownTimer
     private var isTimerRunning = false
     private var remainingTimeInMillis: Long = 300000
-    private var pausedTimeInMillis: Long = 0 // 타이머가 일시정지된 시간
+    private var pausedTimeInMillis: Long = remainingTimeInMillis // 타이머가 일시정지된 시간
     private var success: Boolean = false // 성공 여부를 나타내는 변수 추가
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,8 +48,6 @@ class PracticeGoogleActivity : AppCompatActivity() {
             endIndex,
             SpannableStringBuilder.SPAN_EXCLUSIVE_EXCLUSIVE
         )
-        startTimer()
-
 
         // 나머지 텍스트를 회색으로 변경
         builder.setSpan(
@@ -77,26 +69,12 @@ class PracticeGoogleActivity : AppCompatActivity() {
             showAccountTypeDialog()
         }
 
-        // 타이머 초기화
-        timer = object : CountDownTimer(remainingTimeInMillis, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                remainingTimeInMillis = millisUntilFinished
-                val secondsLeft = millisUntilFinished / 1000
-                binding.timerTextView.text = secondsLeft.toString() // 초를 텍스트뷰에 표시
-            }
-
-            override fun onFinish() {
-                binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
-            }
-        }
+        startTimer() // 타이머 시작
 
         // 문제보기 클릭 시 다이얼로그 띄우기
         binding.problemText.setOnClickListener {
             showProblemDialog()
         }
-
-        timer.start() // 액티비티가 생성되면 타이머 시작
-        isTimerRunning = true
     }
 
     override fun onPause() {
@@ -111,8 +89,71 @@ class PracticeGoogleActivity : AppCompatActivity() {
         if (!isTimerRunning) {
             startTimer(pausedTimeInMillis)
         }
-
     }
+
+    private fun startTimer(startTimeInMillis: Long = remainingTimeInMillis) {
+        timer = object : CountDownTimer(startTimeInMillis, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                remainingTimeInMillis = millisUntilFinished
+                val secondsLeft = millisUntilFinished / 1000
+                binding.timerTextView.text = secondsLeft.toString() // 초를 텍스트뷰에 표시
+            }
+
+            override fun onFinish() {
+                binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
+                // 타이머가 끝났을 때의 동작 추가
+            }
+        }
+        timer.start() // 타이머 시작
+        isTimerRunning = true
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun showProblemDialog() {
+        val dialogBuilder = AlertDialog.Builder(this)
+
+        // 커스텀 레이아웃을 설정하기 위한 레이아웃 인플레이터
+        val inflater = this.layoutInflater
+        val dialogView = inflater.inflate(R.layout.dialoglayout, null)
+
+        dialogBuilder.setView(dialogView)
+
+        val alertDialog = dialogBuilder.create()
+
+        // 다이얼로그 메시지 텍스트뷰 설정
+        val numberTextView = dialogView.findViewById<TextView>(R.id.dialogNumber)
+        numberTextView.text = "문제 1."
+
+        val messageTextView = dialogView.findViewById<TextView>(R.id.dialogMessage)
+        messageTextView.text = "구글 계정 생성을 완료하시오."
+        messageTextView.textSize = 20f
+
+        // 확인 버튼 설정
+        val confirmButton = dialogView.findViewById<Button>(R.id.confirmButton)
+        confirmButton.setOnClickListener {
+            alertDialog.dismiss() // 다이얼로그 닫기
+            success = true // 문제 풀이 성공으로 표시
+            timer.cancel() // 다이얼로그 닫기와 동시에 타이머 멈춤
+            isTimerRunning = false
+
+            // 타이머를 재시작
+            startTimer(remainingTimeInMillis) // 남은 시
+            // returnToHomeScreen() // 홈 화면으로 이동 (필요한 경우 사용)
+        }
+
+        alertDialog.show()
+
+        // 다이얼로그가 나타나면 타이머 멈춤
+        timer.cancel()
+        isTimerRunning = false
+    }
+
+    private fun returnToHomeScreen() {
+        val intent = Intent(this, ExamCallProblem2Activity::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.stay, R.anim.stay)
+    }
+
 
     // 다이얼로그 표시 함수
     private fun showAccountTypeDialog() {
@@ -145,73 +186,5 @@ class PracticeGoogleActivity : AppCompatActivity() {
         layoutParams?.gravity = Gravity.CENTER_HORIZONTAL or Gravity.BOTTOM // 중앙 아래로 정렬
         layoutParams?.y = 340 // 아래로부터의 거리를 조절합니다. 적절한 값을 설정해주세요.
         dialog.window?.attributes = layoutParams
-    }
-    private fun startTimer(startTimeInMillis: Long = remainingTimeInMillis) {
-        timer = object : CountDownTimer(startTimeInMillis, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                remainingTimeInMillis = millisUntilFinished
-                val secondsLeft = millisUntilFinished / 1000
-                findViewById<TextView>(R.id.timerTextView).text = secondsLeft.toString()
-            }
-
-            override fun onFinish() {
-                if (!success) { // 성공하지 않았을 때만 실패로 저장
-                    findViewById<TextView>(R.id.timerTextView).text = "0"
-                    // saveResult(false) // 실패 결과 저장
-                }
-                // 타이머가 종료되면 자동으로 실패 처리됨
-                //  returnToHomeScreen()
-            }
-        }
-
-        // 문제보기 클릭 시 다이얼로그 띄우기
-        findViewById<TextView>(R.id.problemText).setOnClickListener {
-            showProblemDialog()
-        }
-
-        timer.start() // 액티비티가 생성되면 타이머 시작
-        isTimerRunning = true
-    }
-
-    @SuppressLint("ClickableViewAccessibility")
-    private fun showProblemDialog() {
-        val dialogBuilder = AlertDialog.Builder(this)
-
-        // 커스텀 레이아웃을 설정하기 위한 레이아웃 인플레이터
-        val inflater = this.layoutInflater
-        val dialogView = inflater.inflate(R.layout.dialoglayout, null)
-
-        dialogBuilder.setView(dialogView)
-
-        val alertDialog = dialogBuilder.create()
-
-        // 다이얼로그 메시지 텍스트뷰 설정
-        val numberTextView = dialogView.findViewById<TextView>(R.id.dialogNumber)
-        numberTextView.text = "문제 1."
-
-        val messageTextView = dialogView.findViewById<TextView>(R.id.dialogMessage)
-        messageTextView.text = "구글 계정 생성을 완료하시오."
-        messageTextView.textSize = 20f
-
-        // 확인 버튼 설정
-        val confirmButton = dialogView.findViewById<Button>(R.id.confirmButton)
-        confirmButton.setOnClickListener {
-            alertDialog.dismiss() // 다이얼로그 닫기
-
-            // ///////saveResult(true) // 문제 풀이 성공으로 표시
-            // returnToHomeScreen() // 홈 화면으로 이동
-        }
-
-        alertDialog.show()
-
-        // 다이얼로그가 나타나면 타이머 멈춤
-        timer.cancel()
-        isTimerRunning = false
-    }
-
-    private fun returnToHomeScreen() {
-        val intent = Intent(this, ExamCallProblem2Activity::class.java)
-        startActivity(intent)
-        overridePendingTransition(R.anim.stay, R.anim.stay)
     }
 }

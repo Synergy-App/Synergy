@@ -18,14 +18,9 @@ import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
-import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.courses.accountedu.GoogleDefaultInfoCourse
-import com.sungkyul.synergy.databinding.ActivityGoogleDefaultinfoBinding
 import com.sungkyul.synergy.databinding.ActivityPracticeGoogle3Binding
-import com.sungkyul.synergy.home.activity.MainActivity
-import com.sungkyul.synergy.learning_space.accountedu.GoogleMailActivity
 import com.sungkyul.synergy.training_space.call.problem.ExamCallProblem2Activity
 
 class PracticeGoogle3Activity : AppCompatActivity() {
@@ -36,7 +31,6 @@ class PracticeGoogle3Activity : AppCompatActivity() {
     private var pausedTimeInMillis: Long = 0 // 타이머가 일시정지된 시간
     private var success: Boolean = false // 성공 여부를 나타내는 변수 추가
 
-
     private var selectedGender: String = ""
     private var selectedMonth: String = ""
 
@@ -45,26 +39,13 @@ class PracticeGoogle3Activity : AppCompatActivity() {
         binding = ActivityPracticeGoogle3Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         remainingTimeInMillis = intent.getLongExtra("remainingTimeInMillis", 30000)
 
         startTimer()
 
-
         // "다음" 버튼 클릭 리스너 설정
         val defaultinfoNextButton = findViewById<Button>(R.id.defaultinfo_next_button)
         defaultinfoNextButton.setOnClickListener {
-//            val nextIntent = Intent(this, PracticeGoogle4Activity::class.java)
-//
-//            // 값을 전달한다.
-//            nextIntent.putExtras(intent)
-//            nextIntent.putExtra("year", binding.yearEdittext.text.toString())
-//            nextIntent.putExtra("month", binding.monthEdittext.text.toString())
-//            nextIntent.putExtra("day", binding.dayEdittext.text.toString())
-//            nextIntent.putExtra("gender", binding.genderEdittext.text.toString())
-//
-//           // intent.putExtra("remainingTimeInMillis", remainingTimeInMillis) // 남은 시간 전달
-//            startActivity(intent)
             val intent = Intent(this, PracticeGoogle4Activity::class.java)
             intent.putExtra("remainingTimeInMillis", remainingTimeInMillis) // 남은 시간 전달
             startActivity(intent)
@@ -91,77 +72,57 @@ class PracticeGoogle3Activity : AppCompatActivity() {
 
         // yearEdittext의 텍스트 변경 감지
         binding.yearEdittext.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                // 필요시 구현
-            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 Log.i("test", "onTextChanged")
                 if (s.toString().isNotEmpty()) {
-                    // 사용자가 텍스트를 입력한 경우
                     binding.eduScreen.onAction("year_input")
                 }
             }
 
-            override fun afterTextChanged(s: Editable?) {
-                // 필요시 구현
-            }
+            override fun afterTextChanged(s: Editable?) {}
         })
 
         // monthEdittext의 텍스트 변경 감지
         binding.monthEdittext.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                // 필요시 구현
-            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (s.toString().isNotEmpty()) {
-                    // 사용자가 텍스트를 입력한 경우
                     binding.eduScreen.onAction("month_input")
                 }
             }
 
-            override fun afterTextChanged(s: Editable?) {
-                // 필요시 구현
-            }
+            override fun afterTextChanged(s: Editable?) {}
         })
 
         // dayEdittext의 텍스트 변경 감지
         binding.dayEdittext.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                // 필요시 구현
-            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 Log.i("test", "onTextChanged")
                 if (s.toString().isNotEmpty()) {
-                    // 사용자가 텍스트를 입력한 경우
                     binding.eduScreen.onAction("day_input")
                 }
             }
 
-            override fun afterTextChanged(s: Editable?) {
-                // 필요시 구현
-            }
+            override fun afterTextChanged(s: Editable?) {}
         })
 
         // genderEdittext의 텍스트 변경 감지
         binding.genderEdittext.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                // 필요시 구현
-            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 Log.i("test", "onTextChanged")
                 if (s.toString().isNotEmpty()) {
-                    // 사용자가 텍스트를 입력한 경우
                     binding.eduScreen.onAction("gender_input")
                 }
             }
 
-            override fun afterTextChanged(s: Editable?) {
-                // 필요시 구현
-            }
+            override fun afterTextChanged(s: Editable?) {}
         })
 
         // 타이머 초기화
@@ -173,7 +134,10 @@ class PracticeGoogle3Activity : AppCompatActivity() {
             }
 
             override fun onFinish() {
-                binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
+                if (!success) { // 성공하지 않았을 때만 실패로 저장
+                    binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
+                    // saveResult(false) // 실패 결과 저장
+                }
             }
         }
 
@@ -188,9 +152,11 @@ class PracticeGoogle3Activity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        pausedTimeInMillis = remainingTimeInMillis
-        timer.cancel() // 타이머를 취소하여 불필요한 시간 감소를 막음
-        isTimerRunning = false
+        if (isTimerRunning) {
+            pausedTimeInMillis = remainingTimeInMillis
+            timer.cancel() // 타이머를 취소하여 불필요한 시간 감소를 막음
+            isTimerRunning = false
+        }
     }
 
     override fun onResume() {
@@ -198,38 +164,32 @@ class PracticeGoogle3Activity : AppCompatActivity() {
         if (!isTimerRunning) {
             startTimer(pausedTimeInMillis)
         }
-
     }
+
     private fun startTimer(startTimeInMillis: Long = remainingTimeInMillis) {
         timer = object : CountDownTimer(startTimeInMillis, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 remainingTimeInMillis = millisUntilFinished
                 val secondsLeft = millisUntilFinished / 1000
-                findViewById<TextView>(R.id.timerTextView).text = secondsLeft.toString()
+                binding.timerTextView.text = secondsLeft.toString()
             }
 
             override fun onFinish() {
                 if (!success) { // 성공하지 않았을 때만 실패로 저장
-                    findViewById<TextView>(R.id.timerTextView).text = "0"
+                    binding.timerTextView.text = "0"
                     // saveResult(false) // 실패 결과 저장
                 }
-                // 타이머가 종료되면 자동으로 실패 처리됨
-                //  returnToHomeScreen()
             }
         }
 
-        // 문제보기 클릭 시 다이얼로그 띄우기
-        findViewById<TextView>(R.id.problemText).setOnClickListener {
-            showProblemDialog()
-        }
-
-        timer.start() // 액티비티가 생성되면 타이머 시작
-        isTimerRunning = true
+        // 타이머 시작
+        timer.start()
+        isTimerRunning = true // 타이머가 실행 중임을 나타냄
     }
 
     @SuppressLint("ClickableViewAccessibility")
     private fun showProblemDialog() {
-        val dialogBuilder = androidx.appcompat.app.AlertDialog.Builder(this)
+        val dialogBuilder = AlertDialog.Builder(this)
 
         // 커스텀 레이아웃을 설정하기 위한 레이아웃 인플레이터
         val inflater = this.layoutInflater
@@ -252,8 +212,11 @@ class PracticeGoogle3Activity : AppCompatActivity() {
         confirmButton.setOnClickListener {
             alertDialog.dismiss() // 다이얼로그 닫기
 
-            // ///////saveResult(true) // 문제 풀이 성공으로 표시
-            // returnToHomeScreen() // 홈 화면으로 이동
+            // 문제 풀이 성공으로 표시
+            success = true
+
+            // 타이머를 재시작
+            startTimer(remainingTimeInMillis) // 남은 시간을 사용하여 타이머 재시작
         }
 
         alertDialog.show()
@@ -276,136 +239,48 @@ class PracticeGoogle3Activity : AppCompatActivity() {
             LayoutInflater.from(this).inflate(R.layout.activity_google_month_selection_dialog, null)
         builder.setView(dialogView)
 
-        // 다이얼로그 내의 라디오 그룹 가져오기
-        val monthRadioGroup: RadioGroup = dialogView.findViewById(R.id.month_radio_group)
-
-        // 1월부터 12월까지 반복하여 라디오 버튼 추가
-        for (i in 1..12) {
-            val radioButton = RadioButton(this)
-            radioButton.text = "${i}월"
-            radioButton.id = View.generateViewId()
-            monthRadioGroup.addView(radioButton)
+        // 월 선택 라디오 그룹 설정
+        val radioGroup = dialogView.findViewById<RadioGroup>(R.id.month_radio_group)
+        radioGroup.setOnCheckedChangeListener { group, checkedId ->
+            val radioButton = dialogView.findViewById<RadioButton>(checkedId)
+            selectedMonth = radioButton.text.toString()
+            binding.monthEdittext.setText(selectedMonth) // 선택한 월을 에딧텍스트에 표시
         }
 
         // 다이얼로그 생성 및 표시
-        val alertDialog = builder.create()
-        alertDialog.show()
+        val dialog = builder.create()
+        dialog.show()
 
-        // 라디오 그룹 선택 리스너 설정
-        monthRadioGroup.setOnCheckedChangeListener { group, checkedId ->
-            val radioButton = group.findViewById<RadioButton>(checkedId)
-            selectedMonth = radioButton.text.toString()
-        }
-
-        // 완료 버튼 클릭 리스너 설정
-        val completeButton = dialogView.findViewById<Button>(R.id.m_di_complete_button)
-        completeButton.setOnClickListener {
-
-            // 선택된 월을 에딧 텍스트에 적용
-            val monthEditText = findViewById<EditText>(R.id.month_edittext)
-            monthEditText.setText(selectedMonth)
-            // 키보드를 자동으로 내리기
-            hideKeyboard(monthEditText)
-            // 팝업 창 닫기
-            alertDialog.dismiss()
-        }
-
-        // 다음 버튼 클릭 리스너 설정
-        val nextButton = dialogView.findViewById<Button>(R.id.m_di_next_button)
-        nextButton.setOnClickListener {
-            // 일 에딧텍스트에 포커스 주기
-            val dayEditText = findViewById<EditText>(R.id.day_edittext)
-            dayEditText.requestFocus()
-            // 키보드를 자동으로 내리기
-            hideKeyboard(dayEditText)
-            // 선택된 월을 에딧 텍스트에 적용
-            val monthEditText = findViewById<EditText>(R.id.month_edittext)
-            monthEditText.setText(selectedMonth)
-            // 팝업 창 닫기
-            alertDialog.dismiss()
-        }
-        // 이전 버튼 클릭 리스너 설정
-        val previousButton = dialogView.findViewById<Button>(R.id.m_di_previous_button)
-        previousButton.setOnClickListener {
-            // 연 에딧텍스트에 포커스 주기
-            val yearEditText = findViewById<EditText>(R.id.year_edittext)
-            yearEditText.requestFocus()
-            // 키보드를 자동으로 내리기
-            hideKeyboard(yearEditText)
-            // 선택된 월을 에딧 텍스트에 적용
-            val monthEditText = findViewById<EditText>(R.id.month_edittext)
-            monthEditText.setText(selectedMonth)
-            // 팝업 창 닫기
-            alertDialog.dismiss()
+        // 다이얼로그 외부 클릭 시 닫기
+        dialogView.setOnTouchListener { _, _ ->
+            dialog.dismiss()
+            false
         }
     }
 
+    // 새로운 함수 - 성별 선택 다이얼로그 표시
     private fun showGenderSelectionDialog() {
         val builder = AlertDialog.Builder(this)
-        val dialogView = LayoutInflater.from(this)
-            .inflate(R.layout.activity_google_gender_selection_dialog, null)
+        val dialogView =
+            LayoutInflater.from(this).inflate(R.layout.activity_google_gender_selection_dialog, null)
         builder.setView(dialogView)
 
-        // 팝업창 배경 설정
-        val background = ContextCompat.getDrawable(this, R.drawable.google_dialog_background)
-        dialogView.background = background
-
-        // 다이얼로그 생성
-        val alertDialog = builder.create()
-        alertDialog.show()
-
-        // 라디오 그룹 가져오기
-        val genderRadioGroup = dialogView.findViewById<RadioGroup>(R.id.gender_radio_group)
-
-        // 라디오 그룹 선택 리스너 설정
-        genderRadioGroup.setOnCheckedChangeListener { group, checkedId ->
-            val radioButton = group.findViewById<RadioButton>(checkedId)
+        // 성별 선택 라디오 그룹 설정
+        val radioGroup = dialogView.findViewById<RadioGroup>(R.id.gender_radio_group)
+        radioGroup.setOnCheckedChangeListener { group, checkedId ->
+            val radioButton = dialogView.findViewById<RadioButton>(checkedId)
             selectedGender = radioButton.text.toString()
+            binding.genderEdittext.setText(selectedGender) // 선택한 성별을 에딧텍스트에 표시
         }
 
-        // 완료 버튼 클릭 리스너 설정
-        val completeButton = dialogView.findViewById<Button>(R.id.g_di_complete_button)
-        completeButton.setOnClickListener {
-            // 선택된 성별을 에딧 텍스트에 적용
-            val genderEditText = findViewById<EditText>(R.id.gender_edittext)
-            genderEditText.setText(selectedGender)
-            // 키보드를 자동으로 내리기
-            hideKeyboard(genderEditText)
-            // 팝업 창 닫기
-            alertDialog.dismiss()
-        }
-        // 다음 버튼 클릭 리스너 설정
-        val gnextButton = dialogView.findViewById<Button>(R.id.g_di_next_button)
-        gnextButton.setOnClickListener {
-            // 선택된 성별을 에딧 텍스트에 적용
-            val genderEditText = findViewById<EditText>(R.id.gender_edittext)
-            genderEditText.setText(selectedGender)
-            // 키보드를 자동으로 내리기
-            hideKeyboard(genderEditText)
-            // 팝업 창 닫기
-            alertDialog.dismiss()
-        }
+        // 다이얼로그 생성 및 표시
+        val dialog = builder.create()
+        dialog.show()
 
-        // 이전 버튼 클릭 리스너 설정
-        val previousButton = dialogView.findViewById<Button>(R.id.g_di_previous_button)
-        previousButton.setOnClickListener {
-            // 일 에딧텍스트에 포커스 주기
-            val dayEditText = findViewById<EditText>(R.id.day_edittext)
-            dayEditText.requestFocus()
-            // 키보드를 자동으로 내리기
-            hideKeyboard(dayEditText)
-            // 선택된 성별을 에딧 텍스트에 적용
-            val genderEditText = findViewById<EditText>(R.id.gender_edittext)
-            genderEditText.setText(selectedGender)
-            // 팝업 창 닫기
-            alertDialog.dismiss()
+        // 다이얼로그 외부 클릭 시 닫기
+        dialogView.setOnTouchListener { _, _ ->
+            dialog.dismiss()
+            false
         }
     }
-
-    // 키보드를 자동으로 열어주는 함수
-    private fun hideKeyboard(editText: EditText) {
-        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(editText.windowToken, 0)
-    }
-
 }

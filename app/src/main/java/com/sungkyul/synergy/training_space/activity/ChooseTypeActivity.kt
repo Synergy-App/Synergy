@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.training_space.NewScreenPracticeActivity
 import com.sungkyul.synergy.training_space.call.problem.ExamCallProblemActivity
+import com.sungkyul.synergy.training_space.default_app.camera.problem.ExamCameraProblemActivity
 import com.sungkyul.synergy.training_space.google.problem.ExamGoogleProblem
 import com.sungkyul.synergy.training_space.message.problem.ExamMessageActivity
 import com.sungkyul.synergy.training_space.naver.problem.ExamNaverProblem
@@ -56,7 +57,7 @@ class ChooseTypeActivity : AppCompatActivity() {
 
             //  1 -> Intent(this, SubjectiveActivity1::class.java) //기초
             2 -> Intent(this, ExamProblemActivity::class.java) //화면구성
-            // 3 -> Intent(this, SubjectiveActivity3::class.java) //카메라
+             3 -> Intent(this, ExamCameraProblemActivity::class.java) //카메라
             4 -> Intent(this, ExamCallProblemActivity::class.java) //전화
             5 -> Intent(this, ExamMessageActivity::class.java) //문자
             6 -> Intent(this, ExamSettingActivity::class.java) //환경 설정
