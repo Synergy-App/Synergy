@@ -6,17 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.widget.Button
-import android.widget.ImageButton
 import android.widget.SeekBar
 import android.widget.TextView
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.courses.settings.SettingsDisplayCourse
 import com.sungkyul.synergy.databinding.ActivityPracticeSettingDisBinding
-import com.sungkyul.synergy.home.activity.MainActivity
-import com.sungkyul.synergy.learning_space.settingedu.SettingFontActivity
-import com.sungkyul.synergy.learning_space.settingedu.SettingMainActivity
 import com.sungkyul.synergy.training_space.call.problem.ExamCallProblem2Activity
 
 class PracticeSettingDisActivity : AppCompatActivity() {
@@ -25,7 +19,6 @@ class PracticeSettingDisActivity : AppCompatActivity() {
     private var isTimerRunning = false
     private var remainingTimeInMillis: Long = 30000
     private var pausedTimeInMillis: Long = 0 // 타이머가 일시정지된 시간
-    private var success: Boolean = false // 성공 여부를 나타내는 변수 추가
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,8 +49,6 @@ class PracticeSettingDisActivity : AppCompatActivity() {
                 val layoutParams = window.attributes
                 layoutParams.screenBrightness = brightnessValue // 화면 밝기 설정
                 window.attributes = layoutParams
-
-                binding.eduScreen.onAction("change_light_bar", progress.toString())
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
@@ -65,30 +56,12 @@ class PracticeSettingDisActivity : AppCompatActivity() {
             override fun onStopTrackingTouch(seekBar: SeekBar?) {}
         })
 
-        binding.scrollView.viewTreeObserver.addOnScrollChangedListener {
-
-        }
-        // 타이머 초기화
-        timer = object : CountDownTimer(remainingTimeInMillis, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                remainingTimeInMillis = millisUntilFinished
-                val secondsLeft = millisUntilFinished / 1000
-                binding.timerTextView.text = secondsLeft.toString() // 초를 텍스트뷰에 표시
-            }
-
-            override fun onFinish() {
-                binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
-            }
-        }
-
         // 문제보기 클릭 시 다이얼로그 띄우기
         binding.problemText.setOnClickListener {
             showProblemDialog()
         }
-
-        timer.start() // 액티비티가 생성되면 타이머 시작
-        isTimerRunning = true
     }
+
     private fun startTimer() {
         timer = object : CountDownTimer(remainingTimeInMillis, 1000) {
             override fun onTick(millisUntilFinished: Long) {
@@ -97,8 +70,8 @@ class PracticeSettingDisActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
-                binding.timerTextView.text = "0"
-                // 타이머가 끝나면 할 작업
+                binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
+                isTimerRunning = false
             }
         }
         timer.start()
@@ -108,16 +81,19 @@ class PracticeSettingDisActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         pausedTimeInMillis = remainingTimeInMillis
-        timer.cancel()
-        isTimerRunning = false
+        if (isTimerRunning) {
+            timer.cancel()
+            isTimerRunning = false
+        }
     }
 
     override fun onResume() {
         super.onResume()
         if (!isTimerRunning) {
-            startTimer()
+            startTimer() // 남은 시간으로 타이머 재시작
         }
     }
+
     @SuppressLint("ClickableViewAccessibility")
     private fun showProblemDialog() {
         val dialogBuilder = AlertDialog.Builder(this)
@@ -143,15 +119,22 @@ class PracticeSettingDisActivity : AppCompatActivity() {
         confirmButton.setOnClickListener {
             alertDialog.dismiss() // 다이얼로그 닫기
 
-            // ///////saveResult(true) // 문제 풀이 성공으로 표시
-            // returnToHomeScreen() // 홈 화면으로 이동
+            // 문제 풀이 성공으로 표시
+            // saveResult(true)
+
+            // 타이머 재시작
+            startTimer()
+        }
+
+        alertDialog.setOnShowListener {
+            // 다이얼로그가 열릴 때 타이머 멈춤
+            if (isTimerRunning) {
+                timer.cancel()
+                isTimerRunning = false
+            }
         }
 
         alertDialog.show()
-
-        // 다이얼로그가 나타나면 타이머 멈춤
-        timer.cancel()
-        isTimerRunning = false
     }
 
     private fun returnToHomeScreen() {

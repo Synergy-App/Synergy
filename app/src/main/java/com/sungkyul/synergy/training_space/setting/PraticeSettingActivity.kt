@@ -27,13 +27,8 @@ class PraticeSettingActivity : AppCompatActivity() {
         binding = ActivityPraticeSettingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // 타이머 시작
         startTimer()
-
-
-        binding.scrollView.viewTreeObserver.addOnScrollChangedListener {
-            if (binding.scrollView.getChildAt(0).bottom <= binding.scrollView.height + binding.scrollView.scrollY) {
-            }
-        }
 
         // setting_display_btn 클릭 이벤트 처리
         binding.settingDisplayBtn.setOnClickListener {
@@ -41,20 +36,6 @@ class PraticeSettingActivity : AppCompatActivity() {
                 val intent = Intent(this, PracticeSettingDisActivity::class.java)
                 intent.putExtra("remainingTimeInMillis", remainingTimeInMillis)
                 startActivity(intent)
-
-            }
-        }
-
-        // 타이머 초기화
-        timer = object : CountDownTimer(remainingTimeInMillis, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                remainingTimeInMillis = millisUntilFinished
-                val secondsLeft = millisUntilFinished / 1000
-                binding.timerTextView.text = secondsLeft.toString() // 초를 텍스트뷰에 표시
-            }
-
-            override fun onFinish() {
-                binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
             }
         }
 
@@ -62,16 +43,15 @@ class PraticeSettingActivity : AppCompatActivity() {
         binding.problemText.setOnClickListener {
             showProblemDialog()
         }
-
-        timer.start() // 액티비티가 생성되면 타이머 시작
-        isTimerRunning = true
     }
 
     override fun onPause() {
         super.onPause()
-        pausedTimeInMillis = remainingTimeInMillis
-        timer.cancel() // 타이머를 취소하여 불필요한 시간 감소를 막음
-        isTimerRunning = false
+        if (isTimerRunning) {
+            pausedTimeInMillis = remainingTimeInMillis
+            timer.cancel() // 타이머를 취소하여 불필요한 시간 감소를 막음
+            isTimerRunning = false
+        }
     }
 
     override fun onResume() {
@@ -86,25 +66,17 @@ class PraticeSettingActivity : AppCompatActivity() {
             override fun onTick(millisUntilFinished: Long) {
                 remainingTimeInMillis = millisUntilFinished
                 val secondsLeft = millisUntilFinished / 1000
-                findViewById<TextView>(R.id.timerTextView).text = secondsLeft.toString()
+                binding.timerTextView.text = secondsLeft.toString() // 초를 텍스트뷰에 표시
             }
 
             override fun onFinish() {
                 if (!success) { // 성공하지 않았을 때만 실패로 저장
-                    findViewById<TextView>(R.id.timerTextView).text = "0"
-                    // saveResult(false) // 실패 결과 저장
+                    binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
                 }
-                // 타이머가 종료되면 자동으로 실패 처리됨
-                //  returnToHomeScreen()
             }
         }
 
-        // 문제보기 클릭 시 다이얼로그 띄우기
-        findViewById<TextView>(R.id.problemText).setOnClickListener {
-            showProblemDialog()
-        }
-
-        timer.start() // 액티비티가 생성되면 타이머 시작
+        timer.start() // 타이머 시작
         isTimerRunning = true
     }
 
@@ -126,21 +98,28 @@ class PraticeSettingActivity : AppCompatActivity() {
 
         val messageTextView = dialogView.findViewById<TextView>(R.id.dialogMessage)
         messageTextView.text = "글자 크기를 최대로 높여보세요."
-        messageTextView.textSize = 20f
+        messageTextView.textSize = 20f // 글씨 크기 설정
 
         // 확인 버튼 설정
         val confirmButton = dialogView.findViewById<Button>(R.id.confirmButton)
         confirmButton.setOnClickListener {
             alertDialog.dismiss() // 다이얼로그 닫기
+            // 다이얼로그 닫을 때 타이머를 다시 시작
+            startTimer(remainingTimeInMillis)
+        }
 
-            // ///////saveResult(true) // 문제 풀이 성공으로 표시
-            // returnToHomeScreen() // 홈 화면으로 이동
+        alertDialog.setOnShowListener {
+            timer.cancel() // 다이얼로그가 열릴 때 타이머 멈춤
+            isTimerRunning = false
+        }
+
+        alertDialog.setOnDismissListener {
+            // 다이얼로그가 닫힐 때 타이머 다시 시작
+            startTimer(remainingTimeInMillis)
         }
 
         alertDialog.show()
-
-        // 다이얼로그가 나타나면 타이머 멈춤
-        timer.cancel()
+        timer.cancel() // 다이얼로그가 나타나면 타이머 멈춤
         isTimerRunning = false
     }
 
@@ -150,4 +129,3 @@ class PraticeSettingActivity : AppCompatActivity() {
         overridePendingTransition(R.anim.stay, R.anim.stay)
     }
 }
-
