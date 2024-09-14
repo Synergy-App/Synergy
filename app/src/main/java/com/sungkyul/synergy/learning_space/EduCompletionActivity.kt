@@ -7,6 +7,8 @@ import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.databinding.ActivityEduCompletionBinding
 import com.sungkyul.synergy.home.activity.MainActivity
+import com.sungkyul.synergy.learning_space.accountedu.GoogleFirstActivity
+import com.sungkyul.synergy.learning_space.appinstall.AppInstallFirstActivity
 import com.sungkyul.synergy.learning_space.default_app.camera.activity.DefaultCameraFirstActivity
 import com.sungkyul.synergy.learning_space.default_app.message.activity.DefaultMessageFirstActivity
 import com.sungkyul.synergy.learning_space.default_app.phone.activity.DefaultPhoneFirstActivity
@@ -28,6 +30,8 @@ class EduCompletionActivity : AppCompatActivity() {
          var replayIntent = Intent(this, MainActivity::class.java)
 
         replayIntent = when(intent.getStringExtra("course")) {
+            "accountedu" -> Intent(this, GoogleFirstActivity::class.java)
+            "appinstall" -> Intent(this, AppInstallFirstActivity::class.java)
             "camera" -> Intent(this, DefaultCameraFirstActivity::class.java)
             "kakao" -> Intent(this, KakaoFirstActivity::class.java)
             "message" -> Intent(this, DefaultMessageFirstActivity::class.java)

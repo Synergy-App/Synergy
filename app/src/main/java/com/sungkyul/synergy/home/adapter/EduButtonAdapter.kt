@@ -18,7 +18,20 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.courses.default_app.camera.DefaultCameraFromGalleryCourse
+import com.sungkyul.synergy.learning_space.accountedu.GoogleDefaultInfoActivity
+import com.sungkyul.synergy.learning_space.accountedu.GoogleFirstActivity
+import com.sungkyul.synergy.learning_space.accountedu.GoogleGetCodeActivity
+import com.sungkyul.synergy.learning_space.accountedu.GoogleLoginActivity
+import com.sungkyul.synergy.learning_space.accountedu.GoogleMailActivity
+import com.sungkyul.synergy.learning_space.accountedu.GoogleMailAddActivity
+import com.sungkyul.synergy.learning_space.accountedu.GoogleMainActivity
+import com.sungkyul.synergy.learning_space.accountedu.GoogleMakeActivity
+import com.sungkyul.synergy.learning_space.accountedu.GooglePasswordActivity
+import com.sungkyul.synergy.learning_space.accountedu.GooglePutCodeActivity
 import com.sungkyul.synergy.learning_space.appinstall.AppInstallFirstActivity
+import com.sungkyul.synergy.learning_space.appinstall.AppInstallLoadingActivity
+import com.sungkyul.synergy.learning_space.appinstall.AppInstallMainActivity
+import com.sungkyul.synergy.learning_space.appinstall.AppInstallSearchActivity
 import com.sungkyul.synergy.learning_space.basic_edu.activity.BasicEduMainFragment
 import com.sungkyul.synergy.learning_space.default_app.camera.activity.DefaultCameraActivity
 import com.sungkyul.synergy.learning_space.default_app.camera.activity.DefaultCameraFirstActivity
@@ -40,6 +53,7 @@ import com.sungkyul.synergy.learning_space.naver.activity.NaverSearchInfoActivit
 import com.sungkyul.synergy.learning_space.settingedu.SettingFontActivity
 import com.sungkyul.synergy.learning_space.settingedu.SettingMainActivity
 import com.sungkyul.synergy.learning_space.settingedu.SettingsFirstActivity
+import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.GalaxyButton
 
 data class EduButtonItem(
@@ -136,8 +150,9 @@ class EduButtonAdapter(
                                  context.startActivity(intent)
                             }
                             "계정 생성" -> {
-                                /*  val intent = Intent(context, GoogleMainActivity::class.java)
-                                  context.startActivity(intent)*/
+
+                                  val intent = Intent(context, GoogleFirstActivity::class.java)
+                                  context.startActivity(intent)
                             }
                             "앱 설치" -> {
                                 val intent = Intent(context, AppInstallFirstActivity::class.java)

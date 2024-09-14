@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.courses.accountedu
+package com.sungkyul.synergy.courses.app_installation
 
 import android.view.Gravity
 import com.sungkyul.synergy.R
@@ -10,7 +10,7 @@ import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
 import com.sungkyul.synergy.utils.edu.EduScreen
 
-data class GoogleLoginCourse(val eduScreen: EduScreen): EduCourse {
+data class InstallSearchCourse(val eduScreen: EduScreen): EduCourse {
     override val list = ArrayList<EduData>()
     override val width = DisplayUtils.pxToDp(eduScreen.context, eduScreen.width.toFloat())
     override val height = DisplayUtils.pxToDp(eduScreen.context, eduScreen.height.toFloat())
@@ -18,65 +18,50 @@ data class GoogleLoginCourse(val eduScreen: EduScreen): EduCourse {
     // 교육 코스를 만든다.
     init {
         list.add(EduData().apply {
-            dialog.contentText = "로그인 화면입니다."
+            dialog.contentText = "카카오톡이<br>상단이 나타납니다."
             dialog.contentFont = R.font.pretendard_medium
             dialog.contentSize = AdaptiveUtils.dialogContentMedium()
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = 680.0f/930.0f
-            dialog.bottom = 40.0f/930.0f
-            dialog.start = 24.0f/412.0f
-            dialog.end = 24.0f/412.0f
-            dialog.visibility = true
-            cover.visibility = false
-            cover.isClickable = true
-            dialog.contentColor = R.color.white
-            dialog.background = R.drawable.edu_dialog_black_bg
-        })
-
-        list.add(EduData().apply {
-            dialog.contentText = "구글 계정이 있다면 본인의 아이디와 비밀번호를 입력해 로그인을 하면 됩니다."
-            dialog.top = 320.0f/930.0f
-            dialog.bottom = 320.0f/930.0f
+            dialog.top = 350.0f/930.0f
+            dialog.bottom = 350.0f/930.0f
             dialog.start = 24.0f/412.0f
             dialog.end = 24.0f/412.0f
             dialog.visibility = true
             cover.visibility = true
+            cover.isClickable = true
             dialog.contentColor = R.color.black
             dialog.background = R.drawable.edu_dialog_bg
+
+            cover.boxLeft = 0.0f
+            cover.boxRight = 1.0f
+            cover.boxTop = 0.08f
+            cover.boxBottom = 0.18f
+            cover.boxBorderVisibility=true
+            cover.boxVisibility=true
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "하지만 아이디가<br>기억이 안나거나 새<br>계정을 만들고 싶을 때를 위해"
+            dialog.contentText = "내가 찾는 앱이 맞는지<br>확인하고"
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "계정을 만드는 방법을<br> 알려드리겠습니다."
-        })
-
-        list.add(EduData().apply {
-            dialog.contentText = "먼저 계정 만들기 버튼을<br>클릭해주세요."
-            dialog.visibility = true
-            cover.visibility = true
+            dialog.contentText = "설치할 앱이 맞다면<br>설치를 터치해주세요."
             dialog.contentColor = R.color.white
             dialog.background = R.drawable.edu_dialog_green_bg
         })
 
         list.add(EduData().apply {
-            cover.boxLeft = 16.0f/412.0f
-            cover.boxRight = 106.0f/412.0f
-            cover.boxTop = 340.0f/930.0f
-            cover.boxBottom = 400.0f/930.0f
-            cover.boxVisibility = true
-            cover.boxBorderVisibility = true
-
             dialog.visibility = false
             cover.visibility = false
             cover.isClickable = false
+            cover.boxVisibility = false
+            cover.boxBorderVisibility = false
+            action.id = "click_install_button"
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = 40.0f/412.0f,
-                    y = 400.0f/930.0f,
+                    x = 370.0f/412.0f,
+                    y = 100.0f/930.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

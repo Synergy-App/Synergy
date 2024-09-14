@@ -104,10 +104,10 @@ class HandGestures {
             return createDragGesture(
                 context,
                 imageView,
-                AdaptiveUtils.ratio(0.5f),
-                AdaptiveUtils.ratio(0.5f),
-                AdaptiveUtils.ratio(0.5f),
-                AdaptiveUtils.ratio(0.2f),
+                0.5f,
+                0.5f,
+                0.5f,
+                0.2f,
                 1500,
                 500
             )
@@ -118,10 +118,10 @@ class HandGestures {
             return createDragGesture(
                 context,
                 imageView,
-                AdaptiveUtils.ratio(0.15f),
-                AdaptiveUtils.ratio(0.85f),
-                AdaptiveUtils.ratio(0.8f),
-                AdaptiveUtils.ratio(0.85f),
+                0.15f,
+                0.85f,
+                0.8f,
+                0.85f,
                 1500,
                 500
             )

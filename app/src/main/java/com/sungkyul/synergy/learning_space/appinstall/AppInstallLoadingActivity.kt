@@ -1,5 +1,6 @@
 package com.sungkyul.synergy.learning_space.appinstall
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Build
@@ -14,12 +15,35 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.drawable.DrawableCompat
 import com.sungkyul.synergy.R
+import com.sungkyul.synergy.courses.app_installation.InstallLoadingCourse
+import com.sungkyul.synergy.courses.app_installation.InstallSearchCourse
+import com.sungkyul.synergy.databinding.ActivityAppinstallLoadingBinding
+import com.sungkyul.synergy.databinding.ActivityAppinstallSearchBinding
+import com.sungkyul.synergy.home.activity.MainActivity
+import com.sungkyul.synergy.learning_space.EduCompletionActivity
 
 class AppInstallLoadingActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityAppinstallLoadingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_appinstall_loading)
+        binding = ActivityAppinstallLoadingBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        // 교육을 정의해보자!
+        binding.eduScreen.post {
+            binding.eduScreen.course = InstallLoadingCourse(binding.eduScreen)
+
+            binding.eduScreen.setOnFinishedCourseListener {
+                // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
+
+                val intent = Intent(binding.root.context, EduCompletionActivity::class.java)
+                intent.putExtra("course", "appinstall")
+                startActivity(intent)
+            }
+            // 교육을 시작한다.
+            binding.eduScreen.start(this)
+        }
 
         // 카카오 로고 이미지 서서히 줄어드는 애니메이션
         val kakaoAppImage = findViewById<ImageView>(R.id.kakao_app_image)
@@ -93,6 +117,8 @@ class AppInstallLoadingActivity : AppCompatActivity() {
 
         // 11초 후에 after_kakao_app_image의 크기를 원본 사이즈로 확대하는 애니메이션
         Handler().postDelayed({
+            binding.eduScreen.onAction("complete_loading")
+
             val scaleUpAnimation = AnimationUtils.loadAnimation(this, R.anim.kakao_logo_scale_up)
             findViewById<ImageView>(R.id.kakao_app_image).startAnimation(scaleUpAnimation)
             findViewById<TextView>(R.id.kakao_info_text).text = "설치됨"

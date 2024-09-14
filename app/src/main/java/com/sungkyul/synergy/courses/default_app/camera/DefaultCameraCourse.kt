@@ -40,14 +40,14 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentGravity = Gravity.CENTER
             dialog.background = R.drawable.edu_dialog_bg
             dialog.contentColor = R.color.black
-            dialog.top = AdaptiveUtils.ratio(0.4f)
-            dialog.bottom = AdaptiveUtils.ratio(0.4f)
-            dialog.start = AdaptiveUtils.ratio(0.05f)
-            dialog.end = AdaptiveUtils.ratio(0.05f)
-            cover.boxLeft = AdaptiveUtils.ratio(0.0f)
-            cover.boxTop = AdaptiveUtils.ratio(0.75f)
-            cover.boxRight = AdaptiveUtils.ratio(1.0f)
-            cover.boxBottom = AdaptiveUtils.ratio(0.82f)
+            dialog.top = 0.4f
+            dialog.bottom = 0.4f
+            dialog.start = 0.05f
+            dialog.end = 0.05f
+            cover.boxLeft = 0.0f
+            cover.boxTop = 0.75f
+            cover.boxRight = 1.0f
+            cover.boxBottom = 0.82f
             dialog.visibility = true
             cover.visibility = true
             cover.isClickable = true
@@ -57,16 +57,16 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
 
         list.add(EduData().apply {
             dialog.contentText = "사진을 촬영하는<br>버튼입니다."
-            cover.boxLeft = AdaptiveUtils.ratio(0.4f)
-            cover.boxTop = AdaptiveUtils.ratio(0.82f)
-            cover.boxRight = AdaptiveUtils.ratio(0.6f)
-            cover.boxBottom = AdaptiveUtils.ratio(0.92f)
+            cover.boxLeft = 0.4f
+            cover.boxTop = 0.82f
+            cover.boxRight = 0.6f
+            cover.boxBottom = 0.92f
         })
 
         list.add(EduData().apply {
             dialog.contentText = "가장 최근에 찍힌 사진이<br>이 부분에 나타나고"
-            cover.boxLeft = AdaptiveUtils.ratio(0.15f)
-            cover.boxRight = AdaptiveUtils.ratio(0.4f)
+            cover.boxLeft = 0.15f
+            cover.boxRight = 0.4f
         })
 
         list.add(EduData().apply {
@@ -89,8 +89,8 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
                     "<br>가상의 이미지일 뿐이랍니다.<br>참고해주세요!"
             dialog.background = R.drawable.edu_dialog_bg
             dialog.contentColor=R.color.black
-            dialog.top=AdaptiveUtils.ratio(0.2f)
-            dialog.bottom=AdaptiveUtils.ratio(0.2f)
+            dialog.top=0.2f
+            dialog.bottom=0.2f
         })
 
         list.add(EduData().apply {
@@ -98,8 +98,8 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
                     "찍는다고 생각하고<br>촬영을 진행해주세요."
             dialog.background = R.drawable.edu_dialog_bg
             dialog.contentColor=R.color.black
-            dialog.top=AdaptiveUtils.ratio(0.2f)
-            dialog.bottom=AdaptiveUtils.ratio(0.2f)
+            dialog.top=0.2f
+            dialog.bottom=0.2f
         })
 
         list.add(EduData().apply {
@@ -110,8 +110,8 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = AdaptiveUtils.ratio(0.45f),
-                    y = AdaptiveUtils.ratio(0.875f),
+                    x = 0.45f,
+                    y = 0.875f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
@@ -121,8 +121,8 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentText = "사진이 찍혔습니다!"
             dialog.background = R.drawable.edu_dialog_yellow_bg
             dialog.contentColor=R.color.black
-            dialog.top = AdaptiveUtils.ratio(0.5f)
-            dialog.bottom = AdaptiveUtils.ratio(0.3f)
+            dialog.top = 0.5f
+            dialog.bottom = 0.3f
             dialog.visibility = true
             cover.isClickable = true
         })
@@ -131,8 +131,8 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentText = "방금 찍은 사진을<br>확인해 볼까요?"
             dialog.background = R.drawable.edu_dialog_green_bg
             dialog.contentColor=R.color.white
-            dialog.top = AdaptiveUtils.ratio(0.4f)
-            dialog.bottom = AdaptiveUtils.ratio(0.4f)
+            dialog.top = 0.4f
+            dialog.bottom = 0.4f
             cover.visibility = true
         })
 
@@ -144,8 +144,8 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = AdaptiveUtils.ratio(0.22f),
-                    y = AdaptiveUtils.ratio(0.875f),
+                    x = 0.22f,
+                    y = 0.875f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

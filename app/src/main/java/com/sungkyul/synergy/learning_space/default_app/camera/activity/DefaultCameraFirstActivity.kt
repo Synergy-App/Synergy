@@ -39,7 +39,7 @@ class DefaultCameraFirstActivity : AppCompatActivity() {
                     binding.iconImage.visibility = LinearLayout.INVISIBLE
                 }
                 if(num==3) {
-                    binding.cameraPhoto.setImageResource(R.drawable.camera_explanation_2)
+                    binding.cameraPhoto.setImageResource(R.drawable.camera_explanation_4)
                 }
             }
             binding.eduScreen.setOnFinishedCourseListener {

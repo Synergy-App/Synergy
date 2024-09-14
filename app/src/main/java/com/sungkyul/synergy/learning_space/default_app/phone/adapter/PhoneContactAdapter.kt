@@ -46,7 +46,7 @@ class ContactAdapter(private val dataSet: ArrayList<ContactData>, private val ed
             // 아이템 선택 이벤트
             itemLayout.setOnClickListener {
                 when(name.text) {
-                    "대장님" -> eduListener.onAction("click_captain_contact_item")
+                    "시너지" -> eduListener.onAction("click_captain_contact_item")
                 }
 
                 // 히든 레이아웃을 펼쳤다 접었다 할 수 있다.

@@ -22,10 +22,10 @@ data class SettingsCourse(val eduScreen: EduScreen): EduCourse {
                 dialog.contentFont = R.font.pretendard_medium
                 dialog.contentSize = AdaptiveUtils.dialogContentMedium()
                 dialog.contentGravity = Gravity.CENTER
-                dialog.top = AdaptiveUtils.ratio(0.1f)
-                dialog.bottom = AdaptiveUtils.ratio(0.7f)
-                dialog.start = AdaptiveUtils.ratio(0.1f)
-                dialog.end = AdaptiveUtils.ratio(0.1f)
+                dialog.top = 0.1f
+                dialog.bottom = 0.7f
+                dialog.start = 0.1f
+                dialog.end = 0.1f
                 dialog.visibility = true
                 cover.visibility = false
                 cover.isClickable = true
@@ -37,8 +37,8 @@ data class SettingsCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.contentText = "휴대폰의 상세 설정 목록들이<br>나열되어 있는데요."
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = AdaptiveUtils.ratio(0.4f)
-            dialog.bottom = AdaptiveUtils.ratio(0.4f)
+            dialog.top = 0.4f
+            dialog.bottom = 0.4f
             dialog.visibility = true
             cover.visibility = true
             dialog.contentColor = R.color.black
@@ -47,8 +47,8 @@ data class SettingsCourse(val eduScreen: EduScreen): EduCourse {
 
         list.add(EduData().apply {
             dialog.contentText = "글자 크기를 변경하기 위해서는<br>디스플레이를 이용하면 됩니다."
-            dialog.top = AdaptiveUtils.ratio(0.35f)
-            dialog.bottom = AdaptiveUtils.ratio(0.35f)
+            dialog.top = 0.35f
+            dialog.bottom = 0.35f
         })
 
         list.add(EduData().apply {
@@ -68,8 +68,8 @@ data class SettingsCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "drag",
-                    x = AdaptiveUtils.ratio(0.5f),
-                    y = AdaptiveUtils.ratio(0.5f),
+                    x = 0.5f,
+                    y = 0.5f,
                     gesture = HandGestures.Companion::verticalScrollGesture
                 )
             )
@@ -77,9 +77,9 @@ data class SettingsCourse(val eduScreen: EduScreen): EduCourse {
 
         list.add(EduData().apply {
 
-            cover.boxLeft = 10.0f
+            cover.boxLeft = 10.0f/412.0f
             cover.boxRight = width-10.0f
-            cover.boxTop = 160.0f
+            cover.boxTop = 160.0f/930.0f
             cover.boxBottom = 230.0f /*크기가 커질 수록 박스가 커짐 */
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
@@ -93,8 +93,8 @@ data class SettingsCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = AdaptiveUtils.ratio(0.5f),
-                    y = AdaptiveUtils.ratio(0.5f),
+                    x = 0.5f,
+                    y = 0.5f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

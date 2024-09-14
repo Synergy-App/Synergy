@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.databinding.ActivityGoogleMailAddBinding
 import com.sungkyul.synergy.courses.accountedu.GoogleMailAddCourse
+import com.sungkyul.synergy.learning_space.EduCompletionActivity
 
 class GoogleMailAddActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGoogleMailAddBinding
@@ -23,9 +24,8 @@ class GoogleMailAddActivity : AppCompatActivity() {
             binding.eduScreen.setOnFinishedCourseListener {
                 // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
 
-                // MainActivity로 되돌아 간다.
-                val intent = Intent(binding.root.context, MainActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                val intent = Intent(binding.root.context, EduCompletionActivity::class.java)
+                intent.putExtra("course", "accountedu")
                 startActivity(intent)
             }
             // 교육을 시작한다.
@@ -43,14 +43,17 @@ class GoogleMailAddActivity : AppCompatActivity() {
         })
 
         binding.mailAddSkipButton.setOnClickListener {
-            val nextIntent = Intent(this, GoogleMainActivity::class.java)
+            if(binding.eduScreen.onAction("pass")){
+
+            }
+            /*val nextIntent = Intent(this, GoogleMainActivity::class.java)
 
             // 값을 전달한다.
             nextIntent.putExtras(intent)
             nextIntent.putExtra("recovery_email", binding.mailAddEdittext.text.toString())
             nextIntent.putExtra("has_user_info", true)
 
-            startActivity(nextIntent)
+            startActivity(nextIntent)*/
         }
     }
 }

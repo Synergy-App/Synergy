@@ -43,6 +43,7 @@ class MyProfileFragment : Fragment() {
     private val backPressHandler = Handler(Looper.getMainLooper())
     private val backPressRunnable = Runnable { backPressedOnce = false }
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -53,7 +54,8 @@ class MyProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+/*        resetDigitalAgeGrade()
+테스트용 초기화코드*/
         binding.examResultCardView.setOnClickListener {
             val intent = Intent(requireActivity(), MainActivity::class.java)
             intent.putExtra("fragment", "MyExamResultFragment")
@@ -77,6 +79,24 @@ class MyProfileFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         loadProfileData() // 프래그먼트가 다시 활성화될 때 프로필 데이터를 업데이트
+    }
+    private fun resetDigitalAgeGrade() {
+        val sharedPreferences = requireContext().getSharedPreferences("SynergyPrefs", Context.MODE_PRIVATE)
+        with(sharedPreferences.edit()) {
+            remove("DigitalAgeGrade") // 디지털 나이 등급 초기화
+            remove("lastQuizDate_-1")  // 기초 시험 결과 초기화
+            remove("lastQuizDate_2")   // 화면 구성 시험 결과 초기화
+            remove("lastQuizDate_3")   // 카메라 시험 결과 초기화
+            remove("lastQuizDate_4")   // 전화 시험 결과 초기화
+            remove("lastQuizDate_5")   // 문자 시험 결과 초기화
+            remove("lastQuizDate_6")   // 환경 설정 시험 결과 초기화
+            remove("lastQuizDate_7")   // 계정 생성 시험 결과 초기화
+            remove("lastQuizDate_8")   // 앱 설치 시험 결과 초기화
+            remove("lastQuizDate_9")   // 카카오톡 시험 결과 초기화
+            remove("lastQuizDate_10")  // 네이버 시험 결과 초기화
+            apply()
+        }
+        Log.d("MyProfileFragment", "SharedPreferences has been reset.")
     }
 
     private fun getScreenSize(): Point {
@@ -140,7 +160,7 @@ class MyProfileFragment : Fragment() {
 
         // 완료한 시험 수를 가져와 디지털 나이를 설정합니다.
         val completedExamCount = getCompletedExamCount(sharedPreferences)
-        updateDigitalAge(completedExamCount)
+        updateDigitalAge(completedExamCount) // 완료한 시험 수에 따라 디지털 나이를 업데이트
     }
 
     private fun getCompletedExamCount(sharedPreferences: SharedPreferences): Int {
@@ -165,11 +185,12 @@ class MyProfileFragment : Fragment() {
 
     private fun updateDigitalAge(completedExamCount: Int) {
         val (digitalAgeGrade, digitalAgeImage) = when (completedExamCount) {
-            0 -> "old" to R.drawable.duck_old
+            0 -> "old" to R.drawable.duck_old   // 시험을 본 적이 없으면 "old"로 설정
             1 -> "parent" to R.drawable.duck_parent
             2 -> "adult" to R.drawable.duck_adult
             3 -> "student" to R.drawable.duck_student
-            else -> "baby" to R.drawable.duck_baby
+            4,5 -> "baby" to R.drawable.duck_baby
+            else -> "old" to R.drawable.duck_old
         }
 
         // SharedPreferences에 저장된 디지털 나이 업데이트
@@ -198,7 +219,6 @@ class MyProfileFragment : Fragment() {
     private fun updateUserImage(imageRes: Int) {
         Glide.with(this).load(imageRes).into(binding.userimage)
     }
-
     private fun logout() {
         val sharedPreferences = requireContext().getSharedPreferences("SynergyPrefs", Context.MODE_PRIVATE)
         with(sharedPreferences.edit()) {
@@ -233,3 +253,4 @@ class MyProfileFragment : Fragment() {
         backPressHandler.removeCallbacks(backPressRunnable)
     }
 }
+

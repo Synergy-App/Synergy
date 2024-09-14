@@ -81,31 +81,36 @@ class MainActivity : AppCompatActivity() {
         when (fragmentName) {
             "SolvingFragment" -> {
                 setFragment(Tag_solving, SolvingFragment())
-                binding.mainNavigationView.selectedItemId = R.id.solvingFragment
             }
-
             "LearningScreenFragment" -> {
                 setFragment("LearningScreenFragment", LearningScreenFragment())
-                binding.mainNavigationView.selectedItemId = R.id.learingFragment
             }
-
             "MyExamResultFragment" -> {
-                setFragment("MyExamResultFragment", MyExamResultFragment())
-                binding.mainNavigationView.selectedItemId = R.id.myProfileFrangment
+                setFragment(Tag_examResult, MyExamResultFragment())
             }
-
             "CheckLearningAbilityFragment" -> {
                 setFragment("CheckLearningAbilityFragment", CheckLearningAbilityFragment())
-                binding.mainNavigationView.selectedItemId = R.id.myProfileFrangment
+            }
+            else -> {
+                // 기본 프래그먼트 설정
+                setFragment(Tag_learning, LearningFragment())
             }
         }
+
     }
 
     public fun setFragment(tag: String, fragment: Fragment) {
         val manager: FragmentManager = supportFragmentManager
-        val fragTransaction = manager.beginTransaction()
-        fragTransaction.replace(R.id.mainMainFrameLayout, fragment, tag)
-        fragTransaction.addToBackStack(tag)
-        fragTransaction.commitAllowingStateLoss()
+        val existingFragment = manager.findFragmentByTag(tag)
+
+        if (existingFragment == null) {
+            val fragTransaction = manager.beginTransaction()
+            fragTransaction.replace(R.id.mainMainFrameLayout, fragment, tag)
+            fragTransaction.addToBackStack(tag)
+            fragTransaction.commitAllowingStateLoss()
+        } else {
+            manager.popBackStack(tag, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+        }
     }
+
 }

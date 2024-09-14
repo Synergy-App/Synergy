@@ -12,6 +12,11 @@ Graphics Automatic
 
  */
 
+
+// 이건 그냥 임시용으로 써놓은 것
+// 옛날 애뮬: 412, 930
+// Galaxy Note9 애뮬 기준: 480, 914.6667
+
 class AdaptiveUtils {
     companion object {
         fun dialogTitleMedium(): Float {

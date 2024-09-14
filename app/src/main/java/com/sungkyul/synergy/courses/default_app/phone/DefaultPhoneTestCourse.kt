@@ -17,10 +17,10 @@ data class DefaultPhoneTestCourse(val eduScreen: EduScreen): EduCourse {
             dialog.titleText = ""
             dialog.contentText = "안녕하세요!"
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = 300.0f
-            dialog.bottom = 300.0f
-            dialog.start = 50.0f
-            dialog.end = 50.0f
+            dialog.top = 300.0f/930.0f
+            dialog.bottom = 300.0f/930.0f
+            dialog.start = 50.0f/412.0f
+            dialog.end = 50.0f/412.0f
             dialog.visibility = true
 
             cover.visibility = true
@@ -41,15 +41,15 @@ data class DefaultPhoneTestCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.contentText = "사이즈 변경 테스트에요!"
             dialog.contentGravity = Gravity.START
-            dialog.top = 320.0f
-            dialog.bottom = 320.0f
-            dialog.start = 60.0f
-            dialog.end = 60.0f
+            dialog.top = 320.0f/930.0f
+            dialog.bottom = 320.0f/930.0f
+            dialog.start = 60.0f/412.0f
+            dialog.end = 60.0f/412.0f
         })
 
         list.add(EduData().apply {
-            dialog.top = 300.0f
-            dialog.bottom = 300.0f
+            dialog.top = 300.0f/930.0f
+            dialog.bottom = 300.0f/930.0f
             dialog.start = 0.0f
             dialog.end = width/2
         })
@@ -57,56 +57,56 @@ data class DefaultPhoneTestCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.top = 0.0f
             dialog.bottom = height/2
-            dialog.start = 50.0f
-            dialog.end = 50.0f
+            dialog.start = 50.0f/412.0f
+            dialog.end = 50.0f/412.0f
         })
 
         list.add(EduData().apply {
-            dialog.top = 300.0f
-            dialog.bottom = 300.0f
-            dialog.start = 50.0f
-            dialog.end = 50.0f
+            dialog.top = 300.0f/930.0f
+            dialog.bottom = 300.0f/930.0f
+            dialog.start = 50.0f/412.0f
+            dialog.end = 50.0f/412.0f
         })
 
         list.add(EduData().apply {
             dialog.contentText = "박스와 화살표 테스트에요!"
 
             cover.boxVisibility = true
-            cover.boxLeft = 50.0f
-            cover.boxTop = 50.0f
+            cover.boxLeft = 50.0f/412.0f
+            cover.boxTop = 50.0f/930.0f
             cover.boxRight = width-50.0f
-            cover.boxBottom = 100.0f
+            cover.boxBottom = 100.0f/930.0f
 
             arrow.endTo = EduScreen.BOX
             arrow.visibility = true
         })
 
         list.add(EduData().apply {
-            cover.boxRight = 100.0f
+            cover.boxRight = 100.0f/412.0f
         })
 
         list.add(EduData().apply {
-            cover.boxLeft = 75.0f
-            cover.boxRight = 125.0f
+            cover.boxLeft = 75.0f/412.0f
+            cover.boxRight = 125.0f/412.0f
         })
 
         list.add(EduData().apply {
-            cover.boxLeft = 100.0f
-            cover.boxRight = 150.0f
+            cover.boxLeft = 100.0f/412.0f
+            cover.boxRight = 150.0f/412.0f
             cover.visibility = true
         })
 
         list.add(EduData().apply {
-            dialog.top = 275.0f
-            dialog.bottom = 325.0f
+            dialog.top = 275.0f/930.0f
+            dialog.bottom = 325.0f/930.0f
 
-            cover.boxTop = 500.0f
-            cover.boxBottom = 550.0f
+            cover.boxTop = 500.0f/930.0f
+            cover.boxBottom = 550.0f/930.0f
         })
 
         list.add(EduData().apply {
-            cover.boxLeft = 150.0f
-            cover.boxRight = 200.0f
+            cover.boxLeft = 150.0f/412.0f
+            cover.boxRight = 200.0f/412.0f
         })
 
         list.add(EduData().apply {

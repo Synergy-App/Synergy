@@ -20,19 +20,19 @@ data class KakaoFromChattingCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.contentText = "친구랑 대화한 목록을<br>확인할 수 있는<br>대화 목록 버튼입니다."
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = AdaptiveUtils.ratio(0.6f)
-            dialog.bottom = AdaptiveUtils.ratio(0.2f)
-            dialog.start = AdaptiveUtils.ratio(0.1f)
-            dialog.end = AdaptiveUtils.ratio(0.1f)
+            dialog.top = 0.6f
+            dialog.bottom = 0.2f
+            dialog.start = 0.1f
+            dialog.end = 0.1f
             dialog.visibility = true
             cover.visibility = true
             cover.isClickable = true
             cover.boxVisibility=true
             cover.boxBorderVisibility=true
-            cover.boxTop = AdaptiveUtils.ratio(0.85f)
-            cover.boxBottom = AdaptiveUtils.ratio(1.0f)
-            cover.boxLeft = AdaptiveUtils.ratio(0.25f)
-            cover.boxRight = AdaptiveUtils.ratio(0.4f)
+            cover.boxTop = 0.85f
+            cover.boxBottom = 1.0f
+            cover.boxLeft = 0.25f
+            cover.boxRight = 0.4f
             dialog.contentSize=AdaptiveUtils.dialogContentMedium()
             dialog.contentFont = R.font.pretendard_semibold
         })
@@ -48,8 +48,8 @@ data class KakaoFromChattingCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = AdaptiveUtils.ratio(0.275f),
-                    y = AdaptiveUtils.ratio(0.8f),
+                    x = 0.275f,
+                    y = 0.8f,
                     rotation = 180f,
                     gesture = HandGestures.Companion::tapGesture
                 )
@@ -58,20 +58,20 @@ data class KakaoFromChattingCourse(val eduScreen: EduScreen): EduCourse {
 
         list.add(EduData().apply {
             dialog.contentText = "친구와 대화한<br>대화창이 나열됩니다."
-            dialog.top = AdaptiveUtils.ratio(0.6f)
-            dialog.bottom = AdaptiveUtils.ratio(0.2f)
-            dialog.start = AdaptiveUtils.ratio(0.1f)
-            dialog.end = AdaptiveUtils.ratio(0.1f)
+            dialog.top = 0.6f
+            dialog.bottom = 0.2f
+            dialog.start = 0.1f
+            dialog.end = 0.1f
             dialog.visibility = true
             cover.visibility = true
             cover.isClickable = true
             cover.boxVisibility=true
             cover.boxBorderVisibility=true
             cover.boxBorderColor=R.color.black
-            cover.boxTop = AdaptiveUtils.ratio(0.075f)
-            cover.boxBottom = AdaptiveUtils.ratio(0.5f)
-            cover.boxLeft = AdaptiveUtils.ratio(0.0f)
-            cover.boxRight = AdaptiveUtils.ratio(01.0f)
+            cover.boxTop = 0.075f
+            cover.boxBottom = 0.5f
+            cover.boxLeft = 0.0f
+            cover.boxRight = 01.0f
             dialog.contentSize=AdaptiveUtils.dialogContentMedium()
             dialog.contentFont = R.font.pretendard_semibold
         })
@@ -81,10 +81,10 @@ data class KakaoFromChattingCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.top = AdaptiveUtils.ratio(0.3f)
-            dialog.bottom = AdaptiveUtils.ratio(0.5f)
+            dialog.top = 0.3f
+            dialog.bottom = 0.5f
             dialog.contentText = "새로 온 메시지는<br>숫자와 함께 가장<br>상단에 뜨게 됩니다."
-            cover.boxBottom = AdaptiveUtils.ratio(0.15f)
+            cover.boxBottom = 0.15f
             cover.boxBorderColor = R.color.lime
         })
     }
