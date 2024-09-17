@@ -12,12 +12,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.learning_space.kakaotalk.activity.KakaoProfileDetailActivity
 import com.sungkyul.synergy.learning_space.kakaotalk.data.profileItem
+import com.sungkyul.synergy.training_space.kakao.PracticeKakao2Activity
 
 /** 카카오톡 프로필 어뎁터와 뷰홀더 */
 class Profile2Adapter(private val context: Context) :
     RecyclerView.Adapter<Profile2Adapter.ViewHolder>() {
 
     var datas = mutableListOf<profileItem>() // 데이터 리스트 초기화
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.kakao_friends_data, parent, false)
         return ViewHolder(view)
@@ -40,8 +42,18 @@ class Profile2Adapter(private val context: Context) :
             friend_detail_LL.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
-                    val intent = Intent(context, KakaoProfileDetailActivity::class.java)
-                    intent.putExtra("profile_detail", datas[position]) // 데이터를 전달합니다. profileItem이 Parcelable이어야 합니다.
+                    val selectedProfile = datas[position]
+
+                    if (selectedProfile.name != "임영웅") {
+                        return@setOnClickListener
+                    }
+
+                    // 클릭할 수 있는 항목에 대한 처리
+                    val intent = Intent(context, PracticeKakao2Activity::class.java)
+                    intent.putExtra(
+                        "profile_detail",
+                        selectedProfile
+                    ) // 데이터를 전달합니다. profileItem이 Parcelable이어야 합니다.
                     context.startActivity(intent)
                 }
             }
@@ -51,8 +63,6 @@ class Profile2Adapter(private val context: Context) :
             profile_name.text = item.name
             profile_message.text = item.message
             profile_iv.setImageResource(item.image)
-
         }
     }
-
 }

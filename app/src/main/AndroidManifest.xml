@@ -22,9 +22,6 @@
             android:name=".training_space.kakao.PracticeKakao33Activity"
             android:exported="false" />
         <activity
-            android:name=".training_space.kakao.PracticeKakao3Activity"
-            android:exported="false" />
-        <activity
             android:name=".training_space.kakao.PracticeKakao2Activity"
             android:exported="false" />
         <activity

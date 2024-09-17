@@ -6,67 +6,63 @@
     android:layout_height="match_parent"
     tools:context=".training_space.kakao.PracticeKakao33Activity">
 
-    <!-- 상단의 타이머와 문제 보기 텍스트 -->
-    <LinearLayout
-        android:id="@+id/ll"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        android:paddingHorizontal="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <!-- 타이머 TextView -->
-        <TextView
-            android:id="@+id/timerTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="16dp"
-            android:text="00:00"
-            android:textColor="@android:color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <!-- 타이머와 텍스트 사이의 공간 -->
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <!-- 문제 보기 텍스트 -->
-        <TextView
-            android:id="@+id/problemText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="16dp"
-            android:text="문제보기"
-            android:textColor="@color/phoneRed"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <!-- 나머지 레이아웃들 (예: RecyclerView, 메시지 입력 부분 등) -->
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintTop_toBottomOf="@+id/ll">
+        android:layout_height="match_parent">
 
-        <!-- EduScreen 관련 뷰 -->
         <com.sungkyul.synergy.utils.edu.EduScreen
             android:id="@+id/edu_screen"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#AFC0CF"
             android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingHorizontal="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints">
+
+                <!-- 타이머를 표시할 TextView -->
+                <TextView
+                    android:id="@+id/timerTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:padding="16dp"
+                    android:text="00:00"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <!-- 타이머와 텍스트 사이의 공간 -->
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <!-- 타이머 옆에 표시할 텍스트 -->
+                <TextView
+                    android:id="@+id/problemText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:padding="16dp"
+                    android:text="문제보기"
+                    android:textColor="@color/phoneRed"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -211,6 +207,8 @@
                 </LinearLayout>
             </RelativeLayout>
         </LinearLayout>
-    </FrameLayout>
 
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
