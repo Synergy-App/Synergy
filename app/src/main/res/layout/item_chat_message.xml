@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_gravity="right"
+    android:gravity="right"
+    android:padding="10dp">
+    <!-- 타임스탬프 -->
+    <TextView
+        android:id="@+id/chatTimestampTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginRight="7dp"
+        android:textSize="12sp" />
+
+    <!-- 말풍선 배경을 가진 TextView -->
+    <TextView
+        android:id="@+id/chatMessageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/chat_bubble_background"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:padding="12dp"
+        android:layout_marginBottom="4dp"/>
+
+</LinearLayout>
+

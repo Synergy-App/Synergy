@@ -197,15 +197,6 @@
             android:name=".profile_space.CheckLearningAbilityFragment"
             android:exported="true" />
         <activity
-            android:name=".home.activity.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".training_space.activity.ExamProblemActivity"
             android:exported="true" />
         <activity
@@ -415,7 +406,13 @@
             android:exported="false" />
         <activity
             android:name=".learning_space.kakaotalk.activity.KakaoChattingActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".learning_space.naver.activity.NaverSearchActivity"
             android:exported="false" />
