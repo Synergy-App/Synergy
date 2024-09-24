@@ -33,7 +33,6 @@ class PracticeSettingFontActivity : AppCompatActivity() {
 
         startTimer() // 타이머 시작
 
-
         // 뒤로 가기 버튼 클릭 시 이벤트 처리
         binding.fontBackButton.setOnClickListener {
             startActivity(Intent(this, PracticeSettingDisActivity::class.java))
@@ -45,8 +44,7 @@ class PracticeSettingFontActivity : AppCompatActivity() {
             TypedValue.COMPLEX_UNIT_PX,
             resources.getDimension(R.dimen.main_text_size_0)
         )
-        binding.textsizeSeekbar.setOnSeekBarChangeListener(object :
-            SeekBar.OnSeekBarChangeListener {
+        binding.textsizeSeekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 val textSize = when (progress) {
                     0 -> resources.getDimension(R.dimen.main_text_size_0)
@@ -91,8 +89,6 @@ class PracticeSettingFontActivity : AppCompatActivity() {
                 if (isTimerRunning) {
                     remainingTimeInMillis = millisUntilFinished
                     binding.timerTextView.text = (millisUntilFinished / 1000).toString()
-                } else {
-                    cancel() // 타이머가 이미 멈춘 경우 중지
                 }
             }
 
@@ -108,14 +104,16 @@ class PracticeSettingFontActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         pausedTimeInMillis = remainingTimeInMillis
-        timer.cancel()
-        isTimerRunning = false
+        if (isTimerRunning) {
+            timer.cancel() // 타이머 취소
+            isTimerRunning = false
+        }
     }
 
     override fun onResume() {
         super.onResume()
         if (!isTimerRunning) {
-            startTimer()
+            startTimer() // 남은 시간으로 타이머 재시작
         }
     }
 
@@ -144,15 +142,18 @@ class PracticeSettingFontActivity : AppCompatActivity() {
         confirmButton.setOnClickListener {
             alertDialog.dismiss() // 다이얼로그 닫기
 
-            // ///////saveResult(true) // 문제 풀이 성공으로 표시
-            // returnToHomeScreen() // 홈 화면으로 이동
+            // 다이얼로그 닫힐 때 타이머 재시작
+            startTimer()
+        }
+
+        alertDialog.setOnShowListener {
+            if (isTimerRunning) {
+                timer.cancel() // 다이얼로그가 열릴 때 타이머 멈춤
+                isTimerRunning = false
+            }
         }
 
         alertDialog.show()
-
-        // 다이얼로그가 나타나면 타이머 멈춤
-        timer.cancel()
-        isTimerRunning = false
     }
 
     private fun returnToHomeScreen() {

@@ -15,11 +15,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityPracticeMessageBinding
-import com.sungkyul.synergy.learning_space.default_app.message.activity.DefaultMessageChattingActivity
 import com.sungkyul.synergy.learning_space.default_app.message.adapter.MessageAdapter
 import com.sungkyul.synergy.learning_space.default_app.message.adapter.MessageData
 import com.sungkyul.synergy.learning_space.default_app.message.adapter.MyMessageData
-import com.sungkyul.synergy.training_space.call.PracticeCall2ResultActivity
 import com.sungkyul.synergy.training_space.message.result.ExamMessageResultActivity
 import com.sungkyul.synergy.utils.AnimUtils
 import com.sungkyul.synergy.utils.DateTimeUtils
@@ -33,20 +31,14 @@ class PracticeMessageActivity : AppCompatActivity() {
     private var pausedTimeInMillis: Long = 0 // 타이머가 일시정지된 시간
     private var success: Boolean = false // 성공 여부를 나타내는 변수 추가
 
-
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPracticeMessageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val dateTime1 = LocalDateTime.of(2023, 12, 1, 0, 0)
-        val dateTime2 = LocalDateTime.of(2023, 12, 2, 7, 42)
-        val dateTime3 = LocalDateTime.of(2023, 12, 3, 15, 36)
         val now = LocalDateTime.now()
-
         val messageArray = ArrayList<MessageData>()
-
 
         val messages = binding.messages
         messages.layoutManager = LinearLayoutManager(binding.root.context)
@@ -56,32 +48,7 @@ class PracticeMessageActivity : AppCompatActivity() {
         startTimer()
 
         // 버튼의 터치 애니메이션을 초기화한다.
-        AnimUtils.initTouchButtonAnimation(binding.goToTopMenuButton)
-        AnimUtils.initTouchButtonAnimation(binding.callButton)
-        AnimUtils.initTouchButtonAnimation(binding.searchButton)
-        AnimUtils.initTouchButtonAnimation(binding.conversationSettingsButton)
-        AnimUtils.initTouchButtonAnimation(binding.imageButton)
-        AnimUtils.initTouchButtonAnimation(binding.cameraButton)
-        AnimUtils.initTouchButtonAnimation(binding.plusButton)
-        AnimUtils.initTouchButtonAnimation(binding.expandButton)
-        AnimUtils.initTouchButtonAnimation(binding.emojiButton)
-        AnimUtils.initTouchButtonAnimation(binding.recordButton)
-        AnimUtils.initTouchButtonAnimation(binding.sendButton)
-
-        // 버튼의 터치 리스너를 설정한다.
-        binding.goToTopMenuButton.setOnTouchListener(onTouchGoToTopMenuButtonListener)
-        binding.callButton.setOnTouchListener(onTouchCallButtonListener)
-        binding.searchButton.setOnTouchListener(onTouchSearchButtonListener)
-        binding.conversationSettingsButton.setOnTouchListener(
-            onTouchConversationSettingsButtonListener
-        )
-        binding.imageButton.setOnTouchListener(onTouchImageButtonListener)
-        binding.cameraButton.setOnTouchListener(onTouchCameraButtonListener)
-        binding.plusButton.setOnTouchListener(onTouchPlusButtonListener)
-        binding.expandButton.setOnTouchListener(onTouchExpandButtonListener)
-        binding.emojiButton.setOnTouchListener(onTouchEmojiButtonListener)
-        binding.recordButton.setOnTouchListener(onTouchRecordButtonListener)
-        binding.sendButton.setOnTouchListener(onTouchSendButtonListener)
+        initTouchAnimations()
 
         binding.messageEditText.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
@@ -90,98 +57,13 @@ class PracticeMessageActivity : AppCompatActivity() {
         }
 
         binding.sendButton.setOnTouchListener { view, event ->
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    AnimUtils.startTouchDownButtonAnimation(this, view)
-                }
-                MotionEvent.ACTION_UP -> {
-                    AnimUtils.startTouchUpButtonAnimation(this, view)
-
-                    // Check if the send button was clicked successfully
-                    if (binding.eduScreen.onAction("click_send_button")) {
-                        val adapter = messages.adapter as MessageAdapter
-
-                        if (binding.messageEditText.text.toString().isNotEmpty()) {
-                            // Create and add new message data
-                            messageArray.add(
-                                MyMessageData(
-                                    binding.messageEditText.text.toString(),
-                                    "${now.format(DateTimeUtils.dateFormatter)} ${
-                                        DateTimeUtils.getKoreanDayOfWeek(now)
-                                    }",
-                                    "${DateTimeUtils.getKoreanPeriod(now)} ${
-                                        now.format(DateTimeUtils.timeFormatter)
-                                    }"
-                                )
-                            )
-
-                            // Notify adapter of the new item
-                            adapter.notifyItemInserted(messageArray.size - 1)
-
-                            // Clear the input field
-                            binding.messageEditText.text.clear()
-
-                            // Hide the keyboard
-                            val inputMethodManager =
-                                getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                            inputMethodManager.hideSoftInputFromWindow(
-                                binding.messageEditText.windowToken,
-                                0
-                            )
-
-                            // Set success to true immediately when the message is sent
-                            success = true
-                            saveResult(success) // Save the success immediately
-                        }
-
-                        returnToHomeScreen() // Always return to home after sending
-                        view.performClick()
-                    }
-                }
-            }
+            handleSendButtonTouch(view, event, now, messageArray)
             true
         }
 
-        //메뉴 돌아가는 버튼
-        binding.goToTopMenuButton.setOnTouchListener { view, event ->
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    AnimUtils.startTouchDownButtonAnimation(this, view)
+        binding.goToTopMenuButton.setOnTouchListener(onTouchGoToTopMenuButtonListener)
 
-                }
-
-                MotionEvent.ACTION_UP -> {
-                    AnimUtils.startTouchUpButtonAnimation(this, view)
-
-                    if (binding.eduScreen.onAction("menu_button")) {
-//                            val intent = Intent(this, DefaultMessageChattingActivity::class.java)
-//                            intent.putExtra("from", "menu_button")
-//                            startActivity(intent)
-                    }
-                }
-            }
-            true
-        }
-
-        // 타이머 초기화
-        timer = object : CountDownTimer(remainingTimeInMillis, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                remainingTimeInMillis = millisUntilFinished
-                val secondsLeft = millisUntilFinished / 1000
-                binding.timerTextView.text = secondsLeft.toString() // 초를 텍스트뷰에 표시
-            }
-
-            // Timer finish logic
-            override fun onFinish() {
-                // Check if success is already true
-                if (!success) {
-                    binding.timerTextView.text = "0"
-                    saveResult(false) // Only save as failure if no message was sent successfully
-                }
-                returnToHomeScreen()
-            }
-        }
-            // 문제보기 클릭 시 다이얼로그 띄우기
+        // 문제보기 클릭 시 다이얼로그 띄우기
         binding.problemText.setOnClickListener {
             showProblemDialog()
         }
@@ -192,9 +74,11 @@ class PracticeMessageActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        pausedTimeInMillis = remainingTimeInMillis
-        timer.cancel() // 타이머를 취소하여 불필요한 시간 감소를 막음
-        isTimerRunning = false
+        if (isTimerRunning) {
+            pausedTimeInMillis = remainingTimeInMillis
+            timer.cancel() // 타이머를 취소하여 불필요한 시간 감소를 막음
+            isTimerRunning = false
+        }
     }
 
     override fun onResume() {
@@ -209,25 +93,16 @@ class PracticeMessageActivity : AppCompatActivity() {
             override fun onTick(millisUntilFinished: Long) {
                 remainingTimeInMillis = millisUntilFinished
                 val secondsLeft = millisUntilFinished / 1000
-                findViewById<TextView>(R.id.timerTextView).text = secondsLeft.toString()
+                binding.timerTextView.text = secondsLeft.toString() // 초를 텍스트뷰에 표시
             }
 
             override fun onFinish() {
                 // 성공하지 않았을 때만 실패 처리
                 if (!success) {
-                    findViewById<TextView>(R.id.timerTextView).text = "0"
-                    saveResult(false) // 실패 결과 저장
-                    // 성공 여부를 false로 설정
-                    success = false
+                    binding.timerTextView.text = "0"
                 }
                 returnToHomeScreen() // 홈 화면으로 이동
             }
-
-        }
-
-        // 문제보기 클릭 시 다이얼로그 띄우기
-        findViewById<TextView>(R.id.problemText).setOnClickListener {
-            showProblemDialog()
         }
 
         timer.start() // 액티비티가 생성되면 타이머 시작
@@ -258,30 +133,115 @@ class PracticeMessageActivity : AppCompatActivity() {
         val confirmButton = dialogView.findViewById<Button>(R.id.confirmButton)
         confirmButton.setOnClickListener {
             alertDialog.dismiss() // 다이얼로그 닫기
+            // 타이머를 다시 시작
+            startTimer(remainingTimeInMillis)
+        }
 
-            // ///////saveResult(true) // 문제 풀이 성공으로 표시
-            //  returnToHomeScreen() // 홈 화면으로 이동
+        alertDialog.setOnShowListener {
+            timer.cancel() // 다이얼로그가 열릴 때 타이머 멈춤
+            isTimerRunning = false
+        }
+
+        alertDialog.setOnDismissListener {
+            // 다이얼로그가 닫힐 때 타이머 다시 시작
+            startTimer(remainingTimeInMillis)
         }
 
         alertDialog.show()
 
-        // 다이얼로그가 나타나면 타이머 멈춤
+        // 타이머 멈춤
         timer.cancel()
         isTimerRunning = false
     }
 
     private fun returnToHomeScreen() {
-        saveResult(success) // 현재의 성공 여부를 저장
         val intent = Intent(this, ExamMessageResultActivity::class.java)
         startActivity(intent)
-//        overridePendingTransition(R.anim.stay, R.anim.stay)
     }
 
-    private fun saveResult(isSuccess: Boolean) {
-        val sharedPreferences = getSharedPreferences("ExamMessagePrefs", Context.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.putBoolean("quiz_result", isSuccess)
-        editor.apply()
+    private fun initTouchAnimations() {
+        // 버튼의 터치 애니메이션을 초기화한다.
+        val buttons = listOf(
+            binding.goToTopMenuButton,
+            binding.callButton,
+            binding.searchButton,
+            binding.conversationSettingsButton,
+            binding.imageButton,
+            binding.cameraButton,
+            binding.plusButton,
+            binding.expandButton,
+            binding.emojiButton,
+            binding.recordButton,
+            binding.sendButton
+        )
+        for (button in buttons) {
+            AnimUtils.initTouchButtonAnimation(button)
+            button.setOnTouchListener(onTouchButtonListener)
+        }
+    }
+
+    private val onTouchButtonListener = View.OnTouchListener { view, event ->
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+                AnimUtils.startTouchDownButtonAnimation(this, view)
+            }
+            MotionEvent.ACTION_UP -> {
+                AnimUtils.startTouchUpButtonAnimation(this, view)
+                view.performClick()
+            }
+        }
+        true
+    }
+
+    private fun handleSendButtonTouch(view: View, event: MotionEvent, now: LocalDateTime, messageArray: ArrayList<MessageData>) {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+                AnimUtils.startTouchDownButtonAnimation(this, view)
+            }
+            MotionEvent.ACTION_UP -> {
+                AnimUtils.startTouchUpButtonAnimation(this, view)
+
+                // Check if the send button was clicked successfully
+                if (binding.eduScreen.onAction("click_send_button")) {
+                    val adapter = binding.messages.adapter as MessageAdapter
+
+                    if (binding.messageEditText.text.toString().isNotEmpty()) {
+                        // Create and add new message data
+                        messageArray.add(
+                            MyMessageData(
+                                binding.messageEditText.text.toString(),
+                                "${now.format(DateTimeUtils.dateFormatter)} ${
+                                    DateTimeUtils.getKoreanDayOfWeek(now)
+                                }",
+                                "${DateTimeUtils.getKoreanPeriod(now)} ${
+                                    now.format(DateTimeUtils.timeFormatter)
+                                }"
+                            )
+                        )
+
+                        // Notify adapter of the new item
+                        adapter.notifyItemInserted(messageArray.size - 1)
+
+                        // Clear the input field
+                        binding.messageEditText.text.clear()
+
+                        // Hide the keyboard
+                        val inputMethodManager =
+                            getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                        inputMethodManager.hideSoftInputFromWindow(
+                            binding.messageEditText.windowToken,
+                            0
+                        )
+
+                        // Set success to true immediately when the message is sent
+                        success = true
+                    }
+
+                    returnToHomeScreen() // Always return to home after sending
+                    view.performClick()
+                }
+            }
+        }
     }
 
     private val onTouchGoToTopMenuButtonListener = View.OnTouchListener { view, event ->
@@ -289,149 +249,6 @@ class PracticeMessageActivity : AppCompatActivity() {
             MotionEvent.ACTION_DOWN -> {
                 AnimUtils.startTouchDownButtonAnimation(this, view)
             }
-
-            MotionEvent.ACTION_UP -> {
-                AnimUtils.startTouchUpButtonAnimation(this, view)
-                view.performClick()
-
-            }
-        }
-        true
-    }
-
-
-    private val onTouchCallButtonListener = View.OnTouchListener { view, event ->
-        when (event.action) {
-            MotionEvent.ACTION_DOWN -> {
-                AnimUtils.startTouchDownButtonAnimation(this, view)
-            }
-
-            MotionEvent.ACTION_UP -> {
-                AnimUtils.startTouchUpButtonAnimation(this, view)
-                view.performClick()
-            }
-        }
-        true
-    }
-
-    private val onTouchSearchButtonListener = View.OnTouchListener { view, event ->
-        when (event.action) {
-            MotionEvent.ACTION_DOWN -> {
-                AnimUtils.startTouchDownButtonAnimation(this, view)
-            }
-
-            MotionEvent.ACTION_UP -> {
-                AnimUtils.startTouchUpButtonAnimation(this, view)
-                view.performClick()
-            }
-        }
-        true
-    }
-
-    private val onTouchConversationSettingsButtonListener = View.OnTouchListener { view, event ->
-        when (event.action) {
-            MotionEvent.ACTION_DOWN -> {
-                AnimUtils.startTouchDownButtonAnimation(this, view)
-            }
-
-            MotionEvent.ACTION_UP -> {
-                AnimUtils.startTouchUpButtonAnimation(this, view)
-                view.performClick()
-            }
-        }
-        true
-    }
-
-    private val onTouchImageButtonListener = View.OnTouchListener { view, event ->
-        when (event.action) {
-            MotionEvent.ACTION_DOWN -> {
-                AnimUtils.startTouchDownButtonAnimation(this, view)
-            }
-
-            MotionEvent.ACTION_UP -> {
-                AnimUtils.startTouchUpButtonAnimation(this, view)
-                view.performClick()
-            }
-        }
-        true
-    }
-
-    private val onTouchCameraButtonListener = View.OnTouchListener { view, event ->
-        when (event.action) {
-            MotionEvent.ACTION_DOWN -> {
-                AnimUtils.startTouchDownButtonAnimation(this, view)
-            }
-
-            MotionEvent.ACTION_UP -> {
-                AnimUtils.startTouchUpButtonAnimation(this, view)
-                view.performClick()
-            }
-        }
-        true
-    }
-
-    private val onTouchPlusButtonListener = View.OnTouchListener { view, event ->
-        when (event.action) {
-            MotionEvent.ACTION_DOWN -> {
-                AnimUtils.startTouchDownButtonAnimation(this, view)
-            }
-
-            MotionEvent.ACTION_UP -> {
-                AnimUtils.startTouchUpButtonAnimation(this, view)
-                view.performClick()
-            }
-        }
-        true
-    }
-
-    private val onTouchExpandButtonListener = View.OnTouchListener { view, event ->
-        when (event.action) {
-            MotionEvent.ACTION_DOWN -> {
-                AnimUtils.startTouchDownButtonAnimation(this, view)
-            }
-
-            MotionEvent.ACTION_UP -> {
-                AnimUtils.startTouchUpButtonAnimation(this, view)
-                view.performClick()
-            }
-        }
-        true
-    }
-
-    private val onTouchEmojiButtonListener = View.OnTouchListener { view, event ->
-        when (event.action) {
-            MotionEvent.ACTION_DOWN -> {
-                AnimUtils.startTouchDownButtonAnimation(this, view)
-            }
-
-            MotionEvent.ACTION_UP -> {
-                AnimUtils.startTouchUpButtonAnimation(this, view)
-                view.performClick()
-            }
-        }
-        true
-    }
-
-    private val onTouchRecordButtonListener = View.OnTouchListener { view, event ->
-        when (event.action) {
-            MotionEvent.ACTION_DOWN -> {
-                AnimUtils.startTouchDownButtonAnimation(this, view)
-            }
-
-            MotionEvent.ACTION_UP -> {
-                AnimUtils.startTouchUpButtonAnimation(this, view)
-                view.performClick()
-            }
-        }
-        true
-    }
-
-    private val onTouchSendButtonListener = View.OnTouchListener { view, event ->
-        when (event.action) {
-            MotionEvent.ACTION_DOWN -> {
-                AnimUtils.startTouchDownButtonAnimation(this, view)
-            }
-
             MotionEvent.ACTION_UP -> {
                 AnimUtils.startTouchUpButtonAnimation(this, view)
                 view.performClick()

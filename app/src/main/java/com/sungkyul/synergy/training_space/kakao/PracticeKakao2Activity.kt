@@ -1,80 +1,78 @@
-package com.sungkyul.synergy.training_space.google
+package com.sungkyul.synergy.training_space.kakao
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.view.Gravity
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.courses.accountedu.GoogleMakeCourse
-import com.sungkyul.synergy.databinding.ActivityGoogleMakeBinding
-import com.sungkyul.synergy.databinding.ActivityPracticeGoogle2Binding
+import com.sungkyul.synergy.courses.kakotalk.KakaoProfileCourse
+import com.sungkyul.synergy.databinding.ActivityKakaoProfileDetailBinding
+import com.sungkyul.synergy.databinding.ActivityPracticeKakao2Binding
+import com.sungkyul.synergy.databinding.ActivityPracticeNaver3Binding
 import com.sungkyul.synergy.home.activity.MainActivity
-import com.sungkyul.synergy.learning_space.accountedu.GoogleDefaultInfoActivity
+import com.sungkyul.synergy.learning_space.kakaotalk.activity.KakaoChattingActivity
+import com.sungkyul.synergy.learning_space.kakaotalk.data.profileItem
 import com.sungkyul.synergy.training_space.call.problem.ExamCallProblem2Activity
-import com.sungkyul.synergy.utils.SimpleTextWatcher
 
-class PracticeGoogle2Activity : AppCompatActivity() {
-    private lateinit var binding: ActivityPracticeGoogle2Binding
+class PracticeKakao2Activity : AppCompatActivity() {
+    private lateinit var binding: ActivityPracticeKakao2Binding
     private lateinit var timer: CountDownTimer
     private var isTimerRunning = false
     private var remainingTimeInMillis: Long = 300000
-    private var pausedTimeInMillis: Long = 0 // 타이머가 일시정지된 시간
+    private var pausedTimeInMillis: Long = remainingTimeInMillis // 타이머가 일시정지된 시간
     private var success: Boolean = false // 성공 여부를 나타내는 변수 추가
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityPracticeGoogle2Binding.inflate(layoutInflater)
+        binding = ActivityPracticeKakao2Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
         remainingTimeInMillis = intent.getLongExtra("remainingTimeInMillis", 30000)
 
+        val receivedData = intent.getSerializableExtra("profile_detail") as? profileItem
+
+        receivedData?.let {
+            // 받은 데이터로부터 필요한 정보 추출
+            val name = receivedData.name
+            val message = receivedData.message
+
+            // 이름과 메시지를 보여줄 TextView 찾기
+            val nameTextView = findViewById<TextView>(R.id.profileDetail_name)
+            val messageTextView = findViewById<TextView>(R.id.profileDetail_message)
+
+            // TextView에 이름과 메시지 설정
+            nameTextView.text = "$name"
+            messageTextView.text = "$message"
+        }
         startTimer()
 
-        val makeNextButton: Button = findViewById(R.id.make_next_button)
-        makeNextButton.setOnClickListener {
-            // 다음 화면으로 이동하는 명시적 인텐트 설정
-            val intent = Intent(this, PracticeGoogle3Activity::class.java)
-
-            // 값을 전달한다.
-            intent.putExtra("last_name", binding.firstnameEdittext.text.toString())
-            intent.putExtra("first_name", binding.nameEdittext.text.toString())
-
-            intent.putExtra("remainingTimeInMillis", remainingTimeInMillis) // 남은 시간 전달
-            startActivity(intent)
+        binding.startChattingLL.setOnClickListener {
+            if (binding.eduScreen.onAction("click_chat11_button")) {
+                val intent = Intent(this, PracticeKakao33Activity::class.java)
+                startActivity(intent)
+            }
         }
-
-        // firstnameEdittext의 텍스트 변경 감지
-        binding.firstnameEdittext.addTextChangedListener(object : SimpleTextWatcher() {
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s != null && s.isNotEmpty()) {
-                    // 사용자가 텍스트를 입력한 경우
-                    binding.eduScreen.onAction("first_name_input")
-                    binding.firstnameEdittext.setOnTouchListener { _, _ -> true }
-                }
-            }
-        })
-
-        // nameEdittext의 텍스트 변경 감지
-        binding.nameEdittext.addTextChangedListener(object : SimpleTextWatcher() {
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s != null && s.isNotEmpty()) {
-                    // 사용자가 텍스트를 입력한 경우
-                    binding.eduScreen.onAction("name_input")
-                    binding.nameEdittext.setOnTouchListener { _, _ -> true }
-                }
-            }
-        })
-
         // 문제보기 클릭 시 다이얼로그 띄우기
         binding.problemText.setOnClickListener {
             showProblemDialog()
         }
+
+
+        // 뒤로 가기 키를 눌렀을 때의 이벤트를 처리한다.
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // DefaultAppActivity로 되돌아 간다.
+                val intent = Intent(binding.root.context, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                startActivity(intent)
+            }
+
+        })
     }
 
     override fun onPause() {
@@ -128,7 +126,7 @@ class PracticeGoogle2Activity : AppCompatActivity() {
         numberTextView.text = "문제 1."
 
         val messageTextView = dialogView.findViewById<TextView>(R.id.dialogMessage)
-        messageTextView.text = "구글 계정 생성을 완료하시오."
+        messageTextView.text =  "'임영웅'님께 카카오톡 메세지를 보내세요."
         messageTextView.textSize = 20f
 
         // 확인 버튼 설정
@@ -157,4 +155,6 @@ class PracticeGoogle2Activity : AppCompatActivity() {
         startActivity(intent)
         overridePendingTransition(R.anim.stay, R.anim.stay)
     }
+
 }
+

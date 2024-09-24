@@ -77,8 +77,8 @@ class PracticeResultGalleryActivity : AppCompatActivity() {
         builder.setPositiveButton("휴지통으로 이동") { dialog, _ ->
             // 확인 버튼 클릭 시 작업
             dialog.dismiss()
-                val intent = Intent(this, ExamCameraProblem4Activity::class.java)
-                startActivity(intent)
+             //   val intent = Intent(this, ExamCameraProblem5Activity::class.java)
+                //  startActivity(intent)
         }
 
         builder.setNegativeButton("취소") { dialog, _ ->

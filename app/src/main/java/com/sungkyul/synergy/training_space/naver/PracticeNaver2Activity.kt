@@ -13,16 +13,9 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.databinding.ActivityNaverSearchBinding
 import com.sungkyul.synergy.databinding.ActivityPracticeNaver2Binding
-import com.sungkyul.synergy.databinding.ActivityPracticeNaverBinding
-import com.sungkyul.synergy.learning_space.naver.activity.NaverSearchInfoActivity
-import com.sungkyul.synergy.learning_space.naver.activity.NaverSearchResultActivity
 import com.sungkyul.synergy.learning_space.naver.adapter.NaverAutocompleteAdapter
 import com.sungkyul.synergy.learning_space.naver.adapter.NaverAutocompleteData
-import com.sungkyul.synergy.training_space.call.problem.ExamCallProblem2Activity
-import com.sungkyul.synergy.training_space.call.problem.ExamNaverProblemActivity
-import com.sungkyul.synergy.training_space.naver.result.ExamNaverResultActivity
 import com.sungkyul.synergy.utils.TextUtils
 
 class PracticeNaver2Activity : AppCompatActivity() {
@@ -36,17 +29,15 @@ class PracticeNaver2Activity : AppCompatActivity() {
 
     private lateinit var sharedPreferences: SharedPreferences
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPracticeNaver2Binding.inflate(layoutInflater)
         setContentView(binding.root)
+
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
 
-        remainingTimeInMillis = intent.getLongExtra("remainingTimeInMillis", 30000)
+        remainingTimeInMillis = intent.getLongExtra("remainingTimeInMillis", 300000)
         startTimer()
-
 
         val naverAutocompleteArray = ArrayList<NaverAutocompleteData>()
 
@@ -57,8 +48,7 @@ class PracticeNaver2Activity : AppCompatActivity() {
         binding.searchEditText.requestFocus()
 
         binding.searchEditText.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val adapter = naverAutocompleteList.adapter as NaverAutocompleteAdapter
@@ -78,32 +68,46 @@ class PracticeNaver2Activity : AppCompatActivity() {
                 adapter.notifyItemRangeInserted(0, naverAutocompleteArray.size)
             }
 
-            override fun afterTextChanged(s: Editable?) {
-            }
+            override fun afterTextChanged(s: Editable?) {}
         })
-        binding.previousButton.setOnClickListener {
-            finish()
-        }
-        binding.clearButton.setOnClickListener {
-            binding.searchEditText.setText("")
-        }
+
+        binding.previousButton.setOnClickListener { finish() }
+        binding.clearButton.setOnClickListener { binding.searchEditText.setText("") }
         binding.searchButton.setOnClickListener {
             val searchQuery = binding.searchEditText.text.toString()
             if (searchQuery.contains("된장찌개") || searchQuery.contains("된장 찌개") || searchQuery.contains(
                     "된장"
                 )
             ) {
-                val intent = Intent(this, ExamNaverResultActivity::class.java)
+                val intent = Intent(this, PracticeNaver3Activity::class.java)
                 intent.putExtra("remainingTimeInMillis", remainingTimeInMillis) // 남은 시간 전달
                 startActivity(intent)
-            } else {
             }
         }
-        binding.cancelButton.setOnClickListener {
-            finish()
+        binding.cancelButton.setOnClickListener { finish() }
+
+        // 문제보기 클릭 시 다이얼로그 띄우기
+        binding.problemText.setOnClickListener { showProblemDialog() }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (isTimerRunning) {
+            pausedTimeInMillis = remainingTimeInMillis
+            timer.cancel() // 타이머를 취소하여 불필요한 시간 감소를 막음
+            isTimerRunning = false
         }
-        // 타이머 초기화
-        timer = object : CountDownTimer(remainingTimeInMillis, 1000) {
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (!isTimerRunning) {
+            startTimer(pausedTimeInMillis)
+        }
+    }
+
+    private fun startTimer(startTimeInMillis: Long = remainingTimeInMillis) {
+        timer = object : CountDownTimer(startTimeInMillis, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 remainingTimeInMillis = millisUntilFinished
                 val secondsLeft = millisUntilFinished / 1000
@@ -112,57 +116,13 @@ class PracticeNaver2Activity : AppCompatActivity() {
 
             override fun onFinish() {
                 binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
-            }
-        }
-
-        // 문제보기 클릭 시 다이얼로그 띄우기
-        binding.problemText.setOnClickListener {
-            showProblemDialog()
-        }
-
-        timer.start() // 액티비티가 생성되면 타이머 시작
-        isTimerRunning = true
-    }
-
-    override fun onPause() {
-        super.onPause()
-        pausedTimeInMillis = remainingTimeInMillis
-        timer.cancel() // 타이머를 취소하여 불필요한 시간 감소를 막음
-        isTimerRunning = false
-    }
-
-    override fun onResume() {
-        super.onResume()
-        if (!isTimerRunning) {
-            startTimer(pausedTimeInMillis)
-        }
-
-    }
-
-    private fun startTimer(startTimeInMillis: Long = remainingTimeInMillis) {
-        timer = object : CountDownTimer(startTimeInMillis, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                remainingTimeInMillis = millisUntilFinished
-                val secondsLeft = millisUntilFinished / 1000
-                findViewById<TextView>(R.id.timerTextView).text = secondsLeft.toString()
-            }
-
-            override fun onFinish() {
                 if (!success) { // 성공하지 않았을 때만 실패로 저장
-                    findViewById<TextView>(R.id.timerTextView).text = "0"
-                    saveResult(false) // 실패 결과 저장
+                    //  saveResult(false) // 실패 결과 저장
                 }
-                // 타이머가 종료되면 자동으로 실패 처리됨
-                  returnToHomeScreen()
+                returnToHomeScreen()
             }
         }
-
-        // 문제보기 클릭 시 다이얼로그 띄우기
-        findViewById<TextView>(R.id.problemText).setOnClickListener {
-            showProblemDialog()
-        }
-
-        timer.start() // 액티비티가 생성되면 타이머 시작
+        timer.start() // 타이머 시작
         isTimerRunning = true
     }
 
@@ -173,7 +133,6 @@ class PracticeNaver2Activity : AppCompatActivity() {
         // 커스텀 레이아웃을 설정하기 위한 레이아웃 인플레이터
         val inflater = this.layoutInflater
         val dialogView = inflater.inflate(R.layout.dialoglayout, null)
-
         dialogBuilder.setView(dialogView)
 
         val alertDialog = dialogBuilder.create()
@@ -190,9 +149,9 @@ class PracticeNaver2Activity : AppCompatActivity() {
         val confirmButton = dialogView.findViewById<Button>(R.id.confirmButton)
         confirmButton.setOnClickListener {
             alertDialog.dismiss() // 다이얼로그 닫기
-
-            // ///////saveResult(true) // 문제 풀이 성공으로 표시
-            // returnToHomeScreen() // 홈 화면으로 이동
+            success = true // 성공으로 표시
+            //  saveResult(success)
+            returnToHomeScreen() // 홈 화면으로 이동
         }
 
         alertDialog.show()
@@ -203,14 +162,14 @@ class PracticeNaver2Activity : AppCompatActivity() {
     }
 
     private fun returnToHomeScreen() {
-        val intent = Intent(this, ExamNaverResultActivity::class.java)
+        val intent = Intent(this, PracticeNaver3Activity::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.stay, R.anim.stay)
+    }
 
-    }
-    private fun saveResult(isSuccess: Boolean) {
-        val editor = sharedPreferences.edit()
-        editor.putBoolean("shared_result", isSuccess) // 동일한 키로 결과 저장
-        editor.apply()
-    }
+//    private fun saveResult(isSuccess: Boolean) {
+//        val editor = sharedPreferences.edit()
+//        editor.putBoolean("shared_result", isSuccess) // 동일한 키로 결과 저장
+//        editor.apply()
+    //   }
 }

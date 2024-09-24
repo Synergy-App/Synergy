@@ -7,6 +7,7 @@ import android.os.Handler
 import android.os.Looper
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.training_space.default_app.camera.problem.ExamCameraProblem2Activity
+import com.sungkyul.synergy.training_space.default_app.camera.problem.ExamCameraProblem3Activity
 import com.sungkyul.synergy.training_space.default_app.camera.problem.ExamCameraProblemActivity
 
 class PracticeCamera2Activity : AppCompatActivity() {
@@ -22,7 +23,7 @@ class PracticeCamera2Activity : AppCompatActivity() {
     }
 
     private fun gotoProblem() {
-        val intent = Intent(this, ExamCameraProblem2Activity::class.java)
+        val intent = Intent(this, ExamCameraProblem3Activity::class.java)
         startActivity(intent)
         finish()
     }

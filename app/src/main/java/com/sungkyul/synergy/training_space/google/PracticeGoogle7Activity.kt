@@ -12,13 +12,8 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import androidx.activity.OnBackPressedCallback
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.courses.accountedu.GooglePutCodeCourse
-import com.sungkyul.synergy.databinding.ActivityGooglePutCodeBinding
 import com.sungkyul.synergy.databinding.ActivityPracticeGoogle7Binding
-import com.sungkyul.synergy.home.activity.MainActivity
-import com.sungkyul.synergy.learning_space.accountedu.GoogleMailAddActivity
 import com.sungkyul.synergy.training_space.call.problem.ExamCallProblem2Activity
 
 class PracticeGoogle7Activity : AppCompatActivity() {
@@ -29,7 +24,6 @@ class PracticeGoogle7Activity : AppCompatActivity() {
     private var pausedTimeInMillis: Long = 0 // 타이머가 일시정지된 시간
     private var success: Boolean = false // 성공 여부를 나타내는 변수 추가
 
-
     private var countDownTimer: CountDownTimer? = null
     private var countdownTime: Long = 30 // 초기 카운트다운 시간 (초)
 
@@ -38,47 +32,58 @@ class PracticeGoogle7Activity : AppCompatActivity() {
         binding = ActivityPracticeGoogle7Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        remainingTimeInMillis = intent.getLongExtra("remainingTimeInMillis", 30000)
+        remainingTimeInMillis = intent.getLongExtra("remainingTimeInMillis", 300000)
 
         startTimer()
-
         startCountdown()
 
-        binding.putCodeEdittext.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
-            if (hasFocus) {
-                // 포커스가 있을 때는 G- 텍스트를 유지합니다.
-                binding.putCodeEdittext.hint = "G-"
-            } else {
-                // 포커스가 없을 때도 G- 텍스트를 유지합니다.
-                binding.putCodeEdittext.hint = "G-"
-            }
+        binding.putCodeEdittext.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+            binding.putCodeEdittext.hint = "G-"
         }
 
         binding.putNextButton.setOnClickListener {
             val nextIntent = Intent(this, PracticeGoogle8Activity::class.java)
-            intent.putExtra("remainingTimeInMillis", remainingTimeInMillis) // 남은 시간 전달
+            nextIntent.putExtra("remainingTimeInMillis", remainingTimeInMillis) // 남은 시간 전달
             startActivity(nextIntent)
         }
+        binding.problemText.setOnClickListener { showProblemDialog() }
+
         // editText의 텍스트 변경 감지
         binding.putCodeEdittext.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                // 필요시 구현
-            }
-
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 Log.i("test", "onTextChanged")
                 if (s.toString().isNotEmpty()) {
-                    // 사용자가 텍스트를 입력한 경우
                     binding.eduScreen.onAction("code_input")
                 }
             }
 
-            override fun afterTextChanged(s: Editable?) {
-                // 필요시 구현
-            }
+            override fun afterTextChanged(s: Editable?) {}
         })
-        // 타이머 초기화
-        timer = object : CountDownTimer(remainingTimeInMillis, 1000) {
+
+        startTimer()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        pausedTimeInMillis = remainingTimeInMillis
+        if (isTimerRunning) {
+            timer.cancel() // 타이머를 취소하여 불필요한 시간 감소를 막음
+            isTimerRunning = false
+        }
+        countDownTimer?.cancel() // 카운트다운 타이머도 취소
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (!isTimerRunning) {
+            startTimer(pausedTimeInMillis) // 일시 정지된 시간으로 타이머 시작
+            startCountdown() // 카운트다운 다시 시작
+        }
+    }
+
+    private fun startTimer(startTimeInMillis: Long = remainingTimeInMillis) {
+        timer = object : CountDownTimer(startTimeInMillis, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 remainingTimeInMillis = millisUntilFinished
                 val secondsLeft = millisUntilFinished / 1000
@@ -86,57 +91,14 @@ class PracticeGoogle7Activity : AppCompatActivity() {
             }
 
             override fun onFinish() {
-                binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
-            }
-        }
-
-        // 문제보기 클릭 시 다이얼로그 띄우기
-        binding.problemText.setOnClickListener {
-            showProblemDialog()
-        }
-
-        timer.start() // 액티비티가 생성되면 타이머 시작
-        isTimerRunning = true
-    }
-
-    override fun onPause() {
-        super.onPause()
-        pausedTimeInMillis = remainingTimeInMillis
-        timer.cancel() // 타이머를 취소하여 불필요한 시간 감소를 막음
-        isTimerRunning = false
-    }
-
-    override fun onResume() {
-        super.onResume()
-        if (!isTimerRunning) {
-            startTimer(pausedTimeInMillis)
-        }
-
-    }
-    private fun startTimer(startTimeInMillis: Long = remainingTimeInMillis) {
-        timer = object : CountDownTimer(startTimeInMillis, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                remainingTimeInMillis = millisUntilFinished
-                val secondsLeft = millisUntilFinished / 1000
-                findViewById<TextView>(R.id.timerTextView).text = secondsLeft.toString()
-            }
-
-            override fun onFinish() {
                 if (!success) { // 성공하지 않았을 때만 실패로 저장
-                    findViewById<TextView>(R.id.timerTextView).text = "0"
+                    binding.timerTextView.text = "0"
                     // saveResult(false) // 실패 결과 저장
                 }
-                // 타이머가 종료되면 자동으로 실패 처리됨
-                //  returnToHomeScreen()
             }
         }
 
-        // 문제보기 클릭 시 다이얼로그 띄우기
-        findViewById<TextView>(R.id.problemText).setOnClickListener {
-            showProblemDialog()
-        }
-
-        timer.start() // 액티비티가 생성되면 타이머 시작
+        timer.start() // 타이머 시작
         isTimerRunning = true
     }
 
@@ -164,17 +126,20 @@ class PracticeGoogle7Activity : AppCompatActivity() {
         val confirmButton = dialogView.findViewById<Button>(R.id.confirmButton)
         confirmButton.setOnClickListener {
             alertDialog.dismiss() // 다이얼로그 닫기
-
-            // ///////saveResult(true) // 문제 풀이 성공으로 표시
-            // returnToHomeScreen() // 홈 화면으로 이동
+            startTimer(remainingTimeInMillis) // 남은 시간으로 타이머 재시작
+            startCountdown() // 카운트다운 재시작
         }
 
         alertDialog.show()
 
         // 다이얼로그가 나타나면 타이머 멈춤
-        timer.cancel()
-        isTimerRunning = false
+        if (isTimerRunning) {
+            timer.cancel()
+            isTimerRunning = false
+        }
+        countDownTimer?.cancel() // 카운트다운 타이머도 취소
     }
+
 
     private fun returnToHomeScreen() {
         val intent = Intent(this, ExamCallProblem2Activity::class.java)
