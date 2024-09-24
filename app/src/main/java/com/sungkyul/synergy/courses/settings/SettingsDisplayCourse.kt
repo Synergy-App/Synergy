@@ -33,25 +33,6 @@ data class SettingsDisplayCourse(val eduScreen: EduScreen): EduCourse {
             dialog.background = R.drawable.edu_dialog_green_bg
         })
 
-
-
-        /*list.add(EduData().apply {
-            dialog.visibility = false
-            cover.visibility = false
-            cover.isClickable = false
-            action.id = "change_light_bar"
-            action.message = "100"
-            hands.add(
-                EduHand(
-                    id = "drag",
-                    x = 220.0f/412.0f,
-                    y = 510.0f/930.0f,
-                    gesture = HandGestures.Companion::displayLightDragGesture
-                )
-            )
-        }) */
-
-
         list.add(EduData().apply {
             dialog.visibility = false
             cover.visibility = false
@@ -71,11 +52,10 @@ data class SettingsDisplayCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-
-            cover.boxLeft = 10.0f/412.0f
-            cover.boxRight = width-10.0f
-            cover.boxTop = 280.0f/930.0f
-            cover.boxBottom = 340.0f /*크기가 커질 수록 박스가 커짐 */
+            cover.boxLeft = 0.0f
+            cover.boxRight = 1.0f
+            cover.boxTop = 0.5f
+            cover.boxBottom = 0.6f
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
 
@@ -84,7 +64,7 @@ data class SettingsDisplayCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 0.5f,
-                    y = 0.6f,
+                    y = 0.55f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
