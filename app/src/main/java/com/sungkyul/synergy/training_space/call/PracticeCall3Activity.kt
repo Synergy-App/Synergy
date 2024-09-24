@@ -1,6 +1,7 @@
 package com.sungkyul.synergy.training_space.call
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -78,6 +79,21 @@ class PracticeCall3Activity : AppCompatActivity() {
             true
         }
     }
+    private fun saveResult(isSuccess: Boolean) {
+        val sharedPreferences = getSharedPreferences("PracticeCallPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("call3_result", isSuccess)
+        editor.apply()
+    }
+
+    private fun showHomeScreen() {
+        timer.cancel() // 타이머를 취소
+        saveResult(success) // 현재의 성공 여부를 저장
+        val intent = Intent(this, PracticeCall2ResultActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.scale_up_center, R.anim.fade_out)
+    }
+
 
     private fun startTimer(startTimeInMillis: Long = remainingTimeInMillis) {
         timer = object : CountDownTimer(startTimeInMillis, 1000) {
@@ -89,11 +105,9 @@ class PracticeCall3Activity : AppCompatActivity() {
 
             override fun onFinish() {
                 binding.timerTextView.text = "0"
-                // 타이머 종료 시 필요한 로직 추가
-                if (!success) {
-                    // saveResult(false) // 실패 결과 저장
-                }
-                // returnToHomeScreen() // 홈 화면으로 이동
+                saveResult(false) // 실패 결과 저장
+                isTimerRunning = false
+                showHomeScreen()
             }
         }
         timer.start()

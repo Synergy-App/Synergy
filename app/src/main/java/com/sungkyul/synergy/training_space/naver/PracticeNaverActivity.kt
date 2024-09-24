@@ -1,6 +1,7 @@
 package com.sungkyul.synergy.training_space.naver
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
@@ -33,6 +34,8 @@ import com.sungkyul.synergy.learning_space.screen_layout.ScreenHomeActivity
 import com.sungkyul.synergy.training_space.call.problem.ExamCallProblem2Activity
 import com.sungkyul.synergy.training_space.call.problem.ExamNaverProblemActivity
 import com.sungkyul.synergy.training_space.google.PracticeGoogle2Activity
+import com.sungkyul.synergy.training_space.kakao.result.ExamKakaoResultActivity
+import com.sungkyul.synergy.training_space.naver.result.ExamNaverResultActivity
 import com.sungkyul.synergy.utils.AnimUtils
 import com.sungkyul.synergy.utils.edu.EduScreen
 
@@ -112,22 +115,29 @@ class PracticeNaverActivity : AppCompatActivity() {
                 binding.timerTextView.text = secondsLeft.toString()
             }
 
-            override fun onFinish() {
-                binding.timerTextView.text = "0"
-                saveResult(false)
-            }
-        }
 
-        timer.start()
+            override fun onFinish() {
+                binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
+                saveResult(false) // 실패 결과 저장
+                isTimerRunning = false
+                showHomeScreen()
+            }
+        }.start()
         isTimerRunning = true
     }
-
     private fun saveResult(isSuccess: Boolean) {
+        val sharedPreferences = getSharedPreferences("practice_naver_result", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
-        editor.putBoolean("practice_naver_result", isSuccess)
+        editor.putBoolean("naver_success", isSuccess)
         editor.apply()
     }
 
+    private fun showHomeScreen() {
+        timer.cancel() // 타이머를 취소
+        saveResult(success) // 현재의 성공 여부를 저장
+        val intent = Intent(this, ExamNaverResultActivity::class.java)
+        startActivity(intent)
+    }
     override fun onPause() {
         super.onPause()
         pausedTimeInMillis = remainingTimeInMillis

@@ -1,6 +1,7 @@
 package com.sungkyul.synergy.training_space.google
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,12 +14,14 @@ import android.widget.TextView
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityPracticeGoogle6Binding
 import com.sungkyul.synergy.training_space.call.problem.ExamCallProblem2Activity
+import com.sungkyul.synergy.training_space.setting.result.ExamSettingResultActivity
 
 class PracticeGoogle6Activity : AppCompatActivity() {
     private lateinit var binding: ActivityPracticeGoogle6Binding
     private lateinit var timer: CountDownTimer
     private var remainingTimeInMillis: Long = 300000 // 초기 남은 시간 (5분)
     private var isTimerRunning = false
+    private var success: Boolean = false // 성공 여부
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,12 +85,25 @@ class PracticeGoogle6Activity : AppCompatActivity() {
 
             override fun onFinish() {
                 binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
-                // 타이머 종료 후 처리 (예: 결과 저장)
-                // saveResult(false)
+                saveResult(false) // 실패 결과 저장
+                isTimerRunning = false
+                showHomeScreen()
             }
         }.start()
+        isTimerRunning = true
+    }
+    private fun saveResult(isSuccess: Boolean) {
+        val sharedPreferences = getSharedPreferences("PracticeGooglePrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("google_result", isSuccess)
+        editor.apply()
+    }
 
-        isTimerRunning = true // 타이머가 실행 중임을 표시
+    private fun showHomeScreen() {
+        timer.cancel() // 타이머를 취소
+        saveResult(success) // 현재의 성공 여부를 저장
+        val intent = Intent(this, ExamSettingResultActivity::class.java)
+        startActivity(intent)
     }
 
     @SuppressLint("ClickableViewAccessibility")

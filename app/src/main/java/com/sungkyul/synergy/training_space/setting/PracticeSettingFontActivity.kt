@@ -1,10 +1,13 @@
 package com.sungkyul.synergy.training_space.setting
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Handler
+import android.os.Looper
 import android.util.TypedValue
 import android.widget.Button
 import android.widget.SeekBar
@@ -14,6 +17,8 @@ import androidx.appcompat.app.AlertDialog
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityPracticeSettingFontBinding
 import com.sungkyul.synergy.training_space.call.problem.ExamCallProblem2Activity
+import com.sungkyul.synergy.training_space.message.result.ExamMessageResultActivity
+import com.sungkyul.synergy.training_space.setting.result.ExamSettingResultActivity
 
 class PracticeSettingFontActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPracticeSettingFontBinding
@@ -44,7 +49,8 @@ class PracticeSettingFontActivity : AppCompatActivity() {
             TypedValue.COMPLEX_UNIT_PX,
             resources.getDimension(R.dimen.main_text_size_0)
         )
-        binding.textsizeSeekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        binding.textsizeSeekbar.setOnSeekBarChangeListener(object :
+            SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 val textSize = when (progress) {
                     0 -> resources.getDimension(R.dimen.main_text_size_0)
@@ -72,9 +78,16 @@ class PracticeSettingFontActivity : AppCompatActivity() {
                     if (isTimerRunning) {
                         timer.cancel()
                         isTimerRunning = false
+                        saveResult(true) // 실패 결과 저장
                         binding.timerTextView.text = "성공" // 타이머 중지 상태를 표시
                     }
                 }
+                // 3초 후 화면 전환
+                Handler(Looper.getMainLooper()).postDelayed({
+                    val intent = Intent(this@PracticeSettingFontActivity, ExamSettingResultActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }, 3000)
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {}
@@ -93,11 +106,12 @@ class PracticeSettingFontActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
-                binding.timerTextView.text = "0"
-                // 타이머가 끝나면 할 작업
+                binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
+                saveResult(false) // 실패 결과 저장
+                isTimerRunning = false
+                showHomeScreen()
             }
-        }
-        timer.start()
+        }.start()
         isTimerRunning = true
     }
 
@@ -116,6 +130,22 @@ class PracticeSettingFontActivity : AppCompatActivity() {
             startTimer() // 남은 시간으로 타이머 재시작
         }
     }
+
+    private fun saveResult(isSuccess: Boolean) {
+        val sharedPreferences = getSharedPreferences("PracticeSettingPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("setting_result", isSuccess)
+        editor.apply()
+    }
+
+    private fun showHomeScreen() {
+        timer.cancel() // 타이머를 취소
+        saveResult(success) // 현재의 성공 여부를 저장
+        val intent = Intent(this, ExamSettingResultActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.scale_up_center, R.anim.fade_out)
+    }
+
 
     @SuppressLint("ClickableViewAccessibility")
     private fun showProblemDialog() {

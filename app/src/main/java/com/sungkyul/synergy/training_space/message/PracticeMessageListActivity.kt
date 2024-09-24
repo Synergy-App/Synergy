@@ -1,6 +1,7 @@
 package com.sungkyul.synergy.training_space.message
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,7 +17,9 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityPracticeMessageListBinding
 import com.sungkyul.synergy.learning_space.default_app.message.adapter.MessageChattingAdapter
 import com.sungkyul.synergy.learning_space.default_app.message.adapter.MessageChattingData
+import com.sungkyul.synergy.training_space.call.PracticeCall2ResultActivity
 import com.sungkyul.synergy.training_space.call.problem.ExamCallProblem2Activity
+import com.sungkyul.synergy.training_space.message.result.ExamMessageResultActivity
 import com.sungkyul.synergy.utils.AnimUtils
 import com.sungkyul.synergy.utils.DateTimeUtils
 import com.sungkyul.synergy.utils.GalaxyButton
@@ -30,6 +33,8 @@ class PracticeMessageListActivity : AppCompatActivity() {
     private var remainingTimeInMillis: Long = 30000
     private var pausedTimeInMillis: Long = 0
     private var scrolledUpward = true
+    private var success: Boolean = false // 성공 여부를 나타내는 변수 추가
+
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -138,12 +143,29 @@ class PracticeMessageListActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
-                binding.timerTextView.text = "0"
+                binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
+                saveResult(false) // 실패 결과 저장
                 isTimerRunning = false
+                showHomeScreen()
             }
         }.start()
         isTimerRunning = true
     }
+    private fun saveResult(isSuccess: Boolean) {
+        val sharedPreferences = getSharedPreferences("PracticeMessagePrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("message_result", isSuccess)
+        editor.apply()
+    }
+
+    private fun showHomeScreen() {
+        timer.cancel() // 타이머를 취소
+        saveResult(success) // 현재의 성공 여부를 저장
+        val intent = Intent(this, ExamMessageResultActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.scale_up_center, R.anim.fade_out)
+    }
+
 
     @SuppressLint("ClickableViewAccessibility")
     private fun showProblemDialog() {

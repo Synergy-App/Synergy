@@ -1,6 +1,7 @@
 package com.sungkyul.synergy.training_space.kakao
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -18,6 +19,7 @@ import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.learning_space.kakaotalk.activity.KakaoChattingActivity
 import com.sungkyul.synergy.learning_space.kakaotalk.data.profileItem
 import com.sungkyul.synergy.training_space.call.problem.ExamCallProblem2Activity
+import com.sungkyul.synergy.training_space.kakao.result.ExamKakaoResultActivity
 
 class PracticeKakao2Activity : AppCompatActivity() {
     private lateinit var binding: ActivityPracticeKakao2Binding
@@ -99,14 +101,28 @@ class PracticeKakao2Activity : AppCompatActivity() {
                 binding.timerTextView.text = secondsLeft.toString() // 초를 텍스트뷰에 표시
             }
 
+
             override fun onFinish() {
                 binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
-                // 타이머가 종료되면 자동으로 실패 처리됨
+                saveResult(false) // 실패 결과 저장
+                isTimerRunning = false
+                showHomeScreen()
             }
-        }
-
-        timer.start() // 액티비티가 생성되면 타이머 시작
+        }.start()
         isTimerRunning = true
+    }
+    private fun saveResult(isSuccess: Boolean) {
+        val sharedPreferences = getSharedPreferences("PracticeKakaoPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("kakao_result", isSuccess)
+        editor.apply()
+    }
+
+    private fun showHomeScreen() {
+        timer.cancel() // 타이머를 취소
+        saveResult(success) // 현재의 성공 여부를 저장
+        val intent = Intent(this, ExamKakaoResultActivity::class.java)
+        startActivity(intent)
     }
 
     @SuppressLint("ClickableViewAccessibility")

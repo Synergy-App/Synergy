@@ -1,6 +1,7 @@
 package com.sungkyul.synergy.training_space.google
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +16,7 @@ import android.widget.TextView
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityPracticeGoogle7Binding
 import com.sungkyul.synergy.training_space.call.problem.ExamCallProblem2Activity
+import com.sungkyul.synergy.training_space.setting.result.ExamSettingResultActivity
 
 class PracticeGoogle7Activity : AppCompatActivity() {
     private lateinit var binding: ActivityPracticeGoogle7Binding
@@ -91,17 +93,26 @@ class PracticeGoogle7Activity : AppCompatActivity() {
             }
 
             override fun onFinish() {
-                if (!success) { // 성공하지 않았을 때만 실패로 저장
-                    binding.timerTextView.text = "0"
-                    // saveResult(false) // 실패 결과 저장
-                }
+                binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
+                saveResult(false) // 실패 결과 저장
+                isTimerRunning = false
+                showHomeScreen()
             }
-        }
-
-        timer.start() // 타이머 시작
+        }.start()
         isTimerRunning = true
     }
-
+    private fun saveResult(isSuccess: Boolean) {
+        val sharedPreferences = getSharedPreferences("PracticeGooglePrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("google_result", isSuccess)
+        editor.apply()
+    }
+    private fun showHomeScreen() {
+        timer.cancel() // 타이머를 취소
+        saveResult(success) // 현재의 성공 여부를 저장
+        val intent = Intent(this, ExamSettingResultActivity::class.java)
+        startActivity(intent)
+    }
     @SuppressLint("ClickableViewAccessibility")
     private fun showProblemDialog() {
         val dialogBuilder = androidx.appcompat.app.AlertDialog.Builder(this)

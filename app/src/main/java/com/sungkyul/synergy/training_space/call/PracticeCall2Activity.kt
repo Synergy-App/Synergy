@@ -1,6 +1,7 @@
 package com.sungkyul.synergy.training_space.call
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -24,6 +25,7 @@ import com.sungkyul.synergy.learning_space.default_app.TOUCH_DURATION_SCALE
 import com.sungkyul.synergy.learning_space.default_app.TOUCH_UP_ALPHA
 import com.sungkyul.synergy.learning_space.default_app.TOUCH_UP_SCALE
 import com.sungkyul.synergy.training_space.call.problem.ExamCallProblem2Activity
+import com.sungkyul.synergy.training_space.call.problem.ExamCallResult1Activity
 import com.sungkyul.synergy.utils.AnimUtils
 
 class PracticeCall2Activity : AppCompatActivity() {
@@ -85,9 +87,9 @@ class PracticeCall2Activity : AppCompatActivity() {
 
             override fun onFinish() {
                 binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
-                if (!success) {
-                    // saveResult(false) // 실패 결과 저장
-                }
+                saveResult(false) // 실패 결과 저장
+                isTimerRunning = false
+                showHomeScreen()
             }
         }
 
@@ -134,6 +136,7 @@ class PracticeCall2Activity : AppCompatActivity() {
         alertDialog.show()
     }
 
+
     private fun setButtonAlpha(alphaValue: Int) {
         binding.recordingButton.background.alpha = alphaValue
         binding.videoCallButton.background.alpha = alphaValue
@@ -161,6 +164,22 @@ class PracticeCall2Activity : AppCompatActivity() {
         binding.messageButton.setOnTouchListener(onTouchListener)
         binding.videoCallButton2.setOnTouchListener(onTouchListener)
     }
+
+    private fun saveResult(isSuccess: Boolean) {
+        val sharedPreferences = getSharedPreferences("PracticeCallPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("call2_result", isSuccess)
+        editor.apply()
+    }
+
+    private fun showHomeScreen() {
+        timer.cancel() // 타이머를 취소
+        saveResult(success) // 현재의 성공 여부를 저장
+        val intent = Intent(this, PracticeCall2ResultActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.scale_up_center, R.anim.fade_out)
+    }
+
 
     private val onTouchListener = View.OnTouchListener { view, event ->
         when (event.action) {
@@ -220,14 +239,6 @@ class PracticeCall2Activity : AppCompatActivity() {
             }
         }
         true
-    }
-
-    private fun saveResult(isSuccess: Boolean) {
-        val sharedPreferences = getSharedPreferences("PracticeRecentlyDefaultPrefs", MODE_PRIVATE)
-        with(sharedPreferences.edit()) {
-            putBoolean("move_app_success", isSuccess)
-            commit()  // 동기식으로 저장
-        }
     }
 
     private fun returnToHomeScreen() {

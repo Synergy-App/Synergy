@@ -1,6 +1,7 @@
 package com.sungkyul.synergy.training_space.default_app.camera
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -206,5 +207,11 @@ class PracticeCamera3Activity : AppCompatActivity() {
                 i.line.visibility = ImageView.INVISIBLE
             }
         }
+    }
+    private fun saveResult(isSuccess: Boolean) {
+        val sharedPreferences = getSharedPreferences("PracticeCameraPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("camera_apple_result", isSuccess)
+        editor.apply()
     }
 }
