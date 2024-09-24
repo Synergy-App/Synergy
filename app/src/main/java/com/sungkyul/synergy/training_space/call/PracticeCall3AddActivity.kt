@@ -1,6 +1,7 @@
 package com.sungkyul.synergy.training_space.call
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -24,6 +25,8 @@ class PracticeCall3AddActivity : AppCompatActivity() {
     private lateinit var timer: CountDownTimer
     private var isTimerRunning = false
     private var remainingTimeInMillis: Long = 30000
+    private var success: Boolean = false // 성공 여부를 나타내는 변수 추가
+
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -97,13 +100,30 @@ class PracticeCall3AddActivity : AppCompatActivity() {
 
             override fun onFinish() {
                 binding.timerTextView.text = "0"
-                // 추가적인 종료 시 처리 로직
-                isTimerRunning = false // 타이머가 종료되었음을 표시
+                saveResult(false) // 실패 결과 저장
+                isTimerRunning = false
+                showHomeScreen()
             }
         }
         timer.start()
         isTimerRunning = true
     }
+
+    private fun saveResult(isSuccess: Boolean) {
+        val sharedPreferences = getSharedPreferences("PracticeCallPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("call_result", isSuccess)
+        editor.apply()
+    }
+
+    private fun showHomeScreen() {
+        timer.cancel() // 타이머를 취소
+        saveResult(success) // 현재의 성공 여부를 저장
+        val intent = Intent(this, ExamCallResult3Activity::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.scale_up_center, R.anim.fade_out)
+    }
+
 
     @SuppressLint("ClickableViewAccessibility")
     private fun showProblemDialog() {
@@ -125,8 +145,6 @@ class PracticeCall3AddActivity : AppCompatActivity() {
         val confirmButton = dialogView.findViewById<Button>(R.id.confirmButton)
         confirmButton.setOnClickListener {
             alertDialog.dismiss()
-            // 문제 풀이 성공으로 표시
-            // success = true // 필요한 경우 성공 처리
         }
 
         alertDialog.setOnShowListener {

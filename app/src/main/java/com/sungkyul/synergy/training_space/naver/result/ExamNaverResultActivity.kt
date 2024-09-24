@@ -21,7 +21,7 @@ class ExamNaverResultActivity : AppCompatActivity() {
         val sharedPreferences: SharedPreferences =
             getSharedPreferences("practice_naver_result", Context.MODE_PRIVATE)
 
-        val result1 = sharedPreferences.getBoolean("unlock_success", true)
+        val result1 = sharedPreferences.getBoolean("naver_success", true)
 
         val option_text1 = findViewById<TextView>(R.id.option_text1)
         option_text1.text = if (result1) "1. 맞았습니다" else "1. 틀렸습니다"

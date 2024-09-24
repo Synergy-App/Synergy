@@ -18,6 +18,7 @@ import com.sungkyul.synergy.databinding.ActivityPracticeNaver2Binding
 import com.sungkyul.synergy.databinding.ActivityPracticeNaver3Binding
 import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.learning_space.naver.activity.NaverActivity
+import com.sungkyul.synergy.training_space.naver.result.ExamNaverResultActivity
 import com.sungkyul.synergy.utils.edu.EduScreen
 
 class PracticeNaver3Activity : AppCompatActivity() {
@@ -28,11 +29,12 @@ class PracticeNaver3Activity : AppCompatActivity() {
         binding = ActivityPracticeNaver3Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 3초 후에 성공 메시지 표시
+        // 3초 후 화면 전환
         Handler(Looper.getMainLooper()).postDelayed({
-            Toast.makeText(this, "성공!", Toast.LENGTH_SHORT).show()
+            // 화면을 전환할 Activity로 Intent 생성
+            val intent = Intent(this, ExamNaverResultActivity::class.java)
+            startActivity(intent)
         }, 3000)
-
 
         val naverbutton = binding.naverButton
         naverbutton.setOnClickListener {
@@ -68,7 +70,6 @@ class PracticeNaver3Activity : AppCompatActivity() {
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         )
         binding.naverBlogSubInfoText2.text = spannableString1
-
 
 
     }

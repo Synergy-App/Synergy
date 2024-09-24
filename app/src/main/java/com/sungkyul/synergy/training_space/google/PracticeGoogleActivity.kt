@@ -1,6 +1,7 @@
 package com.sungkyul.synergy.training_space.google
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +16,8 @@ import androidx.appcompat.app.AlertDialog
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.databinding.ActivityPracticeGoogleBinding
 import com.sungkyul.synergy.training_space.call.problem.ExamCallProblem2Activity
+import com.sungkyul.synergy.training_space.setting.PracticeSettingFontActivity
+import com.sungkyul.synergy.training_space.setting.result.ExamSettingResultActivity
 
 class PracticeGoogleActivity : AppCompatActivity() {
 
@@ -101,10 +104,11 @@ class PracticeGoogleActivity : AppCompatActivity() {
 
             override fun onFinish() {
                 binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
-                // 타이머가 끝났을 때의 동작 추가
+                saveResult(false) // 실패 결과 저장
+                isTimerRunning = false
+                showHomeScreen()
             }
-        }
-        timer.start() // 타이머 시작
+        }.start()
         isTimerRunning = true
     }
 
@@ -152,6 +156,20 @@ class PracticeGoogleActivity : AppCompatActivity() {
         val intent = Intent(this, ExamCallProblem2Activity::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.stay, R.anim.stay)
+    }
+
+    private fun saveResult(isSuccess: Boolean) {
+        val sharedPreferences = getSharedPreferences("PracticeGooglePrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("google_result", isSuccess)
+        editor.apply()
+    }
+
+    private fun showHomeScreen() {
+        timer.cancel() // 타이머를 취소
+        saveResult(success) // 현재의 성공 여부를 저장
+        val intent = Intent(this, ExamSettingResultActivity::class.java)
+        startActivity(intent)
     }
 
 

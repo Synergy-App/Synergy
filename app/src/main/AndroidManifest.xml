@@ -19,11 +19,27 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".training_space.kakao.PracticeKakao2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.google.result.ExamGoogleResultActivity"
+            android:exported="false" />
+        <activity
             android:name=".training_space.kakao.PracticeKakao33Activity"
             android:exported="false" />
         <activity
-            android:name=".training_space.kakao.PracticeKakao2Activity"
+            android:name=".training_space.setting.result.ExamSettingResultActivity"
             android:exported="false" />
+        <activity
+            android:name=".training_space.call.result.CallResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.kakao.result.ExamKakaoResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.naver.result.ExamNaverResultActivity"
+            android:exported="false" />
+
         <activity
             android:name=".training_space.kakao.PracticeKakaoActivity"
             android:exported="false" />

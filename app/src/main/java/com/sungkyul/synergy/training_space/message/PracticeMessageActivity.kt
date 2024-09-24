@@ -18,6 +18,7 @@ import com.sungkyul.synergy.databinding.ActivityPracticeMessageBinding
 import com.sungkyul.synergy.learning_space.default_app.message.adapter.MessageAdapter
 import com.sungkyul.synergy.learning_space.default_app.message.adapter.MessageData
 import com.sungkyul.synergy.learning_space.default_app.message.adapter.MyMessageData
+import com.sungkyul.synergy.training_space.call.PracticeCall2ResultActivity
 import com.sungkyul.synergy.training_space.message.result.ExamMessageResultActivity
 import com.sungkyul.synergy.utils.AnimUtils
 import com.sungkyul.synergy.utils.DateTimeUtils
@@ -97,15 +98,12 @@ class PracticeMessageActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
-                // 성공하지 않았을 때만 실패 처리
-                if (!success) {
-                    binding.timerTextView.text = "0"
-                }
-                returnToHomeScreen() // 홈 화면으로 이동
+                binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
+                saveResult(false) // 실패 결과 저장
+                isTimerRunning = false
+                showHomeScreen()
             }
-        }
-
-        timer.start() // 액티비티가 생성되면 타이머 시작
+        }.start()
         isTimerRunning = true
     }
 
@@ -180,11 +178,28 @@ class PracticeMessageActivity : AppCompatActivity() {
         }
     }
 
+    private fun saveResult(isSuccess: Boolean) {
+        val sharedPreferences = getSharedPreferences("PracticeMessagePrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("message_result", isSuccess)
+        editor.apply()
+    }
+
+    private fun showHomeScreen() {
+        timer.cancel() // 타이머를 취소
+        saveResult(success) // 현재의 성공 여부를 저장
+        val intent = Intent(this, ExamMessageResultActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.scale_up_center, R.anim.fade_out)
+    }
+
+
     private val onTouchButtonListener = View.OnTouchListener { view, event ->
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
                 AnimUtils.startTouchDownButtonAnimation(this, view)
             }
+
             MotionEvent.ACTION_UP -> {
                 AnimUtils.startTouchUpButtonAnimation(this, view)
                 view.performClick()
@@ -193,11 +208,17 @@ class PracticeMessageActivity : AppCompatActivity() {
         true
     }
 
-    private fun handleSendButtonTouch(view: View, event: MotionEvent, now: LocalDateTime, messageArray: ArrayList<MessageData>) {
+    private fun handleSendButtonTouch(
+        view: View,
+        event: MotionEvent,
+        now: LocalDateTime,
+        messageArray: ArrayList<MessageData>
+    ) {
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
                 AnimUtils.startTouchDownButtonAnimation(this, view)
             }
+
             MotionEvent.ACTION_UP -> {
                 AnimUtils.startTouchUpButtonAnimation(this, view)
 
@@ -249,6 +270,7 @@ class PracticeMessageActivity : AppCompatActivity() {
             MotionEvent.ACTION_DOWN -> {
                 AnimUtils.startTouchDownButtonAnimation(this, view)
             }
+
             MotionEvent.ACTION_UP -> {
                 AnimUtils.startTouchUpButtonAnimation(this, view)
                 view.performClick()

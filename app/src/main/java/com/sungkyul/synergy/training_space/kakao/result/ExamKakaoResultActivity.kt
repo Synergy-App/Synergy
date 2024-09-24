@@ -1,27 +1,27 @@
-package com.sungkyul.synergy.training_space.message.result
+package com.sungkyul.synergy.training_space.kakao.result
 
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.training_space.activity.ExamProblemActivity
 import com.sungkyul.synergy.training_space.screen.PracticeWebViewActivity
 import com.sungkyul.synergy.utils.GalaxyButton
 
-class ExamMessageResultActivity : AppCompatActivity() {
+class ExamKakaoResultActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exam_message_result)
         // SharedPreferences에서 결과를 가져옴
         val sharedPreferences: SharedPreferences =
-            getSharedPreferences("PracticeMessagePrefs", Context.MODE_PRIVATE)
+            getSharedPreferences("PracticeKakaoPrefs", Context.MODE_PRIVATE)
 
-        val result1 = sharedPreferences.getBoolean("message_result", true)
+        val result1 = sharedPreferences.getBoolean("kakao_result", true)
 
         val option_text1 = findViewById<TextView>(R.id.option_text1)
         option_text1.text = if (result1) "1. 맞았습니다" else "1. 틀렸습니다"

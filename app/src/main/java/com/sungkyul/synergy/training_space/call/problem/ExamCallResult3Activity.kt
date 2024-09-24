@@ -23,6 +23,7 @@ import com.sungkyul.synergy.learning_space.default_app.phone.adapter.ContactData
 import com.sungkyul.synergy.learning_space.default_app.phone.fragment.DefaultPhoneRecentHistoryFragment
 import com.sungkyul.synergy.training_space.call.DefaultPhoneContact2Fragment
 import com.sungkyul.synergy.training_space.call.DefaultPhoneKeypadFragment2
+import com.sungkyul.synergy.training_space.call.result.CallResultActivity
 import com.sungkyul.synergy.utils.GalaxyButton
 
 class ExamCallResult3Activity : AppCompatActivity() {
@@ -45,7 +46,12 @@ class ExamCallResult3Activity : AppCompatActivity() {
         binding = ActivityExamCallResult3Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        startTimer()
+        //startTimer()
+        Handler(Looper.getMainLooper()).postDelayed({
+            val intent = Intent(this, CallResultActivity::class.java)
+            startActivity(intent)
+        }, 3000)
+
 
         // Fragments
         recentHistoryFragment = DefaultPhoneRecentHistoryFragment()
@@ -66,13 +72,6 @@ class ExamCallResult3Activity : AppCompatActivity() {
             textView.setPadding(8, 8, 8, 8)
             contactListContainer.addView(textView)
         }
-
-        // 3초 후에 성공 메시지 표시 TODO -------------
-//        Handler(Looper.getMainLooper()).postDelayed({
-//            val intent = Intent(this, ExamCallProblem2Activity::class.java)
-//            startActivity(intent)
-//        }, 3000)}
-
         // 타이머 초기화
         timer = object : CountDownTimer(remainingTimeInMillis, 1000) {
             override fun onTick(millisUntilFinished: Long) {

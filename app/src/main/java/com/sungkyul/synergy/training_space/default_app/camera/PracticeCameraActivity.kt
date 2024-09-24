@@ -30,35 +30,35 @@ class PracticeCameraActivity : AppCompatActivity() {
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            binding = ActivityPracticeCameraBinding.inflate(layoutInflater)
-            setContentView(binding.root)
+        super.onCreate(savedInstanceState)
+        binding = ActivityPracticeCameraBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-            onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    val intent = Intent(binding.root.context, PracticeCamera2Activity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-                    startActivity(intent)
-                }
-            })
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val intent = Intent(binding.root.context, PracticeCamera2Activity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                startActivity(intent)
+            }
+        })
 
-            // 버튼의 배경 알파 값 초기화
-            binding.settingsButton.background.alpha = TOUCH_UP_ALPHA
-            binding.flashButton.background.alpha = TOUCH_UP_ALPHA
-            binding.timerButton.background.alpha = TOUCH_UP_ALPHA
-            binding.ratioButton.background.alpha = TOUCH_UP_ALPHA
-            binding.motionPhotoButton.background.alpha = TOUCH_UP_ALPHA
-            binding.filterButton.background.alpha = TOUCH_UP_ALPHA
-            binding.galleryButton.background.alpha = TOUCH_UP_ALPHA
-            binding.cameraToggleButton.background.alpha = TOUCH_UP_ALPHA
+        // 버튼의 배경 알파 값 초기화
+        binding.settingsButton.background.alpha = TOUCH_UP_ALPHA
+        binding.flashButton.background.alpha = TOUCH_UP_ALPHA
+        binding.timerButton.background.alpha = TOUCH_UP_ALPHA
+        binding.ratioButton.background.alpha = TOUCH_UP_ALPHA
+        binding.motionPhotoButton.background.alpha = TOUCH_UP_ALPHA
+        binding.filterButton.background.alpha = TOUCH_UP_ALPHA
+        binding.galleryButton.background.alpha = TOUCH_UP_ALPHA
+        binding.cameraToggleButton.background.alpha = TOUCH_UP_ALPHA
 
-            // 버튼의 이벤트 리스너 연결
-            binding.settingsButton.setOnTouchListener(onTouchSettingsListener)
-            binding.flashButton.setOnTouchListener(onTouchFlashListener)
-            binding.timerButton.setOnTouchListener(onTouchTimerListener)
-            binding.galleryButton.setOnTouchListener(onTouchGalleryListener)
-            binding.shootingButton.setOnTouchListener(onTouchShootingListener)
-            binding.cameraToggleButton.setOnTouchListener(onTouchCameraToggleListener)
+        // 버튼의 이벤트 리스너 연결
+        binding.settingsButton.setOnTouchListener(onTouchSettingsListener)
+        binding.flashButton.setOnTouchListener(onTouchFlashListener)
+        binding.timerButton.setOnTouchListener(onTouchTimerListener)
+        binding.galleryButton.setOnTouchListener(onTouchGalleryListener)
+        binding.shootingButton.setOnTouchListener(onTouchShootingListener)
+        binding.cameraToggleButton.setOnTouchListener(onTouchCameraToggleListener)
         // 타이머 시작
         startTimer(remainingTimeInMillis)
     }
@@ -76,6 +76,7 @@ class PracticeCameraActivity : AppCompatActivity() {
             startTimer(pausedTimeInMillis)
         }
     }
+
     private fun showRecentlyScreen() {
         timer.cancel() // 타이머를 취소
         saveResult(success) // 현재의 성공 여부를 저장
@@ -83,6 +84,7 @@ class PracticeCameraActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
     private fun startTimer(startTimeInMillis: Long = remainingTimeInMillis) {
         timer = object : CountDownTimer(startTimeInMillis, 1000) {
             override fun onTick(millisUntilFinished: Long) {
@@ -146,103 +148,160 @@ class PracticeCameraActivity : AppCompatActivity() {
     }
 
     private fun saveResult(isSuccess: Boolean) {
-        // 일단 임시로 저장하겠습니다잉.!!!! TODO : !!!!!!!!!!!!!
-        val sharedPreferences = getSharedPreferences("000", Context.MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences("PracticeCameraPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putBoolean("camera_quiz_result", isSuccess)
         editor.apply()
     }
 
-// 설정 버튼의 터치 이벤트 리스너
-        private val onTouchSettingsListener = View.OnTouchListener { view, event ->
-            when(event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
-                }
-                MotionEvent.ACTION_UP -> {
-                    AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
-                    view.performClick()
-                }
+    // 설정 버튼의 터치 이벤트 리스너
+    private val onTouchSettingsListener = View.OnTouchListener { view, event ->
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+                AnimUtils.startAlphaAnimation(
+                    view.background,
+                    TOUCH_DURATION_ALPHA,
+                    TOUCH_UP_ALPHA,
+                    TOUCH_DOWN_ALPHA
+                )
             }
-            true
-        }
 
-        // 플래시 버튼의 터치 이벤트 리스너
-        private val onTouchFlashListener = View.OnTouchListener { view, event ->
-            when(event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
-                }
-                MotionEvent.ACTION_UP -> {
-                    AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
-                    view.performClick()
-                }
+            MotionEvent.ACTION_UP -> {
+                AnimUtils.startAlphaAnimation(
+                    view.background,
+                    TOUCH_DURATION_ALPHA,
+                    TOUCH_DOWN_ALPHA,
+                    TOUCH_UP_ALPHA
+                )
+                view.performClick()
             }
-            true
         }
-
-     private val onTouchTimerListener = View.OnTouchListener { view, event ->
-            when(event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
-                }
-                MotionEvent.ACTION_UP -> {
-                    AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
-                    view.performClick()
-                }
-            }
-            true
-        }
-
-        // 갤러리 버튼의 터치 이벤트 리스너
-        private val onTouchGalleryListener = View.OnTouchListener { view, event ->
-            when(event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
-                }
-                MotionEvent.ACTION_UP -> {
-                    AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
-
-                    // 갤러리 뷰로 이동한다.
-                    val intent = Intent(this, PracticeCamera2Activity::class.java)
-                    startActivity(intent)
-
-                    view.performClick()
-                }
-            }
-            true
-        }
-
-        // 촬영 버튼의 터치 이벤트 리스너
-        private val onTouchShootingListener = View.OnTouchListener { view, event ->
-            when(event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    view.background = ContextCompat.getDrawable(applicationContext, R.drawable.camera_grey_circle)
-                }
-                MotionEvent.ACTION_UP -> {
-                    view.background = ContextCompat.getDrawable(applicationContext, R.drawable.white_circle)
-
-                    AnimUtils.startShootingAnimation(this, binding.cameraScreen)
-
-                    binding.eduScreen.onAction("click_shooting_button")
-
-                    view.performClick()
-                }
-            }
-            true
-        }
-
-        // 카메라 토글 버튼의 터치 이벤트 리스너
-        private val onTouchCameraToggleListener = View.OnTouchListener { view, event ->
-            when(event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_UP_ALPHA, TOUCH_DOWN_ALPHA)
-                }
-                MotionEvent.ACTION_UP -> {
-                    AnimUtils.startAlphaAnimation(view.background, TOUCH_DURATION_ALPHA, TOUCH_DOWN_ALPHA, TOUCH_UP_ALPHA)
-                    view.performClick()
-                }
-            }
-            true
-        }
+        true
     }
+
+    // 플래시 버튼의 터치 이벤트 리스너
+    private val onTouchFlashListener = View.OnTouchListener { view, event ->
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+                AnimUtils.startAlphaAnimation(
+                    view.background,
+                    TOUCH_DURATION_ALPHA,
+                    TOUCH_UP_ALPHA,
+                    TOUCH_DOWN_ALPHA
+                )
+            }
+
+            MotionEvent.ACTION_UP -> {
+                AnimUtils.startAlphaAnimation(
+                    view.background,
+                    TOUCH_DURATION_ALPHA,
+                    TOUCH_DOWN_ALPHA,
+                    TOUCH_UP_ALPHA
+                )
+                view.performClick()
+            }
+        }
+        true
+    }
+
+    private val onTouchTimerListener = View.OnTouchListener { view, event ->
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+                AnimUtils.startAlphaAnimation(
+                    view.background,
+                    TOUCH_DURATION_ALPHA,
+                    TOUCH_UP_ALPHA,
+                    TOUCH_DOWN_ALPHA
+                )
+            }
+
+            MotionEvent.ACTION_UP -> {
+                AnimUtils.startAlphaAnimation(
+                    view.background,
+                    TOUCH_DURATION_ALPHA,
+                    TOUCH_DOWN_ALPHA,
+                    TOUCH_UP_ALPHA
+                )
+                view.performClick()
+            }
+        }
+        true
+    }
+
+    // 갤러리 버튼의 터치 이벤트 리스너
+    private val onTouchGalleryListener = View.OnTouchListener { view, event ->
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+                AnimUtils.startAlphaAnimation(
+                    view.background,
+                    TOUCH_DURATION_ALPHA,
+                    TOUCH_UP_ALPHA,
+                    TOUCH_DOWN_ALPHA
+                )
+            }
+
+            MotionEvent.ACTION_UP -> {
+                AnimUtils.startAlphaAnimation(
+                    view.background,
+                    TOUCH_DURATION_ALPHA,
+                    TOUCH_DOWN_ALPHA,
+                    TOUCH_UP_ALPHA
+                )
+
+                // 갤러리 뷰로 이동한다.
+                val intent = Intent(this, PracticeCamera2Activity::class.java)
+                startActivity(intent)
+
+                view.performClick()
+            }
+        }
+        true
+    }
+
+    // 촬영 버튼의 터치 이벤트 리스너
+    private val onTouchShootingListener = View.OnTouchListener { view, event ->
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+                view.background =
+                    ContextCompat.getDrawable(applicationContext, R.drawable.camera_grey_circle)
+            }
+
+            MotionEvent.ACTION_UP -> {
+                view.background =
+                    ContextCompat.getDrawable(applicationContext, R.drawable.white_circle)
+
+                AnimUtils.startShootingAnimation(this, binding.cameraScreen)
+
+                binding.eduScreen.onAction("click_shooting_button")
+
+                view.performClick()
+            }
+        }
+        true
+    }
+
+    // 카메라 토글 버튼의 터치 이벤트 리스너
+    private val onTouchCameraToggleListener = View.OnTouchListener { view, event ->
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+                AnimUtils.startAlphaAnimation(
+                    view.background,
+                    TOUCH_DURATION_ALPHA,
+                    TOUCH_UP_ALPHA,
+                    TOUCH_DOWN_ALPHA
+                )
+            }
+
+            MotionEvent.ACTION_UP -> {
+                AnimUtils.startAlphaAnimation(
+                    view.background,
+                    TOUCH_DURATION_ALPHA,
+                    TOUCH_DOWN_ALPHA,
+                    TOUCH_UP_ALPHA
+                )
+                view.performClick()
+            }
+        }
+        true
+    }
+}
