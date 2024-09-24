@@ -6,6 +6,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Handler
+import android.os.Looper
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -152,10 +154,6 @@ class PracticeMessageActivity : AppCompatActivity() {
         isTimerRunning = false
     }
 
-    private fun returnToHomeScreen() {
-        val intent = Intent(this, ExamMessageResultActivity::class.java)
-        startActivity(intent)
-    }
 
     private fun initTouchAnimations() {
         // 버튼의 터치 애니메이션을 초기화한다.
@@ -245,7 +243,7 @@ class PracticeMessageActivity : AppCompatActivity() {
 
                         // Clear the input field
                         binding.messageEditText.text.clear()
-
+                        saveResult(true) // 실패 결과 저장
                         // Hide the keyboard
                         val inputMethodManager =
                             getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -256,9 +254,14 @@ class PracticeMessageActivity : AppCompatActivity() {
 
                         // Set success to true immediately when the message is sent
                         success = true
+                        Handler(Looper.getMainLooper()).postDelayed({
+                            // 화면을 전환할 Activity로 Intent 생성
+                            val intent = Intent(this,ExamMessageResultActivity::class.java)
+                            startActivity(intent)
+                            // 현재 Activity 종료 (선택사항)
+                            finish()
+                        }, 3000) // 3000ms = 3초
                     }
-
-                    returnToHomeScreen() // Always return to home after sending
                     view.performClick()
                 }
             }
