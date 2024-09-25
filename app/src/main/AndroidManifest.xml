@@ -19,10 +19,22 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".training_space.install.PracticeInstall3Activity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.install.PracticeInstall2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".training_space.install.PracticeInstallActivity"
+            android:exported="false" />
+        <activity android:name=".training_space.install.problem.ExamInstallActivity" />
+
+        <activity android:name=".training_space.install.result.ExamInstallResultActivity" />
+
+        <activity
             android:name=".training_space.default_app.camera.result.ExamCameraResultActivity"
             android:exported="false" />
         <activity android:name=".training_space.default_app.camera.CameraResultActivity" />
-
         <activity
             android:name=".training_space.kakao.PracticeKakao2Activity"
             android:exported="false" />
