@@ -14,6 +14,7 @@ import com.sungkyul.synergy.training_space.NewScreenPracticeActivity
 import com.sungkyul.synergy.training_space.call.problem.ExamCallProblemActivity
 import com.sungkyul.synergy.training_space.default_app.camera.problem.ExamCameraProblemActivity
 import com.sungkyul.synergy.training_space.google.problem.ExamGoogleProblem
+import com.sungkyul.synergy.training_space.install.problem.ExamInstallActivity
 import com.sungkyul.synergy.training_space.kakao.PracticeKakaoActivity
 import com.sungkyul.synergy.training_space.kakao.problem.ExamKakaoProblem
 import com.sungkyul.synergy.training_space.message.problem.ExamMessageActivity
@@ -64,7 +65,7 @@ class ChooseTypeActivity : AppCompatActivity() {
             5 -> Intent(this, ExamMessageActivity::class.java) //문자
             6 -> Intent(this, ExamSettingActivity::class.java) //환경 설정
             7 -> Intent(this, ExamGoogleProblem::class.java) //계정 생성
-            // 8 -> Intent(this, SubjectiveActivity8::class.java) //앱 설치
+            8 -> Intent(this, ExamInstallActivity::class.java) //앱 설치
             9 -> Intent(this, ExamKakaoProblem::class.java) //카카오톡
             10 -> Intent(this, ExamNaverProblem::class.java) //네이버
 

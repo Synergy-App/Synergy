@@ -1,10 +1,14 @@
-package com.sungkyul.synergy.learning_space.appinstall
+package com.sungkyul.synergy.training_space.install
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Build
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.os.Handler
 import android.view.View
 import android.view.animation.AnimationUtils
@@ -12,38 +16,34 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AlertDialog
 import androidx.core.graphics.drawable.DrawableCompat
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.courses.app_installation.InstallLoadingCourse
-import com.sungkyul.synergy.courses.app_installation.InstallSearchCourse
-import com.sungkyul.synergy.databinding.ActivityAppinstallLoadingBinding
-import com.sungkyul.synergy.databinding.ActivityAppinstallSearchBinding
-import com.sungkyul.synergy.home.activity.MainActivity
-import com.sungkyul.synergy.learning_space.EduCompletionActivity
+import com.sungkyul.synergy.databinding.ActivityPracticeInstall3Binding
+import com.sungkyul.synergy.databinding.ActivityPracticeInstallBinding
+import com.sungkyul.synergy.training_space.install.result.ExamInstallResultActivity
+import com.sungkyul.synergy.training_space.message.result.ExamMessageResultActivity
 
-class AppInstallLoadingActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityAppinstallLoadingBinding
+class PracticeInstall3Activity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityPracticeInstall3Binding
+    private lateinit var timer: CountDownTimer
+    private var isTimerRunning = false
+    private var remainingTimeInMillis: Long = 30000
+    private var pausedTimeInMillis: Long = 0 // 타이머가 일시정지된 시간
+    private var success: Boolean = false // 성공 여부를 나타내는 변수 추가
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAppinstallLoadingBinding.inflate(layoutInflater)
+        binding = ActivityPracticeInstall3Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        // 교육을 정의해보자!
-//        binding.eduScreen.post {
-//            binding.eduScreen.course = InstallLoadingCourse(binding.eduScreen)
-//
-//            binding.eduScreen.setOnFinishedCourseListener {
-//                // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
-//
-//                val intent = Intent(binding.root.context, EduCompletionActivity::class.java)
-//                intent.putExtra("course", "appinstall")
-//                startActivity(intent)
-//            }
-//            // 교육을 시작한다.
-//            binding.eduScreen.start(this)
-//        }
+
+        startTimer(remainingTimeInMillis)
+        binding.problemText.setOnClickListener {
+            showProblemDialog()
+        }
 
         // 카카오 로고 이미지 서서히 줄어드는 애니메이션
         val kakaoAppImage = findViewById<ImageView>(R.id.kakao_app_image)
@@ -127,6 +127,101 @@ class AppInstallLoadingActivity : AppCompatActivity() {
             findViewById<Button>(R.id.after_kakao_install_btn).visibility = View.VISIBLE
         }, 11000)
 
+        saveResult(true)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (isTimerRunning) {
+            pausedTimeInMillis = remainingTimeInMillis
+            timer.cancel() // 타이머를 취소하여 불필요한 시간 감소를 막음
+            isTimerRunning = false
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (!isTimerRunning) {
+            startTimer(pausedTimeInMillis)
+        }
+    }
+
+    private fun startTimer(startTimeInMillis: Long = remainingTimeInMillis) {
+        timer = object : CountDownTimer(startTimeInMillis, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                remainingTimeInMillis = millisUntilFinished
+                val secondsLeft = millisUntilFinished / 1000
+                binding.timerTextView.text = secondsLeft.toString() // 초를 텍스트뷰에 표시
+            }
+
+            override fun onFinish() {
+                binding.timerTextView.text = "0" // 타이머 종료 시 "0"으로 표시
+                saveResult(false) // 실패 결과 저장
+                isTimerRunning = false
+                showHomeScreen()
+            }
+        }.start()
+        isTimerRunning = true
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun showProblemDialog() {
+        val dialogBuilder = AlertDialog.Builder(this)
+
+        // 커스텀 레이아웃을 설정하기 위한 레이아웃 인플레이터
+        val inflater = this.layoutInflater
+        val dialogView = inflater.inflate(R.layout.dialoglayout, null)
+
+        dialogBuilder.setView(dialogView)
+
+        val alertDialog = dialogBuilder.create()
+
+        // 다이얼로그 메시지 텍스트뷰 설정
+        val numberTextView = dialogView.findViewById<TextView>(R.id.dialogNumber)
+        numberTextView.text = "문제 1."
+
+        val messageTextView = dialogView.findViewById<TextView>(R.id.dialogMessage)
+        messageTextView.text = "'카카오톡'을 검색하고 '카카오톡 어플을 설치하시오."
+        messageTextView.textSize = 20f // 글씨 크기 설정
+
+        // 확인 버튼 설정
+        val confirmButton = dialogView.findViewById<Button>(R.id.confirmButton)
+        confirmButton.setOnClickListener {
+            alertDialog.dismiss() // 다이얼로그 닫기
+            // 타이머를 다시 시작
+            startTimer(remainingTimeInMillis)
+        }
+
+        alertDialog.setOnShowListener {
+            timer.cancel() // 다이얼로그가 열릴 때 타이머 멈춤
+            isTimerRunning = false
+        }
+
+        alertDialog.setOnDismissListener {
+            // 다이얼로그가 닫힐 때 타이머 다시 시작
+            startTimer(remainingTimeInMillis)
+        }
+
+        alertDialog.show()
+
+        // 타이머 멈춤
+        timer.cancel()
+        isTimerRunning = false
+    }
+
+    private fun saveResult(isSuccess: Boolean) {
+        val sharedPreferences = getSharedPreferences("PracticeInstallPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("install_result", isSuccess)
+        editor.apply()
+    }
+
+    private fun showHomeScreen() {
+        timer.cancel() // 타이머를 취소
+        saveResult(success) // 현재의 성공 여부를 저장
+        val intent = Intent(this, ExamInstallResultActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.scale_up_center, R.anim.fade_out)
 
     }
 }
