@@ -256,7 +256,7 @@ class PracticeCamera3Activity : AppCompatActivity() {
     private fun saveResult(isSuccess: Boolean) {
         val sharedPreferences = getSharedPreferences("PracticeCameraPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
-        editor.putBoolean("camera_apple_result", isSuccess)
+        editor.putBoolean("apple_result", isSuccess)
         editor.apply()
     }
 

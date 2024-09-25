@@ -107,7 +107,7 @@ class PracticeResultGalleryActivity : AppCompatActivity() {
             // 확인 버튼 클릭 시 작업
             dialog.dismiss()
 
-            saveResult(false) // 실패 결과 저장
+            saveResult(true) // 실패 결과 저장
 
             Handler(Looper.getMainLooper()).postDelayed({
                 val intent = Intent(this, ExamCameraResultActivity::class.java)
@@ -150,7 +150,7 @@ class PracticeResultGalleryActivity : AppCompatActivity() {
     private fun saveResult(isSuccess: Boolean) {
         val sharedPreferences = getSharedPreferences("PracticeCameraPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
-        editor.putBoolean("camera_apple_result", isSuccess)
+        editor.putBoolean("apple_result", isSuccess)
         editor.apply()
     }
 

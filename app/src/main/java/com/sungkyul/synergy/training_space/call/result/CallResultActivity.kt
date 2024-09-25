@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.training_space.activity.ExamProblemActivity
+import com.sungkyul.synergy.training_space.call.problem.ExamCallProblemActivity
 import com.sungkyul.synergy.training_space.screen.PracticeWebViewActivity
 import com.sungkyul.synergy.utils.GalaxyButton
 
@@ -22,8 +23,7 @@ class CallResultActivity : AppCompatActivity() {
         // SharedPreferences에서 결과를 가져옴
         val sharedPreferences: SharedPreferences =
             getSharedPreferences("PracticeCallPrefs", Context.MODE_PRIVATE)
-        val result4 = sharedPreferences.getBoolean("call5_result", true)
-        val result5 = sharedPreferences.getBoolean("call4_result", true)
+
         val result1 = sharedPreferences.getBoolean("call_result", true)
         val result2 = sharedPreferences.getBoolean("call2_result", true)
         val result3 = sharedPreferences.getBoolean("call3_result", true)
@@ -34,10 +34,6 @@ class CallResultActivity : AppCompatActivity() {
         option_text2.text = if (result2) "2. 맞았습니다" else "2. 틀렸습니다"
         val option_text3 = findViewById<TextView>(R.id.option_text3)
         option_text3.text = if (result3) "3. 맞았습니다" else "3. 틀렸습니다"
-        val option_text4 = findViewById<TextView>(R.id.option_text4)
-        option_text4.text = if (result4) "4. 맞았습니다" else "4. 틀렸습니다"
-        val option_text5 = findViewById<TextView>(R.id.option_text5)
-        option_text5.text = if (result5) "5. 맞았습니다" else "5. 틀렸습니다"
 
         val problem1 = findViewById<ImageView>(R.id.problem1)
         problem1.setImageResource(if (result1) R.drawable.correct else R.drawable.wrong)
@@ -48,11 +44,6 @@ class CallResultActivity : AppCompatActivity() {
         val problem3 = findViewById<ImageView>(R.id.problem3)
         problem3.setImageResource(if (result3) R.drawable.correct else R.drawable.wrong)
 
-        val problem4 = findViewById<ImageView>(R.id.problem4)
-        problem4.setImageResource(if (result4) R.drawable.correct else R.drawable.wrong)
-
-        val problem5 = findViewById<ImageView>(R.id.problem5)
-        problem5.setImageResource(if (result5) R.drawable.correct else R.drawable.wrong)
 
         // 클릭 이벤트 처리 잠금화면
         problem1.setOnClickListener {
@@ -66,16 +57,6 @@ class CallResultActivity : AppCompatActivity() {
         // 밝기 조절
         problem3.setOnClickListener {
             startWebViewActivity("https://youtu.be/rLWAD9LW4aY", "화면 밝기를 올리세요.")
-        }
-
-        // 앱 꺼내기
-        problem4.setOnClickListener {
-            startWebViewActivity("https://youtube.com/shorts/t5foNMcSMn0", "플레이 스토어를 홈 화면으로 이동하시오.")
-        }
-
-        // 최근 실행
-        problem5.setOnClickListener {
-            startWebViewActivity("https://youtu.be/UVARovWqK-M", "최근 사용한 앱 목록을 확인하세요.")
         }
 
         val problemBtn = findViewById<GalaxyButton>(R.id.try_again_btn)
@@ -93,7 +74,7 @@ class CallResultActivity : AppCompatActivity() {
 
         // 다시풀기 버튼
         problemBtn.setOnClickListener {
-            val intent = Intent(this, ExamProblemActivity::class.java)
+            val intent = Intent(this, ExamCallProblemActivity::class.java)
             startActivity(intent)
         }
     }
@@ -104,6 +85,4 @@ class CallResultActivity : AppCompatActivity() {
         intent.putExtra("LEARNING_INFO", learningInfo)
         startActivity(intent)
     }
-
-
 }

@@ -42,8 +42,6 @@ class PracticeCall3Activity : AppCompatActivity() {
         recentHistoryFragment = DefaultPhoneRecentHistoryFragment()
         contactFragment = DefaultPhoneContact2Fragment(eduListener = binding.eduScreen)
 
-        // 초기 메인 레이아웃 배경 설정
-        updateMainBgColor(R.color.phoneBgColor)
         setupButtons()
 
         replaceFragment(contactFragment)
@@ -171,11 +169,6 @@ class PracticeCall3Activity : AppCompatActivity() {
         overridePendingTransition(R.anim.stay, R.anim.stay)
     }
 
-    private fun updateMainBgColor(color: Int) {
-        val drawable = ContextCompat.getDrawable(applicationContext, color)
-        binding.phoneBottomNav.background = drawable
-        binding.mainLayout.background = drawable
-    }
 
     private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
