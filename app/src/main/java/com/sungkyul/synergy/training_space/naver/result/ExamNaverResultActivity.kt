@@ -10,6 +10,7 @@ import android.widget.TextView
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.training_space.activity.ExamProblemActivity
+import com.sungkyul.synergy.training_space.naver.problem.ExamNaverProblem
 import com.sungkyul.synergy.training_space.screen.PracticeWebViewActivity
 import com.sungkyul.synergy.utils.GalaxyButton
 
@@ -48,7 +49,7 @@ class ExamNaverResultActivity : AppCompatActivity() {
 
         // 다시풀기 버튼
         problemBtn.setOnClickListener {
-            val intent = Intent(this, ExamProblemActivity::class.java)
+            val intent = Intent(this, ExamNaverProblem::class.java)
             startActivity(intent)
         }
     }

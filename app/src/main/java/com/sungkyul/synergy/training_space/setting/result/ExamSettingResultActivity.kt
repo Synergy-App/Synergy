@@ -11,6 +11,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.training_space.activity.ExamProblemActivity
 import com.sungkyul.synergy.training_space.screen.PracticeWebViewActivity
+import com.sungkyul.synergy.training_space.setting.problem.ExamSettingActivity
 import com.sungkyul.synergy.utils.GalaxyButton
 
 class ExamSettingResultActivity : AppCompatActivity() {
@@ -48,7 +49,7 @@ class ExamSettingResultActivity : AppCompatActivity() {
 
         // 다시풀기 버튼
         problemBtn.setOnClickListener {
-            val intent = Intent(this, ExamProblemActivity::class.java)
+            val intent = Intent(this, ExamSettingActivity::class.java)
             startActivity(intent)
         }
     }
