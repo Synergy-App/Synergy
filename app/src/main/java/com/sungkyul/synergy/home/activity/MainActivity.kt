@@ -82,15 +82,19 @@ class MainActivity : AppCompatActivity() {
             "SolvingFragment" -> {
                 setFragment(Tag_solving, SolvingFragment())
             }
+
             "LearningScreenFragment" -> {
                 setFragment("LearningScreenFragment", LearningScreenFragment())
             }
+
             "MyExamResultFragment" -> {
                 setFragment(Tag_examResult, MyExamResultFragment())
             }
+
             "CheckLearningAbilityFragment" -> {
                 setFragment("CheckLearningAbilityFragment", CheckLearningAbilityFragment())
             }
+
             else -> {
                 // 기본 프래그먼트 설정
                 setFragment(Tag_learning, LearningFragment())
@@ -101,16 +105,26 @@ class MainActivity : AppCompatActivity() {
 
     public fun setFragment(tag: String, fragment: Fragment) {
         val manager: FragmentManager = supportFragmentManager
+        val currentFragment = manager.findFragmentById(R.id.mainMainFrameLayout)
+
+        // 현재 표시된 프래그먼트가 교체하려는 프래그먼트와 동일한지 확인
+        if (currentFragment != null && currentFragment.tag == tag) {
+            return  // 동일한 프래그먼트를 다시 추가하지 않음
+        }
+
         val existingFragment = manager.findFragmentByTag(tag)
 
-        if (existingFragment == null) {
-            val fragTransaction = manager.beginTransaction()
-            fragTransaction.replace(R.id.mainMainFrameLayout, fragment, tag)
-            fragTransaction.addToBackStack(tag)
-            fragTransaction.commitAllowingStateLoss()
-        } else {
-            manager.popBackStack(tag, FragmentManager.POP_BACK_STACK_INCLUSIVE)
-        }
-    }
+        val transaction = manager.beginTransaction()
 
+        if (existingFragment == null) {
+            // 새로운 프래그먼트를 추가
+            transaction.replace(R.id.mainMainFrameLayout, fragment, tag)
+            transaction.addToBackStack(tag)
+        } else {
+            // 기존 프래그먼트가 백 스택에 있는 경우 복원
+            transaction.replace(R.id.mainMainFrameLayout, existingFragment)
+        }
+
+        transaction.commitAllowingStateLoss()
+    }
 }
