@@ -62,13 +62,7 @@
         <activity android:name=".training_space.kakao.problem.ExamKakaoProblem" />
         <activity
             android:name=".home.activity.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".training_space.google.problem.ExamGoogleProblem"
             android:exported="false" />
@@ -237,7 +231,12 @@
             android:exported="true" />
         <activity
             android:name=".home.activity.SplashActivity"
-            android:exported="true" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".home.activity.LoginActivity"
             android:exported="true" />
@@ -267,7 +266,7 @@
             android:exported="false" />
         <activity
             android:name=".training_space.activity.ExamResultTestActivity"
-            android:exported="false" /> <!-- 고정 SplashActivity -->
+            android:exported="false"></activity>
         <activity
             android:name=".training_space.activity.ExamProblem3Activity"
             android:exported="true" />

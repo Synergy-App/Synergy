@@ -21,6 +21,8 @@ import com.sungkyul.synergy.profile_space.Time
 import com.sungkyul.synergy.training_space.fragment.ExamResultFragment
 import com.sungkyul.synergy.training_space.intent.LearningScreenFragment
 
+/** 시너지 앱 메인 네비게이션 바 + fragment */
+
 class MainActivity : AppCompatActivity() {
     companion object {
         const val Tag_learning = "learn_fragment"
@@ -45,26 +47,24 @@ class MainActivity : AppCompatActivity() {
         // Start the time counter
         Time.startTimeCounter()
 
-        // fragment 또는 target_fragment 값을 확인하여 해당 프래그먼트를 설정합니다.
-        val fragmentName = intent.getStringExtra("fragment") ?: intent.getStringExtra("target_fragment")
+        // target_fragment 값을 확인하여 해당 프래그먼트를 설정합니다.
+        val targetFragment = intent.getStringExtra("target_fragment")
+        if (targetFragment != null) {
+            when (targetFragment) {
+                Tag_examSpace -> {
+                    setFragment(Tag_examSpace, ExamSpaceFragment())
+                    binding.mainNavigationView.selectedItemId = R.id.solvingFragment
+                }
 
-        when (fragmentName) {
-            Tag_examSpace -> {
-                binding.mainNavigationView.selectedItemId = R.id.solvingFragment
-                setFragment(Tag_examSpace, ExamSpaceFragment())
+                else -> setFragment(Tag_learning, LearningFragment())
             }
-            Tag_solving -> setFragment(Tag_solving, SolvingFragment())
-            "LearningScreenFragment" -> setFragment("LearningScreenFragment", LearningScreenFragment())
-            Tag_examResult -> setFragment(Tag_examResult, MyExamResultFragment())
-            "CheckLearningAbilityFragment" -> setFragment("CheckLearningAbilityFragment", CheckLearningAbilityFragment())
-            else -> {
-                // 기본 프래그먼트 설정
-                setFragment(Tag_learning, LearningFragment())
-            }
+        } else {
+            setFragment(Tag_learning, LearningFragment())
         }
 
         // 선택된 navigation item을 확인하여 설정합니다.
-        val selectedNavigationItem = intent.getIntExtra("selected_navigation_item", R.id.learingFragment)
+        val selectedNavigationItem =
+            intent.getIntExtra("selected_navigation_item", R.id.learingFragment)
         binding.mainNavigationView.selectedItemId = selectedNavigationItem
 
         binding.mainNavigationView.setOnItemSelectedListener { item ->
@@ -75,19 +75,56 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+
+        // 하단바까지도 변경하게
+        val fragmentName = intent.getStringExtra("fragment")
+        when (fragmentName) {
+            "SolvingFragment" -> {
+                setFragment(Tag_solving, SolvingFragment())
+            }
+
+            "LearningScreenFragment" -> {
+                setFragment("LearningScreenFragment", LearningScreenFragment())
+            }
+
+            "MyExamResultFragment" -> {
+                setFragment(Tag_examResult, MyExamResultFragment())
+            }
+
+            "CheckLearningAbilityFragment" -> {
+                setFragment("CheckLearningAbilityFragment", CheckLearningAbilityFragment())
+            }
+
+            else -> {
+                // 기본 프래그먼트 설정
+                setFragment(Tag_learning, LearningFragment())
+            }
+        }
+
     }
 
     public fun setFragment(tag: String, fragment: Fragment) {
         val manager: FragmentManager = supportFragmentManager
+        val currentFragment = manager.findFragmentById(R.id.mainMainFrameLayout)
+
+        // 현재 표시된 프래그먼트가 교체하려는 프래그먼트와 동일한지 확인
+        if (currentFragment != null && currentFragment.tag == tag) {
+            return  // 동일한 프래그먼트를 다시 추가하지 않음
+        }
+
         val existingFragment = manager.findFragmentByTag(tag)
 
+        val transaction = manager.beginTransaction()
+
         if (existingFragment == null) {
-            val fragTransaction = manager.beginTransaction()
-            fragTransaction.replace(R.id.mainMainFrameLayout, fragment, tag)
-            fragTransaction.addToBackStack(tag)
-            fragTransaction.commitAllowingStateLoss()
+            // 새로운 프래그먼트를 추가
+            transaction.replace(R.id.mainMainFrameLayout, fragment, tag)
+            transaction.addToBackStack(tag)
         } else {
-            manager.popBackStack(tag, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            // 기존 프래그먼트가 백 스택에 있는 경우 복원
+            transaction.replace(R.id.mainMainFrameLayout, existingFragment)
         }
+
+        transaction.commitAllowingStateLoss()
     }
 }
