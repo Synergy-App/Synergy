@@ -40,6 +40,8 @@ import com.sungkyul.synergy.learning_space.default_app.gallery.activity.DefaultG
 import com.sungkyul.synergy.learning_space.default_app.message.activity.DefaultMessageChattingActivity
 import com.sungkyul.synergy.learning_space.default_app.message.activity.DefaultMessageFirstActivity
 import com.sungkyul.synergy.learning_space.default_app.message.activity.DefaultMessageSelectActivity
+import com.sungkyul.synergy.learning_space.default_app.phone.activity.DefaultPhoneActivity
+import com.sungkyul.synergy.learning_space.default_app.phone.activity.DefaultPhoneAddActivity
 import com.sungkyul.synergy.learning_space.default_app.phone.activity.DefaultPhoneCallActivity
 import com.sungkyul.synergy.learning_space.screen_layout.ScreenFirstActivity
 import com.sungkyul.synergy.learning_space.default_app.phone.activity.DefaultPhoneFirstActivity

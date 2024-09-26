@@ -1,15 +1,27 @@
 package com.sungkyul.synergy.learning_space.default_app.phone.activity
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Debug
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
 import android.view.MotionEvent
+import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.ViewUtils
+import androidx.compose.ui.geometry.Rect
 import com.sungkyul.synergy.databinding.ActivityDefaultPhoneAddBinding
 import com.sungkyul.synergy.courses.default_app.phone.DefaultPhoneCourse3
 import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.utils.AnimUtils
+import com.sungkyul.synergy.utils.TextUtils
 
 class DefaultPhoneAddActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDefaultPhoneAddBinding
@@ -74,13 +86,23 @@ class DefaultPhoneAddActivity : AppCompatActivity() {
                 MotionEvent.ACTION_UP -> {
                     AnimUtils.startTouchUpButtonAnimation(this, view)
 
-                    val intent = Intent(this, DefaultPhoneActivity::class.java)
-                    intent.putExtra("from", "save_contact") // id 값 바꾸기 - 연락처 저장 눌렀을 때 변화하는 화면을 알아야 하기 때문
-                    intent.putExtra("name", binding.phoneNameEditText.text.toString())
-                    intent.putExtra("num", binding.phoneNumEditText.text.toString())
-                    intent.putExtra("email", binding.phoneEmailEditText.text.toString())
-                    intent.putExtra("group", binding.phoneGroupEditText.text.toString())
-                    startActivity(intent)
+                    // TODO(키보드 접자)
+                    TextUtils.hideKeyboard(this, binding.phoneNameEditText)
+                    TextUtils.hideKeyboard(this, binding.phoneNumEditText)
+                    TextUtils.hideKeyboard(this, binding.phoneEmailEditText)
+                    TextUtils.hideKeyboard(this, binding.phoneGroupEditText)
+
+                    checkKeyboardClosed(this){
+                        val intent = Intent(this, DefaultPhoneActivity::class.java)
+                        intent.putExtra("from", "save_contact") // id 값 바꾸기 - 연락처 저장 눌렀을 때 변화하는 화면을 알아야 하기 때문
+                        intent.putExtra("name", binding.phoneNameEditText.text.toString())
+                        intent.putExtra("num", binding.phoneNumEditText.text.toString())
+                        intent.putExtra("email", binding.phoneEmailEditText.text.toString())
+                        intent.putExtra("group", binding.phoneGroupEditText.text.toString())
+                        startActivity(intent)
+                    }
+
+
                 }
             }
             true
@@ -112,5 +134,36 @@ class DefaultPhoneAddActivity : AppCompatActivity() {
             */
 
         }
+
+
+    }
+
+    fun isKeyboardVisible(activity: Activity): Boolean {
+        val rootView: View = activity.window.decorView.rootView
+        val rect = android.graphics.Rect()
+        rootView.getWindowVisibleDisplayFrame(rect)
+
+        val screenHeight = rootView.height
+        val keypadHeight = screenHeight - rect.bottom
+
+        // 키패드가 화면의 10% 이상 차지하면 키보드가 열려있다고 판단함
+        return keypadHeight > screenHeight * 0.1
+    }
+
+    fun checkKeyboardClosed(activity: Activity, onKeyboardClosed: () -> Unit) {
+        val handler = Handler(Looper.getMainLooper())
+        val checkInterval: Long = 456 // 0.456초 간격으로 확인
+
+        val keyboardChecker = object : Runnable {
+            override fun run() {
+                if (!isKeyboardVisible(activity)) {
+                    onKeyboardClosed()
+                } else {
+                    handler.postDelayed(this, checkInterval)
+                }
+            }
+        }
+
+        handler.post(keyboardChecker)
     }
 }

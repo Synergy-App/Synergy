@@ -77,10 +77,10 @@ data class SettingsCourse(val eduScreen: EduScreen): EduCourse {
 
         list.add(EduData().apply {
 
-            cover.boxLeft = 10.0f/412.0f
-            cover.boxRight = width-10.0f
-            cover.boxTop = 160.0f/930.0f
-            cover.boxBottom = 230.0f /*크기가 커질 수록 박스가 커짐 */
+            cover.boxLeft = 0.0f
+            cover.boxRight = 1.0f
+            cover.boxTop = 0.35f
+            cover.boxBottom = 0.45f
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
 
@@ -94,14 +94,10 @@ data class SettingsCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 0.5f,
-                    y = 0.5f,
+                    y = 0.4f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
         })
-
-
-
-
     }
 }

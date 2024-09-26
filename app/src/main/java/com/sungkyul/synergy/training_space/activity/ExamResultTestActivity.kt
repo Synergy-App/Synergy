@@ -62,11 +62,11 @@ class ExamResultTestActivity : AppCompatActivity() {
             finish()
         }
 
-        // 뒤로 가기 버튼 클릭 시
+// 뒤로 가기 버튼 클릭 시
         val backButton: ConstraintLayout = findViewById(R.id.back_button)
         backButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java).apply {
-                putExtra("target_fragment", MainActivity.Tag_examSpace)
+                putExtra("fragment", "examSpace_fragment")
                 putExtra("selected_navigation_item", R.id.solvingFragment)
             }
             startActivity(intent)
