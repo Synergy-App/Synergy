@@ -25,7 +25,7 @@
             android:text="학습 능력 확인하기"
             android:textColor="@color/white"
             android:fontFamily="@font/pretendard_bold"
-            android:textSize="32sp"/>
+            android:textSize="12sp"/>
     </FrameLayout>
 
     <FrameLayout
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:text="XXX님의 취약 유형"
                 android:textColor="@color/black"
-                android:textSize="28sp"
+                android:textSize="14sp"
                 android:fontFamily="@font/pretendard_medium"
                 />
 
@@ -78,7 +78,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="아직 측정되지 않았습니다."
-                    android:textSize="24sp"
+                    android:textSize="14sp"
                     android:textColor="#3D3D3D"
                     app:layout_constraintTop_toBottomOf="@id/status_image"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -108,7 +108,7 @@
             android:layout_height="wrap_content"
             android:text="학습 현황"
             android:textColor="@color/black"
-            android:textSize="28sp"
+            android:textSize="14sp"
             android:fontFamily="@font/pretendard_medium"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/learning_info_layout"
@@ -145,7 +145,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="#7272BA"
                         android:text="하루 평균"
-                        android:textSize="24sp"
+                        android:textSize="12sp"
                         android:fontFamily="@font/pretendard_semibold"
                         />
 
@@ -154,7 +154,7 @@
                         android:layout_height="wrap_content"
                         android:text="학습 시간"
                         android:fontFamily="@font/pretendard_semibold"
-                        android:textSize="24sp"/>
+                        android:textSize="12sp"/>
                 </LinearLayout>
 
                 <TextView
@@ -164,8 +164,9 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toEndOf="@id/average_title_layout"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:textSize="48sp"
+                    android:textSize="24sp"
                     android:fontFamily="@font/pretendard_medium"
+                    android:textColor="@color/black"
                     android:text="01:27:21"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -196,7 +197,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="#7272BA"
                         android:text="오늘"
-                        android:textSize="24sp"
+                        android:textSize="12sp"
                         android:fontFamily="@font/pretendard_semibold"
                         />
 
@@ -205,7 +206,7 @@
                         android:layout_height="wrap_content"
                         android:text="학습 시간"
                         android:fontFamily="@font/pretendard_semibold"
-                        android:textSize="24sp"/>
+                        android:textSize="12sp"/>
                 </LinearLayout>
 
                 <TextView
@@ -215,7 +216,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toEndOf="@id/today_title_layout"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:textSize="48sp"
+                    android:textSize="24sp"
                     android:fontFamily="@font/pretendard_medium"
                     android:textColor="#52A669"
                     android:text="01:27:21"/>

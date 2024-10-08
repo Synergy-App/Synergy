@@ -18,7 +18,7 @@ data class SettingsFontCourse(val eduScreen: EduScreen): EduCourse {
     // 교육 코스를 만든다.
     init {
         list.add(EduData().apply {
-            dialog.contentText = "글자 크기를 조절할 수 있는<br>화면입니다."
+            dialog.contentText = "글자 크기를 조절할 수<br>있는 화면입니다."
             dialog.contentGravity = Gravity.CENTER
             dialog.contentFont = R.font.pretendard_medium
             dialog.contentSize = AdaptiveUtils.dialogContentMedium()
@@ -82,7 +82,7 @@ data class SettingsFontCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             action.id = "clear_ment"
             dialog.contentText = "글자 크기가<br>최대로 조절되었습니다!"
-            dialog.top = 0.45f
+            dialog.top = 0.35f
             dialog.bottom = 0.35f
             dialog.visibility = true
             cover.visibility = true
@@ -92,7 +92,7 @@ data class SettingsFontCourse(val eduScreen: EduScreen): EduCourse {
             cover.boxLeft = 0.0f
             cover.boxRight = 1.0f
             cover.boxTop = 0.15f
-            cover.boxBottom = 0.3f
+            cover.boxBottom = 0.4f
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
             cover.isClickable = true
@@ -102,8 +102,8 @@ data class SettingsFontCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.contentText = "글자 크기가 너무 작아<br>사용하는데 어려웠다면"
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = 0.4f
-            dialog.bottom = 0.4f
+            dialog.top = 0.35f
+            dialog.bottom = 0.35f
             dialog.visibility = true
             cover.visibility = true
             cover.boxVisibility = false

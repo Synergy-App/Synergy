@@ -31,7 +31,7 @@
                 android:text="객관식 실습"
                 android:textColor="@color/white"
                 android:fontFamily="@font/pretendard_semibold"
-                android:textSize="24sp"/>
+                android:textSize="20sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -39,7 +39,7 @@
                 android:text="시험 결과"
                 android:fontFamily="@font/pretendard_regular"
                 android:textColor="@color/white"
-                android:textSize="24sp"/>
+                android:textSize="16sp"/>
 
         </LinearLayout>
 

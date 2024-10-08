@@ -41,7 +41,7 @@ data class DefaultMessageFirstCourse(val eduScreen: EduScreen): EduCourse {
             dialog.visibility = false
 
             bottomDialog.sebookImageVisibility = true
-            bottomDialog.height = 0.3f
+            bottomDialog.height = 0.4f
             bottomDialog.titleText = "메시지"
             bottomDialog.titleFont= R.font.pretendard_bold
             bottomDialog.titleSize = AdaptiveUtils.dialogTitleMedium()

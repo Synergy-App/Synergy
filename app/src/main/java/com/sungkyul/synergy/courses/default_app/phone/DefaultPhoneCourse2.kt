@@ -143,7 +143,7 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 330.0f/412.0f,
-                    y = 760.0f/930.0f,
+                    y = 730.0f/930.0f,
                     rotation = 180.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )
@@ -231,9 +231,9 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
             dialog.top = 360.0f/930.0f
             dialog.bottom = 320.0f/930.0f
 
-            cover.boxLeft = 30.0f/412.0f
+            cover.boxLeft = 40.0f/412.0f
             cover.boxRight = AdaptiveUtils.ratio((412.0f-280.0f)/412.0f)
-            cover.boxTop = 570.0f/930.0f
+            cover.boxTop = 580.0f/930.0f
             cover.boxBottom = 690.0f/930.0f
             cover.boxBorderColor = R.color.lime
         })
@@ -242,7 +242,7 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
             dialog.contentText = "상대방에게 메세지를<br>보내는 버튼입니다."
 
             cover.boxLeft = 120.0f/412.0f
-            cover.boxRight = AdaptiveUtils.ratio((412.0f-190.0f)/412.0f)
+            cover.boxRight = AdaptiveUtils.ratio((412.0f-200.0f)/412.0f)
 
 
         })

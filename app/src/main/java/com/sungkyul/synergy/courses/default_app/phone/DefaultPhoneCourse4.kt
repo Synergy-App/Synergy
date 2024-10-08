@@ -30,8 +30,8 @@ class DefaultPhoneCourse4 (val eduScreen: EduScreen): EduCourse {
             cover.boxRight = (412.0f-10.0f)/412.0f
             cover.boxBottom = 700.0f/930.0f /*크기가 커질 수록 박스가 커짐 */
 
-            cover.boxVisibility = true
-            cover.boxBorderVisibility = true
+            //cover.boxVisibility = true
+            //cover.boxBorderVisibility = true
             dialog.visibility = true
             cover.visibility = true
             dialog.contentColor = R.color.black
@@ -41,10 +41,9 @@ class DefaultPhoneCourse4 (val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "만약 저장된 연락처가 너무 많아<br>찾고 싶은 사람의 연락처를<br>한번에 확인하기 어려울 때는<br>상대방의 전화번호를 저장할 수 있고<br>상대방에게 전화를 걸 수 있습니다."
-            dialog.contentSize = 24.0f
-            dialog.top = 300.0f/930.0f
-            dialog.bottom = 250.0f/930.0f
+            dialog.contentText = "만약 저장된 연락처가<br>너무 많아 찾고 싶은<br>사람의 연락처를 한번에<br>확인하기 어려울 때는<br>상대방의 전화번호를<br>저장할 수 있고<br>상대방에게 전화를 걸 수 있습니다."
+            dialog.top = 0.2f
+            dialog.bottom = 0.2f
             cover.boxVisibility = false
             cover.boxBorderVisibility = false
             dialog.contentColor = R.color.black

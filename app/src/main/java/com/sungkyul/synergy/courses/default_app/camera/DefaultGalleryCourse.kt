@@ -56,8 +56,8 @@ data class DefaultGalleryCourse(val eduScreen: EduScreen): EduCourse {
             hands.add(
                 EduHand(
                     id = "tap",
-                    x = 0.1f,
-                    y = 0.85f,
+                    x = 0.8f,
+                    y = 0.8f,
                     rotation = 180.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )

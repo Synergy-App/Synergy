@@ -13,8 +13,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.sungkyul.synergy.home.activity.MainActivity
 import com.sungkyul.synergy.R
-import com.sungkyul.synergy.com.sungkyul.synergy.edu_courses.screen_layout.ScreenMoveHomeCourse
+import com.sungkyul.synergy.courses.screen_layout.ScreenMoveHomeCourse
 import com.sungkyul.synergy.databinding.ActivityScreenMoveHomeBinding
+import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.edu.EduScreen
 
 class ScreenMoveHomeActivity : AppCompatActivity() {
@@ -96,7 +97,9 @@ class ScreenMoveHomeActivity : AppCompatActivity() {
                     layout.x = x - layout.width / 2
                     layout.y = y - layout.height / 2
 
-                    (view as ViewGroup).addView(layout)
+                    if(!(DisplayUtils.convertYFromRatioToPx(this, 0.27f) <= layout.y && layout.y <= DisplayUtils.convertYFromRatioToPx(this, 0.67f))){
+                        (view as ViewGroup).addView(layout)
+                    }
                     true
                 }
                 DragEvent.ACTION_DRAG_ENDED -> {

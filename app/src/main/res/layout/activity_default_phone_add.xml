@@ -83,7 +83,7 @@
                 android:id="@+id/phone_name_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:hint="이름"
                 android:importantForAutofill="no"
                 android:inputType="text"/>
@@ -108,7 +108,7 @@
                 android:id="@+id/phone_num_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:hint="전화번호"
                 android:importantForAutofill="no"
                 android:inputType="text"/>
@@ -132,7 +132,7 @@
                 android:id="@+id/phone_email_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:hint="이메일"
                 android:importantForAutofill="no"
                 android:inputType="text"/>
@@ -156,7 +156,7 @@
                 android:id="@+id/phone_group_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:hint="그룹"
                 android:importantForAutofill="no"
                 android:inputType="text"/>

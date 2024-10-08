@@ -41,8 +41,8 @@ data class DefaultPhoneCallCourse(val eduScreen: EduScreen): EduCourse {
             cover.boxBorderColor = R.color.black
             cover.boxLeft = 10.0f/412.0f
             cover.boxRight = AdaptiveUtils.ratio((412.0f-10.0f)/412.0f)
-            cover.boxTop = 550.0f/930.0f
-            cover.boxBottom = 750.0f/930.0f /*크기가 커질 수록 박스가 커짐 */
+            cover.boxTop = 500.0f/930.0f
+            cover.boxBottom = 700.0f/930.0f /*크기가 커질 수록 박스가 커짐 */
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
 
@@ -63,10 +63,10 @@ data class DefaultPhoneCallCourse(val eduScreen: EduScreen): EduCourse {
             dialog.end = 24.0f/412.0f
 
             cover.boxBorderColor = R.color.lime
-            cover.boxLeft = 70.0f/412.0f
-            cover.boxRight = AdaptiveUtils.ratio((412.0f-270.0f)/412.0f)
-            cover.boxTop = 550.0f/930.0f
-            cover.boxBottom = 630.0f/930.0f
+            cover.boxLeft = 60.0f/412.0f
+            cover.boxRight = AdaptiveUtils.ratio((412.0f-280.0f)/412.0f)
+            cover.boxTop = 510.0f/930.0f
+            cover.boxBottom = 590.0f/930.0f
             dialog.contentText = "현재 전화를 기록해<br>저장할 수 있습니다."
         })
 
@@ -82,8 +82,8 @@ data class DefaultPhoneCallCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.contentGravity = Gravity.LEFT
             dialog.titleText = "블루투스"
-            cover.boxLeft = 260.0f/412.0f
-            cover.boxRight = AdaptiveUtils.ratio((412.0f-70.0f)/412.0f)
+            cover.boxLeft = 280.0f/412.0f
+            cover.boxRight = AdaptiveUtils.ratio((412.0f-60.0f)/412.0f)
 
             dialog.contentText = "블루투스장치와 연결해<br>사용할 수 있습니다."
         })
@@ -98,10 +98,10 @@ data class DefaultPhoneCallCourse(val eduScreen: EduScreen): EduCourse {
             dialog.start = 24.0f/412.0f
             dialog.end = 24.0f/412.0f
 
-            cover.boxLeft = 70.0f/412.0f
-            cover.boxRight = AdaptiveUtils.ratio((412.0f-270.0f)/412.0f)
-            cover.boxTop = 630.0f/930.0f
-            cover.boxBottom = 720.0f/930.0f
+            cover.boxLeft = 60.0f/412.0f
+            cover.boxRight = AdaptiveUtils.ratio((412.0f-280.0f)/412.0f)
+            cover.boxTop = 610.0f/930.0f
+            cover.boxBottom = 700.0f/930.0f
             dialog.contentText = "소리를 크게 들을 수 있습니다"
         })
 
@@ -118,9 +118,9 @@ data class DefaultPhoneCallCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentGravity = Gravity.LEFT
             dialog.titleText = "키패드"
 
-            cover.boxLeft = 260.0f/412.0f
-            cover.boxRight = AdaptiveUtils.ratio((412.0f-70.0f)/412.0f)
-            dialog.contentText = "이전에 나왔던 키패드를 전화 중에 열 수 있습니다."
+            cover.boxLeft = 280.0f/412.0f
+            cover.boxRight = AdaptiveUtils.ratio((412.0f-60.0f)/412.0f)
+            dialog.contentText = "이전에 나왔던 키패드를<br>전화중에 열수 있습니다."
         })
 
         list.add(EduData().apply {
@@ -134,8 +134,8 @@ data class DefaultPhoneCallCourse(val eduScreen: EduScreen): EduCourse {
             cover.boxBorderColor = R.color.black
             cover.boxLeft = 10.0f/412.0f
             cover.boxRight = AdaptiveUtils.ratio((412.0f-10.0f)/412.0f)
-            cover.boxTop = 550.0f/930.0f
-            cover.boxBottom = 750.0f/930.0f /*크기가 커질 수록 박스가 커짐 */
+            cover.boxTop = 500.0f/930.0f
+            cover.boxBottom = 700.0f/930.0f /*크기가 커질 수록 박스가 커짐 */
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
             dialog.visibility = true
@@ -175,7 +175,7 @@ data class DefaultPhoneCallCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 190.0f/412.0f,
-                    y = 800.0f/930.0f,
+                    y = 780.0f/930.0f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

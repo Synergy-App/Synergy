@@ -26,6 +26,7 @@
         android:textColor="@color/white"
         android:paddingTop="19dp"
         android:paddingStart="24dp"
+        android:textSize="18sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -40,6 +41,7 @@
         android:letterSpacing="-0.01"
         android:paddingStart="24dp"
         android:paddingTop="6dp"
+        android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@id/iconedu_tool"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -67,6 +69,7 @@
             android:letterSpacing="-0.05"
             android:text="터치"
             android:textColor="@color/black"
+            android:textSize="18sp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -103,6 +106,7 @@
                 android:fontFamily="@font/pretendard_medium"
                 android:padding="8dp"
                 android:text="text"
+                android:textSize="14sp"
                 android:textColor="@color/black" />
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
