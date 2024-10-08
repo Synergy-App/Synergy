@@ -40,7 +40,7 @@ data class DefaultMessageCourse2(val eduScreen: EduScreen): EduCourse {
             dialog.top = 630.0f/930.0f
             dialog.bottom = 100.0f/930.0f
             cover.boxLeft = 0.21f
-            cover.boxTop = 0.86f
+            cover.boxTop = 0.83f
             cover.boxRight = 0.79f
             cover.boxBottom = 1.0f
             cover.visibility = true
@@ -64,8 +64,8 @@ data class DefaultMessageCourse2(val eduScreen: EduScreen): EduCourse {
 
         list.add(EduData().apply {
             dialog.contentText = "상대방에게<br>'안녕하세요'를 보내볼까요?"
-            dialog.top = 300.0f/930.0f
-            dialog.bottom = 450.0f/930.0f
+            dialog.top = 0.35f
+            dialog.bottom = 0.35f
             dialog.contentColor = R.color.white
             dialog.background = R.drawable.edu_dialog_green_bg
             cover.boxVisibility = false
@@ -122,9 +122,9 @@ data class DefaultMessageCourse2(val eduScreen: EduScreen): EduCourse {
             dialog.contentText = "내가 보낸 메세지는<br>우측에 뜨게 되고,"
             dialog.top = 200.0f/930.0f
             dialog.bottom = 500.0f/930.0f
-            cover.boxTop = 80.0f/930.0f
+            cover.boxTop = 100.0f/930.0f
             cover.boxLeft = 0.5f
-            cover.boxBottom = AdaptiveUtils.ratio((930.0f-770.0f)/930.0f)
+            cover.boxBottom = AdaptiveUtils.ratio(180.0f/930.0f)
             cover.boxRight = 1.0f
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
@@ -136,9 +136,7 @@ data class DefaultMessageCourse2(val eduScreen: EduScreen): EduCourse {
             dialog.contentText = "상대방이 보낸 메세지는<br>좌측에 뜨게 됩니다."
             dialog.top = 200.0f/930.0f
             dialog.bottom = 500.0f/930.0f
-            cover.boxTop = 80.0f/930.0f
             cover.boxLeft = 0.0f
-            cover.boxBottom = AdaptiveUtils.ratio((930.0f-770.0f)/930.0f)
             cover.boxRight = 0.5f
             cover.boxVisibility = true
             cover.boxBorderVisibility = true

@@ -37,8 +37,8 @@ data class SettingsCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.contentText = "휴대폰의 상세 설정 목록들이<br>나열되어 있는데요."
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = 0.4f
-            dialog.bottom = 0.4f
+            dialog.top = 0.35f
+            dialog.bottom = 0.35f
             dialog.visibility = true
             cover.visibility = true
             dialog.contentColor = R.color.black
@@ -79,8 +79,8 @@ data class SettingsCourse(val eduScreen: EduScreen): EduCourse {
 
             cover.boxLeft = 0.0f
             cover.boxRight = 1.0f
-            cover.boxTop = 0.35f
-            cover.boxBottom = 0.45f
+            cover.boxTop = 0.375f
+            cover.boxBottom = 0.475f
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
 

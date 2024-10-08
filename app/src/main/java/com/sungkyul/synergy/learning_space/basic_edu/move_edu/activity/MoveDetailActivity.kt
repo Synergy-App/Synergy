@@ -1,4 +1,4 @@
-package com.sungkyul.synergy.learning_space.move_edu.activity
+package com.sungkyul.synergy.learning_space.basic_edu.move_edu.activity
 
 import android.content.Intent
 import android.graphics.Point
@@ -13,6 +13,7 @@ import com.sungkyul.synergy.com.sungkyul.synergy.edu_space.basic_edu.move_edu.da
 import com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.utils.GalaxyNote9
 import com.sungkyul.synergy.databinding.ActivityMoveDetailBinding
+import com.sungkyul.synergy.utils.DisplayUtils
 
 class MoveDetailActivity : AppCompatActivity() {
     private lateinit var activityBinding: ActivityMoveDetailBinding
@@ -36,10 +37,10 @@ class MoveDetailActivity : AppCompatActivity() {
         displayMoveInfo(currentIndex)
 
         // 기기별 해상도를 기준으로 글씨 크기를 조절합니다.
-        activityBinding.iconeduTool.textSize = (standardSizeX / 12).toFloat()
-        activityBinding.iconeduTool2.textSize = (standardSizeX / 20).toFloat()
-        activityBinding.moveTv1.textSize = (standardSizeX / 12).toFloat()
-        activityBinding.moveTv2.textSize = (standardSizeY / 26).toFloat()
+        activityBinding.iconeduTool.textSize = DisplayUtils.dpToPx(this, 12.0f)//(standardSizeX / 12).toFloat()
+        activityBinding.iconeduTool2.textSize = DisplayUtils.dpToPx(this, 16.0f)//(standardSizeX / 16).toFloat()
+        activityBinding.moveTv1.textSize = DisplayUtils.dpToPx(this, 8.0f)//(standardSizeX / 12).toFloat()
+        activityBinding.moveTv2.textSize = DisplayUtils.dpToPx(this, 6.0f)//(standardSizeY / 18).toFloat()
 
         // next_nav 버튼 클릭 이벤트 처리
         val nextNavButton = activityBinding.practiceNavLayout.root.findViewById<ImageView>(R.id.next_nav)

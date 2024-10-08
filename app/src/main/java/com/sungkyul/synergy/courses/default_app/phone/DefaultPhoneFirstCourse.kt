@@ -43,7 +43,7 @@ data class DefaultPhoneFirstCourse(val eduScreen: EduScreen): EduCourse {
             dialog.visibility = false
 
             bottomDialog.sebookImageVisibility = true
-            bottomDialog.height = 0.3f
+            bottomDialog.height = 0.4f
             bottomDialog.titleText = "전화"
             bottomDialog.titleFont= R.font.pretendard_bold
             bottomDialog.titleSize = when(Build.MODEL) {

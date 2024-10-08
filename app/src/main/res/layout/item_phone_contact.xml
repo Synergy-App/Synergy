@@ -63,7 +63,7 @@
                 android:layout_height="48dp"
                 android:src="@drawable/ic_call_green_24"
                 android:scaleType="centerInside"
-                android:background="@drawable/black_circle"/>
+                android:background="@drawable/white_circle"/>
 
             <ImageButton
                 android:id="@+id/message_button"
@@ -72,7 +72,7 @@
                 android:layout_marginStart="32dp"
                 android:src="@drawable/ic_message_circle_blue_24"
                 android:scaleType="centerInside"
-                android:background="@drawable/black_circle"/>
+                android:background="@drawable/white_circle"/>
 
             <ImageButton
                 android:id="@+id/video_call_button"
@@ -81,7 +81,7 @@
                 android:layout_marginStart="32dp"
                 android:src="@drawable/ic_video_green_24"
                 android:scaleType="centerInside"
-                android:background="@drawable/black_circle"/>
+                android:background="@drawable/white_circle"/>
 
             <ImageButton
                 android:id="@+id/info_button"
@@ -90,7 +90,7 @@
                 android:layout_marginStart="32dp"
                 android:src="@drawable/ic_info_24"
                 android:scaleType="centerInside"
-                android:background="@drawable/black_circle"/>
+                android:background="@drawable/white_circle"/>
         </LinearLayout>
         </LinearLayout>
 </LinearLayout>

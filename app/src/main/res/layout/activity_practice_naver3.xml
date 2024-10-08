@@ -25,7 +25,7 @@
             android:layout_weight="0.5"
             android:padding="16dp"
             android:text="00:00"
-            android:textSize="20dp"
+            android:textSize="16dp"
             android:textStyle="bold" />
 
         <!-- 타이머와 텍스트 사이의 공간 -->
@@ -43,7 +43,7 @@
             android:padding="16dp"
             android:text="문제보기"
             android:textColor="@color/phoneRed"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
     </LinearLayout>
 

@@ -388,6 +388,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/icon_image_2"
+        android:visibility="invisible"
         android:layout_marginBottom="0dp"/>
 
 

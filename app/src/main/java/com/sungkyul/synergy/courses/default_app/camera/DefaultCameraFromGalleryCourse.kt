@@ -38,10 +38,10 @@ data class DefaultCameraFromGalleryCourse(val eduScreen: EduScreen): EduCourse {
             cover.boxVisibility=true
             cover.boxBorderVisibility=true
             cover.boxLeft=0.65f
-            cover.boxTop=0.82f
+            cover.boxTop=0.8f
 
-            cover.boxRight=0.82f
-            cover.boxBottom=0.92f
+            cover.boxRight=0.86f
+            cover.boxBottom=0.9f
         })
 
         list.add(EduData().apply {
@@ -62,18 +62,13 @@ data class DefaultCameraFromGalleryCourse(val eduScreen: EduScreen): EduCourse {
             cover.visibility=true
             cover.boxVisibility=true
             cover.boxBorderVisibility=true
-            cover.boxLeft=0.65f
-            cover.boxTop=0.82f
-
-            cover.boxRight=0.82f
-            cover.boxBottom=0.92f
         })
 
         list.add(EduData().apply {
             dialog.contentText = "셀카를 찍고<br>앨범으로 이동해<br>사진을 확인해볼까요?"
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = 0.4f
-            dialog.bottom = 0.4f
+            dialog.top = 0.35f
+            dialog.bottom = 0.35f
             dialog.start = 0.1f
             dialog.end = 0.1f
             dialog.visibility = true
@@ -116,7 +111,7 @@ data class DefaultCameraFromGalleryCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 0.74f,
-                    y = 0.875f,
+                    y = 0.84f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
@@ -131,7 +126,7 @@ data class DefaultCameraFromGalleryCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 0.45f,
-                    y = 0.875f,
+                    y = 0.84f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
@@ -146,7 +141,7 @@ data class DefaultCameraFromGalleryCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 0.22f,
-                    y = 0.875f,
+                    y = 0.84f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

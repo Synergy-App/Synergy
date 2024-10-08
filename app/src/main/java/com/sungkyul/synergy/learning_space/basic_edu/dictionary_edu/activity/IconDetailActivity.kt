@@ -42,10 +42,10 @@ class IconDetailActivity : AppCompatActivity() {
         activityBinding.anotherIconIv.text = iconInfo.iconDescription
 
         // 기기별 해상도를 기준으로 글씨 크기를 조절합니다.
-        activityBinding.iconeduTool.textSize = (standardSizeX / 12).toFloat()
-        activityBinding.iconeduTool2.textSize = (standardSizeX / 20).toFloat()
-        activityBinding.iconTv2.textSize = (standardSizeX / 12).toFloat()
-        activityBinding.anotherIconIv.textSize = (standardSizeY / 26).toFloat()
+        activityBinding.iconeduTool.textSize = DisplayUtils.dpToPx(this, 12.0f)//(standardSizeX / 12).toFloat()
+        activityBinding.iconeduTool2.textSize = DisplayUtils.dpToPx(this, 16.0f)//(standardSizeX / 20).toFloat()
+        activityBinding.iconTv2.textSize = DisplayUtils.dpToPx(this, 8.0f)//(standardSizeX / 12).toFloat()
+        activityBinding.anotherIconIv.textSize = DisplayUtils.dpToPx(this, 6.0f)//(standardSizeY / 26).toFloat()
 
         // ImageView 크기 조정
         adjustImageViewSize()

@@ -40,7 +40,7 @@ data class ScreenFirstCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.contentText = "휴대폰을 편리하게<br>사용하기 위해서<br>우리 눈에 보이는<br>화면들의 구성을<br>이해할 필요가 있습니다."
             dialog.top = 0.4f
-            dialog.bottom = 0.3f
+            dialog.bottom = 0.25f
         })
 
         list.add(EduData().apply {

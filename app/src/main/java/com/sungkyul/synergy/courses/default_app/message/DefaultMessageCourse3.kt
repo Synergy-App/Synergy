@@ -25,7 +25,7 @@ class DefaultMessageCourse3 (val eduScreen: EduScreen): EduCourse {
             dialog.contentSize = AdaptiveUtils.dialogContentMedium()
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 300.0f/930.0f
-            dialog.bottom = 400.0f/930.0f
+            dialog.bottom = 350.0f/930.0f
             dialog.start = 24.0f/412.0f
             dialog.end = 24.0f/412.0f
             cover.boxVisibility = false
@@ -42,20 +42,20 @@ class DefaultMessageCourse3 (val eduScreen: EduScreen): EduCourse {
             dialog.bottom = 200.0f/930.0f
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
-            cover.boxLeft = 0.77f
-            cover.boxTop = 0.77f
-            cover.boxRight = 0.97f
-            cover.boxBottom = 0.87f
+            cover.boxLeft = 0.75f
+            cover.boxTop = 0.75f
+            cover.boxRight = 0.95f
+            cover.boxBottom = 0.85f
             cover.boxBorderColor = R.color.lime
         })
 
         list.add(EduData().apply {
             dialog.contentText = "내역을 클릭하여 쉽게<br>문자를 보낼 수 있습니다."
             dialog.top = 250.0f/930.0f
-            dialog.bottom = 450.0f/930.0f
-            cover.boxTop = 120.0f/930.0f
+            dialog.bottom = 480.0f/930.0f
+            cover.boxTop = 140.0f/930.0f
             cover.boxLeft = 0.0f
-            cover.boxBottom = 0.2f
+            cover.boxBottom = 0.25f
             cover.boxRight = 1.0f
         })
 

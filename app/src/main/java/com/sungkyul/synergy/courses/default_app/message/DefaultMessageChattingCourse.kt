@@ -35,9 +35,9 @@ data class DefaultMessageChattingCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "이 부분을 통해<br>이전에 주고 받은 메세지<br>내역을 확인할 수 있습니다."
-            dialog.top = 0.75f
-            dialog.bottom = 0.05f
+            dialog.contentText = "이 부분을 통해<br>메세지 내역을 볼 수 있습니다."
+            dialog.top = 0.73f
+            dialog.bottom = 0.03f
             cover.boxVisibility = true
             cover.boxLeft = 0.0f
             cover.boxTop = 0.14f
@@ -56,9 +56,9 @@ data class DefaultMessageChattingCourse(val eduScreen: EduScreen): EduCourse {
             dialog.top = 0.6f
             dialog.bottom = 200.0f/930.0f
             cover.boxLeft = 0.76f
-            cover.boxTop = 0.755f
+            cover.boxTop = 0.74f
             cover.boxRight = 0.95f
-            cover.boxBottom = 0.875f
+            cover.boxBottom = 0.85f
             cover.boxBorderColor = R.color.lime
         })
 
@@ -81,7 +81,7 @@ data class DefaultMessageChattingCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 340.0f/412.0f,
-                    y = 0.83f,
+                    y = 0.81f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
@@ -96,7 +96,7 @@ data class DefaultMessageChattingCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 340.0f/412.0f,
-                    y = 0.69f,
+                    y = 0.65f,
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
