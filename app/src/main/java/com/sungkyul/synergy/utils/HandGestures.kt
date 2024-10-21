@@ -119,9 +119,9 @@ class HandGestures {
                 context,
                 imageView,
                 0.15f,
-                0.85f,
+                Models.tunePos(0.85f, 0.88f, 0.85f),
                 0.8f,
-                0.85f,
+                Models.tunePos(0.85f, 0.88f, 0.85f),
                 1500,
                 500
             )

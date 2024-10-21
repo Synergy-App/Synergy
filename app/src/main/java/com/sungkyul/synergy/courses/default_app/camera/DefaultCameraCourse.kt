@@ -7,6 +7,7 @@ import com.sungkyul.synergy.utils.AdaptiveUtils
 import com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
+import com.sungkyul.synergy.utils.Models
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
@@ -40,14 +41,14 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentGravity = Gravity.CENTER
             dialog.background = R.drawable.edu_dialog_bg
             dialog.contentColor = R.color.black
-            dialog.top = 0.35f
+            dialog.top = Models.tunePos(0.35f, 0.35f, 0.35f)
             dialog.bottom = 0.35f
             dialog.start = 0.05f
             dialog.end = 0.05f
             cover.boxLeft = 0.0f
-            cover.boxTop = 0.7f
+            cover.boxTop = Models.tunePos(0.7f, 0.75f, 0.7f)
             cover.boxRight = 1.0f
-            cover.boxBottom = 0.77f
+            cover.boxBottom = Models.tunePos(0.77f, 0.82f, 0.77f)
             dialog.visibility = true
             cover.visibility = true
             cover.isClickable = true
@@ -58,9 +59,9 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.contentText = "사진을 촬영하는<br>버튼입니다."
             cover.boxLeft = 0.4f
-            cover.boxTop = 0.8f
+            cover.boxTop = Models.tunePos(0.8f, 0.83f, 0.8f)
             cover.boxRight = 0.6f
-            cover.boxBottom = 0.9f
+            cover.boxBottom = Models.tunePos(0.9f, 0.95f, 0.9f)
         })
 
         list.add(EduData().apply {
@@ -111,7 +112,7 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 0.45f,
-                    y = 0.825f,
+                    y = Models.tunePos(0.825f, 0.85f, 0.825f),
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
@@ -145,7 +146,7 @@ data class DefaultCameraCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 0.22f,
-                    y = 0.84f,
+                    y = Models.tunePos(0.84f, 0.86f, 0.84f),
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

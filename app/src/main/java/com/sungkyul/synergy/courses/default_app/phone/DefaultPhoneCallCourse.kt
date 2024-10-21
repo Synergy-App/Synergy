@@ -5,6 +5,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.AdaptiveUtils
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
+import com.sungkyul.synergy.utils.Models
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
@@ -33,8 +34,8 @@ data class DefaultPhoneCallCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.top = 300.0f/930.0f
-            dialog.bottom = 380.0f/930.0f /*커질수록 다이얼로그 크기가 작아짐*/
+            dialog.top = Models.tunePos(300.0f/930.0f, 250.0f/930.0f, 300.0f/930.0f)
+            dialog.bottom = Models.tunePos(380.0f/930.0f, 430.0f/930.0f, 380.0f/930.0f) /*커질수록 다이얼로그 크기가 작아짐*/
             dialog.start = 24.0f/412.0f
             dialog.end = 24.0f/412.0f
 
@@ -57,8 +58,8 @@ data class DefaultPhoneCallCourse(val eduScreen: EduScreen): EduCourse {
             dialog.titleText = "녹음"
             dialog.titleFont = R.font.pretendard_semibold
             dialog.titleSize = AdaptiveUtils.dialogTitleMedium()
-            dialog.top = 280.0f/930.0f
-            dialog.bottom = 380.0f/930.0f /*커질수록 다이얼로그 크기가 작아짐*/
+            dialog.top = Models.tunePos(280.0f/930.0f, 230.0f/930.0f, 280.0f/930.0f)
+            dialog.bottom = Models.tunePos(380.0f/930.0f, 430.0f/930.0f, 380.0f/930.0f) /*커질수록 다이얼로그 크기가 작아짐*/
             dialog.start = 24.0f/412.0f
             dialog.end = 24.0f/412.0f
 
@@ -93,8 +94,6 @@ data class DefaultPhoneCallCourse(val eduScreen: EduScreen): EduCourse {
             dialog.titleText = "스피커"
             dialog.titleFont = R.font.pretendard_semibold
             dialog.titleSize = AdaptiveUtils.dialogTitleMedium()
-            dialog.top = 380.0f/930.0f
-            dialog.bottom = 280.0f/930.0f /*커질수록 다이얼로그 크기가 작아짐*/
             dialog.start = 24.0f/412.0f
             dialog.end = 24.0f/412.0f
 
@@ -127,8 +126,8 @@ data class DefaultPhoneCallCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentText = "상황에 맞게 버튼을 눌러<br>기능을 사용하면 됩니다."
             dialog.titleText = ""
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = 300.0f/930.0f
-            dialog.bottom = 380.0f/930.0f /*커질수록 다이얼로그 크기가 작아짐*/
+            dialog.top = Models.tunePos(300.0f/930.0f, 250.0f/930.0f, 300.0f/930.0f)
+            dialog.bottom = Models.tunePos(380.0f/930.0f, 430.0f/930.0f, 380.0f/930.0f)
             dialog.start = 24.0f/412.0f
             dialog.end = 24.0f/412.0f
             cover.boxBorderColor = R.color.black
@@ -175,7 +174,7 @@ data class DefaultPhoneCallCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 190.0f/412.0f,
-                    y = 780.0f/930.0f,
+                    y = Models.tunePos(780.0f/930.0f, 800.0f/930.0f, 780.0f/930.0f),
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

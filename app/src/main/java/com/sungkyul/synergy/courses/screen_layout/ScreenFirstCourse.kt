@@ -6,6 +6,7 @@ import android.view.Gravity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.utils.DisplayUtils
+import com.sungkyul.synergy.utils.Models
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduScreen
@@ -29,8 +30,8 @@ data class ScreenFirstCourse(val eduScreen: EduScreen): EduCourse {
                 GALAXY_NOTE9 -> 22.0f
                 else -> 26.0f
             }
-            dialog.top = 0.4f
-            dialog.bottom = 0.35f
+            dialog.top = Models.tunePos(0.4f, 0.5f)
+            dialog.bottom = Models.tunePos(0.35f, 0.3f)
             dialog.start = 0.05f
             dialog.end = 0.05f
 
@@ -50,8 +51,8 @@ data class ScreenFirstCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.contentText = "먼저 잠금화면에 대해<br>알아볼까요?"
 
-            dialog.top = 0.4f
-            dialog.bottom = 0.35f
+            dialog.top = Models.tunePos(0.4f, 0.5f)
+            dialog.bottom = Models.tunePos(0.35f, 0.3f)
             dialog.start = 0.05f
             dialog.end = 0.05f
         })

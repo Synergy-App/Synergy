@@ -5,6 +5,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.AdaptiveUtils
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
+import com.sungkyul.synergy.utils.Models
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
@@ -40,7 +41,7 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
             dialog.bottom = 100.0f/930.0f
 
             cover.boxLeft = 150.0f/412.0f
-            cover.boxTop = 800.0f/930.0f
+            cover.boxTop = Models.tunePos(800.0f/930.0f, 820.0f/930.0f, 800.0f/930.0f)
             cover.boxRight = AdaptiveUtils.ratio((412.0f-150.0f)/412.0f)
             cover.boxBottom = 930.0f/930.0f
             dialog.background = R.drawable.edu_dialog_bg
@@ -108,7 +109,7 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
             dialog.top = 500.0f/930.0f
             dialog.bottom = 100.0f/930.0f
             cover.boxLeft = AdaptiveUtils.ratio((412.0f-120.0f)/412.0f)
-            cover.boxTop = 770.0f/930.0f
+            cover.boxTop = Models.tunePos(770.0f/930.0f, 830.0f/930.0f, 770.0f/930.0f)
             cover.boxRight = AdaptiveUtils.ratio((412.0f-20.0f)/412.0f)
             cover.boxBottom = 930.0f/930.0f
             dialog.contentText = "연락처는<br>나의 휴대폰에 저장된<br>사람들의 전화목록입니다."
@@ -165,13 +166,13 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.contentText = "저장되어 있는<br>상대방의 연락처 목록이<br>나열됩니다."
 
-            dialog.top = 240.0f/930.0f
+            dialog.top = Models.tunePos(240.0f/930.0f, 290.0f/930.0f, 240.0f/930.0f)
             dialog.bottom = 460.0f/930.0f
 
             cover.boxLeft = 10.0f/412.0f
-            cover.boxTop = 420.0f/930.0f
+            cover.boxTop = Models.tunePos(0.451612f, 0.501612f, 0.451612f)
             cover.boxRight = AdaptiveUtils.ratio((412.0f-10.0f)/412.0f)
-            cover.boxBottom = AdaptiveUtils.ratio((930.0f-100.0f)/930.0f)
+            cover.boxBottom = Models.tunePos(AdaptiveUtils.ratio(0.8924731f), AdaptiveUtils.ratio(0.8924731f), AdaptiveUtils.ratio(0.8924731f))
 
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
@@ -201,7 +202,7 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 100.0f/412.0f,
-                    y = 550.0f/930.0f,
+                    y = Models.tunePos(550.0f/930.0f, 580.0f/930.0f, 550.0f/930.0f),
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
@@ -213,9 +214,9 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
             dialog.bottom = 450.0f/930.0f /*커질수록 다이얼로그 크기가 작아짐*/
 
             cover.boxLeft = 10.0f/412.0f
-            cover.boxTop = 430.0f/930.0f
+            cover.boxTop = Models.tunePos(430.0f/930.0f, 480.0f/930.0f, 430.0f/930.0f)
             cover.boxRight = AdaptiveUtils.ratio((412.0f-10.0f)/412.0f)
-            cover.boxBottom = AdaptiveUtils.ratio((930.0f-180.0f)/930.0f)
+            cover.boxBottom = Models.tunePos(AdaptiveUtils.ratio((930.0f-180.0f)/930.0f), AdaptiveUtils.ratio(0.83645f), AdaptiveUtils.ratio((930.0f-180.0f)/930.0f))
 
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
@@ -233,8 +234,8 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
 
             cover.boxLeft = 40.0f/412.0f
             cover.boxRight = AdaptiveUtils.ratio((412.0f-280.0f)/412.0f)
-            cover.boxTop = 580.0f/930.0f
-            cover.boxBottom = 690.0f/930.0f
+            cover.boxTop = Models.tunePos(580.0f/930.0f, 670.0f/930.0f, 580.0f/930.0f)
+            cover.boxBottom = Models.tunePos(690.0f/930.0f, 780.0f/930.0f, 690.0f/930.0f)
             cover.boxBorderColor = R.color.lime
         })
 
@@ -261,9 +262,9 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
             dialog.bottom = 510.0f/930.0f
 
             cover.boxLeft = 230.0f/412.0f
-            cover.boxTop = 400.0f/930.0f
+            cover.boxTop = Models.tunePos(400.0f/930.0f, 470.0f/930.0f, 400.0f/930.0f)
             cover.boxRight = AdaptiveUtils.ratio((412.0f- 100.0f)/412.0f)
-            cover.boxBottom = 480.0f/930.0f
+            cover.boxBottom = Models.tunePos(480.0f/930.0f, 550.0f/930.0f, 480.0f/930.0f)
 
         })
 
@@ -289,7 +290,7 @@ data class DefaultPhoneCourse2(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 250.0f/412.0f,
-                    y = 440.0f/930.0f,
+                    y = Models.tunePos(440.0f/930.0f, 500.0f/930.0f, 440.0f/930.0f),
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

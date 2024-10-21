@@ -5,6 +5,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.AdaptiveUtils
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
+import com.sungkyul.synergy.utils.Models
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
@@ -54,11 +55,11 @@ data class DefaultMessageChattingCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentText = "메세지를 보내는<br>버튼입니다."
             dialog.contentGravity = Gravity.CENTER
             dialog.top = 0.6f
-            dialog.bottom = 200.0f/930.0f
+            dialog.bottom = Models.tunePos(200.0f/930.0f, 200.0f/930.0f, 200.0f/930.0f)
             cover.boxLeft = 0.76f
-            cover.boxTop = 0.74f
+            cover.boxTop = Models.tunePos(0.74f, 0.75f, 0.74f)
             cover.boxRight = 0.95f
-            cover.boxBottom = 0.85f
+            cover.boxBottom = Models.tunePos(0.85f, 0.86f, 0.85f)
             cover.boxBorderColor = R.color.lime
         })
 

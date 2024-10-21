@@ -38,6 +38,7 @@ import com.sungkyul.synergy.databinding.FragmentEduScreenBinding
 import com.sungkyul.synergy.utils.AnimUtils
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.GeometryUtils
+import com.sungkyul.synergy.utils.Models
 import kotlin.collections.set
 
 class EduScreenFragment : Fragment() {
@@ -591,7 +592,11 @@ class EduScreenFragment : Fragment() {
                 height = (startHeight + (endHeight - startHeight) * it).toInt()
                 h = height
             }
-            binding.bottomSebookImage.y = DisplayUtils.getSize(requireContext()).y-binding.bottomSebookImage.height-h-DisplayUtils.dpToPx(requireContext(), 10.0f)
+            binding.bottomSebookImage.y = DisplayUtils.getSize(requireContext()).y-binding.bottomSebookImage.height-h- Models.tunePos(
+                DisplayUtils.dpToPx(requireContext(), 10.0f),
+                DisplayUtils.dpToPx(requireContext(), -35.0f),
+                DisplayUtils.dpToPx(requireContext(), 10.0f),
+            )
         }, 0.0f, 1.0f, duration, interpolator))
     }
 

@@ -7,6 +7,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.AdaptiveUtils
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
+import com.sungkyul.synergy.utils.Models
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
@@ -41,14 +42,14 @@ data class DefaultPhoneCourse1(val eduScreen: EduScreen, val activity: AppCompat
         list.add(EduData().apply {
             dialog.contentText = "이 부분은 키패드이며,<br>전화하고 싶은 상대의<br>전화번호를 입력하는<br>버튼입니다."
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = 0.1f
-            dialog.bottom = 0.6f
+            dialog.top = Models.tunePos(0.1f, 0.05f, 0.1f)
+            dialog.bottom = Models.tunePos(0.6f, 0.65f, 0.6f)
             dialog.start = 0.05f
             dialog.end = 0.05f
             cover.boxBorderColor = R.color.black
             cover.boxLeft = AdaptiveUtils.ratio((10.0f)/412.0f)
             cover.boxRight = AdaptiveUtils.ratio((412.0f - 10.0f)/412.0f)
-            cover.boxTop = AdaptiveUtils.ratio((280.0f)/773.0f)
+            cover.boxTop = Models.tunePos(AdaptiveUtils.ratio((280.0f)/773.0f), AdaptiveUtils.ratio(0.33222f), AdaptiveUtils.ratio((280.0f)/773.0f))
             cover.boxBottom = AdaptiveUtils.ratio((580.0f)/773.0f)
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
@@ -65,8 +66,8 @@ data class DefaultPhoneCourse1(val eduScreen: EduScreen, val activity: AppCompat
 
             cover.boxLeft = AdaptiveUtils.ratio((150.0f)/412.0f)
             cover.boxRight = AdaptiveUtils.ratio((412.0f - 150.0f)/412.0f)
-            cover.boxTop = 680.0f/930.0f
-            cover.boxBottom = 800.0f/930.0f
+            cover.boxTop = Models.tunePos(0.7311827f, 0.7611827f, 0.7311827f)
+            cover.boxBottom = Models.tunePos(0.860215f, 0.890215f, 0.860215f)
             cover.boxBorderColor = R.color.eduColor1
             dialog.contentText = "전화를 거는 버튼으로<br>전화번호를 입력하고<br>버튼을 누르면<br>상대방과 전화를<br>할 수 있어요."
         })
@@ -106,9 +107,9 @@ data class DefaultPhoneCourse1(val eduScreen: EduScreen, val activity: AppCompat
         // 전화번호 입력 과정
         val phoneNumber = "1024683579"
         val keyViews = hashMapOf<Char, PointF>(
-            '1' to PointF(0.235f, 0.425f),
-            '2' to PointF(0.45f, 0.425f),
-            '3' to PointF(0.7f, 0.425f),
+            '1' to PointF(0.235f, Models.tunePos(0.425f,0.405f, 0.425f)),
+            '2' to PointF(0.45f, Models.tunePos(0.425f,0.405f, 0.425f)),
+            '3' to PointF(0.7f, Models.tunePos(0.425f,0.405f, 0.425f)),
             '4' to PointF(0.235f, 0.515f),
             '5' to PointF(0.45f, 0.515f),
             '6' to PointF(0.7f, 0.515f),

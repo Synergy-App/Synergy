@@ -7,6 +7,7 @@ import com.sungkyul.synergy.utils.AdaptiveUtils
 import com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
+import com.sungkyul.synergy.utils.Models
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
@@ -38,10 +39,9 @@ data class DefaultCameraFromGalleryCourse(val eduScreen: EduScreen): EduCourse {
             cover.boxVisibility=true
             cover.boxBorderVisibility=true
             cover.boxLeft=0.65f
-            cover.boxTop=0.8f
-
+            cover.boxTop= Models.tunePos(0.8f, 0.85f, 0.8f)
             cover.boxRight=0.86f
-            cover.boxBottom=0.9f
+            cover.boxBottom=Models.tunePos(0.9f, 0.95f, 0.9f)
         })
 
         list.add(EduData().apply {
@@ -111,7 +111,7 @@ data class DefaultCameraFromGalleryCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 0.74f,
-                    y = 0.84f,
+                    y = Models.tunePos(0.84f, 0.86f, 0.84f),
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
@@ -126,7 +126,7 @@ data class DefaultCameraFromGalleryCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 0.45f,
-                    y = 0.84f,
+                    y = Models.tunePos(0.84f, 0.86f, 0.84f),
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
@@ -141,7 +141,7 @@ data class DefaultCameraFromGalleryCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 0.22f,
-                    y = 0.84f,
+                    y = Models.tunePos(0.84f, 0.86f, 0.84f),
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

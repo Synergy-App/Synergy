@@ -6,6 +6,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
+import com.sungkyul.synergy.utils.Models
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
@@ -78,7 +79,7 @@ data class ScreenMenuCourse(val eduScreen: EduScreen): EduCourse {
                     EduHand(
                         id = "touch",
                         x = 0.1f,
-                        y = 0.4f,
+                        y = Models.tunePos(0.45f, 0.5f, 0.4f),
                         gesture = HandGestures::tapGesture
                     )
                 )
