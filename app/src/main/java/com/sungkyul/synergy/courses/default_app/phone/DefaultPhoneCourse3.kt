@@ -5,6 +5,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.AdaptiveUtils
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
+import com.sungkyul.synergy.utils.Models
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
@@ -56,7 +57,7 @@ data class DefaultPhoneCourse3(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 190.0f/412.0f,
-                    y = 270.0f/930.0f,
+                    y = Models.tunePos(270.0f/930.0f, 310.0f/930.0f, 270.0f/930.0f),
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

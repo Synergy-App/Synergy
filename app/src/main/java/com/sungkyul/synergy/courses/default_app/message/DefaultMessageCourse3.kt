@@ -5,6 +5,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.AdaptiveUtils
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
+import com.sungkyul.synergy.utils.Models
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
@@ -43,9 +44,9 @@ class DefaultMessageCourse3 (val eduScreen: EduScreen): EduCourse {
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
             cover.boxLeft = 0.75f
-            cover.boxTop = 0.75f
+            cover.boxTop = Models.tunePos(0.75f, 0.76f, 0.75f)
             cover.boxRight = 0.95f
-            cover.boxBottom = 0.85f
+            cover.boxBottom = Models.tunePos(0.85f, 0.86f, 0.85f)
             cover.boxBorderColor = R.color.lime
         })
 
@@ -53,9 +54,9 @@ class DefaultMessageCourse3 (val eduScreen: EduScreen): EduCourse {
             dialog.contentText = "내역을 클릭하여 쉽게<br>문자를 보낼 수 있습니다."
             dialog.top = 250.0f/930.0f
             dialog.bottom = 480.0f/930.0f
-            cover.boxTop = 140.0f/930.0f
+            cover.boxTop = Models.tunePos(140.0f/930.0f, 180.0f/930.0f, 140.0f/930.0f)
             cover.boxLeft = 0.0f
-            cover.boxBottom = 0.25f
+            cover.boxBottom = Models.tunePos(0.25f, 0.26f, 0.25f)
             cover.boxRight = 1.0f
         })
 
@@ -77,10 +78,9 @@ class DefaultMessageCourse3 (val eduScreen: EduScreen): EduCourse {
             hands.add(EduHand(
                 id = "tap",
                 x = 0.5f,
-                y = 170.0f/930.0f,
+                y = Models.tunePos(170.0f/930.0f, 200.0f/930.0f, 170.0f/930.0f),
                 gesture = HandGestures.Companion::tapGesture
             ))
         })
-
     }
 }

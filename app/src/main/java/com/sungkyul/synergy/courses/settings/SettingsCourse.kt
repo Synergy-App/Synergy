@@ -5,6 +5,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.AdaptiveUtils
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
+import com.sungkyul.synergy.utils.Models
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
@@ -79,8 +80,8 @@ data class SettingsCourse(val eduScreen: EduScreen): EduCourse {
 
             cover.boxLeft = 0.0f
             cover.boxRight = 1.0f
-            cover.boxTop = 0.375f
-            cover.boxBottom = 0.475f
+            cover.boxTop = Models.tunePos(0.375f, 0.325f, 0.375f)
+            cover.boxBottom = Models.tunePos(0.475f, 0.425f, 0.475f)
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
 

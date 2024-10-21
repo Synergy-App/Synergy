@@ -1,10 +1,12 @@
 package com.sungkyul.synergy.courses.settings
 
+import android.view.Display.Mode
 import android.view.Gravity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.AdaptiveUtils
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
+import com.sungkyul.synergy.utils.Models
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
@@ -71,7 +73,7 @@ data class SettingsFontCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "drag",
                     x = 0.15f,
-                    y = 0.85f,
+                    y = Models.tunePos(0.85f, 0.88f, 0.85f),
                     width = 50.0f,
                     height = 75.0f,
                     gesture = HandGestures.Companion::horizontalDragGesture
@@ -82,8 +84,8 @@ data class SettingsFontCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             action.id = "clear_ment"
             dialog.contentText = "글자 크기가<br>최대로 조절되었습니다!"
-            dialog.top = 0.35f
-            dialog.bottom = 0.35f
+            dialog.top = Models.tunePos(0.35f, 0.5f, 0.35f)
+            dialog.bottom = Models.tunePos(0.35f, 0.2f, 0.35f)
             dialog.visibility = true
             cover.visibility = true
             dialog.contentColor = R.color.black

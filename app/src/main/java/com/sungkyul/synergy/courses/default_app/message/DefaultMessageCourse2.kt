@@ -5,6 +5,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.AdaptiveUtils
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
+import com.sungkyul.synergy.utils.Models
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
@@ -40,7 +41,7 @@ data class DefaultMessageCourse2(val eduScreen: EduScreen): EduCourse {
             dialog.top = 630.0f/930.0f
             dialog.bottom = 100.0f/930.0f
             cover.boxLeft = 0.21f
-            cover.boxTop = 0.83f
+            cover.boxTop = Models.tunePos(0.83f, 0.9f, 0.83f)
             cover.boxRight = 0.79f
             cover.boxBottom = 1.0f
             cover.visibility = true

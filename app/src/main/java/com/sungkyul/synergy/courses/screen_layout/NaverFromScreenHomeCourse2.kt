@@ -7,6 +7,7 @@ import com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.GALAXY_NOTE9_EMU
 import com.sungkyul.synergy.utils.HandGestures
+import com.sungkyul.synergy.utils.Models
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
@@ -36,7 +37,7 @@ data class NaverFromScreenHomeCourse2(val eduScreen: EduScreen): EduCourse {
                     EduHand(
                         id = "tap",
                         x = 0.5f,
-                        y = 0.45f,
+                        y = Models.tunePos(0.55f, 0.7f, 0.45f),
                         gesture = HandGestures::tapGesture
                     )
                 )
@@ -68,7 +69,7 @@ data class NaverFromScreenHomeCourse2(val eduScreen: EduScreen): EduCourse {
                     EduHand(
                         id = "tap",
                         x = 0.75f,
-                        y = 0.75f,
+                        y = Models.tunePos(0.85f, 0.85f, 0.75f),
                         rotation = 180f,
                         gesture = HandGestures::tapGesture
                     )
