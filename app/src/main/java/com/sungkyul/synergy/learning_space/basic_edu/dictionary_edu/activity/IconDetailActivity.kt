@@ -15,6 +15,7 @@ import com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.utils.GalaxyNote9
 import com.sungkyul.synergy.databinding.ActivityIconDetailBinding
 import com.sungkyul.synergy.utils.DisplayUtils
+import com.sungkyul.synergy.utils.GALAXY_ON7_FRIME
 
 class IconDetailActivity : AppCompatActivity() {
     private lateinit var activityBinding: ActivityIconDetailBinding
@@ -42,10 +43,28 @@ class IconDetailActivity : AppCompatActivity() {
         activityBinding.anotherIconIv.text = iconInfo.iconDescription
 
         // 기기별 해상도를 기준으로 글씨 크기를 조절합니다.
-        activityBinding.iconeduTool.textSize = DisplayUtils.dpToPx(this, 12.0f)//(standardSizeX / 12).toFloat()
-        activityBinding.iconeduTool2.textSize = DisplayUtils.dpToPx(this, 16.0f)//(standardSizeX / 20).toFloat()
-        activityBinding.iconTv2.textSize = DisplayUtils.dpToPx(this, 8.0f)//(standardSizeX / 12).toFloat()
-        activityBinding.anotherIconIv.textSize = DisplayUtils.dpToPx(this, 6.0f)//(standardSizeY / 26).toFloat()
+        when(Build.MODEL) {
+            GALAXY_NOTE9 -> {
+                activityBinding.iconeduTool.textSize =
+                    DisplayUtils.dpToPx(this, 12.0f)//(standardSizeX / 12).toFloat()
+                activityBinding.iconeduTool2.textSize =
+                    DisplayUtils.dpToPx(this, 16.0f)//(standardSizeX / 20).toFloat()
+                activityBinding.iconTv2.textSize =
+                    DisplayUtils.dpToPx(this, 8.0f)//(standardSizeX / 12).toFloat()
+                activityBinding.anotherIconIv.textSize =
+                    DisplayUtils.dpToPx(this, 6.0f)//(standardSizeY / 26).toFloat()
+            }
+            GALAXY_ON7_FRIME -> {
+                activityBinding.iconeduTool.textSize =
+                    DisplayUtils.dpToPx(this, 12.0f)//(standardSizeX / 12).toFloat()
+                activityBinding.iconeduTool2.textSize =
+                    DisplayUtils.dpToPx(this, 9.0f)//(standardSizeX / 16).toFloat()
+                activityBinding.iconTv2.textSize =
+                    DisplayUtils.dpToPx(this, 10.0f)//(standardSizeX / 12).toFloat()
+                activityBinding.anotherIconIv.textSize =
+                    DisplayUtils.dpToPx(this, 10.0f)//(standardSizeY / 18).toFloat()
+            }
+        }
 
         // ImageView 크기 조정
         adjustImageViewSize()

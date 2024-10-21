@@ -9,7 +9,7 @@ import com.sungkyul.synergy.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySplashBinding
-    private val SPLASH_DISPLAY_LENGTH: Long = 2000
+    private val SPLASH_DISPLAY_LENGTH: Long = 5000
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)

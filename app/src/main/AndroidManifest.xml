@@ -232,14 +232,15 @@
         <activity
             android:name=".home.activity.SplashActivity"
             android:exported="true">
+        </activity>
+        <activity
+            android:name=".home.activity.LoginActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".home.activity.LoginActivity"
-            android:exported="true" />
         <activity
             android:name=".profile_space.CheckLearningAbilityFragment"
             android:exported="true" />
@@ -379,7 +380,7 @@
             android:name=".learning_space.basic_edu.activity.IconDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".learning_space.move_edu.activity.MoveDetailActivity"
+            android:name=".learning_space.basic_edu.move_edu.activity.MoveDetailActivity"
             android:exported="false" />
         <activity
             android:name=".learning_space.screen_layout.ScreenLayoutActivity"
