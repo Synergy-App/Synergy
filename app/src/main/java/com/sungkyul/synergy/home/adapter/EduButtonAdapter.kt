@@ -113,7 +113,7 @@ class EduButtonAdapter(
 
             sharedPreferences = context.getSharedPreferences("SynergyPrefs", Context.MODE_PRIVATE)
             val receivedId = sharedPreferences.getInt("receivedId", -1)
-            val validId = receivedId==5005;
+            val validId = true//receivedId==5005;
 
             eduButton.setOnTouchListener { view, event ->
                 when (event.action) {
