@@ -5,6 +5,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.AdaptiveUtils
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
+import com.sungkyul.synergy.utils.Models
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
@@ -64,8 +65,8 @@ data class GoogleLoginCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             cover.boxLeft = 16.0f/412.0f
             cover.boxRight = 106.0f/412.0f
-            cover.boxTop = 340.0f/930.0f
-            cover.boxBottom = 400.0f/930.0f
+            cover.boxTop = Models.tunePos(340.0f/930.0f, 0.525f, 340.0f/930.0f)
+            cover.boxBottom = Models.tunePos(400.0f/930.0f, 0.575f, 400.0f/930.0f)
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
 
@@ -76,7 +77,7 @@ data class GoogleLoginCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 40.0f/412.0f,
-                    y = 400.0f/930.0f,
+                    y = Models.tunePos(400.0f/930.0f, 0.55f, 400.0f/930.0f),
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

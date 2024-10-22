@@ -5,6 +5,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.AdaptiveUtils
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
+import com.sungkyul.synergy.utils.Models
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
@@ -54,7 +55,7 @@ data class GoogleMakeCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 150.0f/412.0f,
-                    y = 200.0f/930.0f,
+                    y = Models.tunePos(200.0f/930.0f, 250.0f/930.0f, 200.0f/930.0f),
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
@@ -69,7 +70,7 @@ data class GoogleMakeCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 150.0f/412.0f,
-                    y = 270.0f/930.0f,
+                    y = Models.tunePos(270.0f/930.0f, 350.0f/930.0f, 270.0f/930.0f),
                     gesture = HandGestures.Companion::tapGesture
                 )
             )
@@ -84,7 +85,7 @@ data class GoogleMakeCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 330.0f/412.0f,
-                    y = 350.0f/930.0f,
+                    y = Models.tunePos(350.0f/930.0f, 450.0f/930.0f, 350.0f/930.0f),
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

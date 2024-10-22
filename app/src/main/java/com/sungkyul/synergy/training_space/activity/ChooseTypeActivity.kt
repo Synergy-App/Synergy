@@ -5,7 +5,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -15,7 +14,6 @@ import com.sungkyul.synergy.training_space.call.problem.ExamCallProblemActivity
 import com.sungkyul.synergy.training_space.default_app.camera.problem.ExamCameraProblemActivity
 import com.sungkyul.synergy.training_space.google.problem.ExamGoogleProblem
 import com.sungkyul.synergy.training_space.install.problem.ExamInstallActivity
-import com.sungkyul.synergy.training_space.kakao.PracticeKakaoActivity
 import com.sungkyul.synergy.training_space.kakao.problem.ExamKakaoProblem
 import com.sungkyul.synergy.training_space.message.problem.ExamMessageActivity
 import com.sungkyul.synergy.training_space.naver.problem.ExamNaverProblem
@@ -34,7 +32,6 @@ class ChooseTypeActivity : AppCompatActivity() {
 
         // receivedId 로드
         val receivedId = sharedPreferences.getInt("receivedId", -1)
-        Log.d("ChooseTypeActivity", "Loaded receivedId from SharedPreferences: $receivedId")
 
         val buttonObjective = findViewById<FrameLayout>(R.id.buttonObjective)
         val buttonSubjective = findViewById<FrameLayout>(R.id.buttonSubjective)

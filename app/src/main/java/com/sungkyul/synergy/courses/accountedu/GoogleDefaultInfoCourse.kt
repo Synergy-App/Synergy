@@ -5,6 +5,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.AdaptiveUtils
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
+import com.sungkyul.synergy.utils.Models
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
@@ -54,7 +55,7 @@ data class GoogleDefaultInfoCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 55.0f/412.0f,
-                    y = 225.0f/930.0f,
+                    y = Models.tunePos(225.0f/930.0f, 255.0f/930.0f, 225.0f/930.0f),
 
                     gesture = HandGestures.Companion::tapGesture
                 )
@@ -70,7 +71,7 @@ data class GoogleDefaultInfoCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 170.0f/412.0f,
-                    y = 225.0f/930.0f,
+                    y = Models.tunePos(225.0f/930.0f, 255.0f/930.0f, 225.0f/930.0f),
 
                     gesture = HandGestures.Companion::tapGesture
                 )
@@ -86,7 +87,7 @@ data class GoogleDefaultInfoCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 300.0f/412.0f,
-                    y = 225.0f/930.0f,
+                    y = Models.tunePos(225.0f/930.0f, 255.0f/930.0f, 225.0f/930.0f),
                     
                     gesture = HandGestures.Companion::tapGesture
                 )
@@ -102,7 +103,7 @@ data class GoogleDefaultInfoCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 70.0f/412.0f,
-                    y = 305.0f/930.0f,
+                    y = Models.tunePos(305.0f/930.0f, 355.0f/930.0f, 305.0f/930.0f),
 
                     gesture = HandGestures.Companion::tapGesture
                 )
@@ -118,7 +119,7 @@ data class GoogleDefaultInfoCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 330.0f/412.0f,
-                    y = 400.0f/930.0f,
+                    y = Models.tunePos(400.0f/930.0f, 520.0f/930.0f, 400.0f/930.0f),
 
                     gesture = HandGestures.Companion::tapGesture
                 )

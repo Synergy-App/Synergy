@@ -5,6 +5,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.AdaptiveUtils
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
+import com.sungkyul.synergy.utils.Models
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
@@ -48,11 +49,13 @@ data class GooglePasswordCourse(val eduScreen: EduScreen): EduCourse {
 
         list.add(EduData().apply {
             dialog.contentText = "해당 버튼을 누르면 보안을 위해 가려져 있던 비밀번호가 보이게 됩니다."
+            dialog.top = Models.tunePos(400.0f/930.0f, 500.0f/930.0f, 400.0f/930.0f)
+            dialog.bottom = Models.tunePos(300.0f/930.0f, 200.0f/930.0f, 300.0f/930.0f)
 
             cover.boxLeft = 10.0f/412.0f
-            cover.boxRight = (412.0f-270.0f)/412.0f
-            cover.boxTop = 300.0f/930.0f
-            cover.boxBottom = 335.0f/930.0f
+            cover.boxRight = (412.0f-260.0f)/412.0f
+            cover.boxTop = Models.tunePos(300.0f/930.0f, 440.0f/930.0f, 300.0f/930.0f)
+            cover.boxBottom = Models.tunePos(335.0f/930.0f, 495.0f/930.0f, 335.0f/930.0f)
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
         })
@@ -80,7 +83,7 @@ data class GooglePasswordCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 150.0f/412.0f,
-                    y = 210.0f/930.0f,
+                    y = Models.tunePos(210.0f/930.0f, 280.0f/930.0f, 210.0f/930.0f),
 
                     gesture = HandGestures.Companion::tapGesture
                 )
@@ -98,7 +101,7 @@ data class GooglePasswordCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 150.0f/412.0f,
-                    y = 280.0f/930.0f,
+                    y = Models.tunePos(280.0f/930.0f, 380.0f/930.0f, 280.0f/930.0f),
 
                     gesture = HandGestures.Companion::tapGesture
                 )
@@ -113,7 +116,7 @@ data class GooglePasswordCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 330.0f/412.0f,
-                    y = 380.0f/930.0f,
+                    y = Models.tunePos(380.0f/930.0f, 550.0f/930.0f, 380.0f/930.0f),
 
                     gesture = HandGestures.Companion::tapGesture
                 )

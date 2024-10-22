@@ -5,6 +5,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.AdaptiveUtils
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
+import com.sungkyul.synergy.utils.Models
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
@@ -62,7 +63,7 @@ data class GoogleMailAddCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 250.0f/412.0f,
-                    y = 330.0f/930.0f,
+                    y = Models.tunePos(330.0f/930.0f, 450.0f/930.0f, 330.0f/930.0f),
 
                     gesture = HandGestures.Companion::tapGesture
                 )

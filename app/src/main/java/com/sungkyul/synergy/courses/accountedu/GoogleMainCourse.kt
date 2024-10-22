@@ -5,6 +5,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.AdaptiveUtils
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
+import com.sungkyul.synergy.utils.Models
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
@@ -44,7 +45,7 @@ data class GoogleMainCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentColor = R.color.black
             dialog.background = R.drawable.edu_dialog_bg
 
-            cover.boxLeft = 280.0f/412.0f
+            cover.boxLeft = Models.tunePos(280.0f/412.0f, 300.0f/412.0f, 280.0f/412.0f)
             cover.boxRight = AdaptiveUtils.ratio((412.0f-8.0f)/412.0f)
             cover.boxTop = 2.0f/930.0f
             cover.boxBottom = 60.0f/930.0f
