@@ -5,6 +5,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.AdaptiveUtils
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
+import com.sungkyul.synergy.utils.Models
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
@@ -49,8 +50,8 @@ data class GoogleMailCourse(val eduScreen: EduScreen): EduCourse {
 
         list.add(EduData().apply {
             dialog.contentText = "나의 이름이나 정보를 토대로 구글이 아이디를 추천해주기도 합니다."
-            dialog.top = 400.0f/930.0f
-            dialog.bottom = 300.0f/930.0f
+            dialog.top = Models.tunePos(400.0f/930.0f, 450.0f/930.0f, 400.0f/930.0f)
+            dialog.bottom = Models.tunePos(300.0f/930.0f, 250.0f/930.0f, 300.0f/930.0f)
             dialog.start = 24.0f/412.0f
             dialog.end = 24.0f/412.0f
             dialog.visibility = true
@@ -61,8 +62,8 @@ data class GoogleMailCourse(val eduScreen: EduScreen): EduCourse {
 
             cover.boxLeft = 10.0f/412.0f
             cover.boxRight = (412-10.0f)/412.0f
-            cover.boxTop = 150.0f/930.0f
-            cover.boxBottom = 335.0f/930.0f
+            cover.boxTop = Models.tunePos(150.0f/930.0f, 240.0f/930.0f, 150.0f/930.0f)
+            cover.boxBottom = Models.tunePos(335.0f/930.0f, 395.0f/930.0f, 335.0f/930.0f)
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
         })
@@ -71,11 +72,13 @@ data class GoogleMailCourse(val eduScreen: EduScreen): EduCourse {
         })
         list.add(EduData().apply {
             dialog.contentText = "하지만 내 아이디를 직접 만들고 싶다면 이 부분을 이용하면 됩니다."
+            dialog.top = Models.tunePos(400.0f/930.0f, 500.0f/930.0f, 400.0f/930.0f)
+            dialog.bottom = Models.tunePos(300.0f/930.0f, 200.0f/930.0f, 300.0f/930.0f)
 
             cover.boxLeft = 10.0f/412.0f
             cover.boxRight = (412.0f-10.0f)/412.0f
-            cover.boxTop = 290.0f/930.0f
-            cover.boxBottom = 350.0f/930.0f
+            cover.boxTop = Models.tunePos(290.0f/930.0f, 390.0f/930.0f, 290.0f/930.0f)
+            cover.boxBottom = Models.tunePos(350.0f/930.0f, 470.0f/930.0f, 350.0f/930.0f)
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
         })
@@ -103,7 +106,7 @@ data class GoogleMailCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 25.0f/412.0f,
-                    y = 335.0f/930.0f,
+                    y = Models.tunePos(335.0f/930.0f, 435.0f/930.0f, 335.0f/930.0f),
 
                     gesture = HandGestures.Companion::tapGesture
                 )
@@ -117,7 +120,7 @@ data class GoogleMailCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 135.0f/412.0f,
-                    y = 435.0f/930.0f,
+                    y = Models.tunePos(435.0f/930.0f, 555.0f/930.0f, 435.0f/930.0f),
 
                     gesture = HandGestures.Companion::tapGesture
                 )
@@ -131,7 +134,7 @@ data class GoogleMailCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 330.0f/412.0f,
-                    y = 530.0f/930.0f,
+                    y = Models.tunePos(530.0f/930.0f, 700.0f/930.0f, 530.0f/930.0f),
 
                     gesture = HandGestures.Companion::tapGesture
                 )

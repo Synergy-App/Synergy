@@ -6,6 +6,7 @@ import android.view.Gravity
 import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.utils.DisplayUtils
+import com.sungkyul.synergy.utils.Models
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduScreen
@@ -69,7 +70,7 @@ data class GoogleFirstCourse(val eduScreen: EduScreen): EduCourse {
             dialog.visibility = false
 
             bottomDialog.sebookImageVisibility = true
-            bottomDialog.height = 0.3f
+            bottomDialog.height = Models.tunePos(0.3f, 0.36f, 0.3f)
             bottomDialog.titleFont= R.font.pretendard_bold
             bottomDialog.titleSize = when(Build.MODEL) {
                 GALAXY_NOTE9 -> 26.0f
@@ -145,7 +146,7 @@ data class GoogleFirstCourse(val eduScreen: EduScreen): EduCourse {
                 else -> 26.0f
             }
             dialog.top = 0.4f
-            dialog.bottom = 0.3f
+            dialog.bottom = Models.tunePos(0.3f, 0.25f, 0.3f)
             dialog.start = 0.05f
             dialog.end = 0.05f
 

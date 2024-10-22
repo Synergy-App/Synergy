@@ -3,6 +3,7 @@ package com.sungkyul.synergy.com.sungkyul.synergy.home.adapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Point
 import android.util.TypedValue
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -98,6 +100,7 @@ class EduButtonAdapter(
         private val text2: TextView = itemView.findViewById(R.id.learning_tv2)
         private val imageView: ImageView = itemView.findViewById(R.id.edu_icon)
         private val eduButton: GalaxyButton = itemView.findViewById(R.id.edu_button)
+        private lateinit var sharedPreferences: SharedPreferences
 
         init {
             text2.text = "교육"
@@ -108,6 +111,9 @@ class EduButtonAdapter(
             // 화면 크기에 따른 텍스트 크기 설정
             setDynamicTextSize()
 
+            sharedPreferences = context.getSharedPreferences("SynergyPrefs", Context.MODE_PRIVATE)
+            val receivedId = sharedPreferences.getInt("receivedId", -1)
+            val validId = receivedId==5005;
 
             eduButton.setOnTouchListener { view, event ->
                 when (event.action) {
@@ -157,17 +163,30 @@ class EduButtonAdapter(
                                   context.startActivity(intent)
                             }
                             "앱 설치" -> {
-                                val intent = Intent(context, AppInstallFirstActivity::class.java)
-                                context.startActivity(intent)
+                                if(validId) {
+                                    val intent =
+                                        Intent(context, AppInstallFirstActivity::class.java)
+                                    context.startActivity(intent)
+                                } else {
+                                    Toast.makeText(context, "유효하지 않은 교육 ID입니다.", Toast.LENGTH_SHORT).show()
+                                }
                             }
                             "카카오톡" -> {
+                                if(validId) {
                                  val intent = Intent(context, KakaoFirstActivity::class.java)
                                 context.startActivity(intent)
+                                } else {
+                                    Toast.makeText(context, "유효하지 않은 교육 ID입니다.", Toast.LENGTH_SHORT).show()
+                                }
                             }
                             "네이버" -> {
+                                    if(validId) {
                                 val intent = Intent(context, NaverFirstActivity::class.java)
 
                                 context.startActivity(intent)
+                            } else {
+                            Toast.makeText(context, "유효하지 않은 교육 ID입니다.", Toast.LENGTH_SHORT).show()
+                        }
                             }
                         }
                     }
