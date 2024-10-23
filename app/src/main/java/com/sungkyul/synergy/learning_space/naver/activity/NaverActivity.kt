@@ -69,7 +69,7 @@ class NaverActivity : AppCompatActivity() {
 
         val naverPostArray = ArrayList<NaverPostData>()
         naverPostArray.add(NaverPostData(R.drawable.usercircle, "추민영", "1일 전", "팀장", "프로젝트 기획, 문서 정리, UX/UI 디자인, 로고 이미지 제작, UI 구현 및 개발", R.drawable.sample_screenshot2))
-        naverPostArray.add(NaverPostData(R.drawable.usercircle, "노승현", "2일 전", "팀원", "프로젝트 기획, ChatGPT 구현 및 개발, UI 구현 및 개발", R.drawable.sample_screenshot2))
+        naverPostArray.add(NaverPostData(R.drawable.usercircle, "강수지", "2일 전", "팀원", "프로젝트 기획, ChatGPT 구현 및 개발, UI 구현 및 개발", R.drawable.sample_screenshot2))
         naverPostArray.add(NaverPostData(R.drawable.usercircle, "허수진", "3일 전", "대장", "프로젝트 기획, UI 구현 및 개발, 서버 생성 연동", R.drawable.sample_screenshot2))
         naverPostArray.add(NaverPostData(R.drawable.usercircle, "박연우", "4일 전", "팀원", "프로젝트 기획, 문서 정리, 아이디어 제시, UI 구현 및 개발", R.drawable.sample_screenshot2))
         naverPostArray.add(NaverPostData(R.drawable.usercircle, "김병윤", "5일 전", "팀원", "", R.drawable.sample_screenshot2))

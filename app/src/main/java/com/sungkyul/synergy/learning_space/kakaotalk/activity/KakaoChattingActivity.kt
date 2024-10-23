@@ -85,6 +85,13 @@ class KakaoChattingActivity : AppCompatActivity() {
 
                 // 메시지 입력 필드 비우기
                 binding.messageEditText.text.clear()
+
+                // 키보드를 숨긴다.
+                val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                inputMethodManager.hideSoftInputFromWindow(
+                    binding.messageEditText.windowToken,
+                    0
+                )
             }
         }
     }

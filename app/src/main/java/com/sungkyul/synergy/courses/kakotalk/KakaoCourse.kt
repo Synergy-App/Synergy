@@ -98,14 +98,14 @@ data class KakaoCourse(val eduScreen: EduScreen): EduCourse {
             cover.boxLeft = 0.625f
             cover.boxTop = 0.025f
             cover.boxRight = Models.tunePos(0.7f,0.72f, 0.7f)
-            cover.boxBottom = Models.tunePos(0.06f, 0.1f, 0.06f)
+            cover.boxBottom = Models.tunePos(0.06f, 0.09f, 0.06f)
             arrow.endTo = EduScreen.BOX
         })
 
         list.add(EduData().apply {
             dialog.contentText = "카카오톡으로<br>친구와 카톡을<br>주고 받아 볼까요?"
-            dialog.top = 0.4f
-            dialog.bottom = 0.4f
+            dialog.top = 0.35f
+            dialog.bottom = 0.35f
             dialog.background=R.drawable.edu_dialog_green_bg
             dialog.contentColor=R.color.white
             cover.boxVisibility=false
@@ -116,11 +116,11 @@ data class KakaoCourse(val eduScreen: EduScreen): EduCourse {
 
         list.add(EduData().apply {
             dialog.top = 0.1f
-            dialog.bottom = 0.7f
+            dialog.bottom = 0.6f
             dialog.background = R.drawable.edu_dialog_bg
             dialog.contentColor = R.color.black
 
-            bottomDialog.height = 0.3f
+            bottomDialog.height = Models.tunePos(0.3f, 0.4f, 0.3f)
             bottomDialog.contentSize = AdaptiveUtils.dialogContentMedium()
             bottomDialog.contentGravity = Gravity.CENTER
             bottomDialog.contentFont = R.font.pretendard_semibold
@@ -141,7 +141,7 @@ data class KakaoCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 0.5f,
-                    y = 0.2f,
+                    y = Models.tunePos(0.2f, 0.3f, 0.2f),
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

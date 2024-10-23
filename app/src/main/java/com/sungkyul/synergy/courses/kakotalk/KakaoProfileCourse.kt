@@ -38,7 +38,7 @@ data class KakaoProfileCourse(val eduScreen: EduScreen): EduCourse {
             dialog.background=R.drawable.edu_dialog_bg
             dialog.contentColor=R.color.black
             dialog.contentGravity=Gravity.LEFT
-            dialog.top = 0.6f
+            dialog.top = 0.55f
             dialog.bottom = 0.15f
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
