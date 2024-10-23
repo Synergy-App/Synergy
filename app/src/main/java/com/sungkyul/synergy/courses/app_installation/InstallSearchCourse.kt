@@ -5,6 +5,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.AdaptiveUtils
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
+import com.sungkyul.synergy.utils.Models
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
@@ -61,7 +62,7 @@ data class InstallSearchCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 370.0f/412.0f,
-                    y = 100.0f/930.0f,
+                    y = Models.tunePos(100.0f/930.0f, 130.0f/930.0f, 100.0f/930.0f),
                     gesture = HandGestures.Companion::tapGesture
                 )
             )

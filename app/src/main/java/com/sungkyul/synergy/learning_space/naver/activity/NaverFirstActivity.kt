@@ -34,7 +34,7 @@ class NaverFirstActivity : AppCompatActivity() {
                 // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
                 val intent = Intent(binding.root.context, NaverActivity::class.java)
                 intent.putExtra("from", "NaverFirstActivity")
-                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                //intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                 startActivity(intent)
             }
             // 교육을 시작한다.

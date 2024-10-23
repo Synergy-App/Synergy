@@ -61,7 +61,7 @@ class DefaultMessageCourse3 (val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.contentText = "'시너지'와의 문자 내역을<br>확인해보세요"
+            dialog.contentText = "'대장님'과의 문자 내역을<br>확인해보세요"
             dialog.top = 300.0f/930.0f
             dialog.bottom = 400.0f/930.0f
             dialog.contentColor = R.color.white

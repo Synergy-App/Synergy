@@ -5,6 +5,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.AdaptiveUtils
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
+import com.sungkyul.synergy.utils.Models
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
@@ -50,8 +51,8 @@ data class InstallLoadingCourse(val eduScreen: EduScreen): EduCourse {
 
             cover.boxLeft = 0.8f
             cover.boxRight = 1.0f
-            cover.boxTop = 0.08f
-            cover.boxBottom = 0.15f
+            cover.boxTop = Models.tunePos(0.08f, 0.11f, 0.08f)
+            cover.boxBottom = Models.tunePos(0.15f, 0.20f, 0.15f)
             cover.boxBorderVisibility=true
             cover.boxVisibility=true
         })

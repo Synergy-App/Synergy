@@ -38,7 +38,7 @@ class FriendsFragment : Fragment() {
         profileItems.add(profileItem(R.drawable.ic_profile, "임영웅", "별빛같은 사랑아 ~ "))
         profileItems.add(profileItem(R.drawable.ic_profile, "박연우", "너는 내 운명"))
         profileItems.add(profileItem(R.drawable.ic_profile, "추민영", "키키키"))
-        profileItems.add(profileItem(R.drawable.ic_profile, "노승현", ""))
+        profileItems.add(profileItem(R.drawable.ic_profile, "강수지", ""))
         profileItems.add(profileItem(R.drawable.ic_profile, "박지현", ""))
         profileItems.add(profileItem(R.drawable.ic_profile, "덱스", "멋쟁이"))
         profileItems.add(profileItem(R.drawable.ic_profile, "심춘희", "그대와 나"))

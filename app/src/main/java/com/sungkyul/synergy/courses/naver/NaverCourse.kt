@@ -8,6 +8,7 @@ import com.sungkyul.synergy.utils.AdaptiveUtils
 import com.sungkyul.synergy.utils.GALAXY_NOTE9
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
+import com.sungkyul.synergy.utils.Models
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
@@ -48,7 +49,7 @@ data class NaverCourse(val eduScreen: EduScreen): EduCourse {
 
             cover.boxLeft = 0.0f
             cover.boxRight = 1.0f
-            cover.boxTop = 0.85f
+            cover.boxTop = Models.tunePos(0.85f, 0.8f, 0.85f)
             cover.boxBottom = 0.95f
             cover.visibility = true
             cover.boxVisibility = true
@@ -71,7 +72,7 @@ data class NaverCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentText = "휴대폰으로 쇼핑을<br>즐길 수 있습니다."
 
             cover.boxLeft = 0.1f
-            cover.boxRight = 0.3f
+            cover.boxRight = Models.tunePos(0.3f, 0.25f, 0.3f)
             cover.boxBorderColor = R.color.lime
         })
 
@@ -88,7 +89,7 @@ data class NaverCourse(val eduScreen: EduScreen): EduCourse {
             dialog.titleText="클립"
             dialog.contentText = "짧은 영상들을 볼 수<br>있습니다."
 
-            cover.boxLeft = 0.7f
+            cover.boxLeft = Models.tunePos(0.7f, 0.725f,0.7f)
             cover.boxRight = 0.9f
         })
 
@@ -96,13 +97,13 @@ data class NaverCourse(val eduScreen: EduScreen): EduCourse {
             dialog.titleText=""
             dialog.contentText = "이 부분은 검색창으로<br>원하는 정보를 이 곳에<br> 검색할 수 있습니다."
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = 0.3f
-            dialog.bottom = 0.5f
+            dialog.top = Models.tunePos(0.3f, 0.4f,0.3f)
+            dialog.bottom = Models.tunePos(0.5f, 0.4f, 0.5f)
 
             cover.boxLeft = 0.0f
             cover.boxRight = 1.0f
-            cover.boxTop = 0.15f
-            cover.boxBottom = 0.25f
+            cover.boxTop = Models.tunePos(0.15f, 0.2f, 0.15f)
+            cover.boxBottom = Models.tunePos(0.25f, 0.35f, 0.25f)
         })
 
         list.add(EduData().apply {
@@ -137,7 +138,7 @@ data class NaverCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                 id = "tap",
                 x = 0.5f,
-                y = 0.2f,
+                y = Models.tunePos(0.2f, 0.25f,0.2f),
                 gesture = HandGestures.Companion::tapGesture
             )
             )

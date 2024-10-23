@@ -5,6 +5,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.AdaptiveUtils
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
+import com.sungkyul.synergy.utils.Models
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
@@ -20,7 +21,7 @@ data class KakaoFromChattingCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.contentText = "친구랑 대화한 목록을<br>확인할 수 있는<br>대화 목록 버튼입니다."
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = 0.6f
+            dialog.top = 0.5f
             dialog.bottom = 0.2f
             dialog.start = 0.1f
             dialog.end = 0.1f
@@ -29,7 +30,7 @@ data class KakaoFromChattingCourse(val eduScreen: EduScreen): EduCourse {
             cover.isClickable = true
             cover.boxVisibility=true
             cover.boxBorderVisibility=true
-            cover.boxTop = 0.85f
+            cover.boxTop = Models.tunePos(0.85f, 0.8f, 0.85f)
             cover.boxBottom = 1.0f
             cover.boxLeft = 0.25f
             cover.boxRight = 0.4f
@@ -49,7 +50,7 @@ data class KakaoFromChattingCourse(val eduScreen: EduScreen): EduCourse {
                 EduHand(
                     id = "tap",
                     x = 0.275f,
-                    y = 0.8f,
+                    y = Models.tunePos(0.8f, 0.7f, 0.8f),
                     rotation = 180f,
                     gesture = HandGestures.Companion::tapGesture
                 )
@@ -59,7 +60,7 @@ data class KakaoFromChattingCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.contentText = "친구와 대화한<br>대화창이 나열됩니다."
             dialog.top = 0.6f
-            dialog.bottom = 0.2f
+            dialog.bottom = Models.tunePos(0.2f, 0.1f, 0.2f)
             dialog.start = 0.1f
             dialog.end = 0.1f
             dialog.visibility = true
@@ -81,10 +82,10 @@ data class KakaoFromChattingCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.top = 0.3f
-            dialog.bottom = 0.5f
+            dialog.top = Models.tunePos(0.3f, 0.3f, 0.3f)
+            dialog.bottom = Models.tunePos(0.5f, 0.3f, 0.5f)
             dialog.contentText = "새로 온 메시지는<br>숫자와 함께 가장<br>상단에 뜨게 됩니다."
-            cover.boxBottom = 0.15f
+            cover.boxBottom = Models.tunePos(0.15f, 0.2f, 0.15f)
             cover.boxBorderColor = R.color.lime
         })
     }

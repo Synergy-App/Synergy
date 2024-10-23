@@ -5,6 +5,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.AdaptiveUtils
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
+import com.sungkyul.synergy.utils.Models
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
@@ -25,7 +26,7 @@ data class KakaoChatCourse(val eduScreen: EduScreen): EduCourse {
             dialog.contentFont = R.font.pretendard_semibold
             dialog.contentSize = AdaptiveUtils.dialogContentMedium()
             dialog.top = 0.1f
-            dialog.bottom = 0.7f
+            dialog.bottom = 0.6f
             dialog.start = 0.1f
             dialog.end = 0.1f
             dialog.visibility = true
@@ -68,13 +69,12 @@ data class KakaoChatCourse(val eduScreen: EduScreen): EduCourse {
             dialog.background = R.drawable.edu_dialog_bg
             dialog.contentColor = R.color.black
             dialog.visibility=true
-            cover.visibility = true
             cover.boxBorderVisibility=true
             cover.boxVisibility=true
-            cover.boxLeft=0.5f
+            cover.boxLeft= Models.tunePos(0.5f, 0.5f, 0.5f)
             cover.boxRight=1.0f
             cover.boxTop=0.1f
-            cover.boxBottom=0.2f
+            cover.boxBottom=Models.tunePos(0.2f, 0.25f, 0.2f)
             cover.isClickable=true
         })
 
@@ -83,13 +83,10 @@ data class KakaoChatCourse(val eduScreen: EduScreen): EduCourse {
             dialog.background = R.drawable.edu_dialog_bg
             dialog.contentColor = R.color.black
             dialog.visibility=true
-            cover.visibility = true
             cover.boxBorderVisibility=true
             cover.boxVisibility=true
             cover.boxLeft=0.0f
             cover.boxRight=0.5f
-            cover.boxTop=0.1f
-            cover.boxBottom=0.2f
         })
     }
 }
