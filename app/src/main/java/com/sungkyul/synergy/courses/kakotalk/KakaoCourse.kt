@@ -5,6 +5,7 @@ import com.sungkyul.synergy.R
 import com.sungkyul.synergy.utils.AdaptiveUtils
 import com.sungkyul.synergy.utils.DisplayUtils
 import com.sungkyul.synergy.utils.HandGestures
+import com.sungkyul.synergy.utils.Models
 import com.sungkyul.synergy.utils.edu.EduCourse
 import com.sungkyul.synergy.utils.edu.EduData
 import com.sungkyul.synergy.utils.edu.EduHand
@@ -20,7 +21,7 @@ data class KakaoCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.contentText = "카카오톡의<br>메인 화면입니다."
             dialog.contentGravity = Gravity.CENTER
-            dialog.top = 0.6f
+            dialog.top = Models.tunePos(0.6f, 0.55f, 0.6f)
             dialog.bottom = 0.2f
             dialog.start = 0.1f
             dialog.end = 0.1f
@@ -34,8 +35,8 @@ data class KakaoCourse(val eduScreen: EduScreen): EduCourse {
         })
 
         list.add(EduData().apply {
-            dialog.top = 0.35f
-            dialog.bottom = 0.35f
+            dialog.top = Models.tunePos(0.35f, 0.3f, 0.35f)
+            dialog.bottom = Models.tunePos(0.35f, 0.3f, 0.35f)
             dialog.background = R.drawable.edu_dialog_bg
             dialog.contentColor=R.color.black
             dialog.contentText = "앱을 실행하게 되면<br>가장 먼저 뜨는 화면이자<br>내 프로필과 친구 목록이<br>뜨는 화면입니다."
@@ -46,9 +47,9 @@ data class KakaoCourse(val eduScreen: EduScreen): EduCourse {
             cover.boxVisibility = true
             cover.boxBorderVisibility = true
             cover.boxLeft = 0.0f
-            cover.boxTop = 0.05f
-            cover.boxRight = 1.0f
-            cover.boxBottom = 0.175f
+            cover.boxTop = Models.tunePos(0.05f, 0.1f, 0.05f)
+            cover.boxRight = Models.tunePos(1.0f, 1.0f, 1.0f)
+            cover.boxBottom = Models.tunePos(0.175f, 0.185f, 0.175f)
             dialog.top = 0.2f
             dialog.bottom = 0.6f
             dialog.contentText = "내 프로필 입니다."
@@ -65,20 +66,20 @@ data class KakaoCourse(val eduScreen: EduScreen): EduCourse {
 
         list.add(EduData().apply {
             dialog.contentText = "나의 친구 목록입니다."
-            dialog.top = 0.3f
-            dialog.bottom = 0.5f
+            dialog.top = Models.tunePos(0.3f,0.3f, 0.3f)
+            dialog.bottom = Models.tunePos(0.5f, 0.5f, 0.5f)
             cover.boxVisibility=true
             cover.boxBorderVisibility=true
             cover.boxBorderColor=R.color.black
-            cover.boxTop = 0.5f
+            cover.boxTop = Models.tunePos(0.5f, 0.45f, 0.5f)
             cover.boxBottom = 0.8f
             arrow.endTo = EduScreen.DIALOG
         })
 
         list.add(EduData().apply {
             dialog.contentText = "연락처에 저장된 상대가<br>카카오톡을 한다면"
-            dialog.top = 0.4f
-            dialog.bottom = 0.4f
+            dialog.top = 0.35f
+            dialog.bottom = 0.35f
             cover.boxVisibility=false
             cover.boxBorderVisibility=false
         })
@@ -90,14 +91,14 @@ data class KakaoCourse(val eduScreen: EduScreen): EduCourse {
         list.add(EduData().apply {
             dialog.contentText = "친구를 찾을 수 있는<br>버튼입니다."
             dialog.top = 0.1f
-            dialog.bottom = 0.7f
+            dialog.bottom = 0.65f
             cover.boxVisibility=true
             cover.boxBorderVisibility=true
             cover.boxBorderColor=R.color.lime
             cover.boxLeft = 0.625f
             cover.boxTop = 0.025f
-            cover.boxRight = 0.7f
-            cover.boxBottom = 0.06f
+            cover.boxRight = Models.tunePos(0.7f,0.72f, 0.7f)
+            cover.boxBottom = Models.tunePos(0.06f, 0.1f, 0.06f)
             arrow.endTo = EduScreen.BOX
         })
 

@@ -30,20 +30,20 @@ class AppInstallLoadingActivity : AppCompatActivity() {
         binding = ActivityAppinstallLoadingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        // 교육을 정의해보자!
-//        binding.eduScreen.post {
-//            binding.eduScreen.course = InstallLoadingCourse(binding.eduScreen)
-//
-//            binding.eduScreen.setOnFinishedCourseListener {
-//                // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
-//
-//                val intent = Intent(binding.root.context, EduCompletionActivity::class.java)
-//                intent.putExtra("course", "appinstall")
-//                startActivity(intent)
-//            }
-//            // 교육을 시작한다.
-//            binding.eduScreen.start(this)
-//        }
+        // 교육을 정의해보자!
+        binding.eduScreen.post {
+            binding.eduScreen.course = InstallLoadingCourse(binding.eduScreen)
+
+            binding.eduScreen.setOnFinishedCourseListener {
+                // 교육 코스가 끝났을 때 어떻게 할지 처리하는 곳이다.
+
+                val intent = Intent(binding.root.context, EduCompletionActivity::class.java)
+                intent.putExtra("course", "appinstall")
+                startActivity(intent)
+            }
+            // 교육을 시작한다.
+            binding.eduScreen.start(this)
+        }
 
         // 카카오 로고 이미지 서서히 줄어드는 애니메이션
         val kakaoAppImage = findViewById<ImageView>(R.id.kakao_app_image)

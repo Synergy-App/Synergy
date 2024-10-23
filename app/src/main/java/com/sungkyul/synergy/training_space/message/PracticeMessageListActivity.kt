@@ -45,7 +45,7 @@ class PracticeMessageListActivity : AppCompatActivity() {
         startTimer()
 
         val messageChattingArray = ArrayList<MessageChattingData>().apply {
-            add(MessageChattingData(R.drawable.ic_call_profile_24, "시너지", "2024-12-01", "스위트허니너겟님"))
+            add(MessageChattingData(R.drawable.ic_call_profile_24, "대장님", "2024-12-01", "스위트허니너겟님"))
             add(MessageChattingData(R.drawable.ic_call_profile_24, "031-235-1046", "2024-01-01", "[Web발신]\n[성결대학생상담센터친구상담사모집..."))
             // 추가 메시지 데이터
         }

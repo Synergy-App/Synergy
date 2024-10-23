@@ -53,7 +53,7 @@ class KakaoChattingActivity : AppCompatActivity() {
                 startActivity(intent)
             }
             // 교육을 시작한다.
-            //binding.eduScreen.start(this)
+            binding.eduScreen.start(this)
         }
 
         // 뒤로 가기 키를 눌렀을 때의 이벤트를 처리한다.
@@ -75,6 +75,8 @@ class KakaoChattingActivity : AppCompatActivity() {
         binding.sharpButton.setOnClickListener {
             val message = binding.messageEditText.text.toString()
             if (message.isNotEmpty()) {
+                binding.eduScreen.onAction("click_sharp_button")
+
                 val chatMessage = ChatMessage("나", message, getCurrentTimestamp())
                 chatAdapter.addMessage(chatMessage)  // 어댑터에 메시지 추가
 

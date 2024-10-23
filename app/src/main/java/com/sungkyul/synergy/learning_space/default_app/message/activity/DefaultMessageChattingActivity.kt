@@ -83,7 +83,7 @@ class DefaultMessageChattingActivity : AppCompatActivity() {
         messageChattingArray.add(
             MessageChattingData(
                 R.drawable.ic_call_profile_24,
-                "시너지",
+                "대장님",
                 date1.format(DateTimeUtils.dateFormatter),
                 "스위트허니너겟님"
             )
